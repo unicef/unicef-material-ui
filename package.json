@@ -1,0 +1,19 @@
+{
+  "name": "unicef-material-ui",
+  "version": "1.0.0",
+  "description": "Material ui with react",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unicef/unicef-material-ui.git"
+  },
+  "author": "sureshsevarthi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/unicef/unicef-material-ui/issues"
+  },
+  "homepage": "https://github.com/unicef/unicef-material-ui#readme"
+}
