@@ -1,2 +1,2 @@
 # unicef-material-ui
-Customized version of material UI for React
+Customized version of the react version material UI for UNICEF
