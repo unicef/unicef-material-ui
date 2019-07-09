@@ -4,7 +4,8 @@
   "description": "Material ui with react",
   "main": "build/index.js",
   "scripts": {
-    "test": "npm test"
+    "start": "webpack --watch --mode development",
+    "build": "webpack --mode production"
   },
   "repository": {
     "type": "git",
