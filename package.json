@@ -20,7 +20,8 @@
   "peerDependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "webpack": "^4.35.3"
+    "webpack": "^4.35.3",
+    "prop-types": "^15.7.2"
   },
   "bugs": {
     "url": "https://github.com/unicef/unicef-material-ui/issues"
@@ -35,6 +36,7 @@
     "babel-loader": "^8.0.6",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
+    "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "webpack": "^4.35.3",
