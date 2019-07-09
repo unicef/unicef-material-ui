@@ -1,0 +1,37 @@
+{
+  "name": "unicef-material-ui",
+  "version": "1.0.0",
+  "description": "Material ui with react",
+  "main": "build/index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unicef/unicef-material-ui.git"
+  },
+  "author": "sureshsevarthi",
+  "license": "ISC",
+  "peerDependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "webpack": "^4.35.3"
+  },
+  "bugs": {
+    "url": "https://github.com/unicef/unicef-material-ui/issues"
+  },
+  "homepage": "https://github.com/unicef/unicef-material-ui#readme",
+  "devDependencies": {
+    "@babel/core": "^7.5.4",
+    "@babel/preset-env": "^7.5.4",
+    "babel-cli": "^6.26.0",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "webpack": "^4.35.3",
+    "webpack-cli": "^3.3.5",
+    "webpack-dev-server": "^3.7.2"
+  }
+}
