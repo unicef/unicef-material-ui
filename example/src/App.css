@@ -1,0 +1,8 @@
+.margin-top {
+  margin-top: 124px;
+}
+@media only screen and (max-width: 959px) {
+	.margin-top {
+			margin-top: 72px;
+	}
+}
