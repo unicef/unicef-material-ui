@@ -2,14 +2,14 @@ var path = require('path');
 module.exports = {
   entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, 'build'),
+    path: path.resolve(__dirname, 'dist'),
     filename: 'index.js',
     libraryTarget: 'commonjs2'
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         include: path.resolve(__dirname, 'src'),
         exclude: /(node_modules|bower_components|build)/,
         use: {
@@ -18,10 +18,16 @@ module.exports = {
             presets: ["@babel/preset-env"]
           }
         }
-      }
+      },
     ]
   },
+  resolve: {
+    extensions: [".js", ".jsx"]
+  },
+  devServer: {
+    port: 3001
+  },
   externals: {
-    'react': 'commonjs react' 
+    'react': 'commonjs react'
   }
-};
+}
