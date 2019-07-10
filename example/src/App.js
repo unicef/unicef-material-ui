@@ -3,11 +3,10 @@ import { Router, Switch, Route } from 'react-router-dom'
 import './App.css'
 import { createBrowserHistory } from 'history'
 import { NavLinks, NavTabs } from './components'
-import { Header } from 'kms-material-ui'
-
-// THEME
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
-import theme from './theme';
+import theme from './theme'
+import { Header } from 'unicef-material-ui'
+
 
 const history = createBrowserHistory()
 

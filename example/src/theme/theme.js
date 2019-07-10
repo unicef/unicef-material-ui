@@ -47,6 +47,12 @@ const theme = createMuiTheme({
       //   flexDirection: 'row-reverse',
       // }
     },
+    MuiPaper: {
+      root: {
+        color: 'none',
+        backgroundColor: 'none'
+      }
+    },
     MuiIconButton: {
       root: {
         '&:hover': {

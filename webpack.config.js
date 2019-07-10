@@ -22,7 +22,10 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: [".js", ".jsx"]
+    extensions: [".js", ".jsx"],
+    alias: {
+      react: path.resolve('./node_modules/react')
+    }
   },
   devServer: {
     port: 3001

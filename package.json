@@ -4,7 +4,7 @@
   "description": "Material ui with react",
   "main": "dist/index.js",
   "scripts": {
-    "start": "webpack-dev-server --mode development",
+    "start": "webpack --watch --mode development",
     "build": "webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1",
     "transpile": "babel src -d dist --copy-files",
@@ -42,5 +42,8 @@
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.5",
     "webpack-dev-server": "^3.2.1"
+  },
+  "dependencies": {
+    "customize-cra": "^0.2.14"
   }
 }
