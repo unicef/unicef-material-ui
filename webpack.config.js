@@ -27,6 +27,11 @@ module.exports = {
       react: path.resolve('./node_modules/react')
     }
   },
+  resolveLoader: {
+    modules: [
+        '/users/path/a/node_modules'
+    ]
+},
   devServer: {
     port: 3001
   },
