@@ -23,6 +23,9 @@ const theme = createMuiTheme({
     primary: {
       main: colorPrimary,
     },
+    unicefBlue: {
+      main: '#1CABE2'
+    },
   },
   shape: {
     borderRadius: 4,
