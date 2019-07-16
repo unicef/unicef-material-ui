@@ -35,6 +35,11 @@ const useStyles = makeStyles(theme => ({
 		width: 32,
 		height: 32,
 	},
+	iconButton : {
+		'& hover': {
+			backgroundColor: 'transparent'
+		}
+	}
 }));
 
 export default function NavLinks() {
@@ -60,29 +65,29 @@ export default function NavLinks() {
 
 	return (
 		<React.Fragment>
-			<IconButton aria-label="Show 4 new mails" color="inherit">
+			<IconButton aria-label="Show 4 new mails" color="inherit" className={classes.iconButton}>
 				<MailIcon />
 				<Typography variant="subtitle1">
-					<Link href="#0" className={classes.link}>
+					<Link href="#0" color="default" className={classes.link}>
 						With Icon
-          </Link>
+          			</Link>
 				</Typography>
 			</IconButton>
-			<IconButton aria-label="Show 17 new notifications" color="inherit">
+			<IconButton aria-label="Show 17 new notifications" color="inherit" className={classes.iconButton}>
 				<Badge badgeContent={17} color="secondary">
 					<NotificationsIcon />
 				</Badge>
 				<Typography variant="subtitle1">
-					<Link href="#0" className={classes.link}>
+					<Link href="#0" color="default" className={classes.link}>
 						Notifications
-          </Link>
+          			</Link>
 				</Typography>
 			</IconButton>
-			<IconButton aria-label="Show 17 new notifications" color="inherit" onClick={handleProfileMenuOpen}>
+			<IconButton aria-label="Show 17 new notifications" color="inherit" onClick={handleProfileMenuOpen} className={classes.iconButton}>
 				<Typography variant="subtitle1">
-					<Link href="#0" className={classes.link}>
+					<Link href="#0" color="default" className={classes.link}>
 						Dropdown
-            </Link>
+            		</Link>
 				</Typography>
 				<ArrowDropDown />
 			</IconButton>
@@ -122,6 +127,7 @@ export default function NavLinks() {
 				aria-haspopup="true"
 				onClick={handleProfile}
 				color="inherit"
+				className={classes.iconButton}
 			>
 				<Avatar alt="User" src={avatar} className={classes.avatar} />
 			</IconButton>
