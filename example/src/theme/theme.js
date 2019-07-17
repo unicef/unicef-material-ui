@@ -3,7 +3,7 @@ import { fade } from '@material-ui/core/styles/colorManipulator';
 const colorPrimary = '#374EA2'
 
 const theme = createMuiTheme({
-  
+
   typography: {
     useNextVariants: true,
     fontFamily: [
@@ -33,35 +33,24 @@ const theme = createMuiTheme({
       root: {
         borderBottom: '2px solid transparent',
         '&:hover': {
-        color: colorPrimary,
-        backgroundColor: fade(colorPrimary,0.1),
-        borderBottom: `2px solid ${colorPrimary}`,
+          color: colorPrimary,
+          backgroundColor: fade(colorPrimary, 0.1),
+          // borderBottom: `2px solid ${colorPrimary}`,
         },
       },
-      // labelIcon: {
-      //   minHeight: 0,
-      //   paddingTop: 0,
-      // },
-      // wrapper: {
-      //   display: 'flex',
-      //   flexDirection: 'row-reverse',
-      // }
     },
     MuiIconButton: {
       root: {
         '&:hover': {
-          backgroundColor: 'none'
+          backgroundColor: 'transparent'
         }
       },
     },
-    // MuiLink: {
-    //   underlineHover: {
-    //     textDecorationLine: 'underline',
-    //   },
-    //   root: {
-    //     color: '#fff'
-    //   },
-    // },
+    MuiButtonBase: {
+      root: {
+        display: 'flex',
+      },
+    },
     MuiButton: {
       contained: {
         '&:active': {
@@ -69,13 +58,6 @@ const theme = createMuiTheme({
         },
       },
     },
-    // MuiIconButton: {
-    //   root: {
-    //     '&:hover': {
-    //       backgroundColor: 'none'
-    //     },
-    //   },
-    // },
     MuiDrawer: {
       paper: {
         minWidth: 256,

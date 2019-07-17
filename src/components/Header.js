@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
   root: {
     backgroundColor: '#1CABE2',
   },
-  '@media (min-width: 960px)' : {
+  '@media (min-width: 960px)': {
     navRight: {
       backgroundColor: fade('#374EA2', 0.6),
       borderBottomLeftRadius: 32,
@@ -37,6 +37,9 @@ const useStyles = makeStyles(theme => ({
       flexDirection: 'column',
       alignItems: 'baseline'
     },
+  },
+  link: {
+    color: '#fff'
   },
   margin: {
     margin: theme.spacing(2, 2)
@@ -90,17 +93,19 @@ export default function Header(props) {
       role="presentation"
     >
       {applicationName &&
-        <React.Fragment>
-          <Divider />
-          <Typography variant="h6" className={`${classes.marginLeft} ${classes.margin}`}>
-            UNICEF {applicationName}
-          </Typography>
-        </React.Fragment>
+        <Typography variant="h6" className={`${classes.marginLeft} ${classes.margin}`}>
+          UNICEF {applicationName}
+        </Typography>
       }
       {menuItems &&
-        <Box display={{ xs: 'block', md: 'none' }} lassName={classes.menuItems}>
-          {menuItems}
-        </Box>
+        <React.Fragment>
+          <Divider />
+          <Box display={{ xs: 'block', md: 'none' }} lassName={classes.menuItems}>
+            <List>  
+              {menuItems}
+            </List>
+          </Box>
+        </React.Fragment>
       }
       {menuTabs &&
         <React.Fragment>

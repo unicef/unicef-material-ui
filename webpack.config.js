@@ -15,17 +15,17 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ["@babel/preset-env"]
+            presets: [
+              "@babel/preset-env",
+              "@babel/preset-react"
+            ]
           }
         }
       },
     ]
   },
   resolve: {
-    extensions: [".js", ".jsx"]
-  },
-  devServer: {
-    port: 3001
+    extensions: [".js", ".jsx"],
   },
   externals: {
     'react': 'commonjs react'
