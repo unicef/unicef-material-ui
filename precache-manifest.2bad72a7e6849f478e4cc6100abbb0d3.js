@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "eed2c2d1fcf85cf2e8d04ce027be75b7",
+    "revision": "a35791508f9c64dadecde4897fb77fa0",
     "url": "/unicef-material-ui/index.html"
   },
   {
-    "revision": "cd4dc2c6779e1de2d644",
+    "revision": "099721332e49df9bb516",
     "url": "/unicef-material-ui/static/css/main.0ea3dd01.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/unicef-material-ui/static/js/2.27fd64e8.chunk.js"
   },
   {
-    "revision": "cd4dc2c6779e1de2d644",
-    "url": "/unicef-material-ui/static/js/main.4bc7b30c.chunk.js"
+    "revision": "099721332e49df9bb516",
+    "url": "/unicef-material-ui/static/js/main.6f0234c7.chunk.js"
   },
   {
     "revision": "faa47f8b657a8e570a41",
