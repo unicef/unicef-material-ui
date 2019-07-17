@@ -7,7 +7,7 @@ import { theme, Header } from 'unicef-material-ui'
 import { create } from 'jss';
 import { StylesProvider, jssPreset } from '@material-ui/styles';
 import './App.css'
-import { NavLinks, NavTabs } from './components'
+import { NavLinks, NavTabs, Form, CardWithTabs, Cards, Alert } from './components'
 
 const history = createBrowserHistory()
 
@@ -53,6 +53,12 @@ export default function App() {
                 menuTabs={tab}
                 menuButton={true}
               />
+              <div className="margin-top">
+                <Form />
+                <Alert />
+                <CardWithTabs />
+                <Cards />
+              </div>
             </StylesProvider>
           </MuiThemeProvider>
         </Route>

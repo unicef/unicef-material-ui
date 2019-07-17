@@ -39,6 +39,11 @@ const theme = createMuiTheme({
         },
       },
     },
+    MuiTypography: {
+      root: {
+        margin: 'none'
+      }
+    },
     MuiIconButton: {
       root: {
         '&:hover': {
@@ -49,6 +54,7 @@ const theme = createMuiTheme({
     MuiButtonBase: {
       root: {
         display: 'flex',
+        borderRadius: 4,
       },
     },
     MuiButton: {

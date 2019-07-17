@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Material ui with react",
   "main": "./dist/index.js",
+  
   "scripts": {
     "start": "webpack --watch --mode=development",
     "build": "webpack --mode production",
@@ -43,7 +44,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "webpack": "^4.36.1",
+    "webpack": "^4.29.6",
     "webpack-cli": "^3.3.6"
   },
   "dependencies": {}
