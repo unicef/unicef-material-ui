@@ -101,7 +101,9 @@ export default function Header(props) {
         <React.Fragment>
           <Divider />
           <Box display={{ xs: 'block', md: 'none' }} lassName={classes.menuItems}>
-            {menuItems}
+            <List>  
+              {menuItems}
+            </List>
           </Box>
         </React.Fragment>
       }
