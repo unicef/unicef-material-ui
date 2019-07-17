@@ -1,9 +1,9 @@
 import React from 'react'
 import { Router, Switch, Route } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
-import theme from './theme'
+// import theme from './theme'
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
-import { Header } from 'unicef-material-ui'
+import { theme, Header } from 'unicef-material-ui'
 import { create } from 'jss';
 import { StylesProvider, jssPreset } from '@material-ui/styles';
 import './App.css'
@@ -24,17 +24,18 @@ export default function App() {
 
   // Example tab
   const tab = <ul>
-    <li>Liat</li>
-    <li>Liat</li>
-    <li>Liat</li>
-    <li>Liat</li>
+    <li>Tab 1</li>
+    <li>Tab 2</li>
+    <li>Tab 3</li>
+    <li>Tab 4</li>
   </ul>
 
-  const tabss = <ul>
-  <li>Liat</li>
-  <li>Liat</li>
-  <li>Liat</li>
-  <li>Liat</li>
+  // Menu Items
+  const items = <ul>
+  <li>Notifications</li>
+  <li>With icon</li>
+  <li>Dropdown</li>
+  <li>Profile</li>
   </ul>
 
   return (
@@ -48,13 +49,12 @@ export default function App() {
                 navLinks={<NavLinks />}
                 tabs={<NavTabs tabs={tabs} />}
                 logo={false}
-                menuItems={tabss}
+                menuItems={items}
                 menuTabs={tab}
                 menuButton={true}
               />
             </StylesProvider>
           </MuiThemeProvider>
-
         </Route>
       </Switch>
     </Router>
