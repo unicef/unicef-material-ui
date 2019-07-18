@@ -46,8 +46,8 @@ export default function Cards() {
       <Typography variant="h5" className={classes.margin}>
         Cards
       </Typography>
-        <Grid container>
-          <Grid item>
+        <Grid container spacing={3}>
+          <Grid item xs={12} md={6}>
           <Card>
             <CardHeader component='div' title='Card title'></CardHeader>
             <CardContent>
@@ -60,33 +60,33 @@ export default function Cards() {
             </CardContent>
             </Card>
           </Grid>
-          <Grid item>
-          <Card>
-            <CardHeader component='div' title='Card with table'></CardHeader>
-            <CardContent>
-              <Paper className={classes.root}>
-                <Table className={classes.table}>
-                    <TableHead>
-                    <TableRow>
-                        <TableCell>Dessert (100g serving)</TableCell>
-                        <TableCell align="right">Calories</TableCell>
-                        <TableCell align="right">Fat&nbsp;(g)</TableCell>
-                    </TableRow>
-                    </TableHead>
-                    <TableBody>
-                    {rows.map(row => (
-                        <TableRow key={row.name}>
-                        <TableCell component="th" scope="row">
-                            {row.name}
-                        </TableCell>
-                        <TableCell align="right">{row.calories}</TableCell>
-                        <TableCell align="right">{row.fat}</TableCell>
-                        </TableRow>
-                    ))}
-                    </TableBody>
-                </Table>
-              </Paper>
-              </CardContent>
+          <Grid item xs={12} md={6}>
+            <Card>
+              <CardHeader component='div' title='Card with table'></CardHeader>
+              <CardContent>
+                <Paper className={classes.root}>
+                  <Table className={classes.table}>
+                      <TableHead>
+                      <TableRow>
+                          <TableCell>Dessert (100g serving)</TableCell>
+                          <TableCell align="right">Calories</TableCell>
+                          <TableCell align="right">Fat&nbsp;(g)</TableCell>
+                      </TableRow>
+                      </TableHead>
+                      <TableBody>
+                      {rows.map(row => (
+                          <TableRow key={row.name}>
+                          <TableCell component="th" scope="row">
+                              {row.name}
+                          </TableCell>
+                          <TableCell align="right">{row.calories}</TableCell>
+                          <TableCell align="right">{row.fat}</TableCell>
+                          </TableRow>
+                      ))}
+                      </TableBody>
+                  </Table>
+                </Paper>
+                </CardContent>
               </Card>
             </Grid>
           </Grid>

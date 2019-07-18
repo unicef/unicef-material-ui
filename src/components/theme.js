@@ -29,6 +29,17 @@ const theme = createMuiTheme({
   },
   // customize with mui classes
   overrides: {
+    MuiMenu : {
+      list: {
+        display: 'flex',
+        flexDirection: 'column',
+      },
+    },
+    MuiMenuItem : {
+      gutters : {
+        padding: '0px 16px !important'
+      }
+    },
     MuiTab: {
       root: {
         borderBottom: '2px solid transparent',
@@ -37,18 +48,33 @@ const theme = createMuiTheme({
           backgroundColor: fade(colorPrimary, 0.1),
           // borderBottom: `2px solid ${colorPrimary}`,
         },
+        '& Mui' : {
+          selected :{
+            backgroundColor: fade(colorPrimary, 0.1),
+          }
+        }
       },
+    },
+    MuiTypography: {
+      root: {
+        margin: 'none'
+      }
     },
     MuiIconButton: {
       root: {
         '&:hover': {
-          backgroundColor: 'transparent'
+          backgroundColor: 'transparent !important',
+          textDecorationLine: 'underline !important'
         }
+      },
+      edgeStart : {
+        marginLeft: '0px !important'
       },
     },
     MuiButtonBase: {
       root: {
         display: 'flex',
+        borderRadius: 4,
       },
     },
     MuiButton: {

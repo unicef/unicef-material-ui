@@ -8,7 +8,6 @@ import {
 	Badge,
 	IconButton,
 	Avatar,
-	Link,
 } from '@material-ui/core'
 import ArrowDropDown from '@material-ui/icons/ArrowDropDown'
 import MailIcon from '@material-ui/icons/Mail'
@@ -17,16 +16,13 @@ import avatar from '../assets/avatar.png'
 
 
 const useStyles = makeStyles(theme => ({
-	link: {
-		color: 'black',
+	menu: {
+		color: '#fff'
 	},
-	'@media (min-width: 959.98px)': {
-		link: {
-			color: '#fff',
-		},
-	},
-	margin: {
-		margin: theme.spacing(2, 0)
+	links: {
+		color: '#fff',
+		backgroundColor : 'transparent !important',
+		textDecorationLine: 'none',
 	},
 	marginLeft: {
 		marginLeft: theme.spacing(2),
@@ -37,7 +33,7 @@ const useStyles = makeStyles(theme => ({
 	},
 	iconButton : {
 		'& hover': {
-			backgroundColor: 'transparent'
+			textDecorationLine: 'underline !important'
 		}
 	}
 }));
@@ -68,9 +64,9 @@ export default function NavLinks() {
 			<IconButton aria-label="Show 4 new mails" color="inherit" className={classes.iconButton}>
 				<MailIcon />
 				<Typography variant="subtitle1">
-					<Link href="#0" color="default" className={classes.link}>
+					<a href="#0" className={classes.links}>
 						With Icon
-          			</Link>
+          			</a>
 				</Typography>
 			</IconButton>
 			<IconButton aria-label="Show 17 new notifications" color="inherit" className={classes.iconButton}>
@@ -78,16 +74,16 @@ export default function NavLinks() {
 					<NotificationsIcon />
 				</Badge>
 				<Typography variant="subtitle1">
-					<Link href="#0" color="default" className={classes.link}>
+					<a href="#0" className={classes.links}>
 						Notifications
-          			</Link>
+          			</a>
 				</Typography>
 			</IconButton>
 			<IconButton aria-label="Show 17 new notifications" color="inherit" onClick={handleProfileMenuOpen} className={classes.iconButton}>
 				<Typography variant="subtitle1">
-					<Link href="#0" color="default" className={classes.link}>
+					<a href="#0" className={classes.links}>
 						Dropdown
-            		</Link>
+            		</a>
 				</Typography>
 				<ArrowDropDown />
 			</IconButton>
@@ -126,7 +122,6 @@ export default function NavLinks() {
 				aria-label="Account of current user"
 				aria-haspopup="true"
 				onClick={handleProfile}
-				color="inherit"
 				className={classes.iconButton}
 			>
 				<Avatar alt="User" src={avatar} className={classes.avatar} />
