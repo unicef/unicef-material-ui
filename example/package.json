@@ -2,7 +2,7 @@
   "name": "kms-material-ui-poc",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://unicef.github.io/unicef-material-ui/",
+  "homepage": "https://unicef.github.io/unicef-material-ui",
   "dependencies": {
     "@material-ui/core": "^4.1.1",
     "@material-ui/icons": "^4.2.0",
@@ -38,5 +38,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "react-hot-loader": "^4.12.7"
   }
 }
