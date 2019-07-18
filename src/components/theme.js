@@ -29,6 +29,17 @@ const theme = createMuiTheme({
   },
   // customize with mui classes
   overrides: {
+    MuiMenu : {
+      list: {
+        display: 'flex',
+        flexDirection: 'column',
+      },
+    },
+    MuiMenuItem : {
+      gutters : {
+        padding: '0px 16px !important'
+      }
+    },
     MuiTab: {
       root: {
         borderBottom: '2px solid transparent',
@@ -37,7 +48,7 @@ const theme = createMuiTheme({
           backgroundColor: fade(colorPrimary, 0.1),
           // borderBottom: `2px solid ${colorPrimary}`,
         },
-        '& Mui' : { 
+        '& Mui' : {
           selected :{
             backgroundColor: fade(colorPrimary, 0.1),
           }

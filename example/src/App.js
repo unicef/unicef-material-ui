@@ -7,8 +7,12 @@ import './App.css'
 import { NavLinks, NavTabs, Form, CardWithTabs, Cards, Alert } from './components'
 import {
   ListItemText,
+  Badge,
   ListItem,
 } from '@material-ui/core';
+import MailIcon from '@material-ui/icons/Mail';
+import NotificationsIcon from '@material-ui/icons/Notifications';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
 // import avatar from './assets/avatar.png'
 
 const generateClassName = createGenerateClassName({
@@ -37,14 +41,19 @@ function App() {
       <ListItemText primary="Directory" />
     </ListItem>
   </React.Fragment>
-
   // Menu Items
-  const items = <ul>
-    <li>Notifications</li>
-    <li>With icon</li>
-    <li>Dropdown</li>
-    <li>Profile</li>
-  </ul>
+  const items = <React.Fragment>
+    <ListItem button key="With Icon" >
+      <ListItemIcon> <MailIcon /> </ListItemIcon>
+      <ListItemText primary="With Icon" />
+    </ListItem>
+    <ListItem button key="Notifications">
+      <ListItemIcon> <Badge badgeContent={17} color="secondary">
+        <NotificationsIcon />
+      </Badge> </ListItemIcon>
+      <ListItemText primary="Notifications" />
+    </ListItem>
+  </React.Fragment>
 
   return (
     <MuiThemeProvider theme={theme}>
