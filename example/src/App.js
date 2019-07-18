@@ -5,6 +5,10 @@ import { create } from 'jss'
 import { theme, Header } from 'unicef-material-ui'
 import './App.css'
 import { NavLinks, NavTabs, Form, CardWithTabs, Cards, Alert } from './components'
+import {
+  ListItemText,
+  ListItem,
+} from '@material-ui/core';
 // import avatar from './assets/avatar.png'
 
 const generateClassName = createGenerateClassName({
@@ -22,12 +26,17 @@ function App() {
   const tabs = [{ name: 'Active', type: 'normal', link: "/header" }, { name: 'Disabled', type: 'disabled', link: null }, { name: 'Directory', type: 'normal', link: null }]
 
   // Example tab
-  const tab = <ul>
-    <li>Tab 1</li>
-    <li>Tab 2</li>
-    <li>Tab 3</li>
-    <li>Tab 4</li>
-  </ul>
+  const tab = <React.Fragment>
+    <ListItem button key="Active" selected>
+      <ListItemText primary="Active" />
+    </ListItem>
+    <ListItem button key="Disbaled" disabled>
+      <ListItemText primary="Disbaled" />
+    </ListItem>
+    <ListItem button key="Directory">
+      <ListItemText primary="Directory" />
+    </ListItem>
+  </React.Fragment>
 
   // Menu Items
   const items = <ul>

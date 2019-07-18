@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
   bgColor: {
     backgroundColor: '#1CABE2',
   },
-  '@media (min-width: 960px)': {
+  '@media (min-width: 959.58px)': {
     navRight: {
       backgroundColor: fade('#374EA2', 0.6),
       borderBottomLeftRadius: 32,
@@ -51,6 +51,14 @@ const useStyles = makeStyles(theme => ({
   },
   boxShadow: {
     boxShadow: 'none'
+  },
+  '@media (max-width: 959.98px)': {
+    menuItems : {
+      color: 'black',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+    },
   },
 }));
 
@@ -91,7 +99,7 @@ function Header(props) {
         <React.Fragment>
           <Divider />
           <Box display={{ xs: 'block', md: 'none' }}>
-            <List>  
+            <List className={classes.menuItems}>  
               {menuItems}
             </List>
           </Box>

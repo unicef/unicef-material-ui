@@ -1,6 +1,6 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import { TextField, Button, MenuItem, Typography } from '@material-ui/core'
+import { Grid, TextField, Button, MenuItem, Typography } from '@material-ui/core'
 
 const currencies = [
   {
@@ -107,15 +107,19 @@ export default function Form () {
 			<Typography  variant="h5" >
         Text area
       </Typography>
-			<TextField
-				className={classes.margin}
-				variant="outlined"
-				label="Textarea with autoresize"
-				placeholder="Text area increases and decreases with typing ..."
-				multiline={true}
-				fullWidth={false}
-				helperText="Auto resize"
-			/>
+	  <Grid container spacing={3}>
+        	<Grid item md={8}>
+				<TextField
+					className={classes.margin}
+					variant="outlined"
+					label="Textarea with autoresize"
+					placeholder="Text area increases and decreases with typing ..."
+					multiline={true}
+					fullWidth={true}
+					helperText="Auto resize"
+				/>
+        	</Grid>	
+		</Grid>
 		</React.Fragment>
 	)
 }
