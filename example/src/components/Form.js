@@ -113,7 +113,7 @@ export default function Form () {
 				label="Textarea with autoresize"
 				placeholder="Text area increases and decreases with typing ..."
 				multiline={true}
-				fullWidth={true}
+				fullWidth={false}
 				helperText="Auto resize"
 			/>
 		</React.Fragment>

@@ -1,11 +1,15 @@
 import React, { memo } from 'react'
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
+import { StylesProvider, createGenerateClassName, jssPreset } from '@material-ui/styles'
+import { create } from 'jss'
 import { theme, Header } from 'unicef-material-ui'
-import { create } from 'jss';
-import { StylesProvider, jssPreset } from '@material-ui/styles'
 import './App.css'
 import { NavLinks, NavTabs, Form, CardWithTabs, Cards, Alert } from './components'
-import avatar from './assets/avatar.png'
+// import avatar from './assets/avatar.png'
+
+const generateClassName = createGenerateClassName({
+  productionPrefix: 'c',
+});
 
 const jss = create({
   ...jssPreset(),
@@ -35,24 +39,26 @@ function App() {
 
   return (
     <MuiThemeProvider theme={theme}>
-      <StylesProvider jss={jss}>
-        <Header
-          applicationName="Application"
-          navLinks={<NavLinks />}
-          tabs={<NavTabs tabs={tabs} />}
-          hideLogo={false}
-          logoBorderLine={false}
-          logo={<img alt="user" src={avatar} />}
-          menuItems={items}
-          menuTabs={tab}
-          menuButton={true}
-        />
-        <div className="margin-top">
-          <Form />
-          <Alert />
-          <CardWithTabs />
-          <Cards />
-        </div>
+      <StylesProvider generateClassName={generateClassName}>
+        <StylesProvider jss={jss}>
+          <Header
+            applicationName="Application"
+            navLinks={<NavLinks />}
+            tabs={<NavTabs tabs={tabs} />}
+            // hideLogo={false}
+            // logoBorderLine={false}
+            // logo={<img alt="user" src={avatar} />}
+            menuItems={items}
+            menuTabs={tab}
+            menuButton={true}
+          />
+          <div className="margin-top">
+            <Form />
+            <Alert />
+            <CardWithTabs />
+            <Cards />
+          </div>
+        </StylesProvider>
       </StylesProvider>
     </MuiThemeProvider>
   )

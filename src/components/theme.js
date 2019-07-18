@@ -37,6 +37,11 @@ const theme = createMuiTheme({
           backgroundColor: fade(colorPrimary, 0.1),
           // borderBottom: `2px solid ${colorPrimary}`,
         },
+        '& Mui' : { 
+          selected :{
+            backgroundColor: fade(colorPrimary, 0.1),
+          }
+        }
       },
     },
     MuiTypography: {
@@ -47,8 +52,12 @@ const theme = createMuiTheme({
     MuiIconButton: {
       root: {
         '&:hover': {
-          backgroundColor: 'transparent'
+          backgroundColor: 'transparent !important',
+          textDecorationLine: 'underline !important'
         }
+      },
+      edgeStart : {
+        marginLeft: '0px !important'
       },
     },
     MuiButtonBase: {
