@@ -45,85 +45,112 @@ export default function App() {
 Header needs be wrapped inside theme using `MuiThemeProvider`,
 Either to the top level of your app or inside any component.
 
+Header is re-usable component, that contains lot of options which are already developed,If you want to use, some are by defayou just need to enable it by using props.
+
+Header component provides : 
+  * Humburger Menu : Button with humburger icon on to first left in the header, Enables the side bar with click.
+
+    It is enabled by default, If it is not required in your application pass below as prop in the `Header component`. 
+
+    `prop-type : 'Boolean'`
+
+    ```
+     menuButtton={false}
+    ```
+  * Application Name : Name of your appliaction, will be displayed left side in the header after the menu button. 
+
+    Which will be enabled only, if you pass applicationName.
+
+    `prop-type : 'String'`
+
+    ```
+      applicationName={"Material Ui"}
+    ```
+  
+  * Logo : Logo may be your own logo or else by default it will be UNICEF Logo.
+   There are few options in logo
+    * If you need hide UNICEF Logo.
+    
+      `prop-type : 'Boolean'`
+    ```
+      hideLogo = {true}
+    ```
+
+    * And then, It's optional, You can also use your own logo or image.
+
+       `prop-type : 'component'`
+    ```
+      logo = {<img alt="user" src={avatar} />}
+    ```
+  * Logo border line : It is the separator line between application name and logo with white border.
+  Which is enabled by default when use UNICEF Logo.
+
+    `prop-type : 'Boolean'`
+    
+      ```
+        logoBorderLine={false}
+      ```
+  * #### Navigation Links: 
+    Navigation Links are displyed on right side of header with customized background color.
+      you can develop your own component with `custom Links and dropdowns` and pass it as prop.
+
+    `prop-type : 'component'`
+    
+      ```
+        navLinks={<NavLinks />}
+      ```
+  * #### Navigation Tabs: 
+    Navigation tabs are displyed below the header with customized Nav tabs component.
+    use material ui [tabs](https://material-ui.com/components/tabs/) for creating customised tabs.
+
+    `prop-type : 'component'`
+    
+      ```
+        navLinks={<NavTabs />}
+      ```
+   * Menu Items: 
+    Menu Items are the `Navigation Links` displayed in side bar only in the mobile view, for responsive web we hide Navigation Links in screens smaller than medium.
+    You can develop your own component with material ui `<ListItems />` and pass it as prop.
+
+      `prop-type : 'component'`
+    
+      ```
+        menuItems={<MenuItems />}
+      ```
+    
+    * Menu Tabs: 
+    Menu Tabs are the `Navigation Tabs`. Which is always displayed in the side bar when you click on humburger menu button.
+    If you want to use it.
+
+      `prop-type : 'component'`
+    
+      ```
+        menuTabs={<MenuTabs />}
+      ```
+
 ```jsx
-import React from 'react'
-import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
-import { Header, theme } from 'unicef-material-ui'
+  import React from 'react'
+  import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
+  import { Header, theme } from 'unicef-material-ui'
 
-export default function App() {
+  export default function App() {
 
-  return (
-    <MuiThemeProvider theme={theme}>
-      <Header
-          applicationName="Application"
-          navLinks={<NavLinks />}
-          tabs={<NavTabs />}
-          // hideLogo={false}
-          // logoBorderLine={false}
-          // logo={<img alt="user" src={avatar} />}
-          menuItems={<MenuItems />}
-          menuTabs={<MenuTabs />}
-          menuButton={true}
-      />
-    </MuiThemeProvider>
-  )
-}
-```
-
-## Description how to use props
-
-### Props
-
-- Application Name : String
-
-```
-  Ex: applicationName={"Material Ui"}
-```
-
-- menuItems : component
-
-```
-   Ex: menuItems = {<MenuItem />}
-```
-
-- menuTabs : component
-
-```
-  Ex: menuTabs = {<MenuTabs />}
-```
-
-- menuButton will be displayed by default.
-  If your application does not need menuButton
-  send below prop:
-
-```
-    menuButtton={false}
-```
-
-- logo will be displayed by default.
-  If you want to hide the logo,
-
-```
-   hideLogo={false}
-```
-
-    If you want to pass your own logo or image
-
-```
-    Ex: logo={<img alt="" src="imageUrl"}
-```
-
-- Nav bar links to be passes as prop
-  navLinks : component,
-
-```
-    navLinks = {<NavLinks />}
-```
-
-- Tabs : component
-
-```
-   tabs = {<NavTabs />}
+    return (
+      <MuiThemeProvider theme={theme}>
+        <Header
+            applicationName="Application"
+            navLinks={<NavLinks />}
+            tabs={<NavTabs />}
+            // hideLogo={false}
+            // logoBorderLine={false}
+            // logo={<img alt="user" src={avatar} />}
+            menuItems={<MenuItems />}
+            menuTabs={<MenuTabs />}
+            menuButton={true}
+        />
+      </MuiThemeProvider>
+    )
+  }
 ```
 
 # Contribution
