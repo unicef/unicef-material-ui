@@ -1,6 +1,6 @@
 {
-  "name": "unicef-material-ui",
-  "version": "1.0.0",
+  "name": "@unicef/material-ui",
+  "version": "0.1.0",
   "description": "Material ui with react",
   "main": "./dist/index.js",
   "scripts": {
