@@ -17,12 +17,12 @@ First, install the npm package
 
 ## Usage
 
-### theme
+### Adding UNICEF theme to your app
 
- This is customized version of theme for whole application. 
- Add a `MuiThemeProvider` to the top level of your app to pass the theme down the React component tree. Then, you can access the theme object in style functions.
+This is customized version of theme for whole application. 
+To use UNICEF theme add `MuiThemeProvider` at the top level of your app, it will set the custom styles of unicef down to the component tree. 
 
- More info: <a href="https://material-ui.com/styles/advanced/#theming">Material-ui theming</a>
+More info: <a href="https://material-ui.com/styles/advanced/#theming">Material-ui theming</a>
 
 App.js
 
@@ -41,11 +41,15 @@ export default function App() {
 }
 ```
 
-### Header
-Header needs be wrapped inside theme using `MuiThemeProvider`,
-Either to the top level of your app or inside any component.
+## Custom components
 
-Header is re-usable component, that contains lot of options which are already developed,If you want to use, some are by default and some need to enable it by using props.
+All components require to be wrapped inside of a theme using `MuiThemeProvider` at the top level of the `App`, as explained above.
+
+### `Header`
+Standarized header component with UNICEF look and feel. 
+
+TODO: Image of the header.
+
 
   ```jsx
   import React from 'react'
@@ -72,18 +76,17 @@ Header is re-usable component, that contains lot of options which are already de
   }
 ```
 
-Header component provides : 
-  * #### Humburger Menu : 
-    Button with humburger icon on to first left in the header, Enables the side bar with click.
+Props: 
 
-    It is enabled by default, If it is not required in your application pass below as prop in the `Header component`. 
+#### `showHamburgerMenu : Boolean` 
+Button with humburger icon on the left of the header. It enables enables the side menu (`menuItems`).
+Enabled by default. Example:
 
-     `prop-type : 'Boolean'`
-
-     ```
-      menuButtton={false}
-     ```
-  * #### Application Name : 
+```jsx
+  showHamburguerMenu={false}
+```
+     
+#### `applicationName: String`: 
     Name of your appliaction, will be displayed left side in the header after the menu button. 
 
     Which will be enabled only, if you pass applicationName.
