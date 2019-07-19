@@ -75,6 +75,7 @@ export default function App() {
 
   *  Nav bar links to be passes as prop
     navLinks : component,
+    
     `navLinks = {<NavLinks />}`
 
   * Tabs : component
