@@ -6,5 +6,6 @@ import Alert from './Alert'
 import NavLinks from './NavLinks'
 import NavTabs from './NavTabs'
 import MenuItems from './MenuItems'
+import MenuTabs from './MenuTabs'
 
-export { Header, Form, CardWithTabs, Cards, Alert, NavLinks, NavTabs, MenuItems }
+export { Header, Form, CardWithTabs, Cards, Alert, NavLinks, NavTabs, MenuItems, MenuTabs }
