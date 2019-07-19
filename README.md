@@ -49,38 +49,47 @@ export default function App() {
 
 ### Props
   * Application Name : String
-
-    `Ex: applicationName={"Material Ui"}`
+ ```
+   Ex: applicationName={"Material Ui"}
+ ```
   * menuItems : component
-
-    `Ex: menuItems = {<MenuItem />}`
-
+  
+ ```
+    Ex: menuItems = {<MenuItem />}
+ ```
   * menuTabs : component
-
-    `Ex: menuTabs = {<MenuTabs />}`
+  
+ ```
+   Ex: menuTabs = {<MenuTabs />}
+ ```
   * menuButton will be displayed by default.
     If your application does not need menuButton 
      send below prop: 
-
-     `menuButtton={false}`
+ ```
+     menuButtton={false}
+ ```
 
   * logo will be displayed by default.
     If you want to hide the logo, 
-
-    `hideLogo={false}`
+ ```
+    hideLogo={false}
+ ```
 
     If you want to pass your own logo or image
-
-    `Ex: logo={<img alt="" src="imageUrl"}`
+```
+    Ex: logo={<img alt="" src="imageUrl"}
+```
 
   *  Nav bar links to be passes as prop
     navLinks : component,
-    
-    `navLinks = {<NavLinks />}`
+```
+    navLinks = {<NavLinks />}
+```
 
   * Tabs : component
-
-    `tabs = {<NavTabs />}`
+ ```
+    tabs = {<NavTabs />}
+ ```
 
 # Contribution
 
