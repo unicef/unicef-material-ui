@@ -1,6 +1,8 @@
-# [UNICEF Material-ui](https://unicef.github.io/unicef-material-ui/)
+# UNICEF Material-ui
 
-Customized version of the material UI with react for UNICEF
+Customized version of the material UI with react for UNICEF.
+
+Live example found at [UNICEF Material Ui](https://unicef.github.io/unicef-material-ui/)
 
 ## Getting started
 
@@ -11,7 +13,7 @@ In order to use the UNICEF's Material UI in your project you can download using 
 First, install the npm package
 
 ```bash
- npm install @unicef/unicef-material-ui
+ npm install @unicef/material-ui
 
 ```
 
@@ -51,7 +53,7 @@ Standarized header component with UNICEF look and feel.
 TODO: Image of the header.
 
 
-  ```jsx
+```jsx
   import React from 'react'
   import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
   import { Header, theme } from 'unicef-material-ui'
@@ -61,15 +63,15 @@ TODO: Image of the header.
     return (
       <MuiThemeProvider theme={theme}>
         <Header
+            showHamburgerMenu={false}
             applicationName="Application"
             navLinks={<NavLinks />}
             tabs={<NavTabs />}
             // hideLogo={false}
             // logoBorderLine={false}
-            // logo={<img alt="user" src={avatar} />}
+            // newLogo={<img alt="user" src={avatar} />}
             menuItems={<MenuItems />}
             menuTabs={<MenuTabs />}
-            menuButton={true}
         />
       </MuiThemeProvider>
     )
@@ -86,87 +88,66 @@ Enabled by default. Example:
   showHamburguerMenu={false}
 ```
      
-#### `applicationName: String`: 
-    Name of your appliaction, will be displayed left side in the header after the menu button. 
+#### `applicationName : String`: 
+Name of the appliaction, will be displayed left side in the header after the hamburger menu. 
+Which will be enabled By. Example:
 
-    Which will be enabled only, if you pass applicationName.
-
-     `prop-type : 'String'`
-
-     ```
-       applicationName={"Material Ui"}
-     ```
+ ```jsx
+    applicationName={"Material Ui"}
+ ```
   
-  * #### Logo : 
-    Logo may be your own logo or else by default it will be UNICEF Logo.
-     There are few options in logo
-      * If you need hide UNICEF Logo.
+#### `hideLogo : Boolean`
+UNICEF logo enabled by default, hide it By. Example:
 
-    `prop-type : 'Boolean'`
+ ```jsx
+   hideLogo = {true}
+ ```
 
-     ```
-       hideLogo = {true}
-     ```
+#### `newLogo : Element(Image)`
+logo is an optional once we hide it, add new logo or image By. Example:
 
-     * And then, It's optional, You can also use your own logo or image.
+ ```jsx
+   newLogo = {<img alt="user" src={avatar} />} // Optional
+ ```
+ 
+#### `logoBorderLine : Boolean`
+It is the separator line between application name and logo with white border.
+Enabled by default, if `hideLogo` is not set to true.
 
-      `prop-type : 'component'`
-       
-      ```
-        logo = {<img alt="user" src={avatar} />}
-      ```
-  * #### Logo border line : 
-    It is the separator line between application name and logo with white border.
-    Which is enabled by default when use UNICEF Logo.
+ ```jsx
+   logoBorderLine={false}
+ ```
+ 
+ #### `navLinks : component`
+ Navigation Links are displyed on right side of header with customized background color.
+ 
+ ```jsx
+   navLinks={<NavLinks />}
+ ```
+ 
+ ####  `tabs : component`
+ Tabs are displyed below the header.
+ use material ui [tabs](https://material-ui.com/components/tabs/) for creating customised tabs.
+ 
+ ```jsx
+   tabs={<NavTabs />}
+ ```
+ 
+ #### `menuItems : component`
+ Menu Items are the `navLinks` displayed in side menu, only on screens are smaller(less than 959.58px).
+ create a component with material ui `<ListItems />`. Optional, enabled By. Example:
 
-     `prop-type : 'Boolean'`
+  ```jsx
+    menuItems={<MenuItems />}
+  ```
+  
+#### `menuTabs : component`
+Menu Tabs are the `Navigation Tabs`. Which is always displayed in the side menu.
+Enabled By. Example:
 
-
-       ```
-         logoBorderLine={false}
-       ```
-  * #### Navigation Links: 
-    Navigation Links are displyed on right side of header with customized background color.
-      you can develop your own component with `custom Links and dropdowns` and pass it as prop.
-
-    `prop-type : 'component'`
-    
-      ```
-        navLinks={<NavLinks />}
-      ```
-  * #### Navigation Tabs: 
-    Navigation tabs are displyed below the header with customized Nav tabs component.
-    use material ui [tabs](https://material-ui.com/components/tabs/) for creating customised tabs.
-
-    `prop-type : 'component'`
-    
-      ```
-        navLinks={<NavTabs />}
-      ```
-   * #### Menu Items: 
-     Menu Items are the `Navigation Links` displayed in side bar only in the mobile view, for responsive web we hide Navigation Links in      screens smaller than medium.
-     You can develop your own component with material ui `<ListItems />` and pass it as prop.
-
-      `prop-type : 'component'`
-    
-    
-       ```
-         menuItems={<MenuItems />}
-       ```
-    
-   * #### Menu Tabs: 
-     Menu Tabs are the `Navigation Tabs`. Which is always displayed in the side bar when you click on humburger menu button.
-     If you want to use it.
-
-     `prop-type : 'component'`
-    
-      ```
-        menuTabs={<MenuTabs />}
-      ```
-
-# Contribution
-
-Just clone the project and make a pull request.
+ ```jsx
+   menuTabs={<MenuTabs />}
+ ```
 
 # License
 
