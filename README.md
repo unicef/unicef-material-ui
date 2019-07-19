@@ -74,9 +74,9 @@ Header is re-usable component, that contains lot of options which are already de
 
 Header component provides : 
   * #### Humburger Menu : 
-   Button with humburger icon on to first left in the header, Enables the side bar with click.
+    Button with humburger icon on to first left in the header, Enables the side bar with click.
 
-   It is enabled by default, If it is not required in your application pass below as prop in the `Header component`. 
+    It is enabled by default, If it is not required in your application pass below as prop in the `Header component`. 
 
      `prop-type : 'Boolean'`
 
@@ -84,9 +84,9 @@ Header component provides :
       menuButtton={false}
      ```
   * #### Application Name : 
-   Name of your appliaction, will be displayed left side in the header after the menu button. 
+    Name of your appliaction, will be displayed left side in the header after the menu button. 
 
-   Which will be enabled only, if you pass applicationName.
+    Which will be enabled only, if you pass applicationName.
 
      `prop-type : 'String'`
 
@@ -95,9 +95,9 @@ Header component provides :
      ```
   
   * #### Logo : 
-   Logo may be your own logo or else by default it will be UNICEF Logo.
-    There are few options in logo
-     * If you need hide UNICEF Logo.
+    Logo may be your own logo or else by default it will be UNICEF Logo.
+     There are few options in logo
+      * If you need hide UNICEF Logo.
 
     `prop-type : 'Boolean'`
 
@@ -105,7 +105,7 @@ Header component provides :
        hideLogo = {true}
      ```
 
-    * And then, It's optional, You can also use your own logo or image.
+     * And then, It's optional, You can also use your own logo or image.
 
        `prop-type : 'component'`
        
@@ -113,10 +113,11 @@ Header component provides :
        logo = {<img alt="user" src={avatar} />}
      ```
   * #### Logo border line : 
-   It is the separator line between application name and logo with white border.
-   Which is enabled by default when use UNICEF Logo.
+    It is the separator line between application name and logo with white border.
+    Which is enabled by default when use UNICEF Logo.
 
      `prop-type : 'Boolean'`
+
 
        ```
          logoBorderLine={false}
