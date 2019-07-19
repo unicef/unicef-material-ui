@@ -1,7 +1,6 @@
-# [unicef-material-ui](https://unicef.github.io/unicef-material-ui/)
+# [UNICEF Material-ui](https://unicef.github.io/unicef-material-ui/)
 
-Customized version of the react version material UI for UNICEF
-
+Customized version of the material UI with react for UNICEF
 
 ## Getting started
 
@@ -18,8 +17,6 @@ First, install the npm package
 
 ## Usage
 
-App.js
-
 ### theme
 
  This is customized version of theme for whole application. 
@@ -27,49 +24,51 @@ App.js
 
  More info: <a href="https://material-ui.com/styles/advanced/#theming">Material-ui theming</a>
 
-    ```jsx
-    import React from 'react'
-    import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
-    import { theme } from 'unicef-material-ui'
+App.js
 
-    export default function App() {
+```jsx
+import React from 'react'
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
+import { theme } from 'unicef-material-ui'
 
-      return (
-        <MuiThemeProvider theme={theme}>
-          {/* Components*/}
-        </MuiThemeProvider>
-      )
-    }
-    ```
+export default function App() {
+
+  return (
+    <MuiThemeProvider theme={theme}>
+      {/* Components*/}
+    </MuiThemeProvider>
+  )
+}
+```
 
 ### Header
 Header needs be wrapped inside theme using `MuiThemeProvider`,
 Either to the top level of your app or inside any component.
 
-    ```jsx
-    import React from 'react'
-    import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
-    import { Header, theme } from 'unicef-material-ui'
+```jsx
+import React from 'react'
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
+import { Header, theme } from 'unicef-material-ui'
 
-    export default function App() {
+export default function App() {
 
-      return (
-        <MuiThemeProvider theme={theme}>
-          <Header
-              applicationName="Application"
-              navLinks={<NavLinks />}
-              tabs={<NavTabs />}
-              // hideLogo={false}
-              // logoBorderLine={false}
-              // logo={<img alt="user" src={avatar} />}
-              menuItems={<MenuItems />}
-              menuTabs={<MenuTabs />}
-              menuButton={true}
-          />
-        </MuiThemeProvider>
-      )
-    }
-    ```
+  return (
+    <MuiThemeProvider theme={theme}>
+      <Header
+          applicationName="Application"
+          navLinks={<NavLinks />}
+          tabs={<NavTabs />}
+          // hideLogo={false}
+          // logoBorderLine={false}
+          // logo={<img alt="user" src={avatar} />}
+          menuItems={<MenuItems />}
+          menuTabs={<MenuTabs />}
+          menuButton={true}
+      />
+    </MuiThemeProvider>
+  )
+}
+```
 
 ## Description how to use props
 
