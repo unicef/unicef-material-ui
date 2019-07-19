@@ -107,11 +107,11 @@ Header component provides :
 
      * And then, It's optional, You can also use your own logo or image.
 
-       `prop-type : 'component'`
+      `prop-type : 'component'`
        
-     ```
-       logo = {<img alt="user" src={avatar} />}
-     ```
+      ```
+        logo = {<img alt="user" src={avatar} />}
+      ```
   * #### Logo border line : 
     It is the separator line between application name and logo with white border.
     Which is enabled by default when use UNICEF Logo.
