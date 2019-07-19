@@ -78,7 +78,7 @@ TODO: Image of the header.
   }
 ```
 
-Props: 
+### Props: 
 
 #### `showHamburgerMenu : Boolean` 
 Button with humburger icon on the left of the header. It enables enables the side menu (`menuItems`).
