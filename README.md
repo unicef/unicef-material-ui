@@ -74,51 +74,53 @@ Header is re-usable component, that contains lot of options which are already de
 
 Header component provides : 
   * #### Humburger Menu : 
-  Button with humburger icon on to first left in the header, Enables the side bar with click.
+   Button with humburger icon on to first left in the header, Enables the side bar with click.
 
-    It is enabled by default, If it is not required in your application pass below as prop in the `Header component`. 
+   It is enabled by default, If it is not required in your application pass below as prop in the `Header component`. 
+
+     `prop-type : 'Boolean'`
+
+     ```
+      menuButtton={false}
+     ```
+  * #### Application Name : 
+   Name of your appliaction, will be displayed left side in the header after the menu button. 
+
+   Which will be enabled only, if you pass applicationName.
+
+     `prop-type : 'String'`
+
+     ```
+       applicationName={"Material Ui"}
+     ```
+  
+  * #### Logo : 
+   Logo may be your own logo or else by default it will be UNICEF Logo.
+    There are few options in logo
+     * If you need hide UNICEF Logo.
 
     `prop-type : 'Boolean'`
 
-    ```
-     menuButtton={false}
-    ```
-  * #### Application Name : 
-  Name of your appliaction, will be displayed left side in the header after the menu button. 
-
-    Which will be enabled only, if you pass applicationName.
-
-    `prop-type : 'String'`
-
-    ```
-      applicationName={"Material Ui"}
-    ```
-  
-  * #### Logo : 
-  Logo may be your own logo or else by default it will be UNICEF Logo.
-   There are few options in logo
-    * If you need hide UNICEF Logo.
-    
-      `prop-type : 'Boolean'`
-    ```
-      hideLogo = {true}
-    ```
+     ```
+       hideLogo = {true}
+     ```
 
     * And then, It's optional, You can also use your own logo or image.
 
        `prop-type : 'component'`
-    ```
-      logo = {<img alt="user" src={avatar} />}
-    ```
+       
+     ```
+       logo = {<img alt="user" src={avatar} />}
+     ```
   * #### Logo border line : 
-  It is the separator line between application name and logo with white border.
-  Which is enabled by default when use UNICEF Logo.
+   It is the separator line between application name and logo with white border.
+   Which is enabled by default when use UNICEF Logo.
 
-    `prop-type : 'Boolean'`
-    
-      ```
-        logoBorderLine={false}
-      ```
+     `prop-type : 'Boolean'`
+
+       ```
+         logoBorderLine={false}
+       ```
   * #### Navigation Links: 
     Navigation Links are displyed on right side of header with customized background color.
       you can develop your own component with `custom Links and dropdowns` and pass it as prop.
@@ -138,14 +140,15 @@ Header component provides :
         navLinks={<NavTabs />}
       ```
    * #### Menu Items: 
-    Menu Items are the `Navigation Links` displayed in side bar only in the mobile view, for responsive web we hide Navigation Links in screens smaller than medium.
-    You can develop your own component with material ui `<ListItems />` and pass it as prop.
+     Menu Items are the `Navigation Links` displayed in side bar only in the mobile view, for responsive web we hide Navigation Links in      screens smaller than medium.
+     You can develop your own component with material ui `<ListItems />` and pass it as prop.
 
       `prop-type : 'component'`
     
-      ```
-        menuItems={<MenuItems />}
-      ```
+    
+       ```
+         menuItems={<MenuItems />}
+       ```
     
    * #### Menu Tabs: 
      Menu Tabs are the `Navigation Tabs`. Which is always displayed in the side bar when you click on humburger menu button.
