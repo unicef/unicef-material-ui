@@ -45,7 +45,32 @@ export default function App() {
 Header needs be wrapped inside theme using `MuiThemeProvider`,
 Either to the top level of your app or inside any component.
 
-Header is re-usable component, that contains lot of options which are already developed,If you want to use, some are by defayou just need to enable it by using props.
+Header is re-usable component, that contains lot of options which are already developed,If you want to use, some are by default and some need to enable it by using props.
+
+  ```jsx
+  import React from 'react'
+  import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
+  import { Header, theme } from 'unicef-material-ui'
+
+  export default function App() {
+
+    return (
+      <MuiThemeProvider theme={theme}>
+        <Header
+            applicationName="Application"
+            navLinks={<NavLinks />}
+            tabs={<NavTabs />}
+            // hideLogo={false}
+            // logoBorderLine={false}
+            // logo={<img alt="user" src={avatar} />}
+            menuItems={<MenuItems />}
+            menuTabs={<MenuTabs />}
+            menuButton={true}
+        />
+      </MuiThemeProvider>
+    )
+  }
+```
 
 Header component provides : 
   * Humburger Menu : Button with humburger icon on to first left in the header, Enables the side bar with click.
@@ -119,39 +144,14 @@ Header component provides :
       ```
     
     * Menu Tabs: 
-    Menu Tabs are the `Navigation Tabs`. Which is always displayed in the side bar when you click on humburger menu button.
-    If you want to use it.
+      Menu Tabs are the `Navigation Tabs`. Which is always displayed in the side bar when you click on humburger menu button.
+      If you want to use it.
 
       `prop-type : 'component'`
     
       ```
         menuTabs={<MenuTabs />}
       ```
-
-```jsx
-  import React from 'react'
-  import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
-  import { Header, theme } from 'unicef-material-ui'
-
-  export default function App() {
-
-    return (
-      <MuiThemeProvider theme={theme}>
-        <Header
-            applicationName="Application"
-            navLinks={<NavLinks />}
-            tabs={<NavTabs />}
-            // hideLogo={false}
-            // logoBorderLine={false}
-            // logo={<img alt="user" src={avatar} />}
-            menuItems={<MenuItems />}
-            menuTabs={<MenuTabs />}
-            menuButton={true}
-        />
-      </MuiThemeProvider>
-    )
-  }
-```
 
 # Contribution
 
