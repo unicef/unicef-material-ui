@@ -73,7 +73,8 @@ Header is re-usable component, that contains lot of options which are already de
 ```
 
 Header component provides : 
-  * Humburger Menu : Button with humburger icon on to first left in the header, Enables the side bar with click.
+  * #### Humburger Menu : 
+  Button with humburger icon on to first left in the header, Enables the side bar with click.
 
     It is enabled by default, If it is not required in your application pass below as prop in the `Header component`. 
 
@@ -82,7 +83,8 @@ Header component provides :
     ```
      menuButtton={false}
     ```
-  * Application Name : Name of your appliaction, will be displayed left side in the header after the menu button. 
+  * #### Application Name : 
+  Name of your appliaction, will be displayed left side in the header after the menu button. 
 
     Which will be enabled only, if you pass applicationName.
 
@@ -92,7 +94,8 @@ Header component provides :
       applicationName={"Material Ui"}
     ```
   
-  * Logo : Logo may be your own logo or else by default it will be UNICEF Logo.
+  * #### Logo : 
+  Logo may be your own logo or else by default it will be UNICEF Logo.
    There are few options in logo
     * If you need hide UNICEF Logo.
     
@@ -107,7 +110,8 @@ Header component provides :
     ```
       logo = {<img alt="user" src={avatar} />}
     ```
-  * Logo border line : It is the separator line between application name and logo with white border.
+  * #### Logo border line : 
+  It is the separator line between application name and logo with white border.
   Which is enabled by default when use UNICEF Logo.
 
     `prop-type : 'Boolean'`
@@ -133,7 +137,7 @@ Header component provides :
       ```
         navLinks={<NavTabs />}
       ```
-   * Menu Items: 
+   * #### Menu Items: 
     Menu Items are the `Navigation Links` displayed in side bar only in the mobile view, for responsive web we hide Navigation Links in screens smaller than medium.
     You can develop your own component with material ui `<ListItems />` and pass it as prop.
 
@@ -143,11 +147,11 @@ Header component provides :
         menuItems={<MenuItems />}
       ```
     
-    * Menu Tabs: 
-      Menu Tabs are the `Navigation Tabs`. Which is always displayed in the side bar when you click on humburger menu button.
-      If you want to use it.
+   * #### Menu Tabs: 
+     Menu Tabs are the `Navigation Tabs`. Which is always displayed in the side bar when you click on humburger menu button.
+     If you want to use it.
 
-      `prop-type : 'component'`
+     `prop-type : 'component'`
     
       ```
         menuTabs={<MenuTabs />}
