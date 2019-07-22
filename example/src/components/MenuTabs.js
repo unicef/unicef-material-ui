@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
 
 
 
-export default function MenuTabs() {
+function MenuTabs() {
 
   const classes = useStyles();
 
@@ -31,3 +31,5 @@ export default function MenuTabs() {
   </React.Fragment>
   )
 }
+
+export default MenuTabs

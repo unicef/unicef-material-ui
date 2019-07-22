@@ -1,4 +1,5 @@
-import Header from './Header'
 import theme from './theme'
+import Header from './Header'
+import NavTabs from './NavTabs'
 
-export { Header, theme }
+export { theme, Header, NavTabs }

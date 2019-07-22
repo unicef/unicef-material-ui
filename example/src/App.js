@@ -2,9 +2,9 @@ import React, { memo } from 'react'
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
 import { StylesProvider, createGenerateClassName, jssPreset } from '@material-ui/styles'
 import { create } from 'jss'
-import { theme, Header } from 'unicef-material-ui'
+import { theme, Header, NavTabs } from 'unicef-material-ui'
 import './App.css'
-import { NavLinks, NavTabs, Form, CardWithTabs, Cards, Alert, MenuItems, MenuTabs } from './components'
+import { NavLinks, Form, CardWithTabs, Cards, Alert, MenuItems, MenuTabs } from './components'
 
 const generateClassName = createGenerateClassName({
   productionPrefix: 'c',
