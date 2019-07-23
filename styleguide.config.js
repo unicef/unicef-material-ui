@@ -1,4 +1,4 @@
 module.exports = {
-	title: 'React Style Guide Example',
+	title: 'UNICEF Material Ui',
 	components: 'src/components/**/[A-Z]*.js',
 };
