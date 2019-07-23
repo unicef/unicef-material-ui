@@ -1,25 +1,21 @@
 module.exports = {
 	title: 'UNICEF Material Ui',
     components: 'src/components/**/[A-Z]*.js',
-    sections: [
-        {
-          name: 'Documentation',
-          sections: [
+    webpackConfig: {
+        module: {
+          rules: [
+            // Babel loader, will use your project’s babel.config.js
             {
-              name: 'Installation',
-              content: './src/components/Header/Header.md',
-              description: 'The description for the installation section'
+              test: /\.jsx?$/,
+              exclude: /node_modules/,
+              loader: 'babel-loader'
             },
+            // Other loaders that are needed for your components
             {
-              name: 'Configuration',
-              content: './src/components/NavTabs/NavTabs.md'
-            },
-            {
-              name: 'Live Demo',
-              content: './src/components/NavTabs/NavTabs.md'
+              test: /\.css$/,
+              use: ['style-loader', 'css-loader']
             }
           ]
-        },
-        
-      ]
+        }
+      },
 };
