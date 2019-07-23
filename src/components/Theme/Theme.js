@@ -46,7 +46,7 @@ const theme = createMuiTheme({
         '&:hover': {
           color: colorPrimary,
           backgroundColor: fade(colorPrimary, 0.1),
-          // borderBottom: `2px solid ${colorPrimary}`,
+          textDecorationLine: 'none !important',
         },
         '& Mui' : {
           selected :{

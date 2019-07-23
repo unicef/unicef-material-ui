@@ -62,6 +62,11 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+/**
+ * 
+ * Standarized header component with UNICEF look and feel.
+ */
+
 function Header(props) {
 
   const classes = useStyles();
