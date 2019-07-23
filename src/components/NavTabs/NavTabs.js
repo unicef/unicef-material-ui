@@ -6,7 +6,7 @@ import {
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
 
-
+/** Tabs organize and allow navigation between groups of content that are related and at the same level of hierarchy. */
 export default function NavTabs(props) {
 
 	const [value, setValue] = React.useState(0);
@@ -16,6 +16,11 @@ export default function NavTabs(props) {
 	}
 
 	NavTabs.propTypes = {
+		/** 
+		 * 
+		 * 
+		 *  Click "VIEW CODE" for tabs example
+		 * */
 		tabs: PropTypes.array,
 	}
 

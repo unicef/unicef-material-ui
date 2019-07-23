@@ -2,6 +2,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 const colorPrimary = '#374EA2'
 
+
 const theme = createMuiTheme({
 
   typography: {
@@ -106,5 +107,7 @@ const theme = createMuiTheme({
     },
   },
 });
-
+/** This is customized version of theme for whole application. To use UNICEF theme add MuiThemeProvider at the top level of your app, it will set the custom styles of unicef down to the component tree.
+  *  More info: Material-ui theming 
+  */
 export default theme;
