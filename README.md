@@ -50,7 +50,7 @@ All components require to be wrapped inside of a theme using `MuiThemeProvider` 
 ### `Header`
 Standarized header component with UNICEF look and feel. 
 
-TODO: Image of the header.
+![UNICEF material ui header](./src/assets/unicef-header.png?raw=true "UNICEF material ui header")
 
 
 ```jsx
