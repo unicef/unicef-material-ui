@@ -5,6 +5,7 @@ import { create } from 'jss'
 import { theme, Header, NavTabs } from 'unicef-material-ui'
 import './App.css'
 import { NavLinks, Form, CardWithTabs, Cards, Alert, MenuItems, MenuTabs } from './components'
+import MultiSelect from './multiselect/Multi'
 
 const generateClassName = createGenerateClassName({
   productionPrefix: 'c',
@@ -37,6 +38,7 @@ function App() {
           />
           <div className="margin-top">
             <Form />
+            <MultiSelect />
             <Alert />
             <CardWithTabs />
             <Cards />
