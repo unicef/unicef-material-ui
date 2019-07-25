@@ -347,7 +347,7 @@ const components = {
   ValueContainer,
 };
 
-export default function IntegrationReactSelect() {
+export default function CustomSelect() {
   const classes = useStyles();
   const theme = useTheme();
   const [single, setSingle] = React.useState(null);

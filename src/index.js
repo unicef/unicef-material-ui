@@ -3,6 +3,6 @@ import UNICEFStyleProvider from './components/UNICEFStyleProvider'
 import Header from './components/Header'
 import NavTabs from './components/NavTabs'
 import SpinningButton from './components/SpinningButton'
-import IntegrationReactSelect from './components/UnicefSelect'
+import CustomSelect from './components/CustomSelect'
 
-export { Theme, UNICEFStyleProvider,  Header, NavTabs, SpinningButton, IntegrationReactSelect }
+export { Theme, UNICEFStyleProvider,  Header, NavTabs, SpinningButton, CustomSelect }
