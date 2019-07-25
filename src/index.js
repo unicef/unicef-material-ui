@@ -1,5 +1,6 @@
-import theme from './components/theme'
+import Theme from './components/Theme'
+import UNICEFStyleProvider from './components/UNICEFStyleProvider'
 import Header from './components/Header'
 import NavTabs from './components/NavTabs'
 
-export { theme, Header, NavTabs }
+export { Theme, UNICEFStyleProvider,  Header, NavTabs }

@@ -1,7 +1,8 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 import { fade } from '@material-ui/core/styles/colorManipulator';
-const colorPrimary = '#374EA2'
 
+const colorPrimary = '#374EA2'
+ 
 const theme = createMuiTheme({
 
   typography: {
@@ -29,35 +30,49 @@ const theme = createMuiTheme({
   },
   // customize with mui classes
   overrides: {
+    MuiMenu : {
+      list: {
+        display: 'flex',
+        flexDirection: 'column',
+      },
+    },
+    MuiMenuItem : {
+      gutters : {
+        padding: '0px 16px !important'
+      }
+    },
     MuiTab: {
       root: {
         borderBottom: '2px solid transparent',
         '&:hover': {
           color: colorPrimary,
           backgroundColor: fade(colorPrimary, 0.1),
-          // borderBottom: `2px solid ${colorPrimary}`,
+          textDecorationLine: 'none !important',
         },
+        '& Mui' : {
+          selected :{
+            backgroundColor: fade(colorPrimary, 0.1),
+          }
+        }
       },
+    },
+    MuiTypography: {
+      root: {
+        margin: 'none'
+      }
     },
     MuiIconButton: {
       root: {
         '&:hover': {
-          backgroundColor: 'transparent'
+          backgroundColor: 'transparent !important',
+          textDecorationLine: 'underline !important'
         }
       },
-    },
-    MuiButtonBase: {
-      root: {
-        display: 'flex',
+      edgeStart : {
+        marginLeft: '0px !important'
       },
     },
-    MuiButton: {
-      contained: {
-        '&:active': {
-          boxShadow: 'none',
-        },
-      },
-    },
+    
     MuiDrawer: {
       paper: {
         minWidth: 256,
@@ -81,4 +96,4 @@ const theme = createMuiTheme({
   },
 });
 
-export default theme;
+export default theme
