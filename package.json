@@ -6,6 +6,8 @@
   "scripts": {
     "start": "webpack --watch --mode=development",
     "build": "webpack --mode production",
+    "styleguide": "styleguidist server",
+    "styleguide:build": "styleguidist build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "transpile": "babel src -d dist --copy-files",
     "prepublishOnly": "npm run transpile",
@@ -20,7 +22,7 @@
   "peerDependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "webpack": "^4.29.6",
+    "webpack": "^4.36.1",
     "prop-types": "^15.7.2"
   },
   "bugs": {
@@ -29,10 +31,12 @@
   "homepage": "https://github.com/unicef/unicef-material-ui#readme",
   "devDependencies": {
     "@babel/core": "^7.5.4",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/preset-env": "^7.5.4",
     "@babel/preset-react": "^7.0.0",
     "@material-ui/core": "^4.2.0",
     "@material-ui/icons": "^4.2.1",
+    "@types/node": "^12.6.8",
     "babel": "^6.23.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
@@ -40,11 +44,20 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "clsx": "^1.0.4",
+    "css-loader": "^3.1.0",
+    "dog-names": "^2.0.0",
+    "file-loader": "^4.1.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.1",
+    "react-select": "^3.0.4",
+    "react-styleguidist": "^9.1.11",
+    "style-loader": "^0.23.1",
     "webpack": "^4.29.6",
-    "webpack-cli": "^3.3.6"
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.2.1"
   },
   "dependencies": {}
 }

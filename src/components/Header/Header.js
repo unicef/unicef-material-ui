@@ -62,12 +62,20 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+/**
+ * 
+ * Standarized header component with UNICEF look and feel.
+ * @param {string} text
+ * @public
+ *
+ */
+
 function Header(props) {
 
   const classes = useStyles();
 
   const [sideLeft, setSideLeft] = React.useState(false)
-  const { applicationName, navLinks, tabs, showHamburgerMenu, hideLogo, newLogo, logoBorderLine, menuItems, menuTabs } = props
+  const { applicationName, navLinks, tabs, showHamburgerMenu, hideLogo, newLogo, logoBorderLine, menuItems, menuTabs, headerClass } = props
 
   const toggleDrawer = (open) => event => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -78,15 +86,31 @@ function Header(props) {
   };
 
   Header.propTypes = {
-    showHamburgerMenu: PropTypes.bool,
+    /** Button with humburger icon on the left of the header. It enables the side menu (menuItems). */
+    showHamburgerMenu: PropTypes.bool.isRequired,
+    /** Name of the appliaction, will be displayed left side in the header after the hamburger menu. */
     applicationName: PropTypes.string,
+    /** UNICEF logo enabled by default. */
     hideLogo: PropTypes.bool,
+    /** logo is an optional once we hide it, add new logo or image */
     newLogo: PropTypes.element,
+    /** It is the separator line between application name and logo with white border. */
     logoBorderLine: PropTypes.bool,
+    /** Menu Items are the navLinks displayed in side menu, only on screens are smaller(less than 959.58px) */
     menuTabs: PropTypes.func,
+    /** Menu Tabs are the Navigation Tabs. Which is always displayed in the side menu */
     menuItems: PropTypes.func,
+    /** Navigation Links are displyed on right side of header with customized background color. */
     navLinks: PropTypes.func,
+    /** Tabs are displyed below the header. use material ui tabs for creating customised tabs. */
     tabs: PropTypes.func,
+  }
+
+  Header.defaultProps = {
+    showHamburgerMenu: true,
+    hideLogo: false,
+    newLogo: false,
+    logoBorderLine: true,
   }
 
   const sideList = (
@@ -122,7 +146,7 @@ function Header(props) {
 
   return (
     <React.Fragment>
-      <AppBar>
+      <AppBar className={headerClass}>
         <Toolbar disableGutters={true} className={classes.bgColor}>
           <Box flexGrow={1} >
             <Box display="flex" flexDirection='row' alignItems="center" justifyContent="start">

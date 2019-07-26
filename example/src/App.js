@@ -1,29 +1,17 @@
-import React, { memo } from 'react'
+import React from 'react'
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
-import { StylesProvider, createGenerateClassName, jssPreset } from '@material-ui/styles'
-import { create } from 'jss'
-import { theme, Header } from 'unicef-material-ui'
+import { theme, UNICEFStyleProvider, Header, NavTabs } from 'unicef-material-ui'
 import './App.css'
-import { NavLinks, NavTabs, Form, CardWithTabs, Cards, Alert, MenuItems, MenuTabs } from './components'
+import { NavLinks, Form, CardWithTabs, Cards, Alert, MenuItems, MenuTabs, LoadingButtton } from './components'
 
-const generateClassName = createGenerateClassName({
-  productionPrefix: 'c',
-});
-
-const jss = create({
-  ...jssPreset(),
-  // Define a custom insertion point that JSS will look for when injecting the styles into the DOM.
-  insertionPoint: 'jss-insertion-point',
-});
-
-function App() {
+export default function App() {
 
   const tabs = [{ name: 'Active', type: 'normal', link: "/header" }, { name: 'Disabled', type: 'disabled', link: null }, { name: 'Directory', type: 'normal', link: null }]
 
   return (
-    <MuiThemeProvider theme={theme}>
-      <StylesProvider generateClassName={generateClassName}>
-        <StylesProvider jss={jss}>
+    <React.Fragment>
+      <MuiThemeProvider theme={theme}>
+        <UNICEFStyleProvider>
           <Header
             applicationName="Application"
             navLinks={<NavLinks />}
@@ -37,13 +25,13 @@ function App() {
           />
           <div className="margin-top">
             <Form />
+            <LoadingButtton />
             <Alert />
             <CardWithTabs />
             <Cards />
           </div>
-        </StylesProvider>
-      </StylesProvider>
-    </MuiThemeProvider>
+        </UNICEFStyleProvider>
+      </MuiThemeProvider >
+    </React.Fragment>
   )
 }
-export default memo(App)

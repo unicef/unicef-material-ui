@@ -101,7 +101,7 @@ export default function Form () {
 					))}
 				</TextField>
 				<Button variant="contained" color="primary" size="large">
-					Primary
+					Submit
 				</Button>
 			</form>
 			<Typography  variant="h5" >

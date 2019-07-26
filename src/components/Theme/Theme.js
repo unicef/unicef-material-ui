@@ -1,6 +1,7 @@
-import { createMuiTheme } from '@material-ui/core/styles';
-import { fade } from '@material-ui/core/styles/colorManipulator';
+import { createMuiTheme } from '@material-ui/core/styles'
+import { fade } from '@material-ui/core/styles/colorManipulator'
 const colorPrimary = '#374EA2'
+
 
 const theme = createMuiTheme({
 
@@ -46,7 +47,7 @@ const theme = createMuiTheme({
         '&:hover': {
           color: colorPrimary,
           backgroundColor: fade(colorPrimary, 0.1),
-          // borderBottom: `2px solid ${colorPrimary}`,
+          textDecorationLine: 'none !important',
         },
         '& Mui' : {
           selected :{
@@ -77,6 +78,11 @@ const theme = createMuiTheme({
         borderRadius: 4,
       },
     },
+    MuiInputBase : {
+      root: {
+        backgroundColor: 'white',
+      }
+    },
     MuiButton: {
       contained: {
         '&:active': {
@@ -106,5 +112,7 @@ const theme = createMuiTheme({
     },
   },
 });
-
-export default theme;
+/** This is customized version of theme for whole application. To use UNICEF theme add MuiThemeProvider at the top level of your app, it will set the custom styles of unicef down to the component tree.
+  *  More info: Material-ui theming 
+  */
+export default theme
