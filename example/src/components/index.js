@@ -7,6 +7,17 @@ import NavLinks from './NavLinks'
 import NavTabs from './NavTabs'
 import MenuItems from './MenuItems'
 import MenuTabs from './MenuTabs'
-import LoadingButtton from './LoadingButton'
+import LoadingButton from './LoadingButton'
 
-export { Header, Form, CardWithTabs, Cards, Alert, NavLinks, NavTabs, MenuItems, MenuTabs, LoadingButtton }
+export { 
+    Header, 
+    Form, 
+    CardWithTabs, 
+    Cards, 
+    Alert, 
+    NavLinks, 
+    NavTabs,
+    MenuItems, 
+    MenuTabs,
+    LoadingButton 
+}
