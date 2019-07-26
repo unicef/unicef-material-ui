@@ -1,7 +1,7 @@
 import Header from './Header'
-import Form from './Form'
+import FormExample from './FormExample'
 import CardWithTabs from './CardWithTabs'
-import Cards from './Cards'
+import CardsExample from './Cards'
 import Alert from './Alert'
 import NavLinks from './NavLinks'
 import NavTabs from './NavTabs'
@@ -11,9 +11,9 @@ import LoadingButton from './LoadingButton'
 
 export { 
     Header, 
-    Form, 
+    FormExample, 
     CardWithTabs, 
-    Cards, 
+    CardsExample, 
     Alert, 
     NavLinks, 
     NavTabs,
