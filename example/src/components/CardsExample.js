@@ -33,7 +33,7 @@ const rows = [
   createData('Eclair', 262, 16.0, 24, 6.0),
 ];
 
-export default function Cards() {
+export default function CardsExample() {
   const classes = useStyles();
 
   return (
