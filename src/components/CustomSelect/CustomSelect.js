@@ -66,6 +66,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexWrap: 'wrap',
     flex: 1,
+    zIndex: '999',
     alignItems: 'center',
     overflow: 'hidden',
   },
@@ -378,7 +379,7 @@ export default function CustomSelect() {
     <div className={classes.root}>
       <NoSsr>
         <Typography variant="h5" className={classes.margin}>
-          Select 
+          Select with search
         </Typography>
         <Select
           classes={classes}

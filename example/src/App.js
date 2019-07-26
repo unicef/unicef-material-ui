@@ -25,10 +25,10 @@ export default function App() {
           />
           <div className="margin-top">
             <Form />
+            <LoadingButtton />
             <Alert />
             <CardWithTabs />
             <Cards />
-            <LoadingButtton />
           </div>
         </UNICEFStyleProvider>
       </MuiThemeProvider >
