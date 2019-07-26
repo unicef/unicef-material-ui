@@ -22,8 +22,8 @@ function MenuTabs() {
       <ListItem button key="Active" selected className={classes.paddingTabs}>
         <ListItemText primary="Active" />
       </ListItem>
-      <ListItem button key="Disbaled" disabled className={classes.paddingTabs}>
-        <ListItemText primary="Disbaled" />
+      <ListItem button key="Disabled" disabled className={classes.paddingTabs}>
+        <ListItemText primary="Disabled" />
       </ListItem>
       <ListItem button key="Directory" className={classes.paddingTabs}>
         <ListItemText primary="Directory" />

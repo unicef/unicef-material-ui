@@ -59,7 +59,7 @@ const useStyles = makeStyles(theme => ({
   },
   input: {
     display: 'flex !important',
-    padding: 0,
+    padding: '10px 14px !important',
     height: 'auto !important',
   },
   valueContainer: {
@@ -100,6 +100,9 @@ const useStyles = makeStyles(theme => ({
   divider: {
     height: theme.spacing(2),
   },
+  margin: {
+    margin: theme.spacing(2, 0),
+  }
 }));
 
 function NoOptionsMessage(props) {
@@ -374,6 +377,9 @@ export default function CustomSelect() {
   return (
     <div className={classes.root}>
       <NoSsr>
+        <Typography variant="h5" className={classes.margin}>
+          Select 
+        </Typography>
         <Select
           classes={classes}
           styles={selectStyles}
@@ -392,6 +398,9 @@ export default function CustomSelect() {
           onChange={handleChangeSingle}
         />
         <div className={classes.divider} />
+        <Typography variant="h5" className={classes.margin}>
+          Multi Select 
+        </Typography>
         <Select
           classes={classes}
           styles={selectStyles}

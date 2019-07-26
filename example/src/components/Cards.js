@@ -11,13 +11,14 @@ import {
   Card,
   CardHeader,
   Grid,
-  Typography
+  Typography,
+  Divider
 } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(1),
     overflowX: 'auto',
   },
   table: {
@@ -50,6 +51,7 @@ export default function Cards() {
           <Grid item xs={12} md={6}>
           <Card>
             <CardHeader component='div' title='Card title'></CardHeader>
+            <Divider />
             <CardContent>
               <Typography paragraph={true} gutterBottom>
                 This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
@@ -63,27 +65,28 @@ export default function Cards() {
           <Grid item xs={12} md={6}>
             <Card>
               <CardHeader component='div' title='Card with table'></CardHeader>
+              <Divider />
               <CardContent>
                 <Paper className={classes.root}>
                   <Table className={classes.table}>
-                      <TableHead>
-                      <TableRow>
-                          <TableCell>Dessert (100g serving)</TableCell>
-                          <TableCell align="right">Calories</TableCell>
-                          <TableCell align="right">Fat&nbsp;(g)</TableCell>
+                    <TableHead>
+                    <TableRow>
+                      <TableCell>Dessert (100g serving)</TableCell>
+                      <TableCell align="right">Calories</TableCell>
+                      <TableCell align="right">Fat&nbsp;(g)</TableCell>
+                    </TableRow>
+                    </TableHead>
+                    <TableBody>
+                    {rows.map(row => (
+                      <TableRow key={row.name}>
+                      <TableCell component="th" scope="row">
+                          {row.name}
+                      </TableCell>
+                      <TableCell align="right">{row.calories}</TableCell>
+                      <TableCell align="right">{row.fat}</TableCell>
                       </TableRow>
-                      </TableHead>
-                      <TableBody>
-                      {rows.map(row => (
-                          <TableRow key={row.name}>
-                          <TableCell component="th" scope="row">
-                              {row.name}
-                          </TableCell>
-                          <TableCell align="right">{row.calories}</TableCell>
-                          <TableCell align="right">{row.fat}</TableCell>
-                          </TableRow>
-                      ))}
-                      </TableBody>
+                    ))}
+                    </TableBody>
                   </Table>
                 </Paper>
                 </CardContent>

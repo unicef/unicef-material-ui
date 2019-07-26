@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function CardWIthTabs() {
+export default function CardWithTabs() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -43,12 +43,11 @@ export default function CardWIthTabs() {
   }
 
   return (
-    <div className={classes.root}>
+    <React.Fragment>
       <Typography variant="h5" className={classes.margin}>
-        Card With Tabs
+        Card with tabs
       </Typography>
-      <Grid container spacing={1}>
-        <Grid item xs={12} md={8}>
+        <Grid item xs={12} md={8} >
           <Card >
             <AppBar position="static" color="default">
               <Tabs
@@ -69,7 +68,7 @@ export default function CardWIthTabs() {
             {value === 2 && <TabContainer>Item Three</TabContainer>}
           </Card>
         </Grid>
-      </Grid>
-    </div>
+   
+    </React.Fragment>
   );
 }
