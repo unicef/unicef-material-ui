@@ -66,7 +66,6 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexWrap: 'wrap',
     flex: 1,
-    zIndex: '999',
     alignItems: 'center',
     overflow: 'hidden',
   },
@@ -93,7 +92,7 @@ const useStyles = makeStyles(theme => ({
   },
   paper: {
     position: 'absolute',
-    zIndex: 1,
+    zIndex: 999,
     marginTop: theme.spacing(1),
     left: 0,
     right: 0,
