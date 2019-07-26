@@ -2,6 +2,7 @@ import Header from './Header'
 import FormExample from './FormExample'
 import CardWithTabs from './CardWithTabs'
 import CardsExample from './CardsExample'
+import ColorsExample from './ColorsExample'
 import Alert from './Alert'
 import NavLinks from './NavLinks'
 import NavTabs from './NavTabs'
@@ -19,5 +20,7 @@ export {
     NavTabs,
     MenuItems, 
     MenuTabs,
-    LoadingButton 
+    LoadingButton,
+    ColorsExample 
+
 }
