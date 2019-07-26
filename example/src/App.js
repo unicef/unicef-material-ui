@@ -2,7 +2,7 @@ import React from 'react'
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
 import { theme, UNICEFStyleProvider, Header, NavTabs } from 'unicef-material-ui'
 import './App.css'
-import { NavLinks, FormExample, CardWithTabs, CardsExample, Alert, MenuItems, MenuTabs, LoadingButton } from './components'
+import { NavLinks, ColorsExample, FormExample, CardWithTabs, CardsExample, Alert, MenuItems, MenuTabs, LoadingButton } from './components'
 
 export default function App() {
 
@@ -28,6 +28,7 @@ export default function App() {
             menuButton={true}
           />
           <div className="margin-top">
+            <ColorsExample></ColorsExample>
             <FormExample />
             <LoadingButton />
             <Alert />
