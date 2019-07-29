@@ -1,13 +1,16 @@
 import React from "react";
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
 import { theme, UNICEFStyleProvider, Header } from "unicef-material-ui";
+import { NavLinks } from '../components'
 
 export default function App() {
 
     return (
-        // <MuiThemeProvider theme={theme}>
+        <MuiThemeProvider theme={theme}>
+          <UNICEFStyleProvider>
             <Header
-              applicationName="Application"
-            //   navLinks={<NavLinks />}
+              applicationName="Material UI"
+              navLinks={<NavLinks />}
             //   tabs={<NavTabs tabs={tabs} />}
             //   // hideLogo={false}
             //   // logoBorderLine={false}
@@ -16,6 +19,7 @@ export default function App() {
             //   menuTabs={<MenuTabs />}
               menuButton={true}
             />
-        // </MuiThemeProvider >
+          </UNICEFStyleProvider>
+        </MuiThemeProvider >
     )
 }
