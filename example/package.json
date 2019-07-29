@@ -15,7 +15,6 @@
     "unicef-material-ui": "file:.."
   },
   "scripts": {
-    "prestart": "rimraf ./node_modules/unicef-material-ui/node_modules",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "predeploy": "npm run build",

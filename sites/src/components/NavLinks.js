@@ -5,8 +5,6 @@ import {
 	Link,
 	IconButton,
 } from '@material-ui/core'
-import MailIcon from '@material-ui/icons/Mail'
-
 
 const useStyles = makeStyles(theme => ({
 	links: {
@@ -27,7 +25,6 @@ export default function NavLinks() {
 	return (
 		<React.Fragment>
 			<IconButton aria-label="github" color="inherit" className={classes.iconButton}>
-				<MailIcon />
 				<Typography variant="subtitle1">
 					<Link href="https://github.com/unicef/unicef-material-ui" className={classes.links}>
 						Github
