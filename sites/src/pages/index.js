@@ -1,7 +1,7 @@
 import React from "react";
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
 import { theme, UNICEFStyleProvider, Header } from "unicef-material-ui";
-import { NavLinks } from '../components'
+import { NavLinks, MainContent } from '../components'
 
 export default function App() {
 
@@ -19,6 +19,7 @@ export default function App() {
             //   menuTabs={<MenuTabs />}
               menuButton={true}
             />
+            <MainContent />
           </UNICEFStyleProvider>
         </MuiThemeProvider >
     )
