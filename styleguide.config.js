@@ -1,5 +1,5 @@
 module.exports = {
-	title: 'UNICEF Material Ui',
+	title: 'UNICEF Material UI',
     components: 'src/components/**/[A-Z]*.js',
     webpackConfig: {
         module: {

@@ -5,6 +5,7 @@
   "main": "./dist/index.js",
   "scripts": {
     "build": "rollup -c",
+    "build-site": "styleguidist build && rsync -a styleguide ./dist && cd example && npm run build && rsync -a build ../dist && cd sites",
     "start": "rollup -c -w",
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build",
@@ -47,6 +48,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "babelrc-rollup": "^3.0.0",
     "clsx": "^1.0.4",
     "css-loader": "^3.1.0",
     "dog-names": "^2.0.0",
@@ -68,7 +70,9 @@
     "rollup-plugin-postcss": "^2.0.3",
     "rollup-plugin-sass": "^1.2.2",
     "rollup-plugin-url": "^2.2.2",
-    "style-loader": "^0.23.1"
+    "style-loader": "^0.23.1",
+    "webpack": "^4.38.0",
+    "webpack-cli": "^3.3.6"
   },
   "dependencies": {}
 }
