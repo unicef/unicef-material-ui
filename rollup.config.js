@@ -1,11 +1,8 @@
 import babel from 'rollup-plugin-babel'
 import commonjs from 'rollup-plugin-commonjs'
 import external from 'rollup-plugin-peer-deps-external'
-//  import postcss from 'rollup-plugin-postcss'
 import resolve from 'rollup-plugin-node-resolve'
 import url from 'rollup-plugin-url'
-// import babelrc from 'babelrc-rollup';
-// import sass from 'rollup-plugin-sass';
 
 export default {
   input: 'src/index.js',
@@ -17,12 +14,6 @@ export default {
   ],
   plugins: [
     external(),
-    // disable postcss 
-    /*postcss({
-      modules: true,
-      extract: true,
-      extensions: ['.scss']
-    }),*/
     url(),
     babel({
       babelrc: false,
@@ -39,9 +30,6 @@ export default {
     resolve(),
     commonjs({
       include: 'node_modules/**',
-      // left-hand side can be an absolute path, a path
-      // relative to the current directory, or the name
-      // of a module in node_modules
       namedExports: {
         'node_modules/react/index.js': [
           'cloneElement',

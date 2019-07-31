@@ -14,13 +14,14 @@
   },
   "dependencies": {
     "gatsby": "^2.13.39",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "unicef-material-ui": "file:.."
+    "unicef-material-ui": "file:..",
+    "react": "file:../node_modules/react",
+    "react-dom": "file:../node_modules/react-dom"
   },
   "devDependencies": {
     "eslint": "^6.1.0",
     "eslint-plugin-react": "^7.14.3",
+    "install-peers": "^1.0.3",
     "prettier": "^1.18.2"
   },
   "repository": {

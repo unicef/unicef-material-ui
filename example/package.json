@@ -8,11 +8,11 @@
     "@material-ui/icons": "^4.2.0",
     "gh-pages": "^2.0.1",
     "prop-types": "^15.7.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "unicef-material-ui": "file:..",
+    "react": "file:../node_modules/react",
+    "react-dom": "file:../node_modules/react-dom",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1",
-    "unicef-material-ui": "file:.."
+    "react-scripts": "3.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -39,6 +39,7 @@
   },
   "devDependencies": {
     "react-hot-loader": "^4.12.7",
-    "react-select": "^3.0.4"
+    "react-select": "^3.0.4",
+    "webpack": "^4.29.6"
   }
 }

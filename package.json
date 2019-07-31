@@ -23,7 +23,7 @@
   "peerDependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "webpack": "^4.36.1",
+    "webpack": "^4.29.6",
     "prop-types": "^15.7.2"
   },
   "bugs": {
@@ -50,12 +50,14 @@
     "babel-preset-stage-0": "^6.24.1",
     "babelrc-rollup": "^3.0.0",
     "clsx": "^1.0.4",
+    "core-util-is": "^1.0.2",
     "css-loader": "^3.1.0",
     "dog-names": "^2.0.0",
     "file-loader": "^4.1.0",
     "moment": "^2.24.0",
     "node-sass": "^4.12.0",
     "prop-types": "^15.7.2",
+    "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
     "react-select": "^3.0.4",
@@ -69,10 +71,14 @@
     "rollup-plugin-peer-deps-external": "^2.2.0",
     "rollup-plugin-postcss": "^2.0.3",
     "rollup-plugin-sass": "^1.2.2",
+    "rollup-plugin-terser": "^5.1.1",
     "rollup-plugin-url": "^2.2.2",
     "style-loader": "^0.23.1",
-    "webpack": "^4.38.0",
-    "webpack-cli": "^3.3.6"
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.2.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "rollup-plugin-replace": "^2.2.0"
+  }
 }
