@@ -5,22 +5,22 @@ import { NavLinks, MainContent } from '../components'
 
 export default function App() {
 
-    return (
-        <MuiThemeProvider theme={theme}>
-          <UNICEFStyleProvider>
-            <Header
-              applicationName="Material UI"
-              navLinks={<NavLinks />}
-            //   tabs={<NavTabs tabs={tabs} />}
-            //   // hideLogo={false}
-            //   // logoBorderLine={false}
-            //   // logo={<img alt="user" src={avatar} />}
-            //   menuItems={<MenuItems />}
-            //   menuTabs={<MenuTabs />}
-              menuButton={true}
-            />
-            <MainContent />
-          </UNICEFStyleProvider>
-        </MuiThemeProvider >
-    )
+  return (
+    <MuiThemeProvider theme={theme}>
+      <UNICEFStyleProvider>
+        <Header
+          applicationName="Material UI"
+          navLinks={<NavLinks />}
+        //   tabs={<NavTabs tabs={tabs} />}
+        //   // hideLogo={false}
+        //   // logoBorderLine={false}
+        //   // logo={<img alt="user" src={avatar} />}
+        //   menuItems={<MenuItems />}
+        //   menuTabs={<MenuTabs />}
+          menuButton={true}
+        />
+        <MainContent />
+      </UNICEFStyleProvider>
+    </MuiThemeProvider >
+  )
 }

@@ -8,7 +8,7 @@ import {
 
 const useStyles = makeStyles(theme => ({
 	links: {
-		color: '#fff',
+		color: '#fff !important',
 		backgroundColor : 'transparent !important',
 		textDecorationLine: 'none',
 	},

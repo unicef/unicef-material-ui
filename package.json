@@ -3,14 +3,16 @@
   "version": "0.1.0",
   "description": "Material ui with react",
   "main": "./dist/index.js",
+  "homepage": "https://unicef.github.io/unicef-material-ui",
   "scripts": {
     "build": "rollup -c",
-    "build-site": "styleguidist build && rsync -a styleguide ./dist && cd example && npm run build && rsync -a build ../dist && cd sites",
+    "build-site": "rm -rf gh-pages-build/* && cd site && npm run build && cp -R public/* ../gh-pages-build && cd .. && npm run styleguide:build && cp -R styleguide ./gh-pages-build/docs/ && cd example && npm run build && cp -R build ../gh-pages-build/example/ && cp CNAME ../gh-pages-build",
     "start": "rollup -c -w",
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "transpile": "babel src -d dist --copy-files",
+    "deploy": "gh-pages -d 'gh-pages-build'",
     "prepublishOnly": "npm run transpile",
     "publish-demo": "npm run build && npm run deploy"
   },
@@ -29,7 +31,6 @@
   "bugs": {
     "url": "https://github.com/unicef/unicef-material-ui/issues"
   },
-  "homepage": "https://github.com/unicef/unicef-material-ui#readme",
   "devDependencies": {
     "@babel/core": "^7.5.4",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
@@ -54,6 +55,7 @@
     "css-loader": "^3.1.0",
     "dog-names": "^2.0.0",
     "file-loader": "^4.1.0",
+    "gh-pages": "^2.1.0",
     "moment": "^2.24.0",
     "node-sass": "^4.12.0",
     "prop-types": "^15.7.2",
@@ -61,7 +63,7 @@
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
     "react-select": "^3.0.4",
-    "react-styleguidist": "^9.1.11",
+    "react-styleguidist": "^9.1.13",
     "rollup": "^1.17.0",
     "rollup-plugin-babel": "^3.0.7",
     "rollup-plugin-commonjs": "^10.0.1",

@@ -13,10 +13,13 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
   },
   "dependencies": {
+    "@material-ui/core": "^4.3.0",
+    "@material-ui/styles": "^4.3.0",
     "gatsby": "^2.13.39",
-    "unicef-material-ui": "file:..",
+    "gatsby-plugin-material-ui": "^2.1.4",
     "react": "file:../node_modules/react",
-    "react-dom": "file:../node_modules/react-dom"
+    "react-dom": "file:../node_modules/react-dom",
+    "unicef-material-ui": "file:.."
   },
   "devDependencies": {
     "eslint": "^6.1.0",

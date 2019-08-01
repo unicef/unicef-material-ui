@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   link: {
-    margin: theme.spacing(0, 2),
+    margin: `${theme.spacing(0, 2)} !important`,
   },
 }));
 
@@ -19,10 +19,10 @@ export default function MainContent () {
                 </Typography>
             </Box>
             <Box display="flex" flexDirection="row" justifyContent="center">
-                <Link href="/example" color="primary" className={classes.link}>
+                <Link href="/unicef-material-ui/example" color="primary" className={classes.link}>
                     Demo
                 </Link>
-                <Link href="/docs" color="primary" className={classes.link}>
+                <Link href="/unicef-material-ui/docs" color="primary" className={classes.link}>
                     Component docs
                 </Link>
             </Box>
