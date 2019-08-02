@@ -6,7 +6,7 @@
   "homepage": "https://unicef.github.io/unicef-material-ui",
   "scripts": {
     "build": "rollup -c",
-    "build-site": "rm -rf gh-pages-build/* && cd site && npm run build && cp -R public/* ../gh-pages-build && cd .. && npm run styleguide:build && cp -R styleguide ./gh-pages-build/docs/ && cd example && npm run build && cp -R build ../gh-pages-build/example/ && cp CNAME ../gh-pages-build",
+    "build-site": "rm -rf gh-pages-build/* && cd site && npm run build && cp -R public/* ../gh-pages-build && cd .. && npm run styleguide:build && cp -R styleguide ./gh-pages-build/docs/ && cd example && npm run build && cp -R build ../gh-pages-build/example/",
     "start": "rollup -c -w",
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build",
