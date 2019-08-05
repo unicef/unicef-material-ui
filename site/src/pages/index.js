@@ -5,36 +5,34 @@ import { create } from 'jss'
 import { theme, UNICEFStyleProvider, Header } from "unicef-material-ui"
 import { NavLinks, MainContent } from '../components'
 
-const generateClassName = createGenerateClassName({
-	productionPrefix: 'o',
-});
+// const generateClassName = createGenerateClassName({
+// 	productionPrefix: 'o',
+// });
 
-const jss = create({
- ...jssPreset(), 
- insertionPoint: `jss-insertion-point`
-});
+// const jss = create({
+//  ...jssPreset(), 
+//  insertionPoint: `jss-insertion-point`
+// });
 
 
 export default function App() {
 
   return (
-    <MuiThemeProvider theme={theme}>
-      <StylesProvider generateClassName={generateClassName}>
-        <StylesProvider jss={jss}>
-          <Header
-            applicationName="Material UI"
-            navLinks={<NavLinks />}
-          //   tabs={<NavTabs tabs={tabs} />}
-          //   // hideLogo={false}
-          //   // logoBorderLine={false}
-          //   // logo={<img alt="user" src={avatar} />}
-          //   menuItems={<MenuItems />}
-          //   menuTabs={<MenuTabs />}
-            menuButton={true}
-          />
-          <MainContent />
-        </StylesProvider>
-		  </StylesProvider>
-    </MuiThemeProvider >
+    <UNICEFStyleProvider>
+      <MuiThemeProvider theme={theme}>
+            <Header
+              applicationName="Material UI"
+              navLinks={<NavLinks />}
+            //   tabs={<NavTabs tabs={tabs} />}
+            //   // hideLogo={false}
+            //   // logoBorderLine={false}
+            //   // logo={<img alt="user" src={avatar} />}
+            //   menuItems={<MenuItems />}
+            //   menuTabs={<MenuTabs />}
+              menuButton={true}
+            />
+            <MainContent />
+      </MuiThemeProvider >
+    </UNICEFStyleProvider>
   )
 }
