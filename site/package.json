@@ -6,7 +6,7 @@
   "license": "MIT",
   "homepage": "https://unicef.github.io/unicef-material-ui",
   "scripts": {
-    "build": "gatsby build",
+    "build": "gatsby build --prefix-paths",
     "develop": "gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
