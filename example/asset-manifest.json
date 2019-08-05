@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/unicef-material-ui/example/static/css/main.6fe00705.chunk.css",
-    "main.js": "/unicef-material-ui/example/static/js/main.7d44b781.chunk.js",
-    "main.js.map": "/unicef-material-ui/example/static/js/main.7d44b781.chunk.js.map",
+    "main.js": "/unicef-material-ui/example/static/js/main.cd91d13d.chunk.js",
+    "main.js.map": "/unicef-material-ui/example/static/js/main.cd91d13d.chunk.js.map",
     "runtime~main.js": "/unicef-material-ui/example/static/js/runtime~main.7320d526.js",
     "runtime~main.js.map": "/unicef-material-ui/example/static/js/runtime~main.7320d526.js.map",
-    "static/js/2.0e8ec2af.chunk.js": "/unicef-material-ui/example/static/js/2.0e8ec2af.chunk.js",
-    "static/js/2.0e8ec2af.chunk.js.map": "/unicef-material-ui/example/static/js/2.0e8ec2af.chunk.js.map",
+    "static/js/2.a6ee231f.chunk.js": "/unicef-material-ui/example/static/js/2.a6ee231f.chunk.js",
+    "static/js/2.a6ee231f.chunk.js.map": "/unicef-material-ui/example/static/js/2.a6ee231f.chunk.js.map",
     "index.html": "/unicef-material-ui/example/index.html",
-    "precache-manifest.df610f09f1ab8b310effaf1301912d11.js": "/unicef-material-ui/example/precache-manifest.df610f09f1ab8b310effaf1301912d11.js",
+    "precache-manifest.97c238932cd13982d0643c9aa856b879.js": "/unicef-material-ui/example/precache-manifest.97c238932cd13982d0643c9aa856b879.js",
     "service-worker.js": "/unicef-material-ui/example/service-worker.js",
     "static/css/main.6fe00705.chunk.css.map": "/unicef-material-ui/example/static/css/main.6fe00705.chunk.css.map",
     "static/media/unicef-logo.svg": "/unicef-material-ui/example/static/media/unicef-logo.04372887.svg"
