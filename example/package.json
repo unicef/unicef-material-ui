@@ -2,20 +2,19 @@
   "name": "kms-material-ui-poc",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://unicef.github.io/unicef-material-ui",
+  "homepage": "https://unicef.github.io/unicef-material-ui/example",
   "dependencies": {
     "@material-ui/core": "^4.1.1",
     "@material-ui/icons": "^4.2.0",
     "gh-pages": "^2.0.1",
     "prop-types": "^15.7.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "unicef-material-ui": "file:..",
+    "react": "file:../node_modules/react",
+    "react-dom": "file:../node_modules/react-dom",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1",
-    "unicef-material-ui": "file:.."
+    "react-scripts": "3.0.1"
   },
   "scripts": {
-    "prestart": "rimraf ./node_modules/unicef-material-ui/node_modules",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "predeploy": "npm run build",
