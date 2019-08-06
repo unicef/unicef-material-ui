@@ -6,17 +6,14 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     padding: theme.spacing(1),
   },
-  toolbar: {
-      minHeight: '112px'
-  }
 }));
 
 export default function UNPageContent(props) {
   const classes = useStyles();
-    
+
   return (
     <main className={classes.content}>
-        <div className={classes.toolbar}/>
+        <div style={{minHeight:props.headerHeight}}/>
         {props.children}
     </main>
   );

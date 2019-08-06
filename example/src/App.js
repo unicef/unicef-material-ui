@@ -28,10 +28,10 @@ export default function App() {
               menuTabs={<MenuTabs />}
               menuButton={true}
             />
-            <UNSidebar>
+            <UNSidebar headerHeight={112}>
               <MenuItems />
             </UNSidebar>
-            <UNPageContent >
+            <UNPageContent headerHeight={112}>
               <ColorsExample></ColorsExample>
               <FormExample />
               <LoadingButton />

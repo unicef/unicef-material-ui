@@ -13,14 +13,11 @@ const drawerWidth = 300
     drawerPaper: {
       width: drawerWidth,
     },
-    toolbar: {
-        minHeight: '112px'
-    },
   }));
 
 export default function UNSidebar(props) {
   const classes = useStyles()
-    
+
   return (
     <Box display={{ xs: 'none', md: 'block' }}>
         <Drawer
@@ -30,7 +27,7 @@ export default function UNSidebar(props) {
             paper: classes.drawerPaper
         }}
         >
-            <div className={classes.toolbar}/>
+            <div style={{minHeight:props.headerHeight}}/>
             {props.children}
         </Drawer>
     </Box>
