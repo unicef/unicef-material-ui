@@ -2,6 +2,17 @@ import { createMuiTheme } from '@material-ui/core/styles'
 import { fade } from '@material-ui/core/styles/colorManipulator'
 const colorPrimary = '#374EA2'
 
+const unicef = {
+  blue: '#1CABE2',
+  darkBlue: '#374EA2',
+  purple: '#6A3674',
+  red: '#E2231A',
+  darkRed: '#961A49',
+  yellow: '#FFC20E', 
+  orange: '#F26A21',
+  green: '#80BD41',
+  darkGreen: '#00833D'
+}
 
 const theme = createMuiTheme({
 
@@ -24,6 +35,7 @@ const theme = createMuiTheme({
     primary: {
       main: colorPrimary,
     },
+    unicef: unicef
   },
   shape: {
     borderRadius: 4,

@@ -3,60 +3,60 @@ import { makeStyles } from '@material-ui/core/styles'
 import { Grid, TextField, Button, MenuItem, Typography } from '@material-ui/core'
 
 const currencies = [
-  {
-    value: 'USD',
-    label: '$',
-  },
-  {
-    value: 'EUR',
-    label: '€',
-  },
-  {
-    value: 'BTC',
-    label: '฿',
-  },
-  {
-    value: 'JPY',
-    label: '¥',
-  },
+	{
+		value: 'USD',
+		label: '$',
+	},
+	{
+		value: 'EUR',
+		label: '€',
+	},
+	{
+		value: 'BTC',
+		label: '฿',
+	},
+	{
+		value: 'JPY',
+		label: '¥',
+	},
 ];
 
 const useStyles = makeStyles(theme => ({
-  container: {
+	container: {
 		display: 'flex',
 		alignItems: 'baseline'
-  },
-  textField: {
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
-  },
-  margin: {
+	},
+	textField: {
+		marginLeft: theme.spacing(1),
+		marginRight: theme.spacing(1),
+	},
+	margin: {
 		margin: '16px 0px'
-  },
-  menu: {
-    width: 200,
-  },
+	},
+	menu: {
+		width: 200,
+	},
 }));
 
-export default function Form () {
+export default function FormExample() {
 
 	const classes = useStyles();
 
-  const [values, setValues] = React.useState({
-    name: 'Name',
-    age: '',
-    multiline: 'Controlled',
-    currency: 'EUR',
-  });
+	const [values, setValues] = React.useState({
+		name: 'Name',
+		age: '',
+		multiline: 'Controlled',
+		currency: 'EUR',
+	});
 
-  const handleChange = name => event => {
-    setValues({ ...values, [name]: event.target.value });
+	const handleChange = name => event => {
+		setValues({ ...values, [name]: event.target.value });
 	};
-	
+
 	return (
 		<React.Fragment>
-			<Typography  variant="h5" className={classes.margin}>
-        Form
+			<Typography variant="h5" className={classes.margin}>
+				Form
       </Typography>
 			<form className={classes.container} noValidate autoComplete="off">
 				<TextField
@@ -104,22 +104,22 @@ export default function Form () {
 					Submit
 				</Button>
 			</form>
-			<Typography  variant="h5" >
-        Text area
+			<Typography variant="h5" >
+				Text area
       </Typography>
-	  <Grid container spacing={3}>
-        	<Grid item md={8}>
-				<TextField
-					className={classes.margin}
-					variant="outlined"
-					label="Textarea with autoresize"
-					placeholder="Text area increases and decreases with typing ..."
-					multiline={true}
-					fullWidth={true}
-					helperText="Auto resize"
-				/>
-        	</Grid>	
-		</Grid>
+			<Grid container spacing={3}>
+				<Grid item md={8}>
+					<TextField
+						className={classes.margin}
+						variant="outlined"
+						label="Textarea with autoresize"
+						placeholder="Text area increases and decreases with typing ..."
+						multiline={true}
+						fullWidth={true}
+						helperText="Auto resize"
+					/>
+				</Grid>
+			</Grid>
 		</React.Fragment>
 	)
 }

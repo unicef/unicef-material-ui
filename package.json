@@ -20,7 +20,7 @@
     "type": "git",
     "url": "git+https://github.com/unicef/unicef-material-ui.git"
   },
-  "author": "sureshsevarthi",
+  "author": "unicef",
   "license": "ISC",
   "peerDependencies": {
     "react": "^16.8.6",
