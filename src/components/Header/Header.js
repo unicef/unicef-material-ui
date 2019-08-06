@@ -19,6 +19,9 @@ const useStyles = makeStyles(theme => ({
   bgColor: {
     backgroundColor: '#1CABE2',
   },
+  appBar: {
+    zIndex: theme.zIndex.drawer + 1,
+  },
   '@media (min-width: 959.58px)': {
     navRight: {
       backgroundColor: fade('#374EA2', 0.6),
@@ -75,7 +78,7 @@ function Header(props) {
   const classes = useStyles();
 
   const [sideLeft, setSideLeft] = React.useState(false)
-  const { applicationName, navLinks, tabs, showHamburgerMenu, hideLogo, newLogo, logoBorderLine, menuItems, menuTabs, headerClass } = props
+  const { applicationName, navLinks, tabs, showHamburgerMenu, hideLogo, newLogo, logoBorderLine, menuItems, menuTabs, appBarClass } = props
 
   const toggleDrawer = (open) => event => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -146,7 +149,7 @@ function Header(props) {
 
   return (
     <React.Fragment>
-      <AppBar className={headerClass}>
+      <AppBar className={appBarClass}>
         <Toolbar disableGutters={true} className={classes.bgColor}>
           <Box flexGrow={1} >
             <Box display="flex" flexDirection='row' alignItems="center" justifyContent="start">

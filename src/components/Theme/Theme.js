@@ -14,6 +14,8 @@ const unicef = {
   darkGreen: '#00833D'
 }
 
+const zIndexDrawer = 1200
+
 const theme = createMuiTheme({
 
   typography: {
@@ -37,11 +39,24 @@ const theme = createMuiTheme({
     },
     unicef: unicef
   },
+  mixins: {
+    toolbar: {
+
+    }
+  },
   shape: {
     borderRadius: 4,
   },
+  zIndex: {
+    drawer: zIndexDrawer,
+  },
   // customize with mui classes
   overrides: {
+    MuiAppBar : {
+      root: {
+        zIndex: zIndexDrawer + 1,
+      },
+    },
     MuiMenu : {
       list: {
         display: 'flex',
