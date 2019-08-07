@@ -1,4 +1,3 @@
-import Header from './Header'
 import FormExample from './FormExample'
 import CardWithTabs from './CardWithTabs'
 import CardsExample from './CardsExample'
@@ -11,7 +10,6 @@ import MenuTabs from './MenuTabs'
 import LoadingButton from './LoadingButton'
 
 export { 
-    Header, 
     FormExample, 
     CardWithTabs, 
     CardsExample, 
@@ -22,5 +20,4 @@ export {
     MenuTabs,
     LoadingButton,
     ColorsExample 
-
 }
