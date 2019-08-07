@@ -1,22 +1,39 @@
-import React from 'react'
-import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
-import { theme, UNICEFStyleProvider, Header, UNLayout, UNSidebar, UNPageContent, NavTabs } from 'unicef-material-ui'
-import './App.css'
-import { NavLinks, ColorsExample, FormExample, CardWithTabs, CardsExample, Alert, MenuItems, MenuTabs, LoadingButton } from './components'
+import React from "react"
+import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider"
+import {
+  theme,
+  UNICEFStyleProvider,
+  Header,
+  ULayout,
+  USidebar,
+  UPageContent,
+  NavTabs,
+} from "unicef-material-ui"
+import "./App.css"
+import {
+  NavLinks,
+  ColorsExample,
+  FormExample,
+  CardWithTabs,
+  CardsExample,
+  Alert,
+  MenuItems,
+  MenuTabs,
+  LoadingButton,
+} from "./components"
 
 export default function App() {
-
   const tabs = [
-    { name: 'Active', type: 'normal', link: "/header" }, 
-    { name: 'Disabled', type: 'disabled', link: null }, 
-    { name: 'Directory', type: 'normal', link: null }
+    { name: "Active", type: "normal", link: "/header" },
+    { name: "Disabled", type: "disabled", link: null },
+    { name: "Directory", type: "normal", link: null },
   ]
 
   return (
     <React.Fragment>
       <MuiThemeProvider theme={theme}>
         <UNICEFStyleProvider>
-          <UNLayout>
+          <ULayout>
             <Header
               applicationName="Application"
               navLinks={<NavLinks />}
@@ -28,20 +45,20 @@ export default function App() {
               menuTabs={<MenuTabs />}
               menuButton={true}
             />
-            <UNSidebar headerHeight={112}>
+            <USidebar headerHeight={112}>
               <MenuItems />
-            </UNSidebar>
-            <UNPageContent headerHeight={112}>
-              <ColorsExample></ColorsExample>
+            </USidebar>
+            <UPageContent headerHeight={112}>
+              <ColorsExample />
               <FormExample />
               <LoadingButton />
               <Alert />
               <CardWithTabs />
               <CardsExample />
-            </UNPageContent>
-          </UNLayout>
+            </UPageContent>
+          </ULayout>
         </UNICEFStyleProvider>
-      </MuiThemeProvider >
+      </MuiThemeProvider>
     </React.Fragment>
   )
 }
