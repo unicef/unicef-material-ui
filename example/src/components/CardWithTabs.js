@@ -1,46 +1,40 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { makeStyles } from "@material-ui/core/styles";
-import { AppBar, Tabs, Tab, Card, Typography, Grid } from "@material-ui/core";
+import React from "react"
+import PropTypes from "prop-types"
+import {
+  AppBar,
+  Tabs,
+  Tab,
+  Card,
+  Typography,
+  Grid,
+  Box,
+} from "@material-ui/core"
 
 function TabContainer(props) {
   return (
     <Typography component="div" style={{ padding: 8 * 3 }}>
       {props.children}
     </Typography>
-  );
+  )
 }
 
 TabContainer.propTypes = {
-  children: PropTypes.node.isRequired
-};
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-    width: "100%",
-    backgroundColor: theme.palette.background.paper,
-    margin: "20px 0px"
-  },
-  margin: {
-    margin: "16px 0px"
-  }
-}));
+  children: PropTypes.node.isRequired,
+}
 
 export default function CardWithTabs() {
-  const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState(0)
 
   function handleChange(event, newValue) {
-    setValue(newValue);
+    setValue(newValue)
   }
 
   return (
     <Grid container>
       <Grid item xs={12}>
-        <Typography variant="h5" className={classes.margin}>
-          Card with tabs
-        </Typography>
+        <Box my={2}>
+          <Typography variant="h5">Card with tabs</Typography>
+        </Box>
       </Grid>
       <Grid item xs={12} md={8}>
         <Card>
@@ -64,5 +58,5 @@ export default function CardWithTabs() {
         </Card>
       </Grid>
     </Grid>
-  );
+  )
 }
