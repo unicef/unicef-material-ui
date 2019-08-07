@@ -5,31 +5,31 @@ import { Box } from "@material-ui/core";
 
 const drawerWidth = 300
 
-  const useStyles = makeStyles(theme => ({
-    drawer: {
-      width: drawerWidth,
-      flexShrink: 0,
-    },
-    drawerPaper: {
-      width: drawerWidth,
-    },
-  }));
+const useStyles = makeStyles(theme => ({
+  drawer: {
+    width: drawerWidth,
+    flexShrink: 0,
+  },
+  drawerPaper: {
+    width: drawerWidth,
+  },
+}));
 
-export default function UNSidebar(props) {
+export default function USidebar(props) {
   const classes = useStyles()
 
   return (
     <Box display={{ xs: 'none', md: 'block' }}>
-        <Drawer
+      <Drawer
         className={classes.drawer}
         variant="permanent"
         classes={{
-            paper: classes.drawerPaper
+          paper: classes.drawerPaper
         }}
-        >
-            <div style={{minHeight:props.headerHeight}}/>
-            {props.children}
-        </Drawer>
+      >
+        <div style={{ minHeight: props.headerHeight }} />
+        {props.children}
+      </Drawer>
     </Box>
   );
 }
