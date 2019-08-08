@@ -1,4 +1,4 @@
-import { createMuiTheme } from "./node_modules/@material-ui/core/styles"
+import { createMuiTheme } from "@material-ui/core/styles"
 const colorPrimary = "#374EA2"
 
 const unicef = {
@@ -81,17 +81,6 @@ const theme = createMuiTheme({
         margin: "none",
       },
     },
-    MuiIconButton: {
-      root: {
-        "&:hover": {
-          backgroundColor: "transparent !important",
-          textDecorationLine: "underline !important",
-        },
-      },
-      edgeStart: {
-        marginLeft: "0px !important",
-      },
-    },
     MuiButtonBase: {
       root: {
         display: "flex",
@@ -116,11 +105,6 @@ const theme = createMuiTheme({
       },
       paperAnchorDockedLeft: {
         borderRight: "none",
-      },
-    },
-    MuiSvgIcon: {
-      root: {
-        paddingRight: 4,
       },
     },
   },

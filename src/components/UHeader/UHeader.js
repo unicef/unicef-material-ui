@@ -16,10 +16,10 @@ import PropTypes from "prop-types"
 import URightLinks from "../URightLinks"
 
 const useStyles = makeStyles(theme => ({
-  bgColor: {
-    backgroundColor:
-      theme.palette.unicef !== undefined ? theme.palette.unicef.blue : null,
-  },
+  bgColor: props => ({
+    color: props.color || null,
+    backgroundColor: props.bgColor || null,
+  }),
   root: {
     flexGrow: 1,
     paddingLeft: theme.spacing(2),
@@ -46,7 +46,7 @@ const useStyles = makeStyles(theme => ({
  */
 
 export default function UHeader(props) {
-  const classes = useStyles()
+  const classes = useStyles(props)
 
   const [sideLeft, setSideLeft] = React.useState(false)
   const {

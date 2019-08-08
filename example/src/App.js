@@ -32,38 +32,40 @@ export default function App() {
   ]
 
   return (
-    <MuiThemeProvider theme={theme}>
-      <UNICEFStyleProvider>
-        <ULayout>
-          <UHeader
-            applicationName="Application"
-            logoUrl="https://unicef.github.io/unicef-material-ui/"
-            // hideLogo={true}
-            // hideLogoBorderLine={false}
-            // logo={<img alt="user" src={avatar} />}
-            showHumburgerMenu={true}
-          >
-            <URightLinks>
-              <NavLinks />
-            </URightLinks>
-            <UHeaderMainMenu tabs={tabs} bgColor="white" />
-            <ULeftMenu>
-              <MenuTabs />
-            </ULeftMenu>
-          </UHeader>
-          <USidebar headerHeight={112}>
-            <MenuItems />
-          </USidebar>
-          <UPageContent headerHeight={112}>
-            {/* <ColorsExample /> */}
-            <FormExample />
-            <LoadingButton />
-            <Alert />
-            <CardWithTabs />
-            <CardsExample />
-          </UPageContent>
-        </ULayout>
-      </UNICEFStyleProvider>
-    </MuiThemeProvider>
+    // <MuiThemeProvider theme={theme}>
+    //   <UNICEFStyleProvider>
+    <ULayout>
+      <UHeader
+        color="white"
+        bgColor="#1CABE2"
+        applicationName="Application"
+        logoUrl="https://unicef.github.io/unicef-material-ui/"
+        // hideLogo={true}
+        // hideLogoBorderLine={false}
+        // logo={<img alt="user" src={avatar} />}
+        showHumburgerMenu={true}
+      >
+        <URightLinks>
+          <NavLinks />
+        </URightLinks>
+        <UHeaderMainMenu tabs={tabs} bgColor="white" />
+        <ULeftMenu>
+          <MenuTabs />
+        </ULeftMenu>
+      </UHeader>
+      <USidebar headerHeight={112}>
+        <MenuItems />
+      </USidebar>
+      <UPageContent headerHeight={112}>
+        {/* <ColorsExample /> */}
+        <FormExample />
+        <LoadingButton />
+        <Alert />
+        <CardWithTabs />
+        <CardsExample />
+      </UPageContent>
+    </ULayout>
+    //   </UNICEFStyleProvider>
+    // </MuiThemeProvider>
   )
 }
