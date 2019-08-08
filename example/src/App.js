@@ -1,14 +1,18 @@
 import React from "react"
 import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider"
+import { makeStyles } from "@material-ui/core/styles"
 import {
   theme,
   UNICEFStyleProvider,
-  Header,
+  UHeader,
   ULayout,
   USidebar,
   UPageContent,
-  NavTabs,
+  ULeftMenu,
+  URightLinks,
+  UHeaderMainMenu,
 } from "unicef-material-ui"
+import { useTheme } from "@material-ui/core/styles"
 import "./App.css"
 import {
   NavLinks,
@@ -22,34 +26,53 @@ import {
   LoadingButton,
 } from "./components"
 
+const useStyles = makeStyles({
+  header: {
+    zIndex: theme.zIndex.drawer + 1,
+  },
+  bgColor: {
+    backgroundColor: "#1CABE2",
+  },
+})
+
 export default function App() {
   const tabs = [
-    { name: "Active", type: "normal", link: "/header" },
+    { name: "Active", type: "normal", link: null },
     { name: "Disabled", type: "disabled", link: null },
     { name: "Directory", type: "normal", link: null },
   ]
+  const theme = useTheme()
 
+  const classes = useStyles()
   return (
     <React.Fragment>
       <MuiThemeProvider theme={theme}>
         <UNICEFStyleProvider>
           <ULayout>
-            <Header
+            <UHeader
               applicationName="Application"
-              navLinks={<NavLinks />}
-              tabs={<NavTabs tabs={tabs} />}
+              classes={{
+                header: "zIndex",
+                bgColor: "bg",
+              }}
               // hideLogo={false}
               // logoBorderLine={false}
               // logo={<img alt="user" src={avatar} />}
-              menuItems={<MenuItems />}
-              menuTabs={<MenuTabs />}
-              menuButton={true}
-            />
+              showHumburgerMenu={true}
+            >
+              <URightLinks>
+                <NavLinks />
+              </URightLinks>
+              <UHeaderMainMenu taa={tabs} />
+              <ULeftMenu>
+                <MenuTabs />
+              </ULeftMenu>
+            </UHeader>
             <USidebar headerHeight={112}>
               <MenuItems />
             </USidebar>
             <UPageContent headerHeight={112}>
-              <ColorsExample />
+              {/* <ColorsExample /> */}
               <FormExample />
               <LoadingButton />
               <Alert />

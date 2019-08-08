@@ -1,48 +1,46 @@
-import { createMuiTheme } from '@material-ui/core/styles'
-import { fade } from '@material-ui/core/styles/colorManipulator'
-const colorPrimary = '#374EA2'
+import { createMuiTheme } from "@material-ui/core/styles"
+import { fade } from "@material-ui/core/styles/colorManipulator"
+const colorPrimary = "#374EA2"
 
 const unicef = {
-  blue: '#1CABE2',
-  darkBlue: '#374EA2',
-  purple: '#6A3674',
-  red: '#E2231A',
-  darkRed: '#961A49',
-  yellow: '#FFC20E', 
-  orange: '#F26A21',
-  green: '#80BD41',
-  darkGreen: '#00833D'
+  blue: "#1CABE2",
+  darkBlue: "#374EA2",
+  purple: "#6A3674",
+  red: "#E2231A",
+  darkRed: "#961A49",
+  yellow: "#FFC20E",
+  orange: "#F26A21",
+  green: "#80BD41",
+  darkGreen: "#00833D",
 }
 
 const zIndexDrawer = 1200
 
 const theme = createMuiTheme({
-
   typography: {
     useNextVariants: true,
     fontFamily: [
-      '-apple-system',
-      'BlinkMacSystemFont',
+      "-apple-system",
+      "BlinkMacSystemFont",
       '"Segoe UI"',
-      'Roboto',
+      "Roboto",
       '"Helvetica Neue"',
-      'Arial',
-      'sans-serif',
+      "Arial",
+      "sans-serif",
       '"Apple Color Emoji"',
       '"Segoe UI Emoji"',
       '"Segoe UI Symbol"',
-    ].join(','),
+    ].join(","),
   },
   palette: {
     primary: {
       main: colorPrimary,
     },
-    unicef: unicef
+    unicef: unicef,
+    unicefBlue: "#1CABE2",
   },
   mixins: {
-    toolbar: {
-
-    }
+    toolbar: {},
   },
   shape: {
     borderRadius: 4,
@@ -52,68 +50,60 @@ const theme = createMuiTheme({
   },
   // customize with mui classes
   overrides: {
-    MuiAppBar : {
+    MuiAppBar: {
       root: {
         zIndex: zIndexDrawer + 1,
       },
     },
-    MuiMenu : {
+    MuiMenu: {
       list: {
-        display: 'flex',
-        flexDirection: 'column',
+        display: "flex",
+        flexDirection: "column",
       },
     },
-    MuiMenuItem : {
-      gutters : {
-        padding: '0px 16px !important'
-      }
+    MuiMenuItem: {
+      gutters: {
+        padding: "0px 16px !important",
+      },
     },
     MuiTab: {
       root: {
-        borderBottom: '2px solid transparent',
-        '&:hover': {
-          color: colorPrimary,
-          backgroundColor: fade(colorPrimary, 0.1),
-          textDecorationLine: 'none !important',
+        "& Mui": {
+          selected: {},
         },
-        '& Mui' : {
-          selected :{
-            backgroundColor: fade(colorPrimary, 0.1),
-          }
-        }
       },
     },
     MuiTypography: {
       root: {
-        margin: 'none'
-      }
+        margin: "none",
+      },
     },
     MuiIconButton: {
       root: {
-        '&:hover': {
-          backgroundColor: 'transparent !important',
-          textDecorationLine: 'underline !important'
-        }
+        "&:hover": {
+          backgroundColor: "transparent !important",
+          textDecorationLine: "underline !important",
+        },
       },
-      edgeStart : {
-        marginLeft: '0px !important'
+      edgeStart: {
+        marginLeft: "0px !important",
       },
     },
     MuiButtonBase: {
       root: {
-        display: 'flex',
+        display: "flex",
         borderRadius: 4,
       },
     },
-    MuiInputBase : {
+    MuiInputBase: {
       root: {
-        backgroundColor: 'white',
-      }
+        backgroundColor: "white",
+      },
     },
     MuiButton: {
       contained: {
-        '&:active': {
-          boxShadow: 'none',
+        "&:active": {
+          boxShadow: "none",
         },
       },
     },
@@ -122,14 +112,14 @@ const theme = createMuiTheme({
         minWidth: 256,
       },
       paperAnchorDockedLeft: {
-        borderRight: 'none',
+        borderRight: "none",
       },
     },
     MuiSvgIcon: {
       root: {
         paddingRight: 4,
       },
-    }
+    },
   },
   props: {
     // Name of the component
@@ -138,8 +128,8 @@ const theme = createMuiTheme({
       disableRipple: true, // No more ripple
     },
   },
-});
+})
 /** This is customized version of theme for whole application. To use UNICEF theme add MuiThemeProvider at the top level of your app, it will set the custom styles of unicef down to the component tree.
-  *  More info: Material-ui theming 
-  */
+ *  More info: Material-ui theming
+ */
 export default theme
