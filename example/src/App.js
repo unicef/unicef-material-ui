@@ -51,11 +51,12 @@ export default function App() {
           <ULayout>
             <UHeader
               applicationName="Application"
+              logoUrl="https://unicef.github.io/unicef-material-ui/"
               classes={{
                 header: "zIndex",
                 bgColor: "bg",
               }}
-              // hideLogo={false}
+              // hideLogo={true}
               // logoBorderLine={false}
               // logo={<img alt="user" src={avatar} />}
               showHumburgerMenu={true}
