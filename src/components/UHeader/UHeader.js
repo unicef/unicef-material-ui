@@ -51,6 +51,9 @@ const useStyles = makeStyles(theme => ({
   boxShadow: {
     boxShadow: "none",
   },
+  tabs: {
+    backgroundColor: "#fff",
+  },
   "@media (max-width: 959.98px)": {
     menuItems: {
       color: "black",
@@ -91,7 +94,7 @@ export default function UHeader(props) {
     setSideLeft(open)
   }
 
-  // Function return particular child component
+  // Function return particular child component based on props.children and componentName
   function Children(props, component) {
     return React.Children.map(props.children, child => {
       if (child.type.name === component) {
@@ -203,7 +206,9 @@ export default function UHeader(props) {
             {Children(props, "URightLinks")}
           </Box>
         </Toolbar>
-        {Children(props, "UHeaderMainMenu")}
+        <Box display={{ xs: "none", md: "block" }} className={classes.tabs}>
+          {Children(props, "UHeaderMainMenu")}
+        </Box>
       </AppBar>
     </React.Fragment>
   )
