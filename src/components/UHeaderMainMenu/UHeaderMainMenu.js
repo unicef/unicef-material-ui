@@ -16,7 +16,6 @@ export default function UHeaderMainMenu(props) {
      **/
     tabs: PropTypes.array,
   }
-  console.log(props.taa, "tabs")
 
   return (
     <Tabs
@@ -25,7 +24,7 @@ export default function UHeaderMainMenu(props) {
       textColor="primary"
       onChange={handleChange}
     >
-      {props.taa.map(tab => (
+      {props.tabs.map(tab => (
         <Tab
           label={tab.name}
           key={tab.name}

@@ -15,8 +15,6 @@ import {
 import MenuIcon from "@material-ui/icons/Menu"
 import PropTypes from "prop-types"
 import URightLinks from "../URightLinks"
-import UHeaderMainMenu from "../UHeaderMainMenu"
-import ULeftMenu from "../ULeftMenu"
 
 const useStyles = makeStyles(theme => ({
   bgColor: {},
@@ -91,6 +89,15 @@ export default function UHeader(props) {
     }
 
     setSideLeft(open)
+  }
+
+  // Function return particular child component
+  function Children(props, component) {
+    return React.Children.map(props.children, child => {
+      if (child.type.name === component) {
+        return child
+      }
+    })
   }
 
   UHeader.propTypes = {
@@ -189,7 +196,14 @@ export default function UHeader(props) {
               </Typography>
             </Box>
           </Box>
+          <Box
+            display={{ xs: "none", md: "block" }}
+            className={classes.navRight}
+          >
+            {Children(props, "URightLinks")}
+          </Box>
         </Toolbar>
+        {Children(props, "UHeaderMainMenu")}
       </AppBar>
     </React.Fragment>
   )

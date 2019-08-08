@@ -63,7 +63,7 @@ export default function App() {
               <URightLinks>
                 <NavLinks />
               </URightLinks>
-              <UHeaderMainMenu taa={tabs} />
+              <UHeaderMainMenu tabs={tabs} />
               <ULeftMenu>
                 <MenuTabs />
               </ULeftMenu>
