@@ -1,4 +1,4 @@
-import theme from "./components/Theme"
+import theme from "./theme"
 import UNICEFStyleProvider from "./components/UNICEFStyleProvider"
 import UHeader from "./components/UHeader"
 import ULeftMenu from "./components/ULeftMenu"

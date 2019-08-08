@@ -1,5 +1,4 @@
-import { createMuiTheme } from "@material-ui/core/styles"
-import { fade } from "@material-ui/core/styles/colorManipulator"
+import { createMuiTheme } from "./node_modules/@material-ui/core/styles"
 const colorPrimary = "#374EA2"
 
 const unicef = {
