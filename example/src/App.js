@@ -57,7 +57,7 @@ export default function App() {
                 bgColor: "bg",
               }}
               // hideLogo={true}
-              // logoBorderLine={false}
+              // hideLogoBorderLine={false}
               // logo={<img alt="user" src={avatar} />}
               showHumburgerMenu={true}
             >
