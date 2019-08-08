@@ -1,5 +1,5 @@
 import React from "react"
-import { Tab, Tabs, Link } from "@material-ui/core"
+import { Tab, Tabs, Link, Box } from "@material-ui/core"
 import PropTypes from "prop-types"
 
 /** Tabs organize and allow navigation between groups of content that are related and at the same level of hierarchy. */
@@ -10,6 +10,8 @@ export default function UHeaderMainMenu(props) {
     setValue(newValue)
   }
 
+  const { color, bgcolor, indicatorColor, tabs } = props
+
   UHeaderMainMenu.propTypes = {
     /**
      *  Click "VIEW CODE" for tabs example
@@ -18,21 +20,24 @@ export default function UHeaderMainMenu(props) {
   }
 
   return (
-    <Tabs
-      value={value}
-      indicatorColor="primary"
-      textColor="primary"
-      onChange={handleChange}
-    >
-      {props.tabs.map(tab => (
-        <Tab
-          label={tab.name}
-          key={tab.name}
-          disabled={tab.type === "disabled" && true}
-          component={Link}
-          to={tab.link}
-        />
-      ))}
-    </Tabs>
+    <Box bgcolor={bgcolor || "white"}>
+      <Tabs
+        value={value}
+        indicatorColor={indicatorColor || "primary"}
+        textColor={color || "primary"}
+        onChange={handleChange}
+      >
+        {tabs.map(tab => (
+          <Tab
+            label={tab.name}
+            key={tab.name}
+            disabled={tab.type === "disabled" && true}
+            component={Link}
+            to={tab.link}
+            underline="none"
+          />
+        ))}
+      </Tabs>
+    </Box>
   )
 }

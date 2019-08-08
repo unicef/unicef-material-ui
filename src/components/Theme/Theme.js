@@ -36,9 +36,13 @@ const theme = createMuiTheme({
     primary: {
       main: colorPrimary,
     },
+    secondary: {
+      main: unicef.blue,
+    },
     unicef: unicef,
     unicefBlue: "#1CABE2",
   },
+  unicefBlue: "#1CABE2",
   mixins: {
     toolbar: {},
   },
