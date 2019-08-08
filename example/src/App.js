@@ -9,6 +9,7 @@ import {
   UPageContent,
   ULeftMenu,
   URightLinks,
+  UMainMenuLink,
   UHeaderMainMenu,
 } from "unicef-material-ui"
 import "./App.css"
@@ -48,7 +49,11 @@ export default function App() {
         <URightLinks>
           <NavLinks />
         </URightLinks>
-        <UHeaderMainMenu tabs={tabs} bgColor="white" />
+        <UHeaderMainMenu bgColor="white">
+          <UMainMenuLink label="Active" href="/" />
+          <UMainMenuLink label="disabled" disabled href="/" />
+          <UMainMenuLink label="Directory" href="/" />
+        </UHeaderMainMenu>
         <ULeftMenu>
           <MenuTabs />
         </ULeftMenu>

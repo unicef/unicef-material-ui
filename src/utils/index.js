@@ -1,1 +1,1 @@
-export { FindReactChildren } from "./utils"
+export { findReactChildren } from "./utils"

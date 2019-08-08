@@ -1,7 +1,7 @@
 import React from "react"
 import { fade } from "@material-ui/core/styles/colorManipulator"
-import { makeStyles } from "@material-ui/core/styles"
-import { FindReactChildren } from "../../utils"
+import { makeStyles, createStyles } from "@material-ui/core/styles"
+import { findReactChildren } from "../../utils"
 import {
   AppBar,
   Toolbar,
@@ -15,29 +15,31 @@ import MenuIcon from "@material-ui/icons/Menu"
 import PropTypes from "prop-types"
 import URightLinks from "../URightLinks"
 
-const useStyles = makeStyles(theme => ({
-  bgColor: props => ({
-    color: props.color || null,
-    backgroundColor: props.bgColor || null,
-  }),
-  root: {
-    flexGrow: 1,
-    paddingLeft: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-  },
-  navRight: {
-    backgroundColor: fade(theme.palette.primary.main, 0.6),
-    borderBottomLeftRadius: theme.spacing(4),
-    borderTopLeftRadius: theme.spacing(4),
-  },
-  navbarLine: {
-    marginRight: theme.spacing(2),
-    paddingRight: theme.spacing(2),
-    borderRight: "1px solid #fff",
-  },
-}))
+const useStyles = makeStyles(theme =>
+  createStyles({
+    bgColor: props => ({
+      color: props.color || null,
+      backgroundColor: props.bgColor || null,
+    }),
+    root: {
+      flexGrow: 1,
+      paddingLeft: theme.spacing(2),
+    },
+    title: {
+      flexGrow: 1,
+    },
+    navRight: {
+      backgroundColor: fade(theme.palette.primary.main, 0.6),
+      borderBottomLeftRadius: theme.spacing(4),
+      borderTopLeftRadius: theme.spacing(4),
+    },
+    navbarLine: {
+      marginRight: theme.spacing(2),
+      paddingRight: theme.spacing(2),
+      borderRight: "1px solid #fff",
+    },
+  })
+)
 
 /**
  *
@@ -70,6 +72,10 @@ export default function UHeader(props) {
   }
 
   UHeader.propTypes = {
+    /** Color of text in the header */
+    color: PropTypes.string,
+    /** Background color of the header */
+    bgColor: PropTypes.string,
     /** Button with humburger icon on the left of the header. It enables the side menu (menuItems). */
     showHamburgerMenu: PropTypes.bool.isRequired,
     /** Name of the appliaction, will be displayed left side in the header after the hamburger menu. */
@@ -160,10 +166,10 @@ export default function UHeader(props) {
             pr={2}
             className={classes.navRight}
           >
-            {FindReactChildren(props, "URightLinks")}
+            {findReactChildren(props, "URightLinks")}
           </Box>
         </Toolbar>
-        {FindReactChildren(props, "UHeaderMainMenu")}
+        {findReactChildren(props, "UHeaderMainMenu")}
       </AppBar>
     </React.Fragment>
   )
