@@ -1,7 +1,6 @@
 import React from "react"
 import { Tab, Tabs, Link, Box } from "@material-ui/core"
 import PropTypes from "prop-types"
-import { findReactChildren } from "../../utils"
 
 /** Tabs organize and allow navigation between groups of content that are related and at the same level of hierarchy. */
 export default function UHeaderMainMenu(props) {
@@ -21,14 +20,21 @@ export default function UHeaderMainMenu(props) {
   }
 
   return (
-    <Box color="black" bgcolor={bgcolor || "white"}>
+    <Box bgcolor={bgcolor || "white"}>
       <Tabs
         value={value}
         indicatorColor={indicatorColor || "primary"}
-        textColor={color || "primary"}
+        textColor="primary"
         onChange={handleChange}
       >
-        {findReactChildren(props, "UMainMenuLink")}
+        {props.children.map(child => (
+          // look for an alternative
+          <Tab
+            label={child.props.label}
+            disabled={child.props.disabled}
+            href={child.props.href}
+          />
+        ))}
       </Tabs>
     </Box>
   )

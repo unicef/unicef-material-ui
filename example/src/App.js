@@ -49,10 +49,10 @@ export default function App() {
         <URightLinks>
           <NavLinks />
         </URightLinks>
-        <UHeaderMainMenu bgColor="white">
+        <UHeaderMainMenu tabs={tabs} bgColor="white">
           <UMainMenuLink label="Active" href="/" />
           <UMainMenuLink label="disabled" disabled href="/" />
-          <UMainMenuLink label="Directory" href="/" />
+          <UMainMenuLink label="Directory" />
         </UHeaderMainMenu>
         <ULeftMenu>
           <MenuTabs />

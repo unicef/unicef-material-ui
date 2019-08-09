@@ -1,5 +1,4 @@
 import React from "react"
-import { Tab, Link } from "@material-ui/core"
 import PropTypes from "prop-types"
 
 /** UMainMenuLink */
@@ -20,5 +19,5 @@ export default function UMainMenuLink(props) {
     disabled: false,
   }
 
-  return <Tab label={label} key={label} disabled={disabled} />
+  return
 }
