@@ -5,8 +5,8 @@ import {
   UNICEFStyleProvider,
   UHeader,
   ULayout,
-  USidebar,
-  UPageContent,
+  USideBar,
+  UContent,
   ULeftMenu,
   URightLinks,
   UHeaderMainMenu,
@@ -64,17 +64,17 @@ export default function App() {
               <MenuTabs />
             </ULeftMenu>
           </UHeader>
-          <USidebar headerHeight={112}>
+          <USideBar headerHeight={112}>
             <MenuItems />
-          </USidebar>
-          <UPageContent headerHeight={112}>
+          </USideBar>
+          <UContent headerHeight={112}>
             {/* <ColorsExample /> */}
             <FormExample />
             <LoadingButton />
             <Alert />
             <CardWithTabs />
             <CardsExample />
-          </UPageContent>
+          </UContent>
         </ULayout>
       </UNICEFStyleProvider>
     </MuiThemeProvider>
