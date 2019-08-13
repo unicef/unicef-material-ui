@@ -9,7 +9,6 @@ import {
   UPageContent,
   ULeftMenu,
   URightLinks,
-  UMainMenuLink,
   UHeaderMainMenu,
 } from "unicef-material-ui"
 import "./App.css"
@@ -24,6 +23,7 @@ import {
   MenuTabs,
   LoadingButton,
 } from "./components"
+import { Tab } from "@material-ui/core"
 
 export default function App() {
   const tabs = [
@@ -33,44 +33,50 @@ export default function App() {
   ]
 
   return (
-    // <MuiThemeProvider theme={theme}>
-    //   <UNICEFStyleProvider>
-    <ULayout>
-      <UHeader
-        color="white"
-        bgColor="#1CABE2"
-        applicationName="Application"
-        logoUrl="https://unicef.github.io/unicef-material-ui/"
-        // hideLogo={true}
-        // hideLogoBorderLine={false}
-        // logo={<img alt="user" src={avatar} />}
-        showHumburgerMenu={true}
-      >
-        <URightLinks>
-          <NavLinks />
-        </URightLinks>
-        <UHeaderMainMenu tabs={tabs} bgColor="white">
-          <UMainMenuLink label="Active" href="/" />
-          <UMainMenuLink label="disabled" disabled href="/" />
-          <UMainMenuLink label="Directory" />
-        </UHeaderMainMenu>
-        <ULeftMenu>
-          <MenuTabs />
-        </ULeftMenu>
-      </UHeader>
-      <USidebar headerHeight={112}>
-        <MenuItems />
-      </USidebar>
-      <UPageContent headerHeight={112}>
-        {/* <ColorsExample /> */}
-        <FormExample />
-        <LoadingButton />
-        <Alert />
-        <CardWithTabs />
-        <CardsExample />
-      </UPageContent>
-    </ULayout>
-    //   </UNICEFStyleProvider>
-    // </MuiThemeProvider>
+    <MuiThemeProvider theme={theme}>
+      <UNICEFStyleProvider>
+        <ULayout>
+          <UHeader
+            color="white"
+            bgColor="#1CABE2"
+            applicationName="Application"
+            logoUrl="https://unicef.github.io/unicef-material-ui/"
+            // hideLogo={true}
+            // hideLogoBorderLine={false}
+            // logo={<img alt="user" src={avatar} />}
+            showHumburgerMenu={true}
+          >
+            <URightLinks>
+              <NavLinks />
+            </URightLinks>
+            <UHeaderMainMenu
+              bgcolor="white"
+              value={0}
+              indicatorColor="primary"
+              textColor="primary"
+              // onChange={handleChange}
+            >
+              <Tab label="Active" />
+              <Tab label="disabled" disabled href="/" />
+              <Tab label="Directory" />
+            </UHeaderMainMenu>
+            <ULeftMenu>
+              <MenuTabs />
+            </ULeftMenu>
+          </UHeader>
+          <USidebar headerHeight={112}>
+            <MenuItems />
+          </USidebar>
+          <UPageContent headerHeight={112}>
+            {/* <ColorsExample /> */}
+            <FormExample />
+            <LoadingButton />
+            <Alert />
+            <CardWithTabs />
+            <CardsExample />
+          </UPageContent>
+        </ULayout>
+      </UNICEFStyleProvider>
+    </MuiThemeProvider>
   )
 }
