@@ -1,22 +1,11 @@
+UHeaderMainMenu : How to use
 
-```js
-const tabs = [
-  {
-    name: "Active",
-    type: "normal",
-    link: "/header"
-  },
-  {
-    name: "Disabled",
-    type: "disabled",
-    link: null
-  },
-  {
-    name: "Directory",
-    type: "normal",
-    link: null
-  }
-];
+```html
+import { UHeader, UHeaderMainMenu } from '@unicef/materil-ui'
 
-<NavTabs tabs={tabs} />;
+<UHeader>
+  <UHeaderMainMenu>
+    {...children components}
+  </UHeaderMainMenu>
+</UHeader>
 ```

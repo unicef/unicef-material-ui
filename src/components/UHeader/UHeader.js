@@ -10,10 +10,11 @@ import {
   IconButton,
   Drawer,
   Link,
+  Divider,
 } from "@material-ui/core"
 import MenuIcon from "@material-ui/icons/Menu"
 import PropTypes from "prop-types"
-import URightLinks from "../URightLinks"
+import UHeaderRightButtons from "../UHeaderRightButtons"
 
 const useStyles = makeStyles(theme =>
   createStyles({
@@ -102,6 +103,8 @@ export default function UHeader(props) {
       {applicationName && (
         <Typography variant="h6">UNICEF {applicationName}</Typography>
       )}
+      <Divider />
+      <Box>{findReactChildren(props, "UHeaderLeftMenu")}</Box>
     </div>
   )
 
@@ -159,14 +162,8 @@ export default function UHeader(props) {
               {applicationName}
             </Link>
           </Typography>
-          <Box
-            height="64px"
-            display="flex"
-            pl={4}
-            pr={2}
-            className={classes.navRight}
-          >
-            {findReactChildren(props, "URightLinks")}
+          <Box height="64px" display="flex" className={classes.navRight}>
+            {findReactChildren(props, "UHeaderRightButtons")}
           </Box>
         </Toolbar>
         {findReactChildren(props, "UHeaderMainMenu")}

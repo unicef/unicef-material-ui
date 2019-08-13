@@ -1,7 +1,7 @@
 Header Example:
 
-```js
-import NavTabs from "../NavTabs"
+```jsx
+import UHeader from './UHeader'
 import { makeStyles } from "@material-ui/core/styles"
 
 const useStyles = makeStyles(theme => ({
@@ -13,9 +13,7 @@ const useStyles = makeStyles(theme => ({
 const classes = useStyles()
 
 <UHeader
-  showHamburgerMenu={true}
   applicationName="Application"
-  headerClass={classes.bgPosition}
   // navLinks={<NavLinks />}
   // tabs={<NavTabs tabs={tabs}/>}
   // hideLogo={false}

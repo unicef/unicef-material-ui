@@ -8,6 +8,7 @@ import {
   IconButton,
   Avatar,
   Link,
+  Box,
 } from "@material-ui/core"
 import ArrowDropDown from "@material-ui/icons/ArrowDropDown"
 import MailIcon from "@material-ui/icons/Mail"
@@ -34,7 +35,7 @@ export default function NavLinks() {
   }
 
   return (
-    <React.Fragment>
+    <Box display="flex" pl={4} pr={2}>
       <Button color="inherit">
         <MailIcon />
         Login
@@ -119,6 +120,6 @@ export default function NavLinks() {
           <ListItemText primary="Inbox" />
         </MenuItem>
       </Menu>
-    </React.Fragment>
+    </Box>
   )
 }
