@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme =>
   createStyles({
     bgColor: props => ({
       color: props.color || null,
-      backgroundColor: props.bgColor || null,
+      backgroundColor: props.bgColor || "#1CABE2",
     }),
     root: {
       flexGrow: 1,

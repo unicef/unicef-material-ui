@@ -7,6 +7,14 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
+/**
+ * ULayout is the Structured layout of the page, so that it contains side bar on the left and main content to the right.
+ *
+ * ULayout has two chidren components:
+ * * UContent
+ * * USideBar
+ */
+
 export default function ULayout(props) {
   const classes = useStyles()
 
