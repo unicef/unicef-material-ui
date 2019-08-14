@@ -1,0 +1,49 @@
+import React from "react"
+import { UButton } from "unicef-material-ui"
+import { Typography, Grid } from "@material-ui/core"
+
+export default function Buttons() {
+  const [loading, setLoading] = React.useState(false)
+  const timer = React.useRef()
+
+  React.useEffect(() => {
+    return () => {
+      clearTimeout(timer.current)
+    }
+  }, [])
+
+  function handleButton() {
+    setLoading(true)
+    timer.current = setTimeout(() => {
+      setLoading(false)
+    }, 2000)
+  }
+
+  return (
+    <Grid container spacing={2}>
+      <Grid item xs={12}>
+        <Typography variant="h5">UButton</Typography>
+      </Grid>
+      <Grid item xs={4}>
+        <Typography variant="subtitle1">Primary button</Typography>
+        <UButton variant="uPrimary">Primary</UButton>
+      </Grid>
+      <Grid item xs={4}>
+        <Typography variant="subtitle1">Default button</Typography>
+        <UButton variant="uDefault">Default</UButton>
+      </Grid>
+      <Grid item xs={4}>
+        <Typography variant="subtitle1">Spinning button</Typography>
+        <UButton
+          variant="uDefault"
+          spinButton
+          loading={loading}
+          disabled={loading}
+          onClick={handleButton}
+        >
+          Default
+        </UButton>
+      </Grid>
+    </Grid>
+  )
+}

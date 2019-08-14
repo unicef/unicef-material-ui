@@ -34,10 +34,13 @@ const theme = createMuiTheme({
   spacing: 8,
   palette: {
     primary: {
-      main: colorPrimary,
+      main: unicef.darkBlue,
     },
     secondary: {
       main: unicef.blue,
+    },
+    error: {
+      main: unicef.red,
     },
     unicef: unicef,
     unicefBlue: "#1CABE2",

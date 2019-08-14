@@ -15,6 +15,7 @@ import {
 import MenuIcon from "@material-ui/icons/Menu"
 import PropTypes from "prop-types"
 import UHeaderRightButtons from "../UHeaderRightButtons"
+import { useTheme } from "@material-ui/core/styles"
 
 const useStyles = makeStyles(theme =>
   createStyles({
@@ -30,7 +31,6 @@ const useStyles = makeStyles(theme =>
       flexGrow: 1,
     },
     navRight: {
-      backgroundColor: fade(theme.palette.primary.main, 0.6),
       borderBottomLeftRadius: theme.spacing(4),
       borderTopLeftRadius: theme.spacing(4),
     },
@@ -50,6 +50,7 @@ const useStyles = makeStyles(theme =>
 
 export default function UHeader(props) {
   const classes = useStyles(props)
+  const theme = useTheme()
 
   const [sideLeft, setSideLeft] = React.useState(false)
   const {
@@ -177,6 +178,7 @@ export default function UHeader(props) {
             height="64px"
             display={{ xs: "none", md: "block" }}
             ml="auto"
+            bgcolor={fade(theme.palette.primary.main, 0.6)}
             className={classes.navRight}
           >
             {findReactChildren(props, "UHeaderRightButtons")}

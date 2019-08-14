@@ -7,7 +7,7 @@ import ULayout from "./components/ULayout"
 import USideBar from "./components/USideBar"
 import UContent from "./components/UContent"
 import UHeaderMainMenu from "./components/UHeaderMainMenu"
-import SpinningButton from "./components/SpinningButton"
+import UButton from "./components/UButton"
 import CustomSelect from "./components/CustomSelect"
 
 export {
@@ -20,6 +20,6 @@ export {
   ULayout,
   USideBar,
   UContent,
-  SpinningButton,
+  UButton,
   CustomSelect,
 }

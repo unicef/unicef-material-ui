@@ -23,7 +23,7 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
     <Box display="flex" height="64px" pl={4} pr={2}>
       <Button color="inherit">
         <MailIcon />
-        Login
+        Email
       </Button>
       <Button color="inherit">
         <NotificationsIcon />

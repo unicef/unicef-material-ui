@@ -21,17 +21,11 @@ import {
   Alert,
   MenuItems,
   MenuTabs,
-  LoadingButton,
+  Buttons,
 } from "./components"
 import { Tab } from "@material-ui/core"
 
 export default function App() {
-  const tabs = [
-    { name: "Active", type: "normal", link: null },
-    { name: "Disabled", type: "disabled", link: null },
-    { name: "Directory", type: "normal", link: null },
-  ]
-
   return (
     <MuiThemeProvider theme={theme}>
       <UNICEFStyleProvider>
@@ -70,7 +64,7 @@ export default function App() {
           <UContent headerHeight={112}>
             {/* <ColorsExample /> */}
             <FormExample />
-            <LoadingButton />
+            <Buttons />
             <Alert />
             <CardWithTabs />
             <CardsExample />
