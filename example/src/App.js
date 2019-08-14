@@ -37,6 +37,7 @@ export default function App() {
       <UNICEFStyleProvider>
         <ULayout>
           <UHeader
+            showHamburgerMenu={true}
             color="white"
             bgColor="#1CABE2"
             applicationName="Application"
@@ -44,7 +45,6 @@ export default function App() {
             // hideLogo={true}
             // hideLogoBorderLine={false}
             // logo={<img alt="user" src={avatar} />}
-            showHumburgerMenu={true}
           >
             <UHeaderRightButtons>
               <NavLinks />
