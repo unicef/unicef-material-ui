@@ -36,7 +36,6 @@ export default function Buttons() {
         <Typography variant="subtitle1">Spinning button</Typography>
         <UButton
           variant="uPrimary"
-          color="error"
           spinButton
           loading={loading}
           disabled={loading}

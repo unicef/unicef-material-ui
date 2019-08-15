@@ -83,11 +83,7 @@ export default function UButton(props) {
           {props.children}
         </Button>
         {loading && (
-          <CircularProgress
-            colorSecondary
-            size={24}
-            className={classes.buttonProgress}
-          />
+          <CircularProgress size={24} className={classes.buttonProgress} />
         )}
       </div>
     </div>
