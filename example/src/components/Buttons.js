@@ -1,22 +1,22 @@
-import React from "react"
-import { UButton } from "unicef-material-ui"
-import { Typography, Grid } from "@material-ui/core"
+import React from "react";
+import { UButton } from "unicef-material-ui";
+import { Typography, Grid } from "@material-ui/core";
 
 export default function Buttons() {
-  const [loading, setLoading] = React.useState(false)
-  const timer = React.useRef()
+  const [loading, setLoading] = React.useState(false);
+  const timer = React.useRef();
 
   React.useEffect(() => {
     return () => {
-      clearTimeout(timer.current)
-    }
-  }, [])
+      clearTimeout(timer.current);
+    };
+  }, []);
 
   function handleButton() {
-    setLoading(true)
+    setLoading(true);
     timer.current = setTimeout(() => {
-      setLoading(false)
-    }, 2000)
+      setLoading(false);
+    }, 2000);
   }
 
   return (
@@ -24,26 +24,27 @@ export default function Buttons() {
       <Grid item xs={12}>
         <Typography variant="h5">UButton</Typography>
       </Grid>
-      <Grid item xs={4}>
+      <Grid item xs={12} sm={4} md={3}>
         <Typography variant="subtitle1">Primary button</Typography>
         <UButton variant="uPrimary">Primary</UButton>
       </Grid>
-      <Grid item xs={4}>
+      <Grid item xs={12} sm={4} md={3}>
         <Typography variant="subtitle1">Default button</Typography>
         <UButton variant="uDefault">Default</UButton>
       </Grid>
-      <Grid item xs={4}>
+      <Grid item xs={12} sm={4} md={3}>
         <Typography variant="subtitle1">Spinning button</Typography>
         <UButton
-          variant="uDefault"
+          variant="uPrimary"
+          color="error"
           spinButton
           loading={loading}
           disabled={loading}
           onClick={handleButton}
         >
-          Default
+          Spin Button
         </UButton>
       </Grid>
     </Grid>
-  )
+  );
 }

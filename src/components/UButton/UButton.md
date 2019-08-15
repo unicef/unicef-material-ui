@@ -31,13 +31,13 @@ function handleButton() {
   <Grid item xs={4}>
     <Typography variant="subtitle1">Spinning button</Typography>
     <UButton
-      variant="uDefault"
+      variant="uPrimary"
       spinButton
       loading={loading}
       disabled={loading}
       onClick={handleButton}
     >
-      Default
+      Spin Button
     </UButton>
   </Grid>
 </Grid>;

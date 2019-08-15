@@ -1,8 +1,8 @@
-import React from "react"
-import PropTypes from "prop-types"
-import { makeStyles } from "@material-ui/core/styles"
-import CircularProgress from "@material-ui/core/CircularProgress"
-import Button from "@material-ui/core/Button"
+import React from "react";
+import PropTypes from "prop-types";
+import { makeStyles } from "@material-ui/core/styles";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -13,22 +13,21 @@ const useStyles = makeStyles(theme => ({
     position: "relative",
   },
   buttonProgress: {
-    color: theme.palette.primary,
     position: "absolute",
     top: "50%",
     left: "50%",
     marginTop: -12,
     marginLeft: -12,
   },
-}))
+}));
 
 /**
  * Custom advanced button with unicef colors and also it has spinning effect in the button
  *
  * */
 export default function UButton(props) {
-  const { spinButton, loading, variant, color, ...others } = props
-  const classes = useStyles()
+  const { spinButton, loading, variant, color, ...others } = props;
+  const classes = useStyles();
 
   UButton.propTypes = {
     /**
@@ -45,29 +44,29 @@ export default function UButton(props) {
     variant: PropTypes.string,
     /**  color of the button */
     color: PropTypes.string,
-  }
+  };
 
   UButton.defaultProps = {
     color: "primary",
     variant: "contained",
     spinButton: false,
     loading: false,
-  }
+  };
 
   function getVariant(variant) {
     switch (variant) {
       case "uDefault":
-        return "outlined"
+        return "outlined";
       case "uPrimary":
-        return "contained"
+        return "contained";
       case "contained":
-        return "contained"
+        return "contained";
       case "outlined":
-        return "outlined"
+        return "outlined";
       case "text":
-        return "text"
+        return "text";
       default:
-        return "contained"
+        return "contained";
     }
   }
 
@@ -77,12 +76,18 @@ export default function UButton(props) {
         <Button
           variant={getVariant(variant)}
           color={color || "primary"}
+          disableRipple
+          classes={classes.color}
           {...others}
         >
           {props.children}
         </Button>
         {loading && (
-          <CircularProgress size={24} className={classes.buttonProgress} />
+          <CircularProgress
+            colorSecondary
+            size={24}
+            className={classes.buttonProgress}
+          />
         )}
       </div>
     </div>
@@ -90,9 +95,10 @@ export default function UButton(props) {
     <Button
       variant={getVariant(variant)}
       color={color || "primary"}
+      disableRipple
       {...others}
     >
       {props.children}
     </Button>
-  )
+  );
 }

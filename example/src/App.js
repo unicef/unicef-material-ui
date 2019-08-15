@@ -1,5 +1,5 @@
-import React from "react"
-import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider"
+import React from "react";
+import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
 import {
   theme,
   UNICEFStyleProvider,
@@ -10,8 +10,8 @@ import {
   UHeaderRightButtons,
   UHeaderMainMenu,
   UHeaderLeftMenu,
-} from "unicef-material-ui"
-import "./App.css"
+} from "unicef-material-ui";
+import "./App.css";
 import {
   NavLinks,
   ColorsExample,
@@ -22,8 +22,8 @@ import {
   MenuItems,
   MenuTabs,
   Buttons,
-} from "./components"
-import { Tab } from "@material-ui/core"
+} from "./components";
+import { Tab } from "@material-ui/core";
 
 export default function App() {
   return (
@@ -62,7 +62,7 @@ export default function App() {
             <MenuItems />
           </USideBar>
           <UContent headerHeight={112}>
-            {/* <ColorsExample /> */}
+            <ColorsExample />
             <FormExample />
             <Buttons />
             <Alert />
@@ -72,5 +72,5 @@ export default function App() {
         </ULayout>
       </UNICEFStyleProvider>
     </MuiThemeProvider>
-  )
+  );
 }
