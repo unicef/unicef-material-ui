@@ -35,4 +35,3 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
   </UHeaderRightButtons>
 </UHeader>
 ```
-
