@@ -1,14 +1,14 @@
 ULayout :
 
 ```html
-import { ULayout, UContent, USideBar } from '@unicef/materil-ui'
+import { USideBar, UContent} from '@unicef/material-ui'
 
 <ULayout>
-  <USideBar>
-    {...children components in side bar}
+  <USideBar headerHeight={112}>
+    {...children components}
   </USideBar>
-  <UContent>
-    {...children components in UContent}
+  <UContent headerHeight={112}>
+    {...children components}
   </UContent>
 </ULayout>
 ```

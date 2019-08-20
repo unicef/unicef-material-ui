@@ -31,7 +31,7 @@ const theme = createMuiTheme({
       '"Segoe UI Symbol"',
     ].join(","),
   },
-  spacing: 4,
+  spacing: 8,
   palette: {
     primary: {
       main: colorPrimary,

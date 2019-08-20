@@ -1,22 +1,25 @@
+UHeaderMainMenu Example : 
 
-```js
-const tabs = [
-  {
-    name: "Active",
-    type: "normal",
-    link: "/header"
-  },
-  {
-    name: "Disabled",
-    type: "disabled",
-    link: null
-  },
-  {
-    name: "Directory",
-    type: "normal",
-    link: null
-  }
-];
+```jsx
+import UHeader from '../UHeader';
+import {
+  Tab
+} from "@material-ui/core";
 
-<NavTabs tabs={tabs} />;
+<UHeader
+  position="static"
+  showHamburgerMenu={false}
+  applicationName="Application"
+>
+  <UHeaderMainMenu 
+    bgcolor="white"
+    value={0}
+    indicatorColor="primary"
+    textColor="primary"
+    //onChange={handleChange}
+    >
+    <Tab label="Active" />
+    <Tab label="Disabled" disabled />
+  </UHeaderMainMenu>
+</UHeader>
 ```

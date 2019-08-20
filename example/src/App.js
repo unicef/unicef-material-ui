@@ -7,9 +7,9 @@ import {
   ULayout,
   USideBar,
   UContent,
-  ULeftMenu,
-  URightLinks,
+  UHeaderRightButtons,
   UHeaderMainMenu,
+  UHeaderLeftMenu,
 } from "unicef-material-ui"
 import "./App.css"
 import {
@@ -37,6 +37,7 @@ export default function App() {
       <UNICEFStyleProvider>
         <ULayout>
           <UHeader
+            showHamburgerMenu={true}
             color="white"
             bgColor="#1CABE2"
             applicationName="Application"
@@ -44,11 +45,10 @@ export default function App() {
             // hideLogo={true}
             // hideLogoBorderLine={false}
             // logo={<img alt="user" src={avatar} />}
-            showHumburgerMenu={true}
           >
-            <URightLinks>
+            <UHeaderRightButtons>
               <NavLinks />
-            </URightLinks>
+            </UHeaderRightButtons>
             <UHeaderMainMenu
               bgcolor="white"
               value={0}
@@ -60,9 +60,9 @@ export default function App() {
               <Tab label="disabled" disabled href="/" />
               <Tab label="Directory" />
             </UHeaderMainMenu>
-            <ULeftMenu>
+            <UHeaderLeftMenu>
               <MenuTabs />
-            </ULeftMenu>
+            </UHeaderLeftMenu>
           </UHeader>
           <USideBar headerHeight={112}>
             <MenuItems />

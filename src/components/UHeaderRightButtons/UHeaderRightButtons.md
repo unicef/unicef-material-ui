@@ -1,13 +1,15 @@
-Header Example:
+Buttons or Links to be displayed on the right side of the header.
+
+It must be wrapped inside UHeader(Parent Component).
+
+UHeaderRightButtons Example:
 
 ```jsx
-import UHeaderRightButtons from '../UHeaderRightButtons';
-import UHeaderMainMenu from '../UHeaderMainMenu';
+import UHeader from '../UHeader';
 import {
   Button,
   Link,
   Box,
-  Tab,
 } from "@material-ui/core";
 import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
@@ -31,15 +33,5 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
       </Button>
     </Box>
   </UHeaderRightButtons>
-  <UHeaderMainMenu 
-    bgcolor="white"
-    value={0}
-    indicatorColor="primary"
-    textColor="primary"
-    //onChange={handleChange}
-    >
-    <Tab label="Active" />
-    <Tab label="Disabled" disabled />
-  </UHeaderMainMenu>
 </UHeader>
 ```
