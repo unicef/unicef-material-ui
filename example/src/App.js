@@ -1,42 +1,82 @@
-import React from 'react'
-import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
-import { theme, UNICEFStyleProvider, Header, NavTabs } from 'unicef-material-ui'
-import './App.css'
-import { NavLinks, ColorsExample, FormExample, CardWithTabs, CardsExample, Alert, MenuItems, MenuTabs, LoadingButton } from './components'
+import React from "react"
+import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider"
+import {
+  theme,
+  UNICEFStyleProvider,
+  UHeader,
+  ULayout,
+  USideBar,
+  UContent,
+  ULeftMenu,
+  URightLinks,
+  UHeaderMainMenu,
+} from "unicef-material-ui"
+import "./App.css"
+import {
+  NavLinks,
+  ColorsExample,
+  FormExample,
+  CardWithTabs,
+  CardsExample,
+  Alert,
+  MenuItems,
+  MenuTabs,
+  LoadingButton,
+} from "./components"
+import { Tab } from "@material-ui/core"
 
 export default function App() {
-
   const tabs = [
-    { name: 'Active', type: 'normal', link: "/header" }, 
-    { name: 'Disabled', type: 'disabled', link: null }, 
-    { name: 'Directory', type: 'normal', link: null }
+    { name: "Active", type: "normal", link: null },
+    { name: "Disabled", type: "disabled", link: null },
+    { name: "Directory", type: "normal", link: null },
   ]
 
   return (
-    <React.Fragment>
-      <MuiThemeProvider theme={theme}>
-        <UNICEFStyleProvider>
-          <Header
+    <MuiThemeProvider theme={theme}>
+      <UNICEFStyleProvider>
+        <ULayout>
+          <UHeader
+            color="white"
+            bgColor="#1CABE2"
             applicationName="Application"
-            navLinks={<NavLinks />}
-            tabs={<NavTabs tabs={tabs} />}
-            // hideLogo={false}
-            // logoBorderLine={false}
+            logoUrl="https://unicef.github.io/unicef-material-ui/"
+            // hideLogo={true}
+            // hideLogoBorderLine={false}
             // logo={<img alt="user" src={avatar} />}
-            menuItems={<MenuItems />}
-            menuTabs={<MenuTabs />}
-            menuButton={true}
-          />
-          <div className="margin-top">
-            <ColorsExample></ColorsExample>
+            showHumburgerMenu={true}
+          >
+            <URightLinks>
+              <NavLinks />
+            </URightLinks>
+            <UHeaderMainMenu
+              bgcolor="white"
+              value={0}
+              indicatorColor="primary"
+              textColor="primary"
+              // onChange={handleChange}
+            >
+              <Tab label="Active" />
+              <Tab label="disabled" disabled href="/" />
+              <Tab label="Directory" />
+            </UHeaderMainMenu>
+            <ULeftMenu>
+              <MenuTabs />
+            </ULeftMenu>
+          </UHeader>
+          <USideBar headerHeight={112}>
+            <MenuItems />
+          </USideBar>
+          <UContent headerHeight={112}>
+            {/* <ColorsExample /> */}
             <FormExample />
             <LoadingButton />
             <Alert />
             <CardWithTabs />
             <CardsExample />
-          </div>
-        </UNICEFStyleProvider>
-      </MuiThemeProvider >
-    </React.Fragment>
+          </UContent>
+        </ULayout>
+      </UNICEFStyleProvider>
+    </MuiThemeProvider>
   )
 }

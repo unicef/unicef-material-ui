@@ -1,8 +1,27 @@
-import theme from './components/Theme/Theme'
-import UNICEFStyleProvider from './components/UNICEFStyleProvider/UNICEFStyleProvider'
-import Header from './components/Header/Header'
-import NavTabs from './components/NavTabs/NavTabs'
-import SpinningButton from './components/SpinningButton/SpinningButton'
-import CustomSelect from './components/CustomSelect/CustomSelect'
+import theme from "./theme"
+import UNICEFStyleProvider from "./components/UNICEFStyleProvider"
+import UHeader from "./components/UHeader"
+import ULeftMenu from "./components/ULeftMenu"
+import URightLinks from "./components/URightLinks"
+import UMainMenuLink from "./components/UMainMenuLink"
+import ULayout from "./components/ULayout"
+import USideBar from "./components/USideBar"
+import UContent from "./components/UContent"
+import UHeaderMainMenu from "./components/UHeaderMainMenu"
+import SpinningButton from "./components/SpinningButton"
+import CustomSelect from "./components/CustomSelect"
 
-export { theme, UNICEFStyleProvider,  Header, NavTabs, SpinningButton, CustomSelect }
+export {
+  theme,
+  UNICEFStyleProvider,
+  UHeader,
+  ULeftMenu,
+  URightLinks,
+  UMainMenuLink,
+  UHeaderMainMenu,
+  ULayout,
+  USideBar,
+  UContent,
+  SpinningButton,
+  CustomSelect,
+}
