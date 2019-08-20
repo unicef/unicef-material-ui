@@ -1,5 +1,5 @@
-import { createMuiTheme } from "@material-ui/core/styles"
-const colorPrimary = "#374EA2"
+import { createMuiTheme } from "@material-ui/core/styles";
+const colorPrimary = "#374EA2";
 
 const unicef = {
   blue: "#1CABE2",
@@ -11,9 +11,9 @@ const unicef = {
   orange: "#F26A21",
   green: "#80BD41",
   darkGreen: "#00833D",
-}
+};
 
-const zIndexDrawer = 1200
+const zIndexDrawer = 1200;
 
 const theme = createMuiTheme({
   typography: {
@@ -34,10 +34,13 @@ const theme = createMuiTheme({
   spacing: 8,
   palette: {
     primary: {
-      main: colorPrimary,
+      main: unicef.darkBlue,
     },
     secondary: {
       main: unicef.blue,
+    },
+    error: {
+      main: unicef.red,
     },
     unicef: unicef,
     unicefBlue: "#1CABE2",
@@ -116,8 +119,8 @@ const theme = createMuiTheme({
       disableRipple: true, // No more ripple
     },
   },
-})
+});
 /** This is customized version of theme for whole application. To use UNICEF theme add MuiThemeProvider at the top level of your app, it will set the custom styles of unicef down to the component tree.
  *  More info: Material-ui theming
  */
-export default theme
+export default theme;
