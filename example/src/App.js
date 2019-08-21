@@ -36,9 +36,6 @@ export default function App() {
             bgColor="#1CABE2"
             applicationName="Application"
             logoUrl="https://unicef.github.io/unicef-material-ui/"
-            // hideLogo={true}
-            // hideLogoBorderLine={false}
-            // logo={<img alt="user" src={avatar} />}
           >
             <UHeaderRightButtons>
               <NavLinks />
