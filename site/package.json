@@ -36,6 +36,7 @@
     "install-peers": "^1.0.3",
     "prettier": "^1.18.2",
     "react-helmet": "^5.2.1",
+    "react-hot-loader": "^4.12.11",
     "react-jss": "^8.6.1"
   },
   "repository": {
