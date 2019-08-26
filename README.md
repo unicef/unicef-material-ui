@@ -16,26 +16,20 @@ In order to use the UNICEF's Material UI components in your React project instal
 
 ### Adding UNICEF theme to your app
 
-This is customized version of theme for whole application. 
-To use UNICEF theme add `MuiThemeProvider` at the top level of your app, it will set the custom styles of unicef down to the component tree. 
+This is customized version of theme for whole application.
+To use UNICEF theme add `MuiThemeProvider` at the top level of your app, it will set the custom styles of unicef down to the component tree.
 
 More info: <a href="https://material-ui.com/styles/advanced/#theming">Material-ui theming</a>
-
 
 ```jsx
 // App.js
 
-import React from 'react'
-import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
-import { theme } from 'unicef-material-ui'
+import React from "react"
+import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider"
+import { theme } from "unicef-material-ui"
 
 export default function App() {
-
-  return (
-    <MuiThemeProvider theme={theme}>
-      {/* Components*/}
-    </MuiThemeProvider>
-  )
+  return <MuiThemeProvider theme={theme}>{/* Components*/}</MuiThemeProvider>
 }
 ```
 
@@ -56,9 +50,25 @@ $ git clone https://github.com/unicef/unicef-material-ui.git
 $ npm install
 ```
 
-The following commands are available: 
+The following commands are available:
 
 ### `npm start`
+
+Builds the app automatically for production to the `dist` folder, everytime you make changes in the code.
+
+```
+npm start
+```
+
+This build we are utilizing in example project, so each time we make some changes in the app. it builds the app to `dist` folder. so that we can see changes in the example project.
+
+Now open new tab in bash and run this commands:
+
+```
+cd example
+npm install (only if it is firt time)
+npm start
+```
 
 Runs the app in the development mode. Open [http://localhost:3000](http://localhost:3000) to view the app in the browser.
 
@@ -74,6 +84,7 @@ The build is minified and the filenames include the hashes.
 Your app is ready to be deployed!
 
 ### `npm run styleguide`
+
 Generates the documentation the development mode.
 Open [http://localhost:6060](http://localhost:6060) to view it in the browser.
 
@@ -82,14 +93,13 @@ You will also see any lint errors in the console.
 
 We use [styleguidelist](https://react-styleguidist.js.org/) for documenting our custom components.
 
-
 ### `npm run styleguide:build`
+
 Builds the styleguide for production to the `styleguide` folder.<br>
 It correctly bundles React-styleguide in production mode and optimizes the build for the best performance.
 
 The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
-
 
 ## License
 
