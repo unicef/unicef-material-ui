@@ -23,7 +23,6 @@ More info: <a href="https://material-ui.com/styles/advanced/#theming">Material-u
 
 ```jsx
 // App.js
-
 import React from "react"
 import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider"
 import { theme } from "unicef-material-ui"
@@ -46,8 +45,8 @@ All components require to be wrapped inside of a theme using `MuiThemeProvider` 
 In order to extend the components, clone the project and install dependencies.
 
 ```bash
-$ git clone https://github.com/unicef/unicef-material-ui.git
-$ npm install
+git clone https://github.com/unicef/unicef-material-ui.git
+npm install
 ```
 
 The following commands are available:
