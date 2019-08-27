@@ -2,14 +2,16 @@
   "name": "@unicef/material-ui",
   "version": "0.1.0",
   "description": "Material ui with react",
-  "main": "./dist/index.js",
-  "style": "./dist/styles.css",
+  "main": "index.js",
   "files": [
+    "lib",
     "dist"
   ],
   "homepage": "https://unicef.github.io/unicef-material-ui",
   "scripts": {
     "build": "rollup -c",
+    "build:dev": "NODE_ENV=development rollup -c",
+    "build:prod": "NODE_ENV=production rollup -c",
     "build-site": "rm -rf gh-pages-build/* && cd site && npm run build && cp -R public/* ../gh-pages-build && cd .. && npm run styleguide:build && cp -R styleguide ./gh-pages-build/docs/ && cd example && npm run build && cp -R build ../gh-pages-build/example/",
     "start": "rollup -c -w",
     "styleguide": "styleguidist server",
@@ -67,6 +69,7 @@
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-peer-deps-external": "^2.2.0",
     "rollup-plugin-postcss": "^2.0.3",
+    "rollup-plugin-replace": "^2.2.0",
     "rollup-plugin-sass": "^1.2.2",
     "rollup-plugin-url": "^2.2.2",
     "style-loader": "^0.23.1",

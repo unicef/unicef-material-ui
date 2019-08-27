@@ -1,49 +1,91 @@
-import babel from 'rollup-plugin-babel'
-import commonjs from 'rollup-plugin-commonjs'
-import external from 'rollup-plugin-peer-deps-external'
-import resolve from 'rollup-plugin-node-resolve'
-import url from 'rollup-plugin-url'
+// import babel from "rollup-plugin-babel"
+// import commonjs from "rollup-plugin-commonjs"
+// import external from "rollup-plugin-peer-deps-external"
+// import resolve from "rollup-plugin-node-resolve"
+// import url from "rollup-plugin-url"
+
+// export default {
+//   input: "src/index.js",
+//   output: [
+//     {
+//       file: "dist/index.js",
+//       format: "cjs",
+//     },
+//   ],
+//   plugins: [
+//     external(),
+//     url(),
+//     babel({
+//       babelrc: false,
+//       presets: [
+//         [
+//           "env",
+//           {
+//             modules: false,
+//           },
+//         ],
+//         "stage-0",
+//         "react",
+//       ],
+//       exclude: "node_modules/**",
+//       plugins: ["external-helpers"],
+//     }),
+//     resolve(),
+//     commonjs({
+//       include: "node_modules/**",
+//       namedExports: {
+//         "node_modules/react/index.js": [
+//           "cloneElement",
+//           "createContext",
+//           "Component",
+//           "createElement",
+//         ],
+//         "node_modules/react-dom/index.js": ["render", "hydrate"],
+//         "node_modules/react-is/index.js": [
+//           "isElement",
+//           "isValidElementType",
+//           "ForwardRef",
+//         ],
+//       },
+//     }),
+//   ],
+// }
+
+import babel from "rollup-plugin-babel"
+import commonjs from "rollup-plugin-commonjs"
+import resolve from "rollup-plugin-node-resolve"
+import replace from "rollup-plugin-replace"
+
+const NODE_ENV = process.env.NODE_ENV || "development"
+const outputFile = NODE_ENV === "production" ? "./lib/prod.js" : "./lib/dev.js"
 
 export default {
-  input: 'src/index.js',
-  output: [
-    {
-      file: 'dist/index.js',
-      format: 'cjs'
-    }
-  ],
+  input: "./src/index.js",
+  output: {
+    file: outputFile,
+    format: "cjs",
+  },
   plugins: [
-    external(),
-    url(),
+    replace({
+      "process.env.NODE_ENV": JSON.stringify(NODE_ENV),
+    }),
     babel({
       babelrc: false,
       presets: [
-        ["env", {
-          "modules": false
-        }],
+        [
+          "env",
+          {
+            modules: false,
+          },
+        ],
         "stage-0",
-        "react"
+        "react",
       ],
-      exclude: 'node_modules/**',
-      plugins: [ 'external-helpers' ]
+      exclude: "node_modules/**",
+      plugins: ["external-helpers"],
     }),
     resolve(),
-    commonjs({
-      include: 'node_modules/**',
-      namedExports: {
-        'node_modules/react/index.js': [
-          'cloneElement',
-          'createContext',
-          'Component',
-          'createElement'
-        ],
-        'node_modules/react-dom/index.js': ['render', 'hydrate'],
-        'node_modules/react-is/index.js': [
-          'isElement',
-          'isValidElementType',
-          'ForwardRef'
-        ]
-      }
-    })
-  ]
+    commonjs(),
+  ],
+  external: id => /^react/.test(id),
 }
