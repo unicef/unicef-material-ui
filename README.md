@@ -56,7 +56,7 @@ The following commands are available:
 
 Builds the app automatically for production to the `dist` folder, everytime you make changes in the code.
 
-```
+```bash
 npm start
 ```
 
@@ -64,7 +64,7 @@ This build we are utilizing in example project, so each time we make some change
 
 Now open new tab in bash and run this commands:
 
-```
+```bash
 cd example
 npm install (only if it is firt time)
 npm start
