@@ -11,24 +11,22 @@ import { NavLinks, MainContent, MenuTabs } from "../components"
 
 export default function App() {
   return (
-    <MuiThemeProvider theme={theme}>
-      <UNICEFStyleProvider>
-        <UHeader
-          showHamburgerMenu={true}
-          color="white"
-          bgColor="#1CABE2"
-          applicationName="Material UI"
-          logoUrl="https://unicef.github.io/unicef-material-ui/"
-        >
-          <UHeaderRightButtons>
-            <NavLinks />
-          </UHeaderRightButtons>
-          <UHeaderLeftMenu>
-            <MenuTabs />
-          </UHeaderLeftMenu>
-        </UHeader>
-        <MainContent />
-      </UNICEFStyleProvider>
-    </MuiThemeProvider>
+    <UNICEFStyleProvider>
+      <UHeader
+        showHamburgerMenu={true}
+        color="white"
+        bgColor="#1CABE2"
+        applicationName="Material UI"
+        logoUrl="https://unicef.github.io/unicef-material-ui/"
+      >
+        <UHeaderRightButtons>
+          <NavLinks />
+        </UHeaderRightButtons>
+        <UHeaderLeftMenu>
+          <MenuTabs />
+        </UHeaderLeftMenu>
+      </UHeader>
+      <MainContent />
+    </UNICEFStyleProvider>
   )
 }
