@@ -1,6 +1,6 @@
 Usage:
 
-```html
+```jsx static
 import { ULayout, USideBar } from "@unicef/material-ui"
 
 <ULayout>

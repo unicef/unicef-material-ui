@@ -35,6 +35,21 @@ module.exports = {
     {
       name: 'Components',
       components: 'src/components/**/[A-Z]*.js',
+      usageMode: 'expand',
     },
+    // For future refence to use in sections
+    // {
+    //   name: 'Overview',
+    //   // content: 'src/readme.md',
+    //   external: true,
+    //   href: 'https://unicef.github.io/unicef-material-ui/example',
+    // },
+    // {
+    //   name: 'UI Components',
+    //   // content: 'src/components/USelect/USelect.md',
+    //   components: 'src/components/USelect/USelect.js',
+    //   // exampleMode: 'expand', // 'hide' | 'collapse' | 'expand'
+    //   usageMode: 'expand', // 'hide' | 'collapse' | 'expand'
+    // },
   ],
 }

@@ -6,7 +6,7 @@ It must be wrapped inside UHeader(Parent Component).
 
 Usage :
 
-```html
+```jsx static
 import { UHeader, UHeaderLeftMenu } from '@unicef/materil-ui'
 
 <UHeader>
