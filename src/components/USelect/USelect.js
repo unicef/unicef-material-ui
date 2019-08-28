@@ -353,6 +353,12 @@ export default function USelect(props) {
     variant: PropTypes.oneOf(['outlined', 'standard', 'filled']),
     /** Id of input to handle in some scenarios. */
     inputId: PropTypes.string,
+    /** Callback fired when the value is changed.
+     *
+     * `event`:
+     * The event source of the callback. You can pull out the new value by accessing "event.target.value".
+     */
+    onChange: PropTypes.func,
     /** Options to select from dropdown.
      *
      * `const suggestions = [ { label: "name1" }, {label: "name2"} ]` // which is an array of objects

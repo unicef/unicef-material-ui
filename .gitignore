@@ -1,5 +1,6 @@
 node_modules
 dist
+lib
 styleguide
 gh-pages-build
 example/node_modules
