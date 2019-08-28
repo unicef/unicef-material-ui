@@ -2,7 +2,6 @@ const path = require('path')
 const { styles, theme } = require('./styleguide.styles')
 module.exports = {
   title: 'UNICEF Material UI',
-  showUsage: true,
   styles,
   theme,
   getComponentPathLine: componentPath => {
@@ -11,7 +10,6 @@ module.exports = {
 
     return `import { ${name} } from '@unicef/material-ui'`
   },
-  components: 'src/components/**/[A-Z]*.js',
   webpackConfig: {
     module: {
       rules: [
@@ -29,4 +27,14 @@ module.exports = {
       ],
     },
   },
+  sections: [
+    {
+      name: '',
+      content: 'src/readme.md',
+    },
+    {
+      name: 'Components',
+      components: 'src/components/**/[A-Z]*.js',
+    },
+  ],
 }
