@@ -1,6 +1,6 @@
-UContent:
+Usage:
 
-```html
+```jsx static
 import { ULayout, UContent } from "@unicef/material-ui"
 
 <ULayout>

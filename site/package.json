@@ -1,5 +1,5 @@
 {
-  "name": "gatsby-starter-hello-world",
+  "name": "@unicef/material-ui-site",
   "private": true,
   "description": "A simplified bare-bones starter for Gatsby",
   "version": "0.1.0",
@@ -25,10 +25,10 @@
     "gatsby-plugin-styled-components": "^3.1.2",
     "gh-pages": "^2.1.0",
     "jss": "^9.8.7",
+    "unicef-material-ui": "file:..",
     "react": "file:../node_modules/react",
     "react-dom": "file:../node_modules/react-dom",
-    "styled-components": "^4.3.2",
-    "unicef-material-ui": "file:.."
+    "styled-components": "^4.3.2"
   },
   "devDependencies": {
     "eslint": "^6.1.0",

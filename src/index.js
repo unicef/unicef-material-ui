@@ -1,14 +1,14 @@
-import theme from "./theme"
-import UNICEFStyleProvider from "./components/UNICEFStyleProvider"
-import UHeader from "./components/UHeader"
-import UHeaderRightButtons from "./components/UHeaderRightButtons"
-import UHeaderLeftMenu from "./components/UHeaderLeftMenu"
-import ULayout from "./components/ULayout"
-import USideBar from "./components/USideBar"
-import UContent from "./components/UContent"
-import UHeaderMainMenu from "./components/UHeaderMainMenu"
-import UButton from "./components/UButton"
-import CustomSelect from "./components/CustomSelect"
+import theme from './theme'
+import UNICEFStyleProvider from './components/UNICEFStyleProvider'
+import UHeader from './components/UHeader'
+import UHeaderRightButtons from './components/UHeaderRightButtons'
+import UHeaderLeftMenu from './components/UHeaderLeftMenu'
+import ULayout from './components/ULayout'
+import USideBar from './components/USideBar'
+import UContent from './components/UContent'
+import UHeaderMainMenu from './components/UHeaderMainMenu'
+import UButton from './components/UButton'
+import USelect from './components/USelect'
 
 export {
   theme,
@@ -21,5 +21,5 @@ export {
   USideBar,
   UContent,
   UButton,
-  CustomSelect,
+  USelect,
 }

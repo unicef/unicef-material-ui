@@ -4,9 +4,9 @@ It will only display when user clicks on Hamburger Menu Button.
 
 It must be wrapped inside UHeader(Parent Component).
 
-UHeaderLeftMenu :
+Usage :
 
-```html
+```jsx static
 import { UHeader, UHeaderLeftMenu } from '@unicef/materil-ui'
 
 <UHeader>
