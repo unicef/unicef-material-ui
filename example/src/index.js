@@ -5,7 +5,7 @@ import App from './App'
 import * as serviceWorker from './serviceWorker'
 
 ReactDOM.render(
-  <BrowserRouter basename="/unicef-material-ui/example">
+  <BrowserRouter basename="/unicef-material-ui">
     <App />
   </BrowserRouter>,
   document.getElementById('root')

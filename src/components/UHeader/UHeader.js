@@ -1,7 +1,7 @@
-import React from "react";
-import { fade } from "@material-ui/core/styles/colorManipulator";
-import { makeStyles, createStyles } from "@material-ui/core/styles";
-import { findReactChildren } from "../../utils";
+import React from 'react'
+import { fade } from '@material-ui/core/styles/colorManipulator'
+import { makeStyles, createStyles } from '@material-ui/core/styles'
+import { findReactChildren } from '../../utils'
 import {
   AppBar,
   Toolbar,
@@ -11,16 +11,16 @@ import {
   Drawer,
   Link,
   Divider,
-} from "@material-ui/core";
-import MenuIcon from "@material-ui/icons/Menu";
-import PropTypes from "prop-types";
-import { useTheme } from "@material-ui/core/styles";
+} from '@material-ui/core'
+import MenuIcon from '@material-ui/icons/Menu'
+import PropTypes from 'prop-types'
+import { useTheme } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme =>
   createStyles({
     bgColor: props => ({
       color: props.color || null,
-      backgroundColor: props.bgColor || "#1CABE2",
+      backgroundColor: props.bgColor || '#1CABE2',
     }),
     root: {
       flexGrow: 1,
@@ -36,10 +36,10 @@ const useStyles = makeStyles(theme =>
     navbarLine: {
       marginRight: theme.spacing(2),
       paddingRight: theme.spacing(2),
-      borderRight: "1px solid #fff",
+      borderRight: '1px solid #fff',
     },
   })
-);
+)
 
 /**
  *
@@ -48,10 +48,10 @@ const useStyles = makeStyles(theme =>
  */
 
 export default function UHeader(props) {
-  const classes = useStyles(props);
-  const theme = useTheme();
+  const classes = useStyles(props)
+  const theme = useTheme()
 
-  const [sideLeft, setSideLeft] = React.useState(false);
+  const [sideLeft, setSideLeft] = React.useState(false)
   const {
     position,
     applicationName,
@@ -60,18 +60,18 @@ export default function UHeader(props) {
     logo,
     hideLogoBorderLine,
     logoUrl,
-  } = props;
+  } = props
 
   const toggleDrawer = open => event => {
     if (
-      event.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
+      event.type === 'keydown' &&
+      (event.key === 'Tab' || event.key === 'Shift')
     ) {
-      return;
+      return
     }
 
-    setSideLeft(open);
-  };
+    setSideLeft(open)
+  }
 
   UHeader.propTypes = {
     /** position of the header, 
@@ -97,15 +97,15 @@ export default function UHeader(props) {
     logo: PropTypes.element,
     /** It is the separator line between application name and logo with white border. */
     hideLogoBorderLine: PropTypes.bool,
-  };
+  }
 
   UHeader.defaultProps = {
-    position: "fixed",
+    position: 'fixed',
     showHamburgerMenu: true,
     hideLogo: false,
     logo: false,
     hideLogoBorderLine: true,
-  };
+  }
 
   const sideList = (
     <div className={classes.list} role="presentation">
@@ -113,9 +113,9 @@ export default function UHeader(props) {
         <Typography variant="h6">UNICEF {applicationName}</Typography>
       )}
       <Divider />
-      <Box>{findReactChildren(props, "UHeaderLeftMenu")}</Box>
+      <Box>{findReactChildren(props, 'UHeaderLeftMenu')}</Box>
     </div>
-  );
+  )
 
   return (
     <AppBar position={position}>
@@ -174,15 +174,15 @@ export default function UHeader(props) {
         </Box>
         <Box
           height="64px"
-          display={{ xs: "none", md: "block" }}
+          display={{ xs: 'none', md: 'block' }}
           ml="auto"
           bgcolor={fade(theme.palette.primary.main, 0.6)}
           className={classes.navRight}
         >
-          {findReactChildren(props, "UHeaderRightButtons")}
+          {findReactChildren(props, 'UHeaderRightButtons')}
         </Box>
       </Toolbar>
-      {findReactChildren(props, "UHeaderMainMenu")}
+      {findReactChildren(props, 'UHeaderMainMenu')}
     </AppBar>
-  );
+  )
 }
