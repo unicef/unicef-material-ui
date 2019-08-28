@@ -1,4 +1,4 @@
-USideBar:
+Usage:
 
 ```html
 import { ULayout, USideBar } from "@unicef/material-ui"

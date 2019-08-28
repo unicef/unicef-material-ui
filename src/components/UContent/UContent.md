@@ -1,4 +1,4 @@
-UContent:
+Usage:
 
 ```html
 import { ULayout, UContent } from "@unicef/material-ui"

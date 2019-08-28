@@ -1,6 +1,6 @@
-import React from "react"
-import { makeStyles } from "@material-ui/core/styles"
-import PropTypes from "prop-types"
+import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import PropTypes from 'prop-types'
 
 const useStyles = makeStyles(theme => ({
   content: {
@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
 /**
  * * UContent is to display the  main content of page.
  * * Children under Ucontent will be display in the main content.
- * * UContent must to be wrapped inside the ULayout.
+ * * UContent must be wrapped inside the ULayout.
  */
 export default function UContent(props) {
   const classes = useStyles(props)
@@ -24,7 +24,7 @@ export default function UContent(props) {
   }
 
   UContent.defaultProps = {
-    headerHeight: "64 px",
+    headerHeight: '64 px',
   }
 
   return (

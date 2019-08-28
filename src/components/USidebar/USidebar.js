@@ -1,7 +1,7 @@
-import React from "react"
-import { makeStyles } from "@material-ui/core/styles"
-import { Box, Drawer } from "@material-ui/core"
-import PropTypes from "prop-types"
+import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import { Box, Drawer } from '@material-ui/core'
+import PropTypes from 'prop-types'
 
 const drawerWidth = 300
 
@@ -19,11 +19,11 @@ const useStyles = makeStyles(theme => ({
 /**
  * USideBar is the custom material ui component to display the content in the side bar.
  *
- * Children components inside USideBar will be displyed on the side bar.
+ * Children components inside USideBar will be displayed on the side bar.
  *
  * USideBar is located on the left side of the screen, below the header.
  *
- * USideBar must to be wrapped inside the ULayout(Parent Component).
+ * USideBar must be wrapped inside the ULayout(Parent Component).
  */
 export default function USideBar(props) {
   const classes = useStyles(props)
@@ -39,11 +39,11 @@ export default function USideBar(props) {
   }
 
   USideBar.defaultProps = {
-    headerHeight: "64 px",
+    headerHeight: '64 px',
   }
 
   return (
-    <Box display={{ xs: "none", md: "block" }}>
+    <Box display={{ xs: 'none', md: 'block' }}>
       <Drawer
         className={classes.drawer}
         variant="permanent"

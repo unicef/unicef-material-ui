@@ -24,7 +24,7 @@ import {
   MenuTabs,
   Buttons,
 } from './components'
-import { Tab } from '@material-ui/core'
+import { Tab, Typography } from '@material-ui/core'
 
 const suggestions = [
   { label: 'Afghanistan' },
@@ -101,11 +101,15 @@ export default function App() {
           </USideBar>
           <UContent headerHeight={112}>
             <ColorsExample />
+            <Typography variant="h5" style={{ marginTop: '16px' }}>
+              USelect
+            </Typography>
             <USelect
               label="Countries"
               TextFieldProps={{
                 helperText: 'Please select the countries from above',
               }}
+              placeholder="Select countries ...."
               options={suggestions}
               isMulti
             />

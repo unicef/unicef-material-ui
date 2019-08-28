@@ -4,7 +4,7 @@ It will only display when user clicks on Hamburger Menu Button.
 
 It must be wrapped inside UHeader(Parent Component).
 
-UHeaderLeftMenu :
+Usage :
 
 ```html
 import { UHeader, UHeaderLeftMenu } from '@unicef/materil-ui'
