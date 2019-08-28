@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
     overflow: 'hidden',
   },
   chip: {
-    margin: theme.spacing(0.5, 0.25),
+    margin: theme.spacing(0.4, 0.25),
   },
   chipFocused: {
     backgroundColor: emphasize(
@@ -317,11 +317,20 @@ const components = {
   ValueContainer,
 }
 
+/**
+ * USelect is a select input control with below features
+ * * Select
+ * * Multiple select.
+ * * Autocomplete.
+ * * Search and filter the options.
+ * * Clear selected.
+ *
+ */
 export default function USelect(props) {
   const classes = useStyles()
   const theme = useTheme()
 
-  const { options, placeholder, inputId, isMulti, ...others } = props
+  const { label, variant, TextFieldProps, ...others } = props
 
   const selectStyles = {
     input: base => ({
@@ -334,27 +343,45 @@ export default function USelect(props) {
   }
 
   USelect.propTypes = {
-    /** Text to display in input when nothing selected */
+    /** Text to display in input when nothing selected. */
     placeholder: PropTypes.string,
-    /** Enables the multiple select */
+    /** Enables the multiple select. */
     isMulti: PropTypes.bool,
-    /** Options to select from dropdown
+    /** Label of the textfield. */
+    label: PropTypes.string,
+    /** Variant of textfield to use.*/
+    variant: PropTypes.oneOf(['outlined', 'standard', 'filled']),
+    /** Id of input to handle in some scenarios. */
+    inputId: PropTypes.string,
+    /** Options to select from dropdown.
      *
      * `const suggestions = [ { label: "name1" }, {label: "name2"} ]` // which is an array of objects
      *
      * `options = {suggestions}`
      */
     options: PropTypes.array,
-    /** Label of the textfield */
-    label: PropTypes.string,
-    /** Id of input to handle in some scenarios */
-    inputId: PropTypes.string,
+    /** It accepts all the props from TextField API.
+     *
+     * `TextFieldProps={ helperText="text", inputProps={className: classes.textField}}`
+     *
+     */
+    TextFieldProps: PropTypes.object,
   }
 
   USelect.defaultProps = {
     isMulti: false,
     placeholder: 'Select...',
+    variant: 'outlined',
   }
+
+  const defaultTextFieldProps = {
+    label: label,
+    variant: variant || 'outlined',
+    InputLabelProps: {
+      shrink: true,
+    },
+  }
+  const mergedTextFieldProps = { ...defaultTextFieldProps, ...TextFieldProps }
 
   return (
     <div className={classes.margin}>
@@ -362,16 +389,8 @@ export default function USelect(props) {
         classes={classes}
         styles={selectStyles}
         components={components}
-        inputId={inputId}
-        TextFieldProps={{
-          ...others,
-          InputLabelProps: {
-            shrink: true,
-          },
-        }}
-        placeholder={placeholder}
-        options={options}
-        isMulti
+        TextFieldProps={mergedTextFieldProps}
+        {...others}
       />
     </div>
   )

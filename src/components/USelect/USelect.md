@@ -14,5 +14,5 @@ const suggestions = [
   label: suggestion.label,
 }))
 
-;<USelect label="Countries" options={suggestions} />
+;<USelect label="Countries" options={suggestions} variant="outlined" />
 ```

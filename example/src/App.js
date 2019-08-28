@@ -101,7 +101,14 @@ export default function App() {
           </USideBar>
           <UContent headerHeight={112}>
             <ColorsExample />
-            <USelect label="Countries" options={suggestions} />
+            <USelect
+              label="Countries"
+              TextFieldProps={{
+                helperText: 'Please select the countries from above',
+              }}
+              options={suggestions}
+              isMulti
+            />
             <FormExample />
             <Buttons />
             <Alert />
