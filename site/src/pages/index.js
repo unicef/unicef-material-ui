@@ -1,34 +1,34 @@
 import React from "react"
 import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider"
-import { theme, UNICEFStyleProvider, Header } from "unicef-material-ui"
-import { NavLinks, MainContent } from "../components"
-
-// const generateClassName = createGenerateClassName({
-// 	productionPrefix: 'o',
-// });
-
-// const jss = create({
-//  ...jssPreset(),
-//  insertionPoint: `jss-insertion-point`
-// });
+import {
+  theme,
+  UNICEFStyleProvider,
+  UHeader,
+  UHeaderRightButtons,
+  UHeaderLeftMenu,
+} from "unicef-material-ui"
+import { NavLinks, MainContent, MenuTabs } from "../components"
 
 export default function App() {
   return (
-    <UNICEFStyleProvider>
-      <MuiThemeProvider theme={theme}>
+    <MuiThemeProvider theme={theme}>
+      <UNICEFStyleProvider>
         <UHeader
+          showHamburgerMenu={true}
+          color="white"
+          bgColor="#1CABE2"
           applicationName="Material UI"
-          navLinks={<NavLinks />}
-          //   tabs={<NavTabs tabs={tabs} />}
-          //   // hideLogo={false}
-          //   // logoBorderLine={false}
-          //   // logo={<img alt="user" src={avatar} />}
-          //   menuItems={<MenuItems />}
-          //   menuTabs={<MenuTabs />}
-          menuButton={true}
-        />
+          logoUrl="https://unicef.github.io/unicef-material-ui/"
+        >
+          <UHeaderRightButtons>
+            <NavLinks />
+          </UHeaderRightButtons>
+          <UHeaderLeftMenu>
+            <MenuTabs />
+          </UHeaderLeftMenu>
+        </UHeader>
         <MainContent />
-      </MuiThemeProvider>
-    </UNICEFStyleProvider>
+      </UNICEFStyleProvider>
+    </MuiThemeProvider>
   )
 }
