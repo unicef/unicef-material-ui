@@ -12,4 +12,6 @@ In order to use the UNICEF's Material UI components in your React project instal
 npm install @unicef/material-ui --save
 ```
 
-The component **[live example is available here](https://unicef.github.io/unicef-material-ui/example)**
+## Example
+
+Unicef material-ui customized components used in **[live example is available here](https://unicef.github.io/unicef-material-ui/example)**
