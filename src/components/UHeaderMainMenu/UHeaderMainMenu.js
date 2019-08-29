@@ -1,6 +1,6 @@
-import React from "react"
-import { Tabs, Box } from "@material-ui/core"
-import PropTypes from "prop-types"
+import React from 'react'
+import { Tabs, Box } from '@material-ui/core'
+import PropTypes from 'prop-types'
 
 /** Tabs organize and allow navigation between groups of content that are related and at the same level of hierarchy. */
 export default function UHeaderMainMenu(props) {
@@ -12,7 +12,7 @@ export default function UHeaderMainMenu(props) {
   }
 
   UHeaderMainMenu.defaultProps = {
-    bgcolor: "white",
+    bgcolor: 'white',
   }
 
   return (

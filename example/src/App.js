@@ -89,6 +89,8 @@ export default function App() {
               // onChange={handleChange}
             >
               <Tab label="Active" />
+              <Tab label="Disabled" disabled />
+              <Tab label="Directory" />
             </UHeaderMainMenu>
             <UHeaderLeftMenu>
               <MenuTabs />

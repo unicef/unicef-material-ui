@@ -15,6 +15,9 @@ import {
 import MenuIcon from '@material-ui/icons/Menu'
 import PropTypes from 'prop-types'
 import { useTheme } from '@material-ui/core/styles'
+import UHeaderMainMenu from '../UHeaderMainMenu'
+import UHeaderRightButtons from '../UHeaderRightButtons'
+import UHeaderLeftMenu from '../UHeaderLeftMenu'
 
 const useStyles = makeStyles(theme =>
   createStyles({
@@ -113,7 +116,7 @@ export default function UHeader(props) {
         <Typography variant="h6">UNICEF {applicationName}</Typography>
       )}
       <Divider />
-      <Box>{findReactChildren(props, 'UHeaderLeftMenu')}</Box>
+      <Box>{findReactChildren(props, UHeaderLeftMenu)}</Box>
     </div>
   )
 
@@ -179,10 +182,10 @@ export default function UHeader(props) {
           bgcolor={fade(theme.palette.primary.main, 0.6)}
           className={classes.navRight}
         >
-          {findReactChildren(props, 'UHeaderRightButtons')}
+          {findReactChildren(props, UHeaderRightButtons)}
         </Box>
       </Toolbar>
-      {findReactChildren(props, 'UHeaderMainMenu')}
+      {findReactChildren(props, UHeaderMainMenu)}
     </AppBar>
   )
 }
