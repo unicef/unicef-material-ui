@@ -26,7 +26,7 @@ import {
 } from './components'
 import { Tab, Typography } from '@material-ui/core'
 
-const suggestions = [
+const options = [
   { label: 'Afghanistan' },
   { label: 'Aland Islands' },
   { label: 'Albania' },
@@ -89,7 +89,7 @@ export default function App() {
               // onChange={handleChange}
             >
               <Tab label="Active" />
-              <Tab label="disabled" disabled href="/" />
+              <Tab label="Disabled" disabled />
               <Tab label="Directory" />
             </UHeaderMainMenu>
             <UHeaderLeftMenu>
@@ -110,7 +110,7 @@ export default function App() {
                 helperText: 'Please select the countries from above',
               }}
               placeholder="Select countries ...."
-              options={suggestions}
+              options={options}
               isMulti
             />
             <FormExample />

@@ -1,6 +1,7 @@
-USelect Examaple:
+USelect Example:
 
 ```jsx
+import { Typography } from '@material-ui/core'
 const suggestions = [
   { label: 'Afghanistan' },
   { label: 'Aland Islands' },
@@ -14,5 +15,10 @@ const suggestions = [
   label: suggestion.label,
 }))
 
-;<USelect label="Countries" options={suggestions} variant="outlined" />
+;<React.Fragment>
+  <Typography varaint="h6">Select</Typography>
+  <USelect label="Countries" options={suggestions} variant="outlined" />
+  <Typography varaint="h6">Multiple Select</Typography>
+  <USelect label="Countries" options={suggestions} variant="outlined" isMulti />
+</React.Fragment>
 ```

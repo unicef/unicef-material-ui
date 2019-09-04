@@ -1,23 +1,17 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import {
-  ListItemText,
-  ListItem,
-} from '@material-ui/core'
+import { ListItemText, ListItem } from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
   paddingTabs: {
-   padding: `${theme.spacing(1, 1)} !important`,
+    padding: `${theme.spacing(1, 1)} !important`,
   },
-}));
+}))
 
+export default function MenuTabs() {
+  const classes = useStyles()
 
-
-function MenuTabs() {
-
-  const classes = useStyles();
-
-  return( 
+  return (
     <React.Fragment>
       <ListItem button key="Active" selected className={classes.paddingTabs}>
         <ListItemText primary="Active" />
@@ -28,8 +22,6 @@ function MenuTabs() {
       <ListItem button key="Directory" className={classes.paddingTabs}>
         <ListItemText primary="Directory" />
       </ListItem>
-  </React.Fragment>
+    </React.Fragment>
   )
 }
-
-export default MenuTabs

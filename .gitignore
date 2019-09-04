@@ -2,7 +2,7 @@ node_modules
 dist
 lib
 styleguide
-gh-pages-build
+gh-pages-build/*
 example/node_modules
 site/node_modules
 site/.cache
