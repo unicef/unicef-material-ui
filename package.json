@@ -1,7 +1,7 @@
 {
   "name": "@unicef/material-ui",
-  "version": "0.1.0",
-  "description": "Material ui with react",
+  "version": "0.1.1",
+  "description": "UNICEF theme and components of material-ui for react",
   "main": "index.js",
   "files": [
     "lib",
@@ -18,7 +18,7 @@
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "transpile": "babel src -d dist --copy-files",
+    "transpile": "npm run build:prod",
     "deploy": "gh-pages -d gh-pages-build --git \"$(which git)\" -m $(git log -1 --pretty=%B)",
     "prepublishOnly": "npm run transpile",
     "publish-demo": "npm run build && npm run deploy"
