@@ -1,8 +1,12 @@
 import React from 'react';
-import Checkbox from '@material-ui/core/Checkbox';
+import { Checkbox, FormHelperText } from '@material-ui/core'
 import { ValidatorComponent } from 'react-material-ui-form-validator';
 
 class CheckboxValidatorElement extends ValidatorComponent {
+
+  state = {
+    isValid: this.props.value
+  }
 
   render() {
     const { errorMessages, validators, validatorListener, requiredError, value, ...rest } = this.props
@@ -11,11 +15,11 @@ class CheckboxValidatorElement extends ValidatorComponent {
       <div>
         <Checkbox
           {...rest}
-          ref={(r) => { this.input = r; }}
+          ref={(r) => { this.input = r }}
         />
         {this.errorText()}
       </div>
-    );
+    )
   }
 
   errorText() {
@@ -25,19 +29,12 @@ class CheckboxValidatorElement extends ValidatorComponent {
       return null;
     }
 
-    const style = {
-      right: 0,
-      fontSize: '12px',
-      color: 'red',
-      position: 'relative',
-    };
-
     return (
-      <div style={style}>
+      <FormHelperText error>
         {this.getErrorMessage()}
-      </div>
-    );
+      </FormHelperText>
+    )
   }
 }
 
-export default CheckboxValidatorElement;
+export default CheckboxValidatorElement

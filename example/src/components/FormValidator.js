@@ -13,12 +13,13 @@ const useStyles = makeStyles(theme => ({
   textField: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
+    minWidth: 195,
   },
   dense: {
     marginTop: theme.spacing(2),
   },
   menu: {
-    width: 300,
+    minWidth: 191,
   },
 }))
 
