@@ -73,34 +73,14 @@ const theme = createMuiTheme({
         padding: '0px 16px !important',
       },
     },
-    MuiTab: {
-      root: {
-        '& Mui': {
-          selected: {},
-        },
-      },
-    },
     MuiTypography: {
       root: {
         margin: 'none',
       },
     },
-    MuiButtonBase: {
-      root: {
-        display: 'flex',
-        borderRadius: 4,
-      },
-    },
     MuiInputBase: {
       root: {
         backgroundColor: 'white',
-      },
-    },
-    MuiButton: {
-      contained: {
-        '&:active': {
-          boxShadow: 'none',
-        },
       },
     },
     MuiDrawer: {

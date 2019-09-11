@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography'
 import TextField from '@material-ui/core/TextField'
 import Paper from '@material-ui/core/Paper'
 import Chip from '@material-ui/core/Chip'
+import Avatar from '@material-ui/core/Avatar'
 import MenuItem from '@material-ui/core/MenuItem'
 import CancelIcon from '@material-ui/icons/Cancel'
 
@@ -24,7 +25,7 @@ const useStyles = makeStyles(theme => ({
     overflow: 'hidden',
   },
   chip: {
-    margin: theme.spacing(0.4, 0.25),
+    margin: theme.spacing(1),
   },
   chipFocused: {
     backgroundColor: emphasize(
@@ -33,6 +34,11 @@ const useStyles = makeStyles(theme => ({
         : theme.palette.grey[700],
       0.08
     ),
+  },
+  avatar: {
+    color: 'blue',
+    height: 32,
+    width: 32,
   },
   noOptionsMessage: {
     padding: theme.spacing(1, 2),
@@ -257,14 +263,22 @@ ValueContainer.propTypes = {
   selectProps: PropTypes.object.isRequired,
 }
 
+function handlePush(props) {
+  return alert('Hey, what you doing')
+}
+
 function MultiValue(props) {
+  console.log('multi', props)
   return (
     <Chip
-      tabIndex={-1}
+      variant="outlined"
+      avatar={<Avatar className={props.selectProps.classes.avatar}>SS</Avatar>}
+      label="Clickable Chip"
       label={props.children}
       className={clsx(props.selectProps.classes.chip, {
         [props.selectProps.classes.chipFocused]: props.isFocused,
       })}
+      onClick={() => handlePush(props)}
       onDelete={props.removeProps.onClick}
       deleteIcon={<CancelIcon {...props.removeProps} />}
     />
@@ -332,6 +346,8 @@ export default function USelect(props) {
 
   const { label, variant, TextFieldProps, ...others } = props
 
+  console.log('select', props)
+
   const selectStyles = {
     input: base => ({
       ...base,
@@ -382,7 +398,7 @@ export default function USelect(props) {
 
   const defaultTextFieldProps = {
     label: label,
-    variant: variant || 'outlined',
+    variant: 'outlined',
     InputLabelProps: {
       shrink: true,
     },

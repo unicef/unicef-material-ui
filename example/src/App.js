@@ -20,9 +20,9 @@ import {
   CardWithTabs,
   CardsExample,
   Alert,
-  MenuItems,
   MenuTabs,
   Buttons,
+  FormValidator,
 } from './components'
 import { Tab, Typography } from '@material-ui/core'
 
@@ -86,7 +86,7 @@ export default function App() {
               value={0}
               indicatorColor="primary"
               textColor="primary"
-              // onChange={handleChange}
+            // onChange={handleChange}
             >
               <Tab label="Active" />
               <Tab label="Disabled" disabled />
@@ -97,7 +97,7 @@ export default function App() {
             </UHeaderLeftMenu>
           </UHeader>
           <USideBar headerHeight={112}>
-            <MenuItems />
+            <MenuTabs />
           </USideBar>
           <UContent headerHeight={112}>
             <ColorsExample />
@@ -113,6 +113,10 @@ export default function App() {
               options={options}
               isMulti
             />
+            <Typography variant="h5" style={{ marginTop: '16px' }}>
+              Form validator
+            </Typography>
+            <FormValidator />
             <FormExample />
             <Buttons />
             <Alert />

@@ -74,5 +74,8 @@
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.6",
     "webpack-dev-server": "^3.2.1"
+  },
+  "dependencies": {
+    "react-material-ui-form-validator": "^2.0.9"
   }
 }

@@ -9,6 +9,7 @@ import UContent from './components/UContent'
 import UHeaderMainMenu from './components/UHeaderMainMenu'
 import UButton from './components/UButton'
 import USelect from './components/USelect'
+import UTextField from './components/UTextField'
 
 export {
   theme,
@@ -22,4 +23,5 @@ export {
   UContent,
   UButton,
   USelect,
+  UTextField,
 }

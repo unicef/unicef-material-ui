@@ -4,17 +4,17 @@ import CardsExample from "./CardsExample"
 import ColorsExample from "./ColorsExample"
 import Alert from "./Alert"
 import NavLinks from "./NavLinks"
-import MenuItems from "./MenuItems"
 import MenuTabs from "./MenuTabs"
 import Buttons from "./Buttons"
+import FormValidator from './FormValidator'
 
 export {
   FormExample,
+  FormValidator,
   CardWithTabs,
   CardsExample,
   Alert,
   NavLinks,
-  MenuItems,
   MenuTabs,
   Buttons,
   ColorsExample,
