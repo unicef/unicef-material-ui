@@ -16,7 +16,6 @@ import './App.css'
 import {
   NavLinks,
   ColorsExample,
-  FormExample,
   CardWithTabs,
   CardsExample,
   Alert,
@@ -117,7 +116,6 @@ export default function App() {
               Form validator
             </Typography>
             <FormValidator />
-            <FormExample />
             <Buttons />
             <Alert />
             <CardWithTabs />

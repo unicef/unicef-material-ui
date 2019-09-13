@@ -1,4 +1,3 @@
-import FormExample from "./FormExample"
 import CardWithTabs from "./CardWithTabs"
 import CardsExample from "./CardsExample"
 import ColorsExample from "./ColorsExample"
@@ -9,7 +8,6 @@ import Buttons from "./Buttons"
 import FormValidator from './FormValidator'
 
 export {
-  FormExample,
   FormValidator,
   CardWithTabs,
   CardsExample,

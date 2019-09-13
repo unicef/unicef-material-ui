@@ -76,6 +76,7 @@
     "webpack-dev-server": "^3.2.1"
   },
   "dependencies": {
+    "@material-ui/lab": "^4.0.0-alpha.26",
     "react-material-ui-form-validator": "^2.0.9"
   }
 }

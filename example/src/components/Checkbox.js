@@ -11,12 +11,10 @@ class CheckboxValidatorElement extends ValidatorComponent {
   render() {
     const { errorMessages, validators, validatorListener, requiredError, value, ...rest } = this.props
 
+
     return (
       <div>
-        <Checkbox
-          {...rest}
-          ref={(r) => { this.input = r }}
-        />
+        {this.props.children}
         {this.errorText()}
       </div>
     )
@@ -24,14 +22,9 @@ class CheckboxValidatorElement extends ValidatorComponent {
 
   errorText() {
     const { isValid } = this.state
-
-    if (isValid) {
-      return null;
-    }
-
     return (
       <FormHelperText error>
-        {this.getErrorMessage()}
+        {!isValid && this.getErrorMessage()}
       </FormHelperText>
     )
   }
