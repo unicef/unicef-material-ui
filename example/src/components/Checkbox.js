@@ -23,7 +23,7 @@ class CheckboxValidatorElement extends ValidatorComponent {
   errorText() {
     const { isValid } = this.state
     return (
-      <FormHelperText error>
+      <FormHelperText style={{ marginLeft: '8px', marginTop: 0 }} error>
         {!isValid && this.getErrorMessage()}
       </FormHelperText>
     )

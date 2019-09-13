@@ -22,7 +22,8 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(2),
   },
   margin: {
-    margin: theme.spacing(2)
+    marginTop: theme.spacing(1),
+    marginLeft: theme.spacing(1),
   },
   menu: {
     minWidth: 191,
@@ -157,12 +158,12 @@ export default function FormValidator() {
       </ValidatorForm>
       <ValidatorForm
         ref={form}
-        onSubmit={handleSubmit}
+        onBlur={handleSubmit}
         onError={errors => console.log(errors)}
-        debounceTime={1000}
-      // instantValidate={true}
+        // debounceTime={1000}
+        instantValidate={true}
       >
-        <Box display="flex" alignItems="baseline">
+        <Box display="flex" flexDirection="column" alignItems="baseline">
           <CheckboxValidatorElement
             name="termAndCondition"
             label="Agree with the Terms and Conditions"
@@ -225,7 +226,6 @@ export default function FormValidator() {
           <CheckboxValidatorElement
             name="radio"
             label="Choose an option"
-            className={classes.margin}
             validators={['isTruthy']}
             errorMessages={['choose an option from above']}
             value={validChoose}
@@ -237,23 +237,24 @@ export default function FormValidator() {
                   value="female"
                   control={<Radio color="primary" />}
                   label="Female"
-                  labelPlacement="start"
+                  labelPlacement="end"
                 />
                 <FormControlLabel
                   value="male"
                   control={<Radio color="primary" />}
                   label="Male"
-                  labelPlacement="start"
+                  labelPlacement="end"
                 />
                 <FormControlLabel
                   value="other"
                   control={<Radio color="primary" />}
                   label="Other"
-                  labelPlacement="start"
+                  labelPlacement="end"
                 />
               </RadioGroup>
             </FormControl>
           </CheckboxValidatorElement>
+          <Button className={classes.margin} color="primary" variant="contained" type="Validate">Validate</Button>
         </Box>
       </ValidatorForm>
     </React.Fragment >
