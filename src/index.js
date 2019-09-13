@@ -9,7 +9,7 @@ import UContent from './components/UContent'
 import UHeaderMainMenu from './components/UHeaderMainMenu'
 import UButton from './components/UButton'
 import USelect from './components/USelect'
-import UTextField from './components/UTextField'
+import UTextField from './components/UValidatorComponent'
 
 export {
   theme,
