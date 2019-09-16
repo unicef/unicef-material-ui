@@ -1,3 +1,3 @@
-import { ValidatorForm } from 'react-material-ui-form-validator'
+import UValidatorForm from './UValidatorForm'
 
-export default UValidatorForm = ValidatorForm
+export default UValidatorForm
