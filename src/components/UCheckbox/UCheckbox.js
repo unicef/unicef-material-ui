@@ -1,5 +1,5 @@
 import React from 'react';
-import { Checkbox, FormHelperText } from '@material-ui/core'
+import FormHelperText from '@material-ui/core/FormHelperText'
 import { ValidatorComponent } from 'react-material-ui-form-validator'
 
 class UCheckbox extends ValidatorComponent {
