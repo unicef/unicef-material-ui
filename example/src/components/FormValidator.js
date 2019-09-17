@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { Button, Box, Checkbox, MenuItem, Radio, FormGroup, FormControl, FormLabel, FormControlLabel, RadioGroup, FormHelperText } from '@material-ui/core'
 import { SelectValidator, ValidatorForm, TextValidator } from 'react-material-ui-form-validator'
+import { UValidatorForm, UValidatorComponent, UTextField } from 'unicef-material-ui'
 import CheckboxValidatorElement from './Checkbox'
 
 
@@ -93,12 +94,12 @@ export default function FormValidator() {
   }
   useEffect(() => {
     // returned function will be called on component unmount 
-    ValidatorForm.addValidationRule('isTruthy', (value) => { return value })
+    UValidatorForm.addValidationRule('isTruthy', (value) => { return value })
   }, [])
 
   return (
     <React.Fragment>
-      <ValidatorForm
+      <UValidatorForm
         ref={form}
         onSubmit={handleSubmit}
         onError={errors => console.log(errors)}
@@ -154,16 +155,16 @@ export default function FormValidator() {
           </SelectValidator>
           <Button className={classes.margin} color="primary" variant="contained" type="submit">Submit</Button>
         </Box>
-      </ValidatorForm>
-      <ValidatorForm
+      </UValidatorForm>
+      <UValidatorForm
         ref={form}
         onBlur={handleSubmit}
         onError={errors => console.log(errors)}
         // debounceTime={1000}
         instantValidate={true}
       >
-        <Box display="flex" flexDirection="column" alignItems="baseline">
-          <CheckboxValidatorElement
+        <Box display="flex" mb={2} flexDirection="column" alignItems="baseline">
+          <UValidatorComponent
             name="termAndCondition"
             label="Agree with the Terms and Conditions"
             validators={['isTruthy']}
@@ -221,8 +222,8 @@ export default function FormValidator() {
                 />
               </FormGroup>
             </FormControl>
-          </CheckboxValidatorElement>
-          <CheckboxValidatorElement
+          </UValidatorComponent>
+          <UValidatorComponent
             name="radio"
             label="Choose an option"
             validators={['isTruthy']}
@@ -252,10 +253,10 @@ export default function FormValidator() {
                 />
               </RadioGroup>
             </FormControl>
-          </CheckboxValidatorElement>
+          </UValidatorComponent>
           <Button className={classes.margin} color="primary" variant="contained" type="Validate">Validate</Button>
         </Box>
-      </ValidatorForm>
+      </UValidatorForm>
     </React.Fragment >
   )
 }

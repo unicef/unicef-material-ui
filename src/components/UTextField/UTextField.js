@@ -8,6 +8,7 @@ const useStyles = makeStyles(theme => ({
   textField: {
     margin: theme.spacing(1),
     minWidth: 195,
+    backgroundImage: 'white'
   },
 }));
 
@@ -39,7 +40,7 @@ const useStyles = makeStyles(theme => ({
 export default function UTextField(props) {
 
   const classes = useStyles()
-  const { className, options, ...others } = props
+  const { options, ...others } = props
 
   UTextField.propTypes = {
     /** 
@@ -67,7 +68,7 @@ export default function UTextField(props) {
   }
 
   return (
-    <TextValidator className={className || classes.textField} {...others} >
+    <TextValidator {...others} >
       {options && options.map(option => (
         <MenuItem key={option.value} value={option.value}>
           {option.label}

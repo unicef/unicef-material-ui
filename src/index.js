@@ -9,7 +9,9 @@ import UContent from './components/UContent'
 import UHeaderMainMenu from './components/UHeaderMainMenu'
 import UButton from './components/UButton'
 import USelect from './components/USelect'
-import UTextField from './components/UValidatorComponent'
+import UTextField from './components/UTextField'
+import UValidatorComponent from './components/UValidatorComponent'
+import UValidatorForm from './components/UValidatorForm'
 
 export {
   theme,
@@ -24,4 +26,6 @@ export {
   UButton,
   USelect,
   UTextField,
+  UValidatorForm,
+  UValidatorComponent,
 }
