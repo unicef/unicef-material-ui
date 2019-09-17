@@ -74,8 +74,8 @@ module.exports = {
       name: 'Form Validation',
       components: () => ([
         path.resolve(__dirname, 'src/components/UValidatorForm', 'UValidatorForm.js'),
-        path.resolve(__dirname, 'src/components/UValidatorComponent', 'UValidatorComponent.js'),
         path.resolve(__dirname, 'src/components/UTextField', 'UTextField.js'),
+        path.resolve(__dirname, 'src/components/UValidatorComponent', 'UValidatorComponent.js'),
       ]),
       // sections: [
       //   {

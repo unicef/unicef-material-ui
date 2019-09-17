@@ -1,3 +1,62 @@
+### Usage
+
+```jsx static
+const { react, angular, azure, redux } = values;
+/**
+ * Our own rule for validation
+ * Value will be true only when more than one checkboxes are checked (below condition), then no errors.
+ * If below condition does not meet, will dispaly error. 
+ * value must be passed to UValidatorComponent. 
+ */
+const value = [react, angular, redux].filter(v => v).length > 1;
+
+export default function CheckBoxValidator() {
+
+  return (
+    <UValidatorForm
+      ref={form}
+      onBlur={handleSubmit}
+      onError={errors => console.log(errors)}
+      // debounceTime={1000}
+      instantValidate={true}
+    >
+      <UValidatorComponent
+        // validators array
+        validators={['isTruthy']}
+        // error messages to be displayed
+        errorMessages={['check more than two fields']}
+        value={value}  // <---- you must provide this prop, it will be used only for validation
+      > 
+        <Checkbox
+          name="react"
+          label="React"
+          color="primary"
+          checked={values.react}
+          value={values.react}
+          onChange={handleValue}
+        />
+        <Checkbox
+          name="redux"
+          label="Redux"
+          color="secondary"
+          checked={values.redux}
+          value={values.redux}
+          onChange={handleValue}
+        />
+        <Checkbox
+          name="angular"
+          label="Angular"
+          color="secondary"
+          checked={values.angular}
+          value={values.angular}
+          onChange={handleValue}
+        />
+      </UValidatorComponent>
+    </UValidatorForm>
+  )
+}
+```
+
 ### Example for Check Box : 
 
 ```jsx
@@ -46,11 +105,6 @@ const useStyles = makeStyles(theme => ({
     // Submit the changes from here
   };
 
-  useEffect(() => {
-    // returned function will be called on component unmount 
-    UValidatorForm.addValidationRule('isTruthy', (value) => { return value })
-  }, []);
-
   // return (
   <UValidatorForm
     ref={form}
@@ -60,8 +114,6 @@ const useStyles = makeStyles(theme => ({
     instantValidate={true}
   >
     <UValidatorComponent
-      name="checkbox"
-      label="Pick more than two"
       validators={['isTruthy']}
       errorMessages={['check more than two fields']}
       value={valid}
@@ -147,13 +199,13 @@ const useStyles = makeStyles(theme => ({
 
   const classes = useStyles();
 
- const [valueChoice, setValueChoice] = React.useState(null);
+ const [value, setValue] = React.useState(null);
 
   function handleChange(event) {
-    setValueChoice(event.target.value);
+    setValue(event.target.value);
   }
 
-  const validChoose = valueChoice === null ? false : true;
+  const validChoice = value === null ? false : true;
 
   function handleSubmit() {
     // Submit the changes from here
@@ -178,21 +230,21 @@ const useStyles = makeStyles(theme => ({
       label="Choose an option"
       validators={['isTruthy']}
       errorMessages={['choose an option from above']}
-      value={validChoose}
+      value={validChoice}
     >
       <FormControl className={classes.margin} required component="fieldset" >
         <FormLabel component="legend">Gender</FormLabel>
-        <RadioGroup aria-label="gender" row name="gender2" value={valueChoice} onChange={handleChange}>
+        <RadioGroup aria-label="gender" row name="gender2" value={value} onChange={handleChange}>
           <FormControlLabel
-            value="female"
+            value="windows"
             control={<Radio color="primary" />}
-            label="Female"
+            label="Windows"
             labelPlacement="end"
           />
           <FormControlLabel
-            value="male"
+            value="mac"
             control={<Radio color="primary" />}
-            label="Male"
+            label="Mac"
             labelPlacement="end"
           />
           <FormControlLabel

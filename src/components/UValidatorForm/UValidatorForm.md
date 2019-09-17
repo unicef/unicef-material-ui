@@ -123,6 +123,7 @@ const currencies = [
             value={values.currency}
             validators={['required']}
             errorMessages={['this field is required']}
+            options={currencies}
             SelectProps={{
               MenuProps: {
                 className: classes.menu,
@@ -130,14 +131,7 @@ const currencies = [
             }}
             margin="normal"
             variant="outlined"
-          >
-            {currencies.map(option => (
-              <MenuItem key={option.value} value={option.value}>
-                {option.label}
-              </MenuItem>
-            ))}
-          </UTextField>
-        
+        />
         <Button className={classes.margin} color="primary" variant="contained" type="submit">Submit</Button>
       </Box>
     </UValidatorForm>

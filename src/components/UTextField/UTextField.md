@@ -1,4 +1,119 @@
+### Usage
+
+```jsx static
+<UValidatorForm
+  ref={form}
+  onSubmit={handleSubmit}
+  onError={errors => console.log(errors)}
+  debounceTime={1000}
+  // instantValidate={true}
+>
+  <UTextField
+    label="Email"
+    onChange={handleValue}
+    name="email"
+    variant="outlined"
+    className={classes.textField}
+    value={value}
+    validators={['required', 'isEmail']}
+    errorMessages={['this field is required', 'email is not valid']}
+  />
+  <Button
+    className={classes.margin}
+    color="primary" variant="contained"
+    type="submit"
+  >
+    Submit
+  </Button>
+</UValidatorForm>
+```
+
 ### Examples 
+
+`Select`
+```html 
+select={true} | select
+if you pass select, you must pass options 
+options = [{value: '', label: ''}, {value: 'USD', label: '$'}]
+
+```
+
+```jsx
+import React, { useState, useEffect, useRef } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import { Button, Box, MenuItem } from '@material-ui/core';
+import UValidatorForm from '../UValidatorForm'
+
+const useStyles = makeStyles(theme => ({
+  margin: {
+    marginTop: theme.spacing(1),
+    marginLeft: theme.spacing(1),
+  }
+}));
+
+const currencies = [
+  {
+    value: '',
+    label: '',
+  },
+  {
+    value: 'USD',
+    label: '$',
+  },
+  {
+    value: 'EUR',
+    label: '€',
+  },
+  {
+    value: 'BTC',
+    label: '฿',
+  },
+  {
+    value: 'JPY',
+    label: '¥',
+  },
+];
+
+// export default function FormValidator() {
+
+  const form = useRef('form');
+  const classes = useStyles();
+  const [value, setValue] = useState();
+
+  function handleValue(event) {
+    setValue(event.target.value)
+  };
+
+  function handleSubmit() {
+    // Submit the changes from here
+  };
+
+  // return (
+    <UValidatorForm
+      ref={form}
+      onSubmit={handleSubmit}
+      onError={errors => console.log(errors)}
+      // debounceTime={1000}
+      instantValidate={true}
+    >
+      <Box display="flex" alignItems="baseline">
+        <UTextField
+          select
+          label="Currency"
+          onChange={handleValue}
+          name="currency"
+          variant="outlined"
+          options={currencies}
+          value={value}
+          validators={['required']}
+          errorMessages={['this field is required']}
+        />
+        <Button className={classes.margin} color="primary" variant="contained" onClick={handleSubmit} type="submit">Submit</Button>
+      </Box>
+    </UValidatorForm>
+//   )
+// }
+```
 
 `Email : isEmail and required`
 
@@ -13,13 +128,6 @@ import { Button, Box, MenuItem } from '@material-ui/core';
 import UValidatorForm from '../UValidatorForm'
 
 const useStyles = makeStyles(theme => ({
-  textField: {
-    margin: theme.spacing(1),
-    minWidth: 195,
-  },
-  dense: {
-    marginTop: theme.spacing(2),
-  },
   margin: {
     marginTop: theme.spacing(1),
     marginLeft: theme.spacing(1),
@@ -35,7 +143,6 @@ const useStyles = makeStyles(theme => ({
   const [value, setValue] = useState();
 
   function handleValue(event) {
-    console.log(event.target.value)
     setValue(event.target.value)
   };
 
@@ -57,7 +164,6 @@ const useStyles = makeStyles(theme => ({
           onChange={handleValue}
           name="email"
           variant="outlined"
-          className={classes.textField}
           value={value}
           validators={['required', 'isEmail']}
           errorMessages={['this field is required', 'email is not valid']}
@@ -104,7 +210,6 @@ const useStyles = makeStyles(theme => ({
   const [value, setValue] = useState();
 
   function handleValue(event) {
-    console.log(event.target.value)
     setValue(event.target.value)
   };
 
@@ -274,4 +379,76 @@ const useStyles = makeStyles(theme => ({
     </UValidatorForm>
 //   )
 // }
+```
+
+### Add custom rules
+
+```jsx static
+import React, { useState, useRef, useEffect } from 'react';
+import Button from '@material-ui/core/Button';
+import { UTextField, UValidatorForm, UButton } from '@unicef/material-ui';
+ 
+export default function ResetPasswordForm() {
+ 
+  const [user, setUser] = useState({
+      password: '',
+      repeatPassword: '',
+  })
+  const form = useRef('form');
+  const { password, repeatPassword} =  user;
+
+  useEffect(() => {
+    // Add your own rule
+    UValidatorForm.addValidationRule('isPasswordMatch', (value) => {
+      if (value !== password) {
+        return false;
+      }
+      return true;
+    });
+  });
+
+  function handleChange(event) {
+    const target = event.target
+    const value = target.value
+    const name = target.name
+
+    setUser({ ...user, [name]: value })
+  };
+
+  function handleSubmit() {
+      // your submit logic
+  }
+
+  return (
+    <UValidatorForm
+      ref={form}
+      onBlur={handleSubmit}
+      onError={errors => console.log(errors)}
+      // debounceTime={1000}
+      instantValidate={true}
+    >
+      <UTextField
+        label="Password"
+        onChange={handleChange}
+        variant="outlined"
+        name="password"
+        type="password"
+        validators={['required']}
+        errorMessages={['this field is required']}
+        value={user.password}
+      />
+      <UTextField
+        label="Repeat password"
+        onChange={handleChange}
+        variant="outlined"
+        name="repeatPassword"
+        type="password"
+        validators={['isPasswordMatch', 'required']}
+        errorMessages={['password mismatch', 'this field is required']}
+        value={user.repeatPassword}
+      />
+      <UButton uPrimary type="submit">Submit</UButton>
+    </UValidatorForm>
+  )
+}
 ```
