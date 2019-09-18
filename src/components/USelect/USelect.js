@@ -5,6 +5,7 @@ import Select from 'react-select'
 import { emphasize, makeStyles, useTheme } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import TextField from '@material-ui/core/TextField'
+import Box from '@material-ui/core/Box'
 import Paper from '@material-ui/core/Paper'
 import Chip from '@material-ui/core/Chip'
 import Avatar from '@material-ui/core/Avatar'
@@ -162,7 +163,11 @@ function Option(props) {
       }}
       {...props.innerProps}
     >
-      {props.children}
+      <Avatar width="32" height="32" src={props.data.imageUrl} />
+      <Box fontSize={14} pl={1} display="flex" flexDirection="column">
+        <Typography variant="span">{props.data.value}</Typography>
+        <Box fontSize={12}>{props.data.subtitle}</Box>
+      </Box>
     </MenuItem>
   )
 }
@@ -230,7 +235,7 @@ function SingleValue(props) {
       className={props.selectProps.classes.singleValue}
       {...props.innerProps}
     >
-      {props.children}
+      <img width="24" height="24" src={props.selectProps.people.imageUrl} />{props.children}
     </Typography>
   )
 }
@@ -264,16 +269,15 @@ ValueContainer.propTypes = {
 }
 
 function handlePush(props) {
-  return alert('Hey, what you doing')
+  // return alert('Hey, what you doing')
 }
 
 function MultiValue(props) {
-  console.log('multi', props)
+  // console.log('multi', props)
   return (
     <Chip
       variant="outlined"
-      avatar={<Avatar className={props.selectProps.classes.avatar}>SS</Avatar>}
-      label="Clickable Chip"
+      avatar={<Avatar className={props.selectProps.classes.avatar} src={props.data.imageUrl} />}
       label={props.children}
       className={clsx(props.selectProps.classes.chip, {
         [props.selectProps.classes.chipFocused]: props.isFocused,
@@ -303,7 +307,11 @@ function Menu(props) {
       className={props.selectProps.classes.paper}
       {...props.innerProps}
     >
-      {props.children}
+      {
+        props.isLoading
+          ? <Box p={2}> Loading ....</Box>
+          : props.children
+      }
     </Paper>
   )
 }
@@ -346,7 +354,7 @@ export default function USelect(props) {
 
   const { label, variant, TextFieldProps, ...others } = props
 
-  console.log('select', props)
+  // console.log('select', props)
 
   const selectStyles = {
     input: base => ({
@@ -377,14 +385,14 @@ export default function USelect(props) {
     onChange: PropTypes.func,
     /** Options to select from dropdown.
      *
-     * `const suggestions = [ { label: "name1" }, {label: "name2"} ]` // which is an array of objects
-     *
-     * `options = {suggestions}`
-     */
+   * `const suggestions = [ {label: "name1" }, {label: "name2"} ]` // which is an array of objects
+    *
+   * `options = {suggestions}`
+    */
     options: PropTypes.array,
     /** It accepts all the props from TextField API.
      *
-     * `TextFieldProps={ helperText="text", inputProps={className: classes.textField}}`
+    * `TextFieldProps={helperText = "text", inputProps={className: classes.textField}}`
      *
      */
     TextFieldProps: PropTypes.object,
@@ -403,14 +411,18 @@ export default function USelect(props) {
       shrink: true,
     },
   }
+
+
   const mergedTextFieldProps = { ...defaultTextFieldProps, ...TextFieldProps }
 
   return (
     <div className={classes.margin}>
       <Select
         classes={classes}
+        loadingMessage={'loading'}
         styles={selectStyles}
         components={components}
+        loadOptions={[]}
         TextFieldProps={mergedTextFieldProps}
         {...others}
       />

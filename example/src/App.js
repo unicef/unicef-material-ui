@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
 import {
   theme,
@@ -25,47 +25,39 @@ import {
 } from './components'
 import { Tab, Typography } from '@material-ui/core'
 
+const maleImage = 'https://i0.wp.com/myaeon.com.au/wp-content/uploads/2017/04/avatar-round-3.png?ssl=1'
+const femaleImage = 'http://amendllc.com/wp-content/uploads/2017/02/avatar-round-2-300x300.png'
+
 const options = [
-  { label: 'Afghanistan' },
-  { label: 'Aland Islands' },
-  { label: 'Albania' },
-  { label: 'Algeria' },
-  { label: 'American Samoa' },
-  { label: 'Andorra' },
-  { label: 'Angola' },
-  { label: 'Anguilla' },
-  { label: 'Antarctica' },
-  { label: 'Antigua and Barbuda' },
-  { label: 'Argentina' },
-  { label: 'Armenia' },
-  { label: 'Aruba' },
-  { label: 'Australia' },
-  { label: 'Austria' },
-  { label: 'Azerbaijan' },
-  { label: 'Bahamas' },
-  { label: 'Bahrain' },
-  { label: 'Bangladesh' },
-  { label: 'Barbados' },
-  { label: 'Belarus' },
-  { label: 'Belgium' },
-  { label: 'Belize' },
-  { label: 'Benin' },
-  { label: 'Bermuda' },
-  { label: 'Bhutan' },
-  { label: 'Bolivia, Plurinational State of' },
-  { label: 'Bonaire, Sint Eustatius and Saba' },
-  { label: 'Bosnia and Herzegovina' },
-  { label: 'Botswana' },
-  { label: 'Bouvet Island' },
-  { label: 'Brazil' },
-  { label: 'British Indian Ocean Territory' },
-  { label: 'Brunei Darussalam' },
+  { title: 'Juan Merlos Tevar', subtitle: 'Manager', imageUrl: maleImage },
+  { title: 'Suresh Sevarthi', subtitle: 'Front-end Developer', imageUrl: maleImage },
+  { title: 'Kundal Singh Mehra', subtitle: 'Back-end Developer', imageUrl: maleImage },
+  { title: 'Gia Zarina Santos', subtitle: 'Manager', imageUrl: femaleImage },
+  { title: 'Cory Kleinschmidt', subtitle: 'Information technology specialist', imageUrl: maleImage },
+  { title: 'Riddhi Poladia', subtitle: 'Database Specialist', imageUrl: femaleImage },
+  { title: 'Mahananda Talgaonkar', subtitle: 'Sharepoint Developer', imageUrl: femaleImage },
+  { title: 'Mary Anne Alde', subtitle: 'Sharepoint analyst', imageUrl: femaleImage },
+  { title: 'Renga Narayanan', subtitle: 'Back-end Developer', imageUrl: maleImage },
 ].map(suggestion => ({
-  value: suggestion.label,
-  label: suggestion.label,
+  value: suggestion.title,
+  label: suggestion.title,
+  subtitle: suggestion.subtitle,
+  imageUrl: suggestion.imageUrl,
 }))
 
 export default function App() {
+
+  const [isLoading, setLoading] = useState(true)
+  const [gotOptions, setOptions] = useState([''])
+
+  useEffect(() => {
+    setTimeout(() => {
+      setOptions(options)
+      setLoading(false)
+    }, 3000);
+    return () => clearTimeout();
+  }, []);
+
   return (
     <MuiThemeProvider theme={theme}>
       <UNICEFStyleProvider>
@@ -104,12 +96,13 @@ export default function App() {
               USelect
             </Typography>
             <USelect
-              label="Countries"
+              label="People"
               TextFieldProps={{
-                helperText: 'Please select the countries from above',
+                helperText: 'Please select people from list',
               }}
-              placeholder="Select countries ...."
-              options={options}
+              isLoading={isLoading}
+              placeholder="Select people ...."
+              options={gotOptions}
               isMulti
             />
             <Typography variant="h5" style={{ marginTop: '16px' }}>
