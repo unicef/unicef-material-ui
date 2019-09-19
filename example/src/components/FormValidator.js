@@ -107,7 +107,7 @@ export default function FormValidator() {
       // instantValidate={true}
       >
         <Box display="flex" alignItems="baseline">
-          <TextValidator
+          <UTextField
             label="Email"
             onChange={handleValue}
             name="email"
@@ -117,7 +117,7 @@ export default function FormValidator() {
             validators={['required', 'isEmail']}
             errorMessages={['this field is required', 'email is not valid']}
           />
-          <TextValidator
+          <UTextField
             label="Password"
             onChange={handleValue}
             name="password"
@@ -128,31 +128,20 @@ export default function FormValidator() {
             value={values.password}
             errorMessages={['this field is required']}
           />
-          <SelectValidator
+          <UTextField
             id="outlined-select-currency"
             select
             label="Currency"
-            className={classes.textField}
             value={values.currency}
             onChange={handleValue}
+            options={currencies}
             name="currency"
             value={values.currency}
             validators={['required']}
             errorMessages={['this field is required']}
-            SelectProps={{
-              MenuProps: {
-                className: classes.menu,
-              },
-            }}
             margin="normal"
             variant="outlined"
-          >
-            {currencies.map(option => (
-              <MenuItem key={option.value} value={option.value}>
-                {option.label}
-              </MenuItem>
-            ))}
-          </SelectValidator>
+          />
           <Button className={classes.margin} color="primary" variant="contained" type="submit">Submit</Button>
         </Box>
       </UValidatorForm>

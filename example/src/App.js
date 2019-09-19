@@ -24,6 +24,7 @@ import {
   FormValidator,
 } from './components'
 import { Tab, Typography } from '@material-ui/core'
+import { mergeClasses } from '@material-ui/styles';
 
 const maleImage = 'https://i0.wp.com/myaeon.com.au/wp-content/uploads/2017/04/avatar-round-3.png?ssl=1'
 const femaleImage = 'http://amendllc.com/wp-content/uploads/2017/02/avatar-round-2-300x300.png'
