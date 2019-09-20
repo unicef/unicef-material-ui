@@ -1,5 +1,4 @@
 import { createMuiTheme } from '@material-ui/core/styles'
-const colorPrimary = '#374EA2'
 
 const unicef = {
   blue: '#1CABE2',

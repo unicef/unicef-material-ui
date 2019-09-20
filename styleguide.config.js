@@ -34,7 +34,11 @@ module.exports = {
       sections: [
         {
           name: '',
-          content: 'src/readme.md',
+          content: 'src/docs/Introduction.md',
+        },
+        {
+          name: 'Installation',
+          content: 'src/docs/Installation.md',
         },
         {
           name: 'Example',

@@ -102,7 +102,7 @@ const styles = {
   SectionHeading: {
     sectionName: {
       display: 'block',
-      paddingTop: `${rhythm(1)} !important`,
+      paddingTop: `${rhythm(0.25)} !important`,
       textDecoration: 'none !important',
       '&:hover': {
         opacity: 0.75,
