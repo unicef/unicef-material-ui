@@ -53,12 +53,13 @@ const useStyles = makeStyles(theme => ({
     bottom: 6,
     fontSize: 16,
   },
-  paper: {
+  paper: props => ({
     position: 'absolute',
     zIndex: 999,
     left: 0,
     right: 0,
-  },
+    marginTop: props.TextFieldProps && props.TextFieldProps.helperText ? theme.spacing(-1.5) : theme.spacing(1)
+  }),
   divider: {
     height: theme.spacing(2),
   },
@@ -116,7 +117,6 @@ function Control(props) {
     <TextField
       fullWidth
       variant="outlined"
-      helperText={false}
       InputProps={{
         inputComponent,
         inputProps: {
@@ -166,7 +166,7 @@ function Option(props) {
       {props.isMulti ? <React.Fragment>
         <Avatar width="32" height="32" src={props.data.imageUrl} />
         <Box fontSize={14} pl={1} display="flex" flexDirection="column">
-          <Typography variant="span">{props.data.value}</Typography>
+          <Typography variant="span">{props.data.label}</Typography>
           <Box fontSize={12}>{props.data.subtitle}</Box>
         </Box>
       </React.Fragment>
@@ -353,7 +353,7 @@ const components = {
  *
  */
 export default function USelect(props) {
-  const classes = useStyles()
+  const classes = useStyles(props)
   const theme = useTheme()
 
   const { label, variant, TextFieldProps, ...others } = props
@@ -423,10 +423,8 @@ export default function USelect(props) {
     <div className={classes.margin}>
       <Select
         classes={classes}
-        loadingMessage={'loading'}
         styles={selectStyles}
         components={components}
-        loadOptions={[]}
         TextFieldProps={mergedTextFieldProps}
         {...others}
       />

@@ -24,20 +24,19 @@ import {
   FormValidator,
 } from './components'
 import { Tab, Typography } from '@material-ui/core'
-import { mergeClasses } from '@material-ui/styles';
 
 const options = [
-  { title: 'Juan Merlos Tevar', subtitle: 'Manager', imageUrl: null },
-  { title: 'Suresh Sevarthi', subtitle: 'Front-end Developer', imageUrl: null },
-  { title: 'Kundal Singh Mehra', subtitle: 'Back-end Developer', imageUrl: null },
-  { title: 'Gia Zarina Santos', subtitle: 'Manager', imageUrl: null },
-  { title: 'Cory Kleinschmidt', subtitle: 'Information technology specialist', imageUrl: null },
-  { title: 'Riddhi Poladia', subtitle: 'Database Specialist', imageUrl: null },
-  { title: 'Mahananda Talgaonkar', subtitle: 'Sharepoint Developer', imageUrl: null },
-  { title: 'Mary Anne Alde', subtitle: 'Sharepoint analyst', imageUrl: null },
-  { title: 'Renga Narayanan', subtitle: 'Back-end Developer', imageUrl: null },
+  { id: 1, title: 'Juan Merlos Tevar', subtitle: 'Manager', imageUrl: null },
+  { id: 2, title: 'Suresh Sevarthi', subtitle: 'Front-end Developer', imageUrl: null },
+  { id: 3, title: 'Kundal Singh Mehra', subtitle: 'Back-end Developer', imageUrl: null },
+  { id: 4, title: 'Gia Zarina Santos', subtitle: 'Manager', imageUrl: null },
+  { id: 5, title: 'Cory Kleinschmidt', subtitle: 'Information technology specialist', imageUrl: null },
+  { id: 6, title: 'Riddhi Poladia', subtitle: 'Database Specialist', imageUrl: null },
+  { id: 7, title: 'Mahananda Talgaonkar', subtitle: 'Sharepoint Developer', imageUrl: null },
+  { id: 8, title: 'Mary Anne Alde', subtitle: 'Sharepoint analyst', imageUrl: null },
+  { id: 9, title: 'Renga Narayanan', subtitle: 'Back-end Developer', imageUrl: null },
 ].map(suggestion => ({
-  value: suggestion.title,
+  value: suggestion.id,
   label: suggestion.title,
   subtitle: suggestion.subtitle,
   imageUrl: suggestion.imageUrl,
@@ -55,6 +54,10 @@ export default function App() {
     }, 3000);
     return () => clearTimeout();
   }, []);
+
+  function handleChange(event) {
+    console.log(event)
+  }
 
   return (
     <MuiThemeProvider theme={theme}>
@@ -101,6 +104,7 @@ export default function App() {
               isLoading={isLoading}
               placeholder="Select people ..."
               options={gotOptions}
+              onChange={handleChange}
               isMulti
             />
             <Typography variant="h5" style={{ marginTop: '16px' }}>
