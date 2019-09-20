@@ -37,7 +37,6 @@ const useStyles = makeStyles(theme => ({
     ),
   },
   avatar: {
-    color: 'blue',
     height: 32,
     width: 32,
   },
