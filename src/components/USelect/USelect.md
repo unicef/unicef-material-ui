@@ -15,10 +15,27 @@ const suggestions = [
   label: suggestion.label,
 }))
 
+const options = [
+  { title: 'Juan Merlos Tevar', subtitle: 'Manager', imageUrl: null },
+  { title: 'Suresh Sevarthi', subtitle: 'Front-end Developer', imageUrl: null },
+  { title: 'Kundal Singh Mehra', subtitle: 'Back-end Developer', imageUrl: null },
+  { title: 'Gia Zarina Santos', subtitle: 'Manager', imageUrl: null },
+  { title: 'Cory Kleinschmidt', subtitle: 'Information technology specialist', imageUrl: null },
+  { title: 'Riddhi Poladia', subtitle: 'Database Specialist', imageUrl: null },
+  { title: 'Mahananda Talgaonkar', subtitle: 'Sharepoint Developer', imageUrl: null },
+  { title: 'Mary Anne Alde', subtitle: 'Sharepoint analyst', imageUrl: null },
+  { title: 'Renga Narayanan', subtitle: 'Back-end Developer', imageUrl: null },
+].map(suggestion => ({
+  value: suggestion.title,
+  label: suggestion.title,
+  subtitle: suggestion.subtitle,
+  imageUrl: suggestion.imageUrl,
+}))
+
 ;<React.Fragment>
   <Typography varaint="h6">Select</Typography>
-  <USelect label="Countries" options={suggestions} variant="outlined" />
+  <USelect label="People" options={suggestions} variant="outlined" />
   <Typography varaint="h6">Multiple Select</Typography>
-  <USelect label="Countries" options={suggestions} variant="outlined" isMulti />
+  <USelect label="People" options={options} variant="outlined" isMulti />
 </React.Fragment>
 ```

@@ -26,19 +26,16 @@ import {
 import { Tab, Typography } from '@material-ui/core'
 import { mergeClasses } from '@material-ui/styles';
 
-const maleImage = 'https://i0.wp.com/myaeon.com.au/wp-content/uploads/2017/04/avatar-round-3.png?ssl=1'
-const femaleImage = 'http://amendllc.com/wp-content/uploads/2017/02/avatar-round-2-300x300.png'
-
 const options = [
-  { title: 'Juan Merlos Tevar', subtitle: 'Manager', imageUrl: '' },
-  { title: 'Suresh Sevarthi', subtitle: 'Front-end Developer', imageUrl: maleImage },
-  { title: 'Kundal Singh Mehra', subtitle: 'Back-end Developer', imageUrl: maleImage },
-  { title: 'Gia Zarina Santos', subtitle: 'Manager', imageUrl: femaleImage },
-  { title: 'Cory Kleinschmidt', subtitle: 'Information technology specialist', imageUrl: maleImage },
-  { title: 'Riddhi Poladia', subtitle: 'Database Specialist', imageUrl: femaleImage },
-  { title: 'Mahananda Talgaonkar', subtitle: 'Sharepoint Developer', imageUrl: femaleImage },
-  { title: 'Mary Anne Alde', subtitle: 'Sharepoint analyst', imageUrl: femaleImage },
-  { title: 'Renga Narayanan', subtitle: 'Back-end Developer', imageUrl: maleImage },
+  { title: 'Juan Merlos Tevar', subtitle: 'Manager', imageUrl: null },
+  { title: 'Suresh Sevarthi', subtitle: 'Front-end Developer', imageUrl: null },
+  { title: 'Kundal Singh Mehra', subtitle: 'Back-end Developer', imageUrl: null },
+  { title: 'Gia Zarina Santos', subtitle: 'Manager', imageUrl: null },
+  { title: 'Cory Kleinschmidt', subtitle: 'Information technology specialist', imageUrl: null },
+  { title: 'Riddhi Poladia', subtitle: 'Database Specialist', imageUrl: null },
+  { title: 'Mahananda Talgaonkar', subtitle: 'Sharepoint Developer', imageUrl: null },
+  { title: 'Mary Anne Alde', subtitle: 'Sharepoint analyst', imageUrl: null },
+  { title: 'Renga Narayanan', subtitle: 'Back-end Developer', imageUrl: null },
 ].map(suggestion => ({
   value: suggestion.title,
   label: suggestion.title,

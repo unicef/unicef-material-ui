@@ -56,7 +56,6 @@ const useStyles = makeStyles(theme => ({
   paper: {
     position: 'absolute',
     zIndex: 999,
-    marginTop: theme.spacing(1),
     left: 0,
     right: 0,
   },
@@ -117,6 +116,7 @@ function Control(props) {
     <TextField
       fullWidth
       variant="outlined"
+      helperText={false}
       InputProps={{
         inputComponent,
         inputProps: {
@@ -163,11 +163,16 @@ function Option(props) {
       }}
       {...props.innerProps}
     >
-      <Avatar width="32" height="32" src={props.data.imageUrl} />
-      <Box fontSize={14} pl={1} display="flex" flexDirection="column">
-        <Typography variant="span">{props.data.value}</Typography>
-        <Box fontSize={12}>{props.data.subtitle}</Box>
-      </Box>
+      {props.isMulti ? <React.Fragment>
+        <Avatar width="32" height="32" src={props.data.imageUrl} />
+        <Box fontSize={14} pl={1} display="flex" flexDirection="column">
+          <Typography variant="span">{props.data.value}</Typography>
+          <Box fontSize={12}>{props.data.subtitle}</Box>
+        </Box>
+      </React.Fragment>
+        :
+        props.children
+      }
     </MenuItem>
   )
 }
@@ -235,7 +240,7 @@ function SingleValue(props) {
       className={props.selectProps.classes.singleValue}
       {...props.innerProps}
     >
-      <img width="24" height="24" src={props.selectProps.people.imageUrl} />{props.children}
+      {props.children}
     </Typography>
   )
 }
@@ -273,7 +278,6 @@ function handlePush(props) {
 }
 
 function MultiValue(props) {
-  // console.log('multi', props)
   return (
     <Chip
       variant="outlined"
