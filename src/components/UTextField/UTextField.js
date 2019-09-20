@@ -16,6 +16,9 @@ import PropTypes from 'prop-types'
 import { TextField, MenuItem } from '@material-ui/core'
 /* eslint-enable */
 import { ValidatorComponent } from 'react-form-validator-core'
+
+//Extending the ValidatorComponent using class component, so taking an exclusion from our rule: functional components only.
+
 /** 
  * UTextField is a Material-ui TextField component with form validation. 
  * UTextField is a [ValidatorComponent](https://www.npmjs.com/package/react-form-validator-core) from `react-form-validator-core` and must be wrapped inside its parent component UValidatorForm.
@@ -53,7 +56,6 @@ export default class UTextField extends ValidatorComponent {
       helperText,
       validatorListener,
       withRequiredValidator,
-      options,
       ...rest
     } = this.props;
     const { isValid } = this.state;
@@ -64,13 +66,7 @@ export default class UTextField extends ValidatorComponent {
         style={style}
         error={!isValid || error}
         helperText={(!isValid && this.getErrorMessage()) || helperText}
-      >
-        {options && options.map(option => (
-          <MenuItem key={option.value} value={option.value}>
-            {option.label}
-          </MenuItem>
-        ))}
-      </TextField>
+      />
     );
   }
 }
@@ -94,8 +90,6 @@ UTextField.propTypes = {
   validatorListener: PropTypes.func,
   /** Allow to use required validator in any validation trigger, not only form submit. */
   withRequiredValidator: PropTypes.bool,
-  /** To make textfield to be select. */
+  /** To make textfield to be select. See below examples section for select example and sample code */
   select: PropTypes.bool,
-  /** If you pass select prop, it needs an options to show in select menu. */
-  options: PropTypes.array,
 }

@@ -30,7 +30,7 @@ const maleImage = 'https://i0.wp.com/myaeon.com.au/wp-content/uploads/2017/04/av
 const femaleImage = 'http://amendllc.com/wp-content/uploads/2017/02/avatar-round-2-300x300.png'
 
 const options = [
-  { title: 'Juan Merlos Tevar', subtitle: 'Manager', imageUrl: maleImage },
+  { title: 'Juan Merlos Tevar', subtitle: 'Manager', imageUrl: '' },
   { title: 'Suresh Sevarthi', subtitle: 'Front-end Developer', imageUrl: maleImage },
   { title: 'Kundal Singh Mehra', subtitle: 'Back-end Developer', imageUrl: maleImage },
   { title: 'Gia Zarina Santos', subtitle: 'Manager', imageUrl: femaleImage },
@@ -102,7 +102,7 @@ export default function App() {
                 helperText: 'Please select people from list',
               }}
               isLoading={isLoading}
-              placeholder="Select people ...."
+              placeholder="Select people ..."
               options={gotOptions}
               isMulti
             />

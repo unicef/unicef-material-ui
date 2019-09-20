@@ -67,13 +67,13 @@ export default function FormValidator() {
       angular: false,
       azure: false,
       redux: false,
-      currecy: '',
+      currency: '',
       toggle: false,
     }
   )
 
   const [valueChoice, setValueChoice] = React.useState(null);
-
+  console.log(values.currency)
   function handleChange(event) {
     setValueChoice(event.target.value);
   }
@@ -85,6 +85,7 @@ export default function FormValidator() {
 
     setValues({ ...values, [name]: value })
   }
+
   const { react, angular, azure, redux } = values;
   const valid = [react, angular, azure, redux].filter(v => v).length > 2;
   const validChoose = valueChoice === null ? false : true;
@@ -92,6 +93,7 @@ export default function FormValidator() {
   function handleSubmit() {
     // Submit the changes from here
   }
+
   useEffect(() => {
     // returned function will be called on component unmount 
     UValidatorForm.addValidationRule('isTruthy', (value) => { return value })
@@ -134,14 +136,19 @@ export default function FormValidator() {
             label="Currency"
             value={values.currency}
             onChange={handleValue}
-            options={currencies}
             name="currency"
             value={values.currency}
             validators={['required']}
             errorMessages={['this field is required']}
             margin="normal"
             variant="outlined"
-          />
+          >
+            {currencies.map(option => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </UTextField>
           <Button className={classes.margin} color="primary" variant="contained" type="submit">Submit</Button>
         </Box>
       </UValidatorForm>

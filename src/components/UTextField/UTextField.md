@@ -103,11 +103,16 @@ const currencies = [
           onChange={handleValue}
           name="currency"
           variant="outlined"
-          options={currencies}
           value={value}
           validators={['required']}
           errorMessages={['this field is required']}
-        />
+        >
+          {currencies.map(option => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </UTextField>
         <Button className={classes.margin} color="primary" variant="contained" onClick={handleSubmit} type="submit">Submit</Button>
       </Box>
     </UValidatorForm>
