@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 import clsx from 'clsx'
 import Select from 'react-select'
 import { emphasize, makeStyles, useTheme } from '@material-ui/core/styles'
@@ -14,9 +15,9 @@ import CancelIcon from '@material-ui/icons/Cancel'
 
 const useStyles = makeStyles(theme => ({
   input: {
-    display: 'flex !important',
-    padding: '10px 14px !important',
-    height: 'auto !important',
+    display: 'flex',
+    padding: '10px 14px',
+    height: 'auto',
   },
   valueContainer: {
     display: 'flex',
@@ -26,7 +27,8 @@ const useStyles = makeStyles(theme => ({
     overflow: 'hidden',
   },
   chip: {
-    margin: theme.spacing(1),
+    marginLeft: theme.spacing(0.5),
+    marginTop: theme.spacing(0.25)
   },
   chipFocused: {
     backgroundColor: emphasize(
@@ -66,6 +68,14 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(2, 0),
   },
 }))
+
+/** Styling the component with custom styles */
+const StyledAvatar = styled(Avatar)`
+  && {
+    height: 32px
+    width: 32px
+  }
+`
 
 function NoOptionsMessage(props) {
   return (
@@ -280,14 +290,14 @@ function MultiValue(props) {
   return (
     <Chip
       variant="outlined"
-      avatar={<Avatar className={props.selectProps.classes.avatar} src={props.data.imageUrl} />}
+      avatar={<StyledAvatar src={props.data.imageUrl} />}
       label={props.children}
       className={clsx(props.selectProps.classes.chip, {
         [props.selectProps.classes.chipFocused]: props.isFocused,
       })}
       onClick={() => handlePush(props)}
       onDelete={props.removeProps.onClick}
-      deleteIcon={<CancelIcon {...props.removeProps} />}
+      deleteIcon={< CancelIcon {...props.removeProps} />}
     />
   )
 }
@@ -356,8 +366,6 @@ export default function USelect(props) {
   const theme = useTheme()
 
   const { label, variant, TextFieldProps, ...others } = props
-
-  // console.log('select', props)
 
   const selectStyles = {
     input: base => ({
