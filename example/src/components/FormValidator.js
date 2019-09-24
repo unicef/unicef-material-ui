@@ -135,7 +135,6 @@ export default function FormValidator() {
             value={values.currency}
             onChange={handleValue}
             name="currency"
-            value={values.currency}
             validators={['required']}
             errorMessages={['this field is required']}
             margin="normal"
