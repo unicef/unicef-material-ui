@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import { Button, Box, Checkbox, MenuItem, Radio, FormGroup, FormControl, FormLabel, FormControlLabel, RadioGroup, FormHelperText } from '@material-ui/core'
-import { SelectValidator, ValidatorForm, TextValidator } from 'react-material-ui-form-validator'
+import { Button, Box, Checkbox, MenuItem, Radio, FormGroup, FormControl, FormLabel, FormControlLabel, RadioGroup } from '@material-ui/core'
 import { UValidatorForm, UValidatorComponent, UTextField } from 'unicef-material-ui'
-import CheckboxValidatorElement from './Checkbox'
 
 
 const useStyles = makeStyles(theme => ({

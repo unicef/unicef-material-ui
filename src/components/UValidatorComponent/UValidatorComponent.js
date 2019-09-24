@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { FormHelperText } from '@material-ui/core'
-import { ValidatorComponent } from 'react-material-ui-form-validator'
+import { ValidatorComponent } from 'react-form-validator-core'
 
 //Extending the ValidatorComponent using class component, so taking an exclusion from our rule: functional components only.
 /** 

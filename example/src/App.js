@@ -22,6 +22,7 @@ import {
   MenuTabs,
   Buttons,
   FormValidator,
+  FormInput,
 } from './components'
 import { Tab, Typography } from '@material-ui/core'
 
@@ -111,6 +112,7 @@ export default function App() {
               Form validator
             </Typography>
             <FormValidator />
+            <FormInput />
             <Buttons />
             <Alert />
             <CardWithTabs />
