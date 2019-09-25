@@ -112,7 +112,6 @@ export default function App() {
               Form validator
             </Typography>
             <FormValidator />
-            <FormInput />
             <Buttons />
             <Alert />
             <CardWithTabs />

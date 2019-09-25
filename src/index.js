@@ -12,10 +12,12 @@ import USelect from './components/USelect'
 import UTextField from './components/UTextField'
 import UValidatorComponent from './components/UValidatorComponent'
 import UValidatorForm from './components/UValidatorForm'
+import ActiveFormTextField from './components/ActiveFormTextField'
 
 export {
   theme,
   UNICEFStyleProvider,
+  ActiveFormTextField,
   UHeader,
   UHeaderLeftMenu,
   UHeaderRightButtons,

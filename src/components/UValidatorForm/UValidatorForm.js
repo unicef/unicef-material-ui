@@ -1,12 +1,12 @@
 import React from 'react'
-import { ValidatorForm } from 'react-material-ui-form-validator'
+import { ValidatorForm } from 'react-form-validator-core'
 import PropTypes from 'prop-types'
 
 /**
  * * UValidatorForm is a component as similar to Form, it also has some set of validations for form that contains textfield, checkboxes, select, choice buttons.
  * * UValidatorForm has some features and functions like instantValidate, onSubmit, onError, debounceTime.
  * * Wherever we require form validation, UValidatorForm should be parent component , rest of the compoents should be wrapped under it.
- * * UValidatorForm is a <a href="https://www.npmjs.com/package/react-form-validator-core">ValidatorForm Component </a> from `react-material-ui-form-validator`. 
+ * * UValidatorForm is a [ValidatorForm Component](https://www.npmjs.com/package/react-form-validator-core) from `react-form-validator-core`. 
  *  Check it if you need more details, we accept all the functions and props from ValidatorForm Component
  */
 

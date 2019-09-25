@@ -59,11 +59,9 @@ export default class UTextField extends ValidatorComponent {
       ...rest
     } = this.props;
     const { isValid } = this.state;
-    const style = !this.props.className ? { minWidth: 195, margin: 8 } : { minWidth: 'auto' }
     return (
       <TextField
         {...rest}
-        style={style}
         error={!isValid || error}
         helperText={(!isValid && this.getErrorMessage()) || helperText}
       />

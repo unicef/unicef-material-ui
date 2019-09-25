@@ -7,19 +7,23 @@ import {
   TableHead,
   TableRow,
   Paper,
-  CardContent,
   Card,
   CardHeader,
   Grid,
+  Divider,
   Typography,
-  Divider
-} from '@material-ui/core';
+} from '@material-ui/core'
+import ActiveFormTextField from './ActiveFormTextField'
+import { UValidatorForm } from 'unicef-material-ui'
 
 const useStyles = makeStyles(theme => ({
   root: {
   },
   margin: {
     margin: '16px 0px'
+  },
+  input: {
+    borderRadius: 0,
   }
 }));
 
@@ -44,16 +48,15 @@ export default function CardsExample() {
       <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
           <Card>
-            <CardHeader component='div' title='Card title'></CardHeader>
+            <CardHeader component='div' title='Unicef material-ui'></CardHeader>
             <Divider />
-            <CardContent>
-              <Typography paragraph={true} gutterBottom>
-                This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-              </Typography>
-              <Typography variant="body2">
-                Last updated 5 mins ago
-              </Typography>
-            </CardContent>
+            <UValidatorForm
+              onError={errors => console.log(errors)}
+              debounceTime={1000}
+            // instantValidate={true}
+            >
+              <ActiveFormTextField typographyVariant="p" variant="outlined" inputPadding={'0px'} fullWidth multiline />
+            </UValidatorForm>
           </Card>
         </Grid>
         <Grid item xs={12} md={6}>

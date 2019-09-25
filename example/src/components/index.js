@@ -6,7 +6,7 @@ import NavLinks from "./NavLinks"
 import MenuTabs from "./MenuTabs"
 import Buttons from "./Buttons"
 import FormValidator from './FormValidator'
-import FormInput from './FormInput'
+import ActiveFormTextField from './ActiveFormTextField'
 
 export {
   FormValidator,
@@ -17,5 +17,5 @@ export {
   MenuTabs,
   Buttons,
   ColorsExample,
-  FormInput,
+  ActiveFormTextField,
 }

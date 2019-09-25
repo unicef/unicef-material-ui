@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import { Button, Box, Checkbox, MenuItem, Radio, FormGroup, FormControl, FormLabel, FormControlLabel, RadioGroup } from '@material-ui/core'
+import { Button, Box, Checkbox, MenuItem, Radio, FormGroup, FormControl, FormLabel, FormControlLabel, RadioGroup, Grid } from '@material-ui/core'
 import { UValidatorForm, UValidatorComponent, UTextField } from 'unicef-material-ui'
-
+import ActiveFormTextField from './ActiveFormTextField'
+import ActiveFormSelect from './ActiveFormSelect';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -10,7 +11,8 @@ const useStyles = makeStyles(theme => ({
     flexWrap: 'wrap',
   },
   textField: {
-    margin: theme.spacing(1),
+    marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(1),
     minWidth: 195,
   },
   formControl: {
@@ -21,7 +23,7 @@ const useStyles = makeStyles(theme => ({
   },
   margin: {
     marginTop: theme.spacing(1),
-    marginLeft: theme.spacing(1),
+    marginBottom: theme.spacing(1),
   },
   menu: {
     minWidth: 191,
@@ -29,10 +31,6 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const currencies = [
-  {
-    value: '',
-    label: '',
-  },
   {
     value: 'USD',
     label: '$',
@@ -53,35 +51,28 @@ const currencies = [
 
 export default function FormValidator() {
 
-  const form = useRef('form')
-
   const classes = useStyles()
 
+  const form = useRef('form')
   const [values, setValues] = useState(
     {
       email: '',
-      password: '',
-      react: false,
-      angular: false,
-      azure: false,
-      redux: false,
-      currency: '',
-      toggle: false,
+      password: ''
     }
   )
 
-  const [valueChoice, setValueChoice] = React.useState(null);
-  console.log(values.currency)
-  function handleChange(event) {
-    setValueChoice(event.target.value);
-  }
-
   function handleValue(event) {
     const target = event.target
-    const value = target.type === 'checkbox' ? target.checked : target.value
+    const value = target.value
     const name = target.name
 
     setValues({ ...values, [name]: value })
+  }
+
+  const [valueChoice, setValueChoice] = React.useState(null)
+
+  function handleChange(event) {
+    setValueChoice(event.target.value);
   }
 
   const { react, angular, azure, redux } = values;
@@ -106,48 +97,59 @@ export default function FormValidator() {
         debounceTime={1000}
       // instantValidate={true}
       >
-        <Box display="flex" alignItems="baseline">
-          <UTextField
-            label="Email"
-            onChange={handleValue}
-            name="email"
-            variant="outlined"
-            className={classes.textField}
-            value={values.email}
-            validators={['required', 'isEmail']}
-            errorMessages={['this field is required', 'email is not valid']}
-          />
-          <UTextField
-            label="Password"
-            onChange={handleValue}
-            name="password"
-            type="password"
-            variant="outlined"
-            className={classes.textField}
-            validators={['required']}
-            value={values.password}
-            errorMessages={['this field is required']}
-          />
-          <UTextField
-            id="outlined-select-currency"
-            select
-            label="Currency"
-            value={values.currency}
-            onChange={handleValue}
-            name="currency"
-            validators={['required']}
-            errorMessages={['this field is required']}
-            margin="normal"
-            variant="outlined"
-          >
-            {currencies.map(option => (
-              <MenuItem key={option.value} value={option.value}>
-                {option.label}
-              </MenuItem>
-            ))}
-          </UTextField>
-          <Button className={classes.margin} color="primary" variant="contained" type="submit">Submit</Button>
-        </Box>
+        <Grid container direction="row" alignItems="center">
+          <Grid item sm={12} lg={3} xl={2} >
+            <ActiveFormTextField
+              label="Email"
+              onChange={handleValue}
+              className={classes.margin}
+              name="email"
+              value={values.email}
+              typographyVariant='div'
+              variant="outlined"
+              validators={['required', 'isEmail']}
+              errorMessages={['this field is required', 'email is not valid']}
+            />
+          </Grid>
+          <Grid item sm={12} lg={3} xl={2}>
+            <ActiveFormTextField
+              label="Password"
+              onChange={handleValue}
+              className={classes.margin}
+              name="password"
+              type="password"
+              variant="outlined"
+              validators={['required']}
+              typographyVariant='div'
+              value={values.password}
+              errorMessages={['this field is required']}
+            />
+          </Grid>
+          <Grid item sm={12} lg={3} xl={2}>
+            <ActiveFormSelect
+              id="outlined-select-currency"
+              select
+              label="Currency"
+              value={values.currency}
+              onChange={handleValue}
+              className={classes.textField}
+              typographyVariant='div'
+              name="currency"
+              validators={['required']}
+              errorMessages={['this field is required']}
+              variant="outlined"
+            >
+              {currencies.map(option => (
+                <MenuItem key={option.value} value={option.value}>
+                  {option.label}
+                </MenuItem>
+              ))}
+            </ActiveFormSelect>
+          </Grid>
+          <Grid item sm={12} lg={1}>
+            <Button className={classes.margin} color="primary" variant="contained" type="submit">Submit</Button>
+          </Grid>
+        </Grid>
       </UValidatorForm>
       <UValidatorForm
         ref={form}
