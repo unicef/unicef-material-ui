@@ -89,6 +89,20 @@ module.exports = {
       // ],
       usageMode: 'expand',
     },
+    {
+      name: 'Active Form',
+      components: () => ([
+        path.resolve(__dirname, 'src/components/ActiveFormTextField', 'ActiveFormTextField.js'),
+        path.resolve(__dirname, 'src/components/ActiveFormSelect', 'ActiveFormSelect.js'),
+      ]),
+      // sections: [
+      //   {
+      //     name: 'ValidatorForm',
+      //     content: 'src/readme.md',
+      //   }
+      // ],
+      usageMode: 'expand',
+    },
     // For future refence to use in sections
     // {
     //   name: 'UI Components',

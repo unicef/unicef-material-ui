@@ -48,10 +48,10 @@ export default function CardsExample() {
       <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
           <Card>
-            <CardHeader component='div' title='Unicef material-ui'></CardHeader>
+            <CardHeader component='div' title='Description'></CardHeader>
             <Divider />
             <UValidatorForm>
-              <ActiveFormTextField defaultValue="Customized version for UNICEF of Material UI" typographyVariant="p" variant="outlined" inputPadding={'0px'} fullWidth multiline />
+              <ActiveFormTextField placeholder="" typographyVariant="p" variant="outlined" inputPadding="0" fullWidth multiline />
             </UValidatorForm>
           </Card>
         </Grid>

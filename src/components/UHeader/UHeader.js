@@ -42,7 +42,7 @@ const useStyles = makeStyles(theme =>
       borderRight: '1px solid #fff',
     },
     margin: {
-       margin: theme.spacing(2)
+      margin: theme.spacing(2)
     }
   })
 )

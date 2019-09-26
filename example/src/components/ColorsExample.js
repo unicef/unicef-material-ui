@@ -1,9 +1,9 @@
-import React from "react";
-import { useTheme } from "@material-ui/core/styles";
-import { Grid, Box, Paper, Typography } from "@material-ui/core";
+import React from "react"
+import { useTheme } from "@material-ui/core/styles"
+import { Grid, Box, Paper, Typography } from "@material-ui/core"
 
 export default function ColorsExample() {
-  const theme = useTheme();
+  const theme = useTheme()
 
   return (
     <Grid container spacing={2}>
@@ -19,8 +19,8 @@ export default function ColorsExample() {
               </Box>
             </Paper>
           </Grid>
-        );
+        )
       })}
     </Grid>
-  );
+  )
 }

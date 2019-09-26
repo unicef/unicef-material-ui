@@ -8,6 +8,7 @@ import ActiveFormSelect from './ActiveFormSelect';
 const useStyles = makeStyles(theme => ({
   container: {
     display: 'flex',
+    flexDirection: 'column',
     flexWrap: 'wrap',
   },
   textField: {
@@ -15,18 +16,8 @@ const useStyles = makeStyles(theme => ({
     marginBottom: theme.spacing(1),
     minWidth: 195,
   },
-  formControl: {
-    margin: theme.spacing(3),
-  },
-  dense: {
-    marginTop: theme.spacing(2),
-  },
   margin: {
-    marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(1),
-  },
-  menu: {
-    minWidth: 191,
+    marginTop: theme.spacing(2),
   },
 }))
 
@@ -56,8 +47,8 @@ export default function FormValidator() {
   const form = useRef('form')
   const [values, setValues] = useState(
     {
-      email: '',
-      password: ''
+      email: 'test@test.com',
+      password: 'testinghere'
     }
   )
 
@@ -90,9 +81,6 @@ export default function FormValidator() {
 
   return (
     <React.Fragment>
-      <Typography variant="h5" >
-        Form validator
-      </Typography>
       <UValidatorForm
         ref={form}
         onSubmit={handleSubmit}
@@ -100,8 +88,13 @@ export default function FormValidator() {
         debounceTime={1000}
       // instantValidate={true}
       >
-        <Grid container direction="row" alignItems="center">
-          <Grid item sm={12} lg={3} xl={2} >
+        <Grid container >
+          <Grid item xs={12}>
+            <Typography style={{ marginBottom: 12 }} variant="h5" >
+              Form validator
+        </Typography>
+          </Grid>
+          <Grid item xs={12} lg={3} xl={2} >
             <ActiveFormTextField
               label="Email"
               onChange={handleValue}
@@ -114,7 +107,7 @@ export default function FormValidator() {
               errorMessages={['this field is required', 'email is not valid']}
             />
           </Grid>
-          <Grid item sm={12} lg={3} xl={2}>
+          <Grid item xs={12} lg={3} xl={2}>
             <ActiveFormTextField
               label="Password"
               onChange={handleValue}
@@ -128,7 +121,7 @@ export default function FormValidator() {
               errorMessages={['this field is required']}
             />
           </Grid>
-          <Grid item sm={12} lg={3} xl={2}>
+          <Grid item xs={12} lg={3} xl={2}>
             <ActiveFormSelect
               id="outlined-select-currency"
               select
@@ -149,7 +142,7 @@ export default function FormValidator() {
               ))}
             </ActiveFormSelect>
           </Grid>
-          <Grid item sm={12} lg={1}>
+          <Grid item xs={12} lg={1}>
             <Button className={classes.margin} color="primary" variant="contained" type="submit">Submit</Button>
           </Grid>
         </Grid>
@@ -255,6 +248,6 @@ export default function FormValidator() {
           <Button className={classes.margin} color="primary" variant="contained" type="Validate">Validate</Button>
         </Box>
       </UValidatorForm>
-    </React.Fragment >
+    </React.Fragment>
   )
 }
