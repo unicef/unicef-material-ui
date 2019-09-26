@@ -42,7 +42,7 @@ export default function CardsExample() {
 
   return (
     <React.Fragment >
-      <Typography variant="h5" className={classes.margin}>
+      <Typography variant="h5" >
         Cards and tables
       </Typography>
       <Grid container spacing={3}>
@@ -50,12 +50,8 @@ export default function CardsExample() {
           <Card>
             <CardHeader component='div' title='Unicef material-ui'></CardHeader>
             <Divider />
-            <UValidatorForm
-              onError={errors => console.log(errors)}
-              debounceTime={1000}
-            // instantValidate={true}
-            >
-              <ActiveFormTextField typographyVariant="p" variant="outlined" inputPadding={'0px'} fullWidth multiline />
+            <UValidatorForm>
+              <ActiveFormTextField defaultValue="Customized version for UNICEF of Material UI" typographyVariant="p" variant="outlined" inputPadding={'0px'} fullWidth multiline />
             </UValidatorForm>
           </Card>
         </Grid>

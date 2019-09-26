@@ -41,6 +41,9 @@ const useStyles = makeStyles(theme =>
       paddingRight: theme.spacing(2),
       borderRight: '1px solid #fff',
     },
+    margin: {
+       margin: theme.spacing(2)
+    }
   })
 )
 
@@ -113,7 +116,7 @@ export default function UHeader(props) {
   const sideList = (
     <div className={classes.list} role="presentation">
       {applicationName && (
-        <Typography variant="h6">UNICEF {applicationName}</Typography>
+        <Typography className={classes.margin} variant="h6">UNICEF {applicationName}</Typography>
       )}
       <Divider />
       <Box>{findReactChildren(props, UHeaderLeftMenu)}</Box>
@@ -163,12 +166,12 @@ export default function UHeader(props) {
               </svg>
             </Link>
           ) : (
-            logo && (
-              <Link color="inherit" href={logoUrl && logoUrl}>
-                {logo}
-              </Link>
-            )
-          )}
+              logo && (
+                <Link color="inherit" href={logoUrl && logoUrl}>
+                  {logo}
+                </Link>
+              )
+            )}
           <Typography variant="h6" className={classes.title}>
             <Link color="inherit" underline="none" href={logoUrl && logoUrl}>
               {applicationName}

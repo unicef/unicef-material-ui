@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import { Button, Box, Checkbox, MenuItem, Radio, FormGroup, FormControl, FormLabel, FormControlLabel, RadioGroup, Grid } from '@material-ui/core'
-import { UValidatorForm, UValidatorComponent, UTextField } from 'unicef-material-ui'
+import { Typography, Button, Box, Checkbox, MenuItem, Radio, FormGroup, FormControl, FormLabel, FormControlLabel, RadioGroup, Grid } from '@material-ui/core'
+import { UValidatorForm, UValidatorComponent } from 'unicef-material-ui'
 import ActiveFormTextField from './ActiveFormTextField'
 import ActiveFormSelect from './ActiveFormSelect';
 
@@ -63,7 +63,7 @@ export default function FormValidator() {
 
   function handleValue(event) {
     const target = event.target
-    const value = target.value
+    const value = target.type === 'checkbox' ? target.checked : target.value
     const name = target.name
 
     setValues({ ...values, [name]: value })
@@ -90,6 +90,9 @@ export default function FormValidator() {
 
   return (
     <React.Fragment>
+      <Typography variant="h5" >
+        Form validator
+      </Typography>
       <UValidatorForm
         ref={form}
         onSubmit={handleSubmit}

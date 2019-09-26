@@ -1,6 +1,6 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import { List, ListItemText, ListItem, Divider, ListItemIcon } from '@material-ui/core'
+import { List, ListItemText, ListItem, Divider, ListItemIcon, Link } from '@material-ui/core'
 import MailIcon from '@material-ui/icons/Mail';
 import InboxIcon from '@material-ui/icons/Inbox'
 
@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme => ({
   toolbar: theme.mixins.toolbar,
 }))
 
-export default function MenuTabs() {
+export default function SideBarContent() {
   const classes = useStyles()
 
   return (
@@ -19,17 +19,8 @@ export default function MenuTabs() {
       <div className={classes.toolbar} />
       <Divider />
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
+        {['Layout', 'Forms', 'Cards'].map((text, index) => (
+          <ListItem button key={text} href={text.toLowerCase()} component={Link}>
             <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>

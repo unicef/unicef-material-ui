@@ -43,10 +43,6 @@ export default function ActiveFormTextField(props) {
   )
 }
 
-{/* <div className={classes.hoverInput}>
-  <label className={classes.label} >Task effort</label>
-  <input defautype="text" className={classes.input} classes={{ focused: classes.hoverInput }} {...props} />
-</div> */}
 // const useStyles = makeStyles(theme => ({
 //   input: {
 //     backgroundColor: 'inherit',

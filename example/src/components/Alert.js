@@ -33,7 +33,7 @@ export default function Alert() {
 
 	return (
 		<div>
-			<Typography variant="h5" className={classes.margin}>
+			<Typography variant="h5">
         Alert
       </Typography>
 			<Button variant="outlined" color="primary" onClick={handleClickOpen}>
