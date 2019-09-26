@@ -32,6 +32,10 @@ import { UValidatorForm, UValidatorComponent } from '../../index.js' // change i
         <ActiveFormTextField
             label="Default"
             onChange={handleValue}
+            // inputProps={{
+            // readOnly: Boolean(true),
+            // disabled: Boolean(true),
+            // }}
             name="task effort"
             value={value}
             variant="outlined"
@@ -43,6 +47,10 @@ import { UValidatorForm, UValidatorComponent } from '../../index.js' // change i
           <ActiveFormTextField
             label="Typography Variant"
             onChange={handleValue}
+          //   inputProps={{
+          //   readOnly: Boolean(true),
+          //   disabled: Boolean(true),
+          // }}
             name="task effort"
             value={value}
             typographyVariant='h6'

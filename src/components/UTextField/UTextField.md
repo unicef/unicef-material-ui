@@ -45,6 +45,10 @@ import { Button, Box, MenuItem } from '@material-ui/core';
 import UValidatorForm from '../UValidatorForm'
 
 const useStyles = makeStyles(theme => ({
+  textField: {
+    margin: theme.spacing(1),
+    minWidth: 195,
+  },
   margin: {
     marginTop: theme.spacing(1),
     marginLeft: theme.spacing(1),
@@ -101,6 +105,7 @@ const currencies = [
           select
           label="Currency"
           onChange={handleValue}
+          className={classes.textField}
           name="currency"
           variant="outlined"
           value={value}
