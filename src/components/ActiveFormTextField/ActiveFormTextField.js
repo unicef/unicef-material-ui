@@ -1,25 +1,34 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
 import UTextField from '../UTextField'
 
 const useStyles = makeStyles(theme => ({
-  icon: {
-    display: 'none',
-  },
-  showIcon: {
-    display: 'block'
+  textField: {
+    marginTop: theme.spacing(0.25),
+    marginBottom: theme.spacing(0.25)
   },
   notchedOutline: {
     borderRadius: 2,
     borderColor: 'transparent'
   },
-  inputPadding: props => ({
-    padding: props.inputPadding ? props.inputPadding : '9.5px 14px',
+  inputPaddingWithoutLabel: props => ({
+    padding: props.inputPadding ? props.inputPadding : "2px 2px 2px 2px",
+    height: 'auto',
+  }),
+  inputPaddingWithLabel: props => ({
+    padding: props.inputPadding ? props.inputPadding : "9.5px 14px",
+    height: 'auto',
   }),
   input: props => ({
-    ...theme.typography[props.typographyVariant]
+    ...theme.typography[props.typographyVariant],
   }),
+  inputHover: {
+    '&:hover $notchedOutline': {
+      borderColor: 'transparent',
+    },
+  },
 }))
 
 /** 
@@ -38,26 +47,43 @@ const useStyles = makeStyles(theme => ({
 export default function ActiveFormTextField(props) {
 
   const classes = useStyles(props)
-  const { variant, ...others } = props
+  const { typographyVariant, className, variant, readOnly, placeholder, ...others } = props
+  const inputPadding = props.label ? classes.inputPaddingWithLabel : classes.inputPaddingWithoutLabel
+  const finalPlaceholder = readOnly ? null : placeholder
 
   return (
     <UTextField
+      placeholder={finalPlaceholder}
       InputLabelProps={{
         shrink: true,
       }}
+      inputProps={{
+        readOnly: Boolean(readOnly),
+        disabled: Boolean(readOnly),
+      }}
+      className={`${classes.textField} ${className && className}`}
       InputProps={{
         disableUnderline: true,
-        classes: { root: classes.input, notchedOutline: classes.notchedOutline, input: classes.inputPadding }
+        classes: {
+          root: `${classes.input} ${readOnly && classes.inputHover}`,
+          multiline: inputPadding,
+          notchedOutline: classes.notchedOutline,
+          input: props.multiline ? classes.inputPaddingWithoutLabel : inputPadding,
+        }
       }}
       variant={variant || 'outlined'}
+      defaultValue={props.children}
       {...others}
-    >
-      {props.children}
-    </UTextField >
+    />
   )
+  // ) : (
+  //     <Typography variant={typographyVariant}>{props.children}</Typography>
+  //   )
 }
 
 ActiveFormTextField.propTypes = {
+  /** */
+  placeholder: PropTypes.string,
   /** Typography for text inside the input (Ex: h1, div, etc.) */
   typographyVariant: PropTypes.string,
   /** Input has some default padding already, to make changes to it pass padding like `inputPadding='0px 2px'` */
@@ -82,6 +108,9 @@ ActiveFormTextField.propTypes = {
   withRequiredValidator: PropTypes.bool,
 }
 
+ActiveFormTextField.defaultProps = {
+  placeholder: 'Type something'
+}
 // const useStyles = makeStyles(theme => ({
 //   input: {
 //     backgroundColor: 'inherit',

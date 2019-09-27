@@ -17,6 +17,7 @@ import FormValidator from './FormValidator'
 import Buttons from './Buttons'
 import Typography from '@material-ui/core/Typography'
 import Header from './Header'
+import InteractiveViews from './InteractiveViews';
 
 const options = [
   { id: 1, title: 'Juan Merlos Tevar', subtitle: 'Manager', imageUrl: null },
@@ -57,7 +58,7 @@ export default function Layout() {
             <SideBarContent />
           </USideBar>
           <UContent headerHeight={112}>
-            <ColorsExample />
+            {/* <ColorsExample />
             <Typography variant="h5" >
               USelect
             </Typography>
@@ -76,7 +77,8 @@ export default function Layout() {
             <Buttons />
             <Alert />
             <CardWithTabs />
-            <CardsExample />
+            <CardsExample /> */}
+            <InteractiveViews />
           </UContent>
         </ULayout>
       </UNICEFStyleProvider>

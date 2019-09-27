@@ -9,6 +9,7 @@ import SideBarContent from "./SideBarContent"
 import Buttons from "./Buttons"
 import FormValidator from './FormValidator'
 import ActiveFormTextField from './ActiveFormTextField'
+import InteractiveViews from './InteractiveViews'
 
 export {
   Layout,
@@ -22,4 +23,5 @@ export {
   Buttons,
   ColorsExample,
   ActiveFormTextField,
+  InteractiveViews,
 }

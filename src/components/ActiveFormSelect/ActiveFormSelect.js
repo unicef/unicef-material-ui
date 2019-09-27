@@ -4,6 +4,11 @@ import { makeStyles } from '@material-ui/core/styles'
 import UTextField from '../UTextField'
 
 const useStyles = makeStyles(theme => ({
+  textField: {
+    minWidth: 193,
+    marginTop: theme.spacing(0.25),
+    marginBottom: theme.spacing(0.25)
+  },
   icon: {
     display: 'none',
   },
@@ -35,9 +40,9 @@ const useStyles = makeStyles(theme => ({
 export default function ActiveFormSelect(props) {
 
   const classes = useStyles(props)
-  const { select, typographyVariant, ...others } = props
+  const { select, typographyVariant, className, placeholder, readOnly, ...others } = props
   const [hideIcon, setHideIcon] = React.useState(classes.icon)
-
+  const finalPlaceholder = readOnly ? null : placeholder
   function onMouseOver() {
     setHideIcon(classes.showIcon)
   }
@@ -51,9 +56,11 @@ export default function ActiveFormSelect(props) {
 
   return (
     <UTextField
+      placeholder={finalPlaceholder}
       InputLabelProps={{
         shrink: true,
       }}
+      className={`${classes.textField} ${className && className}`}
       InputProps={{
         disableUnderline: true,
         classes: { root: classes.input, notchedOutline: classes.notchedOutline, input: classes.inputPadding }
@@ -74,6 +81,8 @@ export default function ActiveFormSelect(props) {
 }
 
 ActiveFormSelect.propTypes = {
+  /** placeholder text*/
+  placeholder: PropTypes.string,
   /** Typography for text inside the input (Ex: h1, div, etc.) */
   typographyVariant: PropTypes.string,
   /** Input has some default padding already, to make changes to it pass padding like `inputPadding='0px 2px'` */
@@ -102,4 +111,8 @@ ActiveFormSelect.propTypes = {
   validatorListener: PropTypes.func,
   /** Allow to use required validator in any validation trigger, not only form submit. */
   withRequiredValidator: PropTypes.bool,
+}
+
+ActiveFormSelect.defaultProps = {
+  placeholder: 'Select'
 }
