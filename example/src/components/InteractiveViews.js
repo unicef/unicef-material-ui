@@ -1,7 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import {
-  Card,
   Paper,
   Grid,
   Avatar,

@@ -79,14 +79,6 @@ const StyledAvatar = styled(Avatar)`
   }
 `
 
-/** Styling the component with custom styles */
-const SingleValueAvatar = styled(Avatar)`
-  && {
-    height: 24px
-    width: 24px
-  }
-`
-
 function NoOptionsMessage(props) {
   return (
     <Typography
@@ -182,7 +174,13 @@ function Option(props) {
       }}
       {...props.innerProps}
     >
-      {props.children}
+      <React.Fragment>
+        <Avatar width="32" height="32" src={props.data.imageUrl} />
+        <Box fontSize={14} pl={1} display="flex" flexDirection="column">
+          <Typography variant="span">{props.data.label}</Typography>
+          <Box fontSize={12}>{props.data.subtitle}</Box>
+        </Box>
+      </React.Fragment>
     </MenuItem>
   )
 }
@@ -224,7 +222,7 @@ Option.propTypes = {
 }
 
 function Placeholder(props) {
-  const { innerProps = {}, children } = props
+  const { selectProps, innerProps = {}, children } = props
   return (
     <Typography color="textSecondary" {...innerProps}>
       {children}
@@ -250,6 +248,7 @@ function SingleValue(props) {
       className={props.selectProps.classes.singleValue}
       {...props.innerProps}
     >
+      <Avatar src={props.data.imageUrl} className={props.selectProps.classes.avatar} />
       {props.children}
     </Typography>
   )
@@ -291,6 +290,7 @@ function MultiValue(props) {
   return (
     <Chip
       variant="outlined"
+      avatar={<StyledAvatar src={props.data.imageUrl} />}
       label={props.children}
       className={clsx(props.selectProps.classes.chip, {
         [props.selectProps.classes.chipFocused]: props.isFocused,
@@ -353,7 +353,7 @@ const components = {
 }
 
 /**
- * USelect is a select input control with below features
+ * UPeoplePicker is a select input control with below features
  * * Select
  * * Multiple select.
  * * Autocomplete.
@@ -361,7 +361,7 @@ const components = {
  * * Clear selected.
  *
  */
-export default function USelect(props) {
+export default function UPeoplePicker(props) {
   const classes = useStyles(props)
   const theme = useTheme()
 
@@ -377,7 +377,7 @@ export default function USelect(props) {
     }),
   }
 
-  USelect.propTypes = {
+  UPeoplePicker.propTypes = {
     /** Text to display in input when nothing selected. */
     placeholder: PropTypes.string,
     /** Enables the multiple select. */
@@ -409,7 +409,7 @@ export default function USelect(props) {
     TextFieldProps: PropTypes.object,
   }
 
-  USelect.defaultProps = {
+  UPeoplePicker.defaultProps = {
     isMulti: false,
     placeholder: 'Select...',
     variant: 'outlined',

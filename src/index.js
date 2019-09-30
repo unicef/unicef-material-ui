@@ -9,6 +9,7 @@ import UContent from './components/UContent'
 import UHeaderMainMenu from './components/UHeaderMainMenu'
 import UButton from './components/UButton'
 import USelect from './components/USelect'
+import UPeoplePicker from './components/UPeoplePicker'
 import UTextField from './components/UTextField'
 import UValidatorComponent from './components/UValidatorComponent'
 import UValidatorForm from './components/UValidatorForm'
@@ -29,6 +30,7 @@ export {
   UContent,
   UButton,
   USelect,
+  UPeoplePicker,
   UTextField,
   UValidatorForm,
   UValidatorComponent,

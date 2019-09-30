@@ -6,13 +6,14 @@ import {
   ULayout,
   USideBar,
   UContent,
-  USelect,
+  UPeoplePicker,
 } from 'unicef-material-ui'
 import ColorsExample from './ColorsExample'
 import SideBarContent from './SideBarContent'
 import Typography from '@material-ui/core/Typography'
 import Header from './Header'
 import InteractiveViews from './InteractiveViews'
+import { Grid } from '@material-ui/core'
 
 const options = [
   { id: 1, title: 'Juan Merlos Tevar', subtitle: 'Manager', imageUrl: null },
@@ -24,11 +25,11 @@ const options = [
   { id: 7, title: 'Mahananda Talgaonkar', subtitle: 'Sharepoint Developer', imageUrl: null },
   { id: 8, title: 'Mary Anne Alde', subtitle: 'Sharepoint analyst', imageUrl: null },
   { id: 9, title: 'Renga Narayanan', subtitle: 'Back-end Developer', imageUrl: null },
-].map(suggestion => ({
-  value: suggestion.id,
-  label: suggestion.title,
-  subtitle: suggestion.subtitle,
-  imageUrl: suggestion.imageUrl,
+].map(option => ({
+  value: option.id,
+  label: option.title,
+  subtitle: option.subtitle,
+  imageUrl: option.imageUrl,
 }))
 
 export default function Layout() {
@@ -54,19 +55,39 @@ export default function Layout() {
           </USideBar>
           <UContent headerHeight={112}>
             <ColorsExample />
-            <Typography variant="h5" >
-              USelect
-            </Typography>
-            <USelect
-              label="People"
-              TextFieldProps={{
-                helperText: 'Please select people from list',
-              }}
-              isLoading={isLoading}
-              placeholder="Select people ..."
-              options={gotOptions}
-            // onChange={handleChange}
-            />
+
+            <Grid container spacing={1}>
+              <Grid item xs={12}>
+                <Typography variant="h5" style={{ margin: '16px 0px' }} >
+                  People picker
+                </Typography>
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <UPeoplePicker
+                  label="Select"
+                  TextFieldProps={{
+                    helperText: 'Select people from list',
+                  }}
+                  isLoading={isLoading}
+                  placeholder="Select people ..."
+                  options={gotOptions}
+                // onChange={handleChange}
+                />
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <UPeoplePicker
+                  label="Multi Select"
+                  TextFieldProps={{
+                    helperText: 'Please select multiple people from list',
+                  }}
+                  isLoading={isLoading}
+                  placeholder="Select people ..."
+                  options={gotOptions}
+                  // onChange={handleChange}
+                  isMulti
+                />
+              </Grid>
+            </Grid>
             {/* <FormValidator />
             <Buttons />
             <Alert />
