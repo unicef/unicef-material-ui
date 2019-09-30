@@ -9,15 +9,10 @@ import {
   USelect,
 } from 'unicef-material-ui'
 import ColorsExample from './ColorsExample'
-import CardWithTabs from './CardWithTabs'
-import CardsExample from './CardsExample'
-import Alert from './Alert'
 import SideBarContent from './SideBarContent'
-import FormValidator from './FormValidator'
-import Buttons from './Buttons'
 import Typography from '@material-ui/core/Typography'
 import Header from './Header'
-import InteractiveViews from './InteractiveViews';
+import InteractiveViews from './InteractiveViews'
 
 const options = [
   { id: 1, title: 'Juan Merlos Tevar', subtitle: 'Manager', imageUrl: null },
@@ -58,7 +53,7 @@ export default function Layout() {
             <SideBarContent />
           </USideBar>
           <UContent headerHeight={112}>
-            {/* <ColorsExample />
+            <ColorsExample />
             <Typography variant="h5" >
               USelect
             </Typography>
@@ -70,10 +65,9 @@ export default function Layout() {
               isLoading={isLoading}
               placeholder="Select people ..."
               options={gotOptions}
-              // onChange={handleChange}
-              isMulti
+            // onChange={handleChange}
             />
-            <FormValidator />
+            {/* <FormValidator />
             <Buttons />
             <Alert />
             <CardWithTabs />

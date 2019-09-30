@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
-import Typography from '@material-ui/core/Typography'
 import UTextField from '../UTextField'
 
 const useStyles = makeStyles(theme => ({
@@ -76,13 +75,12 @@ export default function ActiveFormTextField(props) {
       {...others}
     />
   )
-  // ) : (
-  //     <Typography variant={typographyVariant}>{props.children}</Typography>
-  //   )
 }
 
 ActiveFormTextField.propTypes = {
-  /** */
+  /** label */
+  label: PropTypes.string,
+  /** placeholder text*/
   placeholder: PropTypes.string,
   /** Typography for text inside the input (Ex: h1, div, etc.) */
   typographyVariant: PropTypes.string,
@@ -100,6 +98,8 @@ ActiveFormTextField.propTypes = {
    * Ex: `errorMessages={['this field is required', 'email is not valid']}`
    */
   errorMessages: PropTypes.array,
+  /** To make the content readOnly */
+  readOnly: PropTypes.bool,
   /** Name of input. */
   name: PropTypes.string,
   /** It triggers after each validation.It will return true or false. */
@@ -111,31 +111,3 @@ ActiveFormTextField.propTypes = {
 ActiveFormTextField.defaultProps = {
   placeholder: 'Type something'
 }
-// const useStyles = makeStyles(theme => ({
-//   input: {
-//     backgroundColor: 'inherit',
-//     height: '100%',
-//     outline: 'none',
-//     border: '1px solid transparent',
-//     textOverflow: 'ellipsis',
-//     ...theme.typography.h6,
-//     padding: 4,
-//     width: '100%',
-//     '&:hover': {
-//       border: '1px solid',
-//       borderColor: 'grey',
-//     },
-//     '&:focus': {
-//       border: '1px solid',
-//       borderColor: 'blue',
-//     },
-//   },
-//   hoverInput: {
-//     width: '40%'
-//   },
-//   label: {
-//     paddingLeft: 4,
-//     color: 'grey',
-//     fontSize: 14,
-//   }
-// }))

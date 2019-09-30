@@ -58,7 +58,7 @@ export default function InteractiveViews() {
   }
 
   return (
-    <Grid className={classes.margin} container spacing={4} >
+    <Grid container spacing={2} >
       <Paper style={{ padding: 8 }}>
         <Grid item xs={12} >
           <UValidatorForm>
@@ -118,7 +118,7 @@ export default function InteractiveViews() {
         />
       </Grid>
       <Grid item xs={12} md={8}>
-        <Card>
+        <Paper style={{ padding: 8 }}>
           <UValidatorForm>
             <ActiveFormTextField
               defaultValue="Validation"
@@ -136,10 +136,10 @@ export default function InteractiveViews() {
               fullWidth
               multiline />
           </UValidatorForm>
-        </Card>
+        </Paper>
       </Grid>
       <Grid item xs={12} md={8}>
-        <Card style={{ padding: 4 }}>
+        <Paper style={{ padding: 8 }}>
           <UValidatorForm
             ref={form}
             // onSubmit={handleSubmit}
@@ -220,7 +220,7 @@ export default function InteractiveViews() {
               </Grid>
             </Grid>
           </UValidatorForm>
-        </Card>
+        </Paper>
       </Grid>
     </Grid >
   )

@@ -43,6 +43,7 @@ export default function ActiveFormSelect(props) {
   const { select, typographyVariant, className, placeholder, readOnly, ...others } = props
   const [hideIcon, setHideIcon] = React.useState(classes.icon)
   const finalPlaceholder = readOnly ? null : placeholder
+
   function onMouseOver() {
     setHideIcon(classes.showIcon)
   }
@@ -81,8 +82,10 @@ export default function ActiveFormSelect(props) {
 }
 
 ActiveFormSelect.propTypes = {
-  /** placeholder text*/
-  placeholder: PropTypes.string,
+   /** label */
+   label: PropTypes.string,
+   /** placeholder text*/
+   placeholder: PropTypes.string,
   /** Typography for text inside the input (Ex: h1, div, etc.) */
   typographyVariant: PropTypes.string,
   /** Input has some default padding already, to make changes to it pass padding like `inputPadding='0px 2px'` */
@@ -105,6 +108,8 @@ ActiveFormSelect.propTypes = {
    * Ex: `errorMessages={['this field is required', 'email is not valid']}`
    */
   errorMessages: PropTypes.array,
+  /** To make the content readOnly */
+  readOnly: PropTypes.bool,
   /** Name of input. */
   name: PropTypes.string,
   /** It triggers after each validation.It will return true or false. */
