@@ -346,6 +346,7 @@ const components = {
   Menu,
   MultiValue,
   NoOptionsMessage,
+  IndicatorSeparator: () => null,
   Option,
   Placeholder,
   SingleValue,
@@ -353,9 +354,9 @@ const components = {
 }
 
 /**
- * UPeoplePicker is a select input control with below features
- * * Select
- * * Multiple select.
+ * UPeoplePicker is a picking people from input control with below features
+ * * Select single person from list
+ * * Select Multiple people from list.
  * * Autocomplete.
  * * Search and filter the options.
  * * Clear selected.

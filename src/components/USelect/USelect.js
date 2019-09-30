@@ -346,6 +346,7 @@ const components = {
   Menu,
   MultiValue,
   NoOptionsMessage,
+  IndicatorSeparator: () => null,
   Option,
   Placeholder,
   SingleValue,
