@@ -321,8 +321,6 @@ const useStyles = makeStyles(theme => ({
 // }
 ```
 
-
-
 `Characters length: min number of characters and max number of characters`
 
 ```html

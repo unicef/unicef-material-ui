@@ -57,7 +57,7 @@ export default function CheckBoxValidator() {
 }
 ```
 
-### Example for Check Box : 
+### Example for Check Box
 
 ```jsx
 import React, { useState, useEffect, useRef } from 'react';

@@ -1,4 +1,4 @@
-### Examples:
+### Examples
 
 ```jsx static
 const options = [
@@ -20,7 +20,7 @@ const options = [
 }))
 ```
 
-#### Single people picker:
+#### Single people picker
 
 ```jsx
 import { Typography } from '@material-ui/core';
@@ -46,7 +46,7 @@ const options = [
 <UPeoplePicker label="People" options={options} variant="outlined" />;
 ```
 
-#### Multi People picker :
+#### Multi People picker
 
 ```jsx
 import { Typography } from '@material-ui/core';

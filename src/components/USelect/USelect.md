@@ -1,4 +1,4 @@
-### Examples:
+### Examples
 
 ```jsx static
 
@@ -16,7 +16,7 @@ const options = [
 }))
 ```
 
-#### Select:
+#### Select
 
 ```jsx
 import { Typography } from '@material-ui/core';
@@ -37,7 +37,7 @@ const options = [
 <USelect label="Select" options={options} variant="outlined" />;
 ```
 
-#### Multi select :
+#### Multi select
 
 ```jsx
 import { Typography } from '@material-ui/core';
