@@ -1,5 +1,5 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
 import {
   Table,
   TableBody,
@@ -7,23 +7,19 @@ import {
   TableHead,
   TableRow,
   Paper,
+  CardContent,
   Card,
   CardHeader,
   Grid,
-  Divider,
   Typography,
+  Divider
 } from '@material-ui/core'
-import ActiveFormTextField from './ActiveFormTextField'
-import { UValidatorForm } from 'unicef-material-ui'
 
 const useStyles = makeStyles(theme => ({
   root: {
   },
   margin: {
     margin: '16px 0px'
-  },
-  input: {
-    borderRadius: 0,
   }
 }));
 
@@ -42,17 +38,22 @@ export default function CardsExample() {
 
   return (
     <React.Fragment >
-      <Typography variant="h5" >
+      <Typography variant="h5" className={classes.margin}>
         Cards and tables
       </Typography>
       <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
           <Card>
-            <CardHeader component='div' title='Description'></CardHeader>
+            <CardHeader component='div' title='Card title'></CardHeader>
             <Divider />
-            <UValidatorForm>
-              <ActiveFormTextField placeholder="" typographyVariant="p" variant="outlined" inputPadding="0" fullWidth multiline />
-            </UValidatorForm>
+            <CardContent>
+              <Typography paragraph={true} gutterBottom>
+                This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+              </Typography>
+              <Typography variant="body2">
+                Last updated 5 mins ago
+              </Typography>
+            </CardContent>
           </Card>
         </Grid>
         <Grid item xs={12} md={6}>

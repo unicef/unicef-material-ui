@@ -1,9 +1,37 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { Typography, Button, Box, Checkbox, MenuItem, Radio, FormGroup, FormControl, FormLabel, FormControlLabel, RadioGroup, Grid } from '@material-ui/core'
-import { UValidatorForm, UValidatorComponent } from 'unicef-material-ui'
-import ActiveFormTextField from './ActiveFormTextField'
-import ActiveFormSelect from './ActiveFormSelect';
+import { USelect, UTextField, UPeoplePicker, UValidatorForm, UValidatorComponent } from 'unicef-material-ui'
+
+const options = [
+  { id: 1, title: 'Juan Merlos Tevar', subtitle: 'Manager', imageUrl: null },
+  { id: 2, title: 'Suresh Sevarthi', subtitle: 'Front-end Developer', imageUrl: null },
+  { id: 3, title: 'Kundal Singh Mehra', subtitle: 'Back-end Developer', imageUrl: null },
+  { id: 4, title: 'Gia Zarina Santos', subtitle: 'Manager', imageUrl: null },
+  { id: 5, title: 'Cory Kleinschmidt', subtitle: 'Information technology specialist', imageUrl: null },
+  { id: 6, title: 'Riddhi Poladia', subtitle: 'Database Specialist', imageUrl: null },
+  { id: 7, title: 'Mahananda Talgaonkar', subtitle: 'Sharepoint Developer', imageUrl: null },
+  { id: 8, title: 'Mary Anne Alde', subtitle: 'Sharepoint analyst', imageUrl: null },
+  { id: 9, title: 'Renga Narayanan', subtitle: 'Back-end Developer', imageUrl: null },
+].map(option => ({
+  value: option.id,
+  label: option.title,
+  subtitle: option.subtitle,
+  imageUrl: option.imageUrl,
+}))
+
+const suggestions = [
+  { label: 'Afghanistan' },
+  { label: 'Aland Islands' },
+  { label: 'Albania' },
+  { label: 'Algeria' },
+  { label: 'American Samoa' },
+  { label: 'Andorra' },
+  { label: 'Angola' },
+].map(option => ({
+  value: option.label,
+  label: option.label,
+}));
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -12,9 +40,8 @@ const useStyles = makeStyles(theme => ({
     flexWrap: 'wrap',
   },
   textField: {
-    marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(1),
     minWidth: 195,
+    marginTop: theme.spacing(2),
   },
   margin: {
     marginTop: theme.spacing(2),
@@ -66,6 +93,19 @@ export default function FormValidator() {
     setValueChoice(event.target.value);
   }
 
+  const [isLoading, setLoading] = useState(true)
+  const [gotOptions, setOptions] = useState([''])
+  const [gotSuggestions, setSuggestions] = useState([''])
+
+  useEffect(() => {
+    setTimeout(() => {
+      setOptions(options)
+      setSuggestions(suggestions)
+      setLoading(false)
+    }, 3000);
+    return () => clearTimeout();
+  }, []);
+
   const { react, angular, azure, redux } = values;
   const valid = [react, angular, azure, redux].filter(v => v).length > 2;
   const validChoose = valueChoice === null ? false : true;
@@ -81,6 +121,70 @@ export default function FormValidator() {
 
   return (
     <React.Fragment>
+      <Grid container spacing={1}>
+        <Grid item xs={12}>
+          <Typography variant="h5" style={{ margin: '16px 0px' }} >
+            USelect
+          </Typography>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <USelect
+            label="Select"
+            TextFieldProps={{
+              helperText: 'Select country from list',
+            }}
+            isLoading={isLoading}
+            placeholder="Select country ..."
+            options={gotSuggestions}
+          // onChange={handleChange}
+          />
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <USelect
+            label="Multi Select"
+            TextFieldProps={{
+              helperText: 'Please select multiple counties from list',
+            }}
+            isLoading={isLoading}
+            placeholder="Select countries ..."
+            options={gotSuggestions}
+            // onChange={handleChange}
+            isMulti
+          />
+        </Grid>
+      </Grid>
+      <Grid container spacing={1}>
+        <Grid item xs={12}>
+          <Typography variant="h5" style={{ margin: '16px 0px' }} >
+            People picker
+          </Typography>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <UPeoplePicker
+            label="Select"
+            TextFieldProps={{
+              helperText: 'Select people from list',
+            }}
+            isLoading={isLoading}
+            placeholder="Select people ..."
+            options={gotOptions}
+          // onChange={handleChange}
+          />
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <UPeoplePicker
+            label="Multi Select"
+            TextFieldProps={{
+              helperText: 'Please select multiple people from list',
+            }}
+            isLoading={isLoading}
+            placeholder="Select people ..."
+            options={gotOptions}
+            // onChange={handleChange}
+            isMulti
+          />
+        </Grid>
+      </Grid>
       <UValidatorForm
         ref={form}
         onSubmit={handleSubmit}
@@ -95,20 +199,19 @@ export default function FormValidator() {
         </Typography>
           </Grid>
           <Grid item xs={12} lg={3} xl={2} >
-            <ActiveFormTextField
+            <UTextField
               label="Email"
               onChange={handleValue}
               className={classes.margin}
               name="email"
               value={values.email}
-              typographyVariant='div'
               variant="outlined"
               validators={['required', 'isEmail']}
               errorMessages={['this field is required', 'email is not valid']}
             />
           </Grid>
           <Grid item xs={12} lg={3} xl={2}>
-            <ActiveFormTextField
+            <UTextField
               label="Password"
               onChange={handleValue}
               className={classes.margin}
@@ -116,20 +219,18 @@ export default function FormValidator() {
               type="password"
               variant="outlined"
               validators={['required']}
-              typographyVariant='div'
               value={values.password}
               errorMessages={['this field is required']}
             />
           </Grid>
           <Grid item xs={12} lg={3} xl={2}>
-            <ActiveFormSelect
+            <UTextField
               id="outlined-select-currency"
               select
               label="Currency"
               value={values.currency}
               onChange={handleValue}
               className={classes.textField}
-              typographyVariant='div'
               name="currency"
               validators={['required']}
               errorMessages={['this field is required']}
@@ -140,10 +241,10 @@ export default function FormValidator() {
                   {option.label}
                 </MenuItem>
               ))}
-            </ActiveFormSelect>
+            </UTextField>
           </Grid>
           <Grid item xs={12} lg={1}>
-            <Button className={classes.margin} color="primary" variant="contained" type="submit">Submit</Button>
+            <Button style={{ marginTop: 24 }} color="primary" variant="contained" type="submit">Submit</Button>
           </Grid>
         </Grid>
       </UValidatorForm>

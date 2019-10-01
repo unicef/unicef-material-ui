@@ -1,19 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
-import {
-  theme,
-  UNICEFStyleProvider,
-  ULayout,
-  USideBar,
-  UContent,
-  UPeoplePicker,
-} from 'unicef-material-ui'
-import ColorsExample from './ColorsExample'
-import SideBarContent from './SideBarContent'
-import Typography from '@material-ui/core/Typography'
-import Header from './Header'
-import InteractiveViews from './InteractiveViews'
-import { Grid } from '@material-ui/core'
+import { Buttons, Alert, CardWithTabs, CardsExample } from '../components'
 
 const options = [
   { id: 1, title: 'Juan Merlos Tevar', subtitle: 'Manager', imageUrl: null },
@@ -33,7 +19,6 @@ const options = [
 }))
 
 export default function Layout() {
-
   const [isLoading, setLoading] = useState(true)
   const [gotOptions, setOptions] = useState([''])
 
@@ -46,57 +31,11 @@ export default function Layout() {
   }, []);
 
   return (
-    <MuiThemeProvider theme={theme}>
-      <UNICEFStyleProvider>
-        <ULayout>
-          <Header />
-          <USideBar headerHeight={112} width={256}>
-            <SideBarContent />
-          </USideBar>
-          <UContent headerHeight={112}>
-            <ColorsExample />
-
-            <Grid container spacing={1}>
-              <Grid item xs={12}>
-                <Typography variant="h5" style={{ margin: '16px 0px' }} >
-                  People picker
-                </Typography>
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <UPeoplePicker
-                  label="Select"
-                  TextFieldProps={{
-                    helperText: 'Select people from list',
-                  }}
-                  isLoading={isLoading}
-                  placeholder="Select people ..."
-                  options={gotOptions}
-                // onChange={handleChange}
-                />
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <UPeoplePicker
-                  label="Multi Select"
-                  TextFieldProps={{
-                    helperText: 'Please select multiple people from list',
-                  }}
-                  isLoading={isLoading}
-                  placeholder="Select people ..."
-                  options={gotOptions}
-                  // onChange={handleChange}
-                  isMulti
-                />
-              </Grid>
-            </Grid>
-            {/* <FormValidator />
-            <Buttons />
-            <Alert />
-            <CardWithTabs />
-            <CardsExample /> */}
-            <InteractiveViews />
-          </UContent>
-        </ULayout>
-      </UNICEFStyleProvider>
-    </MuiThemeProvider>
+    <React.Fragment>
+      <Buttons />
+      <Alert />
+      <CardWithTabs />
+      <CardsExample />
+    </React.Fragment>
   )
 }

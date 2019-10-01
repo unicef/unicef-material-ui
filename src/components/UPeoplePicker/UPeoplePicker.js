@@ -38,13 +38,8 @@ const useStyles = makeStyles(theme => ({
       0.08
     ),
   },
-  avatar: {
-    height: 24,
-    width: 24,
-    marginRight: theme.spacing(1),
-  },
-  noOptionsMessage: {
-    padding: theme.spacing(1, 2),
+  OptionsMessage: {
+  padding: theme.spacing(1, 2),
   },
   singleValue: {
     display: 'inline-flex',
@@ -76,9 +71,16 @@ const StyledAvatar = styled(Avatar)`
   && {
     height: 32px
     width: 32px
-  }
-`
+  }`
 
+
+const  SingleValueAvatar = styled(Avatar)`
+  && {
+    height: 24px
+    width: 24px
+    margin-right: 8px
+  }`
+  
 function NoOptionsMessage(props) {
   return (
     <Typography
@@ -248,7 +250,7 @@ function SingleValue(props) {
       className={props.selectProps.classes.singleValue}
       {...props.innerProps}
     >
-      <Avatar src={props.data.imageUrl} className={props.selectProps.classes.avatar} />
+      <SingleValueAvatar src={props.data.imageUrl} />
       {props.children}
     </Typography>
   )
@@ -358,14 +360,14 @@ const components = {
  * * Select single person from list
  * * Select Multiple people from list.
  * * Autocomplete.
- * * Search and filter the options.
+ * * Search and filter the opions.    
  * * Clear selected.
- *
+ *    
  */
 export default function UPeoplePicker(props) {
   const classes = useStyles(props)
   const theme = useTheme()
-
+          
   const { label, variant, TextFieldProps, ...others } = props
 
   const selectStyles = {

@@ -57,9 +57,9 @@ export default function InteractiveViews() {
   }
 
   return (
-    <Grid container spacing={2} >
-      <Paper style={{ padding: 8 }}>
-        <Grid item xs={12} >
+    <Grid container spacing={3} display="flex" >
+      <Grid item xs={12} lg={8}>
+        <Paper style={{ padding: 8 }}>
           <UValidatorForm>
             <ActiveFormTextField
               readOnly={readOnly}
@@ -82,8 +82,6 @@ export default function InteractiveViews() {
               Active views allow user to see and edit current page at the same time
             </ActiveFormTextField>
           </UValidatorForm>
-        </Grid>
-        <Grid item xs={12}>
           <UValidatorForm>
             <ActiveFormTextField
               readOnly={readOnly}
@@ -106,9 +104,9 @@ export default function InteractiveViews() {
               If an active view is read only mode, user can no longer edit
             </ActiveFormTextField>
           </UValidatorForm>
-        </Grid>
-      </Paper>
-      <Grid item xs={12} md={8}>
+        </Paper>
+      </Grid>
+      <Grid item xs={12} lg={8}>
         <FormControlLabel
           control={
             <Switch checked={readOnly} onChange={handleChange} value={readOnly} />
@@ -116,7 +114,7 @@ export default function InteractiveViews() {
           label="ReadOnly"
         />
       </Grid>
-      <Grid item xs={12} md={8}>
+      <Grid item xs={12} lg={8}>
         <Paper style={{ padding: 8 }}>
           <UValidatorForm>
             <ActiveFormTextField

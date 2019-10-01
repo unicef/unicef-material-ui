@@ -22,7 +22,7 @@ export default function Alert() {
 
 	return (
 		<div>
-			<Typography variant="h5">
+			<Typography variant="h5" style={{ margin: '16px 0px' }}>
 				Alert
       </Typography>
 			<Button variant="outlined" color="primary" onClick={handleClickOpen}>

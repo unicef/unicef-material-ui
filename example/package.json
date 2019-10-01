@@ -11,7 +11,7 @@
     "react": "file:../node_modules/react",
     "react-dom": "file:../node_modules/react-dom",
     "react-material-ui-form-validator": "^2.0.9",
-    "react-router-dom": "^5.0.1",
+    "react-router-dom": "^5.1.1",
     "react-scripts": "3.0.1",
     "unicef-material-ui": "file:.."
   },
