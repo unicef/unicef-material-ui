@@ -21,18 +21,18 @@ export default function Home({ match }) {
     <React.Fragment>
       <ULayout>
         <USideBar headerHeight={64} width={256}>
-          <SideBarContent selectedNode={selectedNode} handleClick={handleClick} />
+          <SideBarContent selectedNode={selectedNode} handleClick={handleClick} match={match} />
         </USideBar>
         <UContent headerHeight={112}>
           <Switch>
-            <Route exact path='/' >
+            <Route exact path={match.path} >
               <List style={{ width: 300 }}>
                 {['Layout', 'Forms', 'Interactive views'].map((text, index) => (
                   <ListItem
                     button
                     key={text}
                     component={Link}
-                    to={`/${text.replace(/\s+/g, '').toLowerCase()}`}
+                    to={`${match.path}${text.replace(/\s+/g, '').toLowerCase()}`}
                     onClick={(e) => handleClick(e, `/${text.replace(/\s+/g, '').toLowerCase()}`)}
                   >
                     <ListItemText primary={text} />

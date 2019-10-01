@@ -14,12 +14,12 @@ const useStyles = makeStyles(theme => ({
 
 export default function SideBarContent(props) {
 
-  const { selectedNode, handleClick } = props
+  const { selectedNode, handleClick, match } = props
   const classes = useStyles()
 
   // Remove spaces and make all letters lower-case
   function lowerCaseUrl(str) {
-    return `/${str.replace(/\s+/g, '').toLowerCase()}`
+    return `${str.replace(/\s+/g, '').toLowerCase()}`
   }
 
   return (
@@ -29,9 +29,9 @@ export default function SideBarContent(props) {
         {['Layout', 'Forms', 'Interactive views'].map((text, index) => (
           <ListItem
             button key={text}
-            selected={selectedNode === lowerCaseUrl(text)}
-            component={Link} to={lowerCaseUrl(text)}
-            onClick={(e) => handleClick(e, lowerCaseUrl(text))}
+            selected={selectedNode === `/${lowerCaseUrl(text)}`}
+            component={Link} to={`${match.path}${lowerCaseUrl(text)}`}
+            onClick={(e) => handleClick(e, `/${lowerCaseUrl(text)}`)}
           >
             <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
             <ListItemText primary={text} />
