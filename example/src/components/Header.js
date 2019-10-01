@@ -23,7 +23,7 @@ export default function Header() {
       color="white"
       bgColor="#1CABE2"
       applicationName="Application"
-      logoUrl="https://unicef.github.io/unicef-material-ui/"
+      logoUrl="/"
     >
       <UHeaderRightButtons>
         <NavLinks />

@@ -1,8 +1,8 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { Link } from "react-router-dom"
-import { List, ListItemText, ListItem, Divider, ListItemIcon } from '@material-ui/core'
-import MailIcon from '@material-ui/icons/Mail';
+import { List, ListItemText, ListItem, ListItemIcon } from '@material-ui/core'
+import MailIcon from '@material-ui/icons/Mail'
 import InboxIcon from '@material-ui/icons/Inbox'
 
 const useStyles = makeStyles(theme => ({
@@ -12,19 +12,14 @@ const useStyles = makeStyles(theme => ({
   toolbar: theme.mixins.toolbar,
 }))
 
-export default function SideBarContent() {
+export default function SideBarContent(props) {
 
-  // console.log(window.location)
-  const path = window.location.pathname
+  const { selectedNode, handleClick } = props
   const classes = useStyles()
-  const [selectedNode, setSelectedNode] = React.useState(path)
 
-  function handleSelected(e, url) {
-    setSelectedNode(url)
-  }
-
-  function regexUrl(text) {
-    return `/${text.replace(/\s+/g, '').toLowerCase()}`
+  // Remove spaces and make all letters lower-case
+  function lowerCaseUrl(str) {
+    return `/${str.replace(/\s+/g, '').toLowerCase()}`
   }
 
   return (
@@ -34,9 +29,9 @@ export default function SideBarContent() {
         {['Layout', 'Forms', 'Interactive views'].map((text, index) => (
           <ListItem
             button key={text}
-            selected={selectedNode === regexUrl(text)}
-            component={Link} to={regexUrl(text)}
-            onClick={(e) => handleSelected(e, regexUrl(text))}
+            selected={selectedNode === lowerCaseUrl(text)}
+            component={Link} to={lowerCaseUrl(text)}
+            onClick={(e) => handleClick(e, lowerCaseUrl(text))}
           >
             <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
             <ListItemText primary={text} />
