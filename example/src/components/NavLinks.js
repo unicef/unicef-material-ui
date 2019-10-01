@@ -39,12 +39,6 @@ export default function NavLinks() {
         <MailIcon />
         Login
       </Button>
-      <Button color="inherit">
-        <NotificationsIcon />
-        <Link color="inherit" href="/">
-          Notifications
-        </Link>
-      </Button>
       <Button
         aria-label="dropdown"
         color="inherit"
@@ -82,6 +76,11 @@ export default function NavLinks() {
           <ListItemText primary="Inbox" />
         </MenuItem>
       </Menu>
+      <Button color="inherit">
+        <Link color="inherit" href="https://github.com/unicef/unicef-material-ui">
+          Github
+        </Link>
+      </Button>
       <IconButton
         edge="end"
         aria-label="Account of current user"

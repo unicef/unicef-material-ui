@@ -29,9 +29,9 @@ export default function SideBarContent(props) {
         {['Layout', 'Forms', 'Interactive views'].map((text, index) => (
           <ListItem
             button key={text}
-            selected={selectedNode === `/${lowerCaseUrl(text)}`}
-            component={Link} to={`${match.path}${lowerCaseUrl(text)}`}
-            onClick={(e) => handleClick(e, `/${lowerCaseUrl(text)}`)}
+            selected={selectedNode === lowerCaseUrl(text)}
+            component={Link} to={`${match.url}${lowerCaseUrl(text)}`}
+            onClick={(e) => handleClick(e, lowerCaseUrl(text))}
           >
             <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
             <ListItemText primary={text} />
