@@ -38,7 +38,7 @@ export default function CardsExample() {
 
   return (
     <React.Fragment >
-      <Typography variant="h5" className={classes.margin}>
+      <Typography variant="h5" style={{ margin: '32px 0px' }}>
         Cards and tables
       </Typography>
       <Grid container spacing={3}>
