@@ -23,7 +23,7 @@ export default function Header() {
       color="white"
       bgColor="#1CABE2"
       applicationName="Application"
-      logoUrl="/"
+      logoUrl={process.env.PUBLIC_URL}
     >
       <UHeaderRightButtons>
         <NavLinks />

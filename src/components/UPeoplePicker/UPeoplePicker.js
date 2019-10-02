@@ -39,7 +39,7 @@ const useStyles = makeStyles(theme => ({
     ),
   },
   OptionsMessage: {
-  padding: theme.spacing(1, 2),
+    padding: theme.spacing(1, 2),
   },
   singleValue: {
     display: 'inline-flex',
@@ -74,13 +74,13 @@ const StyledAvatar = styled(Avatar)`
   }`
 
 
-const  SingleValueAvatar = styled(Avatar)`
+const SingleValueAvatar = styled(Avatar)`
   && {
     height: 24px
     width: 24px
     margin-right: 8px
   }`
-  
+
 function NoOptionsMessage(props) {
   return (
     <Typography
@@ -367,7 +367,7 @@ const components = {
 export default function UPeoplePicker(props) {
   const classes = useStyles(props)
   const theme = useTheme()
-          
+
   const { label, variant, TextFieldProps, ...others } = props
 
   const selectStyles = {

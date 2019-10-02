@@ -12,7 +12,7 @@ export default function ColorsExample() {
       </Grid>
       {Object.keys(theme.palette.unicef).map(color => {
         return (
-          <Grid item xs={2}>
+          <Grid item xs={6} md={4} lg={2}>
             <Paper p={3}>
               <Box bgcolor={theme.palette.unicef[color]} p={4}>
                 <Typography variant="body">{color}</Typography>

@@ -83,7 +83,7 @@ UTextField.propTypes = {
    */
   errorMessages: PropTypes.array,
   /** Name of input. */
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
   /** It triggers after each validation.It will return true or false. */
   validatorListener: PropTypes.func,
   /** Allow to use required validator in any validation trigger, not only form submit. */
