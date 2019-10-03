@@ -26,7 +26,7 @@ export default function SideBarContent(props) {
     <div>
       <div className={classes.toolbar} />
       <List>
-        {['Layout', 'Forms', 'Interactive views'].map((text, index) => (
+        {['Layout', 'Forms', 'Interactive views', 'Pickers'].map((text, index) => (
           <ListItem
             button key={text}
             selected={selectedNode === lowerCaseUrl(text)}

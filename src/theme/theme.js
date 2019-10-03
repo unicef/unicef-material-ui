@@ -69,7 +69,7 @@ const theme = createMuiTheme({
     },
     MuiMenuItem: {
       gutters: {
-        padding: '0px 16px !important',
+        padding: '0px 16px',
       },
     },
     MuiTypography: {

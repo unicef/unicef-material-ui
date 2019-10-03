@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { Switch, Route, Link } from "react-router-dom"
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
 import {
@@ -7,19 +7,26 @@ import {
   ULayout,
   USideBar,
   UContent,
+  UDatePicker,
+  UTimePicker,
 } from 'unicef-material-ui'
 import './App.css'
 import { List, ListItem, ListItemText } from "@material-ui/core"
-import { Header, SideBarContent, Layout, InteractiveViews, FormValidator } from './components'
+import { Header, Pickers, SideBarContent, Layout, InteractiveViews, FormValidator } from './components'
 
 export default function App() {
   const path = window.location.hash.split('#/')
   const pathUrl = path[1]
-  const [selectedNode, setSelectedNode] = React.useState(pathUrl)
+  const [selectedNode, setSelectedNode] = useState(pathUrl)
+
+  const [selectedDate, handleDateChange] = useState(
+    new Date("2018-01-01T00:00:00.000Z")
+  )
 
   function handleClick(e, url) {
     setSelectedNode(url)
   }
+
 
   return (
     <MuiThemeProvider theme={theme}>
@@ -33,7 +40,7 @@ export default function App() {
             <Switch>
               <Route exact path={'/'}>
                 <List style={{ width: 300 }}>
-                  {['Layout', 'Forms', 'Interactive views'].map((text, index) => (
+                  {['Layout', 'Forms', 'Interactive views', 'Pickers'].map((text, index) => (
                     <ListItem
                       button
                       key={text}
@@ -45,10 +52,21 @@ export default function App() {
                     </ListItem>
                   ))}
                 </List>
+                <UDatePicker
+                  label="Date"
+                  value={selectedDate}
+                  onChange={handleDateChange}
+                />
+                <UTimePicker
+                  label="Time"
+                  value={selectedDate}
+                  onChange={handleDateChange}
+                />
               </Route>
               <Route exact path={`/layout`} component={Layout} />
               <Route exact path={`/forms`} component={FormValidator} />
               <Route exact path={`/interactive-views`} component={InteractiveViews} />
+              <Route exact path={`/pickers`} component={Pickers} />
             </Switch>
           </UContent>
         </ULayout >

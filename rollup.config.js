@@ -34,5 +34,5 @@ export default {
     resolve(),
     commonjs(),
   ],
-  external: id => /^react/.test(id),
+  external: ['react', 'react-is', 'react-dom', 'prop-types', 'styled-components'],
 }

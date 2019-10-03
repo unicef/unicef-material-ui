@@ -10,6 +10,8 @@ import UHeaderMainMenu from './components/UHeaderMainMenu'
 import UButton from './components/UButton'
 import USelect from './components/USelect'
 import UPeoplePicker from './components/UPeoplePicker'
+import UDatePicker from './components/UDatePicker'
+import UTimePicker from './components/UTimePicker'
 import UTextField from './components/UTextField'
 import UValidatorComponent from './components/UValidatorComponent'
 import UValidatorForm from './components/UValidatorForm'
@@ -31,6 +33,8 @@ export {
   UButton,
   USelect,
   UPeoplePicker,
+  UDatePicker,
+  UTimePicker,
   UTextField,
   UValidatorForm,
   UValidatorComponent,

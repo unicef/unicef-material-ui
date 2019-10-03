@@ -1,4 +1,5 @@
 import Layout from './Layout'
+import Pickers from './Pickers'
 import Header from './Header'
 import CardWithTabs from "./CardWithTabs"
 import CardsExample from "./CardsExample"
@@ -13,6 +14,7 @@ import InteractiveViews from './InteractiveViews'
 
 export {
   Layout,
+  Pickers,
   Header,
   FormValidator,
   CardWithTabs,
