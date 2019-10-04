@@ -20,9 +20,11 @@ export default function Buttons() {
   }
 
   return (
-    <Grid container spacing={2}>
+    <Grid container >
       <Grid item xs={12}>
-        <Typography variant="h5">UButton</Typography>
+        <Typography variant="h5" style={{ margin: '32px 0px' }} >
+          UButton
+          </Typography>
       </Grid>
       <Grid item xs={12} sm={4} md={3}>
         <Typography variant="subtitle1">Primary button</Typography>

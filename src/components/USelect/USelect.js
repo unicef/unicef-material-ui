@@ -1,20 +1,23 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 import clsx from 'clsx'
 import Select from 'react-select'
 import { emphasize, makeStyles, useTheme } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import TextField from '@material-ui/core/TextField'
+import Box from '@material-ui/core/Box'
 import Paper from '@material-ui/core/Paper'
 import Chip from '@material-ui/core/Chip'
+import Avatar from '@material-ui/core/Avatar'
 import MenuItem from '@material-ui/core/MenuItem'
 import CancelIcon from '@material-ui/icons/Cancel'
 
 const useStyles = makeStyles(theme => ({
   input: {
-    display: 'flex !important',
-    padding: '10px 14px !important',
-    height: 'auto !important',
+    display: 'flex',
+    padding: '10px 14px',
+    height: 'auto',
   },
   valueContainer: {
     display: 'flex',
@@ -24,7 +27,8 @@ const useStyles = makeStyles(theme => ({
     overflow: 'hidden',
   },
   chip: {
-    margin: theme.spacing(0.4, 0.25),
+    marginLeft: theme.spacing(0.5),
+    marginTop: theme.spacing(0.25)
   },
   chipFocused: {
     backgroundColor: emphasize(
@@ -34,10 +38,16 @@ const useStyles = makeStyles(theme => ({
       0.08
     ),
   },
+  avatar: {
+    height: 24,
+    width: 24,
+    marginRight: theme.spacing(1),
+  },
   noOptionsMessage: {
     padding: theme.spacing(1, 2),
   },
   singleValue: {
+    display: 'inline-flex',
     fontSize: 16,
   },
   placeholder: {
@@ -46,13 +56,13 @@ const useStyles = makeStyles(theme => ({
     bottom: 6,
     fontSize: 16,
   },
-  paper: {
+  paper: props => ({
     position: 'absolute',
     zIndex: 999,
-    marginTop: theme.spacing(1),
     left: 0,
     right: 0,
-  },
+    marginTop: props.TextFieldProps && props.TextFieldProps.helperText ? theme.spacing(-1.5) : theme.spacing(1)
+  }),
   divider: {
     height: theme.spacing(2),
   },
@@ -60,6 +70,22 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(2, 0),
   },
 }))
+
+/** Styling the component with custom styles */
+const StyledAvatar = styled(Avatar)`
+  && {
+    height: 32px
+    width: 32px
+  }
+`
+
+/** Styling the component with custom styles */
+const SingleValueAvatar = styled(Avatar)`
+  && {
+    height: 24px
+    width: 24px
+  }
+`
 
 function NoOptionsMessage(props) {
   return (
@@ -198,7 +224,7 @@ Option.propTypes = {
 }
 
 function Placeholder(props) {
-  const { selectProps, innerProps = {}, children } = props
+  const { innerProps = {}, children } = props
   return (
     <Typography color="textSecondary" {...innerProps}>
       {children}
@@ -257,16 +283,21 @@ ValueContainer.propTypes = {
   selectProps: PropTypes.object.isRequired,
 }
 
+function handlePush(props) {
+  // return alert('Hey, what you doing')
+}
+
 function MultiValue(props) {
   return (
     <Chip
-      tabIndex={-1}
+      variant="outlined"
       label={props.children}
       className={clsx(props.selectProps.classes.chip, {
         [props.selectProps.classes.chipFocused]: props.isFocused,
       })}
+      onClick={() => handlePush(props)}
       onDelete={props.removeProps.onClick}
-      deleteIcon={<CancelIcon {...props.removeProps} />}
+      deleteIcon={< CancelIcon {...props.removeProps} />}
     />
   )
 }
@@ -289,7 +320,11 @@ function Menu(props) {
       className={props.selectProps.classes.paper}
       {...props.innerProps}
     >
-      {props.children}
+      {
+        props.isLoading
+          ? <Box p={2}> Loading ....</Box>
+          : props.children
+      }
     </Paper>
   )
 }
@@ -311,6 +346,7 @@ const components = {
   Menu,
   MultiValue,
   NoOptionsMessage,
+  IndicatorSeparator: () => null,
   Option,
   Placeholder,
   SingleValue,
@@ -327,7 +363,7 @@ const components = {
  *
  */
 export default function USelect(props) {
-  const classes = useStyles()
+  const classes = useStyles(props)
   const theme = useTheme()
 
   const { label, variant, TextFieldProps, ...others } = props
@@ -361,14 +397,14 @@ export default function USelect(props) {
     onChange: PropTypes.func,
     /** Options to select from dropdown.
      *
-     * `const suggestions = [ { label: "name1" }, {label: "name2"} ]` // which is an array of objects
-     *
-     * `options = {suggestions}`
-     */
+   * `const suggestions = [ {label: "name1" }, {label: "name2"} ]` // which is an array of objects
+    *
+   * `options = {suggestions}`
+    */
     options: PropTypes.array,
     /** It accepts all the props from TextField API.
      *
-     * `TextFieldProps={ helperText="text", inputProps={className: classes.textField}}`
+    * `TextFieldProps={helperText = "text", inputProps={className: classes.textField}}`
      *
      */
     TextFieldProps: PropTypes.object,
@@ -382,11 +418,13 @@ export default function USelect(props) {
 
   const defaultTextFieldProps = {
     label: label,
-    variant: variant || 'outlined',
+    variant: 'outlined',
     InputLabelProps: {
       shrink: true,
     },
   }
+
+
   const mergedTextFieldProps = { ...defaultTextFieldProps, ...TextFieldProps }
 
   return (

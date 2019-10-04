@@ -6,19 +6,21 @@
   "dependencies": {
     "@material-ui/core": "^4.1.1",
     "@material-ui/icons": "^4.2.0",
-    "gh-pages": "^2.0.1",
+    "@material-ui/pickers": "^3.2.6",
+    "gh-pages": "^2.1.1",
     "prop-types": "^15.7.2",
-    "unicef-material-ui": "file:..",
     "react": "file:../node_modules/react",
     "react-dom": "file:../node_modules/react-dom",
-    "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1"
+    "react-material-ui-form-validator": "^2.0.9",
+    "react-router-dom": "^5.1.1",
+    "react-scripts": "3.0.1",
+    "unicef-material-ui": "file:.."
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build --git \"$(which git)\" -m $(git log -1 --pretty=%B)",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

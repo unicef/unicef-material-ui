@@ -1,13 +1,13 @@
 import React from 'react'
-import { BrowserRouter } from 'react-router-dom'
+import { HashRouter } from 'react-router-dom'
 import ReactDOM from 'react-dom'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
 
 ReactDOM.render(
-  <BrowserRouter basename="/unicef-material-ui/example">
+  <HashRouter >
     <App />
-  </BrowserRouter>,
+  </HashRouter >,
   document.getElementById('root')
 )
 

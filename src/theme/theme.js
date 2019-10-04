@@ -1,5 +1,4 @@
 import { createMuiTheme } from '@material-ui/core/styles'
-const colorPrimary = '#374EA2'
 
 const unicef = {
   blue: '#1CABE2',
@@ -19,16 +18,10 @@ const theme = createMuiTheme({
   typography: {
     useNextVariants: true,
     fontFamily: [
-      '-apple-system',
-      'BlinkMacSystemFont',
-      '"Segoe UI"',
-      'Roboto',
-      '"Helvetica Neue"',
-      'Arial',
-      'sans-serif',
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
+      "Roboto",
+      "Helvetica",
+      "Arial",
+      "sans-serif",
     ].join(','),
   },
   spacing: 8,
@@ -70,14 +63,7 @@ const theme = createMuiTheme({
     },
     MuiMenuItem: {
       gutters: {
-        padding: '0px 16px !important',
-      },
-    },
-    MuiTab: {
-      root: {
-        '& Mui': {
-          selected: {},
-        },
+        padding: '0px 16px',
       },
     },
     MuiTypography: {
@@ -85,22 +71,9 @@ const theme = createMuiTheme({
         margin: 'none',
       },
     },
-    MuiButtonBase: {
-      root: {
-        display: 'flex',
-        borderRadius: 4,
-      },
-    },
     MuiInputBase: {
       root: {
         backgroundColor: 'white',
-      },
-    },
-    MuiButton: {
-      contained: {
-        '&:active': {
-          boxShadow: 'none',
-        },
       },
     },
     MuiDrawer: {

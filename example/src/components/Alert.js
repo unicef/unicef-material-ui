@@ -1,5 +1,4 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import {
 	Typography,
 	Button,
@@ -10,18 +9,8 @@ import {
 	DialogTitle
 } from '@material-ui/core';
 
-
-const useStyles = makeStyles(theme => ({
-
-	margin: {
-		margin: '16px 0px'
-	}
-}));
-
-
 export default function Alert() {
 	const [open, setOpen] = React.useState(false);
-	const classes = useStyles();
 
 	function handleClickOpen() {
 		setOpen(true);
@@ -33,8 +22,8 @@ export default function Alert() {
 
 	return (
 		<div>
-			<Typography variant="h5" className={classes.margin}>
-        Alert
+			<Typography variant="h5" style={{ margin: '32px 0px' }}>
+				Alert
       </Typography>
 			<Button variant="outlined" color="primary" onClick={handleClickOpen}>
 				Open alert dialog

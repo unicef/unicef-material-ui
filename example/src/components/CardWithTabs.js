@@ -7,7 +7,6 @@ import {
   Card,
   Typography,
   Grid,
-  Box,
 } from '@material-ui/core'
 
 function TabContainer(props) {
@@ -32,9 +31,7 @@ export default function CardWithTabs() {
   return (
     <Grid container>
       <Grid item xs={12}>
-        <Box my={2}>
-          <Typography variant="h5">Card with tabs</Typography>
-        </Box>
+        <Typography variant="h5" style={{ margin: '32px 0px' }} >Card with tabs</Typography>
       </Grid>
       <Grid item xs={12} md={8}>
         <Card>

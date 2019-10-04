@@ -1,126 +1,67 @@
-import React from 'react'
+import React, { useState } from "react"
+import { Switch, Route, Link } from "react-router-dom"
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
 import {
   theme,
   UNICEFStyleProvider,
-  UHeader,
   ULayout,
   USideBar,
   UContent,
-  UHeaderRightButtons,
-  UHeaderMainMenu,
-  UHeaderLeftMenu,
-  USelect,
+  UDatePicker,
+  UTimePicker,
 } from 'unicef-material-ui'
 import './App.css'
-import {
-  NavLinks,
-  ColorsExample,
-  FormExample,
-  CardWithTabs,
-  CardsExample,
-  Alert,
-  MenuItems,
-  MenuTabs,
-  Buttons,
-} from './components'
-import { Tab, Typography } from '@material-ui/core'
-
-const options = [
-  { label: 'Afghanistan' },
-  { label: 'Aland Islands' },
-  { label: 'Albania' },
-  { label: 'Algeria' },
-  { label: 'American Samoa' },
-  { label: 'Andorra' },
-  { label: 'Angola' },
-  { label: 'Anguilla' },
-  { label: 'Antarctica' },
-  { label: 'Antigua and Barbuda' },
-  { label: 'Argentina' },
-  { label: 'Armenia' },
-  { label: 'Aruba' },
-  { label: 'Australia' },
-  { label: 'Austria' },
-  { label: 'Azerbaijan' },
-  { label: 'Bahamas' },
-  { label: 'Bahrain' },
-  { label: 'Bangladesh' },
-  { label: 'Barbados' },
-  { label: 'Belarus' },
-  { label: 'Belgium' },
-  { label: 'Belize' },
-  { label: 'Benin' },
-  { label: 'Bermuda' },
-  { label: 'Bhutan' },
-  { label: 'Bolivia, Plurinational State of' },
-  { label: 'Bonaire, Sint Eustatius and Saba' },
-  { label: 'Bosnia and Herzegovina' },
-  { label: 'Botswana' },
-  { label: 'Bouvet Island' },
-  { label: 'Brazil' },
-  { label: 'British Indian Ocean Territory' },
-  { label: 'Brunei Darussalam' },
-].map(suggestion => ({
-  value: suggestion.label,
-  label: suggestion.label,
-}))
+import { List, ListItem, ListItemText } from "@material-ui/core"
+import { Header, Pickers, SideBarContent, Layout, InteractiveViews, FormValidator } from './components'
 
 export default function App() {
+  const path = window.location.hash.split('#/')
+  const pathUrl = path[1]
+  const [selectedNode, setSelectedNode] = useState(pathUrl)
+
+  const [selectedDate, handleDateChange] = useState(
+    new Date("2018-01-01T00:00:00.000Z")
+  )
+
+  function handleClick(e, url) {
+    setSelectedNode(url)
+  }
+
+
   return (
     <MuiThemeProvider theme={theme}>
       <UNICEFStyleProvider>
+        <Header />
         <ULayout>
-          <UHeader
-            showHamburgerMenu={true}
-            color="white"
-            bgColor="#1CABE2"
-            applicationName="Application"
-            logoUrl="https://unicef.github.io/unicef-material-ui/"
-          >
-            <UHeaderRightButtons>
-              <NavLinks />
-            </UHeaderRightButtons>
-            <UHeaderMainMenu
-              bgcolor="white"
-              value={0}
-              indicatorColor="primary"
-              textColor="primary"
-              // onChange={handleChange}
-            >
-              <Tab label="Active" />
-              <Tab label="Disabled" disabled />
-              <Tab label="Directory" />
-            </UHeaderMainMenu>
-            <UHeaderLeftMenu>
-              <MenuTabs />
-            </UHeaderLeftMenu>
-          </UHeader>
-          <USideBar headerHeight={112}>
-            <MenuItems />
+          <USideBar headerHeight={124} width={256}>
+            <SideBarContent selectedNode={selectedNode} handleClick={handleClick} />
           </USideBar>
-          <UContent headerHeight={112}>
-            <ColorsExample />
-            <Typography variant="h5" style={{ marginTop: '16px' }}>
-              USelect
-            </Typography>
-            <USelect
-              label="Countries"
-              TextFieldProps={{
-                helperText: 'Please select the countries from above',
-              }}
-              placeholder="Select countries ...."
-              options={options}
-              isMulti
-            />
-            <FormExample />
-            <Buttons />
-            <Alert />
-            <CardWithTabs />
-            <CardsExample />
+          <UContent headerHeight={114}>
+            <Switch>
+              <Route exact path={'/'}>
+                <List style={{ width: 300 }}>
+                  {['Layout', 'Forms', 'Interactive views', 'Pickers'].map((text, index) => (
+                    <ListItem
+                      button
+                      key={text}
+                      component={Link}
+                      to={`${text.replace(/\s+/g, '-').toLowerCase()}`}
+                      onClick={(e) => handleClick(e, `${text.replace(/\s+/g, '-').toLowerCase()}`)}
+                    >
+                      <ListItemText primary={text} />
+                    </ListItem>
+                  ))}
+                </List>
+              </Route>
+              <Route exact path={`/layout`} component={Layout} />
+              <Route exact path={`/forms`} component={FormValidator} />
+              <Route exact path={`/interactive-views`} component={InteractiveViews} />
+              <Route exact path={`/pickers`} component={Pickers} />
+            </Switch>
           </UContent>
-        </ULayout>
+        </ULayout >
       </UNICEFStyleProvider>
     </MuiThemeProvider>
   )
 }
+

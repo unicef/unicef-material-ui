@@ -1,5 +1,5 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
 import {
   Table,
   TableBody,
@@ -13,7 +13,7 @@ import {
   Grid,
   Typography,
   Divider
-} from '@material-ui/core';
+} from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -38,7 +38,7 @@ export default function CardsExample() {
 
   return (
     <React.Fragment >
-      <Typography variant="h5" className={classes.margin}>
+      <Typography variant="h5" style={{ margin: '32px 0px' }}>
         Cards and tables
       </Typography>
       <Grid container spacing={3}>
