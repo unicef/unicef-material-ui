@@ -52,7 +52,6 @@ module.exports = {
       components: () => ([
         path.resolve(__dirname, 'src/components/UButton', 'UButton.js'),
         path.resolve(__dirname, 'src/components/USelect', 'USelect.js'),
-        path.resolve(__dirname, 'src/components/UPeoplePicker', 'UPeoplePicker.js'),
       ]),
       usageMode: 'expand',
     },
@@ -72,6 +71,19 @@ module.exports = {
         path.resolve(__dirname, 'src/components/UHeaderRightButtons', 'UHeaderRightButtons.js'),
         path.resolve(__dirname, 'src/components/UHeaderMainMenu', 'UHeaderMainMenu.js'),
         path.resolve(__dirname, 'src/components/UHeaderLeftMenu', 'UHeaderLeftMenu.js'),
+      ]),
+      usageMode: 'expand',
+    },
+    {
+      name: 'Pickers',
+      components: () => ([
+        path.resolve(__dirname, 'src/components/UPeoplePicker', 'UPeoplePicker.js'),
+        path.resolve(__dirname, 'src/components/UDatePicker', 'UDatePicker.js'),
+        path.resolve(__dirname, 'src/components/UKeyboardDatePicker', 'UKeyboardDatePicker.js'),
+        path.resolve(__dirname, 'src/components/UTimePicker', 'UTimePicker.js'),
+        path.resolve(__dirname, 'src/components/UKeyboardTimePicker', 'UKeyboardTimePicker.js'),
+        path.resolve(__dirname, 'src/components/UDateTimePicker', 'UDateTimePicker.js'),
+        path.resolve(__dirname, 'src/components/UKeyboardDateTimePicker', 'UKeyboardDateTimePicker.js'),
       ]),
       usageMode: 'expand',
     },

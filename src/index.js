@@ -12,6 +12,10 @@ import USelect from './components/USelect'
 import UPeoplePicker from './components/UPeoplePicker'
 import UDatePicker from './components/UDatePicker'
 import UTimePicker from './components/UTimePicker'
+import UKeyboardDatePicker from './components/UKeyboardDatePicker'
+import UKeyboardTimePicker from './components/UKeyboardTimePicker'
+import UDateTimePicker from './components/UDateTimePicker'
+import UKeyboardDateTimePicker from './components/UKeyboardDateTimePicker'
 import UTextField from './components/UTextField'
 import UValidatorComponent from './components/UValidatorComponent'
 import UValidatorForm from './components/UValidatorForm'
@@ -35,6 +39,10 @@ export {
   UPeoplePicker,
   UDatePicker,
   UTimePicker,
+  UKeyboardDatePicker,
+  UKeyboardTimePicker,
+  UDateTimePicker,
+  UKeyboardDateTimePicker,
   UTextField,
   UValidatorForm,
   UValidatorComponent,

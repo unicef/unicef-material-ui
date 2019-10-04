@@ -2,6 +2,10 @@ import React, { useState } from "react"
 import {
   UDatePicker,
   UTimePicker,
+  UKeyboardDatePicker,
+  UKeyboardTimePicker,
+  UDateTimePicker,
+  UKeyboardDateTimePicker,
 } from 'unicef-material-ui'
 import { Grid, Typography } from "@material-ui/core";
 
@@ -26,8 +30,7 @@ export default function Pickers() {
         />
       </Grid>
       <Grid item xs={12} md={6} lg={3}>
-        <UDatePicker
-          keyboardDatePicker
+        <UKeyboardDatePicker
           label="With keyboard"
           value={selectedDate}
           onChange={handleDateChange}
@@ -46,8 +49,26 @@ export default function Pickers() {
         />
       </Grid>
       <Grid item xs={12} md={6} lg={3}>
-        <UTimePicker
-          keyboardTimePicker
+        <UKeyboardTimePicker
+          label="With keyboard"
+          value={selectedDate}
+          onChange={handleDateChange}
+        />
+      </Grid>
+      <Grid item xs={12}>
+        <Typography variant="h5" >
+          Date Time picker
+        </Typography>
+      </Grid>
+      <Grid item xs={12} md={6} lg={3}>
+        <UDateTimePicker
+          label="Date and Time"
+          value={selectedDate}
+          onChange={handleDateChange}
+        />
+      </Grid>
+      <Grid item xs={12} md={6} lg={3}>
+        <UKeyboardDateTimePicker
           label="With keyboard"
           value={selectedDate}
           onChange={handleDateChange}

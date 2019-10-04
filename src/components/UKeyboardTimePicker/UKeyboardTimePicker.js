@@ -2,24 +2,20 @@ import React from "react"
 import PropTypes from 'prop-types'
 import DateFnsUtils from '@date-io/date-fns'
 import {
-  DatePicker,
+  KeyboardTimePicker,
   MuiPickersUtilsProvider,
 } from "@material-ui/pickers"
 
 /**
- * UDatePicker is a customized material ui Date picker.
- * This component let's you access the calender to select particular dates.
- * Plese have look at [Material Ui Date Picker]('https://material-ui-pickers.dev/api/DatePicker') for more details
+ * UKeyboardTimePicker is customized [ Material Ui KeyboardTimePicker](https://material-ui-pickers.dev/api/KeyboardTimePicker)
  */
-export default function UDatePicker(props) {
+export default function UKeyboardTimePicker(props) {
 
-  const { autoOk, variant, inputVariant, ...others } = props
+  const { inputVariant, format, ...others } = props
 
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
-      <DatePicker
-        autoOk={autoOk}
-        variant={variant}
+      <KeyboardTimePicker
         inputVariant={inputVariant}
         {...others}
       />
@@ -27,22 +23,17 @@ export default function UDatePicker(props) {
   );
 }
 
-UDatePicker.propTypes = {
-  /** autoOk on date select */
+UKeyboardTimePicker.propTypes = {
+  /** autoOk on time select */
   autoOk: PropTypes.bool,
   /** Picker container option variant : 'dialog' | 'inline' | 'static' */
   variant: PropTypes.string,
   /** Material ui textfiled variant */
   inputVariant: PropTypes.string,
-  /** date format */
-  format: PropTypes.string,
 }
 
-UDatePicker.defaultProps = {
+UKeyboardTimePicker.defaultProps = {
   inputVariant: "outlined",
   autoOk: true,
   variant: "inline",
-  format: "dd-MMM-yyyy",
 }
-
-
