@@ -52,16 +52,6 @@ export default function App() {
                     </ListItem>
                   ))}
                 </List>
-                <UDatePicker
-                  label="Date"
-                  value={selectedDate}
-                  onChange={handleDateChange}
-                />
-                <UTimePicker
-                  label="Time"
-                  value={selectedDate}
-                  onChange={handleDateChange}
-                />
               </Route>
               <Route exact path={`/layout`} component={Layout} />
               <Route exact path={`/forms`} component={FormValidator} />
