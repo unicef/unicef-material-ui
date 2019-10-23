@@ -46,7 +46,7 @@ const useStyles = makeStyles(theme => ({
 export default function ActiveFormTextField(props) {
 
   const classes = useStyles(props)
-  const { typographyVariant, className, variant, readOnly, placeholder, ...others } = props
+  const { typographyVariant, className, variant, readOnly, placeholder, hideBorder, ...others } = props
   const inputPadding = props.label ? classes.inputPaddingWithLabel : classes.inputPaddingWithoutLabel
   const finalPlaceholder = readOnly ? null : placeholder
 
@@ -66,7 +66,7 @@ export default function ActiveFormTextField(props) {
         classes: {
           root: `${classes.input} ${readOnly && classes.inputHover}`,
           multiline: inputPadding,
-          notchedOutline: classes.notchedOutline,
+          notchedOutline: `${hideBorder ? '' : classes.notchedOutline}`,
           input: props.multiline ? classes.inputPaddingWithoutLabel : inputPadding,
         }
       }}
@@ -86,6 +86,8 @@ ActiveFormTextField.propTypes = {
   typographyVariant: PropTypes.string,
   /** Input has some default padding already, to make changes to it pass padding like `inputPadding='0px 2px'` */
   inputPadding: PropTypes.string,
+  /** To hide or display the textfied border*/
+  hideBorder: PropTypes.bool,
   /** 
    * Array of validators.See list of default validators above.
    * 

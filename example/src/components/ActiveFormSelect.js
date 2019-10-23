@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
 export default function ActiveFormSelect(props) {
 
   const classes = useStyles(props)
-  const { select, typographyVariant, ...others } = props
+  const { select, typographyVariant, hideBorder, readOnly, ...others } = props
   const [hideIcon, setHideIcon] = React.useState(classes.icon)
 
   function onMouseOver() {
@@ -43,13 +43,17 @@ export default function ActiveFormSelect(props) {
       InputLabelProps={{
         shrink: true,
       }}
+      inputProps={{
+        readOnly: Boolean(readOnly),
+        disabled: Boolean(readOnly),
+      }}
       InputProps={{
         disableUnderline: true,
-        classes: { root: classes.input, notchedOutline: classes.notchedOutline, input: classes.inputPadding }
+        classes: { root: classes.input, notchedOutline: `${hideBorder ? '' : classes.notchedOutline}`, input: classes.inputPadding }
       }}
       select
       SelectProps={{
-        classes: { icon: hideIcon }
+        classes: { icon: `${hideBorder ? '' : hideIcon}` }
       }}
       onMouseOver={onMouseOver}
       onMouseLeave={handleBlur}
