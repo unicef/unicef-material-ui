@@ -40,7 +40,7 @@ const useStyles = makeStyles(theme => ({
 export default function ActiveFormSelect(props) {
 
   const classes = useStyles(props)
-  const { select, typographyVariant, className, hideBorder, placeholder, readOnly, ...others } = props
+  const { select, typographyVariant, className, showBorder, placeholder, readOnly, ...others } = props
   const [hideIcon, setHideIcon] = React.useState(classes.icon)
   const finalPlaceholder = readOnly ? null : placeholder
 
@@ -64,11 +64,11 @@ export default function ActiveFormSelect(props) {
       className={`${classes.textField} ${className && className}`}
       InputProps={{
         disableUnderline: true,
-        classes: { root: classes.input, notchedOutline: `${hideBorder ? '' : classes.notchedOutline}`, input: classes.inputPadding }
+        classes: { root: classes.input, notchedOutline: `${showBorder ? '' : classes.notchedOutline}`, input: classes.inputPadding }
       }}
       select
       SelectProps={{
-        classes: { icon: `${hideBorder ? '' : hideIcon}` }
+        classes: { icon: `${showBorder ? '' : hideIcon}` }
       }}
       onMouseOver={onMouseOver}
       onMouseLeave={handleBlur}
@@ -95,7 +95,7 @@ ActiveFormSelect.propTypes = {
   /** Typography for text inside the input (Ex: h1, div, etc.) */
   typographyVariant: PropTypes.string,
   /** To hide or display the textfied border*/
-  hideBorder: PropTypes.bool,
+  showBorder: PropTypes.bool,
   /** Input has some default padding already, to make changes to it pass padding like `inputPadding='0px 2px'` */
   inputPadding: PropTypes.string,
   /** 

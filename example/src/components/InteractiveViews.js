@@ -36,7 +36,7 @@ export default function InteractiveViews() {
   const classes = useStyles()
   const form = useRef('form')
   const [readOnly, setReadOnly] = useState(false)
-  const [hideBorder, setHideBorder] = useState(false)
+  const [showBorder, setShowBorder] = useState(false)
 
   function handleChange() {
 
@@ -75,13 +75,13 @@ export default function InteractiveViews() {
 
   function handleBorder() {
     timer.current = setTimeout(() => {
-      setHideBorder(true);
+      setShowBorder(true);
     }, 200);
   }
 
   function handleSubmit() {
-    console.log(hideBorder)
-    setHideBorder(false)
+    console.log(showBorder)
+    setShowBorder(false)
     setDisabled(true)
   }
 
@@ -256,7 +256,7 @@ export default function InteractiveViews() {
                   >
                     Personnel Details
                   </ActiveFormTextField>
-                  {hideBorder ? <Button
+                  {showBorder ? <Button
                     variant="contained"
                     color="primary"
                     type="submit"
@@ -286,10 +286,10 @@ export default function InteractiveViews() {
                       name="name"
                       placeholder="Enter your name"
                       onChange={handleValue}
-                      hideBorder={hideBorder}
+                      showBorder={showBorder}
                       typographyVariant="h4"
                       value={values.name}
-                      readOnly={!hideBorder}
+                      readOnly={!showBorder}
                       validators={['required']}
                       errorMessages={['this field is required']}
                     />
@@ -300,10 +300,10 @@ export default function InteractiveViews() {
                       name="email"
                       placeholder="Enter your email"
                       onChange={handleValue}
-                      hideBorder={hideBorder}
+                      showBorder={showBorder}
                       typographyVariant="subtitle1"
                       value={values.email}
-                      readOnly={!hideBorder}
+                      readOnly={!showBorder}
                       validators={['required', 'isEmail']}
                       errorMessages={['this field is required', 'email is not valid']}
                     />
@@ -314,9 +314,9 @@ export default function InteractiveViews() {
                       name="employment"
                       value={values.employment}
                       onChange={handleValue}
-                      hideBorder={hideBorder}
+                      showBorder={showBorder}
                       className={classes.textfield}
-                      readOnly={!hideBorder}
+                      readOnly={!showBorder}
                       typographyVariant="subtitle1"
                       validators={['required']}
                       errorMessages={['this field is required']}
@@ -337,10 +337,10 @@ export default function InteractiveViews() {
                       label="Address"
                       name="address"
                       onChange={handleValue}
-                      hideBorder={hideBorder}
+                      showBorder={showBorder}
                       typographyVariant="subtitle1"
                       value={values.address}
-                      readOnly={!hideBorder}
+                      readOnly={!showBorder}
                       validators={['required']}
                       errorMessages={['this field is required']}
                       fullWidth
