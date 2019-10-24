@@ -10,7 +10,7 @@ const useStyles = makeStyles(theme => ({
     marginBottom: theme.spacing(0.25)
   },
   icon: {
-    display: 'none',
+    display: 'none !important',
   },
   showIcon: {
     display: 'block'
@@ -25,6 +25,11 @@ const useStyles = makeStyles(theme => ({
   input: props => ({
     ...theme.typography[props.typographyVariant]
   }),
+  inputHover: {
+    '&:hover $notchedOutline': {
+      borderColor: 'transparent',
+    },
+  },
 }))
 
 /** 
@@ -40,12 +45,15 @@ const useStyles = makeStyles(theme => ({
 export default function ActiveFormSelect(props) {
 
   const classes = useStyles(props)
-  const { select, typographyVariant, className, placeholder, readOnly, ...others } = props
+  const { select, typographyVariant, className, showBorder, placeholder, readOnly, ...others } = props
   const [hideIcon, setHideIcon] = React.useState(classes.icon)
   const finalPlaceholder = readOnly ? null : placeholder
 
   function onMouseOver() {
-    setHideIcon(classes.showIcon)
+    if (!readOnly) {
+      setHideIcon(classes.showIcon)
+    }
+    return props.onMouseOver && props.onMouseOver
   }
 
   function handleBlur(event) {
@@ -61,14 +69,22 @@ export default function ActiveFormSelect(props) {
       InputLabelProps={{
         shrink: true,
       }}
+      inputProps={{
+        readOnly: Boolean(readOnly),
+        disabled: Boolean(readOnly),
+      }}
       className={`${classes.textField} ${className && className}`}
       InputProps={{
         disableUnderline: true,
-        classes: { root: classes.input, notchedOutline: classes.notchedOutline, input: classes.inputPadding }
+        classes: {
+          root: `${classes.input} ${readOnly && classes.inputHover}`,
+          notchedOutline: `${showBorder && !readOnly ? '' : classes.notchedOutline}`,
+          input: classes.inputPadding
+        }
       }}
       select
       SelectProps={{
-        classes: { icon: hideIcon }
+        classes: { icon: readOnly && classes.icon }
       }}
       onMouseOver={onMouseOver}
       onMouseLeave={handleBlur}
@@ -82,10 +98,10 @@ export default function ActiveFormSelect(props) {
 }
 
 ActiveFormSelect.propTypes = {
-   /** label */
-   label: PropTypes.string,
-   /** placeholder text*/
-   placeholder: PropTypes.string,
+  /** label */
+  label: PropTypes.string,
+  /** placeholder text*/
+  placeholder: PropTypes.string,
   /** Typography for text inside the input (Ex: h1, div, etc.) */
   typographyVariant: PropTypes.string,
   /** Input has some default padding already, to make changes to it pass padding like `inputPadding='0px 2px'` */
@@ -94,6 +110,8 @@ ActiveFormSelect.propTypes = {
   select: PropTypes.bool,
   /** Typography for text inside the input (Ex: h1, div, etc.) */
   typographyVariant: PropTypes.string,
+  /** To hide or display the textfied border*/
+  showBorder: PropTypes.bool,
   /** Input has some default padding already, to make changes to it pass padding like `inputPadding='0px 2px'` */
   inputPadding: PropTypes.string,
   /** 
@@ -119,5 +137,6 @@ ActiveFormSelect.propTypes = {
 }
 
 ActiveFormSelect.defaultProps = {
-  placeholder: 'Select'
+  placeholder: 'Select',
+  showBorder: true,
 }

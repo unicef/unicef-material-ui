@@ -22,7 +22,7 @@ export default function Header() {
       showHamburgerMenu={true}
       color="white"
       bgColor="#1CABE2"
-      applicationName="Application"
+      applicationName="Material UI"
       logoUrl={process.env.PUBLIC_URL}
     >
       <UHeaderRightButtons>
