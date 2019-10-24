@@ -10,7 +10,7 @@ const useStyles = makeStyles(theme => ({
     marginBottom: theme.spacing(0.25)
   },
   icon: {
-    display: 'none',
+    display: 'none !important',
   },
   showIcon: {
     display: 'block'
@@ -25,6 +25,11 @@ const useStyles = makeStyles(theme => ({
   input: props => ({
     ...theme.typography[props.typographyVariant]
   }),
+  inputHover: {
+    '&:hover $notchedOutline': {
+      borderColor: 'transparent',
+    },
+  },
 }))
 
 /** 
@@ -45,7 +50,10 @@ export default function ActiveFormSelect(props) {
   const finalPlaceholder = readOnly ? null : placeholder
 
   function onMouseOver() {
-    setHideIcon(classes.showIcon)
+    if (!readOnly) {
+      setHideIcon(classes.showIcon)
+    }
+    return props.onMouseOver && props.onMouseOver
   }
 
   function handleBlur(event) {
@@ -61,10 +69,18 @@ export default function ActiveFormSelect(props) {
       InputLabelProps={{
         shrink: true,
       }}
+      inputProps={{
+        readOnly: Boolean(readOnly),
+        disabled: Boolean(readOnly),
+      }}
       className={`${classes.textField} ${className && className}`}
       InputProps={{
         disableUnderline: true,
-        classes: { root: classes.input, notchedOutline: `${showBorder ? '' : classes.notchedOutline}`, input: classes.inputPadding }
+        classes: {
+          root: `${classes.input} ${readOnly && classes.inputHover}`,
+          notchedOutline: `${showBorder ? '' : classes.notchedOutline}`,
+          input: classes.inputPadding
+        }
       }}
       select
       SelectProps={{

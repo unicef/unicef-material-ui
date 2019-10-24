@@ -12,8 +12,7 @@ import {
   Button,
   Typography,
 } from '@material-ui/core'
-import { ActiveFormTextField, UValidatorForm } from 'unicef-material-ui'
-import ActiveFormSelect from './ActiveFormSelect'
+import { ActiveFormTextField, ActiveFormSelect, UValidatorForm } from 'unicef-material-ui'
 
 const useStyles = makeStyles(theme => ({
   textfield: {
