@@ -66,7 +66,7 @@ export default function ActiveFormTextField(props) {
         classes: {
           root: `${classes.input} ${readOnly && classes.inputHover}`,
           multiline: inputPadding,
-          notchedOutline: `${showBorder ? '' : classes.notchedOutline}`,
+          notchedOutline: `${showBorder && !readOnly ? '' : classes.notchedOutline}`,
           input: props.multiline ? classes.inputPaddingWithoutLabel : inputPadding,
         }
       }}
@@ -111,5 +111,6 @@ ActiveFormTextField.propTypes = {
 }
 
 ActiveFormTextField.defaultProps = {
-  placeholder: 'Type something'
+  placeholder: 'Type something',
+  showBorder: true,
 }

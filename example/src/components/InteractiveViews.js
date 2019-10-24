@@ -34,11 +34,9 @@ const useStyles = makeStyles(theme => ({
 export default function InteractiveViews() {
   const classes = useStyles()
   const form = useRef('form')
-  const [readOnly, setReadOnly] = useState(false)
-  const [showBorder, setShowBorder] = useState(false)
+  const [readOnly, setReadOnly] = useState(true)
 
   function handleChange() {
-
     setReadOnly(!readOnly)
   }
 
@@ -52,7 +50,6 @@ export default function InteractiveViews() {
       address: '9452 Horace New York NY 11224',
     }
   )
-
   const timer = React.useRef();
 
   React.useEffect(() => {
@@ -72,15 +69,14 @@ export default function InteractiveViews() {
     }
   }
 
-  function handleBorder() {
+  function handleEdit() {
     timer.current = setTimeout(() => {
-      setShowBorder(true);
-    }, 200);
+      setReadOnly(false)
+    }, 200)
   }
 
   function handleSubmit() {
-    console.log(showBorder)
-    setShowBorder(false)
+    setReadOnly(true)
     setDisabled(true)
   }
 
@@ -255,20 +251,21 @@ export default function InteractiveViews() {
                   >
                     Personnel Details
                   </ActiveFormTextField>
-                  {showBorder ? <Button
-                    variant="contained"
-                    color="primary"
-                    type="submit"
-                  >
-                    Save
+                  {readOnly ?
+                    <Button
+                      variant="contained"
+                      color="default"
+                      onClick={handleEdit}
+                    >
+                      Edit
                   </Button>
                     :
                     <Button
                       variant="contained"
-                      color="default"
-                      onClick={handleBorder}
+                      color="primary"
+                      type="submit"
                     >
-                      Edit
+                      Save
                   </Button>
                   }
                 </Box>
@@ -285,10 +282,9 @@ export default function InteractiveViews() {
                       name="name"
                       placeholder="Enter your name"
                       onChange={handleValue}
-                      showBorder={showBorder}
                       typographyVariant="h4"
                       value={values.name}
-                      readOnly={!showBorder}
+                      readOnly={readOnly}
                       validators={['required']}
                       errorMessages={['this field is required']}
                     />
@@ -299,10 +295,9 @@ export default function InteractiveViews() {
                       name="email"
                       placeholder="Enter your email"
                       onChange={handleValue}
-                      showBorder={showBorder}
                       typographyVariant="subtitle1"
                       value={values.email}
-                      readOnly={!showBorder}
+                      readOnly={readOnly}
                       validators={['required', 'isEmail']}
                       errorMessages={['this field is required', 'email is not valid']}
                     />
@@ -313,9 +308,8 @@ export default function InteractiveViews() {
                       name="employment"
                       value={values.employment}
                       onChange={handleValue}
-                      showBorder={showBorder}
                       className={classes.textfield}
-                      readOnly={!showBorder}
+                      readOnly={readOnly}
                       typographyVariant="subtitle1"
                       validators={['required']}
                       errorMessages={['this field is required']}
@@ -336,10 +330,9 @@ export default function InteractiveViews() {
                       label="Address"
                       name="address"
                       onChange={handleValue}
-                      showBorder={showBorder}
                       typographyVariant="subtitle1"
                       value={values.address}
-                      readOnly={!showBorder}
+                      readOnly={readOnly}
                       validators={['required']}
                       errorMessages={['this field is required']}
                       fullWidth

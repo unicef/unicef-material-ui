@@ -78,13 +78,13 @@ export default function ActiveFormSelect(props) {
         disableUnderline: true,
         classes: {
           root: `${classes.input} ${readOnly && classes.inputHover}`,
-          notchedOutline: `${showBorder ? '' : classes.notchedOutline}`,
+          notchedOutline: `${showBorder && !readOnly ? '' : classes.notchedOutline}`,
           input: classes.inputPadding
         }
       }}
       select
       SelectProps={{
-        classes: { icon: `${showBorder ? '' : hideIcon}` }
+        classes: { icon: readOnly && classes.icon }
       }}
       onMouseOver={onMouseOver}
       onMouseLeave={handleBlur}
@@ -137,5 +137,6 @@ ActiveFormSelect.propTypes = {
 }
 
 ActiveFormSelect.defaultProps = {
-  placeholder: 'Select'
+  placeholder: 'Select',
+  showBorder: true,
 }
