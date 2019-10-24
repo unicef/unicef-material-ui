@@ -1,6 +1,6 @@
 {
   "name": "@unicef/material-ui",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "UNICEF theme and components of material-ui for react",
   "main": "index.js",
   "files": [
