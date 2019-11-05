@@ -56,7 +56,7 @@ export default class UTextField extends ValidatorComponent {
       ...rest
     } = this.props
     const { isValid } = this.state
-    console.log(this.props.InputProps)
+
     return (
       <TextField
         {...rest}
