@@ -7,23 +7,23 @@ const useStyles = makeStyles(theme => ({
   textField: {
     minWidth: 193,
     marginTop: theme.spacing(0.25),
-    marginBottom: theme.spacing(0.25)
+    marginBottom: theme.spacing(0.25),
   },
   icon: {
     display: 'none !important',
   },
   showIcon: {
-    display: 'block'
+    display: 'block',
   },
   notchedOutline: {
     borderRadius: 2,
-    borderColor: 'transparent'
+    borderColor: 'transparent',
   },
   inputPadding: {
     padding: '9.5px 14px',
   },
   input: props => ({
-    ...theme.typography[props.typographyVariant]
+    ...theme.typography[props.typographyVariant],
   }),
   inputHover: {
     '&:hover $notchedOutline': {
@@ -32,20 +32,31 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-/** 
+/**
  * ActiveFormSelect is same component as ActiveFormTextField but ActiveFormSelect is a Select component and ActiveFormTextField is Input.
- * 
+ *
  * Which is made by overriding some input styles and props from [TextFieldAPI](https://material-ui.com/api/text-field/#textfield-api).
- * 
+ *
  * It accepts all the TextField props and styles
- * 
+ *
  * It must be wrapped inside UValidatorForm Component and even if you don't want to use validation.
  *
  */
 export default function ActiveFormSelect(props) {
-
   const classes = useStyles(props)
-  const { select, typographyVariant, className, showBorder, placeholder, readOnly, ...others } = props
+  const {
+    select,
+    typographyVariant,
+    className,
+    showBorder,
+    placeholder,
+    readOnly,
+    InputLabelProps,
+    InputProps,
+    inputProps,
+    SelectProps,
+    ...others
+  } = props
   const [hideIcon, setHideIcon] = React.useState(classes.icon)
   const finalPlaceholder = readOnly ? null : placeholder
 
@@ -68,23 +79,29 @@ export default function ActiveFormSelect(props) {
       placeholder={finalPlaceholder}
       InputLabelProps={{
         shrink: true,
+        ...InputLabelProps,
       }}
       inputProps={{
         readOnly: Boolean(readOnly),
         disabled: Boolean(readOnly),
+        ...inputProps,
       }}
       className={`${classes.textField} ${className && className}`}
       InputProps={{
         disableUnderline: true,
         classes: {
           root: `${classes.input} ${readOnly && classes.inputHover}`,
-          notchedOutline: `${showBorder && !readOnly ? '' : classes.notchedOutline}`,
-          input: classes.inputPadding
-        }
+          notchedOutline: `${
+            showBorder && !readOnly ? '' : classes.notchedOutline
+          }`,
+          input: classes.inputPadding,
+        },
+        ...InputProps,
       }}
       select
       SelectProps={{
-        classes: { icon: readOnly && classes.icon }
+        classes: { icon: readOnly && classes.icon },
+        ...SelectProps,
       }}
       onMouseOver={onMouseOver}
       onMouseLeave={handleBlur}
@@ -114,15 +131,15 @@ ActiveFormSelect.propTypes = {
   showBorder: PropTypes.bool,
   /** Input has some default padding already, to make changes to it pass padding like `inputPadding='0px 2px'` */
   inputPadding: PropTypes.string,
-  /** 
+  /**
    * Array of validators.See list of default validators above.
-   * 
+   *
    * Ex: `validators={['required', 'isEmail']}`
    */
   validators: PropTypes.array,
   /**
    * Array of error messages.Order of messages should be the same as validators prop.
-   * 
+   *
    * Ex: `errorMessages={['this field is required', 'email is not valid']}`
    */
   errorMessages: PropTypes.array,
