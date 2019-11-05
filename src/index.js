@@ -3,6 +3,7 @@ import UNICEFStyleProvider from './components/UNICEFStyleProvider'
 import UHeader from './components/UHeader'
 import UHeaderRightButtons from './components/UHeaderRightButtons'
 import UHeaderLeftMenu from './components/UHeaderLeftMenu'
+import UNavbarCenter from './components/UNavbarCenter'
 import ULayout from './components/ULayout'
 import USideBar from './components/USideBar'
 import UContent from './components/UContent'
@@ -30,6 +31,7 @@ export {
   UHeader,
   UHeaderLeftMenu,
   UHeaderRightButtons,
+  UNavbarCenter,
   UHeaderMainMenu,
   ULayout,
   USideBar,
