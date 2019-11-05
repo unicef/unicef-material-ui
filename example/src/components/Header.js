@@ -4,13 +4,14 @@ import {
   UHeaderRightButtons,
   UHeaderMainMenu,
   UHeaderLeftMenu,
+  UNavbarCenter,
 } from 'unicef-material-ui'
 import NavLinks from './NavLinks'
 import SideBarContent from './SideBarContent'
 import Tab from '@material-ui/core/Tab'
+import SearchBar from './SearchBar'
 
 export default function Header() {
-
   const [value, setValue] = React.useState(0)
 
   function handleChange(event, newValue) {
@@ -25,6 +26,9 @@ export default function Header() {
       applicationName="Material UI"
       logoUrl={process.env.PUBLIC_URL}
     >
+      <UNavbarCenter>
+        <SearchBar />
+      </UNavbarCenter>
       <UHeaderRightButtons>
         <NavLinks />
       </UHeaderRightButtons>

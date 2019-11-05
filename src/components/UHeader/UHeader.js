@@ -184,9 +184,9 @@ export default function UHeader(props) {
               {applicationName}
             </Link>
           </Typography>
-          <Box className={classes.navbarCenter}>
+          <div className={classes.navbarCenter}>
             {findReactChildren(props, UNavbarCenter)}
-          </Box>
+          </div>
         </Box>
         <Box
           height="64px"
