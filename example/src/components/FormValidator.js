@@ -1,18 +1,72 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import { Typography, Button, Box, Checkbox, MenuItem, Radio, FormGroup, FormControl, FormLabel, FormControlLabel, RadioGroup, Grid } from '@material-ui/core'
-import { USelect, UTextField, UPeoplePicker, UValidatorForm, UValidatorComponent } from 'unicef-material-ui'
+import {
+  Typography,
+  Button,
+  Box,
+  Checkbox,
+  MenuItem,
+  Radio,
+  FormGroup,
+  FormControl,
+  FormLabel,
+  FormControlLabel,
+  RadioGroup,
+  Grid,
+} from '@material-ui/core'
+import {
+  USelect,
+  UTextField,
+  UPeoplePicker,
+  UValidatorForm,
+  UValidatorComponent,
+} from 'unicef-material-ui'
 
 const options = [
   { id: 1, title: 'Juan Merlos Tevar', subtitle: 'Manager', imageUrl: null },
-  { id: 2, title: 'Suresh Sevarthi', subtitle: 'Front-end Developer', imageUrl: null },
-  { id: 3, title: 'Kundal Singh Mehra', subtitle: 'Back-end Developer', imageUrl: null },
+  {
+    id: 2,
+    title: 'Suresh Sevarthi',
+    subtitle: 'Front-end Developer',
+    imageUrl: null,
+  },
+  {
+    id: 3,
+    title: 'Kundal Singh Mehra',
+    subtitle: 'Back-end Developer',
+    imageUrl: null,
+  },
   { id: 4, title: 'Gia Zarina Santos', subtitle: 'Manager', imageUrl: null },
-  { id: 5, title: 'Cory Kleinschmidt', subtitle: 'Information technology specialist', imageUrl: null },
-  { id: 6, title: 'Riddhi Poladia', subtitle: 'Database Specialist', imageUrl: null },
-  { id: 7, title: 'Mahananda Talgaonkar', subtitle: 'Sharepoint Developer', imageUrl: null },
-  { id: 8, title: 'Mary Anne Alde', subtitle: 'Sharepoint analyst', imageUrl: null },
-  { id: 9, title: 'Renga Narayanan', subtitle: 'Back-end Developer', imageUrl: null },
+  {
+    id: 5,
+    title: 'Cory Kleinschmidt',
+    subtitle: 'Information technology specialist',
+    imageUrl: null,
+  },
+  {
+    id: 6,
+    title: 'Riddhi Poladia',
+    subtitle: 'Database Specialist',
+    imageUrl: null,
+  },
+  {
+    id: 7,
+    title: 'Mahananda Talgaonkar',
+    subtitle: 'Sharepoint Developer',
+    imageUrl: null,
+  },
+  {
+    id: 8,
+    title: 'Mary Anne Alde',
+    subtitle: 'Sharepoint analyst',
+    imageUrl: null,
+  },
+  {
+    id: 9,
+    title: 'Renga Narayanan',
+    subtitle: 'Back-end Developer',
+    imageUrl: null,
+  },
 ].map(option => ({
   value: option.id,
   label: option.title,
@@ -31,7 +85,7 @@ const suggestions = [
 ].map(option => ({
   value: option.label,
   label: option.label,
-}));
+}))
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -68,16 +122,13 @@ const currencies = [
 ]
 
 export default function FormValidator() {
-
   const classes = useStyles()
 
   const form = useRef('form')
-  const [values, setValues] = useState(
-    {
-      email: 'test@test.com',
-      password: 'testinghere'
-    }
-  )
+  const [values, setValues] = useState({
+    email: 'test@test.com',
+    password: 'testinghere',
+  })
 
   function handleValue(event) {
     const target = event.target
@@ -90,7 +141,7 @@ export default function FormValidator() {
   const [valueChoice, setValueChoice] = React.useState(null)
 
   function handleChange(event) {
-    setValueChoice(event.target.value);
+    setValueChoice(event.target.value)
   }
 
   const [isLoading, setLoading] = useState(true)
@@ -102,28 +153,30 @@ export default function FormValidator() {
       setOptions(options)
       setSuggestions(suggestions)
       setLoading(false)
-    }, 3000);
-    return () => clearTimeout();
-  }, []);
+    }, 3000)
+    return () => clearTimeout()
+  }, [])
 
-  const { react, angular, azure, redux } = values;
-  const valid = [react, angular, azure, redux].filter(v => v).length > 2;
-  const validChoose = valueChoice === null ? false : true;
+  const { react, angular, azure, redux } = values
+  const valid = [react, angular, azure, redux].filter(v => v).length > 2
+  const validChoose = valueChoice === null ? false : true
 
   function handleSubmit() {
     // Submit the changes from here
   }
 
   useEffect(() => {
-    // returned function will be called on component unmount 
-    UValidatorForm.addValidationRule('isTruthy', (value) => { return value })
+    // returned function will be called on component unmount
+    UValidatorForm.addValidationRule('isTruthy', value => {
+      return value
+    })
   }, [])
 
   return (
     <React.Fragment>
       <Grid container spacing={1}>
         <Grid item xs={12}>
-          <Typography variant="h5" style={{ margin: '16px 0px' }} >
+          <Typography variant="h5" style={{ margin: '16px 0px' }}>
             USelect
           </Typography>
         </Grid>
@@ -136,7 +189,7 @@ export default function FormValidator() {
             isLoading={isLoading}
             placeholder="Select country ..."
             options={gotSuggestions}
-          // onChange={handleChange}
+            // onChange={handleChange}
           />
         </Grid>
         <Grid item xs={12} md={6}>
@@ -155,7 +208,7 @@ export default function FormValidator() {
       </Grid>
       <Grid container spacing={1}>
         <Grid item xs={12}>
-          <Typography variant="h5" style={{ margin: '16px 0px' }} >
+          <Typography variant="h5" style={{ margin: '16px 0px' }}>
             People picker
           </Typography>
         </Grid>
@@ -168,7 +221,7 @@ export default function FormValidator() {
             isLoading={isLoading}
             placeholder="Select people ..."
             options={gotOptions}
-          // onChange={handleChange}
+            // onChange={handleChange}
           />
         </Grid>
         <Grid item xs={12} md={6}>
@@ -190,15 +243,15 @@ export default function FormValidator() {
         onSubmit={handleSubmit}
         onError={errors => console.log(errors)}
         debounceTime={1000}
-      // instantValidate={true}
+        // instantValidate={true}
       >
-        <Grid container >
+        <Grid container>
           <Grid item xs={12}>
-            <Typography style={{ marginBottom: 12 }} variant="h5" >
+            <Typography style={{ marginBottom: 12 }} variant="h5">
               Form validator
-        </Typography>
+            </Typography>
           </Grid>
-          <Grid item xs={12} lg={3} xl={2} >
+          <Grid item xs={12} lg={3} xl={2}>
             <UTextField
               label="Email"
               onChange={handleValue}
@@ -244,7 +297,14 @@ export default function FormValidator() {
             </UTextField>
           </Grid>
           <Grid item xs={12} lg={1}>
-            <Button style={{ marginTop: 24 }} color="primary" variant="contained" type="submit">Submit</Button>
+            <Button
+              style={{ marginTop: 24 }}
+              color="primary"
+              variant="contained"
+              type="submit"
+            >
+              Submit
+            </Button>
           </Grid>
         </Grid>
       </UValidatorForm>
@@ -263,29 +323,37 @@ export default function FormValidator() {
             errorMessages={['check more than two fields']}
             value={valid}
           >
-            <FormControl className={classes.margin} required component="fieldset" >
-              <FormLabel >Pick more than two</FormLabel>
+            <FormControl
+              className={classes.margin}
+              required
+              component="fieldset"
+            >
+              <FormLabel>Pick more than two</FormLabel>
               <FormGroup>
                 <FormControlLabel
-                  control={<Checkbox
-                    name="react"
-                    label="React"
-                    color="primary"
-                    checked={values.react}
-                    value={values.react}
-                    onChange={handleValue}
-                  />}
+                  control={
+                    <Checkbox
+                      name="react"
+                      label="React"
+                      color="primary"
+                      checked={values.react}
+                      value={values.react}
+                      onChange={handleValue}
+                    />
+                  }
                   label="React Facebook"
                 />
                 <FormControlLabel
-                  control={<Checkbox
-                    name="redux"
-                    label="Redux"
-                    color="secondary"
-                    checked={values.redux}
-                    value={values.redux}
-                    onChange={handleValue}
-                  />}
+                  control={
+                    <Checkbox
+                      name="redux"
+                      label="Redux"
+                      color="secondary"
+                      checked={values.redux}
+                      value={values.redux}
+                      onChange={handleValue}
+                    />
+                  }
                   label="Redux"
                 />
                 <FormControlLabel
@@ -297,7 +365,8 @@ export default function FormValidator() {
                       checked={values.angular}
                       value={values.angular}
                       onChange={handleValue}
-                    />}
+                    />
+                  }
                   label="Angular Google"
                 />
                 <FormControlLabel
@@ -309,7 +378,8 @@ export default function FormValidator() {
                       checked={values.azure}
                       value={values.azure}
                       onChange={handleValue}
-                    />}
+                    />
+                  }
                   label="Azure Microsoft"
                 />
               </FormGroup>
@@ -322,9 +392,19 @@ export default function FormValidator() {
             errorMessages={['choose an option from above']}
             value={validChoose}
           >
-            <FormControl className={classes.margin} required component="fieldset" >
+            <FormControl
+              className={classes.margin}
+              required
+              component="fieldset"
+            >
               <FormLabel component="legend">Gender</FormLabel>
-              <RadioGroup aria-label="gender" row name="gender2" value={valueChoice} onChange={handleChange}>
+              <RadioGroup
+                aria-label="gender"
+                row
+                name="gender2"
+                value={valueChoice}
+                onChange={handleChange}
+              >
                 <FormControlLabel
                   value="female"
                   control={<Radio color="primary" />}
@@ -346,7 +426,14 @@ export default function FormValidator() {
               </RadioGroup>
             </FormControl>
           </UValidatorComponent>
-          <Button className={classes.margin} color="primary" variant="contained" type="Validate">Validate</Button>
+          <Button
+            className={classes.margin}
+            color="primary"
+            variant="contained"
+            type="Validate"
+          >
+            Validate
+          </Button>
         </Box>
       </UValidatorForm>
     </React.Fragment>

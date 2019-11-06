@@ -1,5 +1,5 @@
-import React, { useState } from "react"
-import { Switch, Route, Link } from "react-router-dom"
+import React, { useState } from 'react'
+import { Switch, Route, Link } from 'react-router-dom'
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
 import {
   theme,
@@ -7,26 +7,26 @@ import {
   ULayout,
   USideBar,
   UContent,
-  UDatePicker,
-  UTimePicker,
 } from 'unicef-material-ui'
 import './App.css'
-import { List, ListItem, ListItemText } from "@material-ui/core"
-import { Header, Pickers, SideBarContent, Layout, InteractiveViews, FormValidator } from './components'
+import { List, ListItem, ListItemText } from '@material-ui/core'
+import {
+  Header,
+  Pickers,
+  SideBarContent,
+  Layout,
+  InteractiveViews,
+  FormValidator,
+} from './components'
 
 export default function App() {
   const path = window.location.hash.split('#/')
   const pathUrl = path[1]
   const [selectedNode, setSelectedNode] = useState(pathUrl)
 
-  const [selectedDate, handleDateChange] = useState(
-    new Date("2018-01-01T00:00:00.000Z")
-  )
-
   function handleClick(e, url) {
     setSelectedNode(url)
   }
-
 
   return (
     <MuiThemeProvider theme={theme}>
@@ -34,34 +34,47 @@ export default function App() {
         <Header />
         <ULayout>
           <USideBar headerHeight={124} width={256}>
-            <SideBarContent selectedNode={selectedNode} handleClick={handleClick} />
+            <SideBarContent
+              selectedNode={selectedNode}
+              handleClick={handleClick}
+            />
           </USideBar>
           <UContent headerHeight={114}>
             <Switch>
               <Route exact path={'/'}>
                 <List style={{ width: 300 }}>
-                  {['Layout', 'Forms', 'Interactive views', 'Pickers'].map((text, index) => (
-                    <ListItem
-                      button
-                      key={text}
-                      component={Link}
-                      to={`${text.replace(/\s+/g, '-').toLowerCase()}`}
-                      onClick={(e) => handleClick(e, `${text.replace(/\s+/g, '-').toLowerCase()}`)}
-                    >
-                      <ListItemText primary={text} />
-                    </ListItem>
-                  ))}
+                  {['Layout', 'Forms', 'Interactive views', 'Pickers'].map(
+                    (text, index) => (
+                      <ListItem
+                        button
+                        key={text}
+                        component={Link}
+                        to={`${text.replace(/\s+/g, '-').toLowerCase()}`}
+                        onClick={e =>
+                          handleClick(
+                            e,
+                            `${text.replace(/\s+/g, '-').toLowerCase()}`
+                          )
+                        }
+                      >
+                        <ListItemText primary={text} />
+                      </ListItem>
+                    )
+                  )}
                 </List>
               </Route>
               <Route exact path={`/layout`} component={Layout} />
               <Route exact path={`/forms`} component={FormValidator} />
-              <Route exact path={`/interactive-views`} component={InteractiveViews} />
+              <Route
+                exact
+                path={`/interactive-views`}
+                component={InteractiveViews}
+              />
               <Route exact path={`/pickers`} component={Pickers} />
             </Switch>
           </UContent>
-        </ULayout >
+        </ULayout>
       </UNICEFStyleProvider>
     </MuiThemeProvider>
   )
 }
-

@@ -12,14 +12,18 @@ import {
   Button,
   Typography,
 } from '@material-ui/core'
-import { ActiveFormTextField, ActiveFormSelect, UValidatorForm } from 'unicef-material-ui'
+import {
+  ActiveFormTextField,
+  ActiveFormSelect,
+  UValidatorForm,
+} from 'unicef-material-ui'
 
 const useStyles = makeStyles(theme => ({
   textfield: {
     minWidth: 193,
   },
   margin: {
-    margin: theme.spacing(2)
+    margin: theme.spacing(2),
   },
   input: {
     borderRadius: 0,
@@ -28,7 +32,7 @@ const useStyles = makeStyles(theme => ({
     height: 160,
     width: 160,
     marginLeft: theme.spacing(3),
-  }
+  },
 }))
 
 export default function InteractiveViews() {
@@ -41,20 +45,18 @@ export default function InteractiveViews() {
   }
 
   const [disabled, setDisabled] = useState(true)
-  const [values, setValues] = useState(
-    {
-      name: 'John Doe',
-      email: 'john@john.com',
-      employment: 1,
-      mobile: 2223333433,
-      address: '9452 Horace New York NY 11224',
-    }
-  )
-  const timer = React.useRef();
+  const [values, setValues] = useState({
+    name: 'John Doe',
+    email: 'john@john.com',
+    employment: 1,
+    mobile: 2223333433,
+    address: '9452 Horace New York NY 11224',
+  })
+  const timer = React.useRef()
 
   React.useEffect(() => {
     return () => {
-      clearTimeout(timer.current);
+      clearTimeout(timer.current)
     }
   }, [])
 
@@ -81,7 +83,7 @@ export default function InteractiveViews() {
   }
 
   return (
-    <Grid container spacing={3} display="flex" >
+    <Grid container spacing={3} display="flex">
       <Grid item xs={12} lg={8}>
         <Paper style={{ padding: 8 }}>
           <UValidatorForm>
@@ -90,7 +92,7 @@ export default function InteractiveViews() {
               typographyVariant="h2"
               variant="outlined"
               fullWidth
-            // multiline
+              // multiline
             >
               Interactive Views
             </ActiveFormTextField>
@@ -101,7 +103,8 @@ export default function InteractiveViews() {
               fullWidth
               multiline
             >
-              Active views allow user to see and edit current page at the same time
+              Active views allow user to see and edit current page at the same
+              time
             </ActiveFormTextField>
             <ActiveFormTextField
               readOnly={readOnly}
@@ -124,7 +127,11 @@ export default function InteractiveViews() {
           </UValidatorForm>
           <FormControlLabel
             control={
-              <Switch checked={readOnly} onChange={handleChange} value={readOnly} />
+              <Switch
+                checked={readOnly}
+                onChange={handleChange}
+                value={readOnly}
+              />
             }
             label="ReadOnly"
           />
@@ -132,7 +139,10 @@ export default function InteractiveViews() {
       </Grid>
       <Grid item xs={12} lg={8}>
         <Typography variant="h3">Validation</Typography>
-        <Typography style={{ margin: 8 }} variant="subtitle1"> Data can be validated and contains labels</Typography>
+        <Typography style={{ margin: 8 }} variant="subtitle1">
+          {' '}
+          Data can be validated and contains labels
+        </Typography>
       </Grid>
       <Grid item xs={12} md={8}>
         <Paper style={{ padding: 8 }}>
@@ -141,9 +151,9 @@ export default function InteractiveViews() {
             onSubmit={handleSubmit}
             debounceTime={1000}
           >
-            <Grid item container spacing={2} >
+            <Grid item container spacing={2}>
               <Grid item xs={12}>
-                <Box display="flex" alignItems="center" >
+                <Box display="flex" alignItems="center">
                   <ActiveFormTextField
                     typographyVariant="h3"
                     fullWidth
@@ -163,9 +173,13 @@ export default function InteractiveViews() {
                 </Box>
                 <Divider />
               </Grid>
-              <Grid item container spacing={2} >
+              <Grid item container spacing={2}>
                 <Grid item xs={12} lg={3}>
-                  <Avatar alt="profile image" className={classes.avatar} src="" />
+                  <Avatar
+                    alt="profile image"
+                    className={classes.avatar}
+                    src=""
+                  />
                 </Grid>
                 <Grid item container spacing={2} xs={12} lg={9}>
                   <Grid item xs={12}>
@@ -189,7 +203,10 @@ export default function InteractiveViews() {
                       typographyVariant="subtitle1"
                       value={values.email}
                       validators={['required', 'isEmail']}
-                      errorMessages={['this field is required', 'email is not valid']}
+                      errorMessages={[
+                        'this field is required',
+                        'email is not valid',
+                      ]}
                     />
                   </Grid>
                   <Grid item xs={12} md={6}>
@@ -240,9 +257,9 @@ export default function InteractiveViews() {
             onSubmit={handleSubmit}
             debounceTime={1000}
           >
-            <Grid item container spacing={2} >
+            <Grid item container spacing={2}>
               <Grid item xs={12}>
-                <Box display="flex" alignItems="center" >
+                <Box display="flex" alignItems="center">
                   <ActiveFormTextField
                     typographyVariant="h3"
                     fullWidth
@@ -251,36 +268,36 @@ export default function InteractiveViews() {
                   >
                     Personnel Details
                   </ActiveFormTextField>
-                  {readOnly ?
+                  {readOnly ? (
                     <Button
                       variant="contained"
                       color="default"
                       onClick={handleEdit}
                     >
                       Edit
-                  </Button>
-                    :
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      type="submit"
-                    >
+                    </Button>
+                  ) : (
+                    <Button variant="contained" color="primary" type="submit">
                       Save
-                  </Button>
-                  }
+                    </Button>
+                  )}
                 </Box>
                 <Divider />
               </Grid>
-              <Grid item container spacing={2} >
+              <Grid item container spacing={2}>
                 <Grid item xs={12} lg={3}>
-                  <Avatar alt="profile image" className={classes.avatar} src="" />
+                  <Avatar
+                    alt="profile image"
+                    className={classes.avatar}
+                    src=""
+                  />
                 </Grid>
                 <Grid item container spacing={2} xs={12} lg={9}>
                   <Grid item xs={12}>
                     <ActiveFormTextField
                       label="Name"
                       name="name"
-                      placeholder="Enter your name"
+                      // placeholder="Enter your name"
                       onChange={handleValue}
                       typographyVariant="h4"
                       value={values.name}
@@ -299,7 +316,10 @@ export default function InteractiveViews() {
                       value={values.email}
                       readOnly={readOnly}
                       validators={['required', 'isEmail']}
-                      errorMessages={['this field is required', 'email is not valid']}
+                      errorMessages={[
+                        'this field is required',
+                        'email is not valid',
+                      ]}
                     />
                   </Grid>
                   <Grid item xs={12} md={6}>
@@ -345,6 +365,6 @@ export default function InteractiveViews() {
           </UValidatorForm>
         </Paper>
       </Grid>
-    </Grid >
+    </Grid>
   )
 }
