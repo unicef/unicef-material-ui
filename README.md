@@ -54,7 +54,7 @@ Builds the library of components in the `dist`folder.
 npm start
 ```
 
-Apart from the (documentation)[https://unicef.github.io/unicef-material-ui/] The package comes with an [example](https://github.com/unicef/unicef-material-ui/tree/master/example) app - create-react-app - which is useful for testing and running the components.
+Apart from the [documentation](https://unicef.github.io/unicef-material-ui/) The package comes with an [example](https://github.com/unicef/unicef-material-ui/tree/master/example) app - create-react-app - which is useful for testing and running the components.
 
 ```bash
 cd example
