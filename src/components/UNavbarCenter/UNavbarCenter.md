@@ -1,6 +1,8 @@
 UNavbarCenter is a component to display the content in header after the app title
- * It accepts all the components that you can display in the header
- * All the components must be wrapped inside UNavbarCenter component. Ex: Search
+
+It accepts all the components that you can display in the header
+
+All the components must be wrapped inside UNavbarCenter component. Ex: Search
 
 UNavbarCenter Example :
 
