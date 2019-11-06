@@ -2,7 +2,8 @@
 
 Customized version for UNICEF of [Material UI](https://material-ui.com/). Material UI is a set of [ReactJS](http://reactjs.org) user interface components based on [Google's material design](https://material.io/design/) written in Javascript.
 
-You can see a live **[Demo site](https://unicef.github.io/unicef-material-ui/)**.
+You can see a **[Demo site](https://unicef.github.io/unicef-material-ui/example/)** and the **[reference documentation](https://unicef.github.io/unicef-material-ui/)**. 
+
 
 ## Getting started
 
@@ -15,11 +16,7 @@ In order to use the UNICEF's Material UI components in your React project instal
 ## Usage
 
 ### Adding UNICEF theme to your app
-
-This is customized version of theme for whole application.
-To use UNICEF theme add `MuiThemeProvider` at the top level of your app, it will set the custom styles of unicef down to the component tree.
-
-More info: <a href="https://material-ui.com/styles/advanced/#theming">Material-ui theming</a>
+To use UNICEF theme add `MuiThemeProvider` at the top level of your app
 
 ```jsx
 // App.js
@@ -31,18 +28,16 @@ export default function App() {
   return <MuiThemeProvider theme={theme}>{/* Components*/}</MuiThemeProvider>
 }
 ```
+More info: <a href="https://material-ui.com/styles/advanced/#theming">Material-ui theming</a>
+
 
 ### Example project
 
-You have an full example react project that showcases hwo to use the components in [/example](https://github.com/unicef/unicef-material-ui/tree/master/example]example/).
-
-## Custom components
-
-All components require to be wrapped inside of a theme using `MuiThemeProvider` at the top level of the `App`, as explained above.
+You have an full example react project that showcases how to use the components in [/example](https://github.com/unicef/unicef-material-ui/tree/master/example]example/).
 
 ## Development
 
-In order to extend the components, clone the project and install dependencies.
+In order to extend the components, clone the project and install the dependencies.
 
 ```bash
 git clone https://github.com/unicef/unicef-material-ui.git
@@ -53,19 +48,17 @@ The following commands are available:
 
 ### `npm start`
 
-Builds the app automatically for production to the `dist` folder, everytime you make changes in the code.
+Builds the library of components in the `dist`folder.
 
 ```bash
 npm start
 ```
 
-This build we are utilizing in example project, so each time we make some changes in the app. it builds the app to `dist` folder. so that we can see changes in the example project.
-
-Now open new tab in bash and run this commands:
+Apart from the (documentation)[https://unicef.github.io/unicef-material-ui/] The package comes with an [example](https://github.com/unicef/unicef-material-ui/tree/master/example) app - create-react-app - which is useful for testing and running the components.
 
 ```bash
 cd example
-npm install (only if it is firt time)
+npm install # only if it is first time
 npm start
 ```
 
@@ -75,30 +68,19 @@ It will reload automatically upon edits. Lint errors are also displayed on the c
 
 ### `npm run build`
 
-Builds the app for production to the `dist` folder.
-
-It bundles application in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.
-Your app is ready to be deployed!
+Builds the component library for production. Leaves the output in the `dist` folder.
 
 ### `npm run styleguide`
 
-Generates the documentation the development mode.
-Open [http://localhost:6060](http://localhost:6060) to view it in the browser.
+Generates the documentation to be viewed in [http://localhost:6060](http://localhost:6060).
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+Page reloads on any change. Lint errors are displayed in the console, too.
 
 We use [styleguidelist](https://react-styleguidist.js.org/) for documenting our custom components.
 
 ### `npm run styleguide:build`
 
-Builds the styleguide for production to the `styleguide` folder.<br>
-It correctly bundles React-styleguide in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+Builds the styleguide for production. The output is stored in `styleguide` folder.
 
 ## License
 
