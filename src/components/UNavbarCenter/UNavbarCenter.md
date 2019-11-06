@@ -32,13 +32,14 @@ const useStyles = makeStyles(theme => ({
     width: theme.spacing(7),
     height: '100%',
     position: 'absolute',
+    top: 0,
     pointerEvents: 'none',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
   },
   inputRoot: {
-    color: 'inherit',
+    backgroundColor: theme.palette.common.white,
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 7),
@@ -63,9 +64,6 @@ const classes = useStyles()
 >
   <UNavbarCenter>
     <div className={classes.search}>
-      <div className={classes.searchIcon}>
-        <SearchIcon />
-      </div>
       <InputBase
         placeholder="Search…"
         classes={{
@@ -74,6 +72,9 @@ const classes = useStyles()
         }}
         inputProps={{ 'aria-label': 'search' }}
       />
+      <div className={classes.searchIcon}>
+        <SearchIcon color="primary" />
+      </div>
     </div>
   </UNavbarCenter>
 </UHeader>

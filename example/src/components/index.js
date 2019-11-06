@@ -10,11 +10,13 @@ import SideBarContent from './SideBarContent'
 import FormValidator from './FormValidator'
 import ActiveFormTextField from './ActiveFormTextField'
 import InteractiveViews from './InteractiveViews'
+import Buttons from './Buttons'
 
 export {
   Layout,
   Pickers,
   Header,
+  Buttons,
   FormValidator,
   CardWithTabs,
   CardsExample,
