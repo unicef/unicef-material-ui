@@ -32,6 +32,9 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.common.white,
   },
   inputInput: {
+    border: 'none',
+    borderRadius: 4,
+    fontSize: 16,
     padding: theme.spacing(1, 1, 1, 7),
     transition: theme.transitions.create('width'),
     width: '100%',
@@ -49,14 +52,13 @@ export default function SearchBar() {
 
   return (
     <div className={classes.search}>
-      <InputBase
-        placeholder="Search…"
-        classes={{
-          root: classes.inputRoot,
-          input: classes.inputInput,
-        }}
-        inputProps={{ 'aria-label': 'search' }}
-      />
+      <div className={classes.inputRoot}>
+        <input
+          placeholder="Search…"
+          className={classes.inputInput}
+          aria-label="search"
+        />
+      </div>
       <div className={classes.searchIcon}>
         <SearchIcon color="primary" />
       </div>
