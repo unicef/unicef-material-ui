@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react'
 import {
   Button,
   MenuItem,
@@ -8,11 +8,10 @@ import {
   Avatar,
   Link,
   Box,
-} from "@material-ui/core"
-import ArrowDropDown from "@material-ui/icons/ArrowDropDown"
-import MailIcon from "@material-ui/icons/Mail"
-import NotificationsIcon from "@material-ui/icons/Notifications"
-import avatar from "../assets/avatar.png"
+} from '@material-ui/core'
+import ArrowDropDown from '@material-ui/icons/ArrowDropDown'
+import MailIcon from '@material-ui/icons/Mail'
+import avatar from '../assets/avatar.png'
 
 export default function NavLinks() {
   const [profileOpen, setProfileOpen] = React.useState(null)
@@ -53,12 +52,12 @@ export default function NavLinks() {
         scrollButtons="on"
         getContentAnchorEl={null}
         anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "center",
+          vertical: 'bottom',
+          horizontal: 'center',
         }}
         transformOrigin={{
-          vertical: "top",
-          horizontal: "center",
+          vertical: 'top',
+          horizontal: 'center',
         }}
         id="menu"
         anchorEl={profileOpen}
@@ -77,7 +76,10 @@ export default function NavLinks() {
         </MenuItem>
       </Menu>
       <Button color="inherit">
-        <Link color="inherit" href="https://github.com/unicef/unicef-material-ui">
+        <Link
+          color="inherit"
+          href="https://github.com/unicef/unicef-material-ui"
+        >
           Github
         </Link>
       </Button>
@@ -95,12 +97,12 @@ export default function NavLinks() {
         scrollButtons="on"
         getContentAnchorEl={null}
         anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "center",
+          vertical: 'bottom',
+          horizontal: 'center',
         }}
         transformOrigin={{
-          vertical: "top",
-          horizontal: "center",
+          vertical: 'top',
+          horizontal: 'center',
         }}
         id="menu"
         anchorEl={profile}

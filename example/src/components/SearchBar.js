@@ -21,16 +21,15 @@ const useStyles = makeStyles(theme => ({
   searchIcon: {
     width: theme.spacing(7),
     height: '100%',
-    color: 'white',
     position: 'absolute',
+    top: 0,
     pointerEvents: 'none',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
   },
   inputRoot: {
-    color: 'inherit',
-    backgroundColor: fade(theme.palette.secondary.main, 0.15),
+    backgroundColor: theme.palette.common.white,
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 7),
@@ -50,9 +49,6 @@ export default function SearchBar() {
 
   return (
     <div className={classes.search}>
-      <div className={classes.searchIcon}>
-        <SearchIcon color="white" />
-      </div>
       <InputBase
         placeholder="Search…"
         classes={{
@@ -61,6 +57,9 @@ export default function SearchBar() {
         }}
         inputProps={{ 'aria-label': 'search' }}
       />
+      <div className={classes.searchIcon}>
+        <SearchIcon color="primary" />
+      </div>
     </div>
   )
 }
