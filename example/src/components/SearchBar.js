@@ -1,4 +1,5 @@
 import React from 'react'
+import InputBase from '@material-ui/core/InputBase'
 import { fade, makeStyles } from '@material-ui/core/styles'
 import SearchIcon from '@material-ui/icons/Search'
 
@@ -52,7 +53,7 @@ export default function SearchBar() {
   return (
     <div className={classes.search}>
       <div className={classes.inputRoot}>
-        <input
+        <InputBase
           placeholder="Search…"
           className={classes.inputInput}
           aria-label="search"
