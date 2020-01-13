@@ -34,8 +34,7 @@
     "react-dom": ">=16.0.0",
     "@material-ui/core": ">=4.3.0",
     "@material-ui/pickers": ">=3.0.0",
-    "styled-components": ">=4.0.0",
-    "react-material-ui-form-validator": "2.0.9"
+    "styled-components": ">=4.0.0"
   },
   "bugs": {
     "url": "https://github.com/unicef/unicef-material-ui/issues"
