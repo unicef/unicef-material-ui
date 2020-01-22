@@ -17,12 +17,7 @@ const zIndexDrawer = 1200
 const theme = createMuiTheme({
   typography: {
     useNextVariants: true,
-    fontFamily: [
-      "Roboto",
-      "Helvetica",
-      "Arial",
-      "sans-serif",
-    ].join(','),
+    fontFamily: ['Roboto', 'Helvetica', 'Arial', 'sans-serif'].join(','),
   },
   spacing: 8,
   palette: {
@@ -53,22 +48,6 @@ const theme = createMuiTheme({
     MuiAppBar: {
       root: {
         zIndex: zIndexDrawer + 1,
-      },
-    },
-    MuiMenu: {
-      list: {
-        display: 'flex',
-        flexDirection: 'column',
-      },
-    },
-    MuiMenuItem: {
-      gutters: {
-        padding: '0px 16px',
-      },
-    },
-    MuiTypography: {
-      root: {
-        margin: 'none',
       },
     },
     MuiInputBase: {
