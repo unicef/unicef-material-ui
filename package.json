@@ -72,13 +72,13 @@
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-replace": "^2.2.0",
     "style-loader": "^0.23.1",
-    "styled-components": "^5.0.1",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.6",
     "webpack-dev-server": "^3.2.1"
   },
   "dependencies": {
     "react-form-validator-core": "^0.6.4",
-    "react-select": "^3.0.4"
+    "react-select": "^3.0.4",
+    "styled-components": "^5.0.1"
   }
 }
