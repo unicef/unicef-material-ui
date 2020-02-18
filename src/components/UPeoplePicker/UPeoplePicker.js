@@ -382,7 +382,7 @@ export default function UPeoplePicker(props) {
     options: PropTypes.array,
     /** It accepts all the props from TextField API.
      *
-     * `TextFieldProps={helperText = "text", inputProps={className: classes.textField}}`
+     * `TextFieldProps={{helperText:"text", onChange: {textFieldTargetValue}, inputProps:{className: classes.textField}}}`
      *
      */
     TextFieldProps: PropTypes.object,
