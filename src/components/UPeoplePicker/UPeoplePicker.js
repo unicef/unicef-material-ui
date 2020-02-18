@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
   },
   chip: {
     marginLeft: theme.spacing(0.5),
-    marginTop: theme.spacing(0.25)
+    marginTop: theme.spacing(0.25),
   },
   chipFocused: {
     backgroundColor: emphasize(
@@ -56,7 +56,10 @@ const useStyles = makeStyles(theme => ({
     zIndex: 999,
     left: 0,
     right: 0,
-    marginTop: props.TextFieldProps && props.TextFieldProps.helperText ? theme.spacing(-1.5) : theme.spacing(1)
+    marginTop:
+      props.TextFieldProps && props.TextFieldProps.helperText
+        ? theme.spacing(-1.5)
+        : theme.spacing(1),
   }),
   divider: {
     height: theme.spacing(2),
@@ -72,7 +75,6 @@ const StyledAvatar = styled(Avatar)`
     height: 32px
     width: 32px
   }`
-
 
 const SingleValueAvatar = styled(Avatar)`
   && {
@@ -223,27 +225,6 @@ Option.propTypes = {
   isSelected: PropTypes.bool.isRequired,
 }
 
-function Placeholder(props) {
-  const { selectProps, innerProps = {}, children } = props
-  return (
-    <Typography color="textSecondary" {...innerProps}>
-      {children}
-    </Typography>
-  )
-}
-
-Placeholder.propTypes = {
-  /**
-   * The children to be rendered.
-   */
-  children: PropTypes.node,
-  /**
-   * props passed to the wrapping element for the group.
-   */
-  innerProps: PropTypes.object,
-  selectProps: PropTypes.object.isRequired,
-}
-
 function SingleValue(props) {
   return (
     <Typography
@@ -299,7 +280,7 @@ function MultiValue(props) {
       })}
       onClick={() => handlePush(props)}
       onDelete={props.removeProps.onClick}
-      deleteIcon={< CancelIcon {...props.removeProps} />}
+      deleteIcon={<CancelIcon {...props.removeProps} />}
     />
   )
 }
@@ -322,11 +303,7 @@ function Menu(props) {
       className={props.selectProps.classes.paper}
       {...props.innerProps}
     >
-      {
-        props.isLoading
-          ? <Box p={2}> Loading ....</Box>
-          : props.children
-      }
+      {props.isLoading ? <Box p={2}> Loading ....</Box> : props.children}
     </Paper>
   )
 }
@@ -350,7 +327,6 @@ const components = {
   NoOptionsMessage,
   IndicatorSeparator: () => null,
   Option,
-  Placeholder,
   SingleValue,
   ValueContainer,
 }
@@ -360,9 +336,9 @@ const components = {
  * * Select single person from list
  * * Select Multiple people from list.
  * * Autocomplete.
- * * Search and filter the opions.    
+ * * Search and filter the opions.
  * * Clear selected.
- *    
+ *
  */
 export default function UPeoplePicker(props) {
   const classes = useStyles(props)
@@ -399,14 +375,14 @@ export default function UPeoplePicker(props) {
     onChange: PropTypes.func,
     /** Options to select from dropdown.
      *
-   * `const suggestions = [ {label: "name1" }, {label: "name2"} ]` // which is an array of objects
-    *
-   * `options = {suggestions}`
-    */
+     * `const suggestions = [ {label: "name1" }, {label: "name2"} ]` // which is an array of objects
+     *
+     * `options = {suggestions}`
+     */
     options: PropTypes.array,
     /** It accepts all the props from TextField API.
      *
-    * `TextFieldProps={helperText = "text", inputProps={className: classes.textField}}`
+     * `TextFieldProps={helperText = "text", inputProps={className: classes.textField}}`
      *
      */
     TextFieldProps: PropTypes.object,
@@ -426,13 +402,13 @@ export default function UPeoplePicker(props) {
     },
   }
 
-
   const mergedTextFieldProps = { ...defaultTextFieldProps, ...TextFieldProps }
 
   return (
     <div className={classes.margin}>
       <Select
         classes={classes}
+        isClearable
         styles={selectStyles}
         components={components}
         TextFieldProps={mergedTextFieldProps}
