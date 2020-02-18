@@ -51,7 +51,6 @@ module.exports = {
       name: 'Components',
       components: () => [
         path.resolve(__dirname, 'src/components/UButton', 'UButton.js'),
-        path.resolve(__dirname, 'src/components/USelect', 'USelect.js'),
       ],
       usageMode: 'expand',
     },

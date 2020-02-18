@@ -15,7 +15,6 @@ import {
   Grid,
 } from '@material-ui/core'
 import {
-  USelect,
   UTextField,
   UPeoplePicker,
   UValidatorForm,
@@ -72,19 +71,6 @@ const options = [
   label: option.title,
   subtitle: option.subtitle,
   imageUrl: option.imageUrl,
-}))
-
-const suggestions = [
-  { label: 'Afghanistan' },
-  { label: 'Aland Islands' },
-  { label: 'Albania' },
-  { label: 'Algeria' },
-  { label: 'American Samoa' },
-  { label: 'Andorra' },
-  { label: 'Angola' },
-].map(option => ({
-  value: option.label,
-  label: option.label,
 }))
 
 const useStyles = makeStyles(theme => ({
@@ -146,12 +132,10 @@ export default function FormValidator() {
 
   const [isLoading, setLoading] = useState(true)
   const [gotOptions, setOptions] = useState([''])
-  const [gotSuggestions, setSuggestions] = useState([''])
 
   useEffect(() => {
     setTimeout(() => {
       setOptions(options)
-      setSuggestions(suggestions)
       setLoading(false)
     }, 3000)
     return () => clearTimeout()
@@ -174,38 +158,6 @@ export default function FormValidator() {
 
   return (
     <React.Fragment>
-      <Grid container spacing={1}>
-        <Grid item xs={12}>
-          <Typography variant="h5" style={{ margin: '16px 0px' }}>
-            USelect
-          </Typography>
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <USelect
-            label="Select"
-            TextFieldProps={{
-              helperText: 'Select country from list',
-            }}
-            isLoading={isLoading}
-            placeholder="Select country ..."
-            options={gotSuggestions}
-            // onChange={handleChange}
-          />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <USelect
-            label="Multi Select"
-            TextFieldProps={{
-              helperText: 'Please select multiple counties from list',
-            }}
-            isLoading={isLoading}
-            placeholder="Select countries ..."
-            options={gotSuggestions}
-            // onChange={handleChange}
-            isMulti
-          />
-        </Grid>
-      </Grid>
       <Grid container spacing={1}>
         <Grid item xs={12}>
           <Typography variant="h5" style={{ margin: '16px 0px' }}>
