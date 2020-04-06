@@ -16,6 +16,7 @@ import {
 } from '@material-ui/core'
 import {
   UTextField,
+  UPositiveInteger,
   UPeoplePicker,
   UValidatorForm,
   UValidatorComponent,
@@ -84,7 +85,10 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(2),
   },
   margin: {
-    marginTop: theme.spacing(2),
+    marginTop: theme.spacing(5),
+  },
+  positiveInteger: {
+    marginBottom: theme.spacing(3),
   },
 }))
 
@@ -189,6 +193,18 @@ export default function FormValidator() {
             isMulti
           />
         </Grid>
+        <Grid item xs={12}>
+          <Typography variant="h5" style={{ margin: '16px 0px' }}>
+            Possitive Integer
+          </Typography>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <UPositiveInteger
+            value={200000}
+            label="Positive number"
+            className={classes.positiveInteger}
+          />
+        </Grid>
       </Grid>
       <UValidatorForm
         ref={form}
@@ -250,7 +266,8 @@ export default function FormValidator() {
           </Grid>
           <Grid item xs={12} lg={1}>
             <Button
-              style={{ marginTop: 24 }}
+              // style={{ marginTop: 24 }}
+              className={classes.margin}
               color="primary"
               variant="contained"
               type="submit"
