@@ -2,8 +2,7 @@
 
 Customized version for UNICEF of [Material UI](https://material-ui.com/). Material UI is a set of [ReactJS](http://reactjs.org) user interface components based on [Google's material design](https://material.io/design/) written in Javascript.
 
-You can see a **[Demo site](https://unicef.github.io/unicef-material-ui/example/)** and the **[reference documentation](https://unicef.github.io/unicef-material-ui/)**. 
-
+You can see a **[Demo site](https://unicef.github.io/unicef-material-ui/example/)** and the **[reference documentation](https://unicef.github.io/unicef-material-ui/)**.
 
 ## Getting started
 
@@ -16,20 +15,21 @@ In order to use the UNICEF's Material UI components in your React project instal
 ## Usage
 
 ### Adding UNICEF theme to your app
+
 To use UNICEF theme add `MuiThemeProvider` at the top level of your app
 
 ```jsx
 // App.js
-import React from "react"
-import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider"
-import { theme } from "unicef-material-ui"
+import React from 'react'
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
+import { theme } from 'unicef-material-ui'
 
 export default function App() {
   return <MuiThemeProvider theme={theme}>{/* Components*/}</MuiThemeProvider>
 }
 ```
-More info: <a href="https://material-ui.com/styles/advanced/#theming">Material-ui theming</a>
 
+More info: <a href="https://material-ui.com/styles/advanced/#theming">Material-ui theming</a>
 
 ### Example project
 
@@ -41,6 +41,7 @@ In order to extend the components, clone the project and install the dependencie
 
 ```bash
 git clone https://github.com/unicef/unicef-material-ui.git
+cd unicef-material-ui
 npm install
 ```
 
@@ -48,7 +49,7 @@ The following commands are available:
 
 ### `npm start`
 
-Builds the library of components in the `dist`folder.
+Builds the library of components in watch mode.
 
 ```bash
 npm start
