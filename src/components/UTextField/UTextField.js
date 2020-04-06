@@ -1,13 +1,3 @@
-// import React from 'react'
-
-// import { makeStyles } from '@material-ui/core/styles'
-//
-// import { ValidatorComponent } from 'react-form-validator-core'
-
-// const useStyles = theme => ({
-//
-// }));
-
 /* eslint-disable */
 import React from 'react'
 import PropTypes from 'prop-types'
