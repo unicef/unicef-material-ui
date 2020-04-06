@@ -1,6 +1,6 @@
 {
   "name": "@unicef/material-ui",
-  "version": "0.4.3",
+  "version": "0.5.0",
   "description": "UNICEF theme and components of material-ui for react",
   "main": "index.js",
   "files": [
@@ -28,7 +28,7 @@
     "url": "git+https://github.com/unicef/unicef-material-ui.git"
   },
   "author": "unicef",
-  "license": "ISC",
+  "license": "GPLv3",
   "peerDependencies": {
     "react": "^16.0.0",
     "react-dom": ">=16.0.0",
