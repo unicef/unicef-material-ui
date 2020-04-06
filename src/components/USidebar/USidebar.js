@@ -31,15 +31,15 @@ export default function USideBar(props) {
 
   USideBar.propTypes = {
     /** Height of the header including MainMenu */
-    headerHeight: PropTypes.string,
+    headerHeight: PropTypes.number,
     /**
      * width of the Drawer in USideBar
      */
-    width: PropTypes.string,
+    width: PropTypes.number,
   }
 
   USideBar.defaultProps = {
-    headerHeight: '64 px',
+    headerHeight: 64,
   }
 
   return (

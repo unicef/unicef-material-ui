@@ -20,11 +20,11 @@ export default function UContent(props) {
 
   UContent.propTypes = {
     /** Height of the header including MainMenu */
-    headerHeight: PropTypes.string,
+    headerHeight: PropTypes.number,
   }
 
   UContent.defaultProps = {
-    headerHeight: '64 px',
+    headerHeight: 64,
   }
 
   return (
