@@ -11,7 +11,7 @@
 /* eslint-disable */
 import React from 'react'
 import PropTypes from 'prop-types'
-import { TextField, MenuItem } from '@material-ui/core'
+import { TextField } from '@material-ui/core'
 /* eslint-enable */
 import { ValidatorComponent } from 'react-form-validator-core'
 
@@ -46,6 +46,7 @@ export default class UTextField extends ValidatorComponent {
   render() {
     /* eslint-disable no-unused-vars */
     const {
+      variant,
       error,
       errorMessages,
       validators,
@@ -59,6 +60,7 @@ export default class UTextField extends ValidatorComponent {
 
     return (
       <TextField
+        variant={variant}
         {...rest}
         error={!isValid || error}
         helperText={(!isValid && this.getErrorMessage()) || helperText}
@@ -88,4 +90,8 @@ UTextField.propTypes = {
   withRequiredValidator: PropTypes.bool,
   /** To make textfield to be select. See below examples section for select example and sample code */
   select: PropTypes.bool,
+}
+
+UTextField.defaultProps = {
+  variant: 'outlined',
 }
