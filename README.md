@@ -1,4 +1,5 @@
 # UNICEF material-ui
+[![npm version](https://badge.fury.io/js/%40unicef%2Fmaterial-ui.svg)](https://badge.fury.io/js/%40unicef%2Fmaterial-ui)
 
 Customized version for UNICEF of [Material UI](https://material-ui.com/). Material UI is a set of [ReactJS](http://reactjs.org) user interface components based on [Google's material design](https://material.io/design/) written in Javascript.
 
