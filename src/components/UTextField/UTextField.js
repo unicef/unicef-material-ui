@@ -84,4 +84,5 @@ UTextField.propTypes = {
 
 UTextField.defaultProps = {
   variant: 'outlined',
+  validatorListener: () => {},
 }
