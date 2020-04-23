@@ -45,6 +45,13 @@ const useStyles = makeStyles(theme => ({
     display: 'inline-flex',
     fontSize: 16,
   },
+  singleValueAvatar: {
+    marginRight: theme.spacing(1),
+    '& .MuiAvatar-root': {
+      height: 24,
+      width: 24,
+    },
+  },
   placeholder: {
     position: 'absolute',
     left: 2,
@@ -71,17 +78,16 @@ const useStyles = makeStyles(theme => ({
 
 /** Styling the component with custom styles */
 const StyledAvatar = styled(Avatar)`
-  && {
-    height: 32px
-    width: 32px
-  }`
-
+&& {
+  height: 24px
+  width: 24px
+}`
 const SingleValueAvatar = styled(Avatar)`
-  && {
-    height: 24px
-    width: 24px
-    margin-right: 8px
-  }`
+&& {
+  height: 24px
+  width: 24px
+  margin-right: 8px
+}`
 
 function NoOptionsMessage(props) {
   return (
@@ -179,7 +185,11 @@ function Option(props) {
       {...props.innerProps}
     >
       <React.Fragment>
-        <Avatar width="32" height="32" src={props.data.imageUrl} />
+        {props.data.avatar ? (
+          props.data.avatar
+        ) : (
+          <Avatar width="32" height="32" />
+        )}
         <Box fontSize={14} pl={1} display="flex" flexDirection="column">
           <Typography variant="span">{props.data.label}</Typography>
           <Box fontSize={12}>{props.data.subtitle}</Box>
@@ -231,7 +241,13 @@ function SingleValue(props) {
       className={props.selectProps.classes.singleValue}
       {...props.innerProps}
     >
-      <SingleValueAvatar src={props.data.imageUrl} />
+      {props.data.avatar ? (
+        <span className={props.selectProps.classes.singleValueAvatar}>
+          {props.data.avatar}
+        </span>
+      ) : (
+        <SingleValueAvatar />
+      )}
       {props.children}
     </Typography>
   )
@@ -273,7 +289,7 @@ function MultiValue(props) {
   return (
     <Chip
       variant="outlined"
-      avatar={<StyledAvatar src={props.data.imageUrl} />}
+      avatar={props.data.avatar ? props.data.avatar : <StyledAvatar />}
       label={props.children}
       className={clsx(props.selectProps.classes.chip, {
         [props.selectProps.classes.chipFocused]: props.isFocused,
