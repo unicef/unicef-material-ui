@@ -13,6 +13,7 @@ import {
   FormControlLabel,
   RadioGroup,
   Grid,
+  Avatar,
 } from '@material-ui/core'
 import {
   UTextField,
@@ -21,57 +22,110 @@ import {
   UValidatorForm,
   UValidatorComponent,
 } from 'unicef-material-ui'
+import logo from '../logo.svg'
 
 const options = [
-  { id: 1, title: 'Juan Merlos Tevar', subtitle: 'Manager', imageUrl: null },
+  {
+    id: 1,
+    title: 'Juan Merlos Tevar',
+    subtitle: 'Manager',
+    avatar: null,
+  },
   {
     id: 2,
     title: 'Suresh Sevarthi',
     subtitle: 'Front-end Developer',
-    imageUrl: null,
+    avatar: null,
   },
   {
     id: 3,
     title: 'Kundal Singh Mehra',
     subtitle: 'Back-end Developer',
-    imageUrl: null,
+    avatar: (
+      <Avatar
+        src={
+          'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'
+        }
+      />
+    ),
   },
-  { id: 4, title: 'Gia Zarina Santos', subtitle: 'Manager', imageUrl: null },
+  {
+    id: 4,
+    title: 'Gia Zarina Santos',
+    subtitle: 'Manager',
+    avatar: (
+      <Avatar
+        src={
+          'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'
+        }
+      />
+    ),
+  },
   {
     id: 5,
     title: 'Cory Kleinschmidt',
     subtitle: 'Information technology specialist',
-    imageUrl: null,
+    avatar: (
+      <Avatar
+        src={
+          'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'
+        }
+      />
+    ),
   },
   {
     id: 6,
     title: 'Riddhi Poladia',
     subtitle: 'Database Specialist',
-    imageUrl: null,
+    avatar: (
+      <Avatar
+        src={
+          'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'
+        }
+      />
+    ),
   },
   {
     id: 7,
     title: 'Mahananda Talgaonkar',
     subtitle: 'Sharepoint Developer',
-    imageUrl: null,
+    avatar: (
+      <Avatar
+        src={
+          'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'
+        }
+      />
+    ),
   },
   {
     id: 8,
     title: 'Mary Anne Alde',
     subtitle: 'Sharepoint analyst',
-    imageUrl: null,
+    avatar: (
+      <Avatar
+        src={
+          'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'
+        }
+      />
+    ),
   },
   {
     id: 9,
     title: 'Renga Narayanan',
     subtitle: 'Back-end Developer',
-    imageUrl: null,
+    avatar: (
+      <Avatar
+        src={
+          'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'
+        }
+      />
+    ),
   },
 ].map(option => ({
   value: option.id,
   label: option.title,
   subtitle: option.subtitle,
-  imageUrl: option.imageUrl,
+  avatar: option.avatar,
 }))
 
 const useStyles = makeStyles(theme => ({
@@ -82,13 +136,16 @@ const useStyles = makeStyles(theme => ({
   },
   textField: {
     minWidth: 195,
-    marginTop: theme.spacing(2),
+    marginTop: theme.spacing(4),
   },
   margin: {
-    marginTop: theme.spacing(5),
+    marginTop: theme.spacing(4),
   },
   positiveInteger: {
     marginBottom: theme.spacing(3),
+  },
+  button: {
+    marginTop: theme.spacing(5),
   },
 }))
 
@@ -141,7 +198,7 @@ export default function FormValidator() {
     setTimeout(() => {
       setOptions(options)
       setLoading(false)
-    }, 3000)
+    }, 500)
     return () => clearTimeout()
   }, [])
 
@@ -267,7 +324,7 @@ export default function FormValidator() {
           <Grid item xs={12} lg={1}>
             <Button
               // style={{ marginTop: 24 }}
-              className={classes.margin}
+              className={classes.button}
               color="primary"
               variant="contained"
               type="submit"
