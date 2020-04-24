@@ -20,9 +20,9 @@ const jss = create({
 export default function UNICEFStyleProvider(props) {
   return (
     <StylesProvider
-      // injectFirst={true}
+      injectFirst={true}
       generateClassName={generateClassName}
-      jss={jss}
+      // jss={jss}
     >
       {props.children}
     </StylesProvider>

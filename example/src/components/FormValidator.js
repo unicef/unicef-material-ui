@@ -22,7 +22,6 @@ import {
   UValidatorForm,
   UValidatorComponent,
 } from 'unicef-material-ui'
-import logo from '../logo.svg'
 
 const options = [
   {
@@ -285,7 +284,7 @@ export default function FormValidator() {
               value={values.email}
               variant="outlined"
               validators={['required', 'isEmail']}
-              errorMessages={['this field is required', 'email is not valid']}
+              customErrorMessages={{ isEmail: 'not a valid email' }}
             />
           </Grid>
           <Grid item xs={12} lg={3} xl={2}>
@@ -298,7 +297,6 @@ export default function FormValidator() {
               variant="outlined"
               validators={['required']}
               value={values.password}
-              errorMessages={['this field is required']}
             />
           </Grid>
           <Grid item xs={12} lg={3} xl={2}>
@@ -311,7 +309,6 @@ export default function FormValidator() {
               className={classes.textField}
               name="currency"
               validators={['required']}
-              errorMessages={['this field is required']}
               variant="outlined"
             >
               {currencies.map(option => (
@@ -346,7 +343,7 @@ export default function FormValidator() {
             name="termAndCondition"
             label="Agree with the Terms and Conditions"
             validators={['isTruthy']}
-            errorMessages={['check more than two fields']}
+            customErrorMessages={{ isTruthy: 'check more than two fields' }}
             value={valid}
           >
             <FormControl
@@ -415,7 +412,7 @@ export default function FormValidator() {
             name="radio"
             label="Choose an option"
             validators={['isTruthy']}
-            errorMessages={['choose an option from above']}
+            customErrorMessages={{ isTruthy: 'choose an option from above' }}
             value={validChoose}
           >
             <FormControl

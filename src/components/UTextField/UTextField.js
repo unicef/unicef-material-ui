@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { TextField } from '@material-ui/core'
 /* eslint-enable */
-import { ValidatorComponent } from 'react-form-validator-core'
+import ValidatorComponent from '../ValidatorComponent'
 
 //Extending the ValidatorComponent using class component, so taking an exclusion from our rule: functional components only.
 
@@ -67,11 +67,11 @@ UTextField.propTypes = {
    */
   validators: PropTypes.array,
   /**
-   * Array of error messages.Order of messages should be the same as validators prop.
+   * customErrorMessages is an object with key as validator and value as customised error message.
    *
-   * Ex: `errorMessages={['this field is required', 'email is not valid']}`
+   * Ex: `customErrorMessages={{required: 'This field is required'}`
    */
-  errorMessages: PropTypes.array,
+  customErrorMessages: PropTypes.object,
   /** Name of input. */
   name: PropTypes.string,
   /** It triggers after each validation.It will return true or false. */

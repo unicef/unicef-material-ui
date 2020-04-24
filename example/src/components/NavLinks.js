@@ -48,8 +48,6 @@ export default function NavLinks() {
       </Button>
       <Menu
         elevation={0}
-        variant="scrollable"
-        scrollButtons="on"
         getContentAnchorEl={null}
         anchorOrigin={{
           vertical: 'bottom',
@@ -93,8 +91,6 @@ export default function NavLinks() {
       </IconButton>
       <Menu
         elevation={0}
-        variant="scrollable"
-        scrollButtons="on"
         getContentAnchorEl={null}
         anchorOrigin={{
           vertical: 'bottom',
