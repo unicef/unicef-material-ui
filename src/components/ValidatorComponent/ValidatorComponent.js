@@ -1,6 +1,8 @@
+/* eslint-disable */
 import React from 'react'
 import PropTypes from 'prop-types'
 import Promise from 'promise-polyfill'
+/* eslint-enable */
 import { polyfill } from 'react-lifecycles-compat'
 import { ValidatorForm } from 'react-form-validator-core'
 import { debounce } from '../../utils'
@@ -72,7 +74,7 @@ export default class ValidatorComponent extends React.Component {
       }
       return updatedErrorMessages[this.invalid[0]]
     }
-
+    // eslint-disable-next-line
     console.log('unknown errorMessages type', validators)
     return true
   }
