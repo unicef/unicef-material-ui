@@ -1,12 +1,16 @@
-/* eslint-disable */
 import React from 'react'
 import PropTypes from 'prop-types'
 import Promise from 'promise-polyfill'
-/* eslint-enable */
 import { polyfill } from 'react-lifecycles-compat'
 import { ValidatorForm } from 'react-form-validator-core'
+import { debounce } from '../../utils'
 
-class ValidatorComponent extends React.Component {
+/**
+ * ValidatorComponent
+ * Using component locally in order to override the error messages
+ * TODO - write the code to newer version
+ */
+export default class ValidatorComponent extends React.Component {
   static getDerivedStateFromProps(nextProps, prevState) {
     if (
       nextProps.validators &&
@@ -68,7 +72,7 @@ class ValidatorComponent extends React.Component {
       }
       return updatedErrorMessages[this.invalid[0]]
     }
-    // eslint-disable-next-line
+
     console.log('unknown errorMessages type', validators)
     return true
   }
@@ -158,31 +162,3 @@ const defaultErrorMessages = {
   matchRegexp: 'error',
   allowedExtensions: 'error',
 }
-
-const debounce = (func, wait, immediate) => {
-  let timeout
-  function cancel() {
-    if (timeout !== undefined) {
-      clearTimeout(timeout)
-    }
-  }
-  const debounced = function debounced(...args) {
-    const context = this
-    const later = function delayed() {
-      timeout = null
-      if (!immediate) {
-        func.apply(context, args)
-      }
-    }
-    const callNow = immediate && !timeout
-    clearTimeout(timeout)
-    timeout = setTimeout(later, wait)
-    if (callNow) {
-      func.apply(context, args)
-    }
-  }
-  debounced.cancel = cancel
-  return debounced
-}
-
-export default ValidatorComponent
