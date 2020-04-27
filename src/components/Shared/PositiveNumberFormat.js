@@ -24,7 +24,7 @@ export default function PositiveNumberFormat(props) {
   )
 }
 
-PossitiveNumberFormat.propTypes = {
+PositiveNumberFormat.propTypes = {
   // input ref
   inputRef: PropTypes.func.isRequired,
   // On each onChange value will be formatted
