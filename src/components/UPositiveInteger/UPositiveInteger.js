@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { PossitiveNumberFormat } from '../Shared'
+import { PositiveNumberFormat } from '../Shared'
 import UTextField from '../UTextField'
 
 export default function UPositiveInteger({ readOnly, InputProps, ...props }) {
@@ -8,7 +8,7 @@ export default function UPositiveInteger({ readOnly, InputProps, ...props }) {
     <UTextField
       variant="outlined"
       InputProps={{
-        inputComponent: PossitiveNumberFormat,
+        inputComponent: PositiveNumberFormat,
         readOnly: readOnly,
         ...InputProps,
       }}

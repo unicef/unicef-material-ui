@@ -1,14 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import ActiveFormTextField from '../ActiveFormTextField'
-import { PossitiveNumberFormat } from '../Shared'
+import { PositiveNumberFormat } from '../Shared'
 
 export default function ActiveFormPositiveInteger({ InputProps, ...props }) {
   return (
     <ActiveFormTextField
       variant="outlined"
       InputProps={{
-        inputComponent: PossitiveNumberFormat,
+        inputComponent: PositiveNumberFormat,
         ...InputProps,
       }}
       {...props}

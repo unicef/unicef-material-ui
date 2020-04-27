@@ -1,3 +1,3 @@
-import PossitiveNumberFormat from './PositiveNumberFormat'
+import PositiveNumberFormat from './PositiveNumberFormat'
 
-export { PossitiveNumberFormat }
+export { PositiveNumberFormat }
