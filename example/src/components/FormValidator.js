@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import {
   Typography,
@@ -170,10 +170,6 @@ const currencies = [
 export default function FormValidator() {
   const classes = useStyles()
 
-  const form = useRef('form')
-
-  const positiveIntegerRef = useRef(null)
-
   const [values, setValues] = useState({
     email: 'test@test.com',
     password: 'testinghere',
@@ -260,7 +256,6 @@ export default function FormValidator() {
         </Grid>
         <Grid item xs={12} md={6}>
           <UValidatorForm
-            ref={positiveIntegerRef}
             onSubmit={event => {
               event.preventDefault()
               handleSubmit()
@@ -282,7 +277,6 @@ export default function FormValidator() {
         </Grid>
       </Grid>
       <UValidatorForm
-        ref={form}
         onSubmit={handleSubmit}
         onError={errors => console.log(errors)}
         instantValidate={true}
@@ -352,8 +346,8 @@ export default function FormValidator() {
         </Grid>
       </UValidatorForm>
       <UValidatorForm
-        ref={form}
         onBlur={handleSubmit}
+        onSubmit={handleSubmit}
         onError={errors => console.log(errors)}
         // debounceTime={1000}
         instantValidate={true}
