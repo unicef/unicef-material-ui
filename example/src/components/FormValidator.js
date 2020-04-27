@@ -252,7 +252,7 @@ export default function FormValidator() {
         </Grid>
         <Grid item xs={12}>
           <Typography variant="h5" style={{ margin: '16px 0px' }}>
-            Possitive Integer
+            Positive Integer
           </Typography>
         </Grid>
         <Grid item xs={12} md={6}>
