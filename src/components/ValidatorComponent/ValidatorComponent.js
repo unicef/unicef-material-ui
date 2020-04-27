@@ -64,13 +64,14 @@ export default class ValidatorComponent extends React.Component {
     if (type === 'object') {
       let updatedErrorMessages = []
       if (this.invalid.length > 0) {
-        validators.map(validator => {
-          if (customErrorMessages && customErrorMessages[validator]) {
-            updatedErrorMessages.push(customErrorMessages[validator])
-          } else if (defaultErrorMessages[validator]) {
-            updatedErrorMessages.push(defaultErrorMessages[validator])
-          }
-        })
+        validators &&
+          validators.map(validator => {
+            if (customErrorMessages && customErrorMessages[validator]) {
+              updatedErrorMessages.push(customErrorMessages[validator])
+            } else if (defaultErrorMessages[validator]) {
+              updatedErrorMessages.push(defaultErrorMessages[validator])
+            }
+          })
       }
       return updatedErrorMessages[this.invalid[0]]
     }
@@ -91,9 +92,10 @@ export default class ValidatorComponent extends React.Component {
 
   validate = (value, includeRequired = false, dryRun = false) => {
     const validations = Promise.all(
-      this.state.validators.map(validator =>
-        ValidatorForm.getValidator(validator, value, includeRequired)
-      )
+      this.state.validators &&
+        this.state.validators.map(validator =>
+          ValidatorForm.getValidator(validator, value, includeRequired)
+        )
     )
 
     validations.then(results => {

@@ -68,7 +68,7 @@ const currencies = [
             className={classes.textField}
             name="currency"
             validators={['required']}
-            errorMessages={['this field is required']}
+            customErrorMessages={{required: 'required field'}}
             variant="outlined"
           >
             {currencies.map(option => (

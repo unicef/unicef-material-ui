@@ -36,7 +36,7 @@ import { UValidatorForm, UValidatorComponent } from '../../index.js' // change i
             value={value}
             variant="outlined"
             validators={['required', 'isNumber']}
-            errorMessages={['this field is required', 'Value must be number']}
+            customErrorMessages={{required: 'required field'}}
           />
           </Grid>
           <Grid item xs={12}>
@@ -48,7 +48,7 @@ import { UValidatorForm, UValidatorComponent } from '../../index.js' // change i
             typographyVariant='h6'
             variant="outlined"
             validators={['required', 'isNumber']}
-            errorMessages={['this field is required', 'Value must be number']}
+            customErrorMessages={{required: 'required field'}}
           />
         </Grid>
       </Grid>

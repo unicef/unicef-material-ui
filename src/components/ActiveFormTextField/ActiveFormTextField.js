@@ -62,7 +62,6 @@ export default function ActiveFormTextField(props) {
     : classes.inputPaddingWithoutLabel
   const finalPlaceholder = readOnly ? null : placeholder
 
-  console.log()
   return (
     <UTextField
       placeholder={finalPlaceholder}
@@ -115,11 +114,11 @@ ActiveFormTextField.propTypes = {
    */
   validators: PropTypes.array,
   /**
-   * Array of error messages.Order of messages should be the same as validators prop.
+   * customErrorMessages is an object with key as validator and value as customised error message.
    *
-   * Ex: `errorMessages={['this field is required', 'email is not valid']}`
+   * Ex: `customErrorMessages={{required: 'This field is required'}`
    */
-  errorMessages: PropTypes.array,
+  customErrorMessages: PropTypes.array,
   /** To make the content readOnly */
   readOnly: PropTypes.bool,
   /** Name of input. */
@@ -128,6 +127,8 @@ ActiveFormTextField.propTypes = {
   validatorListener: PropTypes.func,
   /** Allow to use required validator in any validation trigger, not only form submit. */
   withRequiredValidator: PropTypes.bool,
+  /** validate the textfield on blur */
+  validateOnBlur: PropTypes.bool,
 }
 
 ActiveFormTextField.defaultProps = {

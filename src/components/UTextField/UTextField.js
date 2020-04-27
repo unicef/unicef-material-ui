@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from 'react'
 import PropTypes from 'prop-types'
-import { TextField } from '@material-ui/core'
+import { TextField, Button } from '@material-ui/core'
 /* eslint-enable */
 import ValidatorComponent from '../ValidatorComponent'
 
@@ -33,6 +33,18 @@ import ValidatorComponent from '../ValidatorComponent'
  * It accepts all the props of Material-ui [TextField](https://material-ui.com/api/text-field/#textfield-api)
  */
 export default class UTextField extends ValidatorComponent {
+  constructor(props) {
+    super(props)
+    this.buttonRef = React.createRef()
+  }
+
+  handleBlur = event => {
+    if (this.props.validateOnBlur) {
+      this.buttonRef.current.click()
+    }
+    this.props.onBlur && this.props.onBlur(event)
+  }
+
   render() {
     /* eslint-disable no-unused-vars */
     const {
@@ -44,17 +56,22 @@ export default class UTextField extends ValidatorComponent {
       helperText,
       validatorListener,
       withRequiredValidator,
+      onBlur,
       ...rest
     } = this.props
     const { isValid } = this.state
 
     return (
-      <TextField
-        variant={variant}
-        {...rest}
-        error={!isValid || error}
-        helperText={(!isValid && this.getErrorMessage()) || helperText}
-      />
+      <React.Fragment>
+        <TextField
+          variant={variant}
+          {...rest}
+          error={!isValid || error}
+          onBlur={event => this.handleBlur(event)}
+          helperText={(!isValid && this.getErrorMessage()) || helperText}
+        />
+        <Button ref={this.buttonRef} type="submit" />
+      </React.Fragment>
     )
   }
 }
@@ -80,6 +97,8 @@ UTextField.propTypes = {
   withRequiredValidator: PropTypes.bool,
   /** To make textfield to be select. See below examples section for select example and sample code */
   select: PropTypes.bool,
+  /** validate the textfield on blur */
+  validateOnBlur: PropTypes.bool,
 }
 
 UTextField.defaultProps = {

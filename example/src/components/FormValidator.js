@@ -171,9 +171,13 @@ export default function FormValidator() {
   const classes = useStyles()
 
   const form = useRef('form')
+
+  const positiveIntegerRef = useRef(null)
+
   const [values, setValues] = useState({
     email: 'test@test.com',
     password: 'testinghere',
+    positiveInteger: 1,
   })
 
   function handleValue(event) {
@@ -255,11 +259,29 @@ export default function FormValidator() {
           </Typography>
         </Grid>
         <Grid item xs={12} md={6}>
-          <UPositiveInteger
-            value={200000}
-            label="Positive number"
-            className={classes.positiveInteger}
-          />
+          <UValidatorForm
+            ref={positiveIntegerRef}
+            onSubmit={event => {
+              event.preventDefault()
+              handleSubmit()
+            }}
+            onError={errors => console.log(errors)}
+            debounceTime={1000}
+            instantValidate={true}
+          >
+            <UPositiveInteger
+              value={values['positiveInteger']}
+              label="Positive number"
+              className={classes.positiveInteger}
+              validators={['required']}
+              onChange={e =>
+                setValues({ ...values, positiveInteger: e.target.value })
+              }
+              // onBlur={() => {
+              //   positiveIntegerRef.dispatchEvent(new Event('submit'))
+              // }}
+            />
+          </UValidatorForm>
         </Grid>
       </Grid>
       <UValidatorForm
@@ -275,18 +297,7 @@ export default function FormValidator() {
               Form validator
             </Typography>
           </Grid>
-          <Grid item xs={12} lg={3} xl={2}>
-            <UTextField
-              label="Email"
-              onChange={handleValue}
-              className={classes.margin}
-              name="email"
-              value={values.email}
-              variant="outlined"
-              validators={['required', 'isEmail']}
-              customErrorMessages={{ isEmail: 'not a valid email' }}
-            />
-          </Grid>
+          <Grid item xs={12} lg={3} xl={2}></Grid>
           <Grid item xs={12} lg={3} xl={2}>
             <UTextField
               label="Password"

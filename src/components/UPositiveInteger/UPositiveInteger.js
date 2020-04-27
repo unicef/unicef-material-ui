@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import NumberFormat from 'react-number-format'
-import TextField from '@material-ui/core/TextField'
+import ActiveFormTextField from '../ActiveFormTextField'
 
 function PossitiveNumberFormat(props) {
   const { inputRef, onChange, ...other } = props
@@ -32,13 +32,12 @@ PossitiveNumberFormat.propTypes = {
   onChange: PropTypes.func.isRequired,
 }
 
-export default function UPositiveInteger({ readOnly, InputProps, ...props }) {
+export default function UPositiveInteger({ InputProps, ...props }) {
   return (
-    <TextField
+    <ActiveFormTextField
       variant="outlined"
       InputProps={{
         inputComponent: PossitiveNumberFormat,
-        readOnly: readOnly,
         ...InputProps,
       }}
       {...props}
@@ -49,6 +48,38 @@ export default function UPositiveInteger({ readOnly, InputProps, ...props }) {
 
 // It accepts all the Material Ui TextField props
 UPositiveInteger.propTypes = {
-  // To make Textfield read only
+  /** label */
+  label: PropTypes.string,
+  /** placeholder text*/
+  placeholder: PropTypes.string,
+  /** Typography for text inside the input (Ex: h1, div, etc.) */
+  typographyVariant: PropTypes.string,
+  /** Input has some default padding already, to make changes to it pass padding like `inputPadding='0px 2px'` */
+  inputPadding: PropTypes.string,
+  /** To hide or display the textfied border*/
+  showBorder: PropTypes.bool,
+  /**
+   * Array of validators.See list of default validators above.
+   *
+   * Ex: `validators={['required', 'isEmail']}`
+   */
+  validators: PropTypes.array,
+  /**
+   * customErrorMessages is an object with key as validator and value as customised error message.
+   *
+   * Ex: `customErrorMessages={{required: 'This field is required'}`
+   */
+  customErrorMessages: PropTypes.array,
+  /** To make the content readOnly */
   readOnly: PropTypes.bool,
+  /** Name of input. */
+  name: PropTypes.string,
+  /** It triggers after each validation.It will return true or false. */
+  validatorListener: PropTypes.func,
+  /** Allow to use required validator in any validation trigger, not only form submit. */
+  withRequiredValidator: PropTypes.bool,
+  /** validate the textfield on blur */
+  validateOnBlur: PropTypes.bool,
+  /** validate the textfield on blur */
+  validateOnBlur: PropTypes.bool,
 }
