@@ -48,8 +48,11 @@ export default function ActiveFormSelect(props) {
         disabled: Boolean(readOnly),
       }}
       InputProps={{
-        disableUnderline: true,
-        classes: { root: classes.input, notchedOutline: `${showBorder ? '' : classes.notchedOutline}`, input: classes.inputPadding }
+        classes: {
+          root: classes.input,
+          notchedOutline: `${showBorder ? '' : classes.notchedOutline}`,
+          input: classes.inputPadding,
+        },
       }}
       select
       SelectProps={{

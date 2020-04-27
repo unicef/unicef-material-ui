@@ -88,7 +88,6 @@ export default function ActiveFormSelect(props) {
       }}
       className={`${classes.textField} ${className && className}`}
       InputProps={{
-        disableUnderline: true,
         classes: {
           root: `${classes.input} ${readOnly && classes.inputHover}`,
           notchedOutline: `${
