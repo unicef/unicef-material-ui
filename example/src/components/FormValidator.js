@@ -266,7 +266,6 @@ export default function FormValidator() {
               handleSubmit()
             }}
             onError={errors => console.log(errors)}
-            debounceTime={1000}
             instantValidate={true}
           >
             <UPositiveInteger
@@ -277,9 +276,7 @@ export default function FormValidator() {
               onChange={e =>
                 setValues({ ...values, positiveInteger: e.target.value })
               }
-              // onBlur={() => {
-              //   positiveIntegerRef.dispatchEvent(new Event('submit'))
-              // }}
+              validateOnBlur
             />
           </UValidatorForm>
         </Grid>
@@ -288,8 +285,7 @@ export default function FormValidator() {
         ref={form}
         onSubmit={handleSubmit}
         onError={errors => console.log(errors)}
-        debounceTime={1000}
-        // instantValidate={true}
+        instantValidate={true}
       >
         <Grid container>
           <Grid item xs={12}>
@@ -297,7 +293,18 @@ export default function FormValidator() {
               Form validator
             </Typography>
           </Grid>
-          <Grid item xs={12} lg={3} xl={2}></Grid>
+          <Grid item xs={12} lg={3} xl={2}>
+            <UTextField
+              label="Email"
+              onChange={handleValue}
+              className={classes.margin}
+              name="email"
+              variant="outlined"
+              validators={['required', 'isEmail']}
+              value={values.email}
+              validateOnBlur
+            />
+          </Grid>
           <Grid item xs={12} lg={3} xl={2}>
             <UTextField
               label="Password"
@@ -308,6 +315,7 @@ export default function FormValidator() {
               variant="outlined"
               validators={['required']}
               value={values.password}
+              validateOnBlur
             />
           </Grid>
           <Grid item xs={12} lg={3} xl={2}>
@@ -321,6 +329,7 @@ export default function FormValidator() {
               name="currency"
               validators={['required']}
               variant="outlined"
+              validateOnBlur
             >
               {currencies.map(option => (
                 <MenuItem key={option.value} value={option.value}>
