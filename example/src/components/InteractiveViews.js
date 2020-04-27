@@ -86,7 +86,7 @@ export default function InteractiveViews() {
     <Grid container spacing={3} display="flex">
       <Grid item xs={12} lg={8}>
         <Paper style={{ padding: 8 }}>
-          <UValidatorForm>
+          <UValidatorForm onSubmit={() => {}}>
             <ActiveFormTextField
               readOnly={readOnly}
               typographyVariant="h2"
