@@ -171,6 +171,7 @@ export default function FormValidator() {
   const classes = useStyles()
 
   const [values, setValues] = useState({
+    currency: '',
     email: 'test@test.com',
     password: 'testinghere',
     positiveInteger: 1,
