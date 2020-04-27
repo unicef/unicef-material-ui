@@ -468,7 +468,7 @@ export default function FormValidator() {
             className={classes.margin}
             color="primary"
             variant="contained"
-            type="Validate"
+            type="submit"
           >
             Validate
           </Button>
