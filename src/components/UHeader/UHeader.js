@@ -115,6 +115,7 @@ export default function UHeader(props) {
     showHamburgerMenu: true,
     hideLogo: false,
     logo: false,
+    logoUrl: '/',
     hideLogoBorderLine: true,
   }
 
