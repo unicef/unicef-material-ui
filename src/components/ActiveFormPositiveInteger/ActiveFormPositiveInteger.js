@@ -1,15 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import ActiveFormTextField from '../ActiveFormTextField'
 import { PossitiveNumberFormat } from '../Shared'
-import UTextField from '../UTextField'
 
-export default function UPositiveInteger({ readOnly, InputProps, ...props }) {
+export default function ActiveFormPositiveInteger({ InputProps, ...props }) {
   return (
-    <UTextField
+    <ActiveFormTextField
       variant="outlined"
       InputProps={{
         inputComponent: PossitiveNumberFormat,
-        readOnly: readOnly,
         ...InputProps,
       }}
       {...props}
@@ -19,9 +18,17 @@ export default function UPositiveInteger({ readOnly, InputProps, ...props }) {
 }
 
 // It accepts all the Material Ui TextField props
-UPositiveInteger.propTypes = {
-  // To make Textfield read only
-  readOnly: PropTypes.bool,
+ActiveFormPositiveInteger.propTypes = {
+  /** label */
+  label: PropTypes.string,
+  /** placeholder text*/
+  placeholder: PropTypes.string,
+  /** Typography for text inside the input (Ex: h1, div, etc.) */
+  typographyVariant: PropTypes.string,
+  /** Input has some default padding already, to make changes to it pass padding like `inputPadding='0px 2px'` */
+  inputPadding: PropTypes.string,
+  /** To hide or display the textfied border*/
+  showBorder: PropTypes.bool,
   /**
    * Array of validators.See list of default validators above.
    *
@@ -33,7 +40,9 @@ UPositiveInteger.propTypes = {
    *
    * Ex: `customErrorMessages={{required: 'This field is required'}`
    */
-  customErrorMessages: PropTypes.object,
+  customErrorMessages: PropTypes.array,
+  /** To make the content readOnly */
+  readOnly: PropTypes.bool,
   /** Name of input. */
   name: PropTypes.string,
   /** It triggers after each validation.It will return true or false. */
