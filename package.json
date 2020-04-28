@@ -15,13 +15,13 @@
     "build:example": "npm run build:prod && rm -rf gh-pages-build/* && cd example && npm run build && cp -R build/* ../gh-pages-build/",
     "build:site": "npm run build:prod && rm -rf gh-pages-build/* && npm run styleguide:build && cp -R styleguide/* ./gh-pages-build/ && cd example && npm run build && cp -R build ../gh-pages-build/example/",
     "start": "rollup -c -w",
-    "styleguide": "styleguidist server",
-    "styleguide:build": "styleguidist build",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs": "styleguidist server",
+    "build:docs": "styleguidist build",
     "transpile": "npm run build",
-    "deploy": "gh-pages -d gh-pages-build",
     "prepublishOnly": "npm run transpile",
-    "publish-demo": "npm run build:site && npm run deploy"
+    "build:site": "mkdir -p ./site && npm run build:docs && cp -R styleguide/ ./site/ && cd example && npm run build && cp -R build/ ../site/example/",
+    "deploy": "npm run build:site && gh-pages -d site",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
