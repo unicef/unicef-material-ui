@@ -137,6 +137,11 @@ module.exports = {
           'src/components/UValidatorComponent',
           'UValidatorComponent.js'
         ),
+        path.resolve(
+          __dirname,
+          'src/components/UPositiveInteger',
+          'UPositiveInteger.js'
+        ),
       ],
       // sections: [
       //   {
@@ -158,6 +163,11 @@ module.exports = {
           __dirname,
           'src/components/ActiveFormSelect',
           'ActiveFormSelect.js'
+        ),
+        path.resolve(
+          __dirname,
+          'src/components/ActiveFormPositiveInteger',
+          'ActiveFormPositiveInteger.js'
         ),
       ],
       // sections: [

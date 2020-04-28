@@ -4,6 +4,7 @@ lib
 styleguide
 gh-pages-build/*
 example/node_modules
+site/
 site/node_modules
 site/.cache
 site/public
