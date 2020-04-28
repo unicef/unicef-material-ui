@@ -32,8 +32,11 @@ export default function ActiveFormTextField(props) {
         shrink: true,
       }}
       InputProps={{
-        disableUnderline: true,
-        classes: { root: classes.input, notchedOutline: classes.notchedOutline, input: classes.inputPadding }
+        classes: {
+          root: classes.input,
+          notchedOutline: classes.notchedOutline,
+          input: classes.inputPadding,
+        },
       }}
       variant={variant || 'outlined'}
       {...others}

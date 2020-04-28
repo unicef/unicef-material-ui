@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import {
   Typography,
@@ -13,6 +13,7 @@ import {
   FormControlLabel,
   RadioGroup,
   Grid,
+  Avatar,
 } from '@material-ui/core'
 import {
   UTextField,
@@ -23,55 +24,107 @@ import {
 } from 'unicef-material-ui'
 
 const options = [
-  { id: 1, title: 'Juan Merlos Tevar', subtitle: 'Manager', imageUrl: null },
+  {
+    id: 1,
+    title: 'Juan Merlos Tevar',
+    subtitle: 'Manager',
+    avatar: null,
+  },
   {
     id: 2,
     title: 'Suresh Sevarthi',
     subtitle: 'Front-end Developer',
-    imageUrl: null,
+    avatar: null,
   },
   {
     id: 3,
     title: 'Kundal Singh Mehra',
     subtitle: 'Back-end Developer',
-    imageUrl: null,
+    avatar: (
+      <Avatar
+        src={
+          'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'
+        }
+      />
+    ),
   },
-  { id: 4, title: 'Gia Zarina Santos', subtitle: 'Manager', imageUrl: null },
+  {
+    id: 4,
+    title: 'Gia Zarina Santos',
+    subtitle: 'Manager',
+    avatar: (
+      <Avatar
+        src={
+          'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'
+        }
+      />
+    ),
+  },
   {
     id: 5,
     title: 'Cory Kleinschmidt',
     subtitle: 'Information technology specialist',
-    imageUrl: null,
+    avatar: (
+      <Avatar
+        src={
+          'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'
+        }
+      />
+    ),
   },
   {
     id: 6,
     title: 'Riddhi Poladia',
     subtitle: 'Database Specialist',
-    imageUrl: null,
+    avatar: (
+      <Avatar
+        src={
+          'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'
+        }
+      />
+    ),
   },
   {
     id: 7,
     title: 'Mahananda Talgaonkar',
     subtitle: 'Sharepoint Developer',
-    imageUrl: null,
+    avatar: (
+      <Avatar
+        src={
+          'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'
+        }
+      />
+    ),
   },
   {
     id: 8,
     title: 'Mary Anne Alde',
     subtitle: 'Sharepoint analyst',
-    imageUrl: null,
+    avatar: (
+      <Avatar
+        src={
+          'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'
+        }
+      />
+    ),
   },
   {
     id: 9,
     title: 'Renga Narayanan',
     subtitle: 'Back-end Developer',
-    imageUrl: null,
+    avatar: (
+      <Avatar
+        src={
+          'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'
+        }
+      />
+    ),
   },
 ].map(option => ({
   value: option.id,
   label: option.title,
   subtitle: option.subtitle,
-  imageUrl: option.imageUrl,
+  avatar: option.avatar,
 }))
 
 const useStyles = makeStyles(theme => ({
@@ -82,13 +135,16 @@ const useStyles = makeStyles(theme => ({
   },
   textField: {
     minWidth: 195,
-    marginTop: theme.spacing(2),
+    marginTop: theme.spacing(4),
   },
   margin: {
-    marginTop: theme.spacing(5),
+    marginTop: theme.spacing(4),
   },
   positiveInteger: {
     marginBottom: theme.spacing(3),
+  },
+  button: {
+    marginTop: theme.spacing(5),
   },
 }))
 
@@ -114,10 +170,11 @@ const currencies = [
 export default function FormValidator() {
   const classes = useStyles()
 
-  const form = useRef('form')
   const [values, setValues] = useState({
+    currency: '',
     email: 'test@test.com',
     password: 'testinghere',
+    positiveInteger: 1,
   })
 
   function handleValue(event) {
@@ -141,7 +198,7 @@ export default function FormValidator() {
     setTimeout(() => {
       setOptions(options)
       setLoading(false)
-    }, 3000)
+    }, 500)
     return () => clearTimeout()
   }, [])
 
@@ -195,23 +252,34 @@ export default function FormValidator() {
         </Grid>
         <Grid item xs={12}>
           <Typography variant="h5" style={{ margin: '16px 0px' }}>
-            Possitive Integer
+            Positive Integer
           </Typography>
         </Grid>
         <Grid item xs={12} md={6}>
-          <UPositiveInteger
-            value={200000}
-            label="Positive number"
-            className={classes.positiveInteger}
-          />
+          <UValidatorForm
+            onSubmit={event => {
+              event.preventDefault()
+              handleSubmit()
+            }}
+            onError={errors => console.log(errors)}
+            instantValidate={true}
+          >
+            <UPositiveInteger
+              value={values['positiveInteger']}
+              label="Positive number"
+              className={classes.positiveInteger}
+              validators={['required']}
+              onChange={e =>
+                setValues({ ...values, positiveInteger: e.target.value })
+              }
+            />
+          </UValidatorForm>
         </Grid>
       </Grid>
       <UValidatorForm
-        ref={form}
         onSubmit={handleSubmit}
         onError={errors => console.log(errors)}
-        debounceTime={1000}
-        // instantValidate={true}
+        instantValidate={true}
       >
         <Grid container>
           <Grid item xs={12}>
@@ -225,10 +293,9 @@ export default function FormValidator() {
               onChange={handleValue}
               className={classes.margin}
               name="email"
-              value={values.email}
               variant="outlined"
               validators={['required', 'isEmail']}
-              errorMessages={['this field is required', 'email is not valid']}
+              value={values.email}
             />
           </Grid>
           <Grid item xs={12} lg={3} xl={2}>
@@ -241,7 +308,6 @@ export default function FormValidator() {
               variant="outlined"
               validators={['required']}
               value={values.password}
-              errorMessages={['this field is required']}
             />
           </Grid>
           <Grid item xs={12} lg={3} xl={2}>
@@ -254,7 +320,6 @@ export default function FormValidator() {
               className={classes.textField}
               name="currency"
               validators={['required']}
-              errorMessages={['this field is required']}
               variant="outlined"
             >
               {currencies.map(option => (
@@ -267,7 +332,7 @@ export default function FormValidator() {
           <Grid item xs={12} lg={1}>
             <Button
               // style={{ marginTop: 24 }}
-              className={classes.margin}
+              className={classes.button}
               color="primary"
               variant="contained"
               type="submit"
@@ -278,8 +343,8 @@ export default function FormValidator() {
         </Grid>
       </UValidatorForm>
       <UValidatorForm
-        ref={form}
         onBlur={handleSubmit}
+        onSubmit={handleSubmit}
         onError={errors => console.log(errors)}
         // debounceTime={1000}
         instantValidate={true}
@@ -289,7 +354,7 @@ export default function FormValidator() {
             name="termAndCondition"
             label="Agree with the Terms and Conditions"
             validators={['isTruthy']}
-            errorMessages={['check more than two fields']}
+            customErrorMessages={{ isTruthy: 'check more than two fields' }}
             value={valid}
           >
             <FormControl
@@ -358,7 +423,7 @@ export default function FormValidator() {
             name="radio"
             label="Choose an option"
             validators={['isTruthy']}
-            errorMessages={['choose an option from above']}
+            customErrorMessages={{ isTruthy: 'choose an option from above' }}
             value={validChoose}
           >
             <FormControl
@@ -399,7 +464,7 @@ export default function FormValidator() {
             className={classes.margin}
             color="primary"
             variant="contained"
-            type="Validate"
+            type="submit"
           >
             Validate
           </Button>

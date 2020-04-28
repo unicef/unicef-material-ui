@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import {
   Paper,
@@ -37,7 +37,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function InteractiveViews() {
   const classes = useStyles()
-  const form = useRef('form')
+
   const [readOnly, setReadOnly] = useState(true)
 
   function handleChange() {
@@ -86,7 +86,7 @@ export default function InteractiveViews() {
     <Grid container spacing={3} display="flex">
       <Grid item xs={12} lg={8}>
         <Paper style={{ padding: 8 }}>
-          <UValidatorForm>
+          <UValidatorForm onSubmit={() => {}}>
             <ActiveFormTextField
               readOnly={readOnly}
               typographyVariant="h2"
@@ -146,11 +146,7 @@ export default function InteractiveViews() {
       </Grid>
       <Grid item xs={12} md={8}>
         <Paper style={{ padding: 8 }}>
-          <UValidatorForm
-            ref={form}
-            onSubmit={handleSubmit}
-            debounceTime={1000}
-          >
+          <UValidatorForm onSubmit={handleSubmit} debounceTime={1000}>
             <Grid item container spacing={2}>
               <Grid item xs={12}>
                 <Box display="flex" alignItems="center">
@@ -252,11 +248,7 @@ export default function InteractiveViews() {
       </Grid>
       <Grid item xs={12} md={8}>
         <Paper style={{ padding: 8 }}>
-          <UValidatorForm
-            ref={form}
-            onSubmit={handleSubmit}
-            debounceTime={1000}
-          >
+          <UValidatorForm onSubmit={handleSubmit} debounceTime={1000}>
             <Grid item container spacing={2}>
               <Grid item xs={12}>
                 <Box display="flex" alignItems="center">

@@ -6,17 +6,16 @@ import PropTypes from 'prop-types'
  * * UValidatorForm is a component as similar to Form, it also has some set of validations for form that contains textfield, checkboxes, select, choice buttons.
  * * UValidatorForm has some features and functions like instantValidate, onSubmit, onError, debounceTime.
  * * Wherever we require form validation, UValidatorForm should be parent component , rest of the compoents should be wrapped under it.
- * * UValidatorForm is a [ValidatorForm Component](https://www.npmjs.com/package/react-form-validator-core) from `react-form-validator-core`. 
+ * * UValidatorForm is a [ValidatorForm Component](https://www.npmjs.com/package/react-form-validator-core) from `react-form-validator-core`.
  *  Check it if you need more details, we accept all the functions and props from ValidatorForm Component
  */
 
 export default function UValidatorForm(props) {
-
   UValidatorForm.addValidationRule = (name, callback) => {
     ValidatorForm.addValidationRule(name, callback)
   }
 
-  UValidatorForm.removeValidationRule = (name) => {
+  UValidatorForm.removeValidationRule = name => {
     ValidatorForm.removeValidationRule(name)
   }
 
@@ -38,4 +37,3 @@ export default function UValidatorForm(props) {
 
   return <ValidatorForm {...props} />
 }
-

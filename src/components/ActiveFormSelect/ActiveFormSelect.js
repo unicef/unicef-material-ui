@@ -88,7 +88,6 @@ export default function ActiveFormSelect(props) {
       }}
       className={`${classes.textField} ${className && className}`}
       InputProps={{
-        disableUnderline: true,
         classes: {
           root: `${classes.input} ${readOnly && classes.inputHover}`,
           notchedOutline: `${
@@ -138,11 +137,11 @@ ActiveFormSelect.propTypes = {
    */
   validators: PropTypes.array,
   /**
-   * Array of error messages.Order of messages should be the same as validators prop.
+   * customErrorMessages is an object with key as validator and value as customised error message.
    *
-   * Ex: `errorMessages={['this field is required', 'email is not valid']}`
+   * Ex: `customErrorMessages={{required: 'This field is required'}`
    */
-  errorMessages: PropTypes.array,
+  customErrorMessages: PropTypes.array,
   /** To make the content readOnly */
   readOnly: PropTypes.bool,
   /** Name of input. */

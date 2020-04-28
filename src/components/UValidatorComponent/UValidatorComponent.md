@@ -229,7 +229,7 @@ const useStyles = makeStyles(theme => ({
       name="radio"
       label="Choose an option"
       validators={['isTruthy']}
-      errorMessages={['choose an option from above']}
+      customErrorMessages={{isTruthy: 'choose an option from above'}}
       value={validChoice}
     >
       <FormControl className={classes.margin} required component="fieldset" >

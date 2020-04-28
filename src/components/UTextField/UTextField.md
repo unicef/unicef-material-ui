@@ -442,7 +442,6 @@ export default function ResetPasswordForm() {
         name="password"
         type="password"
         validators={['required']}
-        errorMessages={['this field is required']}
         value={user.password}
       />
       <UTextField
@@ -452,7 +451,7 @@ export default function ResetPasswordForm() {
         name="repeatPassword"
         type="password"
         validators={['isPasswordMatch', 'required']}
-        errorMessages={['password mismatch', 'this field is required']}
+        customErrorMessages={{required: 'required field'}}
         value={user.repeatPassword}
       />
       <UButton uPrimary type="submit">Submit</UButton>

@@ -22,6 +22,7 @@ import UValidatorForm from './components/UValidatorForm'
 import ActiveFormTextField from './components/ActiveFormTextField'
 import ActiveFormSelect from './components/ActiveFormSelect'
 import UPositiveInteger from './components/UPositiveInteger'
+import ActiveFormPositiveInteger from './components/ActiveFormPositiveInteger'
 
 export {
   theme,
@@ -48,4 +49,5 @@ export {
   UValidatorForm,
   UValidatorComponent,
   UPositiveInteger,
+  ActiveFormPositiveInteger,
 }

@@ -114,7 +114,7 @@ export default function UHeader(props) {
     position: 'fixed',
     showHamburgerMenu: true,
     hideLogo: false,
-    logo: false,
+    logoUrl: '/',
     hideLogoBorderLine: true,
   }
 
@@ -152,8 +152,9 @@ export default function UHeader(props) {
           {!hideLogo ? (
             <Link href={logoUrl}>
               <svg
-                className={`${hideLogoBorderLine !== false &&
-                  classes.navbarLine}`}
+                className={`${
+                  hideLogoBorderLine !== false && classes.navbarLine
+                }`}
                 width="114"
                 height="28"
                 xmlns="http://www.w3.org/2000/svg"

@@ -1,9 +1,9 @@
 /* eslint-disable */
 import React from 'react'
 import PropTypes from 'prop-types'
-import { TextField } from '@material-ui/core'
+import { TextField, Button } from '@material-ui/core'
 /* eslint-enable */
-import { ValidatorComponent } from 'react-form-validator-core'
+import ValidatorComponent from '../ValidatorComponent'
 
 //Extending the ValidatorComponent using class component, so taking an exclusion from our rule: functional components only.
 
@@ -33,6 +33,22 @@ import { ValidatorComponent } from 'react-form-validator-core'
  * It accepts all the props of Material-ui [TextField](https://material-ui.com/api/text-field/#textfield-api)
  */
 export default class UTextField extends ValidatorComponent {
+  constructor(props) {
+    super(props)
+  }
+
+  handleBlur = event => {
+    if (
+      this.props.value === '' &&
+      this.props.validators &&
+      this.props.validators.includes('required')
+    ) {
+      return
+    } else {
+      this.props.onBlur && this.props.onBlur(event)
+    }
+  }
+
   render() {
     /* eslint-disable no-unused-vars */
     const {
@@ -44,17 +60,24 @@ export default class UTextField extends ValidatorComponent {
       helperText,
       validatorListener,
       withRequiredValidator,
+      onBlur,
       ...rest
     } = this.props
     const { isValid } = this.state
 
     return (
-      <TextField
-        variant={variant}
-        {...rest}
-        error={!isValid || error}
-        helperText={(!isValid && this.getErrorMessage()) || helperText}
-      />
+      <React.Fragment>
+        <TextField
+          variant={variant}
+          {...rest}
+          error={!isValid || error}
+          onBlur={event => this.handleBlur(event)}
+          helperText={(!isValid && this.getErrorMessage()) || helperText}
+        />
+        <Button style={{ display: 'none' }} ref={this.buttonRef} type="submit">
+          Submit
+        </Button>
+      </React.Fragment>
     )
   }
 }
@@ -67,11 +90,11 @@ UTextField.propTypes = {
    */
   validators: PropTypes.array,
   /**
-   * Array of error messages.Order of messages should be the same as validators prop.
+   * customErrorMessages is an object with key as validator and value as customised error message.
    *
-   * Ex: `errorMessages={['this field is required', 'email is not valid']}`
+   * Ex: `customErrorMessages={{required: 'This field is required'}`
    */
-  errorMessages: PropTypes.array,
+  customErrorMessages: PropTypes.object,
   /** Name of input. */
   name: PropTypes.string,
   /** It triggers after each validation.It will return true or false. */
