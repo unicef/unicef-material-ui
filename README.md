@@ -1,4 +1,5 @@
 # UNICEF material-ui
+
 [![npm version](https://badge.fury.io/js/%40unicef%2Fmaterial-ui.svg)](https://badge.fury.io/js/%40unicef%2Fmaterial-ui)
 
 Customized version for UNICEF of [Material UI](https://material-ui.com/). Material UI is a set of [ReactJS](http://reactjs.org) user interface components based on [Google's material design](https://material.io/design/) written in Javascript.
@@ -72,7 +73,7 @@ It will reload automatically upon edits. Lint errors are also displayed on the c
 
 Builds the component library for production. Leaves the output in the `dist` folder.
 
-### `npm run styleguide`
+### `npm run docs`
 
 Generates the documentation to be viewed in [http://localhost:6060](http://localhost:6060).
 
@@ -80,9 +81,17 @@ Page reloads on any change. Lint errors are displayed in the console, too.
 
 We use [styleguidelist](https://react-styleguidist.js.org/) for documenting our custom components.
 
-### `npm run styleguide:build`
+### `npm run build:docs`
 
 Builds the styleguide for production. The output is stored in `styleguide` folder.
+
+### `npm run build:site`
+
+Builds the styleguide docs as well as the example. The output is stored in `site` folder.
+
+### `npm run deploy`
+
+Runs `npm run build:site` and then deploys the output to Github `gh-pages`.
 
 ## License
 
