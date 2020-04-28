@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/unicef-material-ui/example/precache-manifest.79f586731a11f9e48b41248972459b4b.js"
+  "/unicef-material-ui/example/precache-manifest.46c80637e9f134c9b07693d2f42a2657.js"
 );
 
 self.addEventListener('message', (event) => {
