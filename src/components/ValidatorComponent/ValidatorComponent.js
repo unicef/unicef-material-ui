@@ -90,7 +90,7 @@ export default class ValidatorComponent extends React.Component {
     this.validateDebounced = debounce(this.validate, this.debounceTime)
   }
 
-  validate = (value, includeRequired = false, dryRun = false) => {
+  validate = (value, includeRequired = true, dryRun = false) => {
     const validations = Promise.all(
       this.state.validators &&
         this.state.validators.map(validator =>
