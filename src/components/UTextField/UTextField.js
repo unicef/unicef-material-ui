@@ -35,14 +35,18 @@ import ValidatorComponent from '../ValidatorComponent'
 export default class UTextField extends ValidatorComponent {
   constructor(props) {
     super(props)
-    this.buttonRef = React.createRef()
   }
 
   handleBlur = event => {
-    if (this.props.validateOnBlur) {
-      this.buttonRef.current.click()
+    if (
+      this.props.value === '' &&
+      this.props.validators &&
+      this.props.validators.includes('required')
+    ) {
+      return
+    } else {
+      this.props.onBlur && this.props.onBlur(event)
     }
-    this.props.onBlur && this.props.onBlur(event)
   }
 
   render() {
@@ -56,7 +60,6 @@ export default class UTextField extends ValidatorComponent {
       helperText,
       validatorListener,
       withRequiredValidator,
-      validateOnBlur,
       onBlur,
       ...rest
     } = this.props
@@ -100,8 +103,6 @@ UTextField.propTypes = {
   withRequiredValidator: PropTypes.bool,
   /** To make textfield to be select. See below examples section for select example and sample code */
   select: PropTypes.bool,
-  /** validate the textfield on blur */
-  validateOnBlur: PropTypes.bool,
 }
 
 UTextField.defaultProps = {

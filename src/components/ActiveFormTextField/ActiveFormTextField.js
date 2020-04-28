@@ -126,8 +126,6 @@ ActiveFormTextField.propTypes = {
   validatorListener: PropTypes.func,
   /** Allow to use required validator in any validation trigger, not only form submit. */
   withRequiredValidator: PropTypes.bool,
-  /** validate the textfield on blur */
-  validateOnBlur: PropTypes.bool,
 }
 
 ActiveFormTextField.defaultProps = {

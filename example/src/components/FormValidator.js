@@ -272,7 +272,6 @@ export default function FormValidator() {
               onChange={e =>
                 setValues({ ...values, positiveInteger: e.target.value })
               }
-              validateOnBlur
             />
           </UValidatorForm>
         </Grid>
