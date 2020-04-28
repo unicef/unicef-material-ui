@@ -56,6 +56,7 @@ export default class UTextField extends ValidatorComponent {
       helperText,
       validatorListener,
       withRequiredValidator,
+      validateOnBlur,
       onBlur,
       ...rest
     } = this.props
@@ -70,11 +71,9 @@ export default class UTextField extends ValidatorComponent {
           onBlur={event => this.handleBlur(event)}
           helperText={(!isValid && this.getErrorMessage()) || helperText}
         />
-        <Button
-          style={{ display: 'none' }}
-          ref={this.buttonRef}
-          type="submit"
-        />
+        <Button style={{ display: 'none' }} ref={this.buttonRef} type="submit">
+          Submit
+        </Button>
       </React.Fragment>
     )
   }
