@@ -297,7 +297,6 @@ export default function FormValidator() {
               variant="outlined"
               validators={['required', 'isEmail']}
               value={values.email}
-              validateOnBlur
             />
           </Grid>
           <Grid item xs={12} lg={3} xl={2}>
@@ -310,7 +309,6 @@ export default function FormValidator() {
               variant="outlined"
               validators={['required']}
               value={values.password}
-              validateOnBlur
             />
           </Grid>
           <Grid item xs={12} lg={3} xl={2}>
@@ -324,7 +322,6 @@ export default function FormValidator() {
               name="currency"
               validators={['required']}
               variant="outlined"
-              validateOnBlur
             >
               {currencies.map(option => (
                 <MenuItem key={option.value} value={option.value}>
