@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
 import clsx from 'clsx'
 import Chip from '@material-ui/core/Chip'
 import Avatar from '@material-ui/core/Avatar'
@@ -20,6 +19,10 @@ const useStyles = makeStyles(theme => ({
       0.08
     ),
   },
+  avatar: {
+    width: 24,
+    height: 24,
+  },
 }))
 
 export default function MultiValue({
@@ -31,22 +34,14 @@ export default function MultiValue({
 }) {
   const classes = useStyles()
 
-  /** Styling the component with custom styles */
-  const StyledAvatar = styled(Avatar)`
-&& {
-  height: 24px
-  width: 24px
-}`
-
   return (
     <Chip
       variant="outlined"
-      avatar={data.avatar ? data.avatar : <StyledAvatar />}
+      avatar={data.avatar ? data.avatar : <Avatar className={classes.avatar} />}
       label={children}
       className={clsx(classes.chip, {
         [classes.chipFocused]: props.isFocused,
       })}
-      onClick={() => onClick({ data, children, removeProps })}
       onDelete={removeProps.onClick}
       deleteIcon={<CancelIcon {...removeProps} />}
     />
@@ -64,6 +59,4 @@ MultiValue.propTypes = {
     onMouseDown: PropTypes.func,
     onTouchEnd: PropTypes.func,
   }),
-  /** Handle on chip click  */
-  onClick: PropTypes.func,
 }
