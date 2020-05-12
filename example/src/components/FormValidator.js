@@ -15,6 +15,7 @@ import {
   Grid,
   List,
   ListItem,
+  ListItemText,
   Avatar,
 } from '@material-ui/core'
 import {
@@ -147,6 +148,7 @@ const useStyles = makeStyles(theme => ({
   },
   button: {
     marginTop: theme.spacing(5),
+    marginLeft: theme.spacing(2),
   },
 }))
 
@@ -353,6 +355,7 @@ export default function FormValidator() {
       </UValidatorForm>
 
       {/* Reset values */}
+
       <UValidatorForm
         onSubmit={handleItemValueSubmit}
         onError={errors => console.log(errors)}
@@ -360,15 +363,17 @@ export default function FormValidator() {
         instantValidate={true}
       >
         <Typography variant="h5" style={{ margin: '16px 0px' }}>
-          Add to list
+          Reset form
         </Typography>
         <List>
           {itemList.map(item => (
-            <ListItem>{item}</ListItem>
+            <ListItem>
+              <ListItemText>{item}</ListItemText>
+            </ListItem>
           ))}
         </List>
         <UTextField
-          label="Item to add"
+          label="Item to add*"
           onChange={handleItemValueChange}
           className={classes.margin}
           name="item"
@@ -377,12 +382,12 @@ export default function FormValidator() {
           value={itemValue}
         />
         <Button
-          className={classes.margin}
+          className={classes.button}
           color="primary"
           variant="contained"
           type="submit"
         >
-          Validate
+          Add
         </Button>
       </UValidatorForm>
       {/* Custom controls validation*/}
