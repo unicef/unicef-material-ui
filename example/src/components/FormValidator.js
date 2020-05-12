@@ -13,6 +13,8 @@ import {
   FormControlLabel,
   RadioGroup,
   Grid,
+  List,
+  ListItem,
   Avatar,
 } from '@material-ui/core'
 import {
@@ -193,6 +195,9 @@ export default function FormValidator() {
   const [isLoading, setLoading] = useState(true)
   const [gotOptions, setOptions] = useState([''])
 
+  const [itemValue, setItemValue] = useState('')
+  const [itemList, setItemList] = useState([])
+
   useEffect(() => {
     setTimeout(() => {
       setOptions(options)
@@ -207,6 +212,14 @@ export default function FormValidator() {
 
   function handleSubmit() {
     // Submit the changes from here
+  }
+
+  function handleItemValueChange(event) {
+    setItemValue(event.target.value)
+  }
+  function handleItemValueSubmit() {
+    setItemList([...itemList, ...[itemValue]])
+    setItemValue('')
   }
 
   useEffect(() => {
@@ -338,6 +351,41 @@ export default function FormValidator() {
           </Grid>
         </Grid>
       </UValidatorForm>
+
+      {/* Reset values */}
+      <UValidatorForm
+        onSubmit={handleItemValueSubmit}
+        onError={errors => console.log(errors)}
+        // debounceTime={1000}
+        instantValidate={true}
+      >
+        <Typography variant="h5" style={{ margin: '16px 0px' }}>
+          Add to list
+        </Typography>
+        <List>
+          {itemList.map(item => (
+            <ListItem>{item}</ListItem>
+          ))}
+        </List>
+        <UTextField
+          label="Item to add"
+          onChange={handleItemValueChange}
+          className={classes.margin}
+          name="item"
+          variant="outlined"
+          validators={['required']}
+          value={itemValue}
+        />
+        <Button
+          className={classes.margin}
+          color="primary"
+          variant="contained"
+          type="submit"
+        >
+          Validate
+        </Button>
+      </UValidatorForm>
+      {/* Custom controls validation*/}
       <UValidatorForm
         onBlur={handleSubmit}
         onSubmit={handleSubmit}
