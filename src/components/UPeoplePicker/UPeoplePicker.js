@@ -39,8 +39,8 @@ const useStyles = makeStyles(theme => ({
     right: 0,
     marginTop:
       props.TextFieldProps && props.TextFieldProps.helperText
-        ? theme.spacing(-1.5)
-        : theme.spacing(1),
+        ? theme.spacing(-2.1)
+        : theme.spacing(0.3),
   }),
   divider: {
     height: theme.spacing(2),

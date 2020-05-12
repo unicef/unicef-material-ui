@@ -227,9 +227,6 @@ export default function FormValidator() {
         <Grid item xs={12} md={6}>
           <UPeoplePicker
             label="Select"
-            TextFieldProps={{
-              helperText: 'Select people from list',
-            }}
             isLoading={isLoading}
             placeholder="Select people ..."
             options={gotOptions}
