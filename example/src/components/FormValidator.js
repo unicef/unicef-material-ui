@@ -175,6 +175,11 @@ export default function FormValidator() {
     email: 'test@test.com',
     password: 'testinghere',
     positiveInteger: 1,
+    react: false,
+    angular: false,
+    azure: false,
+    redux: false,
+    choice: null,
   })
 
   function handleValue(event) {
@@ -183,12 +188,6 @@ export default function FormValidator() {
     const name = target.name
 
     setValues({ ...values, [name]: value })
-  }
-
-  const [valueChoice, setValueChoice] = React.useState(null)
-
-  function handleChange(event) {
-    setValueChoice(event.target.value)
   }
 
   const [isLoading, setLoading] = useState(true)
@@ -204,7 +203,7 @@ export default function FormValidator() {
 
   const { react, angular, azure, redux } = values
   const valid = [react, angular, azure, redux].filter(v => v).length > 2
-  const validChoose = valueChoice === null ? false : true
+  const validChoose = values.choice === null ? false : true
 
   function handleSubmit() {
     // Submit the changes from here
@@ -436,8 +435,8 @@ export default function FormValidator() {
                 aria-label="gender"
                 row
                 name="gender2"
-                value={valueChoice}
-                onChange={handleChange}
+                value={values.choice}
+                onChange={handleValue}
               >
                 <FormControlLabel
                   value="female"
