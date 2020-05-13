@@ -17,6 +17,7 @@ export default class ValidatorComponent extends React.Component {
     if (
       nextProps.validators &&
       nextProps.customErrorMessages &&
+      nextProps.withRequiredValidator &&
       (prevState.validators !== nextProps.validators ||
         prevState.customErrorMessages !== nextProps.customErrorMessages)
     ) {
@@ -24,6 +25,7 @@ export default class ValidatorComponent extends React.Component {
         value: nextProps.value,
         validators: nextProps.validators,
         customErrorMessages: nextProps.customErrorMessages,
+        withRequiredValidator: nextProps.withRequiredValidator,
       }
     }
 
@@ -37,6 +39,10 @@ export default class ValidatorComponent extends React.Component {
     value: this.props.value,
     customErrorMessages: this.props.customErrorMessages,
     validators: this.props.validators,
+    withRequiredValidator:
+      this.props.withRequiredValidator !== undefined
+        ? this.props.withRequiredValidator
+        : true,
   }
 
   componentDidMount() {
@@ -49,7 +55,7 @@ export default class ValidatorComponent extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (this.instantValidate && this.props.value !== prevState.value) {
-      this.validateDebounced(this.props.value, this.props.withRequiredValidator)
+      this.validateDebounced(this.props.value, this.state.withRequiredValidator)
     }
   }
 
@@ -61,7 +67,9 @@ export default class ValidatorComponent extends React.Component {
   getErrorMessage = () => {
     const { validators, customErrorMessages } = this.state
     const type = typeof validators
-    if (type === 'object') {
+    if (type === 'string') {
+      return customErrorMessages
+    } else if (type === 'object') {
       let updatedErrorMessages = []
       if (this.invalid.length > 0) {
         validators &&
@@ -90,12 +98,11 @@ export default class ValidatorComponent extends React.Component {
     this.validateDebounced = debounce(this.validate, this.debounceTime)
   }
 
-  validate = (value, includeRequired = true, dryRun = false) => {
+  validate = (value, includeRequired = false, dryRun = false) => {
     const validations = Promise.all(
-      this.state.validators &&
-        this.state.validators.map(validator =>
-          ValidatorForm.getValidator(validator, value, includeRequired)
-        )
+      this.state.validators.map(validator =>
+        ValidatorForm.getValidator(validator, value, includeRequired)
+      )
     )
 
     validations.then(results => {
@@ -131,38 +138,43 @@ ValidatorComponent.contextTypes = {
 }
 
 ValidatorComponent.propTypes = {
-  errorMessages: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
+  /** Custom error messages to override default error messages */
+  customErrorMessages: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
+  /** List of validators to handle*/
   validators: PropTypes.array,
+  /** Value */
   value: PropTypes.any,
   validatorListener: PropTypes.func,
+  /** Allow to use required validator in any validation trigger, not only form submit. */
   withRequiredValidator: PropTypes.bool,
 }
 
 ValidatorComponent.defaultProps = {
-  errorMessages: 'error',
+  customErrorMessages: 'error',
   validators: [],
   validatorListener: () => {},
+  withRequiredValidator: true,
 }
 
 polyfill(ValidatorComponent)
 
 // default error messages to return
 const defaultErrorMessages = {
-  required: 'this field is required',
-  isEmail: 'this is not a valid email',
-  isEmpty: 'value is empty',
-  isNumber: 'value must be number',
-  isPositive: 'value must be positive',
-  isString: 'value must be string',
-  isFloat: 'error',
-  minNumber: 'error',
-  maxNumber: 'error',
-  minFloat: 'error',
-  maxFloat: 'error',
-  trim: 'error',
-  minStringLength: 'error',
-  maxStringLength: 'error',
-  maxFileSize: 'error',
-  matchRegexp: 'error',
-  allowedExtensions: 'error',
+  required: 'Required',
+  isEmail: 'Invalid email. Example: user@domain.com',
+  isEmpty: 'Cannot be empty',
+  isNumber: 'Must be number',
+  isPositive: 'Must be positive',
+  isString: 'Must be string',
+  isFloat: 'Must be a number',
+  minNumber: 'Must be larger',
+  maxNumber: 'Must be smaller',
+  minFloat: 'Must be larger',
+  maxFloat: 'Must be smaller',
+  trim: 'Error',
+  minStringLength: 'Too short',
+  maxStringLength: 'Too long',
+  maxFileSize: 'Maximum file size exceeded',
+  matchRegexp: 'Invalid value',
+  allowedExtensions: 'File type not allowed',
 }

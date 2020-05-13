@@ -13,6 +13,9 @@ import {
   FormControlLabel,
   RadioGroup,
   Grid,
+  List,
+  ListItem,
+  ListItemText,
   Avatar,
 } from '@material-ui/core'
 import {
@@ -145,6 +148,7 @@ const useStyles = makeStyles(theme => ({
   },
   button: {
     marginTop: theme.spacing(5),
+    marginLeft: theme.spacing(2),
   },
 }))
 
@@ -175,6 +179,11 @@ export default function FormValidator() {
     email: 'test@test.com',
     password: 'testinghere',
     positiveInteger: 1,
+    react: false,
+    angular: false,
+    azure: false,
+    redux: false,
+    choice: null,
   })
 
   function handleValue(event) {
@@ -185,14 +194,11 @@ export default function FormValidator() {
     setValues({ ...values, [name]: value })
   }
 
-  const [valueChoice, setValueChoice] = React.useState(null)
-
-  function handleChange(event) {
-    setValueChoice(event.target.value)
-  }
-
   const [isLoading, setLoading] = useState(true)
   const [gotOptions, setOptions] = useState([''])
+
+  const [itemValue, setItemValue] = useState('')
+  const [itemList, setItemList] = useState([])
 
   useEffect(() => {
     setTimeout(() => {
@@ -204,10 +210,18 @@ export default function FormValidator() {
 
   const { react, angular, azure, redux } = values
   const valid = [react, angular, azure, redux].filter(v => v).length > 2
-  const validChoose = valueChoice === null ? false : true
+  const validChoose = values.choice === null ? false : true
 
   function handleSubmit() {
     // Submit the changes from here
+  }
+
+  function handleItemValueChange(event) {
+    setItemValue(event.target.value)
+  }
+  function handleItemValueSubmit() {
+    setItemList([...itemList, ...[itemValue]])
+    setItemValue('')
   }
 
   useEffect(() => {
@@ -228,9 +242,6 @@ export default function FormValidator() {
         <Grid item xs={12} md={6}>
           <UPeoplePicker
             label="Select"
-            TextFieldProps={{
-              helperText: 'Select people from list',
-            }}
             isLoading={isLoading}
             placeholder="Select people ..."
             options={gotOptions}
@@ -342,6 +353,45 @@ export default function FormValidator() {
           </Grid>
         </Grid>
       </UValidatorForm>
+
+      {/* Reset values */}
+
+      <UValidatorForm
+        onSubmit={handleItemValueSubmit}
+        onError={errors => console.log(errors)}
+        // debounceTime={1000}
+        instantValidate={true}
+      >
+        <Typography variant="h5" style={{ margin: '16px 0px' }}>
+          Reset form
+        </Typography>
+        <List>
+          {itemList.map((item, i) => (
+            <ListItem key={i}>
+              <ListItemText>{item}</ListItemText>
+            </ListItem>
+          ))}
+        </List>
+        <UTextField
+          label="Item to add*"
+          onChange={handleItemValueChange}
+          className={classes.margin}
+          name="item"
+          variant="outlined"
+          validators={['required']}
+          value={itemValue}
+          withRequiredValidator={false}
+        />
+        <Button
+          className={classes.button}
+          color="primary"
+          variant="contained"
+          type="submit"
+        >
+          Add
+        </Button>
+      </UValidatorForm>
+      {/* Custom controls validation*/}
       <UValidatorForm
         onBlur={handleSubmit}
         onSubmit={handleSubmit}
@@ -436,8 +486,8 @@ export default function FormValidator() {
                 aria-label="gender"
                 row
                 name="gender2"
-                value={valueChoice}
-                onChange={handleChange}
+                value={values.choice}
+                onChange={handleValue}
               >
                 <FormControlLabel
                   value="female"

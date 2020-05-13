@@ -188,6 +188,7 @@ export default function InteractiveViews() {
                       value={values.name}
                       validators={['required']}
                       errorMessages={['this field is required']}
+                      interactiveMode
                     />
                   </Grid>
                   <Grid item xs={12} md={6}>
@@ -203,6 +204,7 @@ export default function InteractiveViews() {
                         'this field is required',
                         'email is not valid',
                       ]}
+                      interactiveMode
                     />
                   </Grid>
                   <Grid item xs={12} md={6}>
@@ -215,6 +217,7 @@ export default function InteractiveViews() {
                       typographyVariant="subtitle1"
                       validators={['required']}
                       errorMessages={['this field is required']}
+                      interactiveMode
                     >
                       <MenuItem key="student" value={1}>
                         Student
@@ -238,6 +241,7 @@ export default function InteractiveViews() {
                       errorMessages={['this field is required']}
                       fullWidth
                       multiline
+                      interactiveMode
                     />
                   </Grid>
                 </Grid>

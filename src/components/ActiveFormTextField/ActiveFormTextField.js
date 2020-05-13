@@ -51,13 +51,14 @@ export default function ActiveFormTextField(props) {
     variant,
     readOnly,
     placeholder,
-    showBorder,
+    interactiveMode,
     InputLabelProps,
     InputProps,
     inputProps,
+    inputPadding,
     ...others
   } = props
-  const inputPadding = props.label
+  const inputPaddingClass = props.label
     ? classes.inputPaddingWithLabel
     : classes.inputPaddingWithoutLabel
   const finalPlaceholder = readOnly ? null : placeholder
@@ -78,13 +79,13 @@ export default function ActiveFormTextField(props) {
       InputProps={{
         classes: {
           root: `${classes.input} ${readOnly && classes.inputHover}`,
-          multiline: inputPadding,
+          multiline: inputPaddingClass,
           notchedOutline: `${
-            showBorder && !readOnly ? '' : classes.notchedOutline
+            !interactiveMode && !readOnly ? '' : classes.notchedOutline
           }`,
           input: props.multiline
             ? classes.inputPaddingWithoutLabel
-            : inputPadding,
+            : inputPaddingClass,
         },
         ...InputProps,
       }}
@@ -104,8 +105,8 @@ ActiveFormTextField.propTypes = {
   typographyVariant: PropTypes.string,
   /** Input has some default padding already, to make changes to it pass padding like `inputPadding='0px 2px'` */
   inputPadding: PropTypes.string,
-  /** To hide or display the textfied border*/
-  showBorder: PropTypes.bool,
+  /** Change to write mode by hiding textfield border and displays border on Hover*/
+  interactiveMode: PropTypes.bool,
   /**
    * Array of validators.See list of default validators above.
    *
@@ -130,5 +131,5 @@ ActiveFormTextField.propTypes = {
 
 ActiveFormTextField.defaultProps = {
   placeholder: 'Type something',
-  showBorder: true,
+  interactiveMode: false,
 }

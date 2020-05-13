@@ -10,7 +10,7 @@ const useStyles = makeStyles(theme => ({
     marginBottom: theme.spacing(0.25),
   },
   icon: {
-    display: 'none !important',
+    display: 'none',
   },
   showIcon: {
     display: 'block',
@@ -48,7 +48,7 @@ export default function ActiveFormSelect(props) {
     select,
     typographyVariant,
     className,
-    showBorder,
+    interactiveMode,
     placeholder,
     readOnly,
     InputLabelProps,
@@ -91,7 +91,7 @@ export default function ActiveFormSelect(props) {
         classes: {
           root: `${classes.input} ${readOnly && classes.inputHover}`,
           notchedOutline: `${
-            showBorder && !readOnly ? '' : classes.notchedOutline
+            !interactiveMode && !readOnly ? '' : classes.notchedOutline
           }`,
           input: classes.inputPadding,
         },
@@ -99,7 +99,7 @@ export default function ActiveFormSelect(props) {
       }}
       select
       SelectProps={{
-        classes: { icon: readOnly && classes.icon },
+        classes: { icon: (interactiveMode || readOnly) && hideIcon },
         ...SelectProps,
       }}
       onMouseOver={onMouseOver}
@@ -120,14 +120,12 @@ ActiveFormSelect.propTypes = {
   placeholder: PropTypes.string,
   /** Typography for text inside the input (Ex: h1, div, etc.) */
   typographyVariant: PropTypes.string,
-  /** Input has some default padding already, to make changes to it pass padding like `inputPadding='0px 2px'` */
-  inputPadding: PropTypes.string,
   /** To make textfield to be select. See below examples section for select example and sample code */
   select: PropTypes.bool,
   /** Typography for text inside the input (Ex: h1, div, etc.) */
   typographyVariant: PropTypes.string,
-  /** To hide or display the textfied border*/
-  showBorder: PropTypes.bool,
+  /** Change to write mode by hiding textfield border and displays border on Hover*/
+  interactiveMode: PropTypes.bool,
   /** Input has some default padding already, to make changes to it pass padding like `inputPadding='0px 2px'` */
   inputPadding: PropTypes.string,
   /**
@@ -154,5 +152,5 @@ ActiveFormSelect.propTypes = {
 
 ActiveFormSelect.defaultProps = {
   placeholder: 'Select',
-  showBorder: true,
+  interactiveMode: false,
 }
