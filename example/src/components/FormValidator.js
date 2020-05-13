@@ -366,8 +366,8 @@ export default function FormValidator() {
           Reset form
         </Typography>
         <List>
-          {itemList.map(item => (
-            <ListItem>
+          {itemList.map((item, i) => (
+            <ListItem key={i}>
               <ListItemText>{item}</ListItemText>
             </ListItem>
           ))}
@@ -380,6 +380,7 @@ export default function FormValidator() {
           variant="outlined"
           validators={['required']}
           value={itemValue}
+          withRequiredValidator={false}
         />
         <Button
           className={classes.button}
