@@ -54,7 +54,7 @@ export default class UTextField extends ValidatorComponent {
     const {
       variant,
       error,
-      errorMessages,
+      customErrorMessages,
       validators,
       requiredError,
       helperText,
