@@ -38,7 +38,8 @@ export default class ValidatorComponent extends React.Component {
     isValid: true,
     value: this.props.value,
     customErrorMessages: this.props.customErrorMessages,
-    validators: this.props.validators,
+    validators:
+      this.props.validators !== undefined ? this.props.validators : [],
     withRequiredValidator:
       this.props.withRequiredValidator !== undefined
         ? this.props.withRequiredValidator
