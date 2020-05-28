@@ -5,7 +5,6 @@ import UTextField from '../UTextField'
 
 const useStyles = makeStyles(theme => ({
   textField: {
-    minWidth: 193,
     marginTop: theme.spacing(0.25),
     marginBottom: theme.spacing(0.25),
   },
