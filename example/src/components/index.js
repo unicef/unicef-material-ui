@@ -8,7 +8,6 @@ import Alert from './Alert'
 import NavLinks from './NavLinks'
 import SideBarContent from './SideBarContent'
 import FormValidator from './FormValidator'
-import ActiveFormTextField from './ActiveFormTextField'
 import InteractiveViews from './InteractiveViews'
 import Buttons from './Buttons'
 
@@ -24,6 +23,5 @@ export {
   NavLinks,
   SideBarContent,
   ColorsExample,
-  ActiveFormTextField,
   InteractiveViews,
 }
