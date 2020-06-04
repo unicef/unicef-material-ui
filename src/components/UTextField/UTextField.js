@@ -92,7 +92,7 @@ class UTextField extends ValidatorComponent {
           onBlur={event => this.handleBlur(event)}
           helperText={(!isValid && this.getErrorMessage()) || helperText}
         />
-        {counter && (
+        {!readOnly && counter && (
           <Box display="block">
             <Typography
               className={`${classes.counter} ${counterError &&
