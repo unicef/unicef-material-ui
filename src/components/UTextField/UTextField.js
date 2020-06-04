@@ -1,9 +1,19 @@
 /* eslint-disable */
 import React from 'react'
 import PropTypes from 'prop-types'
-import { TextField, Button } from '@material-ui/core'
+import { TextField, Typography, Box } from '@material-ui/core'
 /* eslint-enable */
 import ValidatorComponent from '../ValidatorComponent'
+import { withStyles } from '@material-ui/core/styles'
+
+const styles = theme => ({
+  counter: {
+    marginLeft: theme.spacing(2),
+  },
+  counterError: {
+    color: theme.palette.error.main,
+  },
+})
 
 //Extending the ValidatorComponent using class component, so taking an exclusion from our rule: functional components only.
 
@@ -32,7 +42,7 @@ import ValidatorComponent from '../ValidatorComponent'
  *
  * It accepts all the props of Material-ui [TextField](https://material-ui.com/api/text-field/#textfield-api)
  */
-export default class UTextField extends ValidatorComponent {
+class UTextField extends ValidatorComponent {
   constructor(props) {
     super(props)
   }
@@ -52,6 +62,7 @@ export default class UTextField extends ValidatorComponent {
   render() {
     /* eslint-disable no-unused-vars */
     const {
+      classes,
       variant,
       error,
       customErrorMessages,
@@ -61,22 +72,38 @@ export default class UTextField extends ValidatorComponent {
       validatorListener,
       withRequiredValidator,
       onBlur,
+      maxLength,
+      readOnly,
+      counter,
+      counterClassName,
       ...rest
     } = this.props
     const { isValid } = this.state
+    const length = this.props.value ? this.props.value.length : 0
+    const counterError = maxLength && maxLength < length
 
     return (
       <React.Fragment>
         <TextField
           variant={variant}
+          readOnly={readOnly}
           {...rest}
           error={!isValid || error}
           onBlur={event => this.handleBlur(event)}
           helperText={(!isValid && this.getErrorMessage()) || helperText}
         />
-        <Button style={{ display: 'none' }} ref={this.buttonRef} type="submit">
-          Submit
-        </Button>
+        {counter && (
+          <Box display="block">
+            <Typography
+              className={`${classes.counter} ${counterError &&
+                classes.counterError} ${counterClassName}`}
+              variant="caption"
+              color="textSecondary"
+            >
+              {maxLength ? `${length}/${maxLength}` : length} characters
+            </Typography>
+          </Box>
+        )}
       </React.Fragment>
     )
   }
@@ -103,9 +130,17 @@ UTextField.propTypes = {
   withRequiredValidator: PropTypes.bool,
   /** To make textfield to be select. See below examples section for select example and sample code */
   select: PropTypes.bool,
+  /** To enable character counter */
+  counter: PropTypes.bool,
+  /** To override the counter styles */
+  counterClassName: PropTypes.string,
+  /** Maximum length of characters */
+  maxLength: PropTypes.number,
 }
 
 UTextField.defaultProps = {
   variant: 'outlined',
   validatorListener: () => {},
 }
+
+export default withStyles(styles)(UTextField)
