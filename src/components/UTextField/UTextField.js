@@ -4,16 +4,16 @@ import PropTypes from 'prop-types'
 import { TextField, Typography, Box } from '@material-ui/core'
 /* eslint-enable */
 import ValidatorComponent from '../ValidatorComponent'
-import { withStyles } from '@material-ui/core/styles'
 
-const styles = theme => ({
+// TODO - research how to use theme
+const styles = {
   counter: {
-    marginLeft: theme.spacing(2),
+    marginLeft: 16,
   },
   counterError: {
-    color: theme.palette.error.main,
+    color: '#f44336',
   },
-})
+}
 
 //Extending the ValidatorComponent using class component, so taking an exclusion from our rule: functional components only.
 
@@ -62,7 +62,6 @@ class UTextField extends ValidatorComponent {
   render() {
     /* eslint-disable no-unused-vars */
     const {
-      classes,
       variant,
       error,
       customErrorMessages,
@@ -73,7 +72,6 @@ class UTextField extends ValidatorComponent {
       withRequiredValidator,
       onBlur,
       maxLength,
-      readOnly,
       counter,
       counterClassName,
       ...rest
@@ -86,17 +84,18 @@ class UTextField extends ValidatorComponent {
       <React.Fragment>
         <TextField
           variant={variant}
-          readOnly={readOnly}
           {...rest}
           error={!isValid || error}
           onBlur={event => this.handleBlur(event)}
           helperText={(!isValid && this.getErrorMessage()) || helperText}
         />
-        {!readOnly && counter && (
+        {counter && (
           <Box display="block">
             <Typography
-              className={`${classes.counter} ${counterError &&
-                classes.counterError} ${counterClassName}`}
+              style={{
+                ...styles.counter,
+                ...(counterError && styles.counterError),
+              }}
               variant="caption"
               color="textSecondary"
             >
@@ -132,8 +131,6 @@ UTextField.propTypes = {
   select: PropTypes.bool,
   /** To enable character counter */
   counter: PropTypes.bool,
-  /** To override the counter styles */
-  counterClassName: PropTypes.string,
   /** Maximum length of characters */
   maxLength: PropTypes.number,
 }
@@ -143,4 +140,4 @@ UTextField.defaultProps = {
   validatorListener: () => {},
 }
 
-export default withStyles(styles)(UTextField)
+export default UTextField
