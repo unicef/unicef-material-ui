@@ -2,9 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import NumberFormat from 'react-number-format'
 
-export default function PositiveNumberFormat(props) {
-  const { inputRef, onChange, ...other } = props
-
+export default function PositiveNumberFormat({
+  inputRef,
+  name,
+  onChange,
+  ...other
+}) {
   return (
     <NumberFormat
       {...other}
@@ -12,6 +15,7 @@ export default function PositiveNumberFormat(props) {
       onValueChange={values => {
         onChange({
           target: {
+            name: name,
             value: values.value,
           },
         })

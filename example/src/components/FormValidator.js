@@ -179,6 +179,7 @@ export default function FormValidator() {
     email: 'test@test.com',
     password: 'testinghere',
     positiveInteger: 1,
+    counter: 'This is counter',
     react: false,
     angular: false,
     azure: false,
@@ -276,6 +277,7 @@ export default function FormValidator() {
             instantValidate={true}
           >
             <UPositiveInteger
+              name="PositiveNumber"
               value={values['positiveInteger']}
               label="Positive number"
               className={classes.positiveInteger}
@@ -353,7 +355,28 @@ export default function FormValidator() {
           </Grid>
         </Grid>
       </UValidatorForm>
-
+      <UValidatorForm
+        onSubmit={handleItemValueSubmit}
+        onError={errors => console.log(errors)}
+        // debounceTime={1000}
+        instantValidate={true}
+      >
+        <Typography variant="h5" style={{ margin: '16px 0px' }}>
+          TextField with counter
+        </Typography>
+        <UTextField
+          label="Counter"
+          name="counter"
+          value={values.counter}
+          onChange={handleValue}
+          className={classes.margin}
+          variant="outlined"
+          validators={['required']}
+          counter
+          maxLength={16}
+          withRequiredValidator={false}
+        />
+      </UValidatorForm>
       {/* Reset values */}
 
       <UValidatorForm
