@@ -7,17 +7,26 @@ const useStyles = makeStyles(theme => ({
   noOptionsMessage: {
     padding: theme.spacing(1),
   },
+  errorMessage: {
+    color: theme.palette.error.main,
+  },
 }))
 
-export default function NoOptionsMessage({ children, innerProps }) {
+export default function NoOptionsMessage({
+  children,
+  innerProps,
+  selectProps,
+}) {
   const classes = useStyles()
+  const { errorOptionsMessage } = selectProps
   return (
     <Typography
       color="textSecondary"
       {...innerProps}
-      className={classes.noOptionsMessage}
+      className={`${classes.noOptionsMessage} ${errorOptionsMessage &&
+        classes.errorMessage} `}
     >
-      {children}
+      {errorOptionsMessage ? errorOptionsMessage : children}
     </Typography>
   )
 }
@@ -31,4 +40,8 @@ NoOptionsMessage.propTypes = {
    * Props to be passed on to the wrapper.
    */
   innerProps: PropTypes.object,
+  /**
+   *  To display error message on loading options
+   */
+  errorLoadingOptions: PropTypes.string,
 }
