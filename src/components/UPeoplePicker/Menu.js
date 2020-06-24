@@ -3,14 +3,10 @@ import PropTypes from 'prop-types'
 import Box from '@material-ui/core/Box'
 import Paper from '@material-ui/core/Paper'
 
-export default function Menu(props) {
+export default function Menu({ children, selectProps, innerProps, isLoading }) {
   return (
-    <Paper
-      square
-      className={props.selectProps.classes.paper}
-      {...props.innerProps}
-    >
-      {props.isLoading ? <Box p={2}> Loading ....</Box> : props.children}
+    <Paper square className={selectProps.classes.paper} {...innerProps}>
+      {isLoading ? <Box p={2}> Loading ....</Box> : children}
     </Paper>
   )
 }
