@@ -20,7 +20,7 @@ export default function Menu({ children, selectProps, innerProps, isLoading }) {
   const { errorOptionsMessage } = selectProps
 
   return (
-    <Paper square className={`${selectProps.classes.paper}`} {...innerProps}>
+    <Paper square className={selectProps.classes.paper} {...innerProps}>
       {isLoading ? (
         <Box p={2}>
           <Typography>Loading...</Typography>
