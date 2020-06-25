@@ -71,7 +71,13 @@ export default function UPeoplePicker(props) {
   const classes = useStyles(props)
   const theme = useTheme()
 
-  const { label, variant, TextFieldProps, ...others } = props
+  const {
+    label,
+    variant,
+    TextFieldProps,
+    showNoOptionsWithEmptyTextField,
+    ...others
+  } = props
 
   const selectStyles = {
     input: base => ({
@@ -100,6 +106,9 @@ export default function UPeoplePicker(props) {
       styles={selectStyles}
       components={components}
       TextFieldProps={mergedTextFieldProps}
+      noOptionsMessage={() =>
+        showNoOptionsWithEmptyTextField ? NoOptionsMessage : null
+      }
       {...others}
     />
   )
@@ -146,10 +155,19 @@ UPeoplePicker.propTypes = {
    *
    */
   TextFieldProps: PropTypes.object,
+  /**
+   * To show or hide the no options message on empty texfield value
+   */
+  showNoOptionsWithEmptyTextField: PropTypes.bool,
+  /**
+   *  To display error message on loading options
+   */
+  errorLoadingOptions: PropTypes.string,
 }
 
 UPeoplePicker.defaultProps = {
   isMulti: false,
   placeholder: 'Select...',
   variant: 'outlined',
+  showNoOptionsWithEmptyTextField: true,
 }

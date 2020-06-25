@@ -7,30 +7,17 @@ const useStyles = makeStyles(theme => ({
   noOptionsMessage: {
     padding: theme.spacing(1),
   },
-  errorMessage: {
-    color: theme.palette.error.main,
-  },
 }))
 
-export default function NoOptionsMessage({
-  children,
-  innerProps,
-  selectProps,
-}) {
+export default function NoOptionsMessage({ innerProps }) {
   const classes = useStyles()
-  const { showNoOptionsWithEmptyTextField, errorOptionsMessage } = selectProps
   return (
     <Typography
       color="textSecondary"
       {...innerProps}
-      className={`${classes.noOptionsMessage} ${errorOptionsMessage &&
-        classes.errorMessage} `}
+      className={classes.noOptionsMessage}
     >
-      {errorOptionsMessage
-        ? errorOptionsMessage
-        : showNoOptionsWithEmptyTextField
-        ? children
-        : ''}
+      No options
     </Typography>
   )
 }
@@ -44,16 +31,4 @@ NoOptionsMessage.propTypes = {
    * Props to be passed on to the wrapper.
    */
   innerProps: PropTypes.object,
-  /**
-   *  To display error message on loading options
-   */
-  errorLoadingOptions: PropTypes.string,
-  /**
-   * To show or hide the no options message on empty texfield value
-   */
-  showNoOptionsWithEmptyTextField: PropTypes.bool,
-}
-
-NoOptionsMessage.defaultProps = {
-  showNoOptionsWithEmptyTextField: true,
 }
