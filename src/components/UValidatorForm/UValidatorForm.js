@@ -19,21 +19,22 @@ export default function UValidatorForm(props) {
     ValidatorForm.removeValidationRule(name)
   }
 
-  UValidatorForm.propTypes = {
-    /** Callback for form that fires when all validations are passed */
-    onSubmit: PropTypes.func.isRequired,
-    /** If true, form will be validated after each field change.If false, form will be validated only after clicking submit button. */
-    instantValidate: PropTypes.bool,
-    /** Callback for form that fires when some of validations are not passed.It will return array of elements which not valid. */
-    onError: PropTypes.func,
-    /** Debounce time for validation i.e.your validation will run after debounceTime ms when you stop changing your input. */
-    debounceTime: PropTypes.number,
-  }
-
-  UValidatorForm.defaultProps = {
-    instantValidate: true,
-    debounceTime: 0,
-  }
-
   return <ValidatorForm {...props} />
+}
+
+UValidatorForm.propTypes = {
+  /** Callback for form that fires when all validations are passed */
+  onSubmit: PropTypes.func,
+  /** If true, form will be validated after each field change.If false, form will be validated only after clicking submit button. */
+  instantValidate: PropTypes.bool,
+  /** Callback for form that fires when some of validations are not passed.It will return array of elements which not valid. */
+  onError: PropTypes.func,
+  /** Debounce time for validation i.e.your validation will run after debounceTime ms when you stop changing your input. */
+  debounceTime: PropTypes.number,
+}
+
+UValidatorForm.defaultProps = {
+  instantValidate: true,
+  debounceTime: 0,
+  onSubmit: () => {},
 }

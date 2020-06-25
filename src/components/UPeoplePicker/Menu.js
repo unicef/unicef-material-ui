@@ -2,15 +2,33 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Box from '@material-ui/core/Box'
 import Paper from '@material-ui/core/Paper'
+import Typography from '@material-ui/core/Typography'
+import { makeStyles } from '@material-ui/core/styles'
 
-export default function Menu(props) {
+const useStyles = makeStyles(theme => ({
+  errorMessage: {
+    padding: theme.spacing(1),
+    color: theme.palette.error.main,
+  },
+}))
+
+export default function Menu({ children, selectProps, innerProps, isLoading }) {
+  const classes = useStyles()
+  const { errorOptionsMessage } = selectProps
+
   return (
-    <Paper
-      square
-      className={props.selectProps.classes.paper}
-      {...props.innerProps}
-    >
-      {props.isLoading ? <Box p={2}> Loading ....</Box> : props.children}
+    <Paper square className={selectProps.classes.paper} {...innerProps}>
+      {isLoading ? (
+        <Box p={2}>
+          <Typography>Loading...</Typography>
+        </Box>
+      ) : errorOptionsMessage ? (
+        <Typography color="textSecondary" className={classes.errorMessage}>
+          {errorOptionsMessage}
+        </Typography>
+      ) : (
+        children
+      )}
     </Paper>
   )
 }
@@ -25,4 +43,8 @@ Menu.propTypes = {
    */
   innerProps: PropTypes.object.isRequired,
   selectProps: PropTypes.object.isRequired,
+  /**
+   *  Loading for menu and picker
+   */
+  isLoading: PropTypes.bool,
 }

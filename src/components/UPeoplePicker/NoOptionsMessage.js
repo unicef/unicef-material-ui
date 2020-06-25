@@ -5,11 +5,11 @@ import Typography from '@material-ui/core/Typography'
 
 const useStyles = makeStyles(theme => ({
   noOptionsMessage: {
-    padding: theme.spacing(1),
+    padding: theme.spacing(1.5),
   },
 }))
 
-export default function NoOptionsMessage({ children, innerProps }) {
+export default function NoOptionsMessage({ innerProps }) {
   const classes = useStyles()
   return (
     <Typography
@@ -17,7 +17,7 @@ export default function NoOptionsMessage({ children, innerProps }) {
       {...innerProps}
       className={classes.noOptionsMessage}
     >
-      {children}
+      No options
     </Typography>
   )
 }

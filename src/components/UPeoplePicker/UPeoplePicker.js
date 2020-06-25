@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import Select from 'react-select'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
@@ -59,19 +59,27 @@ const components = {
 }
 
 /**
- * UPeoplePicker is a picking people from input control with below features
- * * Select single person from list
- * * Select Multiple people from list.
+ * UPeoplePicker is a control for selecting people from a list. Has the features below:
+ *
+ * * Select a single person from a list.
+ * * Select multiple people from a list.
  * * Autocomplete.
- * * Search and filter the opions.
- * * Clear selected.
+ * * Clear current selection.
  *
  */
 export default function UPeoplePicker(props) {
   const classes = useStyles(props)
   const theme = useTheme()
+  const {
+    label,
+    variant,
+    TextFieldProps,
+    showNoOptionsWithEmptyTextField,
+    onInputChange,
+    ...others
+  } = props
 
-  const { label, variant, TextFieldProps, ...others } = props
+  const [isTextFieldEmpty, setIsTextFieldEmpty] = useState(true)
 
   const selectStyles = {
     input: base => ({
@@ -82,16 +90,22 @@ export default function UPeoplePicker(props) {
       },
     }),
   }
-
   const defaultTextFieldProps = {
     label: label,
-    variant: 'outlined',
+    variant: variant,
     InputLabelProps: {
       shrink: true,
     },
   }
+  // To show or hide the no options menu
+  const showNoOptions = showNoOptionsWithEmptyTextField || !isTextFieldEmpty
 
   const mergedTextFieldProps = { ...defaultTextFieldProps, ...TextFieldProps }
+  // handle the input change
+  const handleInputChange = value => {
+    setIsTextFieldEmpty(value === '')
+    onInputChange && onInputChange(value)
+  }
 
   return (
     <Select
@@ -100,21 +114,23 @@ export default function UPeoplePicker(props) {
       styles={selectStyles}
       components={components}
       TextFieldProps={mergedTextFieldProps}
+      onInputChange={value => handleInputChange(value)}
+      noOptionsMessage={() => (showNoOptions ? NoOptionsMessage : null)}
       {...others}
     />
   )
 }
 
 UPeoplePicker.propTypes = {
-  /** Text to display in input when nothing selected. */
+  /** Text to display when nothing is selected. */
   placeholder: PropTypes.string,
-  /** Enables the multiple select. */
+  /** Enables the multiple select. Default is false. */
   isMulti: PropTypes.bool,
-  /** Label of the textfield. */
+  /** Label of the picker. */
   label: PropTypes.string,
-  /** Variant of textfield to use.*/
+  /** Variant of TextField to use. Default is outlined.*/
   variant: PropTypes.oneOf(['outlined', 'standard', 'filled']),
-  /** Id of input to handle in some scenarios. */
+  /** Id to assign to the input element */
   inputId: PropTypes.string,
   /** Callback fired when the value is changed.
    *
@@ -122,23 +138,43 @@ UPeoplePicker.propTypes = {
    * The event source of the callback. You can pull out the new value by accessing "event.target.value".
    */
   onChange: PropTypes.func,
-  /** Options to select from dropdown.
+  /** Array of to display select on the dropdown.
+   * Each option is an object with the following attributes:
    *
-   * `const suggestions = [ {label: "name1" }, {label: "name2"} ]` // which is an array of objects
+   * ```
+   * {
+   * value: 3,
+   * label: 'Kundal Singh Mehra', //First line, typically the name
+   * subLabel: 'Back-end Developer', // Second line, typically position or email
+   * avatar: (  //Avatar object to display.
+   *   <Avatar
+   *     src={'http://...'}
+   *   />
+   *  ),
+   *   }
+   *```
    *
-   * `options = {suggestions}`
    */
   options: PropTypes.array,
-  /** It accepts all the props from TextField API.
+  /** Props passed to the TextField used in the picker. Use any value of Material UI TextField API.
    *
    * `TextFieldProps={{helperText:"text", onChange: {textFieldTargetValue}, inputProps:{className: classes.textField}}}`
    *
    */
   TextFieldProps: PropTypes.object,
+  /**
+   * To show or hide the no options message on empty texfield value
+   */
+  showNoOptionsWithEmptyTextField: PropTypes.bool,
+  /**
+   *  To display error message on loading options
+   */
+  errorLoadingOptions: PropTypes.string,
 }
 
 UPeoplePicker.defaultProps = {
   isMulti: false,
   placeholder: 'Select...',
   variant: 'outlined',
+  showNoOptionsWithEmptyTextField: true,
 }
