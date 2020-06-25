@@ -24,7 +24,7 @@ export default function Option(props) {
         )}
         <Box fontSize={14} pl={1} display="flex" flexDirection="column">
           <Typography variant="subtitle2">{props.data.label}</Typography>
-          <Box fontSize={12}>{props.data.subtitle}</Box>
+          <Box fontSize={12}>{props.data.subLabel}</Box>
         </Box>
       </React.Fragment>
     </MenuItem>
