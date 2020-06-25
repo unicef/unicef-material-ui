@@ -76,22 +76,20 @@ export default function Pickers() {
   ]
 
   const [selectedDate, handleDateChange] = useState(new Date())
-  const [options, setOptions] = useState(peopleOptions)
+  const [options, setOptions] = useState(undefined)
   const [loading, setLoading] = useState(false)
-  const [errorMessage, setErrorMessage] = useState(null)
+  const [errorMessage] = useState(null)
 
   // Handle loading the people
   const handleLoadPeople = event => {
     setLoading(true)
+    setOptions(undefined)
     // In case of API, fetch the API
     //If response is ok, set the new options
-    setOptions(peopleOptions)
-    // If API return's error, set the error
-    setErrorMessage('Error loading people')
-    // Setting the time delay to check the loading exists
     setTimeout(() => {
       setLoading(false)
-    }, 100)
+      setOptions(peopleOptions)
+    }, 1000)
   }
 
   return (
@@ -129,7 +127,7 @@ export default function Pickers() {
       </Grid>
       <Grid item xs={12} md={6}>
         <UPeoplePicker
-          label="With error state example"
+          label="Async example"
           isLoading={loading}
           placeholder="Select people ..."
           options={options}
@@ -137,6 +135,29 @@ export default function Pickers() {
             onChange: event => handleLoadPeople(event),
           }}
           errorOptionsMessage={errorMessage}
+          isMulti
+        />
+      </Grid>
+      <Grid item xs={12} md={6}>
+        <UPeoplePicker
+          label="Display error on load"
+          isLoading={false}
+          placeholder="Select people ..."
+          options={undefined}
+          errorOptionsMessage={'Could not load options'}
+          isMulti
+        />
+      </Grid>
+      <Grid item xs={12} md={6}>
+        <UPeoplePicker
+          label="Display validation error"
+          isLoading={false}
+          placeholder="Select people ..."
+          options={undefined}
+          TextFieldProps={{
+            error: true,
+            helperText: 'Validation error message',
+          }}
           isMulti
         />
       </Grid>
