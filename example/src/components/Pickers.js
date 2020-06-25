@@ -134,6 +134,7 @@ export default function Pickers() {
           TextFieldProps={{
             onChange: event => handleLoadPeople(event),
           }}
+          showNoOptionsWithEmptyTextField={false}
           errorOptionsMessage={errorMessage}
           isMulti
         />

@@ -18,7 +18,7 @@ export default function NoOptionsMessage({
   selectProps,
 }) {
   const classes = useStyles()
-  const { errorOptionsMessage } = selectProps
+  const { showNoOptionsWithEmptyTextField, errorOptionsMessage } = selectProps
   return (
     <Typography
       color="textSecondary"
@@ -26,7 +26,11 @@ export default function NoOptionsMessage({
       className={`${classes.noOptionsMessage} ${errorOptionsMessage &&
         classes.errorMessage} `}
     >
-      {errorOptionsMessage ? errorOptionsMessage : children}
+      {errorOptionsMessage
+        ? errorOptionsMessage
+        : showNoOptionsWithEmptyTextField
+        ? children
+        : ''}
     </Typography>
   )
 }
@@ -44,4 +48,12 @@ NoOptionsMessage.propTypes = {
    *  To display error message on loading options
    */
   errorLoadingOptions: PropTypes.string,
+  /**
+   * To show or hide the no options message on empty texfield value
+   */
+  showNoOptionsWithEmptyTextField: PropTypes.bool,
+}
+
+NoOptionsMessage.defaultProps = {
+  showNoOptionsWithEmptyTextField: true,
 }
