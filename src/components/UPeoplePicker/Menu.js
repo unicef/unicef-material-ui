@@ -6,9 +6,6 @@ import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
-  hideMenu: {
-    display: 'none',
-  },
   errorMessage: {
     padding: theme.spacing(1),
     color: theme.palette.error.main,
@@ -47,7 +44,7 @@ Menu.propTypes = {
   innerProps: PropTypes.object.isRequired,
   selectProps: PropTypes.object.isRequired,
   /**
-   *  To display error message on loading options
+   *  Loading for menu and picker
    */
-  errorLoadingOptions: PropTypes.string,
+  isLoading: PropTypes.bool,
 }
