@@ -63,42 +63,6 @@ export default function Pickers() {
     },
     {
       value: 6,
-      label: 'Riddhi Poladia',
-      subLabel: 'Database Specialist',
-      avatar: (
-        <Avatar
-          src={
-            'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'
-          }
-        />
-      ),
-    },
-    {
-      value: 7,
-      label: 'Mahananda Talgaonkar',
-      subLabel: 'Sharepoint Developer',
-      avatar: (
-        <Avatar
-          src={
-            'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'
-          }
-        />
-      ),
-    },
-    {
-      value: 8,
-      label: 'Mary Anne Alde',
-      subLabel: 'Sharepoint analyst',
-      avatar: (
-        <Avatar
-          src={
-            'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'
-          }
-        />
-      ),
-    },
-    {
-      value: 9,
       label: 'Renga Narayanan',
       subLabel: 'Back-end Developer',
       avatar: (
@@ -112,6 +76,23 @@ export default function Pickers() {
   ]
 
   const [selectedDate, handleDateChange] = useState(new Date())
+  const [options, setOptions] = useState(peopleOptions)
+  const [loading, setLoading] = useState(false)
+  const [errorMessage, setErrorMessage] = useState(null)
+
+  // Handle loading the people
+  const handleLoadPeople = event => {
+    setLoading(true)
+    // In case of API, fetch the API
+    //If response is ok, set the new options
+    setOptions(peopleOptions)
+    // If API return's error, set the error
+    setErrorMessage('Error loading people')
+    // Setting the time delay to check the loading exists
+    setTimeout(() => {
+      setLoading(false)
+    }, 100)
+  }
 
   return (
     <Grid container spacing={3}>
@@ -125,7 +106,6 @@ export default function Pickers() {
           label="Select"
           placeholder="Select people ..."
           options={peopleOptions}
-          // onChange={handleChange}
         />
       </Grid>
       <Grid item xs={12} md={6}>
@@ -136,7 +116,6 @@ export default function Pickers() {
           }}
           placeholder="Select people ..."
           options={peopleOptions}
-          // onChange={handleChange}
           isMulti
         />
       </Grid>
@@ -146,16 +125,19 @@ export default function Pickers() {
           isLoading={true}
           placeholder="Select people ..."
           options={peopleOptions}
-          // onChange={handleChange}
         />
       </Grid>
       <Grid item xs={12} md={6}>
         <UPeoplePicker
           label="With error state example"
-          isLoading={true}
+          isLoading={loading}
           placeholder="Select people ..."
-          options={peopleOptions}
-          // onChange={handleChange}
+          options={options}
+          TextFieldProps={{
+            onChange: event => handleLoadPeople(event),
+          }}
+          errorOptionsMessage={errorMessage}
+          isMulti
         />
       </Grid>
       <Grid item xs={12}>
