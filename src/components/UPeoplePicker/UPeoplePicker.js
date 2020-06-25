@@ -79,7 +79,8 @@ export default function UPeoplePicker(props) {
     ...others
   } = props
 
-  const [textFieldvalue, setTextFieldValue] = useState('')
+  const [isTextFieldEmpty, setIsTextFieldEmpty] = useState(true)
+
   const selectStyles = {
     input: base => ({
       ...base,
@@ -97,11 +98,12 @@ export default function UPeoplePicker(props) {
     },
   }
   // To show or hide the no options menu
-  const showNoOptions = textFieldvalue !== '' || showNoOptionsWithEmptyTextField
+  const showNoOptions = showNoOptionsWithEmptyTextField || !isTextFieldEmpty
+
   const mergedTextFieldProps = { ...defaultTextFieldProps, ...TextFieldProps }
   // handle the input change
   const handleInputChange = value => {
-    setTextFieldValue(value)
+    setIsTextFieldEmpty(value === '')
     onInputChange && onInputChange(value)
   }
 
