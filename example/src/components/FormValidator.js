@@ -16,119 +16,13 @@ import {
   List,
   ListItem,
   ListItemText,
-  Avatar,
 } from '@material-ui/core'
 import {
   UTextField,
   UPositiveInteger,
-  UPeoplePicker,
   UValidatorForm,
   UValidatorComponent,
 } from 'unicef-material-ui'
-
-const options = [
-  {
-    id: 1,
-    title: 'Juan Merlos Tevar',
-    subtitle: 'Manager',
-    avatar: null,
-  },
-  {
-    id: 2,
-    title: 'Suresh Sevarthi',
-    subtitle: 'Front-end Developer',
-    avatar: null,
-  },
-  {
-    id: 3,
-    title: 'Kundal Singh Mehra',
-    subtitle: 'Back-end Developer',
-    avatar: (
-      <Avatar
-        src={
-          'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'
-        }
-      />
-    ),
-  },
-  {
-    id: 4,
-    title: 'Gia Zarina Santos',
-    subtitle: 'Manager',
-    avatar: (
-      <Avatar
-        src={
-          'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'
-        }
-      />
-    ),
-  },
-  {
-    id: 5,
-    title: 'Cory Kleinschmidt',
-    subtitle: 'Information technology specialist',
-    avatar: (
-      <Avatar
-        src={
-          'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'
-        }
-      />
-    ),
-  },
-  {
-    id: 6,
-    title: 'Riddhi Poladia',
-    subtitle: 'Database Specialist',
-    avatar: (
-      <Avatar
-        src={
-          'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'
-        }
-      />
-    ),
-  },
-  {
-    id: 7,
-    title: 'Mahananda Talgaonkar',
-    subtitle: 'Sharepoint Developer',
-    avatar: (
-      <Avatar
-        src={
-          'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'
-        }
-      />
-    ),
-  },
-  {
-    id: 8,
-    title: 'Mary Anne Alde',
-    subtitle: 'Sharepoint analyst',
-    avatar: (
-      <Avatar
-        src={
-          'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'
-        }
-      />
-    ),
-  },
-  {
-    id: 9,
-    title: 'Renga Narayanan',
-    subtitle: 'Back-end Developer',
-    avatar: (
-      <Avatar
-        src={
-          'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'
-        }
-      />
-    ),
-  },
-].map(option => ({
-  value: option.id,
-  label: option.title,
-  subtitle: option.subtitle,
-  avatar: option.avatar,
-}))
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -195,19 +89,8 @@ export default function FormValidator() {
     setValues({ ...values, [name]: value })
   }
 
-  const [isLoading, setLoading] = useState(true)
-  const [gotOptions, setOptions] = useState([''])
-
   const [itemValue, setItemValue] = useState('')
   const [itemList, setItemList] = useState([])
-
-  useEffect(() => {
-    setTimeout(() => {
-      setOptions(options)
-      setLoading(false)
-    }, 500)
-    return () => clearTimeout()
-  }, [])
 
   const { react, angular, azure, redux } = values
   const valid = [react, angular, azure, redux].filter(v => v).length > 2
@@ -235,33 +118,6 @@ export default function FormValidator() {
   return (
     <React.Fragment>
       <Grid container spacing={1}>
-        <Grid item xs={12}>
-          <Typography variant="h5" style={{ margin: '16px 0px' }}>
-            People picker
-          </Typography>
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <UPeoplePicker
-            label="Select"
-            isLoading={isLoading}
-            placeholder="Select people ..."
-            options={gotOptions}
-            // onChange={handleChange}
-          />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <UPeoplePicker
-            label="Multi Select"
-            TextFieldProps={{
-              helperText: 'Please select multiple people from list',
-            }}
-            isLoading={isLoading}
-            placeholder="Select people ..."
-            options={gotOptions}
-            // onChange={handleChange}
-            isMulti
-          />
-        </Grid>
         <Grid item xs={12}>
           <Typography variant="h5" style={{ margin: '16px 0px' }}>
             Positive Integer
