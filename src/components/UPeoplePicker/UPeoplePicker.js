@@ -85,7 +85,7 @@ export default function UPeoplePicker(props) {
 
   const defaultTextFieldProps = {
     label: label,
-    variant: 'outlined',
+    variant: variant,
     InputLabelProps: {
       shrink: true,
     },
