@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography'
 
 const useStyles = makeStyles(theme => ({
   noOptionsMessage: {
-    padding: theme.spacing(1),
+    padding: theme.spacing(1.5),
   },
 }))
 

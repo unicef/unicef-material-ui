@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import Select from 'react-select'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
@@ -70,15 +70,16 @@ const components = {
 export default function UPeoplePicker(props) {
   const classes = useStyles(props)
   const theme = useTheme()
-
   const {
     label,
     variant,
     TextFieldProps,
     showNoOptionsWithEmptyTextField,
+    onInputChange,
     ...others
   } = props
 
+  const [textFieldvalue, setTextFieldValue] = useState('')
   const selectStyles = {
     input: base => ({
       ...base,
@@ -88,7 +89,6 @@ export default function UPeoplePicker(props) {
       },
     }),
   }
-
   const defaultTextFieldProps = {
     label: label,
     variant: variant,
@@ -96,8 +96,14 @@ export default function UPeoplePicker(props) {
       shrink: true,
     },
   }
-
+  // To show or hide the no options menu
+  const showNoOptions = textFieldvalue !== '' || showNoOptionsWithEmptyTextField
   const mergedTextFieldProps = { ...defaultTextFieldProps, ...TextFieldProps }
+  // handle the input change
+  const handleInputChange = value => {
+    setTextFieldValue(value)
+    onInputChange && onInputChange(value)
+  }
 
   return (
     <Select
@@ -106,9 +112,8 @@ export default function UPeoplePicker(props) {
       styles={selectStyles}
       components={components}
       TextFieldProps={mergedTextFieldProps}
-      noOptionsMessage={() =>
-        showNoOptionsWithEmptyTextField ? NoOptionsMessage : null
-      }
+      onInputChange={value => handleInputChange(value)}
+      noOptionsMessage={() => (showNoOptions ? NoOptionsMessage : null)}
       {...others}
     />
   )
