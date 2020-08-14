@@ -24,7 +24,6 @@ export default function Counter({ value, className, maxLength }) {
   const classes = useStyles()
   const length = value ? value.length : 0
   const error = maxLength && maxLength < length
-  console.log(error, value, length, maxLength)
 
   return (
     <div
