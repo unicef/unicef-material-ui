@@ -1,19 +1,10 @@
 /* eslint-disable */
 import React from 'react'
 import PropTypes from 'prop-types'
-import { TextField, Typography, Box } from '@material-ui/core'
+import { TextField, Box } from '@material-ui/core'
 /* eslint-enable */
 import ValidatorComponent from '../ValidatorComponent'
-
-// TODO - research how to use theme
-const styles = {
-  counter: {
-    marginLeft: 16,
-  },
-  counterError: {
-    color: '#f44336',
-  },
-}
+import { Counter } from '../Shared'
 
 //Extending the ValidatorComponent using class component, so taking an exclusion from our rule: functional components only.
 
@@ -77,8 +68,6 @@ class UTextField extends ValidatorComponent {
       ...rest
     } = this.props
     const { isValid } = this.state
-    const length = this.props.value ? this.props.value.length : 0
-    const counterError = maxLength && maxLength < length
 
     return (
       <React.Fragment>
@@ -91,16 +80,11 @@ class UTextField extends ValidatorComponent {
         />
         {counter && (
           <Box display="block">
-            <Typography
-              style={{
-                ...styles.counter,
-                ...(counterError && styles.counterError),
-              }}
-              variant="caption"
-              color="textSecondary"
-            >
-              {maxLength ? `${length}/${maxLength}` : length} characters
-            </Typography>
+            <Counter
+              value={this.props.value}
+              className={counterClassName}
+              maxLength={maxLength}
+            />
           </Box>
         )}
       </React.Fragment>
