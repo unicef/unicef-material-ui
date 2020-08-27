@@ -61,7 +61,6 @@ const useStyles = makeStyles(theme =>
 export default function UHeader(props) {
   const classes = useStyles(props)
   const theme = useTheme()
-
   const [sideLeft, setSideLeft] = React.useState(false)
   const {
     position,
@@ -71,7 +70,15 @@ export default function UHeader(props) {
     logo,
     hideLogoBorderLine,
     logoUrl,
+    onLogoClick,
   } = props
+
+  const handleUrlClick = e => {
+    if (onLogoClick) {
+      onLogoClick()
+      e.preventDefault()
+    }
+  }
 
   const toggleDrawer = open => event => {
     if (
@@ -82,40 +89,6 @@ export default function UHeader(props) {
     }
 
     setSideLeft(open)
-  }
-
-  UHeader.propTypes = {
-    /** position of the header, 
-      'absolute'
-      | 'fixed'
-      | 'relative'
-      | 'static'
-      | 'sticky'   */
-    position: PropTypes.string,
-    /** Color of text in the header */
-    color: PropTypes.string,
-    /** Background color of the header */
-    bgColor: PropTypes.string,
-    /** Button with humburger icon on the left of the header. It enables the side menu (menuItems). */
-    showHamburgerMenu: PropTypes.bool.isRequired,
-    /** Name of the appliaction, will be displayed left side in the header after the hamburger menu. */
-    applicationName: PropTypes.string,
-    /** UNICEF logo enabled by default. */
-    hideLogo: PropTypes.bool,
-    /** Link in logo and appliaction Name (Ex: Redirects to home page) */
-    logoUrl: PropTypes.string,
-    /** logo is an optional once we hide it, add new logo or image */
-    logo: PropTypes.element,
-    /** It is the separator line between application name and logo with white border. */
-    hideLogoBorderLine: PropTypes.bool,
-  }
-
-  UHeader.defaultProps = {
-    position: 'fixed',
-    showHamburgerMenu: true,
-    hideLogo: false,
-    logoUrl: '/',
-    hideLogoBorderLine: true,
   }
 
   const sideList = (
@@ -150,11 +123,10 @@ export default function UHeader(props) {
             </Box>
           )}
           {!hideLogo ? (
-            <Link href={logoUrl}>
+            <Link onClick={e => handleUrlClick(e)} href={logoUrl}>
               <svg
-                className={`${
-                  hideLogoBorderLine !== false && classes.navbarLine
-                }`}
+                className={`${hideLogoBorderLine !== false &&
+                  classes.navbarLine}`}
                 width="114"
                 height="28"
                 xmlns="http://www.w3.org/2000/svg"
@@ -175,13 +147,22 @@ export default function UHeader(props) {
             </Link>
           ) : (
             logo && (
-              <Link color="inherit" href={logoUrl && logoUrl}>
+              <Link
+                color="inherit"
+                onClick={e => handleUrlClick(e)}
+                href={logoUrl && logoUrl}
+              >
                 {logo}
               </Link>
             )
           )}
           <Typography variant="h6" className={classes.title}>
-            <Link color="inherit" underline="none" href={logoUrl && logoUrl}>
+            <Link
+              color="inherit"
+              underline="none"
+              onClick={e => handleUrlClick(e)}
+              href={logoUrl && logoUrl}
+            >
               {applicationName}
             </Link>
           </Typography>
@@ -202,4 +183,40 @@ export default function UHeader(props) {
       {findReactChildren(props, UHeaderMainMenu)}
     </AppBar>
   )
+}
+
+UHeader.propTypes = {
+  /** position of the header, 
+    'absolute'
+    | 'fixed'
+    | 'relative'
+    | 'static'
+    | 'sticky'   */
+  position: PropTypes.string,
+  /** Color of text in the header */
+  color: PropTypes.string,
+  /** Background color of the header */
+  bgColor: PropTypes.string,
+  /** Button with humburger icon on the left of the header. It enables the side menu (menuItems). */
+  showHamburgerMenu: PropTypes.bool.isRequired,
+  /** Name of the appliaction, will be displayed left side in the header after the hamburger menu. */
+  applicationName: PropTypes.string,
+  /** UNICEF logo enabled by default. */
+  hideLogo: PropTypes.bool,
+  /** Link in logo and appliaction Name (Ex: Redirects to home page) */
+  logoUrl: PropTypes.string,
+  /** logo is an optional once we hide it, add new logo or image */
+  logo: PropTypes.element,
+  /** It is the separator line between application name and logo with white border. */
+  hideLogoBorderLine: PropTypes.bool,
+  /** Calls back when there is a click on Logo as well as app name and prevents the url to push to home*/
+  onLogoClick: PropTypes.func,
+}
+
+UHeader.defaultProps = {
+  position: 'fixed',
+  showHamburgerMenu: true,
+  hideLogo: false,
+  logoUrl: '/',
+  hideLogoBorderLine: true,
 }
