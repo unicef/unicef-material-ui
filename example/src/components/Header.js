@@ -14,7 +14,7 @@ import SearchBar from './SearchBar'
 export default function Header() {
   const [value, setValue] = React.useState(0)
 
-  function handleChange(event, newValue) {
+  function handleChange(newValue) {
     setValue(newValue)
   }
 
