@@ -172,7 +172,7 @@ const defaultErrorMessages = {
   maxNumber: 'Must be smaller',
   minFloat: 'Must be larger',
   maxFloat: 'Must be smaller',
-  trim: 'Error',
+  trim: 'Only white space characters in value',
   minStringLength: 'Too short',
   maxStringLength: 'Too long',
   maxFileSize: 'Maximum file size exceeded',
