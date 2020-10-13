@@ -118,7 +118,7 @@ ActiveFormTextField.propTypes = {
    *
    * Ex: `customErrorMessages={{required: 'This field is required'}`
    */
-  customErrorMessages: PropTypes.array,
+  customErrorMessages: PropTypes.object,
   /** To make the content readOnly */
   readOnly: PropTypes.bool,
   /** Name of input. */
