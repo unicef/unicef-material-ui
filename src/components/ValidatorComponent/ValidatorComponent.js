@@ -140,7 +140,10 @@ ValidatorComponent.contextTypes = {
 
 ValidatorComponent.propTypes = {
   /** Custom error messages to override default error messages */
-  customErrorMessages: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
+  customErrorMessages: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.string,
+  ]),
   /** List of validators to handle*/
   validators: PropTypes.array,
   /** Value */
