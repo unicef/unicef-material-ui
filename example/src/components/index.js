@@ -10,6 +10,10 @@ import SideBarContent from './SideBarContent'
 import FormValidator from './FormValidator'
 import InteractiveViews from './InteractiveViews'
 import Buttons from './Buttons'
+import DeleteButtonExample from './DeleteButtonExample'
+import RadioButtonsExample from './RadioButtonsExample'
+import AsyncBadgeExample from './AsyncBadgeExample'
+import PageLoadingProgressExample from './PageLoadingProgressExample'
 
 export {
   Layout,
@@ -24,4 +28,8 @@ export {
   SideBarContent,
   ColorsExample,
   InteractiveViews,
+  DeleteButtonExample,
+  RadioButtonsExample,
+  AsyncBadgeExample,
+  PageLoadingProgressExample,
 }
