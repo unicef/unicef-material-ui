@@ -10,6 +10,7 @@ import NavLinks from './NavLinks'
 import SideBarContent from './SideBarContent'
 import Tab from '@material-ui/core/Tab'
 import SearchBar from './SearchBar'
+import AsyncBadgeExample from './AsyncBadgeExample'
 
 export default function Header() {
   const [value, setValue] = React.useState(0)
@@ -28,6 +29,7 @@ export default function Header() {
     >
       <UNavbarCenter>
         <SearchBar />
+        <AsyncBadgeExample />
       </UNavbarCenter>
       <UHeaderRightButtons>
         <NavLinks />

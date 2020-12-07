@@ -23,6 +23,10 @@ import ActiveFormTextField from './components/ActiveFormTextField'
 import ActiveFormSelect from './components/ActiveFormSelect'
 import UPositiveInteger from './components/UPositiveInteger'
 import ActiveFormPositiveInteger from './components/ActiveFormPositiveInteger'
+import UDeleteButton from './components/UDeleteButton'
+import URadioButtons from './components/URadioButtons'
+import UAsyncBadge from './components/UAsyncBadge'
+import UPageLoadingProgress from './components/UPageLoadingProgress'
 
 export {
   theme,
@@ -50,4 +54,8 @@ export {
   UValidatorComponent,
   UPositiveInteger,
   ActiveFormPositiveInteger,
+  UDeleteButton,
+  URadioButtons,
+  UAsyncBadge,
+  UPageLoadingProgress
 }

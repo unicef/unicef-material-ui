@@ -51,6 +51,21 @@ module.exports = {
       name: 'Components',
       components: () => [
         path.resolve(__dirname, 'src/components/UButton', 'UButton.js'),
+        path.resolve(
+          __dirname,
+          'src/components/UDeleteButton',
+          'UDeleteButton.js'
+        ),
+        path.resolve(
+          __dirname,
+          'src/components/URadioButtons',
+          'URadioButtons.js'
+        ),
+        path.resolve(
+          __dirname,
+          'src/components/UPageLoadingProgress',
+          'UPageLoadingProgress.js'
+        ),
       ],
       usageMode: 'expand',
     },
@@ -87,6 +102,7 @@ module.exports = {
           'src/components/UHeaderLeftMenu',
           'UHeaderLeftMenu.js'
         ),
+        path.resolve(__dirname, 'src/components/UAsyncBadge', 'UAsyncBadge.js'),
       ],
       usageMode: 'expand',
     },
