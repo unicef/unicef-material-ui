@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Switch, Route, Link } from 'react-router-dom'
+import { Switch, Route, Link, BrowserRouter as Router } from 'react-router-dom'
 import { MuiThemeProvider } from '@material-ui/core/styles'
 import {
   theme,
@@ -17,6 +17,7 @@ import {
   Layout,
   InteractiveViews,
   FormValidator,
+  BreadcrumbsExample,
 } from './components'
 
 export default function App() {
@@ -32,48 +33,50 @@ export default function App() {
     <MuiThemeProvider theme={theme}>
       <UNICEFStyleProvider>
         <Header />
-        <ULayout>
-          <USideBar headerHeight={124} width={256}>
-            <SideBarContent
-              selectedNode={selectedNode}
-              handleClick={handleClick}
-            />
-          </USideBar>
-          <UContent headerHeight={114}>
-            <Switch>
-              <Route exact path={'/'}>
-                <List style={{ width: 300 }}>
-                  {['Layout', 'Forms', 'Interactive views', 'Pickers'].map(
-                    (text, index) => (
-                      <ListItem
-                        button
-                        key={text}
-                        component={Link}
-                        to={`${text.replace(/\s+/g, '-').toLowerCase()}`}
-                        onClick={e =>
-                          handleClick(
-                            e,
-                            `${text.replace(/\s+/g, '-').toLowerCase()}`
-                          )
-                        }
-                      >
-                        <ListItemText primary={text} />
-                      </ListItem>
-                    )
-                  )}
-                </List>
-              </Route>
-              <Route exact path={`/layout`} component={Layout} />
-              <Route exact path={`/forms`} component={FormValidator} />
-              <Route
-                exact
-                path={`/interactive-views`}
-                component={InteractiveViews}
+        <Router>
+          <ULayout>
+            <USideBar headerHeight={124} width={256}>
+              <SideBarContent
+                selectedNode={selectedNode}
+                handleClick={handleClick}
               />
-              <Route exact path={`/pickers`} component={Pickers} />
-            </Switch>
-          </UContent>
-        </ULayout>
+            </USideBar>
+            <UContent headerHeight={114}>
+              <Switch>
+                <Route exact path={'/'}>
+                  <List style={{ width: 300 }}>
+                    {['Layout', 'Forms', 'Interactive views', 'Pickers'].map(
+                      (text, index) => (
+                        <ListItem
+                          button
+                          key={text}
+                          component={Link}
+                          to={`${text.replace(/\s+/g, '-').toLowerCase()}`}
+                          onClick={e =>
+                            handleClick(
+                              e,
+                              `${text.replace(/\s+/g, '-').toLowerCase()}`
+                            )
+                          }
+                        >
+                          <ListItemText primary={text} />
+                        </ListItem>
+                      )
+                    )}
+                  </List>
+                </Route>
+                <Route exact path={`/layout`} component={Layout} />
+                <Route exact path={`/forms`} component={FormValidator} />
+                <Route
+                  exact
+                  path={`/interactive-views`}
+                  component={InteractiveViews}
+                />
+                <Route exact path={`/pickers`} component={Pickers} />
+              </Switch>
+            </UContent>
+          </ULayout>
+        </Router>
       </UNICEFStyleProvider>
     </MuiThemeProvider>
   )

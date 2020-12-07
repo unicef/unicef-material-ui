@@ -1,19 +1,32 @@
 import React from 'react'
-import { Buttons, Alert, CardWithTabs, CardsExample } from '../components'
-import ColorsExample from './ColorsExample'
-import DeleteButtonExample from './DeleteButtonExample'
-import RadioButtonsExample from './RadioButtonsExample'
-import PageLoadingProgressExample from './PageLoadingProgressExample'
+import {
+  Buttons,
+  Alert,
+  CardWithTabs,
+  CardsExample,
+  ErrorAlertExample,
+  BreadcrumbsExample,
+  DeleteButtonExample,
+  RadioButtonsExample,
+  PageLoadingProgressExample,
+  AutoCompleteExample,
+  InfiniteScrollExample,
+  ColorsExample,
+} from '../components'
 
 export default function Layout({ match }) {
   return (
     <React.Fragment>
+      <BreadcrumbsExample />
       <PageLoadingProgressExample />
       <ColorsExample />
+      {/* <InfiniteScrollExample /> */}
       <Buttons />
       <DeleteButtonExample />
       <RadioButtonsExample />
+      <AutoCompleteExample />
       <Alert />
+      <ErrorAlertExample />
       <CardWithTabs />
       <CardsExample />
     </React.Fragment>

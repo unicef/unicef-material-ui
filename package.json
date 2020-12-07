@@ -77,6 +77,7 @@
     "webpack-dev-server": "^3.2.1"
   },
   "dependencies": {
+    "@material-ui/lab": "^4.0.0-alpha.57",
     "react-form-validator-core": "^0.6.4",
     "react-number-format": "^4.4.1",
     "react-select": "^3.0.4",

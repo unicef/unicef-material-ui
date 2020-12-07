@@ -1,40 +1,39 @@
-Delete button Variant:
+Delete button usage:
 
 ```html
 variant = 'menuItem'
 variant = 'icon'
-enabled
 ```
 
-```jsx
-import React, { useState, useEffect } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-
+```jsx static
+import React from 'react'
+export default function Sample() {
   const id = 1
   function handleDelete(event, id) {
     //call delete function
   }
-  
-   <UDeleteButton
-      onConfirm={handleDelete}
-      id={id}
-      tooltipText="Delete"
-      variant="menuItem"
-    />
-
+  return (
+   <React.Fragement>
     <UDeleteButton
-      onConfirm={handleDelete}
-      id={id}
-      tooltipText="Delete"
-    />
-
-    <UDeleteButton
-      onConfirm={handleDelete}
-      id={id}
-      tooltipText="Delete"
-      enabled={false}
-    />
-
+        onConfirm={handleDelete}
+        id={id}
+        tooltipText="Delete"
+        variant="menuItem"
+      />
+      <UDeleteButton
+        onConfirm={handleDelete}
+        id={id}
+        tooltipText="Delete"
+      />
+      <UDeleteButton
+        onConfirm={handleDelete}
+        id={id}
+        tooltipText="Delete"
+        enabled={false}
+      />
+    </React.Fragement>
+  )
+}
   
     
 

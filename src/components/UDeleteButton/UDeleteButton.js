@@ -14,8 +14,9 @@ const useStyles = makeStyles(theme => ({
 }))
 
 /**
- * DeleteButton is a menu component which has an item to get confirmation from the user.
+ * DeleteButton is a component to get confirmation from the user before deleting it.
  * This delete button displays the delete confirmation where user has clicked the delete button
+ * It has two varint icon/menu item
  */
 export default function UDeleteButton(props) {
   const classes = useStyles()

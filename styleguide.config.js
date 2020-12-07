@@ -66,6 +66,12 @@ module.exports = {
           'src/components/UPageLoadingProgress',
           'UPageLoadingProgress.js'
         ),
+        path.resolve(__dirname, 'src/components/UErrorAlert', 'UErrorAlert.js'),
+        path.resolve(
+          __dirname,
+          'src/components/UInfiniteScroll',
+          'UInfiniteScroll.js'
+        ),
       ],
       usageMode: 'expand',
     },
@@ -75,6 +81,11 @@ module.exports = {
         path.resolve(__dirname, 'src/components/ULayout', 'ULayout.js'),
         path.resolve(__dirname, 'src/components/USideBar', 'USideBar.js'),
         path.resolve(__dirname, 'src/components/UContent', 'UContent.js'),
+        path.resolve(
+          __dirname,
+          'src/components/UBreadcrumbs',
+          'UBreadcrumbs.js'
+        ),
       ],
       usageMode: 'expand',
     },
@@ -135,6 +146,11 @@ module.exports = {
           __dirname,
           'src/components/UKeyboardDateTimePicker',
           'UKeyboardDateTimePicker.js'
+        ),
+        path.resolve(
+          __dirname,
+          'src/components/UAutoComplete',
+          'UAutoComplete.js'
         ),
       ],
       usageMode: 'expand',

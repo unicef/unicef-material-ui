@@ -3,9 +3,12 @@ Page loading progress:
 ```html
 text = 'Loading..'
 ```
-
-```jsx
+ 
+```jsx static
 import React from 'react'
-
-<UPageLoadingProgress text= "Loading..." />
- <UPageLoadingProgress />
+return (
+  <React.Fragement>
+    <UPageLoadingProgress text= "Loading..." />
+    <UPageLoadingProgress />
+  </React.Fragement>
+)

@@ -14,6 +14,10 @@ import DeleteButtonExample from './DeleteButtonExample'
 import RadioButtonsExample from './RadioButtonsExample'
 import AsyncBadgeExample from './AsyncBadgeExample'
 import PageLoadingProgressExample from './PageLoadingProgressExample'
+import ErrorAlertExample from './ErrorAlertExample'
+import AutoCompleteExample from './AutoCompleteExample'
+import BreadcrumbsExample from './BreadcrumbsExample'
+import InfiniteScrollExample from './InfiniteScrollExample'
 
 export {
   Layout,
@@ -32,4 +36,8 @@ export {
   RadioButtonsExample,
   AsyncBadgeExample,
   PageLoadingProgressExample,
+  ErrorAlertExample,
+  AutoCompleteExample,
+  BreadcrumbsExample,
+  InfiniteScrollExample,
 }
