@@ -1,39 +1,34 @@
-Delete button usage:
+Delete button with examples:
 
-```html
-variant = 'menuItem'
-variant = 'icon'
-```
+```jsx
+import { Typography, Grid } from '@material-ui/core'
 
-```jsx static
-import React from 'react'
-export default function Sample() {
-  const id = 1
+  const itemId = 1
   function handleDelete(event, id) {
-    //call delete function
+    console.log(id)
   }
-  return (
-   <React.Fragement>
-    <UDeleteButton
-        onConfirm={handleDelete}
-        id={id}
-        tooltipText="Delete"
-        variant="menuItem"
-      />
-      <UDeleteButton
-        onConfirm={handleDelete}
-        id={id}
-        tooltipText="Delete"
-      />
-      <UDeleteButton
-        onConfirm={handleDelete}
-        id={id}
-        tooltipText="Delete"
-        enabled={false}
-      />
-    </React.Fragement>
-  )
-}
+
+    <Grid container>
+      <Grid item xs={12} sm={4} md={3}>
+        <Typography variant="subtitle1">Icon variant</Typography>
+        <UDeleteButton
+          onConfirm={handleDelete}
+          id={itemId}
+          tooltipText="Delete"
+        />
+      </Grid>
+      <Grid item xs={12} sm={4} md={3}>
+        <Typography variant="subtitle1">Menu item variant</Typography>
+        <UDeleteButton
+          onConfirm={handleDelete}
+          id={itemId}
+          tooltipText="Delete"
+          variant="menuItem"
+        />
+      </Grid>
+    </Grid>
+  
+````
   
     
 

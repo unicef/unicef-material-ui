@@ -1,46 +1,41 @@
-Radion button Variant:
-
-```html
-variant = 'row'
-variant = 'column'
-readObly =  true/false
-```
+Radion button with example:
 
 ```jsx
-import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-  const radioValue = 'Yes'
+import React, { useState } from 'react'
+import { Typography, Grid } from '@material-ui/core'
+
+  const [radioValue, setRadioValue] = useState('Yes')
+  const isReadOnly = false
   function handleOnOptionChange(event) {
-    //call change function
+    setRadioValue(event.target.value)
   }
-  
-   <RadioButtons
-      value={radioValue}
-      onChange={handleOnOptionChange}
-      isReadOnly={false}
-      optionLabels={['Yes', 'No']}
-      optionValues={['Yes', 'No']}
-    ></RadioButtons>
 
-    <RadioButtons
-      value={radioValue}
-      onChange={handleOnOptionChange}
-      isReadOnly={false}
-      optionLabels={['Yes', 'No']}
-      optionValues={['Yes', 'No']}
-      variant="column"
-    ></RadioButtons>
-    <RadioButtons
-      value={radioValue}
-      onChange={handleOnOptionChange}
-      isReadOnly={true}
-      optionLabels={['Yes', 'No']}
-      optionValues={['Yes', 'No']}
-      variant="column"
-    ></RadioButtons>
-
-    
-
-  
-    
-
+    <Grid container>
+      <Grid item xs={12}>
+        <Typography variant="h5" style={{ margin: '32px 0px' }}>
+          Radio buttons
+        </Typography>
+      </Grid>
+      <Grid item xs={12} sm={4} md={3}>
+        <Typography variant="subtitle1">Row variant</Typography>
+        <URadioButtons
+          value={radioValue}
+          onChange={handleOnOptionChange}
+          isReadOnly={isReadOnly}
+          optionLabels={['Yes', 'No']}
+          optionValues={['Yes', 'No']}
+        ></URadioButtons>
+      </Grid>
+      <Grid item xs={12} sm={4} md={3}>
+        <Typography variant="subtitle1">Column variant</Typography>
+        <URadioButtons
+          value={radioValue}
+          onChange={handleOnOptionChange}
+          isReadOnly={isReadOnly}
+          optionLabels={['Yes', 'No']}
+          optionValues={['Yes', 'No']}
+          variant="column"
+        ></URadioButtons>
+      </Grid>
+    </Grid>
+````

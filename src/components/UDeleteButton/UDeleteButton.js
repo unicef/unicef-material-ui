@@ -67,11 +67,11 @@ export default function UDeleteButton(props) {
 
 UDeleteButton.propTypes = {
   /** Id of the delete item */
-  id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
   /** delete button tooltip */
   tooltipText: PropTypes.string,
   /**trigger delete confirmation function */
-  onConfirm: PropTypes.func,
+  onConfirm: PropTypes.func.isRequired,
   /** variant deletion : menu or icon */
   variant: PropTypes.oneOf(['menuItem', 'icon']),
   /** if the variant is menuitem, this prop make sure detele item enable or not */
