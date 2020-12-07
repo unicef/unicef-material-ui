@@ -17,7 +17,6 @@ import {
   Layout,
   InteractiveViews,
   FormValidator,
-  BreadcrumbsExample,
 } from './components'
 
 export default function App() {

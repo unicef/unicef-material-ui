@@ -10,7 +10,6 @@ import {
   RadioButtonsExample,
   PageLoadingProgressExample,
   AutoCompleteExample,
-  InfiniteScrollExample,
   ColorsExample,
 } from '../components'
 
