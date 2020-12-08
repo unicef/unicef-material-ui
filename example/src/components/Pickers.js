@@ -8,6 +8,7 @@ import {
   UDateTimePicker,
   UKeyboardDateTimePicker,
 } from 'unicef-material-ui'
+import { GraphPeoplePickerExample } from '../components'
 import { Grid, Typography, Avatar } from '@material-ui/core'
 
 export default function Pickers() {
@@ -212,6 +213,9 @@ export default function Pickers() {
           value={selectedDate}
           onChange={handleDateChange}
         />
+      </Grid>
+      <Grid item xs={12}>
+        <GraphPeoplePickerExample />
       </Grid>
     </Grid>
   )

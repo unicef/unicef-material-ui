@@ -71,7 +71,7 @@ UAsyncBadge.propTypes = {
   variant: PropTypes.oneOf(['loading', 'error', 'success']),
   /** text to display in the badge */
   text: PropTypes.string,
-  /**display status of the badge */
+  /** display status of the badge */
   visible: PropTypes.bool,
   /** trigger reset of the badge */
   onReset: PropTypes.func,

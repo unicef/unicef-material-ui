@@ -32,6 +32,7 @@ import UAutoComplete from './components/UAutoComplete'
 import UBreadcrumbs from './components/UBreadcrumbs'
 import UInfiniteScroll from './components/UInfiniteScroll'
 import UAvatarImage from './components/UAvatarImage'
+import UGraphPeoplePicker from './components/UGraphPeoplePicker'
 
 export {
   theme,
@@ -67,5 +68,6 @@ export {
   UAutoComplete,
   UBreadcrumbs,
   UInfiniteScroll,
-  UAvatarImage
+  UAvatarImage,
+  UGraphPeoplePicker,
 }

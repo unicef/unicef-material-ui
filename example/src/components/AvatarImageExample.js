@@ -5,6 +5,7 @@ import { Typography, Grid } from '@material-ui/core'
 export default function AvatarImageExample() {
   const loadPhoto = value => async () => {
     try {
+      //call api to get the image blob url
       console.log(value)
       await sleep(2000)
       return value
@@ -58,7 +59,9 @@ export default function AvatarImageExample() {
         <UAvatarImage
           userEmail={`rnarayanan@unicef.org`}
           size="large"
-          loadPhoto={loadPhoto(`https://homepages.cae.wisc.edu/~ece533/images/fruits.png`)}
+          loadPhoto={loadPhoto(
+            `https://homepages.cae.wisc.edu/~ece533/images/fruits.png`
+          )}
         />
       </Grid>
       <Grid item xs={12} sm={4} md={3}>
@@ -74,7 +77,9 @@ export default function AvatarImageExample() {
         <UAvatarImage
           userEmail={`rnarayanan@unicef.org`}
           mode="edit"
-          loadPhoto={loadPhoto(`https://homepages.cae.wisc.edu/~ece533/images/fruits.png`)}
+          loadPhoto={loadPhoto(
+            `https://homepages.cae.wisc.edu/~ece533/images/fruits.png`
+          )}
         />
       </Grid>
       <Grid item xs={12} sm={4} md={3}>

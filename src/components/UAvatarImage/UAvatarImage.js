@@ -47,13 +47,12 @@ export default function UAvatarImage({
   loadPhoto,
 }) {
   const classes = useStyles()
-  const [photo, setPhoto] = useState('')
+  const [photoUrl, setPhotoUrl] = useState('')
 
   useEffect(() => {
     if (userEmail) {
       loadPhoto().then(imageUrl => {
-        console.log(imageUrl)
-        setPhoto(imageUrl)
+        setPhotoUrl(imageUrl)
       })
     }
   }, [userEmail])
@@ -64,7 +63,7 @@ export default function UAvatarImage({
         <Avatar
           className={`${classes[mode]} ${classes[size]}`}
           style={{ zIndex: zIndexValue }}
-          src={photo}
+          src={photoUrl}
         >
           {size === 'large' ? (
             <Typography className={classes.font}>

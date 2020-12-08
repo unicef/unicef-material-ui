@@ -157,6 +157,11 @@ module.exports = {
           'src/components/UAutoComplete',
           'UAutoComplete.js'
         ),
+        path.resolve(
+          __dirname,
+          'src/components/UGraphPeoplePicker',
+          'UGraphPeoplePicker.js'
+        ),
       ],
       usageMode: 'expand',
     },

@@ -19,6 +19,7 @@ import AutoCompleteExample from './AutoCompleteExample'
 import BreadcrumbsExample from './BreadcrumbsExample'
 import InfiniteScrollExample from './InfiniteScrollExample'
 import AvatarImageExample from './AvatarImageExample'
+import GraphPeoplePickerExample from './GraphPeoplePickerExample'
 
 export {
   Layout,
@@ -42,4 +43,5 @@ export {
   BreadcrumbsExample,
   InfiniteScrollExample,
   AvatarImageExample,
+  GraphPeoplePickerExample,
 }
