@@ -49,16 +49,16 @@ import UValidatorForm from '../UValidatorForm'
       text: 'Sample text3',
     },
   ]
-
-    <UValidatorForm>
-      <Grid container>
-        <Grid item xs={12}>
-          <Typography variant="h5" style={{ margin: '32px 0px' }}>
+   
+  <Grid container>
+    <Grid item xs={12}>
+      <Typography variant="h5" style={{ margin: '32px 0px' }}>
             Auto complete
-          </Typography>
-        </Grid>
-        <Grid item xs={12} sm={4} md={3}>
-          <UAutoComplete
+      </Typography>
+    </Grid>
+    <Grid item xs={12} sm={4} md={3}>
+      <UValidatorForm>
+        <UAutoComplete
             value={value}
             label={'labelName'}
             options={autocompleteOptions}
@@ -69,8 +69,8 @@ import UValidatorForm from '../UValidatorForm'
             allowContextSpecific={true}
             readOnly={false}
             onBlur={handleBlur}
-          />
-        </Grid>
-      </Grid>
-    </UValidatorForm>
+         />
+       </UValidatorForm>
+    </Grid>
+   </Grid>
 ```

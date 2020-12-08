@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
 /**
  * UAutoComplete is an editable dropdown component.
  * User can enter the text in order to find the value from the list of values
- * User can also add new value to the list as well. 
+ * User can also add new value to the list as well.
  */
 export default function UAutoComplete({
   value,
@@ -149,22 +149,24 @@ export default function UAutoComplete({
 }
 
 UAutoComplete.propTypes = {
-  /* selected value of the dropdown */
+  /** selected value of the dropdown */
   value: PropTypes.object,
   /** label */
   label: PropTypes.string,
   /** options to display */
   options: PropTypes.array,
-  /* dropdown on change event */
+  /** dropdown on change event */
   onChange: PropTypes.func,
-  /* enable required validator */
+  /** enable required validator */
   isRequired: PropTypes.bool,
-  /*enable required error in dropdown */
+  /** enable required error in dropdown */
   hasError: PropTypes.bool,
-  /**onBlur event for dropdown  */
+  /** onBlur event for dropdown  */
   onBlur: PropTypes.func,
-  /**name of the dropdown */
+  /** name of the dropdown */
   name: PropTypes.string,
-  /**max length text */
+  /** max length text */
   maxLength: PropTypes.number,
+  /** min length text */
+  minLength: PropTypes.number,
 }
