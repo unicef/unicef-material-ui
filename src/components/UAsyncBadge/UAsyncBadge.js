@@ -72,7 +72,7 @@ UAsyncBadge.propTypes = {
   /** text to display in the badge */
   text: PropTypes.string,
   /**display status of the badge */
-  visible: PropTypes.string,
+  visible: PropTypes.bool,
   /** trigger reset of the badge */
   onReset: PropTypes.func,
 }
