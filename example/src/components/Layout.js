@@ -11,11 +11,13 @@ import {
   PageLoadingProgressExample,
   AutoCompleteExample,
   ColorsExample,
+  AvatarImageExample,
 } from '../components'
 
 export default function Layout({ match }) {
   return (
     <React.Fragment>
+      <AvatarImageExample />
       <BreadcrumbsExample />
       <PageLoadingProgressExample />
       <ColorsExample />

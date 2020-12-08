@@ -18,6 +18,7 @@ import ErrorAlertExample from './ErrorAlertExample'
 import AutoCompleteExample from './AutoCompleteExample'
 import BreadcrumbsExample from './BreadcrumbsExample'
 import InfiniteScrollExample from './InfiniteScrollExample'
+import AvatarImageExample from './AvatarImageExample'
 
 export {
   Layout,
@@ -40,4 +41,5 @@ export {
   AutoCompleteExample,
   BreadcrumbsExample,
   InfiniteScrollExample,
+  AvatarImageExample,
 }

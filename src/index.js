@@ -31,6 +31,7 @@ import UErrorAlert from './components/UErrorAlert'
 import UAutoComplete from './components/UAutoComplete'
 import UBreadcrumbs from './components/UBreadcrumbs'
 import UInfiniteScroll from './components/UInfiniteScroll'
+import UAvatarImage from './components/UAvatarImage'
 
 export {
   theme,
@@ -66,4 +67,5 @@ export {
   UAutoComplete,
   UBreadcrumbs,
   UInfiniteScroll,
+  UAvatarImage
 }

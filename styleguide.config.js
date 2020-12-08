@@ -114,6 +114,11 @@ module.exports = {
           'UHeaderLeftMenu.js'
         ),
         path.resolve(__dirname, 'src/components/UAsyncBadge', 'UAsyncBadge.js'),
+        path.resolve(
+          __dirname,
+          'src/components/UAvatarImage',
+          'UAvatarImage.js'
+        ),
       ],
       usageMode: 'expand',
     },
