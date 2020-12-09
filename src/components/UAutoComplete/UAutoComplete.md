@@ -2,19 +2,19 @@ Auto complete field usage:
 
 ```jsx static
  <UAutoComplete
-        value={autocompleteSelectedOption}
-        label={label}
-        options={autocompleteOptions}
-        isRequired={minIndicatorLength > 0}
-        onChange={handleOnSectorChange}
-        minLength={minIndicatorLength}
-        maxLength={maxIndicatorLength}
-        allowContextSpecific={allowContextSpecific}
-        usedItemIds={usedIndicatorsIds}
-        readOnly={readOnly}
-        onBlur={onBlurIndicator}
-        {...props}
-      />
+    value={autocompleteSelectedOption}
+    label={label}
+    options={autocompleteOptions}
+    isRequired={minLength > 0}
+    onChange={handleChange}
+    minLength={minLength}
+    maxLength={maxLength}
+    allowContextSpecific={allowContextSpecific}
+    usedItemIds={usedIds}
+    readOnly={readOnly}
+    onBlur={onBlur}
+    {...props}
+  />
 ```
 ### Examples 
 
@@ -22,18 +22,14 @@ Auto complete field usage:
 import React, { useState } from 'react'
 import { Typography, Grid } from '@material-ui/core'
 import UValidatorForm from '../UValidatorForm'
-
   const [value, setValue] = useState('')
-  function handleBlur() {
+  const handleBlur = () => {
     // call necessary action
   }
-
-  const handleOnChange = value => {
+  const handleChange = value => {
     setValue(value)
   }
-
-  const autocompleteOptions = [
-    {
+  const autocompleteOptions = [{
       id: 1,
       title: 'Sample text1',
       text: 'Sample text1',
@@ -47,30 +43,29 @@ import UValidatorForm from '../UValidatorForm'
       id: 3,
       title: 'Sample text3',
       text: 'Sample text3',
-    },
+    }
   ]
-   
+  
   <Grid container>
-    <Grid item xs={12}>
-      <Typography variant="h5" style={{ margin: '32px 0px' }}>
-            Auto complete
-      </Typography>
-    </Grid>
     <Grid item xs={12} sm={4} md={3}>
+      <Typography variant="h5" style={{ margin: '32px 0px' }}>
+        Auto complete
+      </Typography>
       <UValidatorForm>
         <UAutoComplete
-            value={value}
-            label={'labelName'}
-            options={autocompleteOptions}
-            isRequired={true}
-            onChange={handleOnChange}
-            minLength={1}
-            maxLength={50}
-            allowContextSpecific={true}
-            readOnly={false}
-            onBlur={handleBlur}
-         />
+          value={value}
+          label={'labelName'}
+          options={autocompleteOptions}
+          isRequired={true}
+          onChange={handleChange}
+          minLength={1}
+          maxLength={50}
+          allowContextSpecific={true}
+          readOnly={false}
+          onBlur={handleBlur}
+         >
+         </UAutoComplete>
        </UValidatorForm>
     </Grid>
-   </Grid>
+  </Grid>
 ```

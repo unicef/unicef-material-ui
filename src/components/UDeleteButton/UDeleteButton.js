@@ -70,7 +70,7 @@ UDeleteButton.propTypes = {
   id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
   /** delete button tooltip */
   tooltipText: PropTypes.string,
-  /**trigger delete confirmation function */
+  /** trigger delete confirmation function */
   onConfirm: PropTypes.func.isRequired,
   /** variant deletion : menu or icon */
   variant: PropTypes.oneOf(['menuItem', 'icon']),

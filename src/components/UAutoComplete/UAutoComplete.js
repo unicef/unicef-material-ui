@@ -30,8 +30,8 @@ export default function UAutoComplete({
   readOnly,
   minLength,
   maxLength,
-  usedItemIds = [],
-  allowContextSpecific = false,
+  usedItemIds,
+  allowContextSpecific,
   props,
 }) {
   const classes = useStyles()
@@ -169,4 +169,13 @@ UAutoComplete.propTypes = {
   maxLength: PropTypes.number,
   /** min length text */
   minLength: PropTypes.number,
+  /** can create context specific item or not */
+  allowContextSpecific: PropTypes.bool,
+  /** used item id's from the options */
+  usedItemIds: PropTypes.array,
+}
+
+UAutoComplete.defaultProps = {
+  allowContextSpecific: false,
+  usedItemIds: [],
 }
