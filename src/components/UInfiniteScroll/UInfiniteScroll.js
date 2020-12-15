@@ -27,6 +27,6 @@ export default function UInfiniteScroll({ offset = 100, onEndOfScroll }) {
 UInfiniteScroll.propTypes = {
   /** Id of the delete item */
   offset: PropTypes.number,
-  /**trigger when end of scroll reached */
+  /** trigger when end of scroll reached */
   onEndOfScroll: PropTypes.func,
 }

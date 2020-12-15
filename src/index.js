@@ -27,6 +27,12 @@ import UDeleteButton from './components/UDeleteButton'
 import URadioButtons from './components/URadioButtons'
 import UAsyncBadge from './components/UAsyncBadge'
 import UPageLoadingProgress from './components/UPageLoadingProgress'
+import UErrorAlert from './components/UErrorAlert'
+import UAutoComplete from './components/UAutoComplete'
+import UBreadcrumbs from './components/UBreadcrumbs'
+import UInfiniteScroll from './components/UInfiniteScroll'
+import UAvatarImage from './components/UAvatarImage'
+import UGraphPeoplePicker from './components/UGraphPeoplePicker'
 
 export {
   theme,
@@ -57,5 +63,11 @@ export {
   UDeleteButton,
   URadioButtons,
   UAsyncBadge,
-  UPageLoadingProgress
+  UPageLoadingProgress,
+  UErrorAlert,
+  UAutoComplete,
+  UBreadcrumbs,
+  UInfiniteScroll,
+  UAvatarImage,
+  UGraphPeoplePicker,
 }

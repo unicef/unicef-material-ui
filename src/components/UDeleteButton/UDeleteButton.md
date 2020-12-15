@@ -1,40 +1,34 @@
-Delete button Variant:
-
-```html
-variant = 'menuItem'
-variant = 'icon'
-enabled
-```
+Delete button with examples:
 
 ```jsx
-import React, { useState, useEffect } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+import { Typography, Grid } from '@material-ui/core'
 
-  const id = 1
+  const itemId = 1
   function handleDelete(event, id) {
-    //call delete function
+    console.log(id)
   }
+
+    <Grid container>
+      <Grid item xs={12} sm={4} md={3}>
+        <Typography variant="subtitle1">Icon variant</Typography>
+        <UDeleteButton
+          onConfirm={handleDelete}
+          id={itemId}
+          tooltipText="Delete"
+        />
+      </Grid>
+      <Grid item xs={12} sm={4} md={3}>
+        <Typography variant="subtitle1">Menu item variant</Typography>
+        <UDeleteButton
+          onConfirm={handleDelete}
+          id={itemId}
+          tooltipText="Delete"
+          variant="menuItem"
+        />
+      </Grid>
+    </Grid>
   
-   <UDeleteButton
-      onConfirm={handleDelete}
-      id={id}
-      tooltipText="Delete"
-      variant="menuItem"
-    />
-
-    <UDeleteButton
-      onConfirm={handleDelete}
-      id={id}
-      tooltipText="Delete"
-    />
-
-    <UDeleteButton
-      onConfirm={handleDelete}
-      id={id}
-      tooltipText="Delete"
-      enabled={false}
-    />
-
+````
   
     
 

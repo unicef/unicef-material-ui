@@ -14,8 +14,9 @@ const useStyles = makeStyles(theme => ({
 }))
 
 /**
- * DeleteButton is a menu component which has an item to get confirmation from the user.
+ * DeleteButton is a component to get confirmation from the user before deleting it.
  * This delete button displays the delete confirmation where user has clicked the delete button
+ * It has two varint icon/menu item
  */
 export default function UDeleteButton(props) {
   const classes = useStyles()
@@ -66,11 +67,11 @@ export default function UDeleteButton(props) {
 
 UDeleteButton.propTypes = {
   /** Id of the delete item */
-  id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
   /** delete button tooltip */
   tooltipText: PropTypes.string,
-  /**trigger delete confirmation function */
-  onConfirm: PropTypes.func,
+  /** trigger delete confirmation function */
+  onConfirm: PropTypes.func.isRequired,
   /** variant deletion : menu or icon */
   variant: PropTypes.oneOf(['menuItem', 'icon']),
   /** if the variant is menuitem, this prop make sure detele item enable or not */

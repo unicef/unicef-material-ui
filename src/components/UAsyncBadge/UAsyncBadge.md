@@ -1,23 +1,13 @@
-Async badge Variant:
+Async badge usage:
 
-```html
-variant = 'loading'
-variant = 'error'
-variant = 'success'
-```
-
-```jsx
+```jsx static
 import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 
-  
   function handleReset() {
     //call reset function
     // set visible false
   }
-
-  
-  
    <UAsyncBadge
       variant = "loading"
       text="loading"
@@ -36,3 +26,4 @@ import { makeStyles } from '@material-ui/core/styles'
       visible={true}
       onReset = {handleReset}
     />
+```

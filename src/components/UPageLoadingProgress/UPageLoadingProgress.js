@@ -9,7 +9,12 @@ const useStyles = makeStyles(() => ({
     flex: '1',
   },
 }))
-
+/**
+ * UPageLoadingProgress is a component to display page loading progress in the user screen
+ * It has two type of page loading information which is displayed in the center of the screen
+ * 1. Display circular progress
+ * 2. Display text message
+ */
 export default function UPageLoadingProgress(props) {
   const classes = useStyles()
   const { text } = props
