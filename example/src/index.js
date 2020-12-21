@@ -4,10 +4,12 @@ import ReactDOM from 'react-dom'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
 
+// NOTE that HashRouter is used due to githubpages
+//
 ReactDOM.render(
-  <HashRouter >
+  <HashRouter>
     <App />
-  </HashRouter >,
+  </HashRouter>,
   document.getElementById('root')
 )
 
