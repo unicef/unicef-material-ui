@@ -42,7 +42,8 @@ import { Typography, Grid } from '@material-ui/core'
       //call api to get the image blob url
       await sleep(2000)
       return value
-    } catch {
+    } catch(err) {
+      console.log(err)
     }
   }
 

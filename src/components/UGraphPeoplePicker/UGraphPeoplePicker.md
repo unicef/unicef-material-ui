@@ -74,7 +74,7 @@ export default function GraphPeoplePickerExample() {
       value: user.email,
       email: user.email,
       subLabel: user.email,
-    }))
+    }));
 
   return (
     <Grid container>
@@ -152,9 +152,9 @@ import { Typography, Grid } from '@material-ui/core'
         ],
       }
       return result
-    } catch {
-      console.log('error')
-      return { loading: false, errorMessage: Message, graphData: [] }
+    } catch(err) {
+      console.log('UGraphPeoplePicker error', err)
+      return { loading: false, errorMessage: err, graphData: [] }
     }
   }
 
@@ -172,7 +172,7 @@ import { Typography, Grid } from '@material-ui/core'
       value: user.email,
       email: user.email,
       subLabel: user.email,
-    }))
+    }));
 
   <Grid container>
       <Grid item xs={12}>

@@ -44,7 +44,7 @@ import UValidatorForm from '../UValidatorForm'
       title: 'Sample text3',
       text: 'Sample text3',
     }
-  ]
+  ];
   
   <Grid container>
     <Grid item xs={12} sm={4} md={3}>
