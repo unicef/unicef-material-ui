@@ -19,6 +19,14 @@ export default function UValidatorForm(props) {
     ValidatorForm.removeValidationRule(name)
   }
 
+  ValidatorForm.addValidationRule('isUrl', (value) => {
+    let urlRegexp = new RegExp("^http(s?)\:\/\/[0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_]*)?$")
+    if (value != '' && !urlRegexp.test(value)) {
+      return false
+    }
+    return true
+  })
+
   return <ValidatorForm {...props} />
 }
 
@@ -36,5 +44,5 @@ UValidatorForm.propTypes = {
 UValidatorForm.defaultProps = {
   instantValidate: true,
   debounceTime: 0,
-  onSubmit: () => {},
+  onSubmit: () => { },
 }

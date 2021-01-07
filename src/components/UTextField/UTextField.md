@@ -184,6 +184,65 @@ const useStyles = makeStyles(theme => ({
 //   )
 // }
 ```
+`URL : isUrl and required`
+
+```html
+validators={['required', 'isUrl']}
+```
+
+```jsx
+import React, { useState, useEffect, useRef } from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import { Button, Box, MenuItem } from '@material-ui/core'
+import UValidatorForm from '../UValidatorForm'
+import UButton from '../UButton'
+
+const useStyles = makeStyles(theme => ({
+  margin: {
+    marginTop: theme.spacing(1),
+    marginLeft: theme.spacing(1),
+  }
+}))
+
+// export default function FormValidator() {
+
+  const form = useRef('form')
+
+  const classes = useStyles()
+
+  const [value, setValue] = useState()
+
+  function handleValue(event) {
+    setValue(event.target.value)
+  };
+
+  function handleSubmit() {
+    // Submit the changes from here
+  }
+
+  // return (
+    <UValidatorForm
+      ref={form}
+      onSubmit={handleSubmit}
+      onError={errors => console.log(errors)}
+      debounceTime={1000}
+      // instantValidate={true}
+    >
+      <Box display="flex" alignItems="baseline">
+        <UTextField
+          label="Url"
+          onChange={handleValue}
+          name="url"
+          variant="outlined"
+          value={value}
+          validators={['required', 'isUrl']}
+        />
+        <UButton className={classes.margin} color="primary" variant="contained" onClick={handleSubmit} type="submit">Submit</UButton>
+      </Box>
+    </UValidatorForm>
+//   )
+// }
+```
 
 `Number: minNumber, maxNumber and numberOnly`
 

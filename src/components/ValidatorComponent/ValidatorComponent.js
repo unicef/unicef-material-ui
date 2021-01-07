@@ -156,7 +156,7 @@ ValidatorComponent.propTypes = {
 ValidatorComponent.defaultProps = {
   customErrorMessages: 'error',
   validators: [],
-  validatorListener: () => {},
+  validatorListener: () => { },
   withRequiredValidator: true,
 }
 
@@ -181,4 +181,5 @@ const defaultErrorMessages = {
   maxFileSize: 'Maximum file size exceeded',
   matchRegexp: 'Invalid value',
   allowedExtensions: 'File type not allowed',
+  isUrl: 'It should start with http:// or https://',
 }
