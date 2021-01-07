@@ -195,6 +195,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { Button, Box, MenuItem } from '@material-ui/core'
 import UValidatorForm from '../UValidatorForm'
+import UButton from '../UButton'
 
 const useStyles = makeStyles(theme => ({
   margin: {
@@ -235,9 +236,9 @@ const useStyles = makeStyles(theme => ({
           variant="outlined"
           value={value}
           validators={['required', 'isUrl']}
-          errorMessages={['this field is required', 'url is not valid']}
+          errorMessages={['this field is required', 'It should start with http:// or https://']}
         />
-        <Button className={classes.margin} color="primary" variant="contained" onClick={handleSubmit} type="submit">Submit</Button>
+        <UButton className={classes.margin} color="primary" variant="contained" onClick={handleSubmit} type="submit">Submit</UButton>
       </Box>
     </UValidatorForm>
 //   )
