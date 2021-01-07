@@ -236,7 +236,6 @@ const useStyles = makeStyles(theme => ({
           variant="outlined"
           value={value}
           validators={['required', 'isUrl']}
-          errorMessages={['this field is required', 'It should start with http:// or https://']}
         />
         <UButton className={classes.margin} color="primary" variant="contained" onClick={handleSubmit} type="submit">Submit</UButton>
       </Box>
