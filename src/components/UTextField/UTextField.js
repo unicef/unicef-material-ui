@@ -24,6 +24,7 @@ const styles = {
  * Default validation rules:
  * * matchRegexp
  * * isEmail
+ * * isUrl
  * * isEmpty
  * * required
  * * trim
@@ -137,7 +138,7 @@ UTextField.propTypes = {
 
 UTextField.defaultProps = {
   variant: 'outlined',
-  validatorListener: () => {},
+  validatorListener: () => { },
 }
 
 export default UTextField
