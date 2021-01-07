@@ -69,15 +69,15 @@ export default function UConfirmationButton(props) {
 }
 
 UConfirmationButton.propTypes = {
-  /** Id of the delete item */
+  /** Id of the button item */
   id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-  /** delete button text */
+  /** button or tooltip text */
   buttonText: PropTypes.string,
-  /** trigger delete confirmation function */
+  /** trigger confirmation function */
   onConfirm: PropTypes.func.isRequired,
-  /** variant deletion : menu or icon */
+  /** variant: menu or icon */
   variant: PropTypes.oneOf(['menuItem', 'icon']),
-  /** if the variant is menuitem, this prop make sure detele item enable or not */
+  /** if the variant is menuitem, this prop make sure the item enable or not */
   enabled: PropTypes.bool,
   /** button confirm text */
   confirmText: PropTypes.string,

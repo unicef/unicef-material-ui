@@ -2,7 +2,7 @@ import React from 'react'
 import { UConfirmationButton } from 'unicef-material-ui'
 import { Typography, Grid } from '@material-ui/core'
 import LinkOffIcon from '@material-ui/icons/LinkOff'
-export default function DeleteButtonExample() {
+export default function UConfirmationButtonExample() {
   const itemId = 1
   function handleDelete(event, id) {
     console.log(id)

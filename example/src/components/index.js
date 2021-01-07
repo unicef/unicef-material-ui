@@ -10,7 +10,7 @@ import SideBarContent from './SideBarContent'
 import FormValidator from './FormValidator'
 import InteractiveViews from './InteractiveViews'
 import Buttons from './Buttons'
-import DeleteButtonExample from './DeleteButtonExample'
+import UConfirmationButtonExample from './UConfirmationButtonExample'
 import RadioButtonsExample from './RadioButtonsExample'
 import AsyncBadgeExample from './AsyncBadgeExample'
 import PageLoadingProgressExample from './PageLoadingProgressExample'
@@ -34,7 +34,7 @@ export {
   SideBarContent,
   ColorsExample,
   InteractiveViews,
-  DeleteButtonExample,
+  UConfirmationButtonExample,
   RadioButtonsExample,
   AsyncBadgeExample,
   PageLoadingProgressExample,

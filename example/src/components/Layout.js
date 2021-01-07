@@ -6,7 +6,7 @@ import {
   CardsExample,
   ErrorAlertExample,
   BreadcrumbsExample,
-  DeleteButtonExample,
+  UConfirmationButtonExample,
   RadioButtonsExample,
   PageLoadingProgressExample,
   AutoCompleteExample,
@@ -23,7 +23,7 @@ export default function Layout({ match }) {
       <ColorsExample />
       {/* <InfiniteScrollExample /> */}
       <Buttons />
-      <DeleteButtonExample />
+      <UConfirmationButtonExample />
       <RadioButtonsExample />
       <AutoCompleteExample />
       <Alert />
