@@ -53,8 +53,8 @@ module.exports = {
         path.resolve(__dirname, 'src/components/UButton', 'UButton.js'),
         path.resolve(
           __dirname,
-          'src/components/UDeleteButton',
-          'UDeleteButton.js'
+          'src/components/UConfirmationButton',
+          'UConfirmationButton.js'
         ),
         path.resolve(
           __dirname,

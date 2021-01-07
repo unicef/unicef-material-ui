@@ -11,16 +11,19 @@ const useStyles = makeStyles(theme => ({
   icon: {
     marginRight: theme.spacing(1),
   },
+  span: {
+    marginLeft: theme.spacing(1),
+  },
 }))
 
 /**
- * DeleteButton is a component to get confirmation from the user before deleting it.
- * This delete button displays the delete confirmation where user has clicked the delete button
+ * UConfirmationButton is a component to get confirmation from the user before processing it.
+ * This button displays the confirmation where user has clicked the button
  * It has two varint icon/menu item
  */
-export default function UDeleteButton(props) {
+export default function UConfirmationButton(props) {
   const classes = useStyles()
-  const { onConfirm, id, tooltipText, enabled, variant, ...others } = props
+  const { onConfirm, id, buttonText, enabled, variant, icon, confirmText, confirmActionText, ...others } = props
   const [deleteAnchorEl, setDeleteAnchorEl] = useState(null)
 
   const handleConfirm = e => {
@@ -35,21 +38,21 @@ export default function UDeleteButton(props) {
     <React.Fragment>
       {variant === 'menuItem' ? (
         <MenuItem onClick={e => setDeleteAnchorEl(e.currentTarget)}>
-          <DeleteOutlinedIcon className={classes.icon} />
-          {tooltipText}
+          {icon}
+          <span className={classes.span}>{buttonText}</span>
         </MenuItem>
       ) : (
-        <Tooltip title={tooltipText} placement="top">
-          <IconButton
-            aria-controls={`delete-confirmation-menu-${id}`}
-            aria-haspopup="true"
-            onClick={e => setDeleteAnchorEl(e.currentTarget)}
-            disabled={!enabled}
-          >
-            <DeleteOutlinedIcon />
-          </IconButton>
-        </Tooltip>
-      )}
+          <Tooltip title={buttonText} placement="top">
+            <IconButton
+              aria-controls={`delete-confirmation-menu-${id}`}
+              aria-haspopup="true"
+              onClick={e => setDeleteAnchorEl(e.currentTarget)}
+              disabled={!enabled}
+            >
+              {icon}
+            </IconButton>
+          </Tooltip>
+        )}
       <Menu
         id={`delete-confirmation-menu-${id}`}
         anchorEl={deleteAnchorEl}
@@ -58,28 +61,37 @@ export default function UDeleteButton(props) {
         onClose={handleDeleteOptionClicked}
         className={classes.menuDelete}
       >
-        <MenuItem disabled>Confirm deletion</MenuItem>
-        <MenuItem onClick={e => handleConfirm(e)}>Yes, delete</MenuItem>
+        <MenuItem disabled>{confirmText}</MenuItem>
+        <MenuItem onClick={e => handleConfirm(e)}>{confirmActionText}</MenuItem>
       </Menu>
     </React.Fragment>
   )
 }
 
-UDeleteButton.propTypes = {
+UConfirmationButton.propTypes = {
   /** Id of the delete item */
   id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-  /** delete button tooltip */
-  tooltipText: PropTypes.string,
+  /** delete button text */
+  buttonText: PropTypes.string,
   /** trigger delete confirmation function */
   onConfirm: PropTypes.func.isRequired,
   /** variant deletion : menu or icon */
   variant: PropTypes.oneOf(['menuItem', 'icon']),
   /** if the variant is menuitem, this prop make sure detele item enable or not */
   enabled: PropTypes.bool,
+  /** button confirm text */
+  confirmText: PropTypes.string,
+  /** confirm action text */
+  confirmActionText: PropTypes.string,
+  /** custom icon */
+  icon: PropTypes.element,
 }
 
-UDeleteButton.defaultProps = {
-  tooltipText: 'Delete',
+UConfirmationButton.defaultProps = {
+  buttonText: 'Delete',
   variant: 'icon',
   enabled: true,
+  confirmText: 'Confirm deletion?',
+  confirmActionText: 'Yes, delete',
+  icon: <DeleteOutlinedIcon />
 }
