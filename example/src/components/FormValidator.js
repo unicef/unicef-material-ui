@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import {
   Typography,
@@ -67,7 +67,7 @@ const currencies = [
 
 export default function FormValidator() {
   const classes = useStyles()
-
+  let form = useRef('form')
   const [values, setValues] = useState({
     currency: '',
     email: 'test@test.com',
@@ -79,6 +79,7 @@ export default function FormValidator() {
     azure: false,
     redux: false,
     choice: null,
+    cus_email: ''
   })
 
   function handleValue(event) {
@@ -106,6 +107,10 @@ export default function FormValidator() {
   function handleItemValueSubmit() {
     setItemList([...itemList, ...[itemValue]])
     setItemValue('')
+  }
+
+  function resetValidation() {
+    form.current.resetValidations()
   }
 
   useEffect(() => {
@@ -145,6 +150,52 @@ export default function FormValidator() {
           </UValidatorForm>
         </Grid>
       </Grid>
+      <UValidatorForm
+        onSubmit={handleSubmit}
+        ref={form}
+        onError={errors => console.log(errors)}
+        instantValidate={true}
+      >
+        <Grid container>
+          <Grid item xs={12}>
+            <Typography style={{ marginBottom: 12 }} variant="h5">
+              Reset Form validator
+            </Typography>
+          </Grid>
+          <Grid item xs={12} lg={3} xl={2}>
+            <UTextField
+              label="Email"
+              onChange={handleValue}
+              className={classes.margin}
+              name="cus_email"
+              variant="outlined"
+              validators={['required', 'isEmail']}
+              value={values.cus_email}
+            />
+          </Grid>
+          <Grid item xs={12} lg={6}>
+            <Button
+              // style={{ marginTop: 24 }}
+              className={classes.button}
+              color="primary"
+              variant="contained"
+              type="submit"
+            >
+              Submit
+            </Button>
+            <Button
+              onClick={resetValidation}
+              // style={{ marginTop: 24 }}
+              className={classes.button}
+              color="primary"
+              variant="contained"
+              type="button"
+            >
+              Reset Validation
+            </Button>
+          </Grid>
+        </Grid>
+      </UValidatorForm>
       <UValidatorForm
         onSubmit={handleSubmit}
         onError={errors => console.log(errors)}
@@ -364,7 +415,7 @@ export default function FormValidator() {
               <RadioGroup
                 aria-label="gender"
                 row
-                name="gender2"
+                name="choice"
                 value={values.choice}
                 onChange={handleValue}
               >

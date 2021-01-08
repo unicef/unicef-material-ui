@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import { ValidatorForm } from 'react-form-validator-core'
 import PropTypes from 'prop-types'
 
@@ -10,7 +10,7 @@ import PropTypes from 'prop-types'
  *  Check it if you need more details, we accept all the functions and props from ValidatorForm Component
  */
 
-export default function UValidatorForm(props) {
+function ForwardRefForm(props, ref) {
   UValidatorForm.addValidationRule = (name, callback) => {
     ValidatorForm.addValidationRule(name, callback)
   }
@@ -27,8 +27,11 @@ export default function UValidatorForm(props) {
     return true
   })
 
-  return <ValidatorForm {...props} />
+  return <ValidatorForm {...props} ref={ref} />
 }
+
+/* Forward the ref */
+const UValidatorForm = React.forwardRef(ForwardRefForm);
 
 UValidatorForm.propTypes = {
   /** Callback for form that fires when all validations are passed */
@@ -46,3 +49,5 @@ UValidatorForm.defaultProps = {
   debounceTime: 0,
   onSubmit: () => { },
 }
+
+export default UValidatorForm;
