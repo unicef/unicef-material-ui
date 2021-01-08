@@ -18,16 +18,22 @@ In order to use the UNICEF's Material UI components in your React project instal
 
 ### Adding UNICEF theme to your app
 
-To use UNICEF theme add `MuiThemeProvider` at the top level of your app
+To use UNICEF theme add `MuiThemeProvider` at the top level of your app and warp you components inside `UNICEFStyleProvider`
 
 ```jsx
 // App.js
 import React from 'react'
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
-import { theme } from '@unicef/material-ui'
+import { theme, UNICEFStyleProvider } from '@unicef/material-ui'
 
 export default function App() {
-  return <MuiThemeProvider theme={theme}>{/* Components*/}</MuiThemeProvider>
+  return (
+    <MuiThemeProvider theme={theme}>
+      <UNICEFStyleProvider>
+        {/* Components*/}
+      </UNICEFStyleProvider>
+    </MuiThemeProvider>
+  )
 }
 ```
 

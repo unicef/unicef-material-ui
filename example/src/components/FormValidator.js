@@ -173,7 +173,7 @@ export default function FormValidator() {
               value={values.cus_email}
             />
           </Grid>
-          <Grid item xs={12} lg={3}>
+          <Grid item xs={12} lg={6}>
             <Button
               // style={{ marginTop: 24 }}
               className={classes.button}
@@ -206,18 +206,6 @@ export default function FormValidator() {
             <Typography style={{ marginBottom: 12 }} variant="h5">
               Form validator
             </Typography>
-          </Grid>
-          <Grid item xs={12} lg={3} xl={2}>
-            <UTextField
-              label="Url"
-              onChange={handleValue}
-              className={classes.margin}
-              name="url"
-              variant="outlined"
-              validators={['required', 'isUrl']}
-              value={values.url}
-              customErrorMessages={{ isUrl: 'Enter the valid url' }}
-            />
           </Grid>
           <Grid item xs={12} lg={3} xl={2}>
             <UTextField
@@ -427,7 +415,7 @@ export default function FormValidator() {
               <RadioGroup
                 aria-label="gender"
                 row
-                name="gender2"
+                name="choice"
                 value={values.choice}
                 onChange={handleValue}
               >
