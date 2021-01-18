@@ -12,6 +12,9 @@ const useStyles = makeStyles(theme => ({
   controlStyle: {
     marginTop: theme.spacing(2),
     width: '100%',
+    "& .Uni-MuiInputLabel-asterisk": {
+      color: '#f44336',
+    }
   },
 }))
 /**
@@ -32,6 +35,7 @@ export default function UAutoComplete({
   maxLength,
   usedItemIds,
   allowContextSpecific,
+  InputLabelProps,
   props,
 }) {
   const classes = useStyles()
@@ -128,7 +132,7 @@ export default function UAutoComplete({
             <ActiveFormTextField
               {...params}
               multiline
-              label={`${label}${isRequired ? `*` : ``}`}
+              label={label}
               variant="outlined"
               value={(selectedValue && selectedValue.text) || ''}
               validators={isRequired ? ['required', 'trim'] : ['trim']}
@@ -140,6 +144,7 @@ export default function UAutoComplete({
               }}
               maxLength={maxLength}
               counter
+              InputLabelProps={InputLabelProps}
             />
           )}
         />

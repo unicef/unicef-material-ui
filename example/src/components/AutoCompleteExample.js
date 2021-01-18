@@ -50,6 +50,7 @@ export default function AutoCompleteExample() {
             allowContextSpecific={true}
             readOnly={false}
             onBlur={handleBlur}
+            InputLabelProps={{ required: true }}
           />
         </Grid>
       </Grid>
