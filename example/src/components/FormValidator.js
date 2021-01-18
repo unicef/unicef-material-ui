@@ -146,6 +146,7 @@ export default function FormValidator() {
               onChange={e =>
                 setValues({ ...values, positiveInteger: e.target.value })
               }
+              InputLabelProps={{ required: true }}
             />
           </UValidatorForm>
         </Grid>
@@ -171,6 +172,7 @@ export default function FormValidator() {
               variant="outlined"
               validators={['required', 'isEmail']}
               value={values.cus_email}
+              InputLabelProps={{ required: true }}
             />
           </Grid>
           <Grid item xs={12} lg={6}>
@@ -216,6 +218,7 @@ export default function FormValidator() {
               variant="outlined"
               validators={['required', 'isEmail']}
               value={values.email}
+              InputLabelProps={{ required: true }}
             />
           </Grid>
           <Grid item xs={12} lg={3} xl={2}>
@@ -228,6 +231,7 @@ export default function FormValidator() {
               variant="outlined"
               validators={['required']}
               value={values.password}
+              InputLabelProps={{ required: true }}
             />
           </Grid>
           <Grid item xs={12} lg={3} xl={2}>
@@ -241,6 +245,7 @@ export default function FormValidator() {
               name="currency"
               validators={['required']}
               variant="outlined"
+              InputLabelProps={{ required: true }}
             >
               {currencies.map(option => (
                 <MenuItem key={option.value} value={option.value}>
@@ -282,6 +287,7 @@ export default function FormValidator() {
           counter
           maxLength={16}
           withRequiredValidator={false}
+          InputLabelProps={{ required: true }}
         />
       </UValidatorForm>
       {/* Reset values */}
@@ -303,7 +309,7 @@ export default function FormValidator() {
           ))}
         </List>
         <UTextField
-          label="Item to add*"
+          label="Item to add"
           onChange={handleItemValueChange}
           className={classes.margin}
           name="item"
@@ -311,6 +317,7 @@ export default function FormValidator() {
           validators={['required']}
           value={itemValue}
           withRequiredValidator={false}
+          InputLabelProps={{ required: true }}
         />
         <Button
           className={classes.button}
