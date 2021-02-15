@@ -43,7 +43,12 @@ export default function UBreadcrumbs(props) {
   return (
     <div className={classes.root}>
       <Breadcrumbs aria-label="breadcrumb">
-        <Link color="inherit" to="/" className={classes.link}>
+        <Link
+          color="inherit"
+          component={RouterLink}
+          to="/"
+          className={classes.link}
+        >
           Home
         </Link>
         {breadcrumbLinks.map((value, index) => {
@@ -58,7 +63,12 @@ export default function UBreadcrumbs(props) {
               {value.text}
             </Typography>
           ) : (
-            <Link to={value.to} key={value.text} className={classes.link}>
+            <Link
+              component={RouterLink}
+              to={value.to}
+              key={value.text}
+              className={classes.link}
+            >
               {value.text}
             </Link>
           )
