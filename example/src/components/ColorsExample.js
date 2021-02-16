@@ -1,13 +1,27 @@
 import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
 import { useTheme } from '@material-ui/core/styles'
 import { Grid, Box, Paper, Typography } from '@material-ui/core'
 
+const useStyles = makeStyles(theme => ({
+  colorTitle: {
+    textTransform: 'capitalize',
+  },
+  colorCode: {
+    padding: theme.spacing(1.25),
+    borderTop: '1px solid #ccc',
+  },
+}))
+
 export default function ColorsExample() {
   const theme = useTheme()
+  const classes = useStyles()
 
   let requiredColors = [
     'unicef',
     'grey',
+    'background',
+    'common',
     'text',
     'primary',
     'secondary',
@@ -23,10 +37,7 @@ export default function ColorsExample() {
           (theme.palette[colorKey] && (
             <>
               <Grid item xs={12}>
-                <Typography
-                  style={{ textTransform: 'capitalize' }}
-                  variant="h5"
-                >
+                <Typography className={classes.colorTitle} variant="h5">
                   {colorKey} colors
                 </Typography>
               </Grid>
@@ -37,6 +48,9 @@ export default function ColorsExample() {
                       <Box bgcolor={theme.palette[colorKey][color]} p={4}>
                         <Typography variant="body1">{color}</Typography>
                       </Box>
+                      <Typography className={classes.colorCode} variant="body1">
+                        {theme.palette[colorKey][color]}
+                      </Typography>
                     </Paper>
                   </Grid>
                 )
