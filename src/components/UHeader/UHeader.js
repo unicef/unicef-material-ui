@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { fade } from '@material-ui/core/styles/colorManipulator'
 import { makeStyles, createStyles } from '@material-ui/core/styles'
 import { findReactChildren } from '../../utils'
@@ -61,7 +61,7 @@ const useStyles = makeStyles(theme =>
 export default function UHeader(props) {
   const classes = useStyles(props)
   const theme = useTheme()
-  const [sideLeft, setSideLeft] = React.useState(false)
+  const [sideLeft, setSideLeft] = useState(false)
   const {
     position,
     applicationName,
@@ -71,6 +71,7 @@ export default function UHeader(props) {
     hideLogoBorderLine,
     logoUrl,
     onLogoClick,
+    location,
   } = props
 
   const handleUrlClick = e => {
@@ -90,6 +91,11 @@ export default function UHeader(props) {
 
     setSideLeft(open)
   }
+
+  /* Close the HamburgerMenu drawer when location changed */
+  useEffect(() => {
+    setSideLeft(false)
+  }, [location])
 
   const sideList = (
     <div className={classes.list} role="presentation">
@@ -192,20 +198,22 @@ UHeader.propTypes = {
   color: PropTypes.string,
   /** Background color of the header */
   bgColor: PropTypes.string,
-  /** Button with humburger icon on the left of the header. It enables the side menu (menuItems). */
+  /** Button with hamburger icon on the left of the header. It enables the side menu (menuItems). */
   showHamburgerMenu: PropTypes.bool.isRequired,
-  /** Name of the appliaction, will be displayed left side in the header after the hamburger menu. */
+  /** Name of the application, will be displayed left side in the header after the hamburger menu. */
   applicationName: PropTypes.string,
   /** UNICEF logo enabled by default. */
   hideLogo: PropTypes.bool,
-  /** Link in logo and appliaction Name (Ex: Redirects to home page) */
+  /** Link in logo and application Name (Ex: Redirects to home page) */
   logoUrl: PropTypes.string,
-  /** logo is an optional once we hide it, add new logo or image */
+  /** To show new logo or image */
   logo: PropTypes.element,
   /** It is the separator line between application name and logo with white border. */
   hideLogoBorderLine: PropTypes.bool,
   /** Calls back when there is a click on Logo as well as app name and prevents the url to push to home*/
   onLogoClick: PropTypes.func,
+  /** Current location object to close the hamburger menu drawer */
+  location: PropTypes.object,
 }
 
 UHeader.defaultProps = {

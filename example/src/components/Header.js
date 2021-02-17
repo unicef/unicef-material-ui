@@ -1,4 +1,5 @@
 import React from 'react'
+import { useLocation } from 'react-router-dom'
 import {
   UHeader,
   UHeaderRightButtons,
@@ -14,6 +15,7 @@ import AsyncBadgeExample from './AsyncBadgeExample'
 
 export default function Header() {
   const [value, setValue] = React.useState(0)
+  const location = useLocation()
 
   function handleChange(newValue) {
     setValue(newValue)
@@ -26,6 +28,7 @@ export default function Header() {
       bgColor="#1CABE2"
       applicationName="Material UI"
       logoUrl={process.env.PUBLIC_URL}
+      location={location}
     >
       <UNavbarCenter>
         <SearchBar />
