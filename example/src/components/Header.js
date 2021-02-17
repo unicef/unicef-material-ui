@@ -1,5 +1,4 @@
-import React from 'react'
-import { useLocation } from 'react-router-dom'
+import React, { useState } from 'react'
 import {
   UHeader,
   UHeaderRightButtons,
@@ -14,11 +13,21 @@ import SearchBar from './SearchBar'
 import AsyncBadgeExample from './AsyncBadgeExample'
 
 export default function Header() {
-  const [value, setValue] = React.useState(0)
-  const location = useLocation()
+  const [value, setValue] = useState(0)
+  const [openDrawer, setOpenDrawer] = useState(false)
 
   function handleChange(newValue) {
     setValue(newValue)
+  }
+
+  const toggleDrawer = (event, open) => {
+    if (
+      event.type === 'keydown' &&
+      (event.key === 'Tab' || event.key === 'Shift')
+    ) {
+      return
+    }
+    setOpenDrawer(open)
   }
 
   return (
@@ -28,7 +37,8 @@ export default function Header() {
       bgColor="#1CABE2"
       applicationName="Material UI"
       logoUrl={process.env.PUBLIC_URL}
-      location={location}
+      openDrawer={openDrawer}
+      toggleDrawer={toggleDrawer}
     >
       <UNavbarCenter>
         <SearchBar />
@@ -49,7 +59,7 @@ export default function Header() {
         <Tab label="Directory" />
       </UHeaderMainMenu>
       <UHeaderLeftMenu>
-        <SideBarContent />
+        <SideBarContent toggleDrawer={toggleDrawer} />
       </UHeaderLeftMenu>
     </UHeader>
   )
