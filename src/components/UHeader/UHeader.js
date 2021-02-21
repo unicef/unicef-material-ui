@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { fade } from '@material-ui/core/styles/colorManipulator'
 import { makeStyles, createStyles } from '@material-ui/core/styles'
 import { findReactChildren } from '../../utils'
@@ -54,14 +54,13 @@ const useStyles = makeStyles(theme =>
 
 /**
  *
- * Standarized header component with UNICEF look and feel.
+ * Standardized header component with UNICEF look and feel.
  *
  */
 
 export default function UHeader(props) {
   const classes = useStyles(props)
   const theme = useTheme()
-  const [sideLeft, setSideLeft] = React.useState(false)
   const {
     position,
     applicationName,
@@ -71,6 +70,8 @@ export default function UHeader(props) {
     hideLogoBorderLine,
     logoUrl,
     onLogoClick,
+    openDrawer,
+    toggleDrawer,
   } = props
 
   const handleUrlClick = e => {
@@ -80,29 +81,6 @@ export default function UHeader(props) {
     }
   }
 
-  const toggleDrawer = open => event => {
-    if (
-      event.type === 'keydown' &&
-      (event.key === 'Tab' || event.key === 'Shift')
-    ) {
-      return
-    }
-
-    setSideLeft(open)
-  }
-
-  const sideList = (
-    <div className={classes.list} role="presentation">
-      {applicationName && (
-        <Typography className={classes.margin} variant="h6">
-          UNICEF {applicationName}
-        </Typography>
-      )}
-      <Divider />
-      <Box>{findReactChildren(props, UHeaderLeftMenu)}</Box>
-    </div>
-  )
-
   return (
     <AppBar position={position}>
       <Toolbar disableGutters={true} className={classes.bgColor}>
@@ -111,14 +89,17 @@ export default function UHeader(props) {
             <Box mr={2}>
               <IconButton
                 edge="start"
-                onClick={toggleDrawer(true)}
+                onClick={e => toggleDrawer && toggleDrawer(e, true)}
                 color="inherit"
                 aria-label="Open drawer"
               >
                 <MenuIcon />
               </IconButton>
-              <Drawer open={sideLeft} onClose={toggleDrawer(false)}>
-                {sideList}
+              <Drawer
+                open={openDrawer}
+                onClose={e => toggleDrawer && toggleDrawer(e, false)}
+              >
+                {findReactChildren(props, UHeaderLeftMenu)}
               </Drawer>
             </Box>
           )}
@@ -192,20 +173,24 @@ UHeader.propTypes = {
   color: PropTypes.string,
   /** Background color of the header */
   bgColor: PropTypes.string,
-  /** Button with humburger icon on the left of the header. It enables the side menu (menuItems). */
+  /** Button with hamburger icon on the left of the header. It enables the side menu (menuItems). */
   showHamburgerMenu: PropTypes.bool.isRequired,
-  /** Name of the appliaction, will be displayed left side in the header after the hamburger menu. */
+  /** Name of the application, will be displayed next to the logo */
   applicationName: PropTypes.string,
   /** UNICEF logo enabled by default. */
   hideLogo: PropTypes.bool,
-  /** Link in logo and appliaction Name (Ex: Redirects to home page) */
+  /** Link in logo and application Name (Ex: Redirects to home page) */
   logoUrl: PropTypes.string,
-  /** logo is an optional once we hide it, add new logo or image */
+  /** To show new logo or image */
   logo: PropTypes.element,
   /** It is the separator line between application name and logo with white border. */
   hideLogoBorderLine: PropTypes.bool,
   /** Calls back when there is a click on Logo as well as app name and prevents the url to push to home*/
   onLogoClick: PropTypes.func,
+  /** Current opened state of the hamburger menu drawer */
+  openDrawer: PropTypes.bool,
+  /** Callback to change the openDrawer state */
+  toggleDrawer: PropTypes.func,
 }
 
 UHeader.defaultProps = {

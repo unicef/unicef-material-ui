@@ -28,6 +28,7 @@ export default function ColorsExample() {
     'success',
     'info',
     'error',
+    'warning',
   ]
 
   return (
