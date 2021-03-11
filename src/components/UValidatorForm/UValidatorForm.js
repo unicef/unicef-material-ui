@@ -19,8 +19,10 @@ function ForwardRefForm(props, ref) {
     ValidatorForm.removeValidationRule(name)
   }
 
-  ValidatorForm.addValidationRule('isUrl', (value) => {
-    let urlRegexp = new RegExp("^http(s?)\:\/\/[0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_]*)?$")
+  ValidatorForm.addValidationRule('isUrl', value => {
+    let urlRegexp = new RegExp(
+      '^http(s?)://[0-9a-zA-Z]([-.w]*[0-9a-zA-Z])*?[a-z0-9][-a-z0-9]{0,61}[a-z0-9]\\.[a-z]{2,6}(/[-\\w@\\+\\.~#\\?&/=%]*)?$'
+    )
     if (value != '' && !urlRegexp.test(value)) {
       return false
     }
@@ -31,7 +33,7 @@ function ForwardRefForm(props, ref) {
 }
 
 /* Forward the ref */
-const UValidatorForm = React.forwardRef(ForwardRefForm);
+const UValidatorForm = React.forwardRef(ForwardRefForm)
 
 UValidatorForm.propTypes = {
   /** Callback for form that fires when all validations are passed */
@@ -47,7 +49,7 @@ UValidatorForm.propTypes = {
 UValidatorForm.defaultProps = {
   instantValidate: true,
   debounceTime: 0,
-  onSubmit: () => { },
+  onSubmit: () => {},
 }
 
-export default UValidatorForm;
+export default UValidatorForm
