@@ -4,6 +4,11 @@
 name: Node.js Package
 
 on:
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Message'     
+        required: false
   release:
     types: [created]
 
