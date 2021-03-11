@@ -79,7 +79,7 @@ export default function FormValidator() {
     azure: false,
     redux: false,
     choice: null,
-    cus_email: ''
+    cus_email: '',
   })
 
   function handleValue(event) {
@@ -248,6 +248,17 @@ export default function FormValidator() {
                 </MenuItem>
               ))}
             </UTextField>
+          </Grid>
+          <Grid item xs={12} lg={3} xl={2}>
+            <UTextField
+              label="URL"
+              onChange={handleValue}
+              className={classes.margin}
+              name="url"
+              variant="outlined"
+              validators={['required', 'isUrl']}
+              value={values.url}
+            />
           </Grid>
           <Grid item xs={12} lg={1}>
             <Button
