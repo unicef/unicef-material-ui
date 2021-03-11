@@ -20,7 +20,7 @@
     "transpile": "npm run build",
     "prepublishOnly": "npm run transpile",
     "deploy": "npm run build:site && gh-pages -d site",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 0"
   },
   "repository": {
     "type": "git",
