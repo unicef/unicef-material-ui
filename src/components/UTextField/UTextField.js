@@ -49,11 +49,9 @@ class UTextField extends ValidatorComponent {
   }
 
   handleBlur = event => {
-    if (
-      this.props.value === '' &&
-      this.props.validators &&
-      this.props.validators.includes('required')
-    ) {
+    const { isValid } = this.state
+    const { error } = this.props
+    if (!isValid || error) {
       return
     } else {
       this.props.onBlur && this.props.onBlur(event)
@@ -138,7 +136,7 @@ UTextField.propTypes = {
 
 UTextField.defaultProps = {
   variant: 'outlined',
-  validatorListener: () => { },
+  validatorListener: () => {},
 }
 
 export default UTextField
