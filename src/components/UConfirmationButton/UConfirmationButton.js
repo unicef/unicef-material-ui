@@ -8,8 +8,8 @@ const useStyles = makeStyles(theme => ({
   menuDelete: {
     width: '500px',
   },
-  icon: {
-    marginRight: theme.spacing(1),
+  menuLabel: {
+    color: theme.palette.primary.main,
   },
   span: {
     marginLeft: theme.spacing(1),
@@ -23,7 +23,17 @@ const useStyles = makeStyles(theme => ({
  */
 export default function UConfirmationButton(props) {
   const classes = useStyles()
-  const { onConfirm, id, buttonText, enabled, variant, icon, confirmText, confirmActionText, ...others } = props
+  const {
+    onConfirm,
+    id,
+    buttonText,
+    enabled,
+    variant,
+    icon,
+    confirmText,
+    confirmActionText,
+    ...others
+  } = props
   const [deleteAnchorEl, setDeleteAnchorEl] = useState(null)
 
   const handleConfirm = e => {
@@ -37,22 +47,26 @@ export default function UConfirmationButton(props) {
   return (
     <React.Fragment>
       {variant === 'menuItem' ? (
-        <MenuItem onClick={e => setDeleteAnchorEl(e.currentTarget)}>
+        <MenuItem
+          onClick={e => setDeleteAnchorEl(e.currentTarget)}
+          className={classes.menuLabel}
+        >
           {icon}
           <span className={classes.span}>{buttonText}</span>
         </MenuItem>
       ) : (
-          <Tooltip title={buttonText} placement="top">
-            <IconButton
-              aria-controls={`delete-confirmation-menu-${id}`}
-              aria-haspopup="true"
-              onClick={e => setDeleteAnchorEl(e.currentTarget)}
-              disabled={!enabled}
-            >
-              {icon}
-            </IconButton>
-          </Tooltip>
-        )}
+        <Tooltip title={buttonText} placement="top">
+          <IconButton
+            aria-controls={`delete-confirmation-menu-${id}`}
+            aria-haspopup="true"
+            onClick={e => setDeleteAnchorEl(e.currentTarget)}
+            disabled={!enabled}
+            className={classes.menuLabel}
+          >
+            {icon}
+          </IconButton>
+        </Tooltip>
+      )}
       <Menu
         id={`delete-confirmation-menu-${id}`}
         anchorEl={deleteAnchorEl}
@@ -93,5 +107,5 @@ UConfirmationButton.defaultProps = {
   enabled: true,
   confirmText: 'Confirm deletion?',
   confirmActionText: 'Yes, delete',
-  icon: <DeleteOutlinedIcon />
+  icon: <DeleteOutlinedIcon />,
 }
