@@ -72,6 +72,7 @@ export default function UHeader(props) {
     onLogoClick,
     openDrawer,
     toggleDrawer,
+    elevation,
   } = props
 
   const handleUrlClick = e => {
@@ -82,7 +83,7 @@ export default function UHeader(props) {
   }
 
   return (
-    <AppBar position={position}>
+    <AppBar position={position} elevation={elevation}>
       <Toolbar disableGutters={true} className={classes.bgColor}>
         <Box display="flex" ml={3} alignItems="center">
           {showHamburgerMenu !== false && (
@@ -191,6 +192,8 @@ UHeader.propTypes = {
   openDrawer: PropTypes.bool,
   /** Callback to change the openDrawer state */
   toggleDrawer: PropTypes.func,
+  /** AppBar elevation value to handle the box shadow effect */
+  elevation: PropTypes.number,
 }
 
 UHeader.defaultProps = {
@@ -199,4 +202,5 @@ UHeader.defaultProps = {
   hideLogo: false,
   logoUrl: '/',
   hideLogoBorderLine: true,
+  elevation: 4,
 }
