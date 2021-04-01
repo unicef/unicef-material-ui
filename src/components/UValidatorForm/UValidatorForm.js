@@ -21,7 +21,7 @@ function ForwardRefForm(props, ref) {
 
   ValidatorForm.addValidationRule('isUrl', value => {
     let urlRegexp = new RegExp(
-      '^http(s?)://[0-9a-zA-Z]([-.w]*[0-9a-zA-Z])*?[a-z0-9][-a-z0-9]{0,61}[a-z0-9]\\.[a-z]{2,6}(/[-\\w@\\+\\.~#\\?&/=%]*)?$'
+      '^http(s?)://[0-9a-zA-Z]([-.w]*[0-9a-zA-Z])*?[a-z0-9][-a-z0-9]{0,61}[a-z0-9]\\.[a-z]{2,6}(/[\\w\\s-\\w@\\+\\.~#\\?&/=%]*)?$'
     )
     if (value != '' && !urlRegexp.test(value)) {
       return false
