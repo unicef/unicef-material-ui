@@ -4,16 +4,21 @@ import PropTypes from 'prop-types'
 import { TextField, Typography, Box } from '@material-ui/core'
 /* eslint-enable */
 import ValidatorComponent from '../ValidatorComponent'
+import { withStyles } from '@material-ui/core'
 
-// TODO - research how to use theme
-const styles = {
+const rootStyles = theme => ({
+  root: {
+    '& .Uni-MuiInputLabel-asterisk': {
+      color: theme.palette.error.main,
+    },
+  },
   counter: {
     marginLeft: 16,
   },
   counterError: {
-    color: '#f44336',
+    color: theme.palette.error.main,
   },
-}
+})
 
 //Extending the ValidatorComponent using class component, so taking an exclusion from our rule: functional components only.
 
@@ -73,6 +78,10 @@ class UTextField extends ValidatorComponent {
       maxLength,
       counter,
       counterClassName,
+      readOnly,
+      InputProps,
+      className,
+      classes,
       ...rest
     } = this.props
     const { isValid } = this.state
@@ -82,19 +91,23 @@ class UTextField extends ValidatorComponent {
     return (
       <React.Fragment>
         <TextField
+          className={`${className && className} ${classes.root}`}
           variant={variant}
           {...rest}
           error={!isValid || error}
           onBlur={event => this.handleBlur(event)}
           helperText={(!isValid && this.getErrorMessage()) || helperText}
+          InputProps={{
+            readOnly: readOnly,
+            ...InputProps,
+          }}
         />
         {counter && (
           <Box display="block">
             <Typography
-              style={{
-                ...styles.counter,
-                ...(counterError && styles.counterError),
-              }}
+              className={`${classes.counter} ${
+                counterError ? classes.counterError : ''
+              }`}
               variant="caption"
               color="textSecondary"
             >
@@ -132,11 +145,16 @@ UTextField.propTypes = {
   counter: PropTypes.bool,
   /** Maximum length of characters */
   maxLength: PropTypes.number,
+  /** To make textfield read only */
+  readOnly: PropTypes.bool,
+  /** Props applied to the Input element. */
+  InputProps: PropTypes.object,
 }
 
 UTextField.defaultProps = {
   variant: 'outlined',
+  readOnly: false,
   validatorListener: () => {},
 }
 
-export default UTextField
+export default withStyles(rootStyles)(UTextField)
