@@ -8,8 +8,10 @@ const useStyles = makeStyles(theme => ({
   singleValue: {
     display: 'inline-flex',
     fontSize: 16,
+    alignItems: 'center',
   },
   singleValueAvatar: {
+    display: 'inline-flex',
     marginRight: theme.spacing(1),
     '& .MuiAvatar-root': {
       height: 24,
