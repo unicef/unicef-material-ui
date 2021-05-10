@@ -4,21 +4,16 @@ import PropTypes from 'prop-types'
 import { TextField, Typography, Box } from '@material-ui/core'
 /* eslint-enable */
 import ValidatorComponent from '../ValidatorComponent'
-import { withStyles } from '@material-ui/core'
 
-const rootStyles = theme => ({
-  root: {
-    '& .Uni-MuiInputLabel-asterisk': {
-      color: theme.palette.error.main,
-    },
-  },
+// TODO - research how to use theme
+const styles = {
   counter: {
     marginLeft: 16,
   },
   counterError: {
-    color: theme.palette.error.main,
+    color: '#f44336',
   },
-})
+}
 
 //Extending the ValidatorComponent using class component, so taking an exclusion from our rule: functional components only.
 
@@ -80,8 +75,6 @@ class UTextField extends ValidatorComponent {
       counterClassName,
       readOnly,
       InputProps,
-      className,
-      classes,
       ...rest
     } = this.props
     const { isValid } = this.state
@@ -91,7 +84,6 @@ class UTextField extends ValidatorComponent {
     return (
       <React.Fragment>
         <TextField
-          className={`${className && className} ${classes.root}`}
           variant={variant}
           {...rest}
           error={!isValid || error}
@@ -105,9 +97,10 @@ class UTextField extends ValidatorComponent {
         {counter && (
           <Box display="block">
             <Typography
-              className={`${classes.counter} ${
-                counterError ? classes.counterError : ''
-              }`}
+              style={{
+                ...styles.counter,
+                ...(counterError && styles.counterError),
+              }}
               variant="caption"
               color="textSecondary"
             >
@@ -157,4 +150,4 @@ UTextField.defaultProps = {
   validatorListener: () => {},
 }
 
-export default withStyles(rootStyles)(UTextField)
+export default UTextField
