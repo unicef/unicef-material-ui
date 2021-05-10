@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import Select from 'react-select'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
+import CancelIcon from '@material-ui/icons/Cancel'
 import MultiValue from './MultiValue'
 import SingleValue from './SingleValue'
 import Menu from './Menu'
@@ -56,6 +57,7 @@ const componentsList = {
   Option,
   SingleValue,
   ValueContainer,
+  MultiValueRemove: removeProps => <CancelIcon {...removeProps} />,
 }
 
 /**

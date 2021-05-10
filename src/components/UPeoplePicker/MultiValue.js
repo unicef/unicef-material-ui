@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import Chip from '@material-ui/core/Chip'
 import Avatar from '@material-ui/core/Avatar'
-import CancelIcon from '@material-ui/icons/Cancel'
 import { emphasize, makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
@@ -11,6 +10,9 @@ const useStyles = makeStyles(theme => ({
     marginLeft: theme.spacing(0.5),
     marginTop: theme.spacing(0.25),
     maxWidth: '90%',
+    '& .Uni-MuiChip-deleteIcon': {
+      display: 'flex',
+    },
   },
   chipFocused: {
     backgroundColor: emphasize(
@@ -44,7 +46,7 @@ export default function MultiValue({
         [classes.chipFocused]: props.isFocused,
       })}
       onDelete={removeProps.onClick}
-      deleteIcon={<CancelIcon {...removeProps} />}
+      deleteIcon={<props.components.Remove {...removeProps} />}
     />
   )
 }
