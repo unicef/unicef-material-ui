@@ -9,6 +9,7 @@ const useStyles = makeStyles(theme => ({
     display: 'inline-flex',
     fontSize: 16,
     alignItems: 'center',
+    width: '96%',
   },
   singleValueAvatar: {
     display: 'inline-flex',
@@ -22,6 +23,12 @@ const useStyles = makeStyles(theme => ({
     height: 24,
     width: 24,
     marginRight: theme.spacing(1),
+  },
+  optionLabel: {
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    maxWidth: 'calc(100% - 32px)',
   },
 }))
 
@@ -39,7 +46,7 @@ export default function SingleValue(props) {
       ) : (
         <Avatar className={classes.avatar} />
       )}
-      {props.children}
+      <span className={classes.optionLabel}>{props.children}</span>
     </Typography>
   )
 }

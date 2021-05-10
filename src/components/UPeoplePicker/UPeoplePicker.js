@@ -47,7 +47,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const components = {
+const componentsList = {
   Control,
   Menu,
   MultiValue,
@@ -76,6 +76,7 @@ export default function UPeoplePicker(props) {
     TextFieldProps,
     showNoOptionsWithEmptyTextField,
     onInputChange,
+    components,
     ...others
   } = props
 
@@ -89,7 +90,10 @@ export default function UPeoplePicker(props) {
         font: 'inherit',
       },
     }),
+    menuPortal: base => ({ ...base, zIndex: 9999 }),
+    menu: base => ({ ...base, zIndex: '9999 !important' }),
   }
+
   const defaultTextFieldProps = {
     label: label,
     variant: variant,
@@ -112,7 +116,7 @@ export default function UPeoplePicker(props) {
       classes={classes}
       isClearable
       styles={selectStyles}
-      components={components}
+      components={{ ...componentsList, ...components }}
       TextFieldProps={mergedTextFieldProps}
       onInputChange={value => handleInputChange(value)}
       noOptionsMessage={() => (showNoOptions ? NoOptionsMessage : null)}
@@ -170,6 +174,8 @@ UPeoplePicker.propTypes = {
    *  To display error message on loading options
    */
   errorLoadingOptions: PropTypes.string,
+  /** To customize the components of select */
+  components: PropTypes.object,
 }
 
 UPeoplePicker.defaultProps = {

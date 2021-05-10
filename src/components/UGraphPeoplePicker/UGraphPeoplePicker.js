@@ -29,6 +29,7 @@ export default function UGraphPeoplePicker({
   helpText,
   isMultiple,
   searchUsers,
+  components,
 }) {
   const [graphData, setGraphData] = useState([])
   const [selectedUsers, setSelectedUsers] = useState(getOptions(options))
@@ -93,6 +94,7 @@ export default function UGraphPeoplePicker({
       showNoOptionsWithEmptyTextField={false}
       variant="outlined"
       isMulti={isMultiple}
+      components={components}
     />
   )
 }
@@ -114,6 +116,8 @@ UGraphPeoplePicker.propTypes = {
   isMultiple: PropTypes.bool,
   /** trigger when user enters value */
   searchUsers: PropTypes.func,
+  /** To customize the components of select */
+  components: PropTypes.object,
 }
 
 UGraphPeoplePicker.defaultProps = {

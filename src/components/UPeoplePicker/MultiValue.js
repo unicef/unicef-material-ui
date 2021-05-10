@@ -10,6 +10,7 @@ const useStyles = makeStyles(theme => ({
   chip: {
     marginLeft: theme.spacing(0.5),
     marginTop: theme.spacing(0.25),
+    maxWidth: '90%',
   },
   chipFocused: {
     backgroundColor: emphasize(
