@@ -48,7 +48,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const componentsList = {
+const defaultComponents = {
   Control,
   Menu,
   MultiValue,
@@ -118,7 +118,7 @@ export default function UPeoplePicker(props) {
       classes={classes}
       isClearable
       styles={selectStyles}
-      components={{ ...componentsList, ...components }}
+      components={{ ...defaultComponents, ...components }}
       TextFieldProps={mergedTextFieldProps}
       onInputChange={value => handleInputChange(value)}
       noOptionsMessage={() => (showNoOptions ? NoOptionsMessage : null)}
