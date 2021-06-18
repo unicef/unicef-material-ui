@@ -73,6 +73,8 @@ class UTextField extends ValidatorComponent {
       maxLength,
       counter,
       counterClassName,
+      readOnly,
+      InputProps,
       ...rest
     } = this.props
     const { isValid } = this.state
@@ -87,6 +89,10 @@ class UTextField extends ValidatorComponent {
           error={!isValid || error}
           onBlur={event => this.handleBlur(event)}
           helperText={(!isValid && this.getErrorMessage()) || helperText}
+          InputProps={{
+            readOnly: readOnly,
+            ...InputProps,
+          }}
         />
         {counter && (
           <Box display="block">
@@ -132,10 +138,15 @@ UTextField.propTypes = {
   counter: PropTypes.bool,
   /** Maximum length of characters */
   maxLength: PropTypes.number,
+  /** To make textfield read only */
+  readOnly: PropTypes.bool,
+  /** Props applied to the Input element. */
+  InputProps: PropTypes.object,
 }
 
 UTextField.defaultProps = {
   variant: 'outlined',
+  readOnly: false,
   validatorListener: () => {},
 }
 

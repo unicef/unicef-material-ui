@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import Select from 'react-select'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
+import CancelIcon from '@material-ui/icons/Cancel'
 import MultiValue from './MultiValue'
 import SingleValue from './SingleValue'
 import Menu from './Menu'
@@ -47,7 +48,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const components = {
+const defaultComponents = {
   Control,
   Menu,
   MultiValue,
@@ -56,6 +57,7 @@ const components = {
   Option,
   SingleValue,
   ValueContainer,
+  MultiValueRemove: removeProps => <CancelIcon {...removeProps} />,
 }
 
 /**
@@ -76,6 +78,7 @@ export default function UPeoplePicker(props) {
     TextFieldProps,
     showNoOptionsWithEmptyTextField,
     onInputChange,
+    components,
     ...others
   } = props
 
@@ -89,7 +92,10 @@ export default function UPeoplePicker(props) {
         font: 'inherit',
       },
     }),
+    menuPortal: base => ({ ...base, zIndex: 9999 }),
+    menu: base => ({ ...base, zIndex: '9999 !important' }),
   }
+
   const defaultTextFieldProps = {
     label: label,
     variant: variant,
@@ -112,7 +118,7 @@ export default function UPeoplePicker(props) {
       classes={classes}
       isClearable
       styles={selectStyles}
-      components={components}
+      components={{ ...defaultComponents, ...components }}
       TextFieldProps={mergedTextFieldProps}
       onInputChange={value => handleInputChange(value)}
       noOptionsMessage={() => (showNoOptions ? NoOptionsMessage : null)}
@@ -170,6 +176,8 @@ UPeoplePicker.propTypes = {
    *  To display error message on loading options
    */
   errorLoadingOptions: PropTypes.string,
+  /** To customize the components of select */
+  components: PropTypes.object,
 }
 
 UPeoplePicker.defaultProps = {
