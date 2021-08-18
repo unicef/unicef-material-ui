@@ -29,6 +29,19 @@ function ForwardRefForm(props, ref) {
     return true
   })
 
+  ValidatorForm.addValidationRule('isLatitude', value => {
+    if (value > 90 || value < -90) {
+      return false
+    }
+    return true
+  })
+  ValidatorForm.addValidationRule('isLongitude', value => {
+    if (value > 180 || value < -180) {
+      return false
+    }
+    return true
+  })
+
   return <ValidatorForm {...props} ref={ref} />
 }
 
