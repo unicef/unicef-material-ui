@@ -80,7 +80,7 @@ UCoordinateField.propTypes = {
   /** No of decimal digits */
   decimalScale: PropTypes.number,
   /** Coordinate type */
-  coordinateType: PropTypes.oneOf(['latitude', 'longitude']),
+  coordinateType: PropTypes.oneOf(['latitude', 'longitude']).isRequired,
 }
 
 UCoordinateField.defaultProps = {

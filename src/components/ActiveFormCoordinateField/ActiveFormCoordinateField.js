@@ -4,8 +4,8 @@ import ActiveFormTextField from '../ActiveFormTextField'
 import { PositiveNumberFormat } from '../Shared'
 
 /**
- * ActiveCoordinateField is a UTextField component with latitude and longitude validation.
- * The cool feature with ActiveCoordinatesField is you can read and write at the same place.
+ * ActiveFormCoordinateField is a UTextField component with latitude and longitude validation.
+ * The cool feature with ActiveFormCoordinateField is you can read and write at the same place.
  * * Read the content inside TextField
  * * Edit the TextField
  *
@@ -17,7 +17,7 @@ import { PositiveNumberFormat } from '../Shared'
  *
  */
 
-export default function ActiveCoordinateField({
+export default function ActiveFormCoordinateField({
   InputProps,
   decimalScale,
   inputProps,
@@ -58,7 +58,7 @@ export default function ActiveCoordinateField({
 }
 
 // It accepts all the Material Ui TextField props
-ActiveCoordinateField.propTypes = {
+ActiveFormCoordinateField.propTypes = {
   /** label */
   label: PropTypes.string,
   /** placeholder text*/
@@ -92,9 +92,9 @@ ActiveCoordinateField.propTypes = {
   /** No of decimal digits */
   decimalScale: PropTypes.number,
   /** Coordinate type */
-  coordinateType: PropTypes.oneOf(['latitude', 'longitude']),
+  coordinateType: PropTypes.oneOf(['latitude', 'longitude']).isRequired,
 }
 
-ActiveCoordinateField.defaultProps = {
+ActiveFormCoordinateField.defaultProps = {
   decimalScale: 9,
 }

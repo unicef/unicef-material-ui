@@ -2,9 +2,9 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Grid } from '@material-ui/core'
 import { UValidatorForm, UButton } from '../../index.js' // change it to '@unicef/material-ui'
-UCoordinateField
+ActiveFormCoordinateField
 
-// export default function UCoordinateField() {
+// export default function ActiveFormCoordinateField() {
 
 const form = useRef('form')
 const [coordinate, setCoordinate] = useState({
@@ -33,7 +33,7 @@ function handleSubmit() {
 >
   <Grid container spacing={1}>
     <Grid item xs={12} lg={4}>
-      <UCoordinateField
+      <ActiveFormCoordinateField
         label="Latitude"
         value={coordinate.latitude}
         onChange={handleValue}
@@ -43,7 +43,7 @@ function handleSubmit() {
       />
     </Grid>
     <Grid item xs={12} lg={4}>
-      <UCoordinateField
+      <ActiveFormCoordinateField
         label="Longitude"
         value={coordinate.longitude}
         onChange={handleValue}

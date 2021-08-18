@@ -33,7 +33,7 @@ import UBreadcrumbs from './components/UBreadcrumbs'
 import UInfiniteScroll from './components/UInfiniteScroll'
 import UAvatarImage from './components/UAvatarImage'
 import UGraphPeoplePicker from './components/UGraphPeoplePicker'
-import ActiveCoordinateField from './components/ActiveCoordinateField'
+import ActiveFormCoordinateField from './components/ActiveFormCoordinateField'
 import UCoordinateField from './components/UCoordinateField'
 
 export {
@@ -72,6 +72,6 @@ export {
   UInfiniteScroll,
   UAvatarImage,
   UGraphPeoplePicker,
-  ActiveCoordinateField,
+  ActiveFormCoordinateField,
   UCoordinateField,
 }
