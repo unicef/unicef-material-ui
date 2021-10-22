@@ -22,6 +22,7 @@ import {
   UPositiveInteger,
   UValidatorForm,
   UValidatorComponent,
+  UCoordinateField,
 } from 'unicef-material-ui'
 
 const useStyles = makeStyles(theme => ({
@@ -460,6 +461,50 @@ export default function FormValidator() {
             Validate
           </Button>
         </Box>
+      </UValidatorForm>
+
+      <UValidatorForm
+        onSubmit={handleItemValueSubmit}
+        onError={errors => console.log(errors)}
+        // debounceTime={1000}
+        instantValidate={true}
+      >
+        <Grid container spacing={1}>
+          <Grid item xs={12}>
+            <Typography variant="h5" style={{ margin: '16px 0px' }}>
+              Coordinates Form
+            </Typography>
+          </Grid>
+          <Grid item xs={12} lg={3} xl={3}>
+            <UCoordinateField
+              coordinateType="latitude"
+              label="Latitude"
+              name="latitude"
+              value={values.latitude}
+              fullWidth
+              onChange={handleValue}
+              validators={['required']}
+            />
+          </Grid>
+
+          <Grid item xs={12} lg={3} xl={3}>
+            <UCoordinateField
+              coordinateType="longitude"
+              label="Longitude"
+              name="longitude"
+              value={values.longitude}
+              fullWidth
+              onChange={handleValue}
+              validators={['required']}
+            />
+          </Grid>
+
+          <Grid item xs={12}>
+            <Button color="primary" variant="contained" type="submit">
+              Submit
+            </Button>
+          </Grid>
+        </Grid>
       </UValidatorForm>
     </React.Fragment>
   )

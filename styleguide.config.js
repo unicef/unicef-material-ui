@@ -184,6 +184,11 @@ module.exports = {
           'src/components/UPositiveInteger',
           'UPositiveInteger.js'
         ),
+        path.resolve(
+          __dirname,
+          'src/components/UCoordinateField',
+          'UCoordinateField.js'
+        ),
       ],
       // sections: [
       //   {
@@ -210,6 +215,11 @@ module.exports = {
           __dirname,
           'src/components/ActiveFormPositiveInteger',
           'ActiveFormPositiveInteger.js'
+        ),
+        path.resolve(
+          __dirname,
+          'src/components/ActiveFormCoordinateField',
+          'ActiveFormCoordinateField.js'
         ),
       ],
       // sections: [

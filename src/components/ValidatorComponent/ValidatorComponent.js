@@ -156,7 +156,7 @@ ValidatorComponent.propTypes = {
 ValidatorComponent.defaultProps = {
   customErrorMessages: 'error',
   validators: [],
-  validatorListener: () => { },
+  validatorListener: () => {},
   withRequiredValidator: true,
 }
 
@@ -182,4 +182,6 @@ const defaultErrorMessages = {
   matchRegexp: 'Invalid value',
   allowedExtensions: 'File type not allowed',
   isUrl: 'It should start with http:// or https://',
+  isLatitude: 'It should be between -90 and 90',
+  isLongitude: 'It should be between -180 and 180',
 }
