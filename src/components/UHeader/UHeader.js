@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { fade } from '@material-ui/core/styles/colorManipulator'
 import { makeStyles, createStyles } from '@material-ui/core/styles'
 import { findReactChildren } from '../../utils'
@@ -139,6 +139,7 @@ export default function UHeader(props) {
               underline="none"
               onClick={e => handleUrlClick(e)}
               href={logoUrl && logoUrl}
+              title={applicationName}
             >
               {applicationName}
             </Link>
