@@ -73,6 +73,7 @@ export default function UHeader(props) {
     openDrawer,
     toggleDrawer,
     elevation,
+    hoverTitle,
   } = props
 
   const handleUrlClick = e => {
@@ -139,6 +140,7 @@ export default function UHeader(props) {
               underline="none"
               onClick={e => handleUrlClick(e)}
               href={logoUrl && logoUrl}
+              {...(hoverTitle ? { title: applicationName } : {})}
             >
               {applicationName}
             </Link>
@@ -194,6 +196,8 @@ UHeader.propTypes = {
   toggleDrawer: PropTypes.func,
   /** AppBar elevation value to handle the box shadow effect */
   elevation: PropTypes.number,
+  /** To show application name when hover */
+  hoverTitle: PropTypes.bool,
 }
 
 UHeader.defaultProps = {
@@ -203,4 +207,5 @@ UHeader.defaultProps = {
   logoUrl: '/',
   hideLogoBorderLine: true,
   elevation: 4,
+  hoverTitle: false,
 }
