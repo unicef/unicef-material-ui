@@ -80,7 +80,6 @@ export default function USearchBox({
       value={searchValue}
       className={`${classes.root} ${className}`}
       autoComplete="off"
-      inputProps={inputProps ? { ...inputProps } : {}}
       InputLabelProps={{ shrink: false }}
       InputProps={{
         endAdornment: (
@@ -119,20 +118,19 @@ export default function USearchBox({
   )
 }
 
+// It accepts all the Material Ui TextField props
 USearchBox.propTypes = {
-  /* Initial search text for the input */
+  /** Initial search text for the input field */
   value: PropTypes.string,
-  /* Search box placeholder */
+  /** Search box placeholder */
   placeholder: PropTypes.string,
-  /* Search box input field class name */
+  /** Search box input field class name */
   className: PropTypes.string,
-  /* It called when apply search */
+  /** It called when apply the search */
   onSearch: PropTypes.func,
-  /* Input props for the input element */
-  inputProps: PropTypes.object,
-  /* Show a vertical separator between the text field and search icon */
+  /** Show a vertical separator between the text field and search icon */
   showSeparator: PropTypes.bool,
-  /* Label next to the search icon */
+  /** Label next to the search icon */
   iconLabel: PropTypes.string,
 }
 
