@@ -14,6 +14,8 @@ import {
   AvatarImageExample,
 } from '../components'
 
+import SearchBoxExample from '../components/SearchBoxExample'
+
 export default function Layout({ match }) {
   return (
     <React.Fragment>
@@ -30,6 +32,7 @@ export default function Layout({ match }) {
       <ErrorAlertExample />
       <CardWithTabs />
       <CardsExample />
+      <SearchBoxExample />
     </React.Fragment>
   )
 }
