@@ -20,6 +20,7 @@ import BreadcrumbsExample from './BreadcrumbsExample'
 import InfiniteScrollExample from './InfiniteScrollExample'
 import AvatarImageExample from './AvatarImageExample'
 import GraphPeoplePickerExample from './GraphPeoplePickerExample'
+import SearchBoxExample from './SearchBoxExample'
 
 export {
   Layout,
@@ -44,4 +45,5 @@ export {
   InfiniteScrollExample,
   AvatarImageExample,
   GraphPeoplePickerExample,
+  SearchBoxExample,
 }

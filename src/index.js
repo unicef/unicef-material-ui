@@ -35,6 +35,7 @@ import UAvatarImage from './components/UAvatarImage'
 import UGraphPeoplePicker from './components/UGraphPeoplePicker'
 import ActiveFormCoordinateField from './components/ActiveFormCoordinateField'
 import UCoordinateField from './components/UCoordinateField'
+import USearchBox from './components/USearchBox'
 
 export {
   theme,
@@ -74,4 +75,5 @@ export {
   UGraphPeoplePicker,
   ActiveFormCoordinateField,
   UCoordinateField,
+  USearchBox,
 }

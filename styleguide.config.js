@@ -72,6 +72,7 @@ module.exports = {
           'src/components/UInfiniteScroll',
           'UInfiniteScroll.js'
         ),
+        path.resolve(__dirname, 'src/components/USearchBox', 'USearchBox.js'),
       ],
       usageMode: 'expand',
     },
