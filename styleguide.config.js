@@ -222,6 +222,26 @@ module.exports = {
           'src/components/ActiveFormCoordinateField',
           'ActiveFormCoordinateField.js'
         ),
+        path.resolve(
+          __dirname,
+          'src/components/ActiveKeyboardDatePicker',
+          'ActiveKeyboardDatePicker.js'
+        ),
+        path.resolve(
+          __dirname,
+          'src/components/ActiveDatePicker',
+          'ActiveDatePicker.js'
+        ),
+        path.resolve(
+          __dirname,
+          'src/components/ActiveKeyboardTimePicker',
+          'ActiveKeyboardTimePicker.js'
+        ),
+        path.resolve(
+          __dirname,
+          'src/components/ActiveTimePicker',
+          'ActiveTimePicker.js'
+        ),
       ],
       // sections: [
       //   {
