@@ -105,6 +105,11 @@ export default function Pickers() {
           label="Select"
           placeholder="Select people ..."
           options={peopleOptions}
+          showLabelHelp={true}
+          InputLabelHelpProps={{
+            type: 'link',
+            link: 'https://unicef.github.io/',
+          }}
         />
       </Grid>
       <Grid item xs={12} md={6}>
@@ -116,6 +121,11 @@ export default function Pickers() {
           placeholder="Select people ..."
           options={peopleOptions}
           isMulti
+          showLabelHelp={true}
+          InputLabelHelpProps={{
+            type: 'tooltip',
+            tooltipTitle: 'Please select multiple people from list',
+          }}
         />
       </Grid>
       <Grid item xs={12} md={6}>

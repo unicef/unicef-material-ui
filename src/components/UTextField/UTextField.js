@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { TextField, Typography, Box } from '@material-ui/core'
 /* eslint-enable */
 import ValidatorComponent from '../ValidatorComponent'
+import { InputLabelHelp } from '../Shared'
 
 // TODO - research how to use theme
 const styles = {
@@ -12,6 +13,11 @@ const styles = {
   },
   counterError: {
     color: '#f44336',
+  },
+  labelRoot: {
+    pointerEvents: 'auto',
+    display: 'flex',
+    alignItems: 'center',
   },
 }
 
@@ -74,7 +80,11 @@ class UTextField extends ValidatorComponent {
       counter,
       counterClassName,
       readOnly,
+      label,
       InputProps,
+      InputLabelProps,
+      showLabelHelp,
+      InputLabelHelpProps,
       ...rest
     } = this.props
     const { isValid } = this.state
@@ -93,6 +103,17 @@ class UTextField extends ValidatorComponent {
             readOnly: readOnly,
             ...InputProps,
           }}
+          InputLabelProps={{
+            ...InputLabelProps,
+            style: { ...styles.labelRoot },
+          }}
+          label={
+            showLabelHelp ? (
+              <InputLabelHelp inputLabel={label} {...InputLabelHelpProps} />
+            ) : (
+              label
+            )
+          }
         />
         {counter && (
           <Box display="block">
@@ -142,12 +163,18 @@ UTextField.propTypes = {
   readOnly: PropTypes.bool,
   /** Props applied to the Input element. */
   InputProps: PropTypes.object,
+  /** Show label help */
+  showLabelHelp: PropTypes.bool,
+  /** Props applied to the input label help element. E.g InputLabelHelpProps={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
+  InputLabelHelpProps: PropTypes.object,
 }
 
 UTextField.defaultProps = {
   variant: 'outlined',
   readOnly: false,
   validatorListener: () => {},
+  showLabelHelp: false,
+  InputLabelHelpProps: {},
 }
 
 export default UTextField

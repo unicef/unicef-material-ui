@@ -46,6 +46,11 @@ const useStyles = makeStyles(theme => ({
   divider: {
     height: theme.spacing(2),
   },
+  labelRoot: {
+    pointerEvents: 'auto',
+    display: 'flex',
+    alignItems: 'center',
+  },
 }))
 
 const defaultComponents = {
@@ -79,6 +84,9 @@ export default function UPeoplePicker(props) {
     showNoOptionsWithEmptyTextField,
     onInputChange,
     components,
+    showLabelHelp,
+    InputLabelProps,
+    InputLabelHelpProps,
     ...others
   } = props
 
@@ -101,7 +109,11 @@ export default function UPeoplePicker(props) {
     variant: variant,
     InputLabelProps: {
       shrink: true,
+      classes: { root: classes.labelRoot },
+      ...InputLabelProps,
     },
+    showLabelHelp,
+    InputLabelHelpProps,
   }
   // To show or hide the no options menu
   const showNoOptions = showNoOptionsWithEmptyTextField || !isTextFieldEmpty
@@ -178,6 +190,10 @@ UPeoplePicker.propTypes = {
   errorLoadingOptions: PropTypes.string,
   /** To customize the components of select */
   components: PropTypes.object,
+  /** Show label help */
+  showLabelHelp: PropTypes.bool,
+  /** Props applied to the input label help element. E.g.  InputLabelHelpProps={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
+  InputLabelHelpProps: PropTypes.object,
 }
 
 UPeoplePicker.defaultProps = {
@@ -185,4 +201,6 @@ UPeoplePicker.defaultProps = {
   placeholder: 'Select...',
   variant: 'outlined',
   showNoOptionsWithEmptyTextField: true,
+  showLabelHelp: false,
+  InputLabelHelpProps: {},
 }

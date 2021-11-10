@@ -2,13 +2,26 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import TextField from '@material-ui/core/TextField'
 import InputComponent from './InputComponent'
+import { InputLabelHelp } from '../../components/Shared'
+
+const styles = {
+  labelRoot: {
+    pointerEvents: 'auto',
+    display: 'flex',
+    alignItems: 'center',
+  },
+}
 
 export default function Control({
   children,
   innerProps,
   innerRef,
   selectProps: { classes, TextFieldProps },
+  InputLabelProps,
+  showLabelHelp,
+  label,
 }) {
+  console.log('TextFieldProps', TextFieldProps)
   return (
     <TextField
       fullWidth
@@ -22,7 +35,21 @@ export default function Control({
           ...innerProps,
         },
       }}
+      InputLabelProps={{
+        ...InputLabelProps,
+        style: { ...styles.labelRoot },
+      }}
       {...TextFieldProps}
+      label={
+        TextFieldProps.showLabelHelp ? (
+          <InputLabelHelp
+            inputLabel={TextFieldProps.label}
+            {...TextFieldProps.InputLabelHelpProps}
+          />
+        ) : (
+          TextFieldProps.label
+        )
+      }
     />
   )
 }
