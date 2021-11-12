@@ -173,6 +173,24 @@ export default function Pickers() {
           isMulti
         />
       </Grid>
+      <Grid item xs={12} md={6}>
+        <UPeoplePicker
+          label="Multi Select without avatar"
+          TextFieldProps={{
+            helperText: 'Please select multiple people from list',
+          }}
+          placeholder="Select people ..."
+          hideAvatar={true}
+          options={peopleOptions}
+          isMulti
+          showLabelHelp={true}
+          InputLabelHelpProps={{
+            type: 'tooltip',
+            tooltipTitle: 'Please select multiple people from list',
+          }}
+        />
+      </Grid>
+
       <Grid item xs={12}>
         <Typography variant="h5">Date picker</Typography>
       </Grid>

@@ -87,6 +87,7 @@ export default function UPeoplePicker(props) {
     showLabelHelp,
     InputLabelProps,
     InputLabelHelpProps,
+    hideAvatar,
     ...others
   } = props
 
@@ -112,6 +113,7 @@ export default function UPeoplePicker(props) {
       classes: { root: classes.labelRoot },
       ...InputLabelProps,
     },
+    hideAvatar,
     showLabelHelp,
     InputLabelHelpProps,
   }
@@ -194,6 +196,8 @@ UPeoplePicker.propTypes = {
   showLabelHelp: PropTypes.bool,
   /** Props applied to the input label help element. E.g.  InputLabelHelpProps={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
   InputLabelHelpProps: PropTypes.object,
+  /** Hide people avatar */
+  hideAvatar: PropTypes.bool,
 }
 
 UPeoplePicker.defaultProps = {
@@ -203,4 +207,5 @@ UPeoplePicker.defaultProps = {
   showNoOptionsWithEmptyTextField: true,
   showLabelHelp: false,
   InputLabelHelpProps: {},
+  hideAvatar: false,
 }
