@@ -18,10 +18,7 @@ export default function Control({
   innerRef,
   selectProps: { classes, TextFieldProps },
   InputLabelProps,
-  showLabelHelp,
-  label,
 }) {
-  console.log('TextFieldProps', TextFieldProps)
   return (
     <TextField
       fullWidth

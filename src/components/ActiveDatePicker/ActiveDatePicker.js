@@ -5,6 +5,16 @@ import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers'
 
 import { makeStyles } from '@material-ui/core/styles'
 
+import { InputLabelHelp } from '../Shared'
+
+const styles = {
+  labelRoot: {
+    pointerEvents: 'auto',
+    display: 'flex',
+    alignItems: 'center',
+  },
+}
+
 const useStyles = makeStyles(theme => ({
   textField: {
     marginTop: theme.spacing(0.25),
@@ -50,6 +60,9 @@ export default function ActiveDatePicker(props) {
     inputProps,
     InputProps,
     placeholder,
+    showLabelHelp,
+    InputLabelHelpProps,
+    label,
     ...others
   } = props
 
@@ -68,6 +81,7 @@ export default function ActiveDatePicker(props) {
         className={`${classes.textField} ${className && className}`}
         InputLabelProps={{
           shrink: true,
+          style: { ...styles.labelRoot },
           ...InputLabelProps,
         }}
         inputProps={{
@@ -86,6 +100,13 @@ export default function ActiveDatePicker(props) {
           },
           ...InputProps,
         }}
+        label={
+          showLabelHelp ? (
+            <InputLabelHelp inputLabel={label} {...InputLabelHelpProps} />
+          ) : (
+            label
+          )
+        }
         {...others}
       />
     </MuiPickersUtilsProvider>
@@ -113,6 +134,12 @@ ActiveDatePicker.propTypes = {
   InputProps: PropTypes.object,
   /** Placeholder text*/
   placeholder: PropTypes.string,
+  /** Label text */
+  label: PropTypes.string,
+  /** Show label help */
+  showLabelHelp: PropTypes.bool,
+  /** Props applied to the input label help element. E.g InputLabelHelpProps={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
+  InputLabelHelpProps: PropTypes.object,
 }
 
 ActiveDatePicker.defaultProps = {

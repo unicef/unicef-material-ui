@@ -181,6 +181,10 @@ export default function Pickers() {
           label="Date"
           value={selectedDate}
           onChange={handleDateChange}
+          showLabelHelp={true}
+          InputLabelHelpProps={{
+            tooltipTitle: 'Date',
+          }}
         />
       </Grid>
       <Grid item xs={12} md={6} lg={3}>
@@ -188,6 +192,10 @@ export default function Pickers() {
           label="With keyboard"
           value={selectedDate}
           onChange={handleDateChange}
+          showLabelHelp={true}
+          InputLabelHelpProps={{
+            tooltipTitle: 'With keyboard',
+          }}
         />
       </Grid>
       <Grid item xs={12}>
@@ -198,6 +206,10 @@ export default function Pickers() {
           label="Time"
           value={selectedDate}
           onChange={handleDateChange}
+          showLabelHelp={true}
+          InputLabelHelpProps={{
+            tooltipTitle: 'Time',
+          }}
         />
       </Grid>
       <Grid item xs={12} md={6} lg={3}>
@@ -205,6 +217,10 @@ export default function Pickers() {
           label="With keyboard"
           value={selectedDate}
           onChange={handleDateChange}
+          showLabelHelp={true}
+          InputLabelHelpProps={{
+            tooltipTitle: 'With keyboard',
+          }}
         />
       </Grid>
       <Grid item xs={12}>
@@ -215,6 +231,10 @@ export default function Pickers() {
           label="Date and Time"
           value={selectedDate}
           onChange={handleDateChange}
+          showLabelHelp={true}
+          InputLabelHelpProps={{
+            tooltipTitle: 'Date and time',
+          }}
         />
       </Grid>
       <Grid item xs={12} md={6} lg={3}>
@@ -222,6 +242,10 @@ export default function Pickers() {
           label="With keyboard"
           value={selectedDate}
           onChange={handleDateChange}
+          showLabelHelp={true}
+          InputLabelHelpProps={{
+            tooltipTitle: 'With keyboard',
+          }}
         />
       </Grid>
       <Grid item xs={12}>
