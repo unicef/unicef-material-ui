@@ -7,6 +7,7 @@ import {
   UKeyboardTimePicker,
   UDateTimePicker,
   UKeyboardDateTimePicker,
+  USelectPicker,
 } from 'unicef-material-ui'
 import { GraphPeoplePickerExample } from '../components'
 import { Grid, Typography, Avatar } from '@material-ui/core'
@@ -75,6 +76,8 @@ export default function Pickers() {
       ),
     },
   ]
+
+  const regionsOptions = []
 
   const [selectedDate, handleDateChange] = useState(new Date())
   const [options, setOptions] = useState(undefined)
@@ -174,20 +177,14 @@ export default function Pickers() {
         />
       </Grid>
       <Grid item xs={12} md={6}>
-        <UPeoplePicker
-          label="Multi Select without avatar"
+        <USelectPicker
+          label="Regions"
           TextFieldProps={{
-            helperText: 'Please select multiple people from list',
+            helperText: 'Please select multiple regions from the list',
           }}
-          placeholder="Select people ..."
-          hideAvatar={true}
-          options={peopleOptions}
+          placeholder="Select region ..."
+          options={regionsOptions}
           isMulti
-          showLabelHelp={true}
-          InputLabelHelpProps={{
-            type: 'tooltip',
-            tooltipTitle: 'Please select multiple people from list',
-          }}
         />
       </Grid>
 

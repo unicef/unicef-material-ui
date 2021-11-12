@@ -9,6 +9,7 @@ import USideBar from './components/USideBar'
 import UContent from './components/UContent'
 import UHeaderMainMenu from './components/UHeaderMainMenu'
 import UButton from './components/UButton'
+import USelectPicker from './components/USelectPicker'
 import UPeoplePicker from './components/UPeoplePicker'
 import UDatePicker from './components/UDatePicker'
 import UTimePicker from './components/UTimePicker'
@@ -55,6 +56,7 @@ export {
   USideBar,
   UContent,
   UButton,
+  USelectPicker,
   UPeoplePicker,
   UDatePicker,
   UTimePicker,
