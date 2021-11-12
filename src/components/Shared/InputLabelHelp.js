@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import { Tooltip, makeStyles, Link } from '@material-ui/core'
 import PropTypes from 'prop-types'
 
-import HelpIcon from '@material-ui/icons/Help'
+import HelpIcon from '@material-ui/icons/HelpOutline'
 import LaunchIcon from '@material-ui/icons/Launch'
 
 const useStyles = makeStyles(theme => ({
@@ -53,6 +53,7 @@ export default function InputLabelHelp({
           target={'_blank'}
           underline="always"
           className={classes.root}
+          title="Opens a new tab"
         >
           {icon ? icon : <LaunchIcon />}
           {label ? <span className={classes.linkHelpLabel}>{label}</span> : ''}
