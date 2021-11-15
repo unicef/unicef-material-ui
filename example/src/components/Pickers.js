@@ -77,7 +77,43 @@ export default function Pickers() {
     },
   ]
 
-  const regionsOptions = []
+  const regionsOptions = [
+    {
+      value: 'EAPR',
+      label: 'EAPR',
+      subLabel: 'East Asia and Pacific Region',
+    },
+    {
+      value: 'ECAR',
+      label: 'ECAR',
+      subLabel: 'Europe and Central Asia Region',
+    },
+    {
+      value: 'ESAR',
+      label: 'ESAR',
+      subLabel: 'Estern and Southern Africa Region',
+    },
+    {
+      value: 'LACR',
+      label: 'LACR',
+      subLabel: 'Latin America and the Caribbean',
+    },
+    {
+      value: 'MENAR',
+      label: 'MENAR',
+      subLabel: 'Middle East and North Africa',
+    },
+    {
+      value: 'SAR',
+      label: 'SAR',
+      subLabel: 'South Asia Region',
+    },
+    {
+      value: 'WCAR',
+      label: 'WCAR',
+      subLabel: 'West and Central Africa Region',
+    },
+  ]
 
   const [selectedDate, handleDateChange] = useState(new Date())
   const [options, setOptions] = useState(undefined)
@@ -176,15 +212,32 @@ export default function Pickers() {
           isMulti
         />
       </Grid>
+
+      <Grid item xs={12}>
+        <Typography variant="h5" style={{ margin: '16px 0px' }}>
+          Select
+        </Typography>
+      </Grid>
+
       <Grid item xs={12} md={6}>
         <USelectPicker
           label="Regions"
           TextFieldProps={{
             helperText: 'Please select multiple regions from the list',
           }}
-          placeholder="Select region ..."
+          placeholder="Select regions ..."
           options={regionsOptions}
           isMulti
+        />
+      </Grid>
+      <Grid item xs={12} md={6}>
+        <USelectPicker
+          label="Region"
+          TextFieldProps={{
+            helperText: 'Please select region from the list',
+          }}
+          placeholder="Select region ..."
+          options={regionsOptions}
         />
       </Grid>
 
