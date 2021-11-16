@@ -45,6 +45,11 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(5),
     marginLeft: theme.spacing(2),
   },
+  label: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: theme.spacing(0.5),
+  },
 }))
 
 const currencies = [
@@ -120,7 +125,6 @@ export default function FormValidator() {
       return value
     })
   }, [])
-
   return (
     <React.Fragment>
       <Grid container spacing={1}>
@@ -166,10 +170,14 @@ export default function FormValidator() {
           <Grid item xs={12} lg={3} xl={2}>
             <UTextField
               label="Email"
+              required
+              showLabelHelp={true}
+              InputLabelHelpProps={{
+                tooltipTitle: 'Hover text',
+              }}
               onChange={handleValue}
               className={classes.margin}
               name="cus_email"
-              variant="outlined"
               validators={['required', 'isEmail']}
               value={values.cus_email}
             />

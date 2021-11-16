@@ -1,65 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
-import Select from 'react-select'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
-import CancelIcon from '@material-ui/icons/Cancel'
-import MultiValue from './MultiValue'
-import SingleValue from './SingleValue'
-import Menu from './Menu'
-import Control from './Control'
-import NoOptionsMessage from './NoOptionsMessage'
-import ValueContainer from './ValueContainer'
-import Option from './Option'
-
-const useStyles = makeStyles(theme => ({
-  input: {
-    display: 'flex',
-    padding: '10px 14px',
-    height: 'auto',
-  },
-  valueContainer: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    flex: 1,
-    alignItems: 'center',
-    overflow: 'hidden',
-  },
-  OptionsMessage: {
-    padding: theme.spacing(1, 2),
-  },
-  placeholder: {
-    position: 'absolute',
-    left: 2,
-    bottom: 6,
-    fontSize: 16,
-  },
-  paper: props => ({
-    position: 'absolute',
-    zIndex: 999,
-    left: 0,
-    right: 0,
-    marginTop:
-      props.TextFieldProps && props.TextFieldProps.helperText
-        ? theme.spacing(-2.1)
-        : theme.spacing(0.3),
-  }),
-  divider: {
-    height: theme.spacing(2),
-  },
-}))
-
-const defaultComponents = {
-  Control,
-  Menu,
-  MultiValue,
-  NoOptionsMessage,
-  IndicatorSeparator: () => null,
-  Option,
-  SingleValue,
-  ValueContainer,
-  MultiValueRemove: removeProps => <CancelIcon {...removeProps} />,
-}
-
+import USelectPicker from '../USelectPicker'
 /**
  * UPeoplePicker is a control for selecting people from a list. Has the features below:
  *
@@ -70,61 +11,7 @@ const defaultComponents = {
  *
  */
 export default function UPeoplePicker(props) {
-  const classes = useStyles(props)
-  const theme = useTheme()
-  const {
-    label,
-    variant,
-    TextFieldProps,
-    showNoOptionsWithEmptyTextField,
-    onInputChange,
-    components,
-    ...others
-  } = props
-
-  const [isTextFieldEmpty, setIsTextFieldEmpty] = useState(true)
-
-  const selectStyles = {
-    input: base => ({
-      ...base,
-      color: theme.palette.text.primary,
-      '& input': {
-        font: 'inherit',
-      },
-    }),
-    menuPortal: base => ({ ...base, zIndex: 9999 }),
-    menu: base => ({ ...base, zIndex: '9999 !important' }),
-  }
-
-  const defaultTextFieldProps = {
-    label: label,
-    variant: variant,
-    InputLabelProps: {
-      shrink: true,
-    },
-  }
-  // To show or hide the no options menu
-  const showNoOptions = showNoOptionsWithEmptyTextField || !isTextFieldEmpty
-
-  const mergedTextFieldProps = { ...defaultTextFieldProps, ...TextFieldProps }
-  // handle the input change
-  const handleInputChange = value => {
-    setIsTextFieldEmpty(value === '')
-    onInputChange && onInputChange(value)
-  }
-
-  return (
-    <Select
-      classes={classes}
-      isClearable
-      styles={selectStyles}
-      components={{ ...defaultComponents, ...components }}
-      TextFieldProps={mergedTextFieldProps}
-      onInputChange={value => handleInputChange(value)}
-      noOptionsMessage={() => (showNoOptions ? NoOptionsMessage : null)}
-      {...others}
-    />
-  )
+  return <USelectPicker {...props} hideAvatar={false} />
 }
 
 UPeoplePicker.propTypes = {
@@ -178,6 +65,10 @@ UPeoplePicker.propTypes = {
   errorLoadingOptions: PropTypes.string,
   /** To customize the components of select */
   components: PropTypes.object,
+  /** Show label help */
+  showLabelHelp: PropTypes.bool,
+  /** Props applied to the input label help element. E.g.  InputLabelHelpProps={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
+  InputLabelHelpProps: PropTypes.object,
 }
 
 UPeoplePicker.defaultProps = {
@@ -185,4 +76,6 @@ UPeoplePicker.defaultProps = {
   placeholder: 'Select...',
   variant: 'outlined',
   showNoOptionsWithEmptyTextField: true,
+  showLabelHelp: false,
+  InputLabelHelpProps: {},
 }

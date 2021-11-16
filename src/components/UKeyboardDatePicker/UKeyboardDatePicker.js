@@ -1,17 +1,35 @@
-import React from "react"
+import React from 'react'
 import PropTypes from 'prop-types'
 import DateFnsUtils from '@date-io/date-fns'
 import {
   KeyboardDatePicker,
   MuiPickersUtilsProvider,
-} from "@material-ui/pickers"
+} from '@material-ui/pickers'
+
+import { InputLabelHelp } from '../Shared'
+
+const styles = {
+  labelRoot: {
+    pointerEvents: 'auto',
+    display: 'flex',
+    alignItems: 'center',
+  },
+}
 
 /**
  * UDatePicker is a customized [Material Ui KeyboardDatePicker]('https://material-ui-pickers.dev/api/KeyboardDatePicker') for more details
  */
 export default function UKeyboardDatePicker(props) {
-
-  const { autoOk, variant, inputVariant, ...others } = props
+  const {
+    autoOk,
+    variant,
+    inputVariant,
+    showLabelHelp,
+    InputLabelProps,
+    InputLabelHelpProps,
+    label,
+    ...others
+  } = props
 
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -19,10 +37,21 @@ export default function UKeyboardDatePicker(props) {
         autoOk={autoOk}
         variant={variant}
         inputVariant={inputVariant}
+        InputLabelProps={{
+          ...InputLabelProps,
+          style: { ...styles.labelRoot },
+        }}
+        label={
+          showLabelHelp ? (
+            <InputLabelHelp inputLabel={label} {...InputLabelHelpProps} />
+          ) : (
+            label
+          )
+        }
         {...others}
       />
     </MuiPickersUtilsProvider>
-  );
+  )
 }
 
 UKeyboardDatePicker.propTypes = {
@@ -34,13 +63,17 @@ UKeyboardDatePicker.propTypes = {
   inputVariant: PropTypes.string,
   /** date format */
   format: PropTypes.string,
+  /** Label text */
+  label: PropTypes.string,
+  /** Show label help */
+  showLabelHelp: PropTypes.bool,
+  /** Props applied to the input label help element. E.g InputLabelHelpProps={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
+  InputLabelHelpProps: PropTypes.object,
 }
 
 UKeyboardDatePicker.defaultProps = {
-  inputVariant: "outlined",
+  inputVariant: 'outlined',
   autoOk: true,
-  variant: "inline",
-  format: "dd/MM/yyyy",
+  variant: 'inline',
+  format: 'dd/MM/yyyy',
 }
-
-

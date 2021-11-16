@@ -6,6 +6,10 @@ import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 
 export default function Option(props) {
+  const hideAvatar =
+    props.selectProps &&
+    props.selectProps.TextFieldProps &&
+    props.selectProps.TextFieldProps.hideAvatar
   return (
     <MenuItem
       ref={props.innerRef}
@@ -17,7 +21,9 @@ export default function Option(props) {
       {...props.innerProps}
     >
       <React.Fragment>
-        {props.data.avatar ? (
+        {hideAvatar ? (
+          ''
+        ) : props.data.avatar ? (
           props.data.avatar
         ) : (
           <Avatar width="32" height="32" />

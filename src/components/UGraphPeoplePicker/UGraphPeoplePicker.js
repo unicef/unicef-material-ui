@@ -30,6 +30,7 @@ export default function UGraphPeoplePicker({
   isMultiple,
   searchUsers,
   components,
+  ...props
 }) {
   const [graphData, setGraphData] = useState([])
   const [selectedUsers, setSelectedUsers] = useState(getOptions(options))
@@ -95,6 +96,7 @@ export default function UGraphPeoplePicker({
       variant="outlined"
       isMulti={isMultiple}
       components={components}
+      {...props}
     />
   )
 }
@@ -118,6 +120,10 @@ UGraphPeoplePicker.propTypes = {
   searchUsers: PropTypes.func,
   /** To customize the components of select */
   components: PropTypes.object,
+  /** Show label help */
+  showLabelHelp: PropTypes.bool,
+  /** Props applied to the input label help element. E.g.  InputLabelHelpProps={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
+  InputLabelHelpProps: PropTypes.object,
 }
 
 UGraphPeoplePicker.defaultProps = {

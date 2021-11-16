@@ -7,6 +7,7 @@ import {
   UKeyboardTimePicker,
   UDateTimePicker,
   UKeyboardDateTimePicker,
+  USelectPicker,
 } from 'unicef-material-ui'
 import { GraphPeoplePickerExample } from '../components'
 import { Grid, Typography, Avatar } from '@material-ui/core'
@@ -76,6 +77,44 @@ export default function Pickers() {
     },
   ]
 
+  const regionsOptions = [
+    {
+      value: 'EAPR',
+      label: 'EAPR',
+      subLabel: 'East Asia and Pacific Region',
+    },
+    {
+      value: 'ECAR',
+      label: 'ECAR',
+      subLabel: 'Europe and Central Asia Region',
+    },
+    {
+      value: 'ESAR',
+      label: 'ESAR',
+      subLabel: 'Estern and Southern Africa Region',
+    },
+    {
+      value: 'LACR',
+      label: 'LACR',
+      subLabel: 'Latin America and the Caribbean',
+    },
+    {
+      value: 'MENAR',
+      label: 'MENAR',
+      subLabel: 'Middle East and North Africa',
+    },
+    {
+      value: 'SAR',
+      label: 'SAR',
+      subLabel: 'South Asia Region',
+    },
+    {
+      value: 'WCAR',
+      label: 'WCAR',
+      subLabel: 'West and Central Africa Region',
+    },
+  ]
+
   const [selectedDate, handleDateChange] = useState(new Date())
   const [options, setOptions] = useState(undefined)
   const [loading, setLoading] = useState(false)
@@ -105,6 +144,11 @@ export default function Pickers() {
           label="Select"
           placeholder="Select people ..."
           options={peopleOptions}
+          showLabelHelp={true}
+          InputLabelHelpProps={{
+            type: 'link',
+            link: 'https://unicef.github.io/',
+          }}
         />
       </Grid>
       <Grid item xs={12} md={6}>
@@ -116,6 +160,11 @@ export default function Pickers() {
           placeholder="Select people ..."
           options={peopleOptions}
           isMulti
+          showLabelHelp={true}
+          InputLabelHelpProps={{
+            type: 'tooltip',
+            tooltipTitle: 'Please select multiple people from list',
+          }}
         />
       </Grid>
       <Grid item xs={12} md={6}>
@@ -163,6 +212,35 @@ export default function Pickers() {
           isMulti
         />
       </Grid>
+
+      <Grid item xs={12}>
+        <Typography variant="h5" style={{ margin: '16px 0px' }}>
+          Select
+        </Typography>
+      </Grid>
+
+      <Grid item xs={12} md={6}>
+        <USelectPicker
+          label="Regions"
+          TextFieldProps={{
+            helperText: 'Please select multiple regions from the list',
+          }}
+          placeholder="Select regions ..."
+          options={regionsOptions}
+          isMulti
+        />
+      </Grid>
+      <Grid item xs={12} md={6}>
+        <USelectPicker
+          label="Region"
+          TextFieldProps={{
+            helperText: 'Please select region from the list',
+          }}
+          placeholder="Select region ..."
+          options={regionsOptions}
+        />
+      </Grid>
+
       <Grid item xs={12}>
         <Typography variant="h5">Date picker</Typography>
       </Grid>
@@ -171,6 +249,10 @@ export default function Pickers() {
           label="Date"
           value={selectedDate}
           onChange={handleDateChange}
+          showLabelHelp={true}
+          InputLabelHelpProps={{
+            tooltipTitle: 'Date',
+          }}
         />
       </Grid>
       <Grid item xs={12} md={6} lg={3}>
@@ -178,6 +260,10 @@ export default function Pickers() {
           label="With keyboard"
           value={selectedDate}
           onChange={handleDateChange}
+          showLabelHelp={true}
+          InputLabelHelpProps={{
+            tooltipTitle: 'With keyboard',
+          }}
         />
       </Grid>
       <Grid item xs={12}>
@@ -188,6 +274,10 @@ export default function Pickers() {
           label="Time"
           value={selectedDate}
           onChange={handleDateChange}
+          showLabelHelp={true}
+          InputLabelHelpProps={{
+            tooltipTitle: 'Time',
+          }}
         />
       </Grid>
       <Grid item xs={12} md={6} lg={3}>
@@ -195,6 +285,10 @@ export default function Pickers() {
           label="With keyboard"
           value={selectedDate}
           onChange={handleDateChange}
+          showLabelHelp={true}
+          InputLabelHelpProps={{
+            tooltipTitle: 'With keyboard',
+          }}
         />
       </Grid>
       <Grid item xs={12}>
@@ -205,6 +299,10 @@ export default function Pickers() {
           label="Date and Time"
           value={selectedDate}
           onChange={handleDateChange}
+          showLabelHelp={true}
+          InputLabelHelpProps={{
+            tooltipTitle: 'Date and time',
+          }}
         />
       </Grid>
       <Grid item xs={12} md={6} lg={3}>
@@ -212,6 +310,10 @@ export default function Pickers() {
           label="With keyboard"
           value={selectedDate}
           onChange={handleDateChange}
+          showLabelHelp={true}
+          InputLabelHelpProps={{
+            tooltipTitle: 'With keyboard',
+          }}
         />
       </Grid>
       <Grid item xs={12}>

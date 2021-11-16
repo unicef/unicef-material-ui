@@ -35,13 +35,20 @@ const useStyles = makeStyles(theme => ({
 export default function SingleValue(props) {
   const classes = useStyles()
 
+  const hideAvatar =
+    props.selectProps &&
+    props.selectProps.TextFieldProps &&
+    props.selectProps.TextFieldProps.hideAvatar
+
   return (
     <Typography
       className={classes.singleValue}
       variant="subtitle1"
       {...props.innerProps}
     >
-      {props.data.avatar ? (
+      {hideAvatar ? (
+        ''
+      ) : props.data.avatar ? (
         <span className={classes.singleValueAvatar}>{props.data.avatar}</span>
       ) : (
         <Avatar className={classes.avatar} />

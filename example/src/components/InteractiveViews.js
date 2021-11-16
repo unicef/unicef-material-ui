@@ -16,6 +16,7 @@ import {
   ActiveFormTextField,
   ActiveFormSelect,
   UValidatorForm,
+  ActiveDatePicker,
 } from 'unicef-material-ui'
 
 const useStyles = makeStyles(theme => ({
@@ -51,6 +52,7 @@ export default function InteractiveViews() {
     employment: 1,
     mobile: 2223333433,
     address: '9452 Horace New York NY 11224',
+    dateOfBirth: new Date(),
   })
   const timer = React.useRef()
 
@@ -65,6 +67,13 @@ export default function InteractiveViews() {
     const value = target.value
     const name = target.name
     const newValues = { ...values, [name]: value }
+    if (values !== newValues) {
+      setDisabled(false)
+      setValues(newValues)
+    }
+  }
+  function handleDateValue(date) {
+    const newValues = { ...values, dateOfBirth: date }
     if (values !== newValues) {
       setDisabled(false)
       setValues(newValues)
@@ -244,6 +253,17 @@ export default function InteractiveViews() {
                       interactiveMode
                     />
                   </Grid>
+                  <Grid item xs={12}>
+                    <ActiveDatePicker
+                      label="Date of birth"
+                      typographyVariant="subtitle1"
+                      fullWidth
+                      interactiveMode
+                      name="dateOfBirth"
+                      value={values.dateOfBirth}
+                      onChange={handleDateValue}
+                    />
+                  </Grid>
                 </Grid>
               </Grid>
             </Grid>
@@ -353,6 +373,17 @@ export default function InteractiveViews() {
                       errorMessages={['this field is required']}
                       fullWidth
                       multiline
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <ActiveDatePicker
+                      label="Date of birth"
+                      typographyVariant="subtitle1"
+                      fullWidth
+                      readOnly={readOnly}
+                      name="dateOfBirth"
+                      value={values.dateOfBirth}
+                      onChange={handleDateValue}
                     />
                   </Grid>
                 </Grid>

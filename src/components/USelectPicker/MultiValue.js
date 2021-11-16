@@ -33,14 +33,25 @@ export default function MultiValue({
   children,
   removeProps,
   onClick,
+  selectProps,
   ...props
 }) {
   const classes = useStyles()
+  const hideAvatar =
+    selectProps &&
+    selectProps.TextFieldProps &&
+    selectProps.TextFieldProps.hideAvatar
 
   return (
     <Chip
       variant="outlined"
-      avatar={data.avatar ? data.avatar : <Avatar className={classes.avatar} />}
+      avatar={
+        hideAvatar ? null : data.avatar ? (
+          data.avatar
+        ) : (
+          <Avatar className={classes.avatar} />
+        )
+      }
       label={children}
       className={clsx(classes.chip, {
         [classes.chipFocused]: props.isFocused,
