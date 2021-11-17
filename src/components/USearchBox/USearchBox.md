@@ -3,7 +3,7 @@ Searchbox usage:
 ```jsx static
 import React from 'react'
 import { Grid } from '@material-ui/core'
-import USearchbox from '../USearchbox'
+import USearchbox from './USearchBox'
 
 const handleSearch = value => {
   console.log('Search value:', value)
@@ -22,7 +22,7 @@ const handleSearch = value => {
 ```jsx
 import React from 'react'
 import { Grid } from '@material-ui/core'
-import USearchbox from '../USearchbox'
+import USearchbox from './USearchBox'
 const handleSearch = value => {
   console.log('Search value:', value)
   //Service call or other actions
