@@ -57,5 +57,5 @@ UValidatorComponent.propTypes = {
   /** Allow to use required validator in any validation trigger, not only form submit. */
   withRequiredValidator: PropTypes.bool,
   /** you must provide this prop, it will be used only for validation. */
-  value: PropTypes.bool.isRequired,
+  value: PropTypes.any.isRequired,
 }
