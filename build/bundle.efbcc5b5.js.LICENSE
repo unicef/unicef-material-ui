@@ -8,12 +8,6 @@
  * @license MIT
  */
 
-/*
-object-assign
-(c) Sindre Sorhus
-@license MIT
-*/
-
 /**!
  * @fileOverview Kickass library to create and place poppers near their reference elements.
  * @version 1.16.1-lts
@@ -64,6 +58,12 @@ object-assign
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
+
+/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/
 
 /** @license React v0.19.1
  * scheduler.production.min.js
