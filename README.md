@@ -99,6 +99,17 @@ Builds the styleguide docs as well as the example. The output is stored in `site
 
 Runs `npm run build:site` and then deploys the output to Github `gh-pages`.
 
+To deploy from a clean repo
+```bash
+git clone https://unicef.github.io/unicef-material-ui/
+cd unicef-material-ui
+npm install
+npm build
+cd example
+npm install
+cd ..
+npm deploy
+```
 
 ## About UNICEF
 
