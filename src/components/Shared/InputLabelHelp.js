@@ -8,6 +8,7 @@ import LaunchIcon from '@material-ui/icons/Launch'
 const useStyles = makeStyles(theme => ({
   root: {
     marginRight: theme.spacing(-1),
+    marginTop: theme.spacing(-0.5),
     paddingLeft: theme.spacing(1.5),
     order: 999,
     display: 'inline-flex',

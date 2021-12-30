@@ -10,6 +10,15 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
   },
+  inputHover: {
+    '&:hover $notchedOutline': {
+      borderColor: 'transparent',
+    },
+  },
+  notchedOutline: {
+    borderRadius: 2,
+    borderColor: 'transparent',
+  },
 }
 
 export default function Control({
@@ -19,6 +28,7 @@ export default function Control({
   selectProps: { classes, TextFieldProps },
   InputLabelProps,
 }) {
+  const readOnly = TextFieldProps && TextFieldProps.readOnly
   return (
     <TextField
       fullWidth
@@ -29,7 +39,13 @@ export default function Control({
           className: classes.input,
           ref: innerRef,
           children,
+          readOnly: Boolean(readOnly),
+          disabled: Boolean(readOnly),
           ...innerProps,
+        },
+        classes: {
+          root: `${readOnly && classes.inputHover}`,
+          notchedOutline: `${!readOnly ? '' : classes.notchedOutline}`,
         },
       }}
       InputLabelProps={{

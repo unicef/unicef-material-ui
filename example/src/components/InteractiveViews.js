@@ -17,6 +17,7 @@ import {
   ActiveFormSelect,
   UValidatorForm,
   ActiveDatePicker,
+  USelectPicker,
 } from 'unicef-material-ui'
 
 const useStyles = makeStyles(theme => ({
@@ -53,6 +54,16 @@ export default function InteractiveViews() {
     mobile: 2223333433,
     address: '9452 Horace New York NY 11224',
     dateOfBirth: new Date(),
+    skills: [
+      {
+        label: 'HTML',
+        value: 'HTML',
+      },
+      {
+        label: 'CSS',
+        value: 'CSS',
+      },
+    ],
   })
   const timer = React.useRef()
 
@@ -61,6 +72,25 @@ export default function InteractiveViews() {
       clearTimeout(timer.current)
     }
   }, [])
+
+  const skillsOptions = [
+    {
+      label: 'HTML',
+      value: 'HTML',
+    },
+    {
+      label: 'CSS',
+      value: 'CSS',
+    },
+    {
+      label: 'Javascript',
+      value: 'Javascript',
+    },
+    {
+      label: 'React Js',
+      value: 'React Js',
+    },
+  ]
 
   function handleValue(event) {
     const target = event.target
@@ -80,6 +110,9 @@ export default function InteractiveViews() {
     }
   }
 
+  function handleSkillsChange(value, action) {
+    setValues({ ...values, [action.name]: value })
+  }
   function handleEdit() {
     timer.current = setTimeout(() => {
       setReadOnly(false)
@@ -373,6 +406,24 @@ export default function InteractiveViews() {
                       errorMessages={['this field is required']}
                       fullWidth
                       multiline
+                    />
+                  </Grid>
+                  <Grid item xs={12} md={8}>
+                    <USelectPicker
+                      label="Skills"
+                      name="skills"
+                      value={values.skills || []}
+                      onChange={handleSkillsChange}
+                      options={skillsOptions}
+                      variant="outlined"
+                      isMulti
+                      lineByLineOption={true}
+                      readOnly={readOnly}
+                      showLabelHelp={true}
+                      InputLabelHelpProps={{
+                        type: 'link',
+                        tooltipTitle: 'Please select multiple people from list',
+                      }}
                     />
                   </Grid>
                   <Grid item xs={12}>
