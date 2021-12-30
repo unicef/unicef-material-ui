@@ -408,7 +408,7 @@ export default function InteractiveViews() {
                       multiline
                     />
                   </Grid>
-                  <Grid item xs={12} md={8}>
+                  <Grid item xs={12}>
                     <USelectPicker
                       label="Skills"
                       name="skills"
@@ -417,7 +417,7 @@ export default function InteractiveViews() {
                       options={skillsOptions}
                       variant="outlined"
                       isMulti
-                      lineByLineOption={true}
+                      fullWidth
                       readOnly={readOnly}
                       showLabelHelp={true}
                       InputLabelHelpProps={{
