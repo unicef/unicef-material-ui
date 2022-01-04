@@ -26,6 +26,18 @@ const useStyles = makeStyles(theme => ({
     width: 24,
     height: 24,
   },
+  deleteIconReadOnly: {
+    display: 'none!important',
+  },
+  rootReadOnly: {
+    fontSize: '1rem',
+    marginLeft: 0,
+    background: 'transparent',
+  },
+  labelReadOnly: {
+    paddingLeft: 0,
+    marginLeft: 0,
+  },
 }))
 
 export default function MultiValue({
@@ -42,9 +54,13 @@ export default function MultiValue({
     selectProps.TextFieldProps &&
     selectProps.TextFieldProps.hideAvatar
 
+  const readOnly =
+    selectProps &&
+    selectProps.TextFieldProps &&
+    selectProps.TextFieldProps.readOnly
+
   return (
     <Chip
-      variant="outlined"
       avatar={
         hideAvatar ? null : data.avatar ? (
           data.avatar
@@ -56,8 +72,18 @@ export default function MultiValue({
       className={clsx(classes.chip, {
         [classes.chipFocused]: props.isFocused,
       })}
+      classes={{
+        deleteIcon: readOnly ? classes.deleteIconReadOnly : '',
+        root: readOnly ? classes.rootReadOnly : '',
+        label: readOnly ? classes.labelReadOnly : '',
+      }}
       onDelete={removeProps.onClick}
-      deleteIcon={<props.components.Remove {...removeProps} />}
+      {...(readOnly
+        ? {}
+        : {
+            deleteIcon: <props.components.Remove {...removeProps} />,
+            variant: 'outlined',
+          })}
     />
   )
 }

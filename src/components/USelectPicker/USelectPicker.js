@@ -51,6 +51,15 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     alignItems: 'center',
   },
+  inputHover: {
+    '&:hover $notchedOutline': {
+      borderColor: 'transparent',
+    },
+  },
+  notchedOutline: {
+    borderRadius: 2,
+    borderColor: 'transparent',
+  },
 }))
 
 const defaultComponents = {
@@ -88,6 +97,13 @@ export default function USelectPicker(props) {
     InputLabelProps,
     InputLabelHelpProps,
     hideAvatar,
+    readOnly,
+    lineByLineOption,
+    isClearable,
+    isSearchable,
+    isDisabled,
+    menuIsOpen,
+    placeholder,
     ...others
   } = props
 
@@ -113,6 +129,8 @@ export default function USelectPicker(props) {
       classes: { root: classes.labelRoot },
       ...InputLabelProps,
     },
+    readOnly,
+    lineByLineOption,
     hideAvatar,
     showLabelHelp,
     InputLabelHelpProps,
@@ -127,15 +145,27 @@ export default function USelectPicker(props) {
     onInputChange && onInputChange(value)
   }
 
+  const extraComponents = readOnly
+    ? {
+        DropdownIndicator: () => null,
+      }
+    : {}
+
+  const selectPlaceholder = readOnly ? '' : placeholder
+
   return (
     <Select
       classes={classes}
-      isClearable
       styles={selectStyles}
-      components={{ ...defaultComponents, ...components }}
+      components={{ ...defaultComponents, ...components, ...extraComponents }}
       TextFieldProps={mergedTextFieldProps}
       onInputChange={value => handleInputChange(value)}
       noOptionsMessage={() => (showNoOptions ? NoOptionsMessage : null)}
+      isClearable={readOnly ? false : isClearable}
+      isSearchable={readOnly ? false : isSearchable}
+      isDisabled={readOnly ? true : isDisabled}
+      menuIsOpen={readOnly ? false : menuIsOpen}
+      placeholder={selectPlaceholder}
       {...others}
     />
   )
@@ -198,6 +228,18 @@ USelectPicker.propTypes = {
   InputLabelHelpProps: PropTypes.object,
   /** Hide people avatar */
   hideAvatar: PropTypes.bool,
+  /** Is the read only field or not */
+  readOnly: PropTypes.bool,
+  /** Whether the selected options displayed in the new line or not in multiple selected options */
+  lineByLineOption: PropTypes.bool,
+  /** Is the select value clearable */
+  isClearable: PropTypes.bool,
+  /** Whether to enable search functionality */
+  isSearchable: PropTypes.bool,
+  /** Whether the input is disabled */
+  isDisabled: PropTypes.bool,
+  /** Whether the menu is open */
+  menuIsOpen: PropTypes.bool,
 }
 
 USelectPicker.defaultProps = {
@@ -208,4 +250,10 @@ USelectPicker.defaultProps = {
   showLabelHelp: false,
   InputLabelHelpProps: {},
   hideAvatar: true,
+  readOnly: false,
+  isClearable: undefined,
+  isSearchable: true,
+  isDisabled: false,
+  menuIsOpen: undefined,
+  lineByLineOption: false,
 }
