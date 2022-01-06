@@ -23,6 +23,7 @@ import UValidatorForm from './components/UValidatorForm'
 import ActiveFormTextField from './components/ActiveFormTextField'
 import ActiveFormSelect from './components/ActiveFormSelect'
 import UPositiveInteger from './components/UPositiveInteger'
+import ActiveCurrencyTextField from './components/ActiveCurrencyTextField'
 import ActiveFormPositiveInteger from './components/ActiveFormPositiveInteger'
 import UConfirmationButton from './components/UConfirmationButton'
 import URadioButtons from './components/URadioButtons'
@@ -68,6 +69,7 @@ export {
   UValidatorForm,
   UValidatorComponent,
   UPositiveInteger,
+  ActiveCurrencyTextField,
   ActiveFormPositiveInteger,
   UConfirmationButton,
   URadioButtons,
