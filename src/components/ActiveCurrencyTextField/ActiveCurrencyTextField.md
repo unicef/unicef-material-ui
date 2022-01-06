@@ -5,7 +5,7 @@ import {
   UValidatorForm,
   UButton,
   ActiveCurrencyTextField,
-} from '@unicef/material-ui'
+} from '../../index.js'
 
 // export default function ActiveCurrencyTextField() {
 

@@ -209,6 +209,11 @@ module.exports = {
         ),
         path.resolve(
           __dirname,
+          'src/components/ActiveCurrencyTextField',
+          'ActiveCurrencyTextField.js'
+        ),
+        path.resolve(
+          __dirname,
           'src/components/ActiveFormSelect',
           'ActiveFormSelect.js'
         ),
