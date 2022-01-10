@@ -187,6 +187,11 @@ module.exports = {
         ),
         path.resolve(
           __dirname,
+          'src/components/UCurrencyField',
+          'UCurrencyField.js'
+        ),
+        path.resolve(
+          __dirname,
           'src/components/UCoordinateField',
           'UCoordinateField.js'
         ),

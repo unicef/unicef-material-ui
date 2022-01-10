@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core'
-import UPositiveInteger from '../UPositiveInteger'
+import ActiveFormTextField from '../ActiveFormTextField'
 
 const useStyles = makeStyles(theme => ({
   startAdornmentContainer: {
@@ -18,7 +18,7 @@ export default function ActiveCurrencyTextField({
 }) {
   const classes = useStyles(props)
   return (
-    <UPositiveInteger
+    <ActiveFormTextField
       variant="outlined"
       InputProps={{
         startAdornment: (
