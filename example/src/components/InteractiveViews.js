@@ -14,6 +14,7 @@ import {
 } from '@material-ui/core'
 import {
   ActiveFormTextField,
+  ActiveCurrencyField,
   ActiveFormSelect,
   UValidatorForm,
   ActiveDatePicker,
@@ -53,6 +54,7 @@ export default function InteractiveViews() {
     employment: 1,
     mobile: 2223333433,
     address: '9452 Horace New York NY 11224',
+    salary: 100.55,
     dateOfBirth: new Date(),
     skills: [
       {
@@ -273,6 +275,20 @@ export default function InteractiveViews() {
                     </ActiveFormSelect>
                   </Grid>
                   <Grid item xs={12}>
+                    <ActiveCurrencyField
+                      label="Salary"
+                      name="salary"
+                      onChange={handleValue}
+                      typographyVariant="subtitle1"
+                      value={values.salary}
+                      validators={['required']}
+                      errorMessages={['this field is required']}
+                      fullWidth
+                      multiline
+                      interactiveMode
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
                     <ActiveFormTextField
                       label="Address"
                       name="address"
@@ -401,6 +417,20 @@ export default function InteractiveViews() {
                       onChange={handleValue}
                       typographyVariant="subtitle1"
                       value={values.address}
+                      readOnly={readOnly}
+                      validators={['required']}
+                      errorMessages={['this field is required']}
+                      fullWidth
+                      multiline
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <ActiveCurrencyField
+                      label="Salary"
+                      name="salary"
+                      onChange={handleValue}
+                      typographyVariant="subtitle1"
+                      value={values.salary}
                       readOnly={readOnly}
                       validators={['required']}
                       errorMessages={['this field is required']}

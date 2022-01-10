@@ -1,0 +1,43 @@
+```jsx
+import React, { useState, useRef } from 'react'
+import { Grid } from '@material-ui/core'
+import { UValidatorForm, UButton, UCurrencyField } from '../../index.js'
+
+// export default function UCurrencyField() {
+
+const form = useRef('form')
+const [currencyValue, setCurrencyValue] = useState()
+
+function handleValue(event) {
+  const { value } = event.target
+  setCurrencyValue(value)
+}
+
+function handleSubmit() {
+  // Submit the changes from here
+}
+
+// return (
+;<UValidatorForm
+  ref={form}
+  onSubmit={handleSubmit}
+  onError={errors => console.log(errors)}
+  // instantValidate={true}
+>
+  <Grid container spacing={1}>
+    <Grid item xs={12} lg={4}>
+      <UCurrencyField
+        label="Currency"
+        value={currencyValue}
+        onChange={handleValue}
+        name="currency"
+      />
+    </Grid>
+    <Grid item xs={12}>
+      <UButton type="submit">Submit</UButton>
+    </Grid>
+  </Grid>
+</UValidatorForm>
+//   )
+// }
+```

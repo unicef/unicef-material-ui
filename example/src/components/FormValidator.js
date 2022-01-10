@@ -20,6 +20,7 @@ import {
 import {
   UTextField,
   UPositiveInteger,
+  UCurrencyField,
   UValidatorForm,
   UValidatorComponent,
   UCoordinateField,
@@ -38,7 +39,7 @@ const useStyles = makeStyles(theme => ({
   margin: {
     marginTop: theme.spacing(4),
   },
-  positiveInteger: {
+  mb3: {
     marginBottom: theme.spacing(3),
   },
   button: {
@@ -79,6 +80,7 @@ export default function FormValidator() {
     email: 'test@test.com',
     password: 'testinghere',
     positiveInteger: 1,
+    currencyField: 1000.55,
     counter: 'This is counter',
     react: false,
     angular: false,
@@ -146,10 +148,37 @@ export default function FormValidator() {
               name="PositiveNumber"
               value={values['positiveInteger']}
               label="Positive number"
-              className={classes.positiveInteger}
               validators={['required']}
               onChange={e =>
                 setValues({ ...values, positiveInteger: e.target.value })
+              }
+            />
+          </UValidatorForm>
+        </Grid>
+      </Grid>
+      <Grid container spacing={1}>
+        <Grid item xs={12}>
+          <Typography variant="h5" style={{ margin: '16px 0px' }}>
+            Currency field
+          </Typography>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <UValidatorForm
+            onSubmit={event => {
+              event.preventDefault()
+              handleSubmit()
+            }}
+            onError={errors => console.log(errors)}
+            instantValidate={true}
+          >
+            <UCurrencyField
+              name="CurrencyInput"
+              value={values['currencyField']}
+              label="currency input"
+              className={classes.mb3}
+              validators={['required']}
+              onChange={e =>
+                setValues({ ...values, currencyField: e.target.value })
               }
             />
           </UValidatorForm>
