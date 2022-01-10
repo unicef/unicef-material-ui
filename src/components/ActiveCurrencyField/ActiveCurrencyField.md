@@ -1,13 +1,9 @@
 ```jsx
 import React, { useState, useRef } from 'react'
 import { Grid } from '@material-ui/core'
-import {
-  UValidatorForm,
-  UButton,
-  ActiveCurrencyTextField,
-} from '../../index.js'
+import { UValidatorForm, UButton, ActiveCurrencyField } from '../../index.js'
 
-// export default function ActiveCurrencyTextField() {
+// export default function ActiveCurrencyField() {
 
 const form = useRef('form')
 const [currencyValue, setCurrencyValue] = useState()
@@ -30,7 +26,7 @@ function handleSubmit() {
 >
   <Grid container spacing={1}>
     <Grid item xs={12} lg={4}>
-      <ActiveCurrencyTextField
+      <ActiveCurrencyField
         label="Currency"
         value={currencyValue}
         onChange={handleValue}

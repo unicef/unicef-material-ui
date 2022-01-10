@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core'
-import ActiveFormTextField from '../ActiveFormTextField'
+import ActiveFormPositiveInteger from '../ActiveFormPositiveInteger'
 
 const useStyles = makeStyles(theme => ({
   startAdornmentContainer: {
@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function ActiveCurrencyTextField({
+export default function ActiveCurrencyField({
   inputPrefix,
   decimalScale,
   InputProps,
@@ -18,7 +18,7 @@ export default function ActiveCurrencyTextField({
 }) {
   const classes = useStyles(props)
   return (
-    <ActiveFormTextField
+    <ActiveFormPositiveInteger
       variant="outlined"
       InputProps={{
         startAdornment: (
@@ -32,7 +32,7 @@ export default function ActiveCurrencyTextField({
   )
 }
 
-ActiveCurrencyTextField.propTypes = {
+ActiveCurrencyField.propTypes = {
   /** label */
   label: PropTypes.string,
   /** placeholder text*/
@@ -73,7 +73,7 @@ ActiveCurrencyTextField.propTypes = {
   withRequiredValidator: PropTypes.bool,
 }
 
-ActiveCurrencyTextField.defaultProps = {
+ActiveCurrencyField.defaultProps = {
   inputPrefix: '$',
   decimalScale: 2,
 }

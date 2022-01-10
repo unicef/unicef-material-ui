@@ -24,7 +24,7 @@ import ActiveFormTextField from './components/ActiveFormTextField'
 import ActiveFormSelect from './components/ActiveFormSelect'
 import UPositiveInteger from './components/UPositiveInteger'
 import UCurrencyField from './components/UCurrencyField'
-import ActiveCurrencyTextField from './components/ActiveCurrencyTextField'
+import ActiveCurrencyField from './components/ActiveCurrencyField'
 import ActiveFormPositiveInteger from './components/ActiveFormPositiveInteger'
 import UConfirmationButton from './components/UConfirmationButton'
 import URadioButtons from './components/URadioButtons'
@@ -71,7 +71,7 @@ export {
   UValidatorComponent,
   UPositiveInteger,
   UCurrencyField,
-  ActiveCurrencyTextField,
+  ActiveCurrencyField,
   ActiveFormPositiveInteger,
   UConfirmationButton,
   URadioButtons,

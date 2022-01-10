@@ -14,7 +14,7 @@ import {
 } from '@material-ui/core'
 import {
   ActiveFormTextField,
-  ActiveCurrencyTextField,
+  ActiveCurrencyField,
   ActiveFormSelect,
   UValidatorForm,
   ActiveDatePicker,
@@ -275,7 +275,7 @@ export default function InteractiveViews() {
                     </ActiveFormSelect>
                   </Grid>
                   <Grid item xs={12}>
-                    <ActiveCurrencyTextField
+                    <ActiveCurrencyField
                       label="Salary"
                       name="salary"
                       onChange={handleValue}
@@ -425,7 +425,7 @@ export default function InteractiveViews() {
                     />
                   </Grid>
                   <Grid item xs={12}>
-                    <ActiveCurrencyTextField
+                    <ActiveCurrencyField
                       label="Salary"
                       name="salary"
                       onChange={handleValue}

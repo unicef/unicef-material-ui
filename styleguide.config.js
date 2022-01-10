@@ -214,8 +214,8 @@ module.exports = {
         ),
         path.resolve(
           __dirname,
-          'src/components/ActiveCurrencyTextField',
-          'ActiveCurrencyTextField.js'
+          'src/components/ActiveCurrencyField',
+          'ActiveCurrencyField.js'
         ),
         path.resolve(
           __dirname,
