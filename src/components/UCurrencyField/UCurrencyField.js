@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function ActiveCurrencyTextField({
+export default function UCurrencyField({
   inputPrefix,
   decimalScale,
   InputProps,
@@ -32,7 +32,7 @@ export default function ActiveCurrencyTextField({
   )
 }
 
-ActiveCurrencyTextField.propTypes = {
+UCurrencyField.propTypes = {
   /** label */
   label: PropTypes.string,
   /** placeholder text*/
@@ -73,7 +73,7 @@ ActiveCurrencyTextField.propTypes = {
   withRequiredValidator: PropTypes.bool,
 }
 
-ActiveCurrencyTextField.defaultProps = {
+UCurrencyField.defaultProps = {
   inputPrefix: '$',
   decimalScale: 2,
 }
