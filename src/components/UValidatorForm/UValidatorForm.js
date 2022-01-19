@@ -1,6 +1,7 @@
 import React, { forwardRef } from 'react'
 import { ValidatorForm } from 'react-form-validator-core'
 import PropTypes from 'prop-types'
+import { isAlphanumericText, isPhoneNumberText, isSafeText } from '../../utils'
 
 /**
  * * UValidatorForm is a component as similar to Form, it also has some set of validations for form that contains textfield, checkboxes, select, choice buttons.
@@ -40,6 +41,18 @@ function ForwardRefForm(props, ref) {
       return false
     }
     return true
+  })
+
+  ValidatorForm.addValidationRule('isPhone', value => {
+    return value != '' && isPhoneNumberText(value)
+  })
+
+  ValidatorForm.addValidationRule('isSafeText', value => {
+    return value != '' && isSafeText(value)
+  })
+
+  ValidatorForm.addValidationRule('isAlphanumeric', value => {
+    return value != '' && isAlphanumericText(value)
   })
 
   return <ValidatorForm {...props} ref={ref} />

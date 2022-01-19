@@ -298,6 +298,39 @@ export default function FormValidator() {
               value={values.url}
             />
           </Grid>
+          <Grid item xs={12} lg={3} xl={2}>
+            <UTextField
+              label="Phone"
+              onChange={handleValue}
+              className={classes.margin}
+              name="phone"
+              variant="outlined"
+              validators={['required', 'isPhone']}
+              value={values.phone}
+            />
+          </Grid>
+          <Grid item xs={12} lg={3} xl={2}>
+            <UTextField
+              label="Safe text"
+              onChange={handleValue}
+              className={classes.margin}
+              name="safeText"
+              variant="outlined"
+              validators={['required', 'isSafeText']}
+              value={values.safeText}
+            />
+          </Grid>
+          <Grid item xs={12} lg={3} xl={2}>
+            <UTextField
+              label="Alphanumeric"
+              onChange={handleValue}
+              className={classes.margin}
+              name="alphanumeric"
+              variant="outlined"
+              validators={['required', 'isAlphanumeric']}
+              value={values.alphanumeric}
+            />
+          </Grid>
           <Grid item xs={12} lg={1}>
             <Button
               // style={{ marginTop: 24 }}
