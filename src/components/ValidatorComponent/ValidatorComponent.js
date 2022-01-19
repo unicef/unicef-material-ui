@@ -184,4 +184,7 @@ const defaultErrorMessages = {
   isUrl: 'It should start with http:// or https://',
   isLatitude: 'It should be between -90 and 90',
   isLongitude: 'It should be between -180 and 180',
+  isPhone: 'Only numbers,(,),-,.,# and (ext) are allowed',
+  isSafeText: 'HTML not allowed',
+  isAlphanumeric: 'Only letters and numbers are allowed',
 }
