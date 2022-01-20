@@ -509,7 +509,7 @@ function handleSubmit() {
 `PHONE : isPhone and required`
 
 ```html
-validators={['isNumber', 'isPhone']}
+validators={['isPhone']}
 ```
 
 ```jsx
@@ -564,7 +564,7 @@ function handleSubmit() {
       variant="outlined"
       className={classes.textField}
       value={value}
-      validators={['required', 'isPhone']}
+      validators={['isPhone']}
     />
     <Button
       className={classes.margin}
@@ -584,7 +584,7 @@ function handleSubmit() {
 `Alphanumeric : isAlphanumeric and required`
 
 ```html
-validators={['isNumber', 'isAlphanumeric']}
+validators={['isAlphanumeric']}
 ```
 
 ```jsx
@@ -639,7 +639,7 @@ function handleSubmit() {
       variant="outlined"
       className={classes.textField}
       value={value}
-      validators={['required', 'isAlphanumeric']}
+      validators={['isAlphanumeric']}
     />
     <Button
       className={classes.margin}
@@ -659,7 +659,7 @@ function handleSubmit() {
 `Safe text : isSafeText and required`
 
 ```html
-validators={['isNumber', 'isAlphanumeric']}
+validators={['isSafeText']}
 ```
 
 ```jsx
@@ -714,7 +714,7 @@ function handleSubmit() {
       variant="outlined"
       className={classes.textField}
       value={value}
-      validators={['required', 'isSafeText']}
+      validators={['isSafeText']}
     />
     <Button
       className={classes.margin}
