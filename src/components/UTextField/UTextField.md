@@ -506,7 +506,7 @@ function handleSubmit() {
 // }
 ```
 
-`PHONE : isPhone and required`
+`PHONE : isPhone`
 
 ```html
 validators={['isPhone']}
@@ -581,7 +581,7 @@ function handleSubmit() {
 // }
 ```
 
-`Alphanumeric : isAlphanumeric and required`
+`Alphanumeric : isAlphanumeric`
 
 ```html
 validators={['isAlphanumeric']}
@@ -656,7 +656,7 @@ function handleSubmit() {
 // }
 ```
 
-`Safe text : isSafeText and required`
+`Safe text : isSafeText`
 
 ```html
 validators={['isSafeText']}
