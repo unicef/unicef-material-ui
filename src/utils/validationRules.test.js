@@ -1,8 +1,25 @@
-// import { isPhoneNumberText } from "./utils"
-
-import { isAlphanumericText, isPhoneNumberText, isSafeText } from '.'
+import { isAlphanumericText, isPhoneNumberText, isSafeText, isUrlText } from '.'
 
 describe('validation rules utils', () => {
+  describe('isUrlText validation', () => {
+    it('validates url string', () => {
+      expect(isUrlText('http://www.foufos.gr')).toBe(true)
+      expect(isUrlText('https://www.foufos.gr')).toBe(true)
+      expect(isUrlText('http://foufos.gr')).toBe(true)
+      expect(isUrlText('http://www.foufos.gr/kino')).toBe(true)
+      expect(isUrlText('http://werer.gr')).toBe(true)
+      expect(isUrlText('http://aaa.com')).toBe(true)
+    })
+    it('rejects incorrect urls', () => {
+      expect(isUrlText('www.foufos')).toBe(false)
+      expect(isUrlText('www.mp3.com')).toBe(false)
+      expect(isUrlText('www.foufos-.gr')).toBe(false)
+      expect(isUrlText('www.-foufos.gr')).toBe(false)
+      expect(isUrlText('foufos.gr')).toBe(false)
+      expect(isUrlText('www.mp3#.com')).toBe(false)
+    })
+  })
+
   describe('isPhoneNumberText validation', () => {
     it('validates correct phone numbers', () => {
       expect(isPhoneNumberText('(123) 456-7890')).toBe(true)
