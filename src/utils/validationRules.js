@@ -43,3 +43,19 @@ export function isAlphanumericText(value) {
 
   return wordsInAllLanguages.test(valueToTest)
 }
+
+/**
+ *
+ * @param {String} value Value text to be validated
+ * @returns {Boolean} Whether the given value string is an acceptable url
+ */
+export function isUrlText(value) {
+  const valueToTest = value || ''
+  let urlRegexp = new RegExp(
+    '^http(s?)://[0-9a-zA-Z]([-.w]*[0-9a-zA-Z])*?[a-z0-9][-a-z0-9]{0,61}[a-z0-9]\\.[a-z]{2,6}(/[\\w\\s-\\w@\\+\\.~#\\?&/=%]*)?$'
+  )
+  if (valueToTest && !urlRegexp.test(valueToTest)) {
+    return false
+  }
+  return true
+}

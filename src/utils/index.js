@@ -3,6 +3,7 @@ import {
   isPhoneNumberText,
   isSafeText,
   isAlphanumericText,
+  isUrlText,
 } from './validationRules'
 
 export {
@@ -11,4 +12,5 @@ export {
   isPhoneNumberText,
   isSafeText,
   isAlphanumericText,
+  isUrlText,
 }

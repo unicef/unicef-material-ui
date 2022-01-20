@@ -201,10 +201,10 @@ function handleSubmit() {
 // }
 ```
 
-`URL : isUrl and required`
+`URL : isUrl `
 
 ```html
-validators={['required', 'isUrl']}
+validators={['isUrl']}
 ```
 
 ```jsx
@@ -252,7 +252,7 @@ function handleSubmit() {
       name="url"
       variant="outlined"
       value={value}
-      validators={['required', 'isUrl']}
+      validators={['isUrl']}
     />
     <UButton
       className={classes.margin}
