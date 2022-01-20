@@ -44,15 +44,15 @@ function ForwardRefForm(props, ref) {
   })
 
   ValidatorForm.addValidationRule('isPhone', value => {
-    return value != '' && isPhoneNumberText(value)
+    return isPhoneNumberText(value)
   })
 
   ValidatorForm.addValidationRule('isSafeText', value => {
-    return value != '' && isSafeText(value)
+    return isSafeText(value)
   })
 
   ValidatorForm.addValidationRule('isAlphanumeric', value => {
-    return value != '' && isAlphanumericText(value)
+    return isAlphanumericText(value)
   })
 
   return <ValidatorForm {...props} ref={ref} />
