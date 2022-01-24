@@ -32,6 +32,9 @@ export default function UAutoComplete({
   maxLength,
   usedItemIds,
   allowContextSpecific,
+  interactiveMode,
+  counter,
+  placeholder,
   props,
 }) {
   const classes = useStyles()
@@ -95,10 +98,9 @@ export default function UAutoComplete({
     options && options.length > 0
       ? options.filter(opt => !usedItemIds.includes(opt.id))
       : []
-
   return (
     <React.Fragment>
-      {readOnly ? (
+      {!interactiveMode && readOnly ? (
         <ActiveFormTextField
           multiline
           label={`${label}*`}
@@ -139,7 +141,10 @@ export default function UAutoComplete({
                 maxLength: maxLength,
               }}
               maxLength={maxLength}
-              counter
+              counter={counter}
+              interactiveMode
+              placeholder={placeholder}
+              readOnly={readOnly}
             />
           )}
         />
@@ -173,9 +178,17 @@ UAutoComplete.propTypes = {
   allowContextSpecific: PropTypes.bool,
   /** used item id's from the options */
   usedItemIds: PropTypes.array,
+  /** Change to write mode by hiding text field border and displays border on Hover*/
+  interactiveMode: PropTypes.bool,
+  /** To enable character counter */
+  counter: PropTypes.bool,
+  /** placeholder text*/
+  placeholder: PropTypes.string,
 }
 
 UAutoComplete.defaultProps = {
   allowContextSpecific: false,
+  interactiveMode: false,
+  counter: false,
   usedItemIds: [],
 }
