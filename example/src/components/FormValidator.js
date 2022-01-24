@@ -180,6 +180,7 @@ export default function FormValidator() {
               onChange={e =>
                 setValues({ ...values, currencyField: e.target.value })
               }
+              prefix="$"
             />
           </UValidatorForm>
         </Grid>
