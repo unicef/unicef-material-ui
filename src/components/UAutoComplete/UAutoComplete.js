@@ -35,6 +35,7 @@ export default function UAutoComplete({
   interactiveMode,
   counter,
   placeholder,
+  InputLabelProps,
   props,
 }) {
   const classes = useStyles()
@@ -103,7 +104,11 @@ export default function UAutoComplete({
       {!interactiveMode && readOnly ? (
         <ActiveFormTextField
           multiline
-          label={`${label}*`}
+          label={label}
+          InputLabelProps={{
+            ...InputLabelProps,
+            required: isRequired,
+          }}
           variant="outlined"
           fullWidth
           readOnly={readOnly}
@@ -130,7 +135,7 @@ export default function UAutoComplete({
             <ActiveFormTextField
               {...params}
               multiline
-              label={`${label}${isRequired ? `*` : ``}`}
+              label={label}
               variant="outlined"
               value={(selectedValue && selectedValue.text) || ''}
               validators={isRequired ? ['required', 'trim'] : ['trim']}
@@ -139,6 +144,10 @@ export default function UAutoComplete({
                 ...params.inputProps,
                 minLength: minLength,
                 maxLength: maxLength,
+              }}
+              InputLabelProps={{
+                ...InputLabelProps,
+                required: isRequired,
               }}
               maxLength={maxLength}
               counter={counter}
@@ -184,6 +193,8 @@ UAutoComplete.propTypes = {
   counter: PropTypes.bool,
   /** placeholder text*/
   placeholder: PropTypes.string,
+  /** Label props applied to input field*/
+  InputLabelProps: PropTypes.object,
 }
 
 UAutoComplete.defaultProps = {
