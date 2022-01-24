@@ -1,36 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { makeStyles } from '@material-ui/core'
 import UPositiveInteger from '../UPositiveInteger'
-
-const useStyles = makeStyles(theme => ({
-  startAdornmentContainer: {
-    marginRight: theme.spacing(0.5),
-  },
-}))
-
 export default function UCurrencyField({
   inputPrefix,
   decimalScale,
   fixedDecimalScale,
   textAlign,
-  InputProps,
   inputProps,
   ...props
 }) {
-  const classes = useStyles(props)
   return (
     <UPositiveInteger
       variant="outlined"
-      InputProps={{
-        startAdornment: (
-          <span className={classes.startAdornmentContainer}>{inputPrefix}</span>
-        ),
-        ...InputProps,
-      }}
       inputProps={{
         decimalScale,
         fixedDecimalScale,
+        prefix: inputPrefix,
         style: { textAlign },
         ...inputProps,
       }}
@@ -75,7 +60,7 @@ UCurrencyField.propTypes = {
 }
 
 UCurrencyField.defaultProps = {
-  inputPrefix: '$',
+  inputPrefix: '$ ',
   decimalScale: 2,
   fixedDecimalScale: true,
   textAlign: 'right',

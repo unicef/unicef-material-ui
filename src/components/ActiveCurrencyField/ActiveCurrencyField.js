@@ -1,36 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { makeStyles } from '@material-ui/core'
 import ActiveFormPositiveInteger from '../ActiveFormPositiveInteger'
-
-const useStyles = makeStyles(theme => ({
-  startAdornmentContainer: {
-    marginRight: theme.spacing(0.5),
-  },
-}))
 
 export default function ActiveCurrencyField({
   inputPrefix,
   decimalScale,
   fixedDecimalScale,
   textAlign,
-  InputProps,
   inputProps,
   ...props
 }) {
-  const classes = useStyles(props)
   return (
     <ActiveFormPositiveInteger
       variant="outlined"
-      InputProps={{
-        startAdornment: (
-          <span className={classes.startAdornmentContainer}>{inputPrefix}</span>
-        ),
-        ...InputProps,
-      }}
       inputProps={{
         decimalScale,
         fixedDecimalScale,
+        prefix: inputPrefix,
         style: { textAlign },
         ...inputProps,
       }}
@@ -83,7 +69,7 @@ ActiveCurrencyField.propTypes = {
 }
 
 ActiveCurrencyField.defaultProps = {
-  inputPrefix: '$',
+  inputPrefix: '$ ',
   decimalScale: 2,
   fixedDecimalScale: true,
   textAlign: 'right',
