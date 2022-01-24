@@ -15,11 +15,11 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 /**
- * UAutoComplete is an editable dropdown component.
+ * ActiveAutoComplete is an editable dropdown component with interactive.
  * User can enter the text in order to find the value from the list of values
  * User can also add new value to the list as well.
  */
-export default function UAutoComplete({
+export default function ActiveAutoComplete({
   value,
   label,
   onChange,
@@ -32,6 +32,7 @@ export default function UAutoComplete({
   maxLength,
   usedItemIds,
   allowContextSpecific,
+  interactiveMode,
   counter,
   placeholder,
   InputLabelProps,
@@ -100,7 +101,7 @@ export default function UAutoComplete({
       : []
   return (
     <React.Fragment>
-      {readOnly ? (
+      {!interactiveMode && readOnly ? (
         <ActiveFormTextField
           multiline
           label={label}
@@ -151,6 +152,7 @@ export default function UAutoComplete({
               }}
               maxLength={maxLength}
               counter={counter}
+              interactiveMode={interactiveMode}
               placeholder={placeholder}
               readOnly={readOnly}
             />
@@ -161,7 +163,7 @@ export default function UAutoComplete({
   )
 }
 
-UAutoComplete.propTypes = {
+ActiveAutoComplete.propTypes = {
   /** selected value of the dropdown */
   value: PropTypes.object,
   /** label */
@@ -186,6 +188,8 @@ UAutoComplete.propTypes = {
   allowContextSpecific: PropTypes.bool,
   /** used item id's from the options */
   usedItemIds: PropTypes.array,
+  /** Change to write mode by hiding text field border and displays border on hover*/
+  interactiveMode: PropTypes.bool,
   /** To enable character counter */
   counter: PropTypes.bool,
   /** placeholder text*/
@@ -194,8 +198,9 @@ UAutoComplete.propTypes = {
   InputLabelProps: PropTypes.object,
 }
 
-UAutoComplete.defaultProps = {
+ActiveAutoComplete.defaultProps = {
   allowContextSpecific: false,
+  interactiveMode: false,
   counter: false,
   usedItemIds: [],
 }

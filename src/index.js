@@ -41,6 +41,7 @@ import ActiveKeyboardDatePicker from './components/ActiveKeyboardDatePicker'
 import ActiveDatePicker from './components/ActiveDatePicker'
 import ActiveTimePicker from './components/ActiveTimePicker'
 import ActiveKeyboardTimePicker from './components/ActiveKeyboardTimePicker'
+import ActiveAutoComplete from './components/ActiveAutoComplete'
 
 export {
   theme,
@@ -86,4 +87,5 @@ export {
   ActiveDatePicker,
   ActiveTimePicker,
   ActiveKeyboardTimePicker,
+  ActiveAutoComplete,
 }
