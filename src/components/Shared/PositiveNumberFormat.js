@@ -10,6 +10,7 @@ export default function PositiveNumberFormat({
   isNumericString,
   allowNegative,
   decimalScale,
+  fixedDecimalScale,
   ...other
 }) {
   return (
@@ -28,6 +29,7 @@ export default function PositiveNumberFormat({
       isNumericString={isNumericString}
       allowNegative={allowNegative}
       decimalScale={decimalScale}
+      fixedDecimalScale={fixedDecimalScale}
     />
   )
 }
@@ -45,6 +47,8 @@ PositiveNumberFormat.propTypes = {
   allowNegative: PropTypes.bool,
   // No of decimal digits
   decimalScale: PropTypes.number,
+  //If true it add 0s to match given decimalScale.
+  fixedDecimalScale: PropTypes.bool,
 }
 
 PositiveNumberFormat.defaultProps = {
@@ -52,4 +56,5 @@ PositiveNumberFormat.defaultProps = {
   isNumericString: false,
   allowNegative: false,
   decimalScale: 0,
+  fixedDecimalScale: false,
 }

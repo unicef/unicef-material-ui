@@ -12,6 +12,8 @@ const useStyles = makeStyles(theme => ({
 export default function UCurrencyField({
   inputPrefix,
   decimalScale,
+  fixedDecimalScale,
+  textAlign,
   InputProps,
   inputProps,
   ...props
@@ -26,7 +28,12 @@ export default function UCurrencyField({
         ),
         ...InputProps,
       }}
-      inputProps={{ decimalScale: decimalScale, ...inputProps }}
+      inputProps={{
+        decimalScale,
+        fixedDecimalScale,
+        style: { textAlign },
+        ...inputProps,
+      }}
       {...props}
     />
   )
@@ -61,9 +68,15 @@ UCurrencyField.propTypes = {
   readOnly: PropTypes.bool,
   /** Name of input. */
   name: PropTypes.string,
+  /** Input text align */
+  textAlign: PropTypes.string,
+  // If true it add 0s to match given decimalScale.
+  fixedDecimalScale: PropTypes.bool,
 }
 
 UCurrencyField.defaultProps = {
   inputPrefix: '$',
   decimalScale: 2,
+  fixedDecimalScale: true,
+  textAlign: 'right',
 }

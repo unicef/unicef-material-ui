@@ -12,6 +12,8 @@ const useStyles = makeStyles(theme => ({
 export default function ActiveCurrencyField({
   inputPrefix,
   decimalScale,
+  fixedDecimalScale,
+  textAlign,
   InputProps,
   inputProps,
   ...props
@@ -26,7 +28,12 @@ export default function ActiveCurrencyField({
         ),
         ...InputProps,
       }}
-      inputProps={{ decimalScale: decimalScale, ...inputProps }}
+      inputProps={{
+        decimalScale,
+        fixedDecimalScale,
+        style: { textAlign },
+        ...inputProps,
+      }}
       {...props}
     />
   )
@@ -71,9 +78,13 @@ ActiveCurrencyField.propTypes = {
   validatorListener: PropTypes.func,
   /** Allow to use required validator in any validation trigger, not only form submit. */
   withRequiredValidator: PropTypes.bool,
+  /** Input text align */
+  textAlign: PropTypes.string,
 }
 
 ActiveCurrencyField.defaultProps = {
   inputPrefix: '$',
   decimalScale: 2,
+  fixedDecimalScale: true,
+  textAlign: 'right',
 }
