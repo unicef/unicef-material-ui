@@ -46,6 +46,9 @@ const styles = {
  * * isString
  * * maxFileSize
  * * allowedExtensions
+ * * isPhone
+ * * isAlphanumeric
+ * * isSafeText
  *
  * It accepts all the props of Material-ui [TextField](https://material-ui.com/api/text-field/#textfield-api)
  */

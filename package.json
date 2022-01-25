@@ -20,7 +20,7 @@
     "transpile": "npm run build",
     "prepublishOnly": "npm run transpile",
     "deploy": "npm run build:site && gh-pages -d site",
-    "test": "echo \"Error: no test specified\" && exit 0"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -29,14 +29,23 @@
   "author": "unicef",
   "license": "GPL-3.0-or-later",
   "peerDependencies": {
-    "react": ">=16.14.0",
-    "react-dom": ">=16.14.0",
     "@material-ui/core": ">=4.11.0",
+    "@material-ui/lab": ">=4.0.0-alpha.57",
     "@material-ui/pickers": ">=3.0.0",
-    "@material-ui/lab": ">=4.0.0-alpha.57"
+    "react": ">=16.14.0",
+    "react-dom": ">=16.14.0"
   },
   "bugs": {
     "url": "https://github.com/unicef/unicef-material-ui/issues"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!<rootDir>/node_modules/"
+    ],
+    "coverageReporters": [
+      "text"
+    ]
   },
   "devDependencies": {
     "@babel/core": "^7.5.4",
@@ -46,8 +55,8 @@
     "@date-io/date-fns": "^1.3.11",
     "@material-ui/core": "^4.11.2",
     "@material-ui/icons": "^4.11.2",
-    "@material-ui/pickers": "^3.2.10",
     "@material-ui/lab": "^4.0.0-alpha.57",
+    "@material-ui/pickers": "^3.2.10",
     "babel": "^6.23.0",
     "babel-cli": "^6.26.0",
     "babel-loader": "^8.0.5",
@@ -62,6 +71,7 @@
     "date-fns": "^2.1.0",
     "file-loader": "^4.1.0",
     "gh-pages": "^2.1.1",
+    "jest": "^27.4.7",
     "node-sass": "^4.12.0",
     "prop-types": "^15.7.2",
     "react": "^16.14.0",

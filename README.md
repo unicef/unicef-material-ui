@@ -111,6 +111,25 @@ cd ..
 npm deploy
 ```
 
+## Release a new version in npm registry
+
+There is a Github action (pipeline) that automatically releases in npm whenever a release is created.
+To create a release, previously you need to ensure the version is changed in packages.json and then create a tag in the repository. These are the steps:
+
+1. Get the latest `master`
+2. Edit `packages.json` and increase the version number and save to origin/master.  
+    ```bash
+      # After editing packages.json
+      git commit -m "bump version x.y.z"
+      git push origin master
+      ```
+3.  Create a tag and push it to master:
+    ```bash
+      git tag releases/vX.Y.Z  # where X.Y.Z is a semver number such as 1.6.9
+      git push origin tags
+    ```
+4. Then in the GitHub web interface create the release. The action will be automatically triggered.
+    
 ## About UNICEF
 
 [UNICEF](https://www.unicef.org/) works in over 190 countries and territories to protect the rights of every child. UNICEF has spent more than 70 years working to improve the lives of children and their families. In UNICEF, **we believe all children have a right to survive, thrive and fulfill their potential – to the benefit of a better world**.
