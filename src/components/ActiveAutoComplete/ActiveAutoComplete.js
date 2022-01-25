@@ -9,9 +9,22 @@ import ActiveFormTextField from '../ActiveFormTextField'
 const filter = createFilterOptions()
 
 const useStyles = makeStyles(theme => ({
-  controlStyle: {
+  root: {
     marginTop: theme.spacing(2),
     width: '100%',
+    '& .UPopupIndicator': {
+      visibility: 'hidden',
+    },
+    '&:hover': {
+      '& .UPopupIndicator': {
+        visibility: 'visible',
+      },
+    },
+  },
+  focused: {
+    '& .UPopupIndicator': {
+      visibility: 'visible',
+    },
   },
 }))
 /**
@@ -130,7 +143,11 @@ export default function ActiveAutoComplete({
           getOptionLabel={option => handleGetOption(option)}
           renderOption={option => option.text}
           onBlur={handleOnBlur}
-          className={classes.controlStyle}
+          classes={{
+            root: classes.root,
+            focused: classes.focused,
+            popupIndicator: 'UPopupIndicator',
+          }}
           freeSolo={allowContextSpecific}
           renderInput={params => (
             <ActiveFormTextField
