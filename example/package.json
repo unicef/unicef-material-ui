@@ -1,6 +1,6 @@
 {
   "name": "@unicef/material-ui-example",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "private": true,
   "homepage": "https://unicef.github.io/unicef-material-ui/example",
   "dependencies": {
