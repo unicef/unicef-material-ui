@@ -1,21 +1,21 @@
 {
   "name": "@unicef/material-ui-example",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "private": true,
   "homepage": "https://unicef.github.io/unicef-material-ui/example",
   "dependencies": {
     "@date-io/core": "^1.3.13",
     "@material-ui/core": "^4.11.2",
     "@material-ui/icons": "^4.11.2",
-    "@material-ui/pickers": "^3.2.10",
     "@material-ui/lab": "^4.0.0-alpha.57",
+    "@material-ui/pickers": "^3.2.10",
     "gh-pages": "^2.2.0",
     "prop-types": "^15.7.2",
     "react": "file:../node_modules/react",
     "react-dom": "file:../node_modules/react-dom",
     "react-material-ui-form-validator": "^2.0.9",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.0.1",
+    "react-scripts": "5.0.0",
     "unicef-material-ui": "file:.."
   },
   "scripts": {
