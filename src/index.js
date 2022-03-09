@@ -11,6 +11,7 @@ import UHeaderMainMenu from './components/UHeaderMainMenu'
 import UButton from './components/UButton'
 import USelectPicker from './components/USelectPicker'
 import UPeoplePicker from './components/UPeoplePicker'
+import UIconPicker from './components/UIconPicker'
 import UDatePicker from './components/UDatePicker'
 import UTimePicker from './components/UTimePicker'
 import UKeyboardDatePicker from './components/UKeyboardDatePicker'
@@ -61,6 +62,7 @@ export {
   UButton,
   USelectPicker,
   UPeoplePicker,
+  UIconPicker,
   UDatePicker,
   UTimePicker,
   UKeyboardDatePicker,

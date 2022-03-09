@@ -131,6 +131,11 @@ module.exports = {
           'src/components/UPeoplePicker',
           'UPeoplePicker.js'
         ),
+        path.resolve(
+          __dirname,
+          'src/components/UIconPicker',
+          'UIconPicker.js'
+        ),
         path.resolve(__dirname, 'src/components/UDatePicker', 'UDatePicker.js'),
         path.resolve(
           __dirname,
