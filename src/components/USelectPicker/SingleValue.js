@@ -15,13 +15,13 @@ const useStyles = makeStyles(theme => ({
     display: 'inline-flex',
     marginRight: theme.spacing(1),
     '& .MuiAvatar-root': {
-      height: 24,
-      width: 24,
+      height: 32,
+      width: 32,
     },
   },
   avatar: {
-    height: 24,
-    width: 24,
+    height: 32,
+    width: 32,
     marginRight: theme.spacing(1),
   },
   optionLabel: {
