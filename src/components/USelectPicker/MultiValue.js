@@ -38,6 +38,9 @@ const useStyles = makeStyles(theme => ({
     paddingLeft: 0,
     marginLeft: 0,
   },
+  avatarReadOnly: {
+    marginRight: `${theme.spacing(1)}px!important`,
+  },
 }))
 
 export default function MultiValue({
@@ -76,6 +79,7 @@ export default function MultiValue({
         deleteIcon: readOnly ? classes.deleteIconReadOnly : '',
         root: readOnly ? classes.rootReadOnly : '',
         label: readOnly ? classes.labelReadOnly : '',
+        avatar: readOnly ? classes.avatarReadOnly : '',
       }}
       onDelete={removeProps.onClick}
       {...(readOnly
