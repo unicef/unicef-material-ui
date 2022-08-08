@@ -22,6 +22,11 @@ const useStyles = makeStyles(theme => ({
   linkHelpLabel: {
     paddingLeft: theme.spacing(0.5),
   },
+  tooltipPopper: {
+    '& a': {
+      color: theme.palette.common.white,
+    },
+  },
 }))
 
 export default function InputLabelHelp({
@@ -38,7 +43,12 @@ export default function InputLabelHelp({
     <Fragment>
       <span>{inputLabel}</span>
       {type === 'tooltip' ? (
-        <Tooltip title={tooltipTitle} placement={tooltipPlacement}>
+        <Tooltip
+          interactive
+          title={<div dangerouslySetInnerHTML={{ __html: tooltipTitle }} />}
+          placement={tooltipPlacement}
+          classes={{ popper: classes.tooltipPopper }}
+        >
           <span className={classes.root}>
             {icon ? icon : <HelpIcon />}
             {label ? (
