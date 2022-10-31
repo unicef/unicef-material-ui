@@ -6,10 +6,10 @@ import {
   Box,
   Button,
   TextField,
-} from '@material-ui/core'
-import SearchIcon from '@material-ui/icons/Search'
-import CloseIcon from '@material-ui/icons/Close'
-import { makeStyles } from '@material-ui/core/styles'
+} from '@mui/material'
+import SearchIcon from '@mui/icons-material/Search'
+import CloseIcon from '@mui/icons-material/Close'
+import makeStyles from '@mui/styles/makeStyles'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -85,7 +85,7 @@ export default function USearchBox({
         endAdornment: (
           <InputAdornment>
             {searchValue ? (
-              <IconButton aria-label="Clear" onClick={handleClear}>
+              <IconButton aria-label="Clear" onClick={handleClear} size="large">
                 <CloseIcon />
               </IconButton>
             ) : (
@@ -106,6 +106,7 @@ export default function USearchBox({
                 aria-label="Search"
                 className={classes.searchIcon}
                 onClick={handleSearch}
+                size="large"
               >
                 <SearchIcon />
               </IconButton>

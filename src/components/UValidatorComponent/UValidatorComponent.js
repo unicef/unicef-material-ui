@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { FormHelperText } from '@material-ui/core'
+import { FormHelperText } from '@mui/material'
 import ValidatorComponent from '../ValidatorComponent'
 //import { ValidatorComponent } from 'react-form-validator-core'
 
