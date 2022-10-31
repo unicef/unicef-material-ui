@@ -52,8 +52,6 @@ ValidatorComponentNew.defaultProps = {
   withRequiredValidator: true,
 }
 
-polyfill(ValidatorComponentNew)
-
 export default ValidatorComponentNew
 
 // default error messages to return
