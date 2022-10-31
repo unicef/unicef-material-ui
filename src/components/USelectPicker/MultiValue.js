@@ -1,9 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
-import Chip from '@material-ui/core/Chip'
-import Avatar from '@material-ui/core/Avatar'
-import { emphasize, makeStyles } from '@material-ui/core/styles'
+import Chip from '@mui/material/Chip'
+import Avatar from '@mui/material/Avatar'
+import { emphasize } from '@mui/material/styles'
+
+import makeStyles from '@mui/styles/makeStyles'
 
 const useStyles = makeStyles(theme => ({
   chip: {
@@ -16,7 +18,7 @@ const useStyles = makeStyles(theme => ({
   },
   chipFocused: {
     backgroundColor: emphasize(
-      theme.palette.type === 'light'
+      theme.palette.mode === 'light'
         ? theme.palette.grey[300]
         : theme.palette.grey[700],
       0.08

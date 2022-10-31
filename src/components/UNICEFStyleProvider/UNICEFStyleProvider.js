@@ -1,9 +1,5 @@
 import React from 'react'
-import {
-  StylesProvider,
-  createGenerateClassName,
-  jssPreset,
-} from '@material-ui/styles'
+import { StylesProvider, createGenerateClassName, jssPreset } from '@mui/styles'
 import { create } from 'jss'
 
 const generateClassName = createGenerateClassName({

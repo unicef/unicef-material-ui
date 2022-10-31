@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import Autocomplete, {
-  createFilterOptions,
-} from '@material-ui/lab/Autocomplete'
-import { makeStyles } from '@material-ui/core/styles'
+import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete'
+import makeStyles from '@mui/styles/makeStyles'
 import ActiveFormTextField from '../ActiveFormTextField'
 
 const filter = createFilterOptions()
@@ -117,7 +115,7 @@ export default function UAutoComplete({
       ) : (
         <Autocomplete
           value={selectedValue}
-          getOptionSelected={option => option.id === selectedValue.id}
+          isOptionEqualToValue={option => option.id === selectedValue.id}
           onChange={(event, newValue) => handleChange(event, newValue)}
           filterOptions={(options, params) => handleFilter(options, params)}
           id="target-input"

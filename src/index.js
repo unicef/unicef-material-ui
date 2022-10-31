@@ -1,4 +1,4 @@
-//import theme from './theme'
+import theme from './theme'
 import UNICEFStyleProvider from './components/UNICEFStyleProvider'
 import UHeader from './components/UHeader'
 import UHeaderRightButtons from './components/UHeaderRightButtons'
@@ -47,7 +47,7 @@ import ActiveKeyboardTimePicker from './components/ActiveKeyboardTimePicker'
 import ActiveAutoComplete from './components/ActiveAutoComplete'
 
 export {
-  //theme,
+  theme,
   ActiveFormSelect,
   UNICEFStyleProvider,
   ActiveFormTextField,

@@ -1,20 +1,20 @@
-import React from "react"
-import PropTypes from "prop-types"
-import { makeStyles } from "@material-ui/core/styles"
-import { Button, CircularProgress } from "@material-ui/core"
+import React from 'react'
+import PropTypes from 'prop-types'
+import makeStyles from '@mui/styles/makeStyles'
+import { Button, CircularProgress } from '@mui/material'
 
 const useStyles = makeStyles(theme => ({
   root: {
-    display: "flex",
-    alignItems: "center",
+    display: 'flex',
+    alignItems: 'center',
   },
   wrapper: {
-    position: "relative",
+    position: 'relative',
   },
   buttonProgress: {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
     marginTop: -12,
     marginLeft: -12,
   },
@@ -30,41 +30,43 @@ export default function UButton(props) {
 
   function getVariant(variant) {
     switch (variant) {
-      case "uDefault":
-        return "outlined"
-      case "uPrimary":
-        return "contained"
-      case "contained":
-        return "contained"
-      case "outlined":
-        return "outlined"
-      case "text":
-        return "text"
+      case 'uDefault':
+        return 'outlined'
+      case 'uPrimary':
+        return 'contained'
+      case 'contained':
+        return 'contained'
+      case 'outlined':
+        return 'outlined'
+      case 'text':
+        return 'text'
       default:
-        return "contained"
+        return 'contained'
     }
   }
 
-  const CustomButton = <Button
-    variant={getVariant(variant)}
-    color={color}
-    disableRipple
-    {...others}
-  >
-    {props.children}
-  </Button>
+  const CustomButton = (
+    <Button
+      variant={getVariant(variant)}
+      color={color}
+      disableRipple
+      {...others}
+    >
+      {props.children}
+    </Button>
+  )
 
-  return (
-    !spinButton
-      ? CustomButton
-      : <div className={classes.root}>
-        <div className={classes.wrapper}>
-          {CustomButton}
-          {loading && (
-            <CircularProgress size={24} className={classes.buttonProgress} />
-          )}
-        </div>
+  return !spinButton ? (
+    CustomButton
+  ) : (
+    <div className={classes.root}>
+      <div className={classes.wrapper}>
+        {CustomButton}
+        {loading && (
+          <CircularProgress size={24} className={classes.buttonProgress} />
+        )}
       </div>
+    </div>
   )
 }
 
@@ -83,11 +85,11 @@ UButton.propTypes = {
   variant: PropTypes.string,
   /**  color of the button */
   color: PropTypes.string,
-};
+}
 
 UButton.defaultProps = {
-  color: "primary",
-  variant: "contained",
+  color: 'primary',
+  variant: 'contained',
   spinButton: false,
   loading: false,
 }

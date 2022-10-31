@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { makeStyles } from '@material-ui/core/styles'
-import { Tooltip, IconButton, Menu, MenuItem } from '@material-ui/core'
-import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined'
+import makeStyles from '@mui/styles/makeStyles'
+import { Tooltip, IconButton, Menu, MenuItem } from '@mui/material'
+import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined'
 
 const useStyles = makeStyles(theme => ({
   menuDelete: {
@@ -62,6 +62,7 @@ export default function UConfirmationButton(props) {
             onClick={e => setDeleteAnchorEl(e.currentTarget)}
             disabled={!enabled}
             className={classes.menuLabel}
+            size="large"
           >
             {icon}
           </IconButton>
