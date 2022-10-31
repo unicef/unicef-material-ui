@@ -1,13 +1,23 @@
 import React, { Fragment } from 'react'
+import { styled } from '@mui/material/styles'
 import { Tooltip, Link } from '@mui/material'
-import makeStyles from '@mui/styles/makeStyles'
 import PropTypes from 'prop-types'
 
 import HelpIcon from '@mui/icons-material/HelpOutline'
 import LaunchIcon from '@mui/icons-material/Launch'
 
-const useStyles = makeStyles(theme => ({
-  root: {
+const PREFIX = 'InputLabelHelp'
+
+const classes = {
+  root: `${PREFIX}-root`,
+  tooltipHelpLabel: `${PREFIX}-tooltipHelpLabel`,
+  linkHelpLabel: `${PREFIX}-linkHelpLabel`,
+  tooltipPopper: `${PREFIX}-tooltipPopper`,
+}
+
+// TODO jss-to-styled codemod: The Fragment root was replaced by div. Change the tag if needed.
+const Root = styled('div')(({ theme }) => ({
+  [`& .${classes.root}`]: {
     marginRight: theme.spacing(-1),
     marginTop: theme.spacing(-0.5),
     paddingLeft: theme.spacing(1.5),
@@ -16,14 +26,17 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     color: theme.palette.primary.main,
   },
-  tooltipHelpLabel: {
+
+  [`& .${classes.tooltipHelpLabel}`]: {
     paddingLeft: theme.spacing(0.5),
     borderBottom: `1px dotted ${theme.palette.primary.main}`,
   },
-  linkHelpLabel: {
+
+  [`& .${classes.linkHelpLabel}`]: {
     paddingLeft: theme.spacing(0.5),
   },
-  tooltipPopper: {
+
+  [`& .${classes.tooltipPopper}`]: {
     '& a': {
       color: theme.palette.common.white,
     },
@@ -39,9 +52,8 @@ export default function InputLabelHelp({
   tooltipTitle,
   tooltipPlacement,
 }) {
-  const classes = useStyles()
   return (
-    <Fragment>
+    <Root>
       <span>{inputLabel}</span>
       {type === 'tooltip' ? (
         <Tooltip
@@ -71,7 +83,7 @@ export default function InputLabelHelp({
           {label ? <span className={classes.linkHelpLabel}>{label}</span> : ''}
         </Link>
       )}
-    </Fragment>
+    </Root>
   )
 }
 

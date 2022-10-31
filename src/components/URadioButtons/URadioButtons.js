@@ -1,4 +1,5 @@
 import React from 'react'
+import { styled } from '@mui/material/styles'
 import {
   Box,
   Radio,
@@ -7,22 +8,29 @@ import {
   FormControlLabel,
   Typography,
 } from '@mui/material'
-import makeStyles from '@mui/styles/makeStyles'
 import PropTypes from 'prop-types'
-/**
- * displays radio buttons
- */
-const useStyles = makeStyles(theme => ({
-  padding: {
+const PREFIX = 'URadioButtons'
+
+const classes = {
+  padding: `${PREFIX}-padding`,
+  readOnlyPadding: `${PREFIX}-readOnlyPadding`,
+  gutter: `${PREFIX}-gutter`,
+}
+
+const StyledBox = styled(Box)(({ theme }) => ({
+  [`& .${classes.padding}`]: {
     paddingLeft: theme.spacing(3),
   },
-  readOnlyPadding: {
+
+  [`& .${classes.readOnlyPadding}`]: {
     paddingBottom: theme.spacing(1),
   },
-  gutter: {
+
+  [`& .${classes.gutter}`]: {
     marginLeft: theme.spacing(2),
   },
 }))
+
 export default function URadioButtons({
   value,
   onChange,
@@ -31,13 +39,12 @@ export default function URadioButtons({
   optionLabels,
   optionValues,
 }) {
-  const classes = useStyles()
   const handleOnChange = event => {
     onChange && onChange(event)
   }
 
   return (
-    <Box>
+    <StyledBox>
       {isReadOnly ? (
         <Typography className={classes.padding}>{value || '-'}</Typography>
       ) : (
@@ -60,7 +67,7 @@ export default function URadioButtons({
           </RadioGroup>
         </FormControl>
       )}
-    </Box>
+    </StyledBox>
   )
 }
 

@@ -1,17 +1,27 @@
 import React from 'react'
+import { styled } from '@mui/material/styles'
 import PropTypes from 'prop-types'
-import makeStyles from '@mui/styles/makeStyles'
-import { Button, CircularProgress } from '@mui/material'
+import { Box, Button, CircularProgress } from '@mui/material'
 
-const useStyles = makeStyles(theme => ({
-  root: {
+const PREFIX = 'UButton'
+
+const classes = {
+  root: `${PREFIX}-root`,
+  wrapper: `${PREFIX}-wrapper`,
+  buttonProgress: `${PREFIX}-buttonProgress`,
+}
+
+const StyledBox = styled(Box)(({ theme }) => ({
+  [`&.${classes.root}`]: {
     display: 'flex',
     alignItems: 'center',
   },
-  wrapper: {
+
+  [`& .${classes.wrapper}`]: {
     position: 'relative',
   },
-  buttonProgress: {
+
+  [`& .${classes.buttonProgress}`]: {
     position: 'absolute',
     top: '50%',
     left: '50%',
@@ -26,7 +36,6 @@ const useStyles = makeStyles(theme => ({
  * */
 export default function UButton(props) {
   const { spinButton, loading, variant, color, ...others } = props
-  const classes = useStyles()
 
   function getVariant(variant) {
     switch (variant) {
@@ -59,14 +68,14 @@ export default function UButton(props) {
   return !spinButton ? (
     CustomButton
   ) : (
-    <div className={classes.root}>
-      <div className={classes.wrapper}>
+    <StyledBox className={classes.root}>
+      <Box className={classes.wrapper}>
         {CustomButton}
         {loading && (
           <CircularProgress size={24} className={classes.buttonProgress} />
         )}
-      </div>
-    </div>
+      </Box>
+    </StyledBox>
   )
 }
 

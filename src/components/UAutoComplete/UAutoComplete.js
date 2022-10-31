@@ -1,17 +1,25 @@
 import React, { useState } from 'react'
+import { styled } from '@mui/material/styles'
 import PropTypes from 'prop-types'
 import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete'
-import makeStyles from '@mui/styles/makeStyles'
 import ActiveFormTextField from '../ActiveFormTextField'
 
-const filter = createFilterOptions()
+const PREFIX = 'UAutoComplete'
 
-const useStyles = makeStyles(theme => ({
-  controlStyle: {
+const classes = {
+  controlStyle: `${PREFIX}-controlStyle`,
+}
+
+// TODO jss-to-styled codemod: The Fragment root was replaced by div. Change the tag if needed.
+const Root = styled('div')(({ theme }) => ({
+  [`& .${classes.controlStyle}`]: {
     marginTop: theme.spacing(2),
     width: '100%',
   },
 }))
+
+const filter = createFilterOptions()
+
 /**
  * UAutoComplete is an editable dropdown component.
  * User can enter the text in order to find the value from the list of values
@@ -35,7 +43,6 @@ export default function UAutoComplete({
   InputLabelProps,
   props,
 }) {
-  const classes = useStyles()
   //const dispatch = useDispatch()
   const [selectedValue, setSelectedValue] = useState(value || null) // for initialization: avoid the control to be a uncontrolled component with 'undefined'
 
@@ -97,7 +104,7 @@ export default function UAutoComplete({
       ? options.filter(opt => !usedItemIds.includes(opt.id))
       : []
   return (
-    <React.Fragment>
+    <Root>
       {readOnly ? (
         <ActiveFormTextField
           multiline
@@ -155,7 +162,7 @@ export default function UAutoComplete({
           )}
         />
       )}
-    </React.Fragment>
+    </Root>
   )
 }
 

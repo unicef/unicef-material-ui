@@ -1,14 +1,21 @@
 import React from 'react'
-import makeStyles from '@mui/styles/makeStyles'
+import { styled } from '@mui/material/styles'
 import { Box, CircularProgress, Typography } from '@mui/material'
 import PropTypes from 'prop-types'
 
-const useStyles = makeStyles(() => ({
-  pageLoadingProgress: {
+const PREFIX = 'UPageLoadingProgress'
+
+const classes = {
+  pageLoadingProgress: `${PREFIX}-pageLoadingProgress`,
+}
+
+const StyledBox = styled(Box)(() => ({
+  [`&.${classes.pageLoadingProgress}`]: {
     height: '50vh',
     flex: '1',
   },
 }))
+
 /**
  * UPageLoadingProgress is a component to display page loading progress in the user screen
  * It has two type of page loading information which is displayed in the center of the screen
@@ -16,10 +23,9 @@ const useStyles = makeStyles(() => ({
  * 2. Display text message
  */
 export default function UPageLoadingProgress(props) {
-  const classes = useStyles()
   const { text } = props
   return (
-    <Box
+    <StyledBox
       display="flex"
       justifyContent="center"
       alignItems="center"
@@ -31,7 +37,7 @@ export default function UPageLoadingProgress(props) {
       ) : (
         <CircularProgress />
       )}
-    </Box>
+    </StyledBox>
   )
 }
 

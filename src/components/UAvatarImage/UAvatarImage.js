@@ -1,38 +1,56 @@
 import React, { useEffect, useState } from 'react'
+import { styled } from '@mui/material/styles'
 import PropTypes from 'prop-types'
-import { Avatar, Tooltip, Typography } from '@mui/material'
-import makeStyles from '@mui/styles/makeStyles'
+import { Avatar, Tooltip, Typography, Box } from '@mui/material'
+const PREFIX = 'UAvatarImage'
 
-const useStyles = makeStyles(theme => ({
-  small: {
+const classes = {
+  small: `${PREFIX}-small`,
+  large: `${PREFIX}-large`,
+  mini: `${PREFIX}-mini`,
+  view: `${PREFIX}-view`,
+  edit: `${PREFIX}-edit`,
+  none: `${PREFIX}-none`,
+  font: `${PREFIX}-font`,
+}
+
+const StyledBox = styled(Box)(({ theme }) => ({
+  [`& .${classes.small}`]: {
     width: theme.spacing(4),
     height: theme.spacing(4),
   },
-  large: {
+
+  [`& .${classes.large}`]: {
     width: theme.spacing(10),
     height: theme.spacing(10),
   },
-  mini: {
+
+  [`& .${classes.mini}`]: {
     width: theme.spacing(3),
     height: theme.spacing(3),
     marginRight: 5,
   },
-  view: {
+
+  [`& .${classes.view}`]: {
     border: '2px solid red',
     marginLeft: '-8px',
   },
-  edit: {
+
+  [`& .${classes.edit}`]: {
     border: '2px solid green',
     marginLeft: '-8px',
   },
-  none: {
+
+  [`& .${classes.none}`]: {
     border: '2px solid #fafafa',
     marginLeft: '-8px',
   },
-  font: {
+
+  [`& .${classes.font}`]: {
     fontSize: '2rem',
   },
 }))
+
 /**
  * UAvatarImage is a compoenent to display user image from source.
  * If no image url from source app first letter of the user email will be displayed
@@ -46,7 +64,6 @@ export default function UAvatarImage({
   zIndexValue,
   loadPhoto,
 }) {
-  const classes = useStyles()
   const [photoUrl, setPhotoUrl] = useState('')
 
   useEffect(() => {
@@ -60,21 +77,23 @@ export default function UAvatarImage({
   return (
     <React.Fragment>
       <Tooltip title={tooltipText} placement="bottom">
-        <Avatar
-          className={`${classes[mode]} ${classes[size]}`}
-          style={{ zIndex: zIndexValue }}
-          src={photoUrl}
-        >
-          {size === 'large' ? (
-            <Typography className={classes.font}>
-              {userEmail && userEmail[0].toUpperCase()}
-            </Typography>
-          ) : count === 0 ? (
-            userEmail && userEmail[0].toUpperCase()
-          ) : (
-            `+${count}`
-          )}
-        </Avatar>
+        <StyledBox>
+          <Avatar
+            className={`${classes[mode]} ${classes[size]}`}
+            style={{ zIndex: zIndexValue }}
+            src={photoUrl}
+          >
+            {size === 'large' ? (
+              <Typography className={classes.font}>
+                {userEmail && userEmail[0].toUpperCase()}
+              </Typography>
+            ) : count === 0 ? (
+              userEmail && userEmail[0].toUpperCase()
+            ) : (
+              `+${count}`
+            )}
+          </Avatar>
+        </StyledBox>
       </Tooltip>
     </React.Fragment>
   )

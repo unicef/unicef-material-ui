@@ -1,7 +1,6 @@
 import React from 'react'
+import { styled } from '@mui/material/styles'
 import { alpha } from '@mui/material/styles'
-import makeStyles from '@mui/styles/makeStyles'
-import createStyles from '@mui/styles/createStyles'
 import { findReactChildren } from '../../utils'
 import {
   AppBar,
@@ -21,37 +20,53 @@ import UHeaderRightButtons from '../UHeaderRightButtons'
 import UHeaderLeftMenu from '../UHeaderLeftMenu'
 import UNavbarCenter from '../UNavbarCenter'
 
-const useStyles = makeStyles(theme =>
-  createStyles({
-    bgColor: props => ({
-      color: props.color || null,
-      backgroundColor: props.bgColor || '#1CABE2',
-    }),
-    root: {
-      flexGrow: 1,
-      paddingLeft: theme.spacing(2),
-    },
-    title: {
-      flexGrow: 1,
-    },
-    navRight: {
-      borderBottomLeftRadius: theme.spacing(4),
-      borderTopLeftRadius: theme.spacing(4),
-    },
-    navbarLine: {
-      marginRight: theme.spacing(2),
-      paddingRight: theme.spacing(2),
-      borderRight: '1px solid #fff',
-    },
-    margin: {
-      margin: theme.spacing(2),
-    },
-    navbarCenter: {
-      marginLeft: 16,
-      marginRight: 16,
-    },
-  })
-)
+const PREFIX = 'UHeader'
+
+const classes = {
+  bgColor: `${PREFIX}-bgColor`,
+  root: `${PREFIX}-root`,
+  title: `${PREFIX}-title`,
+  navRight: `${PREFIX}-navRight`,
+  navbarLine: `${PREFIX}-navbarLine`,
+  margin: `${PREFIX}-margin`,
+  navbarCenter: `${PREFIX}-navbarCenter`,
+}
+
+const StyledAppBar = styled(AppBar)(({ theme }) => ({
+  [`& .${classes.bgColor}`]: props => ({
+    color: props.color || null,
+    backgroundColor: props.bgColor || '#1CABE2',
+  }),
+
+  [`& .${classes.root}`]: {
+    flexGrow: 1,
+    paddingLeft: theme.spacing(2),
+  },
+
+  [`& .${classes.title}`]: {
+    flexGrow: 1,
+  },
+
+  [`& .${classes.navRight}`]: {
+    borderBottomLeftRadius: theme.spacing(4),
+    borderTopLeftRadius: theme.spacing(4),
+  },
+
+  [`& .${classes.navbarLine}`]: {
+    marginRight: theme.spacing(2),
+    paddingRight: theme.spacing(2),
+    borderRight: '1px solid #fff',
+  },
+
+  [`& .${classes.margin}`]: {
+    margin: theme.spacing(2),
+  },
+
+  [`& .${classes.navbarCenter}`]: {
+    marginLeft: 16,
+    marginRight: 16,
+  },
+}))
 
 /**
  *
@@ -60,7 +75,6 @@ const useStyles = makeStyles(theme =>
  */
 
 export default function UHeader(props) {
-  const classes = useStyles(props)
   const theme = useTheme()
   const {
     position,
@@ -84,7 +98,7 @@ export default function UHeader(props) {
   }
 
   return (
-    <AppBar position={position} elevation={elevation}>
+    <StyledAppBar position={position} elevation={elevation}>
       <Toolbar disableGutters={true} className={classes.bgColor}>
         <Box display="flex" ml={3} alignItems="center">
           {showHamburgerMenu !== false && (
@@ -161,7 +175,7 @@ export default function UHeader(props) {
         </Box>
       </Toolbar>
       {findReactChildren(props, UHeaderMainMenu)}
-    </AppBar>
+    </StyledAppBar>
   )
 }
 

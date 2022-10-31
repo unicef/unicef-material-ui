@@ -1,20 +1,28 @@
 import React from 'react'
-import makeStyles from '@mui/styles/makeStyles'
+import { styled } from '@mui/material/styles'
 import { Box, Drawer } from '@mui/material'
 import PropTypes from 'prop-types'
 
-const drawerWidth = 300
+const PREFIX = 'USideBar'
 
-const useStyles = makeStyles(theme => ({
-  drawer: props => ({
+const classes = {
+  drawer: `${PREFIX}-drawer`,
+  drawerPaper: `${PREFIX}-drawerPaper`,
+}
+
+const StyledBox = styled(Box)(({ theme }) => ({
+  [`& .${classes.drawer}`]: props => ({
     width: props.width || drawerWidth,
     flexShrink: 0,
   }),
-  drawerPaper: props => ({
+
+  [`& .${classes.drawerPaper}`]: props => ({
     zIndex: 999,
     width: props.width || drawerWidth,
   }),
 }))
+
+const drawerWidth = 300
 
 /**
  * USideBar is the custom material ui component to display the content in the side bar.
@@ -26,24 +34,9 @@ const useStyles = makeStyles(theme => ({
  * USideBar must be wrapped inside the ULayout(Parent Component).
  */
 export default function USideBar(props) {
-  const classes = useStyles(props)
   const { headerHeight, width, ...others } = props
-
-  USideBar.propTypes = {
-    /** Height of the header including MainMenu */
-    headerHeight: PropTypes.number,
-    /**
-     * width of the Drawer in USideBar
-     */
-    width: PropTypes.number,
-  }
-
-  USideBar.defaultProps = {
-    headerHeight: 64,
-  }
-
   return (
-    <Box display={{ xs: 'none', md: 'block' }}>
+    <StyledBox display={{ xs: 'none', md: 'block' }}>
       <Drawer
         className={classes.drawer}
         variant="permanent"
@@ -55,6 +48,19 @@ export default function USideBar(props) {
         <div style={{ minHeight: headerHeight }} />
         {props.children}
       </Drawer>
-    </Box>
+    </StyledBox>
   )
+}
+
+USideBar.propTypes = {
+  /** Height of the header including MainMenu */
+  headerHeight: PropTypes.number,
+  /**
+   * width of the Drawer in USideBar
+   */
+  width: PropTypes.number,
+}
+
+USideBar.defaultProps = {
+  headerHeight: 64,
 }

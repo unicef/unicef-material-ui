@@ -1,37 +1,50 @@
 import React, { useEffect } from 'react'
+import { styled } from '@mui/material/styles'
 import { CircularProgress, Chip } from '@mui/material'
-import makeStyles from '@mui/styles/makeStyles'
 import HighlightOffIcon from '@mui/icons-material/HighlightOff'
 import DoneIcon from '@mui/icons-material/Done'
 import PropTypes from 'prop-types'
 
-const useStyles = makeStyles(theme => ({
-  root: {
+const PREFIX = 'UAsyncBadge'
+
+const classes = {
+  root: `${PREFIX}-root`,
+  chip: `${PREFIX}-chip`,
+  loading: `${PREFIX}-loading`,
+  success: `${PREFIX}-success`,
+  error: `${PREFIX}-error`,
+}
+
+const Root = styled('span')(({ theme }) => ({
+  [`&.${classes.root}`]: {
     position: 'fixed',
     top: 16,
     left: '40%',
     zIndex: 5000,
   },
-  chip: {
+
+  [`& .${classes.chip}`]: {
     fontSize: 16,
     backgroundColor: 'white',
   },
-  loading: {
+
+  [`& .${classes.loading}`]: {
     color: theme.palette.primary.main,
   },
-  success: {
+
+  [`& .${classes.success}`]: {
     color: theme.palette.success.dark,
   },
-  error: {
+
+  [`& .${classes.error}`]: {
     color: theme.palette.error.main,
   },
 }))
+
 /**
  * UAsyncBadge is a component to display async operation status perform in the application
  */
 export default function UAsyncBadge({ variant, text, visible, onReset }) {
-  const classes = useStyles()
-
   /**  If variant is success or error, after few seconds, it will set asyncResponse visible to false */
   useEffect(() => {
     if (variant && variant !== 'loading') {
@@ -44,7 +57,7 @@ export default function UAsyncBadge({ variant, text, visible, onReset }) {
   }, [variant])
 
   return (
-    <span className={classes.root}>
+    <Root className={classes.root}>
       {visible && (
         <Chip
           className={`${classes.chip} ${classes[variant]}`}
@@ -62,7 +75,7 @@ export default function UAsyncBadge({ variant, text, visible, onReset }) {
           label={text}
         />
       )}
-    </span>
+    </Root>
   )
 }
 

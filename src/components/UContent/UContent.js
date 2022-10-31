@@ -1,9 +1,15 @@
 import React from 'react'
-import makeStyles from '@mui/styles/makeStyles'
+import { styled } from '@mui/material/styles'
 import PropTypes from 'prop-types'
 
-const useStyles = makeStyles(theme => ({
-  content: {
+const PREFIX = 'UContent'
+
+const classes = {
+  content: `${PREFIX}-content`,
+}
+
+const Root = styled('main')(({ theme }) => ({
+  [`&.${classes.content}`]: {
     flexGrow: 1,
     padding: theme.spacing(1),
   },
@@ -15,7 +21,6 @@ const useStyles = makeStyles(theme => ({
  * * UContent must be wrapped inside the ULayout.
  */
 export default function UContent(props) {
-  const classes = useStyles(props)
   const { headerHeight } = props
 
   UContent.propTypes = {
@@ -28,9 +33,9 @@ export default function UContent(props) {
   }
 
   return (
-    <main className={classes.content}>
+    <Root className={classes.content}>
       <div style={{ minHeight: headerHeight }} />
       {props.children}
-    </main>
+    </Root>
   )
 }

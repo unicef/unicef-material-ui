@@ -1,8 +1,13 @@
 import React from 'react'
-import makeStyles from '@mui/styles/makeStyles'
+import { styled } from '@mui/material/styles'
+const PREFIX = 'ULayout'
 
-const useStyles = makeStyles(theme => ({
-  root: {
+const classes = {
+  root: `${PREFIX}-root`,
+}
+
+const StyledBox = styled(Box)(({ theme }) => ({
+  [`&.${classes.root}`]: {
     display: 'flex',
   },
 }))
@@ -16,7 +21,5 @@ const useStyles = makeStyles(theme => ({
  */
 
 export default function ULayout(props) {
-  const classes = useStyles()
-
-  return <div className={classes.root}>{props.children}</div>
+  return <StyledBox className={classes.root}>{props.children}</StyledBox>
 }

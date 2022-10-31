@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { styled } from '@mui/material/styles'
 import PropTypes from 'prop-types'
 import {
   IconButton,
@@ -9,24 +10,34 @@ import {
 } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search'
 import CloseIcon from '@mui/icons-material/Close'
-import makeStyles from '@mui/styles/makeStyles'
+const PREFIX = 'USearchBox'
 
-const useStyles = makeStyles(theme => ({
-  root: {
+const classes = {
+  root: `${PREFIX}-root`,
+  iconSeparator: `${PREFIX}-iconSeparator`,
+  searchIcon: `${PREFIX}-searchIcon`,
+  iconLabel: `${PREFIX}-iconLabel`,
+}
+
+const StyledInputAdornment = styled(InputAdornment)(({ theme }) => ({
+  [`& .${classes.root}`]: {
     width: '100%',
     background: 'white',
   },
-  iconSeparator: {
+
+  [`& .${classes.iconSeparator}`]: {
     width: '1px',
     display: 'block',
     height: '54px',
     background: 'rgba(0, 0, 0, 0.23)',
     marginRight: theme.spacing(1),
   },
-  searchIcon: {
+
+  [`& .${classes.searchIcon}`]: {
     color: theme.palette.primary.main,
   },
-  iconLabel: {
+
+  [`& .${classes.iconLabel}`]: {
     marginLeft: theme.spacing(0.5),
   },
 }))
@@ -45,7 +56,6 @@ export default function USearchBox({
   ...rest
 }) {
   const [searchValue, setSearch] = useState(value)
-  const classes = useStyles()
 
   const handleChange = event => {
     setSearch(event.target.value)
@@ -83,7 +93,7 @@ export default function USearchBox({
       InputLabelProps={{ shrink: false }}
       InputProps={{
         endAdornment: (
-          <InputAdornment>
+          <StyledInputAdornment>
             {searchValue ? (
               <IconButton aria-label="Clear" onClick={handleClear} size="large">
                 <CloseIcon />
@@ -111,7 +121,7 @@ export default function USearchBox({
                 <SearchIcon />
               </IconButton>
             )}
-          </InputAdornment>
+          </StyledInputAdornment>
         ),
       }}
       {...rest}
