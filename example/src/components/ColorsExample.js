@@ -1,7 +1,7 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { useTheme } from '@material-ui/core/styles'
-import { Grid, Box, Paper, Typography } from '@material-ui/core'
+import makeStyles from '@mui/styles/makeStyles'
+import { useTheme } from '@mui/material/styles'
+import { Grid, Box, Paper, Typography } from '@mui/material'
 
 const useStyles = makeStyles(theme => ({
   colorTitle: {

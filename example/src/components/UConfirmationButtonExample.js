@@ -1,7 +1,7 @@
 import React from 'react'
 import { UConfirmationButton } from 'unicef-material-ui'
-import { Typography, Grid } from '@material-ui/core'
-import LinkOffIcon from '@material-ui/icons/LinkOff'
+import { Typography, Grid } from '@mui/material'
+import LinkOffIcon from '@mui/icons-material/LinkOff'
 export default function UConfirmationButtonExample() {
   const itemId = 1
   function handleDelete(event, id) {
@@ -33,14 +33,16 @@ export default function UConfirmationButtonExample() {
         />
       </Grid>
       <Grid item xs={12} sm={4} md={3}>
-        <Typography variant="subtitle1">Custom icon and confirm text</Typography>
+        <Typography variant="subtitle1">
+          Custom icon and confirm text
+        </Typography>
         <UConfirmationButton
           onConfirm={handleDelete}
           id={itemId}
           buttonText="Unlink"
           variant="menuItem"
-          confirmText='Confirm unlink?'
-          confirmActionText='Yes, unlink'
+          confirmText="Confirm unlink?"
+          confirmActionText="Yes, unlink"
           icon={<LinkOffIcon />}
         />
       </Grid>

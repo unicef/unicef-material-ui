@@ -8,9 +8,9 @@ import {
   Avatar,
   Link,
   Box,
-} from '@material-ui/core'
-import ArrowDropDown from '@material-ui/icons/ArrowDropDown'
-import MailIcon from '@material-ui/icons/Mail'
+} from '@mui/material'
+import ArrowDropDown from '@mui/icons-material/ArrowDropDown'
+import MailIcon from '@mui/icons-material/Mail'
 import avatar from '../assets/avatar.png'
 
 export default function NavLinks() {
@@ -86,6 +86,7 @@ export default function NavLinks() {
         aria-label="Account of current user"
         aria-haspopup="true"
         onClick={handleProfile}
+        size="large"
       >
         <Avatar alt="User" src={avatar} />
       </IconButton>

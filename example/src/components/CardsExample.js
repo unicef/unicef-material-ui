@@ -1,5 +1,5 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+import makeStyles from '@mui/styles/makeStyles'
 import {
   Table,
   TableBody,
@@ -12,47 +12,46 @@ import {
   CardHeader,
   Grid,
   Typography,
-  Divider
-} from '@material-ui/core'
+  Divider,
+} from '@mui/material'
 
 const useStyles = makeStyles(theme => ({
-  root: {
-  },
+  root: {},
   margin: {
-    margin: '16px 0px'
-  }
-}));
+    margin: '16px 0px',
+  },
+}))
 
 function createData(name, calories, fat) {
-  return { name, calories, fat };
+  return { name, calories, fat }
 }
 
 const rows = [
   createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
   createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
   createData('Eclair', 262, 16.0, 24, 6.0),
-];
+]
 
 export default function CardsExample() {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
-    <React.Fragment >
+    <React.Fragment>
       <Typography variant="h5" style={{ margin: '32px 0px' }}>
         Cards and tables
       </Typography>
       <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
           <Card>
-            <CardHeader component='div' title='Card title'></CardHeader>
+            <CardHeader component="div" title="Card title"></CardHeader>
             <Divider />
             <CardContent>
               <Typography paragraph={true} gutterBottom>
-                This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                This is a longer card with supporting text below as a natural
+                lead-in to additional content. This content is a little bit
+                longer.
               </Typography>
-              <Typography variant="body2">
-                Last updated 5 mins ago
-              </Typography>
+              <Typography variant="body2">Last updated 5 mins ago</Typography>
             </CardContent>
           </Card>
         </Grid>
@@ -82,5 +81,5 @@ export default function CardsExample() {
         </Grid>
       </Grid>
     </React.Fragment>
-  );
+  )
 }

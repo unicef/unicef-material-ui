@@ -8,6 +8,7 @@ const outputFile = NODE_ENV === 'production' ? './lib/prod.js' : './lib/dev.js'
 
 export default {
   input: './src/index.js',
+  preventAssignment: true,
   output: {
     file: outputFile,
     format: 'cjs',
