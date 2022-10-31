@@ -67,7 +67,7 @@ class UTextField extends ValidatorComponent {
     }
   }
 
-  render() {
+  renderValidatorComponent() {
     /* eslint-disable no-unused-vars */
     const {
       variant,

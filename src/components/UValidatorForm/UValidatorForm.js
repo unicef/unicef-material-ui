@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react'
+import React from 'react'
 import { ValidatorForm } from 'react-form-validator-core'
 import PropTypes from 'prop-types'
 import {
@@ -16,49 +16,44 @@ import {
  *  Check it if you need more details, we accept all the functions and props from ValidatorForm Component
  */
 
-function ForwardRefForm(props, ref) {
-  UValidatorForm.addValidationRule = (name, callback) => {
-    ValidatorForm.addValidationRule(name, callback)
-  }
+export default class UValidatorForm extends ValidatorForm {}
 
-  UValidatorForm.removeValidationRule = name => {
-    ValidatorForm.removeValidationRule(name)
-  }
-
-  ValidatorForm.addValidationRule('isUrl', value => {
-    return isUrlText(value)
-  })
-
-  ValidatorForm.addValidationRule('isLatitude', value => {
-    if (value > 90 || value < -90) {
-      return false
-    }
-    return true
-  })
-  ValidatorForm.addValidationRule('isLongitude', value => {
-    if (value > 180 || value < -180) {
-      return false
-    }
-    return true
-  })
-
-  ValidatorForm.addValidationRule('isPhone', value => {
-    return isPhoneNumberText(value)
-  })
-
-  ValidatorForm.addValidationRule('isSafeText', value => {
-    return isSafeText(value)
-  })
-
-  ValidatorForm.addValidationRule('isAlphanumeric', value => {
-    return isAlphanumericText(value)
-  })
-
-  return <ValidatorForm {...props} ref={ref} />
+UValidatorForm.addValidationRule = (name, callback) => {
+  ValidatorForm.addValidationRule(name, callback)
 }
 
-/* Forward the ref */
-const UValidatorForm = React.forwardRef(ForwardRefForm)
+UValidatorForm.removeValidationRule = name => {
+  ValidatorForm.removeValidationRule(name)
+}
+
+ValidatorForm.addValidationRule('isUrl', value => {
+  return isUrlText(value)
+})
+
+ValidatorForm.addValidationRule('isLatitude', value => {
+  if (value > 90 || value < -90) {
+    return false
+  }
+  return true
+})
+ValidatorForm.addValidationRule('isLongitude', value => {
+  if (value > 180 || value < -180) {
+    return false
+  }
+  return true
+})
+
+ValidatorForm.addValidationRule('isPhone', value => {
+  return isPhoneNumberText(value)
+})
+
+ValidatorForm.addValidationRule('isSafeText', value => {
+  return isSafeText(value)
+})
+
+ValidatorForm.addValidationRule('isAlphanumeric', value => {
+  return isAlphanumericText(value)
+})
 
 UValidatorForm.propTypes = {
   /** Callback for form that fires when all validations are passed */
@@ -76,5 +71,3 @@ UValidatorForm.defaultProps = {
   debounceTime: 0,
   onSubmit: () => {},
 }
-
-export default UValidatorForm

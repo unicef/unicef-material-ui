@@ -72,7 +72,7 @@
     "file-loader": "^4.1.0",
     "gh-pages": "^2.1.1",
     "jest": "^27.4.7",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.3",
     "prop-types": "^15.7.2",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
@@ -89,7 +89,7 @@
     "webpack-dev-server": "^3.2.1"
   },
   "dependencies": {
-    "react-form-validator-core": "^0.6.4",
+    "react-form-validator-core": "^1.1.2",
     "react-number-format": "^4.4.1",
     "react-select": "^3.0.4",
     "styled-components": "^4.4.0"
