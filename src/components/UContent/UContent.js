@@ -20,22 +20,20 @@ const Root = styled('main')(({ theme }) => ({
  * * Children under Ucontent will be display in the main content.
  * * UContent must be wrapped inside the ULayout.
  */
-export default function UContent(props) {
-  const { headerHeight } = props
-
-  UContent.propTypes = {
-    /** Height of the header including MainMenu */
-    headerHeight: PropTypes.number,
-  }
-
-  UContent.defaultProps = {
-    headerHeight: 64,
-  }
-
+export default function UContent({ headerHeight, children }) {
   return (
     <Root className={classes.content}>
       <div style={{ minHeight: headerHeight }} />
-      {props.children}
+      {children}
     </Root>
   )
+}
+
+UContent.propTypes = {
+  /** Height of the header including MainMenu */
+  headerHeight: PropTypes.number,
+}
+
+UContent.defaultProps = {
+  headerHeight: 64,
 }

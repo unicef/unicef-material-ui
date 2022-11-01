@@ -1,17 +1,27 @@
 import React, { useState } from 'react'
+import { styled } from '@mui/material/styles'
 import PropTypes from 'prop-types'
-import makeStyles from '@mui/styles/makeStyles'
-import { Tooltip, IconButton, Menu, MenuItem } from '@mui/material'
+import { Tooltip, IconButton, Menu, MenuItem, Box } from '@mui/material'
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined'
 
-const useStyles = makeStyles(theme => ({
-  menuDelete: {
+const PREFIX = 'UConfirmationButton'
+
+const classes = {
+  menuDelete: `${PREFIX}-menuDelete`,
+  menuLabel: `${PREFIX}-menuLabel`,
+  span: `${PREFIX}-span`,
+}
+
+const StyledBox = styled(Box)(({ theme }) => ({
+  [`& .${classes.menuDelete}`]: {
     width: '500px',
   },
-  menuLabel: {
+
+  [`& .${classes.menuLabel}`]: {
     color: theme.palette.primary.main,
   },
-  span: {
+
+  [`& .${classes.span}`]: {
     marginLeft: theme.spacing(1),
   },
 }))
@@ -22,7 +32,6 @@ const useStyles = makeStyles(theme => ({
  * It has two varint icon/menu item
  */
 export default function UConfirmationButton(props) {
-  const classes = useStyles()
   const {
     onConfirm,
     id,
@@ -45,7 +54,7 @@ export default function UConfirmationButton(props) {
     setDeleteAnchorEl(null)
   }
   return (
-    <React.Fragment>
+    <StyledBox>
       {variant === 'menuItem' ? (
         <MenuItem
           onClick={e => setDeleteAnchorEl(e.currentTarget)}
@@ -79,7 +88,7 @@ export default function UConfirmationButton(props) {
         <MenuItem disabled>{confirmText}</MenuItem>
         <MenuItem onClick={e => handleConfirm(e)}>{confirmActionText}</MenuItem>
       </Menu>
-    </React.Fragment>
+    </StyledBox>
   )
 }
 

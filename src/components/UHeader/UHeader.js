@@ -1,6 +1,5 @@
 import React from 'react'
-import { styled } from '@mui/material/styles'
-import { alpha } from '@mui/material/styles'
+import { styled, alpha } from '@mui/material/styles'
 import { findReactChildren } from '../../utils'
 import {
   AppBar,
@@ -10,11 +9,9 @@ import {
   IconButton,
   Drawer,
   Link,
-  Divider,
 } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
 import PropTypes from 'prop-types'
-import { useTheme } from '@mui/material/styles'
 import UHeaderMainMenu from '../UHeaderMainMenu'
 import UHeaderRightButtons from '../UHeaderRightButtons'
 import UHeaderLeftMenu from '../UHeaderLeftMenu'
@@ -32,11 +29,13 @@ const classes = {
   navbarCenter: `${PREFIX}-navbarCenter`,
 }
 
-const StyledAppBar = styled(AppBar)(({ theme }) => ({
-  [`& .${classes.bgColor}`]: props => ({
-    color: props.color || null,
-    backgroundColor: props.bgColor || '#1CABE2',
-  }),
+const StyledAppBar = styled(AppBar, {
+  shouldForwardProp: prop => prop !== 'bgColor',
+})(({ theme, color, bgColor }) => ({
+  [`& .${classes.bgColor}`]: {
+    color: color || null,
+    backgroundColor: bgColor,
+  },
 
   [`& .${classes.root}`]: {
     flexGrow: 1,
@@ -50,6 +49,7 @@ const StyledAppBar = styled(AppBar)(({ theme }) => ({
   [`& .${classes.navRight}`]: {
     borderBottomLeftRadius: theme.spacing(4),
     borderTopLeftRadius: theme.spacing(4),
+    backgroundColor: theme.palette.primary.main,
   },
 
   [`& .${classes.navbarLine}`]: {
@@ -75,7 +75,6 @@ const StyledAppBar = styled(AppBar)(({ theme }) => ({
  */
 
 export default function UHeader(props) {
-  const theme = useTheme()
   const {
     position,
     applicationName,
@@ -88,6 +87,7 @@ export default function UHeader(props) {
     openDrawer,
     toggleDrawer,
     elevation,
+    bgColor,
   } = props
 
   const handleUrlClick = e => {
@@ -98,7 +98,7 @@ export default function UHeader(props) {
   }
 
   return (
-    <StyledAppBar position={position} elevation={elevation}>
+    <StyledAppBar position={position} elevation={elevation} bgColor={bgColor}>
       <Toolbar disableGutters={true} className={classes.bgColor}>
         <Box display="flex" ml={3} alignItems="center">
           {showHamburgerMenu !== false && (
@@ -168,7 +168,6 @@ export default function UHeader(props) {
           height="64px"
           display={{ xs: 'none', md: 'block' }}
           ml="auto"
-          bgcolor={alpha(theme.palette.primary.main, 0.6)}
           className={classes.navRight}
         >
           {findReactChildren(props, UHeaderRightButtons)}

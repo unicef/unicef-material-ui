@@ -1,4 +1,4 @@
-import { createTheme, adaptV4Theme } from '@mui/material/styles'
+import { createTheme } from '@mui/material/styles'
 
 const unicef = {
   blue: '#1CABE2',
@@ -14,49 +14,45 @@ const unicef = {
 
 const zIndexDrawer = 1200
 
-const theme = createTheme(
-  adaptV4Theme({
-    typography: {
-      useNextVariants: true,
-      fontFamily: ['Roboto', 'Helvetica', 'Arial', 'sans-serif'].join(','),
+const theme = createTheme({
+  typography: {
+    useNextVariants: true,
+    fontFamily: ['Roboto', 'Helvetica', 'Arial', 'sans-serif'].join(','),
+  },
+  spacing: 8,
+  palette: {
+    primary: {
+      main: unicef.darkBlue,
     },
-    spacing: 8,
-    palette: {
-      primary: {
-        main: unicef.darkBlue,
-      },
-      secondary: {
-        main: unicef.blue,
-      },
-      error: {
-        main: unicef.red,
-      },
-      unicef: unicef,
-      unicefBlue: '#1CABE2',
+    secondary: {
+      main: unicef.blue,
     },
-    unicefBlue: '#1CABE2',
-    mixins: {
-      toolbar: {},
+    error: {
+      main: unicef.red,
     },
-    shape: {
-      borderRadius: 4,
-    },
-    zIndex: {
-      drawer: zIndexDrawer,
-    },
-    // customize with mui classes
-    overrides: {
-      MuiAppBar: {
-        root: {
-          zIndex: zIndexDrawer + 1,
-        },
+    unicef: unicef,
+    unicefBlue: unicef.blue,
+  },
+  unicefBlue: unicef.blue,
+  mixins: {
+    toolbar: {},
+  },
+  shape: {
+    borderRadius: 4,
+  },
+  zIndex: {
+    drawer: zIndexDrawer,
+  },
+  components: {
+    // Name of the component
+    MuiButtonBase: {
+      defaultProps: {
+        // The props to change the default for.
+        disableRipple: true, // No more ripple, on the whole application 💣!
       },
-      MuiInputBase: {
-        root: {
-          backgroundColor: 'white',
-        },
-      },
-      MuiDrawer: {
+    },
+    MuiDrawer: {
+      styleOverrides: {
         paper: {
           minWidth: 256,
         },
@@ -65,15 +61,22 @@ const theme = createTheme(
         },
       },
     },
-    props: {
-      // Name of the component
-      MuiButtonBase: {
-        // The default props to change
-        disableRipple: true, // No more ripple
+    MuiInputBase: {
+      styleOverrides: {
+        root: {
+          backgroundColor: 'white',
+        },
       },
     },
-  })
-)
+    MuiAppBar: {
+      styleOverrides: {
+        root: {
+          zIndex: zIndexDrawer + 1,
+        },
+      },
+    },
+  },
+})
 /** This is customized version of theme for whole application. To use UNICEF theme add MuiThemeProvider at the top level of your app, it will set the custom styles of unicef down to the component tree.
  *  More info: Material-ui theming
  */

@@ -1,10 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import DateFnsUtils from '@date-io/date-fns'
-import {
-  KeyboardDatePicker,
-  MuiPickersUtilsProvider,
-} from '@material-ui/pickers'
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 import { InputLabelHelp } from '../Shared'
 
@@ -32,8 +30,8 @@ export default function UKeyboardDatePicker(props) {
   } = props
 
   return (
-    <MuiPickersUtilsProvider utils={DateFnsUtils}>
-      <KeyboardDatePicker
+    <LocalizationProvider dateAdapter={AdapterDateFns}>
+      <DatePicker
         autoOk={autoOk}
         variant={variant}
         inputVariant={inputVariant}
@@ -50,7 +48,7 @@ export default function UKeyboardDatePicker(props) {
         }
         {...others}
       />
-    </MuiPickersUtilsProvider>
+    </LocalizationProvider>
   )
 }
 

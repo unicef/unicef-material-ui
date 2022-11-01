@@ -1,14 +1,24 @@
 import React from 'react'
+import { styled } from '@mui/material/styles'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import Chip from '@mui/material/Chip'
 import Avatar from '@mui/material/Avatar'
 import { emphasize } from '@mui/material/styles'
 
-import makeStyles from '@mui/styles/makeStyles'
+const PREFIX = 'MultiValue'
 
-const useStyles = makeStyles(theme => ({
-  chip: {
+const classes = {
+  chip: `${PREFIX}-chip`,
+  chipFocused: `${PREFIX}-chipFocused`,
+  avatar: `${PREFIX}-avatar`,
+  deleteIconReadOnly: `${PREFIX}-deleteIconReadOnly`,
+  rootReadOnly: `${PREFIX}-rootReadOnly`,
+  labelReadOnly: `${PREFIX}-labelReadOnly`,
+}
+
+const StyledChip = styled(Chip)(({ theme }) => ({
+  [`&.${classes.chip}`]: {
     marginLeft: theme.spacing(0.5),
     marginTop: theme.spacing(0.25),
     maxWidth: '90%',
@@ -16,7 +26,8 @@ const useStyles = makeStyles(theme => ({
       display: 'flex',
     },
   },
-  chipFocused: {
+
+  [`&.${classes.chipFocused}`]: {
     backgroundColor: emphasize(
       theme.palette.mode === 'light'
         ? theme.palette.grey[300]
@@ -24,19 +35,23 @@ const useStyles = makeStyles(theme => ({
       0.08
     ),
   },
-  avatar: {
+
+  [`& .${classes.avatar}`]: {
     width: 24,
     height: 24,
   },
-  deleteIconReadOnly: {
+
+  [`& .${classes.deleteIconReadOnly}`]: {
     display: 'none!important',
   },
-  rootReadOnly: {
+
+  [`& .${classes.rootReadOnly}`]: {
     fontSize: '1rem',
     marginLeft: 0,
     background: 'transparent',
   },
-  labelReadOnly: {
+
+  [`& .${classes.labelReadOnly}`]: {
     paddingLeft: 0,
     marginLeft: 0,
   },
@@ -50,7 +65,6 @@ export default function MultiValue({
   selectProps,
   ...props
 }) {
-  const classes = useStyles()
   const hideAvatar =
     selectProps &&
     selectProps.TextFieldProps &&
@@ -62,7 +76,7 @@ export default function MultiValue({
     selectProps.TextFieldProps.readOnly
 
   return (
-    <Chip
+    <StyledChip
       avatar={
         hideAvatar ? null : data.avatar ? (
           data.avatar

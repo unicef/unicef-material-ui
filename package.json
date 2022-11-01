@@ -62,6 +62,7 @@
     "@mui/icons-material": "^5.10.9",
     "@mui/lab": "^5.0.0-alpha.105",
     "@mui/material": "^5.10.11",
+    "@mui/x-date-pickers": "^5.0.6",
     "@rollup/plugin-babel": "^6.0.2",
     "@rollup/plugin-commonjs": "^23.0.2",
     "@rollup/plugin-node-resolve": "^15.0.1",
@@ -88,8 +89,10 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
+    "dayjs": "^1.11.6",
     "react-form-validator-core": "^1.1.2",
     "react-number-format": "^4.4.1",
+    "react-select": "^5.5.8",
     "styled-components": "^4.4.0"
   }
 }

@@ -1,23 +1,27 @@
 import React from 'react'
+import { styled } from '@mui/material/styles'
 import PropTypes from 'prop-types'
 import Box from '@mui/material/Box'
 import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography'
-import makeStyles from '@mui/styles/makeStyles'
+const PREFIX = 'Menu'
 
-const useStyles = makeStyles(theme => ({
-  errorMessage: {
+const classes = {
+  errorMessage: `${PREFIX}-errorMessage`,
+}
+
+const StyledPaper = styled(Paper)(({ theme }) => ({
+  [`& .${classes.errorMessage}`]: {
     padding: theme.spacing(1),
     color: theme.palette.error.main,
   },
 }))
 
 export default function Menu({ children, selectProps, innerProps, isLoading }) {
-  const classes = useStyles()
   const { errorOptionsMessage } = selectProps
 
   return (
-    <Paper square className={selectProps.classes.paper} {...innerProps}>
+    <StyledPaper square className={selectProps.classes.paper} {...innerProps}>
       {isLoading ? (
         <Box p={2}>
           <Typography>Loading...</Typography>
@@ -29,7 +33,7 @@ export default function Menu({ children, selectProps, innerProps, isLoading }) {
       ) : (
         children
       )}
-    </Paper>
+    </StyledPaper>
   )
 }
 

@@ -1,11 +1,55 @@
 import React from 'react'
+import { styled } from '@mui/material/styles'
+import { Box } from '@mui/material'
 import PropTypes from 'prop-types'
-import DateFnsUtils from '@date-io/date-fns'
-import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers'
-
-import makeStyles from '@mui/styles/makeStyles'
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
+import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 
 import { InputLabelHelp } from '../Shared'
+
+const PREFIX = 'ActiveDatePicker'
+
+const classes = {
+  textField: `${PREFIX}-textField`,
+  notchedOutline: `${PREFIX}-notchedOutline`,
+  inputPaddingWithoutLabel: `${PREFIX}-inputPaddingWithoutLabel`,
+  inputPaddingWithLabel: `${PREFIX}-inputPaddingWithLabel`,
+  input: `${PREFIX}-input`,
+  inputHover: `${PREFIX}-inputHover`,
+}
+
+const StyledBox = styled(Box)(({ theme }) => ({
+  [`& .${classes.textField}`]: {
+    marginTop: theme.spacing(0.25),
+    marginBottom: theme.spacing(0.25),
+  },
+
+  [`& .${classes.notchedOutline}`]: {
+    borderRadius: 2,
+    borderColor: 'transparent',
+  },
+
+  [`& .${classes.inputPaddingWithoutLabel}`]: props => ({
+    padding: props.inputPadding ? props.inputPadding : '2px 2px 2px 2px',
+    height: 'auto',
+  }),
+
+  [`& .${classes.inputPaddingWithLabel}`]: props => ({
+    padding: props.inputPadding ? props.inputPadding : '9.5px 14px',
+    height: 'auto',
+  }),
+
+  [`& .${classes.input}`]: props => ({
+    ...theme.typography[props.typographyVariant],
+  }),
+
+  [`& .${classes.inputHover}`]: {
+    '&:hover $notchedOutline': {
+      borderColor: 'transparent',
+    },
+  },
+}))
 
 const styles = {
   labelRoot: {
@@ -15,40 +59,12 @@ const styles = {
   },
 }
 
-const useStyles = makeStyles(theme => ({
-  textField: {
-    marginTop: theme.spacing(0.25),
-    marginBottom: theme.spacing(0.25),
-  },
-  notchedOutline: {
-    borderRadius: 2,
-    borderColor: 'transparent',
-  },
-  inputPaddingWithoutLabel: props => ({
-    padding: props.inputPadding ? props.inputPadding : '2px 2px 2px 2px',
-    height: 'auto',
-  }),
-  inputPaddingWithLabel: props => ({
-    padding: props.inputPadding ? props.inputPadding : '9.5px 14px',
-    height: 'auto',
-  }),
-  input: props => ({
-    ...theme.typography[props.typographyVariant],
-  }),
-  inputHover: {
-    '&:hover $notchedOutline': {
-      borderColor: 'transparent',
-    },
-  },
-}))
-
 /**
  * ActiveDatePicker is a customized material ui Date picker.
  * This component let's you access the calender to select particular dates.
  * Please have look at [Material Ui Date Picker]('https://material-ui-pickers.dev/api/DatePicker') for more details
  */
 export default function ActiveDatePicker(props) {
-  const classes = useStyles(props)
   const {
     autoOk,
     variant,
@@ -72,44 +88,46 @@ export default function ActiveDatePicker(props) {
   const finalPlaceholder = readOnly ? null : placeholder
 
   return (
-    <MuiPickersUtilsProvider utils={DateFnsUtils}>
-      <DatePicker
-        autoOk={autoOk}
-        variant={variant}
-        inputVariant={inputVariant}
-        placeholder={finalPlaceholder}
-        className={`${classes.textField} ${className && className}`}
-        InputLabelProps={{
-          shrink: true,
-          style: { ...styles.labelRoot },
-          ...InputLabelProps,
-        }}
-        inputProps={{
-          readOnly: Boolean(readOnly),
-          disabled: Boolean(readOnly),
-          ...inputProps,
-        }}
-        readOnly={readOnly}
-        InputProps={{
-          classes: {
-            root: `${classes.input} ${readOnly && classes.inputHover}`,
-            notchedOutline: `${
-              !interactiveMode && !readOnly ? '' : classes.notchedOutline
-            }`,
-            input: inputPaddingClass,
-          },
-          ...InputProps,
-        }}
-        label={
-          showLabelHelp ? (
-            <InputLabelHelp inputLabel={label} {...InputLabelHelpProps} />
-          ) : (
-            label
-          )
-        }
-        {...others}
-      />
-    </MuiPickersUtilsProvider>
+    <StyledBox>
+      <LocalizationProvider dateAdapter={AdapterDateFns}>
+        <DatePicker
+          autoOk={autoOk}
+          variant={variant}
+          inputVariant={inputVariant}
+          placeholder={finalPlaceholder}
+          className={`${classes.textField} ${className && className}`}
+          InputLabelProps={{
+            shrink: true,
+            style: { ...styles.labelRoot },
+            ...InputLabelProps,
+          }}
+          inputProps={{
+            readOnly: Boolean(readOnly),
+            disabled: Boolean(readOnly),
+            ...inputProps,
+          }}
+          readOnly={readOnly}
+          InputProps={{
+            classes: {
+              root: `${classes.input} ${readOnly && classes.inputHover}`,
+              notchedOutline: `${
+                !interactiveMode && !readOnly ? '' : classes.notchedOutline
+              }`,
+              input: inputPaddingClass,
+            },
+            ...InputProps,
+          }}
+          label={
+            showLabelHelp ? (
+              <InputLabelHelp inputLabel={label} {...InputLabelHelpProps} />
+            ) : (
+              label
+            )
+          }
+          {...others}
+        />
+      </LocalizationProvider>
+    </StyledBox>
   )
 }
 

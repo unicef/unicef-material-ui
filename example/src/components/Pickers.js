@@ -2,16 +2,16 @@ import React, { useState } from 'react'
 import {
   UPeoplePicker,
   UDatePicker,
-  UTimePicker,
-  UKeyboardDatePicker,
-  UKeyboardTimePicker,
-  UDateTimePicker,
-  UKeyboardDateTimePicker,
+  // UTimePicker,
+  // UKeyboardDatePicker,
+  // UKeyboardTimePicker,
+  // UDateTimePicker,
+  // UKeyboardDateTimePicker,
   USelectPicker,
   UIconPicker,
 } from 'unicef-material-ui'
 import { GraphPeoplePickerExample } from '../components'
-import { Grid, Typography, Avatar } from '@mui/material'
+import { Grid, Typography, Avatar, TextField } from '@mui/material'
 
 export default function Pickers() {
   // People picker options
@@ -369,7 +369,7 @@ export default function Pickers() {
         />
       </Grid>
       <Grid item xs={12} md={6} lg={3}>
-        <UKeyboardDatePicker
+        {/* <UKeyboardDatePicker
           label="With keyboard"
           value={selectedDate}
           onChange={handleDateChange}
@@ -377,13 +377,13 @@ export default function Pickers() {
           InputLabelHelpProps={{
             tooltipTitle: 'With keyboard',
           }}
-        />
+        /> */}
       </Grid>
       <Grid item xs={12}>
         <Typography variant="h5">Time picker</Typography>
       </Grid>
       <Grid item xs={12} md={6} lg={3}>
-        <UTimePicker
+        {/* <UTimePicker
           label="Time"
           value={selectedDate}
           onChange={handleDateChange}
@@ -391,10 +391,10 @@ export default function Pickers() {
           InputLabelHelpProps={{
             tooltipTitle: 'Time',
           }}
-        />
+        /> */}
       </Grid>
       <Grid item xs={12} md={6} lg={3}>
-        <UKeyboardTimePicker
+        {/* <UKeyboardTimePicker
           label="With keyboard"
           value={selectedDate}
           onChange={handleDateChange}
@@ -402,13 +402,13 @@ export default function Pickers() {
           InputLabelHelpProps={{
             tooltipTitle: 'With keyboard',
           }}
-        />
+        /> */}
       </Grid>
       <Grid item xs={12}>
         <Typography variant="h5">Date Time picker</Typography>
       </Grid>
       <Grid item xs={12} md={6} lg={3}>
-        <UDateTimePicker
+        {/* <UDateTimePicker
           label="Date and Time"
           value={selectedDate}
           onChange={handleDateChange}
@@ -416,10 +416,10 @@ export default function Pickers() {
           InputLabelHelpProps={{
             tooltipTitle: 'Date and time',
           }}
-        />
+        /> */}
       </Grid>
       <Grid item xs={12} md={6} lg={3}>
-        <UKeyboardDateTimePicker
+        {/* <UKeyboardDateTimePicker
           label="With keyboard"
           value={selectedDate}
           onChange={handleDateChange}
@@ -427,7 +427,7 @@ export default function Pickers() {
           InputLabelHelpProps={{
             tooltipTitle: 'With keyboard',
           }}
-        />
+        /> */}
       </Grid>
       <Grid item xs={12}>
         <GraphPeoplePickerExample />

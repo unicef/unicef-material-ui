@@ -10,19 +10,17 @@ const classes = {
   drawerPaper: `${PREFIX}-drawerPaper`,
 }
 
-const StyledBox = styled(Box)(({ theme }) => ({
-  [`& .${classes.drawer}`]: props => ({
-    width: props.width || drawerWidth,
+const StyledBox = styled(Box)(props => ({
+  [`& .${classes.drawer}`]: {
+    width: props.width,
     flexShrink: 0,
-  }),
+  },
 
-  [`& .${classes.drawerPaper}`]: props => ({
+  [`& .${classes.drawerPaper}`]: {
     zIndex: 999,
-    width: props.width || drawerWidth,
-  }),
+    width: props.width,
+  },
 }))
-
-const drawerWidth = 300
 
 /**
  * USideBar is the custom material ui component to display the content in the side bar.
@@ -36,7 +34,7 @@ const drawerWidth = 300
 export default function USideBar(props) {
   const { headerHeight, width, ...others } = props
   return (
-    <StyledBox display={{ xs: 'none', md: 'block' }}>
+    <StyledBox display={{ xs: 'none', md: 'block' }} width={width}>
       <Drawer
         className={classes.drawer}
         variant="permanent"
@@ -63,4 +61,5 @@ USideBar.propTypes = {
 
 USideBar.defaultProps = {
   headerHeight: 64,
+  width: 300,
 }

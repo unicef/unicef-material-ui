@@ -1,11 +1,20 @@
 import React from 'react'
+import { styled } from '@mui/material/styles'
 import InputBase from '@mui/material/InputBase'
 import { alpha } from '@mui/material/styles'
-import makeStyles from '@mui/styles/makeStyles'
 import SearchIcon from '@mui/icons-material/Search'
 
-const useStyles = makeStyles(theme => ({
-  search: {
+const PREFIX = 'SearchBar'
+
+const classes = {
+  search: `${PREFIX}-search`,
+  searchIcon: `${PREFIX}-searchIcon`,
+  inputRoot: `${PREFIX}-inputRoot`,
+  inputInput: `${PREFIX}-inputInput`,
+}
+
+const Root = styled('div')(({ theme }) => ({
+  [`&.${classes.search}`]: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
     backgroundColor: alpha(theme.palette.common.white, 0.15),
@@ -19,7 +28,8 @@ const useStyles = makeStyles(theme => ({
       width: 'auto',
     },
   },
-  searchIcon: {
+
+  [`& .${classes.searchIcon}`]: {
     width: theme.spacing(7),
     height: '100%',
     position: 'absolute',
@@ -29,10 +39,12 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  inputRoot: {
+
+  [`& .${classes.inputRoot}`]: {
     backgroundColor: theme.palette.common.white,
   },
-  inputInput: {
+
+  [`& .${classes.inputInput}`]: {
     padding: theme.spacing(1, 1, 1, 7),
     transition: theme.transitions.create('width'),
     width: '100%',
@@ -46,10 +58,8 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export default function SearchBar() {
-  const classes = useStyles()
-
   return (
-    <div className={classes.search}>
+    <Root className={classes.search}>
       <InputBase
         placeholder="Search…"
         classes={{
@@ -61,6 +71,6 @@ export default function SearchBar() {
       <div className={classes.searchIcon}>
         <SearchIcon color="primary" />
       </div>
-    </div>
+    </Root>
   )
 }

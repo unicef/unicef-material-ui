@@ -1,17 +1,27 @@
 import React from 'react'
+import { styled } from '@mui/material/styles'
 import PropTypes from 'prop-types'
 import Avatar from '@mui/material/Avatar'
-import makeStyles from '@mui/styles/makeStyles'
 import Typography from '@mui/material/Typography'
 
-const useStyles = makeStyles(theme => ({
-  singleValue: {
+const PREFIX = 'SingleValue'
+
+const classes = {
+  singleValue: `${PREFIX}-singleValue`,
+  singleValueAvatar: `${PREFIX}-singleValueAvatar`,
+  avatar: `${PREFIX}-avatar`,
+  optionLabel: `${PREFIX}-optionLabel`,
+}
+
+const StyledTypography = styled(Typography)(({ theme }) => ({
+  [`&.${classes.singleValue}`]: {
     display: 'inline-flex',
     fontSize: 16,
     alignItems: 'center',
     width: '96%',
   },
-  singleValueAvatar: {
+
+  [`& .${classes.singleValueAvatar}`]: {
     display: 'inline-flex',
     marginRight: theme.spacing(1),
     '& .MuiAvatar-root': {
@@ -19,12 +29,14 @@ const useStyles = makeStyles(theme => ({
       width: 32,
     },
   },
-  avatar: {
+
+  [`& .${classes.avatar}`]: {
     height: 32,
     width: 32,
     marginRight: theme.spacing(1),
   },
-  optionLabel: {
+
+  [`& .${classes.optionLabel}`]: {
     whiteSpace: 'nowrap',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
@@ -33,15 +45,13 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export default function SingleValue(props) {
-  const classes = useStyles()
-
   const hideAvatar =
     props.selectProps &&
     props.selectProps.TextFieldProps &&
     props.selectProps.TextFieldProps.hideAvatar
 
   return (
-    <Typography
+    <StyledTypography
       className={classes.singleValue}
       variant="subtitle1"
       {...props.innerProps}
@@ -54,7 +64,7 @@ export default function SingleValue(props) {
         <Avatar className={classes.avatar} />
       )}
       <span className={classes.optionLabel}>{props.children}</span>
-    </Typography>
+    </StyledTypography>
   )
 }
 

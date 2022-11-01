@@ -1,47 +1,53 @@
 /* eslint-disable no-nested-ternary */
 import React from 'react'
+import { styled } from '@mui/material/styles'
 import PropTypes from 'prop-types'
-import makeStyles from '@mui/styles/makeStyles'
 import Link from '@mui/material/Link'
 import Typography from '@mui/material/Typography'
 import Breadcrumbs from '@mui/material/Breadcrumbs'
 import { Link as RouterLink } from 'react-router-dom'
 
-const useStyles = makeStyles(theme => ({
-  root: {
+const PREFIX = 'UBreadcrumbs'
+
+const classes = {
+  root: `${PREFIX}-root`,
+  link: `${PREFIX}-link`,
+  text: `${PREFIX}-text`,
+}
+
+const Root = styled('div')(({ theme }) => ({
+  [`&.${classes.root}`]: {
     display: 'flex',
     flexDirection: 'column',
     marginLeft: 8,
   },
-  link: {
+
+  [`& .${classes.link}`]: {
     color: '#3344DD',
     textDecorationLine: 'underline',
   },
-  text: {
+
+  [`& .${classes.text}`]: {
     whiteSpace: 'nowrap',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
-  },
-  [`@media (min-width: 1600px)`]: {
-    text: {
+    '@media (min-width: 1600px)': {
       width: 600,
     },
-  },
-  [`@media (min-width: 1280px) and (max-width: 1600px)`]: {
-    text: {
+    '@media (min-width: 1280px) and (max-width: 1600px)': {
       width: 285,
     },
   },
 }))
+
 /**
  * Breadcrumbs is a component to implement current user path of the application
  */
 export default function UBreadcrumbs(props) {
-  const classes = useStyles()
   const { breadcrumbLinks } = props
 
   return (
-    <div className={classes.root}>
+    <Root className={classes.root}>
       <Breadcrumbs aria-label="breadcrumb">
         <Link color="inherit" to="/" className={classes.link}>
           Home
@@ -64,7 +70,7 @@ export default function UBreadcrumbs(props) {
           )
         })}
       </Breadcrumbs>
-    </div>
+    </Root>
   )
 }
 

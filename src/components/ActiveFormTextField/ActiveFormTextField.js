@@ -1,29 +1,45 @@
 import React from 'react'
+import { styled } from '@mui/material/styles'
 import PropTypes from 'prop-types'
-import makeStyles from '@mui/styles/makeStyles'
 import UTextField from '../UTextField'
 
-const useStyles = makeStyles(theme => ({
-  textField: {
+const PREFIX = 'ActiveFormTextField'
+
+const classes = {
+  textField: `${PREFIX}-textField`,
+  notchedOutline: `${PREFIX}-notchedOutline`,
+  inputPaddingWithoutLabel: `${PREFIX}-inputPaddingWithoutLabel`,
+  inputPaddingWithLabel: `${PREFIX}-inputPaddingWithLabel`,
+  input: `${PREFIX}-input`,
+  inputHover: `${PREFIX}-inputHover`,
+}
+
+const StyledUTextField = styled(UTextField)(({ theme }) => ({
+  [`& .${classes.textField}`]: {
     marginTop: theme.spacing(0.25),
     marginBottom: theme.spacing(0.25),
   },
-  notchedOutline: {
+
+  [`& .${classes.notchedOutline}`]: {
     borderRadius: 2,
     borderColor: 'transparent',
   },
-  inputPaddingWithoutLabel: props => ({
+
+  [`& .${classes.inputPaddingWithoutLabel}`]: props => ({
     padding: props.inputPadding ? props.inputPadding : '2px 2px 2px 2px',
     height: 'auto',
   }),
-  inputPaddingWithLabel: props => ({
+
+  [`& .${classes.inputPaddingWithLabel}`]: props => ({
     padding: props.inputPadding ? props.inputPadding : '9.5px 14px',
     height: 'auto',
   }),
-  input: props => ({
+
+  [`& .${classes.input}`]: props => ({
     ...theme.typography[props.typographyVariant],
   }),
-  inputHover: {
+
+  [`& .${classes.inputHover}`]: {
     '&:hover $notchedOutline': {
       borderColor: 'transparent',
     },
@@ -44,7 +60,6 @@ const useStyles = makeStyles(theme => ({
  *
  */
 export default function ActiveFormTextField(props) {
-  const classes = useStyles(props)
   const {
     typographyVariant,
     className,

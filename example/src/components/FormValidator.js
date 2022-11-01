@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import makeStyles from '@mui/styles/makeStyles'
+import { styled } from '@mui/material/styles'
 import {
   Typography,
   Button,
@@ -26,27 +26,44 @@ import {
   UCoordinateField,
 } from 'unicef-material-ui'
 
-const useStyles = makeStyles(theme => ({
-  container: {
+const PREFIX = 'FormValidator'
+
+const classes = {
+  container: `${PREFIX}-container`,
+  textField: `${PREFIX}-textField`,
+  margin: `${PREFIX}-margin`,
+  mb3: `${PREFIX}-mb3`,
+  button: `${PREFIX}-button`,
+  label: `${PREFIX}-label`,
+}
+
+// TODO jss-to-styled codemod: The Fragment root was replaced by div. Change the tag if needed.
+const Root = styled('div')(({ theme }) => ({
+  [`& .${classes.container}`]: {
     display: 'flex',
     flexDirection: 'column',
     flexWrap: 'wrap',
   },
-  textField: {
+
+  [`& .${classes.textField}`]: {
     minWidth: 195,
     marginTop: theme.spacing(4),
   },
-  margin: {
+
+  [`& .${classes.margin}`]: {
     marginTop: theme.spacing(4),
   },
-  mb3: {
+
+  [`& .${classes.mb3}`]: {
     marginBottom: theme.spacing(3),
   },
-  button: {
+
+  [`& .${classes.button}`]: {
     marginTop: theme.spacing(5),
     marginLeft: theme.spacing(2),
   },
-  label: {
+
+  [`& .${classes.label}`]: {
     display: 'inline-flex',
     alignItems: 'center',
     gap: theme.spacing(0.5),
@@ -73,7 +90,6 @@ const currencies = [
 ]
 
 export default function FormValidator() {
-  const classes = useStyles()
   let form = useRef('form')
   const [values, setValues] = useState({
     currency: '',
@@ -128,7 +144,7 @@ export default function FormValidator() {
     })
   }, [])
   return (
-    <React.Fragment>
+    <Root>
       <Grid container spacing={1}>
         <Grid item xs={12}>
           <Typography variant="h5" style={{ margin: '16px 0px' }}>
@@ -577,6 +593,6 @@ export default function FormValidator() {
           </Grid>
         </Grid>
       </UValidatorForm>
-    </React.Fragment>
+    </Root>
   )
 }

@@ -1,13 +1,18 @@
 import React, { useState } from 'react'
+import { styled } from '@mui/material/styles'
 import PropTypes from 'prop-types'
 import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete'
-import makeStyles from '@mui/styles/makeStyles'
 import ActiveFormTextField from '../ActiveFormTextField'
 
-const filter = createFilterOptions()
+const PREFIX = 'ActiveAutoComplete'
 
-const useStyles = makeStyles(theme => ({
-  root: {
+const classes = {
+  root: `${PREFIX}-root`,
+  focused: `${PREFIX}-focused`,
+}
+
+const Root = styled('div')(({ theme }) => ({
+  [`& .${classes.root}`]: {
     marginTop: theme.spacing(2),
     width: '100%',
     '& .UPopupIndicator': {
@@ -19,12 +24,16 @@ const useStyles = makeStyles(theme => ({
       },
     },
   },
-  focused: {
+
+  [`& .${classes.focused}`]: {
     '& .UPopupIndicator': {
       visibility: 'visible',
     },
   },
 }))
+
+const filter = createFilterOptions()
+
 /**
  * ActiveAutoComplete is an editable dropdown component with interactive.
  * User can enter the text in order to find the value from the list of values
@@ -49,7 +58,6 @@ export default function ActiveAutoComplete({
   InputLabelProps,
   props,
 }) {
-  const classes = useStyles()
   //const dispatch = useDispatch()
   const [selectedValue, setSelectedValue] = useState(value || null) // for initialization: avoid the control to be a uncontrolled component with 'undefined'
 
@@ -111,7 +119,7 @@ export default function ActiveAutoComplete({
       ? options.filter(opt => !usedItemIds.includes(opt.id))
       : []
   return (
-    <React.Fragment>
+    <Root>
       {!interactiveMode && readOnly ? (
         <ActiveFormTextField
           multiline
@@ -174,7 +182,7 @@ export default function ActiveAutoComplete({
           )}
         />
       )}
-    </React.Fragment>
+    </Root>
   )
 }
 

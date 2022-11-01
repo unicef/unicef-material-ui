@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import DateFnsUtils from '@date-io/date-fns'
-import { TimePicker, MuiPickersUtilsProvider } from '@material-ui/pickers'
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 
 import { InputLabelHelp } from '../Shared'
 
@@ -31,7 +32,7 @@ export default function UTimePicker(props) {
   } = props
 
   return (
-    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+    <LocalizationProvider utils={AdapterDayjs}>
       <TimePicker
         inputVariant={inputVariant}
         InputLabelProps={{
@@ -47,7 +48,7 @@ export default function UTimePicker(props) {
         }
         {...others}
       />
-    </MuiPickersUtilsProvider>
+    </LocalizationProvider>
   )
 }
 

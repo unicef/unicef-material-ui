@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import makeStyles from '@mui/styles/makeStyles'
+import { styled } from '@mui/material/styles'
 import {
   Paper,
   Grid,
@@ -21,17 +21,29 @@ import {
   USelectPicker,
 } from 'unicef-material-ui'
 
-const useStyles = makeStyles(theme => ({
-  textfield: {
+const PREFIX = 'InteractiveViews'
+
+const classes = {
+  textfield: `${PREFIX}-textfield`,
+  margin: `${PREFIX}-margin`,
+  input: `${PREFIX}-input`,
+  avatar: `${PREFIX}-avatar`,
+}
+
+const StyledGrid = styled(Grid)(({ theme }) => ({
+  [`& .${classes.textfield}`]: {
     minWidth: 193,
   },
-  margin: {
+
+  [`& .${classes.margin}`]: {
     margin: theme.spacing(2),
   },
-  input: {
+
+  [`& .${classes.input}`]: {
     borderRadius: 0,
   },
-  avatar: {
+
+  [`& .${classes.avatar}`]: {
     height: 160,
     width: 160,
     marginLeft: theme.spacing(3),
@@ -39,8 +51,6 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export default function InteractiveViews() {
-  const classes = useStyles()
-
   const [readOnly, setReadOnly] = useState(true)
 
   function handleChange() {
@@ -127,7 +137,7 @@ export default function InteractiveViews() {
   }
 
   return (
-    <Grid container spacing={3} display="flex">
+    <StyledGrid container spacing={3} display="flex">
       <Grid item xs={12} lg={8}>
         <Paper style={{ padding: 8 }}>
           <UValidatorForm onSubmit={() => {}}>
@@ -469,6 +479,6 @@ export default function InteractiveViews() {
           </UValidatorForm>
         </Paper>
       </Grid>
-    </Grid>
+    </StyledGrid>
   )
 }

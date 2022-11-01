@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Switch, Route, Link } from 'react-router-dom'
-import { MuiThemeProvider } from '@material-ui/core/styles'
+import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles'
 import {
   theme,
   UNICEFStyleProvider,
@@ -9,7 +9,7 @@ import {
   UContent,
 } from 'unicef-material-ui'
 import './App.css'
-import { List, ListItem, ListItemText } from '@material-ui/core'
+import { List, ListItem, ListItemText } from '@mui/material'
 import {
   Header,
   Pickers,
@@ -29,7 +29,7 @@ export default function App() {
   }
 
   return (
-    <MuiThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
       <UNICEFStyleProvider>
         <Header />
         <ULayout>
@@ -75,6 +75,6 @@ export default function App() {
           </UContent>
         </ULayout>
       </UNICEFStyleProvider>
-    </MuiThemeProvider>
+    </ThemeProvider>
   )
 }

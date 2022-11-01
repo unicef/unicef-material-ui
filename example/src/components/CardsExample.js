@@ -1,5 +1,5 @@
 import React from 'react'
-import makeStyles from '@mui/styles/makeStyles'
+import { styled } from '@mui/material/styles'
 import {
   Table,
   TableBody,
@@ -15,10 +15,19 @@ import {
   Divider,
 } from '@mui/material'
 
-const useStyles = makeStyles(theme => ({
-  root: {},
-  margin: {
-    margin: '16px 0px',
+const PREFIX = 'CardsExample'
+
+const classes = {
+  root: `${PREFIX}-root`,
+  margin: `${PREFIX}-margin`,
+}
+
+// TODO jss-to-styled codemod: The Fragment root was replaced by div. Change the tag if needed.
+const Root = styled('div')(({ theme }) => ({
+  [`& .${classes.root}`]: {},
+
+  [`& .${classes.margin}`]: {
+    margin: theme.spacing(2, 0),
   },
 }))
 
@@ -33,10 +42,8 @@ const rows = [
 ]
 
 export default function CardsExample() {
-  const classes = useStyles()
-
   return (
-    <React.Fragment>
+    <Root>
       <Typography variant="h5" style={{ margin: '32px 0px' }}>
         Cards and tables
       </Typography>
@@ -80,6 +87,6 @@ export default function CardsExample() {
           </Paper>
         </Grid>
       </Grid>
-    </React.Fragment>
+    </Root>
   )
 }
