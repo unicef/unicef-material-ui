@@ -2,9 +2,10 @@ import React from 'react'
 import { styled } from '@mui/material/styles'
 import { Box } from '@mui/material'
 import PropTypes from 'prop-types'
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { TimePicker } from '@mui/x-date-pickers/TimePicker'
+import UTextField from './../UTextField'
 
 import { InputLabelHelp } from '../Shared'
 
@@ -76,6 +77,9 @@ export default function ActiveTimePicker(props) {
     placeholder,
     showLabelHelp,
     inputlabelhelpprops,
+    format,
+    onChange,
+    value,
     label,
     ...others
   } = props
@@ -87,40 +91,27 @@ export default function ActiveTimePicker(props) {
 
   return (
     <StyledBox>
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <LocalizationProvider dateAdapter={AdapterDateFns}>
         <TimePicker
-          inputVariant={inputVariant}
-          placeholder={finalPlaceholder}
-          className={`${classes.textField} ${className && className}`}
-          InputLabelProps={{
-            shrink: true,
-            style: { ...styles.labelRoot },
-            ...InputLabelProps,
-          }}
-          inputProps={{
-            readOnly: Boolean(readOnly),
-            disabled: Boolean(readOnly),
-            ...inputProps,
-          }}
+          label={label}
+          format={format}
+          onChange={onChange}
+          value={value}
           readOnly={readOnly}
-          InputProps={{
-            classes: {
-              root: `${classes.input} ${readOnly && classes.inputHover}`,
-              notchedOutline: `${
-                !interactiveMode && !readOnly ? '' : classes.notchedOutline
-              }`,
-              input: inputPaddingClass,
-            },
-            ...InputProps,
-          }}
-          label={
-            showLabelHelp ? (
-              <InputLabelHelp inputLabel={label} {...inputlabelhelpprops} />
-            ) : (
-              label
-            )
-          }
           {...others}
+          renderInput={({ inputProps, ...params }) => (
+            <UTextField
+              showLabelHelp={showLabelHelp}
+              inputlabelhelpprops={inputlabelhelpprops}
+              variant={inputVariant}
+              InputLabelProps={{
+                shrink: true,
+                ...InputLabelProps,
+              }}
+              placeholder={finalPlaceholder}
+              {...params}
+            />
+          )}
         />
       </LocalizationProvider>
     </StyledBox>

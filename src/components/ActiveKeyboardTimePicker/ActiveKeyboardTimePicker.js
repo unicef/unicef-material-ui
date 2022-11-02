@@ -2,7 +2,7 @@ import React from 'react'
 import { styled } from '@mui/material/styles'
 import { Box } from '@mui/material'
 import PropTypes from 'prop-types'
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { TimePicker } from '@mui/x-date-pickers/TimePicker'
 
@@ -110,7 +110,7 @@ export default function ActiveKeyboardTimePicker(props) {
 
   return (
     <StyledBox>
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <LocalizationProvider dateAdapter={AdapterDateFns}>
         <TimePicker
           inputVariant={inputVariant}
           placeholder={finalPlaceholder}
