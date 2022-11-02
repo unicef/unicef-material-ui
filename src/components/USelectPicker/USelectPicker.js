@@ -118,7 +118,7 @@ export default function USelectPicker(props) {
     components,
     showLabelHelp,
     InputLabelProps,
-    InputLabelHelpProps,
+    inputlabelhelpprops,
     hideAvatar,
     readOnly,
     lineByLineOption,
@@ -156,7 +156,7 @@ export default function USelectPicker(props) {
     lineByLineOption,
     hideAvatar,
     showLabelHelp,
-    InputLabelHelpProps,
+    inputlabelhelpprops,
   }
   // To show or hide the no options menu
   const showNoOptions = showNoOptionsWithEmptyTextField || !isTextFieldEmpty
@@ -249,8 +249,8 @@ USelectPicker.propTypes = {
   components: PropTypes.object,
   /** Show label help */
   showLabelHelp: PropTypes.bool,
-  /** Props applied to the input label help element. E.g.  InputLabelHelpProps={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
-  InputLabelHelpProps: PropTypes.object,
+  /** Props applied to the input label help element. E.g.  inputlabelhelpprops={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
+  inputlabelhelpprops: PropTypes.object,
   /** Hide people avatar */
   hideAvatar: PropTypes.bool,
   /** Is the read only field or not */
@@ -273,7 +273,7 @@ USelectPicker.defaultProps = {
   variant: 'outlined',
   showNoOptionsWithEmptyTextField: true,
   showLabelHelp: false,
-  InputLabelHelpProps: {},
+  inputlabelhelpprops: {},
   hideAvatar: true,
   readOnly: false,
   isClearable: undefined,

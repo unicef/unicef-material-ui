@@ -2,9 +2,9 @@ import React from 'react'
 import { styled } from '@mui/material/styles'
 import { Box } from '@mui/material'
 import PropTypes from 'prop-types'
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { TimePicker } from '@mui/x-date-pickers/TimePicker';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
+import { TimePicker } from '@mui/x-date-pickers/TimePicker'
 
 import { InputLabelHelp } from '../Shared'
 
@@ -83,7 +83,7 @@ export default function ActiveKeyboardTimePicker(props) {
     InputProps,
     placeholder,
     showLabelHelp,
-    InputLabelHelpProps,
+    inputlabelhelpprops,
     label,
     ...others
   } = props
@@ -143,7 +143,7 @@ export default function ActiveKeyboardTimePicker(props) {
           }}
           label={
             showLabelHelp ? (
-              <InputLabelHelp inputLabel={label} {...InputLabelHelpProps} />
+              <InputLabelHelp inputLabel={label} {...inputlabelhelpprops} />
             ) : (
               label
             )
@@ -179,8 +179,8 @@ ActiveKeyboardTimePicker.propTypes = {
   label: PropTypes.string,
   /** Show label help */
   showLabelHelp: PropTypes.bool,
-  /** Props applied to the input label help element. E.g InputLabelHelpProps={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
-  InputLabelHelpProps: PropTypes.object,
+  /** Props applied to the input label help element. E.g inputlabelhelpprops={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
+  inputlabelhelpprops: PropTypes.object,
 }
 
 ActiveKeyboardTimePicker.defaultProps = {

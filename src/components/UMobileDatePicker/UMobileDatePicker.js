@@ -2,15 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
-import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker'
+import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker'
 import UTextField from '../UTextField'
 
 /**
- * UDateTimePicker is a customized material UI Date Time Picker.
- * This component let's you access the calender and clock to select the date and time.
- * Please have look at [Material UI Date Time Picker]('https://mui.com/x/api/date-pickers/date-time-picker/') for more details
+ * UMobileDatePicker is a customized material UI Mobile Date Picker.
+ * This component let's you access the calender to select particular dates.
+ * Please have look at [Material UI Mobile Date Picker]('https://mui.com/x/api/date-pickers/mobile-date-picker/') for more details
  */
-export default function UDateTimePicker({
+export default function UMobileDatePicker({
   format,
   label,
   onChange,
@@ -23,7 +23,7 @@ export default function UDateTimePicker({
 }) {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <DateTimePicker
+      <MobileDatePicker
         label={label}
         format={format}
         onChange={onChange}
@@ -43,8 +43,8 @@ export default function UDateTimePicker({
   )
 }
 
-UDateTimePicker.propTypes = {
-  /** Date time picker format */
+UMobileDatePicker.propTypes = {
+  /** Date picker format */
   format: PropTypes.string,
   /** Callback function when change the picker field */
   onChange: PropTypes.func.isRequired,

@@ -57,7 +57,7 @@ export default function Control({
         TextFieldProps.showLabelHelp ? (
           <InputLabelHelp
             inputLabel={TextFieldProps.label}
-            {...TextFieldProps.InputLabelHelpProps}
+            {...TextFieldProps.inputlabelhelpprops}
           />
         ) : (
           TextFieldProps.label

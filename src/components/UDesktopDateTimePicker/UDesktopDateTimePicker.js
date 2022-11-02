@@ -2,15 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
-import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker'
+import { DesktopDateTimePicker } from '@mui/x-date-pickers/DesktopDateTimePicker'
 import UTextField from '../UTextField'
 
 /**
- * UDateTimePicker is a customized material UI Date Time Picker.
+ * UDesktopDateTimePicker is a customized material UI Date Time Picker.
  * This component let's you access the calender and clock to select the date and time.
  * Please have look at [Material UI Date Time Picker]('https://mui.com/x/api/date-pickers/date-time-picker/') for more details
  */
-export default function UDateTimePicker({
+export default function UDesktopDateTimePicker({
   format,
   label,
   onChange,
@@ -23,7 +23,7 @@ export default function UDateTimePicker({
 }) {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <DateTimePicker
+      <DesktopDateTimePicker
         label={label}
         format={format}
         onChange={onChange}
@@ -43,7 +43,7 @@ export default function UDateTimePicker({
   )
 }
 
-UDateTimePicker.propTypes = {
+UDesktopDateTimePicker.propTypes = {
   /** Date time picker format */
   format: PropTypes.string,
   /** Callback function when change the picker field */

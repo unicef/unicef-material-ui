@@ -218,7 +218,7 @@ export default function FormValidator() {
               label="Email"
               required
               showLabelHelp={true}
-              InputLabelHelpProps={{
+              inputlabelhelpprops={{
                 tooltipTitle: 'Hover text',
               }}
               onChange={handleValue}

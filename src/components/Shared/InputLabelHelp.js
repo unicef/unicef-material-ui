@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { styled } from '@mui/material/styles'
-import { Tooltip, Link } from '@mui/material'
+import { Tooltip, Link, Box } from '@mui/material'
 import PropTypes from 'prop-types'
 
 import HelpIcon from '@mui/icons-material/HelpOutline'
@@ -10,21 +10,23 @@ const PREFIX = 'InputLabelHelp'
 
 const classes = {
   root: `${PREFIX}-root`,
+  help: `${PREFIX}-help`,
   tooltipHelpLabel: `${PREFIX}-tooltipHelpLabel`,
   linkHelpLabel: `${PREFIX}-linkHelpLabel`,
   tooltipPopper: `${PREFIX}-tooltipPopper`,
 }
 
-// TODO jss-to-styled codemod: The Fragment root was replaced by div. Change the tag if needed.
-const Root = styled('div')(({ theme }) => ({
-  [`& .${classes.root}`]: {
-    marginRight: theme.spacing(-1),
-    marginTop: theme.spacing(-0.5),
-    paddingLeft: theme.spacing(1.5),
+const StyledBox = styled(Box)(({ theme }) => ({
+  [`&.${classes.root}`]: {
     order: 999,
     display: 'inline-flex',
     alignItems: 'center',
+  },
+  [`& .${classes.help}`]: {
+    paddingLeft: theme.spacing(0.5),
     color: theme.palette.primary.main,
+    display: 'flex',
+    alignItems: 'center',
   },
 
   [`& .${classes.tooltipHelpLabel}`]: {
@@ -53,37 +55,43 @@ export default function InputLabelHelp({
   tooltipPlacement,
 }) {
   return (
-    <Root>
+    <Fragment>
       <span>{inputLabel}</span>
-      {type === 'tooltip' ? (
-        <Tooltip
-          interactive
-          title={<div dangerouslySetInnerHTML={{ __html: tooltipTitle }} />}
-          placement={tooltipPlacement}
-          classes={{ popper: classes.tooltipPopper }}
-        >
-          <span className={classes.root}>
-            {icon ? icon : <HelpIcon />}
+      <StyledBox className={classes.root}>
+        {type === 'tooltip' ? (
+          <Tooltip
+            interactive
+            title={<div dangerouslySetInnerHTML={{ __html: tooltipTitle }} />}
+            placement={tooltipPlacement}
+            classes={{ popper: classes.tooltipPopper }}
+          >
+            <span className={classes.help}>
+              {icon ? icon : <HelpIcon />}
+              {label ? (
+                <span className={classes.tooltipHelpLabel}>{label}</span>
+              ) : (
+                ''
+              )}
+            </span>
+          </Tooltip>
+        ) : (
+          <Link
+            href={link}
+            target={'_blank'}
+            underline="always"
+            className={classes.help}
+            title="Opens a new tab"
+          >
+            {icon ? icon : <LaunchIcon />}
             {label ? (
-              <span className={classes.tooltipHelpLabel}>{label}</span>
+              <span className={classes.linkHelpLabel}>{label}</span>
             ) : (
               ''
             )}
-          </span>
-        </Tooltip>
-      ) : (
-        <Link
-          href={link}
-          target={'_blank'}
-          underline="always"
-          className={classes.root}
-          title="Opens a new tab"
-        >
-          {icon ? icon : <LaunchIcon />}
-          {label ? <span className={classes.linkHelpLabel}>{label}</span> : ''}
-        </Link>
-      )}
-    </Root>
+          </Link>
+        )}
+      </StyledBox>
+    </Fragment>
   )
 }
 

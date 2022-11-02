@@ -1,17 +1,17 @@
 ```jsx
 import React, { useState } from "react";
 // import {
-//   UKeyboardTimePicker,
+//   UDesktopDateTimePicker,
 // } from '@unicef/material-ui';
 
-// export default function KeyboardTimePicker() {
+// export default function DesktopDateTimePicker() {
 
   const [selectedDate, handleDateChange] = useState(
     new Date()
   );
 
   // return (
-   <UKeyboardTimePicker
+   <UDesktopDateTimePicker
       label="Date and Time"
       value={selectedDate}
       onChange={handleDateChange}

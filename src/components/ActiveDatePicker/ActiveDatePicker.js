@@ -77,7 +77,7 @@ export default function ActiveDatePicker(props) {
     InputProps,
     placeholder,
     showLabelHelp,
-    InputLabelHelpProps,
+    inputlabelhelpprops,
     label,
     ...others
   } = props
@@ -119,7 +119,7 @@ export default function ActiveDatePicker(props) {
           }}
           label={
             showLabelHelp ? (
-              <InputLabelHelp inputLabel={label} {...InputLabelHelpProps} />
+              <InputLabelHelp inputLabel={label} {...inputlabelhelpprops} />
             ) : (
               label
             )
@@ -156,8 +156,8 @@ ActiveDatePicker.propTypes = {
   label: PropTypes.string,
   /** Show label help */
   showLabelHelp: PropTypes.bool,
-  /** Props applied to the input label help element. E.g InputLabelHelpProps={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
-  InputLabelHelpProps: PropTypes.object,
+  /** Props applied to the input label help element. E.g inputlabelhelpprops={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
+  inputlabelhelpprops: PropTypes.object,
 }
 
 ActiveDatePicker.defaultProps = {

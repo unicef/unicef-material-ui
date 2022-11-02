@@ -1,17 +1,21 @@
 import React, { useState } from 'react'
 import {
   UPeoplePicker,
+  UTimePicker,
+  UDesktopTimePicker,
+  UMobileTimePicker,
   UDatePicker,
-  // UTimePicker,
-  // UKeyboardDatePicker,
-  // UKeyboardTimePicker,
-  // UDateTimePicker,
-  // UKeyboardDateTimePicker,
+  UMobileDatePicker,
+  UDesktopDatePicker,
+  UDateTimePicker,
+  UMobileDateTimePicker,
+  UDesktopDateTimePicker,
   USelectPicker,
   UIconPicker,
+  UValidatorForm,
 } from 'unicef-material-ui'
 import { GraphPeoplePickerExample } from '../components'
-import { Grid, Typography, Avatar, TextField } from '@mui/material'
+import { Grid, Typography, Avatar } from '@mui/material'
 
 export default function Pickers() {
   // People picker options
@@ -211,227 +215,268 @@ export default function Pickers() {
   }
 
   return (
-    <Grid container spacing={3}>
-      <Grid item xs={12}>
-        <Typography variant="h5" style={{ margin: '16px 0px' }}>
-          Icon picker
-        </Typography>
-      </Grid>
-      <Grid item xs={12} md={6}>
-        <UIconPicker
-          label="Icon Select"
-          placeholder="Select Icon ..."
-          options={iconOptions}
-        />
-      </Grid>
-      <Grid item xs={12} md={6}>
-        <UIconPicker
-          label="Multi Icon Select"
-          placeholder="Select Icon ..."
-          options={iconOptions}
-          isMulti={true}
-          showLabelHelp={true}
-          InputLabelHelpProps={{
-            type: 'link',
-            link: 'https://unicef.github.io/',
-          }}
-        />
-      </Grid>
-      <Grid item xs={12} md={6}>
-        <UIconPicker
-          label="Icon Select"
-          placeholder="Select Icon ..."
-          options={iconOptions}
-          value={iconOptions[2]}
-          readOnly={true}
-        />
-      </Grid>
+    <UValidatorForm>
+      <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <Typography variant="h5" style={{ margin: '16px 0px' }}>
+            Icon picker
+          </Typography>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <UIconPicker
+            label="Icon Select"
+            placeholder="Select Icon ..."
+            options={iconOptions}
+          />
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <UIconPicker
+            label="Multi Icon Select"
+            placeholder="Select Icon ..."
+            options={iconOptions}
+            isMulti={true}
+            showLabelHelp={true}
+            inputlabelhelpprops={{
+              type: 'link',
+              link: 'https://unicef.github.io/',
+            }}
+          />
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <UIconPicker
+            label="Icon Select"
+            placeholder="Select Icon ..."
+            options={iconOptions}
+            value={iconOptions[2]}
+            readOnly={true}
+          />
+        </Grid>
 
-      <Grid item xs={12}>
-        <Typography variant="h5" style={{ margin: '16px 0px' }}>
-          People picker
-        </Typography>
-      </Grid>
-      <Grid item xs={12} md={6}>
-        <UPeoplePicker
-          label="Select"
-          placeholder="Select people ..."
-          options={peopleOptions}
-          showLabelHelp={true}
-          InputLabelHelpProps={{
-            type: 'link',
-            link: 'https://unicef.github.io/',
-          }}
-        />
-      </Grid>
-      <Grid item xs={12} md={6}>
-        <UPeoplePicker
-          label="Multi Select"
-          TextFieldProps={{
-            helperText: 'Please select multiple people from list',
-          }}
-          placeholder="Select people ..."
-          options={peopleOptions}
-          isMulti
-          showLabelHelp={true}
-          InputLabelHelpProps={{
-            type: 'tooltip',
-            tooltipTitle: 'Please select multiple people from list',
-          }}
-        />
-      </Grid>
-      <Grid item xs={12} md={6}>
-        <UPeoplePicker
-          label="Loading state example"
-          isLoading={true}
-          placeholder="Select people ..."
-          options={peopleOptions}
-        />
-      </Grid>
-      <Grid item xs={12} md={6}>
-        <UPeoplePicker
-          label="Async example"
-          isLoading={loading}
-          placeholder="Select people ..."
-          options={options}
-          TextFieldProps={{
-            onChange: event => handleLoadPeople(event),
-          }}
-          showNoOptionsWithEmptyTextField={false}
-          errorOptionsMessage={errorMessage}
-          isMulti
-        />
-      </Grid>
-      <Grid item xs={12} md={6}>
-        <UPeoplePicker
-          label="Display error on load"
-          isLoading={false}
-          placeholder="Select people ..."
-          options={undefined}
-          errorOptionsMessage={'Could not load options'}
-          isMulti
-        />
-      </Grid>
-      <Grid item xs={12} md={6}>
-        <UPeoplePicker
-          label="Display validation error"
-          isLoading={false}
-          placeholder="Select people ..."
-          options={undefined}
-          TextFieldProps={{
-            error: true,
-            helperText: 'Validation error message',
-          }}
-          isMulti
-        />
-      </Grid>
+        <Grid item xs={12}>
+          <Typography variant="h5" style={{ margin: '16px 0px' }}>
+            People picker
+          </Typography>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <UPeoplePicker
+            label="Select"
+            placeholder="Select people ..."
+            options={peopleOptions}
+            showLabelHelp={true}
+            inputlabelhelpprops={{
+              type: 'link',
+              link: 'https://unicef.github.io/',
+            }}
+          />
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <UPeoplePicker
+            label="Multi Select"
+            TextFieldProps={{
+              helperText: 'Please select multiple people from list',
+            }}
+            placeholder="Select people ..."
+            options={peopleOptions}
+            isMulti
+            showLabelHelp={true}
+            inputlabelhelpprops={{
+              type: 'tooltip',
+              tooltipTitle: 'Please select multiple people from list',
+            }}
+          />
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <UPeoplePicker
+            label="Loading state example"
+            isLoading={true}
+            placeholder="Select people ..."
+            options={peopleOptions}
+          />
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <UPeoplePicker
+            label="Async example"
+            isLoading={loading}
+            placeholder="Select people ..."
+            options={options}
+            TextFieldProps={{
+              onChange: event => handleLoadPeople(event),
+            }}
+            showNoOptionsWithEmptyTextField={false}
+            errorOptionsMessage={errorMessage}
+            isMulti
+          />
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <UPeoplePicker
+            label="Display error on load"
+            isLoading={false}
+            placeholder="Select people ..."
+            options={undefined}
+            errorOptionsMessage={'Could not load options'}
+            isMulti
+          />
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <UPeoplePicker
+            label="Display validation error"
+            isLoading={false}
+            placeholder="Select people ..."
+            options={undefined}
+            TextFieldProps={{
+              error: true,
+              helperText: 'Validation error message',
+            }}
+            isMulti
+          />
+        </Grid>
 
-      <Grid item xs={12}>
-        <Typography variant="h5" style={{ margin: '16px 0px' }}>
-          Select
-        </Typography>
-      </Grid>
+        <Grid item xs={12}>
+          <Typography variant="h5" style={{ margin: '16px 0px' }}>
+            Select
+          </Typography>
+        </Grid>
 
-      <Grid item xs={12} md={6}>
-        <USelectPicker
-          label="Regions"
-          TextFieldProps={{
-            helperText: 'Please select multiple regions from the list',
-          }}
-          placeholder="Select regions ..."
-          options={regionsOptions}
-          isMulti
-        />
-      </Grid>
-      <Grid item xs={12} md={6}>
-        <USelectPicker
-          label="Region"
-          TextFieldProps={{
-            helperText: 'Please select region from the list',
-          }}
-          placeholder="Select region ..."
-          options={regionsOptions}
-        />
-      </Grid>
+        <Grid item xs={12} md={6}>
+          <USelectPicker
+            label="Regions"
+            TextFieldProps={{
+              helperText: 'Please select multiple regions from the list',
+            }}
+            placeholder="Select regions ..."
+            options={regionsOptions}
+            isMulti
+          />
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <USelectPicker
+            label="Region"
+            TextFieldProps={{
+              helperText: 'Please select region from the list',
+            }}
+            placeholder="Select region ..."
+            options={regionsOptions}
+          />
+        </Grid>
 
-      <Grid item xs={12}>
-        <Typography variant="h5">Date picker</Typography>
+        <Grid item xs={12}>
+          <Typography variant="h5">Date picker</Typography>
+        </Grid>
+        <Grid item xs={12} md={4} lg={4}>
+          <UDatePicker
+            label="Responsive"
+            value={selectedDate}
+            onChange={handleDateChange}
+            showLabelHelp={true}
+            inputlabelhelpprops={{
+              tooltipTitle: 'Date picker',
+            }}
+          />
+        </Grid>
+        <Grid item xs={12} md={4} lg={4}>
+          <UDesktopDatePicker
+            label="Desktop"
+            value={selectedDate}
+            onChange={handleDateChange}
+            showLabelHelp={true}
+            InputLabelHelpProps={{
+              tooltipTitle: 'Date picker',
+            }}
+          />
+        </Grid>
+        <Grid item xs={12} md={4} lg={4}>
+          <UMobileDatePicker
+            label="Mobile"
+            value={selectedDate}
+            onChange={handleDateChange}
+            showLabelHelp={true}
+            InputLabelHelpProps={{
+              tooltipTitle: 'Date picker',
+            }}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <Typography variant="h5">Time picker</Typography>
+        </Grid>
+        <Grid item xs={12} md={4} lg={4}>
+          <UTimePicker
+            label="Responsive"
+            value={selectedDate}
+            onChange={handleDateChange}
+            showLabelHelp={true}
+            InputLabelProps={{ shrink: true, required: true }}
+            inputlabelhelpprops={{
+              tooltipTitle: 'Time picker help text',
+            }}
+          />
+        </Grid>
+
+        <Grid item xs={12} md={4} lg={4}>
+          <UDesktopTimePicker
+            label="Desktop"
+            value={selectedDate}
+            onChange={handleDateChange}
+            showLabelHelp={true}
+            InputLabelProps={{ shrink: true, required: true }}
+            inputlabelhelpprops={{
+              tooltipTitle: 'Time picker help text',
+            }}
+          />
+        </Grid>
+
+        <Grid item xs={12} md={4} lg={4}>
+          <UMobileTimePicker
+            label="Mobile"
+            value={selectedDate}
+            onChange={handleDateChange}
+            showLabelHelp={true}
+            InputLabelProps={{ shrink: true, required: true }}
+            inputlabelhelpprops={{
+              tooltipTitle: 'Time picker help text',
+            }}
+          />
+        </Grid>
+
+        <Grid item xs={12}>
+          <Typography variant="h5">Date Time picker</Typography>
+        </Grid>
+        <Grid item xs={12} md={4} lg={4}>
+          <UDateTimePicker
+            label="Responsive"
+            value={selectedDate}
+            onChange={handleDateChange}
+            showLabelHelp={true}
+            inputlabelhelpprops={{
+              tooltipTitle: 'Date and time',
+            }}
+          />
+        </Grid>
+        <Grid item xs={12} md={4} lg={4}>
+          <UDesktopDateTimePicker
+            label="Desktop"
+            value={selectedDate}
+            onChange={handleDateChange}
+            showLabelHelp={true}
+            inputlabelhelpprops={{
+              tooltipTitle: 'Date and time',
+            }}
+          />
+        </Grid>
+        <Grid item xs={12} md={4} lg={4}>
+          <UMobileDateTimePicker
+            label="Mobile"
+            value={selectedDate}
+            onChange={handleDateChange}
+            showLabelHelp={true}
+            inputlabelhelpprops={{
+              tooltipTitle: 'Date and time',
+            }}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <GraphPeoplePickerExample />
+        </Grid>
       </Grid>
-      <Grid item xs={12} md={6} lg={3}>
-        <UDatePicker
-          label="Date"
-          value={selectedDate}
-          onChange={handleDateChange}
-          showLabelHelp={true}
-          InputLabelHelpProps={{
-            tooltipTitle: 'Date',
-          }}
-        />
-      </Grid>
-      <Grid item xs={12} md={6} lg={3}>
-        {/* <UKeyboardDatePicker
-          label="With keyboard"
-          value={selectedDate}
-          onChange={handleDateChange}
-          showLabelHelp={true}
-          InputLabelHelpProps={{
-            tooltipTitle: 'With keyboard',
-          }}
-        /> */}
-      </Grid>
-      <Grid item xs={12}>
-        <Typography variant="h5">Time picker</Typography>
-      </Grid>
-      <Grid item xs={12} md={6} lg={3}>
-        {/* <UTimePicker
-          label="Time"
-          value={selectedDate}
-          onChange={handleDateChange}
-          showLabelHelp={true}
-          InputLabelHelpProps={{
-            tooltipTitle: 'Time',
-          }}
-        /> */}
-      </Grid>
-      <Grid item xs={12} md={6} lg={3}>
-        {/* <UKeyboardTimePicker
-          label="With keyboard"
-          value={selectedDate}
-          onChange={handleDateChange}
-          showLabelHelp={true}
-          InputLabelHelpProps={{
-            tooltipTitle: 'With keyboard',
-          }}
-        /> */}
-      </Grid>
-      <Grid item xs={12}>
-        <Typography variant="h5">Date Time picker</Typography>
-      </Grid>
-      <Grid item xs={12} md={6} lg={3}>
-        {/* <UDateTimePicker
-          label="Date and Time"
-          value={selectedDate}
-          onChange={handleDateChange}
-          showLabelHelp={true}
-          InputLabelHelpProps={{
-            tooltipTitle: 'Date and time',
-          }}
-        /> */}
-      </Grid>
-      <Grid item xs={12} md={6} lg={3}>
-        {/* <UKeyboardDateTimePicker
-          label="With keyboard"
-          value={selectedDate}
-          onChange={handleDateChange}
-          showLabelHelp={true}
-          InputLabelHelpProps={{
-            tooltipTitle: 'With keyboard',
-          }}
-        /> */}
-      </Grid>
-      <Grid item xs={12}>
-        <GraphPeoplePickerExample />
-      </Grid>
-    </Grid>
+    </UValidatorForm>
   )
 }

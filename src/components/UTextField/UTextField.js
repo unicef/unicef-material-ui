@@ -87,7 +87,7 @@ class UTextField extends ValidatorComponent {
       InputProps,
       InputLabelProps,
       showLabelHelp,
-      InputLabelHelpProps,
+      inputlabelhelpprops,
       ...rest
     } = this.props
     const { isValid } = this.state
@@ -112,7 +112,7 @@ class UTextField extends ValidatorComponent {
           }}
           label={
             showLabelHelp ? (
-              <InputLabelHelp inputLabel={label} {...InputLabelHelpProps} />
+              <InputLabelHelp inputLabel={label} {...inputlabelhelpprops} />
             ) : (
               label
             )
@@ -168,8 +168,8 @@ UTextField.propTypes = {
   InputProps: PropTypes.object,
   /** Show label help */
   showLabelHelp: PropTypes.bool,
-  /** Props applied to the input label help element. E.g InputLabelHelpProps={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
-  InputLabelHelpProps: PropTypes.object,
+  /** Props applied to the input label help element. E.g inputlabelhelpprops={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
+  inputlabelhelpprops: PropTypes.object,
 }
 
 UTextField.defaultProps = {
@@ -177,7 +177,7 @@ UTextField.defaultProps = {
   readOnly: false,
   validatorListener: () => {},
   showLabelHelp: false,
-  InputLabelHelpProps: {},
+  inputlabelhelpprops: {},
 }
 
 export default UTextField

@@ -13,11 +13,16 @@ import USelectPicker from './components/USelectPicker'
 import UPeoplePicker from './components/UPeoplePicker'
 import UIconPicker from './components/UIconPicker'
 import UDatePicker from './components/UDatePicker'
+import UDesktopDatePicker from './components/UDesktopDatePicker'
+import UMobileDatePicker from './components/UMobileDatePicker'
+
 import UTimePicker from './components/UTimePicker'
-import UKeyboardDatePicker from './components/UKeyboardDatePicker'
-import UKeyboardTimePicker from './components/UKeyboardTimePicker'
+import UDesktopTimePicker from './components/UDesktopTimePicker'
+import UMobileTimePicker from './components/UMobileTimePicker'
+
 import UDateTimePicker from './components/UDateTimePicker'
-import UKeyboardDateTimePicker from './components/UKeyboardDateTimePicker'
+import UDesktopDateTimePicker from './components/UDesktopDateTimePicker'
+import UMobileDateTimePicker from './components/UMobileDateTimePicker'
 import UTextField from './components/UTextField'
 import UValidatorComponent from './components/UValidatorComponent'
 import UValidatorForm from './components/UValidatorForm'
@@ -40,10 +45,8 @@ import UGraphPeoplePicker from './components/UGraphPeoplePicker'
 import ActiveFormCoordinateField from './components/ActiveFormCoordinateField'
 import UCoordinateField from './components/UCoordinateField'
 import USearchBox from './components/USearchBox'
-import ActiveKeyboardDatePicker from './components/ActiveKeyboardDatePicker'
 import ActiveDatePicker from './components/ActiveDatePicker'
 import ActiveTimePicker from './components/ActiveTimePicker'
-import ActiveKeyboardTimePicker from './components/ActiveKeyboardTimePicker'
 import ActiveAutoComplete from './components/ActiveAutoComplete'
 
 export {
@@ -64,11 +67,14 @@ export {
   UPeoplePicker,
   UIconPicker,
   UDatePicker,
+  UMobileDatePicker,
+  UDesktopDatePicker,
   UTimePicker,
-  UKeyboardDatePicker,
-  UKeyboardTimePicker,
+  UDesktopTimePicker,
+  UMobileTimePicker,
   UDateTimePicker,
-  UKeyboardDateTimePicker,
+  UDesktopDateTimePicker,
+  UMobileDateTimePicker,
   UTextField,
   UValidatorForm,
   UValidatorComponent,
@@ -89,9 +95,7 @@ export {
   ActiveFormCoordinateField,
   UCoordinateField,
   USearchBox,
-  ActiveKeyboardDatePicker,
   ActiveDatePicker,
   ActiveTimePicker,
-  ActiveKeyboardTimePicker,
   ActiveAutoComplete,
 }
