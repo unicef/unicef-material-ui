@@ -4,6 +4,8 @@ import PropTypes from 'prop-types'
 import Box from '@mui/material/Box'
 import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography'
+import { components } from 'react-select'
+
 const PREFIX = 'Menu'
 
 const classes = {
@@ -17,23 +19,28 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
   },
 }))
 
-export default function Menu({ children, selectProps, innerProps, isLoading }) {
-  const { errorOptionsMessage } = selectProps
-
+export default function Menu({ isLoading, ...others }) {
+  const { errorOptionsMessage } = others.selectProps
   return (
-    <StyledPaper square className={selectProps.classes.paper} {...innerProps}>
-      {isLoading ? (
-        <Box p={2}>
-          <Typography>Loading...</Typography>
-        </Box>
-      ) : errorOptionsMessage ? (
-        <Typography color="textSecondary" className={classes.errorMessage}>
-          {errorOptionsMessage}
-        </Typography>
-      ) : (
-        children
-      )}
-    </StyledPaper>
+    <components.Menu {...others}>
+      <StyledPaper
+        square
+        elevation={0}
+        className={others.selectProps.classes.paper}
+      >
+        {isLoading ? (
+          <Box p={2}>
+            <Typography>Loading...</Typography>
+          </Box>
+        ) : errorOptionsMessage ? (
+          <Typography color="textSecondary" className={classes.errorMessage}>
+            {errorOptionsMessage}
+          </Typography>
+        ) : (
+          others.children
+        )}
+      </StyledPaper>
+    </components.Menu>
   )
 }
 

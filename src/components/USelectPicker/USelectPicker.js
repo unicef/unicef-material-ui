@@ -27,13 +27,14 @@ const classes = {
   notchedOutline: `${PREFIX}-notchedOutline`,
 }
 
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledBox = styled(Box, {
+  shouldForwardProp: prop => prop !== 'hasHelpText',
+})(({ theme, hasHelpText }) => ({
   [`& .${classes.input}`]: {
     display: 'flex',
     padding: '10px 14px',
     height: 'auto',
   },
-
   [`& .${classes.valueContainer}`]: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -41,45 +42,29 @@ const StyledBox = styled(Box)(({ theme }) => ({
     alignItems: 'center',
     overflow: 'hidden',
   },
-
   [`& .${classes.OptionsMessage}`]: {
     padding: theme.spacing(1, 2),
   },
-
-  [`& .${classes.placeholder}`]: {
-    position: 'absolute',
-    left: 2,
-    bottom: 6,
-    fontSize: 16,
-  },
-
-  [`& .${classes.paper}`]: props => ({
+  [`& .${classes.paper}`]: {
     position: 'absolute',
     zIndex: 999,
     left: 0,
     right: 0,
-    marginTop:
-      props.TextFieldProps && props.TextFieldProps.helperText
-        ? theme.spacing(-2.1)
-        : theme.spacing(0.3),
-  }),
-
+    marginTop: hasHelpText ? theme.spacing(-3) : theme.spacing(0),
+  },
   [`& .${classes.divider}`]: {
     height: theme.spacing(2),
   },
-
   [`& .${classes.labelRoot}`]: {
     pointerEvents: 'auto',
     display: 'flex',
     alignItems: 'center',
   },
-
   [`& .${classes.inputHover}`]: {
     '&:hover $notchedOutline': {
       borderColor: 'transparent',
     },
   },
-
   [`& .${classes.notchedOutline}`]: {
     borderRadius: 2,
     borderColor: 'transparent',
@@ -141,7 +126,8 @@ export default function USelectPicker(props) {
       },
     }),
     menuPortal: base => ({ ...base, zIndex: 9999 }),
-    menu: base => ({ ...base, zIndex: '9999 !important' }),
+    menu: base => ({ ...base, zIndex: '999 !important', boxShadow: 'none' }),
+    placeholder: base => ({ ...base, position: 'absolute' }),
   }
 
   const defaultTextFieldProps = {
@@ -177,7 +163,11 @@ export default function USelectPicker(props) {
   const selectPlaceholder = readOnly ? '' : placeholder
 
   return (
-    <StyledBox>
+    <StyledBox
+      hasHelpText={
+        props.TextFieldProps && props.TextFieldProps.helperText ? true : false
+      }
+    >
       <Select
         classes={classes}
         styles={selectStyles}

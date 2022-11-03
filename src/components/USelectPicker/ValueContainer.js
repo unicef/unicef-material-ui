@@ -9,9 +9,9 @@ const classes = {
 }
 
 const Root = styled('div')(({ theme }) => ({
-  [`& .${classes.rootReadOnly}`]: {},
+  [`&.${classes.rootReadOnly}`]: {},
 
-  [`& .${classes.lineByLineOption}`]: {
+  [`&.${classes.lineByLineOption}`]: {
     flexDirection: 'column!important',
     alignItems: 'flex-start!important',
   },

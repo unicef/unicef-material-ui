@@ -52,7 +52,6 @@ const StyledChip = styled(Chip)(({ theme }) => ({
   },
 
   [`& .${classes.labelReadOnly}`]: {
-    paddingLeft: 0,
     marginLeft: 0,
   },
 }))
