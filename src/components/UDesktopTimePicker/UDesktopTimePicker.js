@@ -11,7 +11,7 @@ import UTextField from '../UTextField'
  * Please have look at [Material UI Desktop Time Picker]('https://mui.com/x/api/date-pickers/desktop-time-picker/') for more details
  */
 export default function UDesktopTimePicker({
-  format,
+  inputFormat,
   label,
   onChange,
   value,
@@ -25,7 +25,7 @@ export default function UDesktopTimePicker({
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <DesktopTimePicker
         label={label}
-        format={format}
+        inputFormat={inputFormat}
         onChange={onChange}
         value={value}
         {...others}
@@ -45,7 +45,7 @@ export default function UDesktopTimePicker({
 
 UDesktopTimePicker.propTypes = {
   /** Date picker format */
-  format: PropTypes.string,
+  inputFormat: PropTypes.string,
   /** Callback function when change the picker field */
   onChange: PropTypes.func.isRequired,
   /** Value of the picker field */
@@ -58,4 +58,14 @@ UDesktopTimePicker.propTypes = {
   showLabelHelp: PropTypes.bool,
   /** Props applied to the input label help element. E.g inputlabelhelpprops={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
   inputlabelhelpprops: PropTypes.object,
+  /** Props applied to the InputLabel element.*/
+  InputLabelProps: PropTypes.object,
+}
+
+UDesktopTimePicker.defaultProps = {
+  inputVariant: 'outlined',
+  InputLabelProps: {
+    shrink: true,
+  },
+  inputFormat: 'hh:mm a',
 }

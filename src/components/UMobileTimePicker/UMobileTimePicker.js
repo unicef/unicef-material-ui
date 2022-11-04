@@ -11,7 +11,7 @@ import UTextField from '../UTextField'
  * Please have look at [Material UI Mobile Time Picker]('https://mui.com/x/api/date-pickers/mobile-time-picker/') for more details
  */
 export default function UMobileTimePicker({
-  format,
+  inputFormat,
   label,
   onChange,
   value,
@@ -25,7 +25,7 @@ export default function UMobileTimePicker({
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <MobileTimePicker
         label={label}
-        format={format}
+        inputFormat={inputFormat}
         onChange={onChange}
         value={value}
         {...others}
@@ -45,7 +45,7 @@ export default function UMobileTimePicker({
 
 UMobileTimePicker.propTypes = {
   /** Date picker format */
-  format: PropTypes.string,
+  inputFormat: PropTypes.string,
   /** Callback function when change the picker field */
   onChange: PropTypes.func.isRequired,
   /** Value of the picker field */
@@ -58,4 +58,14 @@ UMobileTimePicker.propTypes = {
   showLabelHelp: PropTypes.bool,
   /** Props applied to the input label help element. E.g inputlabelhelpprops={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
   inputlabelhelpprops: PropTypes.object,
+  /** Props applied to the InputLabel element.*/
+  InputLabelProps: PropTypes.object,
+}
+
+UMobileTimePicker.defaultProps = {
+  inputVariant: 'outlined',
+  InputLabelProps: {
+    shrink: true,
+  },
+  inputFormat: 'hh:mm a',
 }

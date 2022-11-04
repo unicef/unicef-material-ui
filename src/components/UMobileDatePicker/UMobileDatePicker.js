@@ -11,7 +11,7 @@ import UTextField from '../UTextField'
  * Please have look at [Material UI Mobile Date Picker]('https://mui.com/x/api/date-pickers/mobile-date-picker/') for more details
  */
 export default function UMobileDatePicker({
-  format,
+  inputFormat,
   label,
   onChange,
   value,
@@ -25,7 +25,7 @@ export default function UMobileDatePicker({
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <MobileDatePicker
         label={label}
-        format={format}
+        inputFormat={inputFormat}
         onChange={onChange}
         value={value}
         {...others}
@@ -58,4 +58,14 @@ UMobileDatePicker.propTypes = {
   showLabelHelp: PropTypes.bool,
   /** Props applied to the input label help element. E.g inputlabelhelpprops={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
   inputlabelhelpprops: PropTypes.object,
+  /** Props applied to the InputLabel element.*/
+  InputLabelProps: PropTypes.object,
+}
+
+UMobileDatePicker.defaultProps = {
+  inputVariant: 'outlined',
+  InputLabelProps: {
+    shrink: true,
+  },
+  inputFormat: 'dd/MM/yyyy',
 }

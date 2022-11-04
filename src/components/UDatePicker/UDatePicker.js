@@ -11,7 +11,7 @@ import UTextField from './../UTextField'
  * Please have look at [Material Ui Date Picker]('https://mui.com/x/react-date-pickers/date-picker/#main-content') for more details
  */
 export default function UDatePicker({
-  format,
+  inputFormat,
   label,
   onChange,
   value,
@@ -25,7 +25,7 @@ export default function UDatePicker({
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <DatePicker
         label={label}
-        format={format}
+        inputFormat={inputFormat}
         onChange={onChange}
         value={value}
         {...others}
@@ -45,7 +45,7 @@ export default function UDatePicker({
 
 UDatePicker.propTypes = {
   /** Date picker format */
-  format: PropTypes.string,
+  inputFormat: PropTypes.string,
   /** Callback function when change the picker field */
   onChange: PropTypes.func.isRequired,
   /** Value of the picker field */
@@ -58,4 +58,14 @@ UDatePicker.propTypes = {
   showLabelHelp: PropTypes.bool,
   /** Props applied to the input label help element. E.g inputlabelhelpprops={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
   inputlabelhelpprops: PropTypes.object,
+  /** Props applied to the InputLabel element.*/
+  InputLabelProps: PropTypes.object,
+}
+
+UDatePicker.defaultProps = {
+  inputVariant: 'outlined',
+  InputLabelProps: {
+    shrink: true,
+  },
+  inputFormat: 'dd/MM/yyyy',
 }

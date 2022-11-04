@@ -46,7 +46,6 @@ const StyledGrid = styled(Grid)(({ theme }) => ({
   [`& .${classes.avatar}`]: {
     height: 160,
     width: 160,
-    marginLeft: theme.spacing(3),
   },
 }))
 
@@ -203,7 +202,11 @@ export default function InteractiveViews() {
           <UValidatorForm onSubmit={handleSubmit} debounceTime={1000}>
             <Grid item container spacing={2}>
               <Grid item xs={12}>
-                <Box display="flex" alignItems="center">
+                <Box
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="space-between"
+                >
                   <ActiveFormTextField
                     typographyVariant="h3"
                     fullWidth
@@ -334,7 +337,11 @@ export default function InteractiveViews() {
           <UValidatorForm onSubmit={handleSubmit} debounceTime={1000}>
             <Grid item container spacing={2}>
               <Grid item xs={12}>
-                <Box display="flex" alignItems="center">
+                <Box
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="space-between"
+                >
                   <ActiveFormTextField
                     typographyVariant="h3"
                     fullWidth
@@ -457,7 +464,6 @@ export default function InteractiveViews() {
                       readOnly={readOnly}
                       showLabelHelp={true}
                       inputlabelhelpprops={{
-                        type: 'link',
                         tooltipTitle: 'Please select multiple people from list',
                       }}
                     />

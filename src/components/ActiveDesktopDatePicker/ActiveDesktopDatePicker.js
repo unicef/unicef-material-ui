@@ -4,12 +4,12 @@ import { Box } from '@mui/material'
 import PropTypes from 'prop-types'
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
-import { TimePicker } from '@mui/x-date-pickers/TimePicker'
+import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker'
 import { outlinedInputClasses } from '@mui/material/OutlinedInput'
 
 import UTextField from './../UTextField'
 
-const PREFIX = 'ActiveTimePicker'
+const PREFIX = 'ActiveDesktopDatePicker'
 
 const classes = {
   root: `${PREFIX}-root`,
@@ -42,7 +42,12 @@ const StyledBox = styled(Box, {
         }),
   },
 }))
-export default function ActiveTimePicker({
+/**
+ * ActiveDesktopDatePicker is a customized material UI Desktop Date Picker.
+ * This component let's you access the calender to select particular dates.
+ * Please have look at [Material UI Desktop Date Picker]('https://mui.com/x/api/date-pickers/desktop-date-picker/') for more details
+ */
+export default function ActiveDesktopDatePicker({
   inputFormat,
   label,
   onChange,
@@ -58,7 +63,7 @@ export default function ActiveTimePicker({
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <StyledBox readOnly={readOnly} interactiveMode={interactiveMode}>
-        <TimePicker
+        <DesktopDatePicker
           className={classes.root}
           label={label}
           inputFormat={inputFormat}
@@ -82,11 +87,11 @@ export default function ActiveTimePicker({
   )
 }
 
-ActiveTimePicker.propTypes = {
+ActiveDesktopDatePicker.propTypes = {
+  /** Date picker format */
+  inputFormat: PropTypes.string,
   /** Callback function when change the picker field */
   onChange: PropTypes.func.isRequired,
-  /** Time picker format */
-  inputFormat: PropTypes.string,
   /** Value of the picker field */
   value: PropTypes.string,
   /** Material ui textfield variant */
@@ -105,10 +110,10 @@ ActiveTimePicker.propTypes = {
   inputlabelhelpprops: PropTypes.object,
 }
 
-ActiveTimePicker.defaultProps = {
+ActiveDesktopDatePicker.defaultProps = {
   inputVariant: 'outlined',
   InputLabelProps: {
     shrink: true,
   },
-  inputFormat: 'hh:mm a',
+  inputFormat: 'dd/MM/yyyy',
 }

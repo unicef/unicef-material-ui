@@ -47,6 +47,9 @@ import UCoordinateField from './components/UCoordinateField'
 import USearchBox from './components/USearchBox'
 import ActiveDatePicker from './components/ActiveDatePicker'
 import ActiveTimePicker from './components/ActiveTimePicker'
+import ActiveDateTimePicker from './components/ActiveDateTimePicker'
+import ActiveDesktopDatePicker from './components/ActiveDesktopDatePicker'
+import ActiveDesktopDateTimePicker from './components/ActiveDesktopDateTimePicker'
 import ActiveAutoComplete from './components/ActiveAutoComplete'
 
 export {
@@ -97,5 +100,8 @@ export {
   USearchBox,
   ActiveDatePicker,
   ActiveTimePicker,
+  ActiveDateTimePicker,
+  ActiveDesktopDatePicker,
+  ActiveDesktopDateTimePicker,
   ActiveAutoComplete,
 }
