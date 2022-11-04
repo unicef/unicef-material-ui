@@ -1,6 +1,8 @@
 import React from 'react'
 import { styled } from '@mui/material/styles'
 import PropTypes from 'prop-types'
+import { Box } from '@mui/material'
+import { outlinedInputClasses } from '@mui/material/OutlinedInput'
 import UTextField from '../UTextField'
 
 const PREFIX = 'ActiveFormSelect'
@@ -15,7 +17,9 @@ const classes = {
   inputHover: `${PREFIX}-inputHover`,
 }
 
-const StyledUTextField = styled(UTextField)(({ theme }) => ({
+const StyledBox = styled(Box, {
+  shouldForwardProp: prop => prop !== 'typographyVariant',
+})(({ theme, typographyVariant }) => ({
   [`& .${classes.textField}`]: {
     marginTop: theme.spacing(0.25),
     marginBottom: theme.spacing(0.25),
@@ -36,14 +40,18 @@ const StyledUTextField = styled(UTextField)(({ theme }) => ({
 
   [`& .${classes.inputPadding}`]: {
     padding: '9.5px 14px',
+    [`&.${outlinedInputClasses.disabled}`]: {
+      color: theme.palette.text.primary,
+      '-webkit-text-fill-color': theme.palette.text.primary,
+    },
   },
 
-  [`& .${classes.input}`]: props => ({
-    ...theme.typography[props.typographyVariant],
-  }),
+  [`& .${classes.input}`]: {
+    ...theme.typography[typographyVariant],
+  },
 
   [`& .${classes.inputHover}`]: {
-    '&:hover $notchedOutline': {
+    [`&:hover .${outlinedInputClasses.notchedOutline}`]: {
       borderColor: 'transparent',
     },
   },
@@ -91,41 +99,43 @@ export default function ActiveFormSelect(props) {
   }
 
   return (
-    <StyledUTextField
-      placeholder={finalPlaceholder}
-      InputLabelProps={{
-        shrink: true,
-        ...InputLabelProps,
-      }}
-      inputProps={{
-        readOnly: Boolean(readOnly),
-        disabled: Boolean(readOnly),
-        ...inputProps,
-      }}
-      className={`${classes.textField} ${className && className}`}
-      InputProps={{
-        classes: {
-          root: `${classes.input} ${readOnly && classes.inputHover}`,
-          notchedOutline: `${
-            !interactiveMode && !readOnly ? '' : classes.notchedOutline
-          }`,
-          input: classes.inputPadding,
-        },
-        ...InputProps,
-      }}
-      select
-      SelectProps={{
-        classes: { icon: (interactiveMode || readOnly) && hideIcon },
-        ...SelectProps,
-      }}
-      onMouseOver={onMouseOver}
-      onMouseLeave={handleBlur}
-      onBlur={handleBlur}
-      variant="outlined"
-      {...others}
-    >
-      {props.children}
-    </StyledUTextField>
+    <StyledBox typographyVariant={typographyVariant}>
+      <UTextField
+        placeholder={finalPlaceholder}
+        InputLabelProps={{
+          shrink: true,
+          ...InputLabelProps,
+        }}
+        inputProps={{
+          readOnly: Boolean(readOnly),
+          disabled: Boolean(readOnly),
+          ...inputProps,
+        }}
+        className={`${classes.textField} ${className && className}`}
+        InputProps={{
+          classes: {
+            root: `${classes.input} ${readOnly && classes.inputHover}`,
+            notchedOutline: `${
+              !interactiveMode && !readOnly ? '' : classes.notchedOutline
+            }`,
+            input: classes.inputPadding,
+          },
+          ...InputProps,
+        }}
+        select
+        SelectProps={{
+          classes: { icon: (interactiveMode || readOnly) && hideIcon },
+          ...SelectProps,
+        }}
+        onMouseOver={onMouseOver}
+        onMouseLeave={handleBlur}
+        onBlur={handleBlur}
+        variant="outlined"
+        {...others}
+      >
+        {props.children}
+      </UTextField>
+    </StyledBox>
   )
 }
 
@@ -138,8 +148,6 @@ ActiveFormSelect.propTypes = {
   typographyVariant: PropTypes.string,
   /** To make textfield to be select. See below examples section for select example and sample code */
   select: PropTypes.bool,
-  /** Typography for text inside the input (Ex: h1, div, etc.) */
-  typographyVariant: PropTypes.string,
   /** Change to write mode by hiding textfield border and displays border on Hover*/
   interactiveMode: PropTypes.bool,
   /** Input has some default padding already, to make changes to it pass padding like `inputPadding='0px 2px'` */
