@@ -85,6 +85,7 @@ export default function USearchBox({
       placeholder={placeholder}
       onChange={handleChange}
       onKeyPress={handleKeyPress}
+      fullWidth
       name="search"
       variant="outlined"
       value={searchValue}

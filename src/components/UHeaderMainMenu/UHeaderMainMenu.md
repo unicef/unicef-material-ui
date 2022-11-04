@@ -4,7 +4,7 @@ UHeaderMainMenu Example :
 import UHeader from '../UHeader';
 import {
   Tab
-} from "@material-ui/core";
+} from "@mui/material";
 
 <UHeader
   position="static"

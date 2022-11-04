@@ -1,8 +1,8 @@
 Delete button with examples:
 
 ```jsx
-import { Typography, Grid } from '@material-ui/core'
-import LinkOffIcon from '@material-ui/icons/LinkOff'
+import { Typography, Grid } from '@mui/material'
+import LinkOffIcon from '@mui/icons-material/LinkOff'
 
   const itemId = 1
   function handleDelete(event, id) {
