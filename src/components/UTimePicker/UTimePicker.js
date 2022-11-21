@@ -8,7 +8,7 @@ import UTextField from './../UTextField'
 /**
  * UTimePicker is a customized material ui TimePicker.
  * This component let's you access the clock to select particular time.
- * Please have look at [Material Ui TimePicker]('https://mui.com/x/api/date-pickers/time-picker/#main-content') for more details
+ * Please have look at [Material Ui TimePicker](https://mui.com/x/api/date-pickers/time-picker/#main-content) for more details
  */
 export default function UTimePicker({
   inputFormat,

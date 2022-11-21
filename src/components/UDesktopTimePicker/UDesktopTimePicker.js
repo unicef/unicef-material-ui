@@ -8,7 +8,7 @@ import UTextField from '../UTextField'
 /**
  * UDesktopTimePicker is a customized material UI Desktop Time Picker.
  * This component let's you access the calender to select particular dates.
- * Please have look at [Material UI Desktop Time Picker]('https://mui.com/x/api/date-pickers/desktop-time-picker/') for more details
+ * Please have look at [Material UI Desktop Time Picker](https://mui.com/x/api/date-pickers/desktop-time-picker/) for more details
  */
 export default function UDesktopTimePicker({
   inputFormat,

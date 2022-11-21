@@ -8,7 +8,7 @@ import UTextField from '../UTextField'
 /**
  * UMobileDatePicker is a customized material UI Mobile Date Picker.
  * This component let's you access the calender to select particular dates.
- * Please have look at [Material UI Mobile Date Picker]('https://mui.com/x/api/date-pickers/mobile-date-picker/') for more details
+ * Please have look at [Material UI Mobile Date Picker](https://mui.com/x/api/date-pickers/mobile-date-picker/) for more details
  */
 export default function UMobileDatePicker({
   inputFormat,
