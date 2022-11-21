@@ -9,7 +9,7 @@ import { PositiveNumberFormat } from '../Shared'
  * * Read the content inside TextField
  * * Edit the TextField
  *
- * Which is made by overriding some input styles and props from [TextFieldAPI](https://material-ui.com/api/text-field/#textfield-api).
+ * Which is made by overriding some input styles and props from [TextFieldAPI](https://mui.com/material-ui/api/text-field/#textfield-api).
  *
  * It accepts all the TextField props and styles
  *

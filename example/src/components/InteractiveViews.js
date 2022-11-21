@@ -8,7 +8,6 @@ import {
   Box,
   FormControlLabel,
   Switch,
-  MenuItem,
   Button,
   Typography,
 } from '@mui/material'
@@ -60,7 +59,7 @@ export default function InteractiveViews() {
   const [values, setValues] = useState({
     name: 'John Doe',
     email: 'john@john.com',
-    employment: 1,
+    employment: 'student',
     mobile: 2223333433,
     address: '9452 Horace New York NY 11224',
     salary: 100.55,
@@ -100,6 +99,21 @@ export default function InteractiveViews() {
     {
       label: 'React Js',
       value: 'React Js',
+    },
+  ]
+
+  const employmentOptions = [
+    {
+      label: 'Student',
+      value: 'student',
+    },
+    {
+      label: 'Employed',
+      value: 'employed',
+    },
+    {
+      label: 'Unemployed',
+      value: 'unemployed',
     },
   ]
 
@@ -275,17 +289,8 @@ export default function InteractiveViews() {
                       validators={['required']}
                       errorMessages={['this field is required']}
                       interactiveMode
-                    >
-                      <MenuItem key="student" value={1}>
-                        Student
-                      </MenuItem>
-                      <MenuItem key="employed" value={2}>
-                        Employed
-                      </MenuItem>
-                      <MenuItem key="unemployed" value={3}>
-                        Unemployed
-                      </MenuItem>
-                    </ActiveFormSelect>
+                      options={employmentOptions}
+                    />
                   </Grid>
                   <Grid item xs={12}>
                     <ActiveCurrencyField
@@ -411,17 +416,8 @@ export default function InteractiveViews() {
                       typographyVariant="subtitle1"
                       validators={['required']}
                       errorMessages={['this field is required']}
-                    >
-                      <MenuItem key="student" value={1}>
-                        Student
-                      </MenuItem>
-                      <MenuItem key="employed" value={2}>
-                        Employed
-                      </MenuItem>
-                      <MenuItem key="unemployed" value={3}>
-                        Unemployed
-                      </MenuItem>
-                    </ActiveFormSelect>
+                      options={employmentOptions}
+                    />
                   </Grid>
                   <Grid item xs={12}>
                     <ActiveFormTextField

@@ -40,17 +40,22 @@ select={true} | select if you pass select, you must pass options options =
 
 ```jsx
 import React, { useState, useEffect, useRef } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Button, Box, MenuItem } from '@material-ui/core'
+import { styled } from '@mui/material/styles'
+import { Button, Box } from '@mui/material'
 import UValidatorForm from '../UValidatorForm'
 
-const useStyles = makeStyles(theme => ({
-  textField: {
+const PREFIX = 'UTextFieldExample'
+const classes = {
+  textField: `${PREFIX}-textField`,
+  margin: `${PREFIX}-margin`,
+}
+const StyledBox = styled(Box)(({ theme }) => ({
+  [`& .${classes.textField}`]: {
     margin: theme.spacing(1),
-    minWidth: 195,
+    width: 195,
+    minWidth: `195px!important`,
   },
-  margin: {
-    marginTop: theme.spacing(1),
+  [`& .${classes.margin}`]: {
     marginLeft: theme.spacing(1),
   },
 }))
@@ -81,7 +86,6 @@ const currencies = [
 // export default function FormValidator() {
 
 const form = useRef('form')
-const classes = useStyles()
 const [value, setValue] = useState()
 
 function handleValue(event) {
@@ -100,7 +104,7 @@ function handleSubmit() {
   // debounceTime={1000}
   instantValidate={true}
 >
-  <Box display="flex" alignItems="baseline">
+  <Box display="flex" alignItems="center">
     <UTextField
       select
       label="Currency"
@@ -111,13 +115,8 @@ function handleSubmit() {
       value={value}
       validators={['required']}
       errorMessages={['this field is required']}
-    >
-      {currencies.map(option => (
-        <MenuItem key={option.value} value={option.value}>
-          {option.label}
-        </MenuItem>
-      ))}
-    </UTextField>
+      options={currencies}
+    />
     <Button
       className={classes.margin}
       color="primary"
@@ -141,13 +140,16 @@ validators={['required', 'isEmail']}
 
 ```jsx
 import React, { useState, useEffect, useRef } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Button, Box, MenuItem } from '@material-ui/core'
+import { styled } from '@mui/material/styles'
+import { Button, Box, MenuItem } from '@mui/material'
 import UValidatorForm from '../UValidatorForm'
 
-const useStyles = makeStyles(theme => ({
-  margin: {
-    marginTop: theme.spacing(1),
+const PREFIX = 'UTextFieldExample'
+const classes = {
+  margin: `${PREFIX}-margin`,
+}
+const StyledBox = styled(Box)(({ theme }) => ({
+  [`& .${classes.margin}`]: {
     marginLeft: theme.spacing(1),
   },
 }))
@@ -155,8 +157,6 @@ const useStyles = makeStyles(theme => ({
 // export default function FormValidator() {
 
 const form = useRef('form')
-
-const classes = useStyles()
 
 const [value, setValue] = useState()
 
@@ -176,7 +176,7 @@ function handleSubmit() {
   debounceTime={1000}
   // instantValidate={true}
 >
-  <Box display="flex" alignItems="baseline">
+  <StyledBox display="flex" alignItems="center">
     <UTextField
       label="Email"
       onChange={handleValue}
@@ -195,7 +195,7 @@ function handleSubmit() {
     >
       Submit
     </Button>
-  </Box>
+  </StyledBox>
 </UValidatorForm>
 //   )
 // }
@@ -209,14 +209,17 @@ validators={['isUrl']}
 
 ```jsx
 import React, { useState, useEffect, useRef } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Button, Box, MenuItem } from '@material-ui/core'
+import { styled } from '@mui/material/styles'
+import { Button, Box, MenuItem } from '@mui/material'
 import UValidatorForm from '../UValidatorForm'
 import UButton from '../UButton'
 
-const useStyles = makeStyles(theme => ({
-  margin: {
-    marginTop: theme.spacing(1),
+const PREFIX = 'UTextFieldExample'
+const classes = {
+  margin: `${PREFIX}-margin`,
+}
+const StyledBox = styled(Box)(({ theme }) => ({
+  [`& .${classes.margin}`]: {
     marginLeft: theme.spacing(1),
   },
 }))
@@ -224,8 +227,6 @@ const useStyles = makeStyles(theme => ({
 // export default function FormValidator() {
 
 const form = useRef('form')
-
-const classes = useStyles()
 
 const [value, setValue] = useState()
 
@@ -245,7 +246,7 @@ function handleSubmit() {
   debounceTime={1000}
   // instantValidate={true}
 >
-  <Box display="flex" alignItems="baseline">
+  <StyledBox display="flex" alignItems="center">
     <UTextField
       label="Url"
       onChange={handleValue}
@@ -263,7 +264,7 @@ function handleSubmit() {
     >
       Submit
     </UButton>
-  </Box>
+  </StyledBox>
 </UValidatorForm>
 //   )
 // }
@@ -277,20 +278,25 @@ validators={['isNumber', 'minNumber:0', 'maxNumber:25555']}
 
 ```jsx
 import React, { useState, useEffect, useRef } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Button, Box, MenuItem } from '@material-ui/core'
+import { styled } from '@mui/material/styles'
+import { Button, Box, MenuItem } from '@mui/material'
 import UValidatorForm from '../UValidatorForm'
 
-const useStyles = makeStyles(theme => ({
-  textField: {
+const PREFIX = 'UTextFieldExample'
+const classes = {
+  textField: `${PREFIX}-textField`,
+  margin: `${PREFIX}-margin`,
+  dense: `${PREFIX}-dense`,
+}
+const StyledBox = styled(Box)(({ theme }) => ({
+  [`& .${classes.textField}`]: {
     margin: theme.spacing(1),
     minWidth: 195,
   },
-  dense: {
-    marginTop: theme.spacing(2),
+  [`& .${classes.dense}`]: {
+   marginTop: theme.spacing(2),
   },
-  margin: {
-    marginTop: theme.spacing(1),
+  [`& .${classes.margin}`]: {
     marginLeft: theme.spacing(1),
   },
 }))
@@ -298,8 +304,6 @@ const useStyles = makeStyles(theme => ({
 // export default function FormValidator() {
 
 const form = useRef('form')
-
-const classes = useStyles()
 
 const [value, setValue] = useState()
 
@@ -319,7 +323,7 @@ function handleSubmit() {
   // debounceTime={1000}
   instantValidate={true}
 >
-  <Box display="flex" alignItems="baseline">
+  <StyledBox display="flex" alignItems="center">
     <UTextField
       label="Probability"
       onChange={handleValue}
@@ -344,7 +348,7 @@ function handleSubmit() {
     >
       Submit
     </Button>
-  </Box>
+  </StyledBox>
 </UValidatorForm>
 //   )
 // }
@@ -358,20 +362,25 @@ validators={['required', 'matchRegexp:^[0-9]$']}
 
 ```jsx
 import React, { useState, useEffect, useRef } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Button, Box, MenuItem } from '@material-ui/core'
+import { styled } from '@mui/material/styles'
+import { Button, Box, MenuItem } from '@mui/material'
 import UValidatorForm from '../UValidatorForm'
 
-const useStyles = makeStyles(theme => ({
-  textField: {
+const PREFIX = 'UTextFieldExample'
+const classes = {
+  textField: `${PREFIX}-textField`,
+  margin: `${PREFIX}-margin`,
+  dense: `${PREFIX}-dense`,
+}
+const StyledBox = styled(Box)(({ theme }) => ({
+  [`& .${classes.textField}`]: {
     margin: theme.spacing(1),
     minWidth: 195,
   },
-  dense: {
-    marginTop: theme.spacing(2),
+  [`& .${classes.dense}`]: {
+   marginTop: theme.spacing(2),
   },
-  margin: {
-    marginTop: theme.spacing(1),
+  [`& .${classes.margin}`]: {
     marginLeft: theme.spacing(1),
   },
 }))
@@ -379,8 +388,6 @@ const useStyles = makeStyles(theme => ({
 // export default function FormValidator() {
 
 const form = useRef('form')
-
-const classes = useStyles()
 
 const [value, setValue] = useState()
 
@@ -400,7 +407,7 @@ function handleSubmit() {
   // debounceTime={1000}
   instantValidate={true}
 >
-  <Box display="flex" alignItems="baseline">
+  <StyledBox display="flex" alignItems="center">
     <UTextField
       label="Regex"
       onChange={handleValue}
@@ -420,7 +427,7 @@ function handleSubmit() {
     >
       Submit
     </Button>
-  </Box>
+  </StyledBox>
 </UValidatorForm>
 //   )
 // }
@@ -434,20 +441,25 @@ validators={['minStringLength:6', maxStringLength:12']}
 
 ```jsx
 import React, { useState, useEffect, useRef } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Button, Box, MenuItem } from '@material-ui/core'
+import { styled } from '@mui/material/styles'
+import { Button, Box, MenuItem } from '@mui/material'
 import UValidatorForm from '../UValidatorForm'
 
-const useStyles = makeStyles(theme => ({
-  textField: {
+const PREFIX = 'UTextFieldExample'
+const classes = {
+  textField: `${PREFIX}-textField`,
+  margin: `${PREFIX}-margin`,
+  dense: `${PREFIX}-dense`,
+}
+const StyledBox = styled(Box)(({ theme }) => ({
+  [`& .${classes.textField}`]: {
     margin: theme.spacing(1),
     minWidth: 195,
   },
-  dense: {
-    marginTop: theme.spacing(2),
+  [`& .${classes.dense}`]: {
+   marginTop: theme.spacing(2),
   },
-  margin: {
-    marginTop: theme.spacing(1),
+  [`& .${classes.margin}`]: {
     marginLeft: theme.spacing(1),
   },
 }))
@@ -455,8 +467,6 @@ const useStyles = makeStyles(theme => ({
 // export default function FormValidator() {
 
 const form = useRef('form')
-
-const classes = useStyles()
 
 const [value, setValue] = useState()
 
@@ -476,7 +486,7 @@ function handleSubmit() {
   debounceTime={1000}
   // instantValidate={true}
 >
-  <Box display="flex" alignItems="baseline">
+  <StyledBox display="flex" alignItems="center">
     <UTextField
       label="Characters Length"
       onChange={handleValue}
@@ -500,7 +510,7 @@ function handleSubmit() {
     >
       Submit
     </Button>
-  </Box>
+  </StyledBox>
 </UValidatorForm>
 //   )
 // }
@@ -514,20 +524,25 @@ validators={['isPhone']}
 
 ```jsx
 import React, { useState, useEffect, useRef } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Button, Box, MenuItem } from '@material-ui/core'
+import { styled } from '@mui/material/styles'
+import { Button, Box, MenuItem } from '@mui/material'
 import UValidatorForm from '../UValidatorForm'
 
-const useStyles = makeStyles(theme => ({
-  textField: {
+const PREFIX = 'UTextFieldExample'
+const classes = {
+  textField: `${PREFIX}-textField`,
+  margin: `${PREFIX}-margin`,
+  dense: `${PREFIX}-dense`,
+}
+const StyledBox = styled(Box)(({ theme }) => ({
+  [`& .${classes.textField}`]: {
     margin: theme.spacing(1),
     minWidth: 195,
   },
-  dense: {
-    marginTop: theme.spacing(2),
+  [`& .${classes.dense}`]: {
+   marginTop: theme.spacing(2),
   },
-  margin: {
-    marginTop: theme.spacing(1),
+  [`& .${classes.margin}`]: {
     marginLeft: theme.spacing(1),
   },
 }))
@@ -535,8 +550,6 @@ const useStyles = makeStyles(theme => ({
 // export default function FormValidator() {
 
 const form = useRef('form')
-
-const classes = useStyles()
 
 const [value, setValue] = useState()
 
@@ -556,7 +569,7 @@ function handleSubmit() {
   debounceTime={1000}
   // instantValidate={true}
 >
-  <Box display="flex" alignItems="baseline">
+  <StyledBox display="flex" alignItems="center">
     <UTextField
       label="Phone number"
       onChange={handleValue}
@@ -575,7 +588,7 @@ function handleSubmit() {
     >
       Submit
     </Button>
-  </Box>
+  </StyledBox>
 </UValidatorForm>
 //   )
 // }
@@ -589,20 +602,25 @@ validators={['isAlphanumeric']}
 
 ```jsx
 import React, { useState, useEffect, useRef } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Button, Box, MenuItem } from '@material-ui/core'
+import { styled } from '@mui/material/styles'
+import { Button, Box, MenuItem } from '@mui/material'
 import UValidatorForm from '../UValidatorForm'
 
-const useStyles = makeStyles(theme => ({
-  textField: {
+const PREFIX = 'UTextFieldExample'
+const classes = {
+  textField: `${PREFIX}-textField`,
+  margin: `${PREFIX}-margin`,
+  dense: `${PREFIX}-dense`,
+}
+const StyledBox = styled(Box)(({ theme }) => ({
+  [`& .${classes.textField}`]: {
     margin: theme.spacing(1),
     minWidth: 195,
   },
-  dense: {
-    marginTop: theme.spacing(2),
+  [`& .${classes.dense}`]: {
+   marginTop: theme.spacing(2),
   },
-  margin: {
-    marginTop: theme.spacing(1),
+  [`& .${classes.margin}`]: {
     marginLeft: theme.spacing(1),
   },
 }))
@@ -610,8 +628,6 @@ const useStyles = makeStyles(theme => ({
 // export default function FormValidator() {
 
 const form = useRef('form')
-
-const classes = useStyles()
 
 const [value, setValue] = useState()
 
@@ -631,7 +647,7 @@ function handleSubmit() {
   debounceTime={1000}
   // instantValidate={true}
 >
-  <Box display="flex" alignItems="baseline">
+  <StyledBox display="flex" alignItems="center">
     <UTextField
       label="Alphanumeric text"
       onChange={handleValue}
@@ -650,7 +666,7 @@ function handleSubmit() {
     >
       Submit
     </Button>
-  </Box>
+  </StyledBox>
 </UValidatorForm>
 //   )
 // }
@@ -664,20 +680,25 @@ validators={['isSafeText']}
 
 ```jsx
 import React, { useState, useEffect, useRef } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Button, Box, MenuItem } from '@material-ui/core'
+import { styled } from '@mui/material/styles'
+import { Button, Box, MenuItem } from '@mui/material'
 import UValidatorForm from '../UValidatorForm'
 
-const useStyles = makeStyles(theme => ({
-  textField: {
+const PREFIX = 'UTextFieldExample'
+const classes = {
+  textField: `${PREFIX}-textField`,
+  margin: `${PREFIX}-margin`,
+  dense: `${PREFIX}-dense`,
+}
+const StyledBox = styled(Box)(({ theme }) => ({
+  [`& .${classes.textField}`]: {
     margin: theme.spacing(1),
     minWidth: 195,
   },
-  dense: {
-    marginTop: theme.spacing(2),
+  [`& .${classes.dense}`]: {
+   marginTop: theme.spacing(2),
   },
-  margin: {
-    marginTop: theme.spacing(1),
+  [`& .${classes.margin}`]: {
     marginLeft: theme.spacing(1),
   },
 }))
@@ -685,8 +706,6 @@ const useStyles = makeStyles(theme => ({
 // export default function FormValidator() {
 
 const form = useRef('form')
-
-const classes = useStyles()
 
 const [value, setValue] = useState()
 
@@ -706,7 +725,7 @@ function handleSubmit() {
   debounceTime={1000}
   // instantValidate={true}
 >
-  <Box display="flex" alignItems="baseline">
+  <StyledBox display="flex" alignItems="center">
     <UTextField
       label="Safe text"
       onChange={handleValue}
@@ -725,7 +744,7 @@ function handleSubmit() {
     >
       Submit
     </Button>
-  </Box>
+  </StyledBox>
 </UValidatorForm>
 //   )
 // }
@@ -735,7 +754,7 @@ function handleSubmit() {
 
 ```jsx static
 import React, { useState, useRef, useEffect } from 'react'
-import Button from '@material-ui/core/Button'
+import { Button } from '@mui/material'
 import { UTextField, UValidatorForm, UButton } from '@unicef/material-ui'
 
 export default function ResetPasswordForm() {

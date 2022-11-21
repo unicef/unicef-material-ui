@@ -6,7 +6,7 @@ import UTextField from '../UTextField'
 /**
  * UCoordinateField is a UTextField component with latitude and longitude validation.
  *
- * Which is made by overriding some input styles and props from [TextFieldAPI](https://material-ui.com/api/text-field/#textfield-api).
+ * Which is made by overriding some input styles and props from [TextFieldAPI](https://mui.com/material-ui/api/text-field/#textfield-api).
  *
  * It accepts all the TextField props and styles
  *

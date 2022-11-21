@@ -141,7 +141,7 @@ module.exports = {
         path.resolve(
           __dirname,
           'src/components/UMobileDatePicker',
-          'UDesktopDatePicker.js'
+          'UMobileDatePicker.js'
         ),
         path.resolve(__dirname, 'src/components/UTimePicker', 'UTimePicker.js'),
         path.resolve(
@@ -182,101 +182,89 @@ module.exports = {
       ],
       usageMode: 'expand',
     },
-    // {
-    //   name: 'Form Validation',
-    //   components: () => [
-    //     path.resolve(
-    //       __dirname,
-    //       'src/components/UValidatorForm',
-    //       'UValidatorForm.js'
-    //     ),
-    //     path.resolve(__dirname, 'src/components/UTextField', 'UTextField.js'),
-    //     path.resolve(
-    //       __dirname,
-    //       'src/components/UValidatorComponent',
-    //       'UValidatorComponent.js'
-    //     ),
-    //     path.resolve(
-    //       __dirname,
-    //       'src/components/UPositiveInteger',
-    //       'UPositiveInteger.js'
-    //     ),
-    //     path.resolve(
-    //       __dirname,
-    //       'src/components/UCurrencyField',
-    //       'UCurrencyField.js'
-    //     ),
-    //     path.resolve(
-    //       __dirname,
-    //       'src/components/UCoordinateField',
-    //       'UCoordinateField.js'
-    //     ),
-    //   ],
-    //   // sections: [
-    //   //   {
-    //   //     name: 'ValidatorForm',
-    //   //     content: 'src/readme.md',
-    //   //   }
-    //   // ],
-    //   usageMode: 'expand',
-    // },
-    // {
-    //   name: 'Active Form',
-    //   components: () => [
-    //     path.resolve(
-    //       __dirname,
-    //       'src/components/ActiveFormTextField',
-    //       'ActiveFormTextField.js'
-    //     ),
-    //     path.resolve(
-    //       __dirname,
-    //       'src/components/ActiveCurrencyField',
-    //       'ActiveCurrencyField.js'
-    //     ),
-    //     path.resolve(
-    //       __dirname,
-    //       'src/components/ActiveFormSelect',
-    //       'ActiveFormSelect.js'
-    //     ),
-    //     path.resolve(
-    //       __dirname,
-    //       'src/components/ActiveFormPositiveInteger',
-    //       'ActiveFormPositiveInteger.js'
-    //     ),
-    //     path.resolve(
-    //       __dirname,
-    //       'src/components/ActiveFormCoordinateField',
-    //       'ActiveFormCoordinateField.js'
-    //     ),
-    //     path.resolve(
-    //       __dirname,
-    //       'src/components/ActiveKeyboardDatePicker',
-    //       'ActiveKeyboardDatePicker.js'
-    //     ),
-    //     path.resolve(
-    //       __dirname,
-    //       'src/components/ActiveDatePicker',
-    //       'ActiveDatePicker.js'
-    //     ),
-    //     path.resolve(
-    //       __dirname,
-    //       'src/components/ActiveKeyboardTimePicker',
-    //       'ActiveKeyboardTimePicker.js'
-    //     ),
-    //     path.resolve(
-    //       __dirname,
-    //       'src/components/ActiveTimePicker',
-    //       'ActiveTimePicker.js'
-    //     ),
-    //   ],
-    //   // sections: [
-    //   //   {
-    //   //     name: 'ValidatorForm',
-    //   //     content: 'src/readme.md',
-    //   //   }
-    //   // ],
-    //   usageMode: 'expand',
-    // },
+    {
+      name: 'Form Validation',
+      components: () => [
+        path.resolve(
+          __dirname,
+          'src/components/UValidatorForm',
+          'UValidatorForm.js'
+        ),
+        path.resolve(__dirname, 'src/components/UTextField', 'UTextField.js'),
+        path.resolve(
+          __dirname,
+          'src/components/UValidatorComponent',
+          'UValidatorComponent.js'
+        ),
+        path.resolve(
+          __dirname,
+          'src/components/UPositiveInteger',
+          'UPositiveInteger.js'
+        ),
+        path.resolve(
+          __dirname,
+          'src/components/UCurrencyField',
+          'UCurrencyField.js'
+        ),
+        path.resolve(
+          __dirname,
+          'src/components/UCoordinateField',
+          'UCoordinateField.js'
+        ),
+      ],
+      usageMode: 'expand',
+    },
+    {
+      name: 'Active Form',
+      components: () => [
+        path.resolve(
+          __dirname,
+          'src/components/ActiveFormTextField',
+          'ActiveFormTextField.js'
+        ),
+        path.resolve(
+          __dirname,
+          'src/components/ActiveCurrencyField',
+          'ActiveCurrencyField.js'
+        ),
+        path.resolve(
+          __dirname,
+          'src/components/ActiveFormSelect',
+          'ActiveFormSelect.js'
+        ),
+        path.resolve(
+          __dirname,
+          'src/components/ActiveFormPositiveInteger',
+          'ActiveFormPositiveInteger.js'
+        ),
+        path.resolve(
+          __dirname,
+          'src/components/ActiveFormCoordinateField',
+          'ActiveFormCoordinateField.js'
+        ),
+        // path.resolve(
+        //   __dirname,
+        //   'src/components/ActiveKeyboardDatePicker',
+        //   'ActiveKeyboardDatePicker.js'
+        // ),
+        // path.resolve(
+        //   __dirname,
+        //   'src/components/ActiveDatePicker',
+        //   'ActiveDatePicker.js'
+        // ),
+        // path.resolve(
+        //   __dirname,
+        //   'src/components/ActiveKeyboardTimePicker',
+        //   'ActiveKeyboardTimePicker.js'
+        // ),
+        // path.resolve(
+        //   __dirname,
+        //   'src/components/ActiveTimePicker',
+        //   'ActiveTimePicker.js'
+        // ),
+      ],
+      usageMode: 'expand',
+    },
 
     // For future reference to use in sections
     // {
