@@ -140,14 +140,14 @@ export default function ActiveAutoComplete({
           isOptionEqualToValue={option => option.id === selectedValue.id}
           onChange={(event, newValue) => handleChange(event, newValue)}
           filterOptions={(options, params) => handleFilter(options, params)}
-          id="target-input"
+          id={name}
           name={name}
           selectOnFocus
           clearOnBlur
           handleHomeEndKeys
           options={controlOptions}
           getOptionLabel={option => handleGetOption(option)}
-          renderOption={option => option.text}
+          renderOption={(props, option) => <li {...props}>{option.text}</li>}
           onBlur={handleOnBlur}
           classes={{
             root: classes.root,

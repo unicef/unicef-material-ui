@@ -47,7 +47,7 @@ const options = [
 #### Single select picker
 
 ```jsx
-import { Typography } from '@material-ui/core'
+import { Typography } from '@mui/material'
 
 const options = [
   {

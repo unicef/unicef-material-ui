@@ -60,6 +60,7 @@ import UValidatorForm from '../UValidatorForm'
           onChange={handleChange}
           minLength={1}
           maxLength={50}
+          counter={true}
           allowContextSpecific={true}
           readOnly={false}
           onBlur={handleBlur}

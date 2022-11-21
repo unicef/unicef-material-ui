@@ -219,6 +219,11 @@ module.exports = {
       components: () => [
         path.resolve(
           __dirname,
+          'src/components/ActiveAutoComplete',
+          'ActiveAutoComplete.js'
+        ),
+        path.resolve(
+          __dirname,
           'src/components/ActiveFormTextField',
           'ActiveFormTextField.js'
         ),
