@@ -43,9 +43,9 @@ const StyledBox = styled(Box, {
   },
 }))
 /**
- * ActiveDesktopDateTimePicker is a customized material UI Date Time Picker.
+ * ActiveDesktopDateTimePicker is a customized material UI desktop date time picker.
  * This component let's you access the calender and clock to select the date and time.
- * Please have look at [Material UI Date Time Picker]('https://mui.com/x/api/date-pickers/date-time-picker/') for more details
+ * Please have look at [Material UI Desktop Date Time Picker](https://mui.com/x/api/date-pickers/desktop-date-time-picker/) for more details
  */
 export default function ActiveDesktopDateTimePicker({
   inputFormat,

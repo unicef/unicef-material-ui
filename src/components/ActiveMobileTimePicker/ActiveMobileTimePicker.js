@@ -43,9 +43,9 @@ const StyledBox = styled(Box, {
   },
 }))
 /**
- * ActiveMobileTimePicker is a customized material UI Time Picker.
+ * ActiveMobileTimePicker is a customized material ui mobile time picker.
  * This component let's you access the clock to select the time.
- * Please have look at [Material UI Time Picker]('https://mui.com/x/api/date-pickers/time-picker/') for more details
+ * Please have look at [Material UI Mobile Time Picker](https://mui.com/x/api/date-pickers/mobile-time-picker/) for more details
  */
 export default function ActiveMobileTimePicker({
   inputFormat,

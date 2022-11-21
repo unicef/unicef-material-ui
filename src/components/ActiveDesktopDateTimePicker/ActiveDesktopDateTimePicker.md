@@ -1,8 +1,10 @@
 ```jsx
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 // import {
 //   ActiveDesktopDateTimePicker,
 // } from '@unicef/material-ui';
+
+import { UValidatorForm } from '../../index.js'
 
 // export default function DesktopDateTimePicker() {
 
@@ -10,12 +12,21 @@ import React, { useState } from "react";
     new Date()
   );
 
+  const form = useRef();
+
+  const handleSubmit = () => {}
+
   // return (
-   <ActiveDesktopDateTimePicker
+<UValidatorForm
+  ref={form}
+  onSubmit={handleSubmit}
+  onError={errors => console.log(errors)}
+  // instantValidate={true}
+><ActiveDesktopDateTimePicker
       label="Date and Time"
       value={selectedDate}
       onChange={handleDateChange}
-    />;
+    /></UValidatorForm>;
 //   )
 // }
 ```

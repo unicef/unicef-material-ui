@@ -1,12 +1,12 @@
 ```jsx
 import React, { useState, useRef } from "react";
 // import {
-//   ActiveDateTimePicker,
+//   ActiveMobileDateTimePicker,
 // } from '@unicef/material-ui';
 
 import { UValidatorForm } from '../../index.js'
 
-// export default function DateTimePicker() {
+// export default function MobileDateTimePicker() {
 
   const [selectedDate, handleDateChange] = useState(
     new Date()
@@ -21,8 +21,7 @@ import { UValidatorForm } from '../../index.js'
   ref={form}
   onSubmit={handleSubmit}
   onError={errors => console.log(errors)}
-  // instantValidate={true}
-><ActiveDateTimePicker
+><ActiveMobileDateTimePicker
       label="Date and Time"
       value={selectedDate}
       onChange={handleDateChange}

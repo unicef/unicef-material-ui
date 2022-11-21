@@ -45,7 +45,7 @@ const StyledBox = styled(Box, {
 /**
  * ActiveDesktopDatePicker is a customized material UI Desktop Date Picker.
  * This component let's you access the calender to select particular dates.
- * Please have look at [Material UI Desktop Date Picker]('https://mui.com/x/api/date-pickers/desktop-date-picker/') for more details
+ * Please have look at [Material UI Desktop Date Picker](https://mui.com/x/api/date-pickers/desktop-date-picker/) for more details
  */
 export default function ActiveDesktopDatePicker({
   inputFormat,
