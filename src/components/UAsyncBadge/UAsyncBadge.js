@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { CircularProgress, Chip } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import HighlightOffIcon from '@material-ui/icons/HighlightOff'
@@ -31,6 +31,7 @@ const useStyles = makeStyles(theme => ({
  */
 export default function UAsyncBadge({ variant, text, visible, onReset }) {
   const classes = useStyles()
+  const chipRef = useRef()
 
   /**  If variant is success or error, after few seconds, it will set asyncResponse visible to false */
   useEffect(() => {
@@ -43,10 +44,20 @@ export default function UAsyncBadge({ variant, text, visible, onReset }) {
     }
   }, [variant])
 
+  useEffect(() => {
+    // When the badge becomes visible, set focus to it.
+    if (visible && variant) {
+      chipRef.current.focus()
+    }
+  }, [visible, variant])
+
   return (
     <span className={classes.root}>
       {visible && (
         <Chip
+          ref={chipRef}
+          tabIndex={0}
+          aria-live="assertive" // Announce changes to screen readers
           className={`${classes.chip} ${classes[variant]}`}
           avatar={
             variant === 'loading' ? (
