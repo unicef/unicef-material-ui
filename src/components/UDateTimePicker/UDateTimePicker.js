@@ -15,8 +15,10 @@ const styles = {
 
 /**
  * UDateTimePicker is a customized material ui DateTimePicker.
+ *
  * This component let's you access the calender and clock to select date and time.
- * Plese have look at [Material Ui DateTimePicker]('https://material-ui-pickers.dev/api/DateTimePicker') for more details
+ *
+ * Please have look at [Material Ui DateTimePicker]('https://material-ui-pickers.dev/api/DateTimePicker') for more details
  */
 export default function UDateTimePicker(props) {
   const {

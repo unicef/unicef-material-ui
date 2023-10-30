@@ -17,7 +17,11 @@ const styles = {
 }
 
 /**
- * UDatePicker is a customized [Material Ui KeyboardDatePicker]('https://material-ui-pickers.dev/api/KeyboardDatePicker') for more details
+ * UKeyboardDatePicker is a customized material ui Date picker.
+ *
+ * This component let's you access the calender to select particular dates.
+ *
+ * Please have look at [Material Ui Date Picker]('https://material-ui-pickers.dev/api/KeyboardDatePicker') for more details
  */
 export default function UKeyboardDatePicker(props) {
   const {

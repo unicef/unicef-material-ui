@@ -15,8 +15,10 @@ const styles = {
 
 /**
  * UTimePicker is a customized material ui TimePicker.
+ *
  * This component let's you access the clock to select particular time.
- * Plese have look at [Material Ui TimePicker]('https://material-ui-pickers.dev/api/TimePicker') for more details
+ *
+ * Please have look at [Material Ui TimePicker]('https://material-ui-pickers.dev/api/TimePicker') for more details
  */
 export default function UTimePicker(props) {
   const {

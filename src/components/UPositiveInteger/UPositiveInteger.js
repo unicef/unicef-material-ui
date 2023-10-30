@@ -2,7 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { PositiveNumberFormat } from '../Shared'
 import UTextField from '../UTextField'
-
+/**
+ * UPositiveInteger form input field that accepts positive integer values. It is a extended version of UTextField.
+ */
 export default function UPositiveInteger({ readOnly, InputProps, ...props }) {
   return (
     <UTextField
@@ -25,7 +27,7 @@ UPositiveInteger.propTypes = {
   /**
    * Array of validators.See list of default validators above.
    *
-   * Ex: `validators={['required', 'isEmail']}`
+   * Ex: `validators={['required']}`
    */
   validators: PropTypes.array,
   /**

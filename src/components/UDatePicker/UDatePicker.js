@@ -15,8 +15,10 @@ const styles = {
 
 /**
  * UDatePicker is a customized material ui Date picker.
+ *
  * This component let's you access the calender to select particular dates.
- * Plese have look at [Material Ui Date Picker]('https://material-ui-pickers.dev/api/DatePicker') for more details
+ *
+ * Please have look at [Material Ui Date Picker]('https://material-ui-pickers.dev/api/DatePicker') for more details
  */
 export default function UDatePicker(props) {
   const {

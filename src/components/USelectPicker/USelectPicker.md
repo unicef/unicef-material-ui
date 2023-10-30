@@ -44,6 +44,52 @@ const options = [
 <USelectPicker label="People" options={options} isMulti={true} />
 ```
 
+#### Multi select picker
+
+```jsx
+import { Typography } from '@material-ui/core'
+
+const options = [
+  {
+    value: 'EAPR',
+    label: 'EAPR',
+    subLabel: 'East Asia and Pacific Region',
+  },
+  {
+    value: 'ECAR',
+    label: 'ECAR',
+    subLabel: 'Europe and Central Asia Region',
+  },
+  {
+    value: 'ESAR',
+    label: 'ESAR',
+    subLabel: 'Estern and Southern Africa Region',
+  },
+  {
+    value: 'LACR',
+    label: 'LACR',
+    subLabel: 'Latin America and the Caribbean',
+  },
+  {
+    value: 'MENAR',
+    label: 'MENAR',
+    subLabel: 'Middle East and North Africa',
+  },
+  {
+    value: 'SAR',
+    label: 'SAR',
+    subLabel: 'South Asia Region',
+  },
+  {
+    value: 'WCAR',
+    label: 'WCAR',
+    subLabel: 'West and Central Africa Region',
+  },
+]
+
+;<USelectPicker label="Regions" options={options} isMulti={true} variant="outlined" />
+```
+
 #### Single select picker
 
 ```jsx

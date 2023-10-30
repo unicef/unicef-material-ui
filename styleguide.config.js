@@ -128,14 +128,15 @@ module.exports = {
       components: () => [
         path.resolve(
           __dirname,
-          'src/components/UPeoplePicker',
-          'UPeoplePicker.js'
+          'src/components/USelectPicker',
+          'USelectPicker.js'
         ),
         path.resolve(
           __dirname,
-          'src/components/UIconPicker',
-          'UIconPicker.js'
+          'src/components/UPeoplePicker',
+          'UPeoplePicker.js'
         ),
+        path.resolve(__dirname, 'src/components/UIconPicker', 'UIconPicker.js'),
         path.resolve(__dirname, 'src/components/UDatePicker', 'UDatePicker.js'),
         path.resolve(
           __dirname,
@@ -212,6 +213,11 @@ module.exports = {
     {
       name: 'Active Form',
       components: () => [
+        path.resolve(
+          __dirname,
+          'src/components/ActiveAutoComplete',
+          'ActiveAutoComplete.js'
+        ),
         path.resolve(
           __dirname,
           'src/components/ActiveFormTextField',

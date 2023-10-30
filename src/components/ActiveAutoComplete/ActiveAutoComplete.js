@@ -29,6 +29,7 @@ const useStyles = makeStyles(theme => ({
 }))
 /**
  * ActiveAutoComplete is an editable dropdown component with interactive.
+ * The cool feature with ActiveAutoComplete is you can read and write at the same place.
  * User can enter the text in order to find the value from the list of values
  * User can also add new value to the list as well.
  */
