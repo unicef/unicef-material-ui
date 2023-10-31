@@ -15,8 +15,10 @@ const styles = {
 
 /**
  * UTimePicker is a customized material ui TimePicker.
+ *
  * This component let's you access the clock to select particular time.
- * Plese have look at [Material Ui TimePicker]('https://material-ui-pickers.dev/api/TimePicker') for more details
+ *
+ * Please have look at [Material Ui TimePicker]('https://material-ui-pickers.dev/api/TimePicker') for more details
  */
 export default function UTimePicker(props) {
   const {
@@ -56,7 +58,7 @@ UTimePicker.propTypes = {
   autoOk: PropTypes.bool,
   /** Picker container option variant : 'dialog' | 'inline' | 'static' */
   variant: PropTypes.string,
-  /** Material ui textfiled variant */
+  /** Material ui textfield variant */
   inputVariant: PropTypes.string,
   /** Label text */
   label: PropTypes.string,

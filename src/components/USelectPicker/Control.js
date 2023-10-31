@@ -29,6 +29,14 @@ export default function Control({
   InputLabelProps,
 }) {
   const readOnly = TextFieldProps && TextFieldProps.readOnly
+  //In order to prevent the addition of these custom attributes to the DOM, we are separating them from TextFieldProps
+  const {
+    showLabelHelp = false,
+    InputLabelHelpProps = {},
+    lineByLineOption = '',
+    hideAvatar = false,
+    ...otherTextFieldProps
+  } = TextFieldProps || {}
   return (
     <TextField
       fullWidth
@@ -52,12 +60,12 @@ export default function Control({
         ...InputLabelProps,
         style: { ...styles.labelRoot },
       }}
-      {...TextFieldProps}
+      {...otherTextFieldProps}
       label={
-        TextFieldProps.showLabelHelp ? (
+        showLabelHelp ? (
           <InputLabelHelp
             inputLabel={TextFieldProps.label}
-            {...TextFieldProps.InputLabelHelpProps}
+            {...InputLabelHelpProps}
           />
         ) : (
           TextFieldProps.label

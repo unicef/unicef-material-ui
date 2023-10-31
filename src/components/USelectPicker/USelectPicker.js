@@ -75,10 +75,10 @@ const defaultComponents = {
 }
 
 /**
- * USelectPicker is a control for selecting people from a list. Has the features below:
+ * USelectPicker is a control for selecting a option from a list. Has the features below:
  *
- * * Select a single person from a list.
- * * Select multiple people from a list.
+ * * Select a single option from a list.
+ * * Select multiple option from a list.
  * * Autocomplete.
  * * Clear current selection.
  *

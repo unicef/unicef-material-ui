@@ -2,6 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import ActiveFormPositiveInteger from '../ActiveFormPositiveInteger'
 
+/**
+ * The ActiveCurrencyField is for creating currency input fields. It accepts several props for customization, including "inputPrefix," "decimalScale," "fixedDecimalScale," "textAlign," and etc. The cool feature with ActiveCurrencyField is you can read and write at the same place.
+ */
 export default function ActiveCurrencyField({
   inputPrefix,
   decimalScale,
@@ -39,7 +42,7 @@ ActiveCurrencyField.propTypes = {
   /**
    * Array of validators.See list of default validators above.
    *
-   * Ex: `validators={['required', 'isEmail']}`
+   * Ex: `validators={['required']}`
    */
   validators: PropTypes.array,
   /** Attributes applied to the input element. */

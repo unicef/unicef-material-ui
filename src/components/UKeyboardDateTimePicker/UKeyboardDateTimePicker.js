@@ -59,7 +59,7 @@ UKeyboardDateTimePicker.propTypes = {
   autoOk: PropTypes.bool,
   /** Picker container option variant : 'dialog' | 'inline' | 'static' */
   variant: PropTypes.string,
-  /** Material ui textfiled variant */
+  /** Material ui textfield variant */
   inputVariant: PropTypes.string,
   /** date format */
   format: PropTypes.string,
