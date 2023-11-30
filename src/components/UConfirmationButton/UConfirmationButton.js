@@ -74,7 +74,7 @@ export default function UConfirmationButton(props) {
 
   return (
     <React.Fragment>
-      {variant === 'menuItem' ? (
+      {variant === ControlVariants.menuItem ? (
         <MenuItem onClick={onClick} className={classes.menuLabel}>
           {icon}
           <span className={classes.span}>{buttonText}</span>
@@ -92,30 +92,35 @@ export default function UConfirmationButton(props) {
           </IconButton>
         </Tooltip>
       )}
-      <Menu
-        id={`delete-confirmation-menu-${id}`}
-        anchorEl={deleteAnchorEl}
-        keepMounted
-        open={Boolean(deleteAnchorEl)}
-        onClose={handleDeleteOptionClicked}
-        className={classes.menuDelete}
-      >
-        <MenuItem disabled>{confirmText}</MenuItem>
-        <MenuItem onClick={e => handleConfirm(e)}>{confirmActionText}</MenuItem>
-      </Menu>
-      <Dialog id={`delete-confirmation-menu-${id}`} open={openDialog}>
-        <DialogContent>
-          <Typography variant="body1">{confirmText || ''}</Typography>
-        </DialogContent>
-        <DialogActions>
-          <UButton onClick={handleCancelPopup} variant="uDefault">
-            {cancelText || ''}
-          </UButton>
-          <UButton onClick={handleConfirm} variant="uPrimary" color="primary">
-            {confirmActionText || ''}
-          </UButton>
-        </DialogActions>
-      </Dialog>
+      {variant === ControlVariants.popup ? (
+        <Dialog id={`delete-confirmation-menu-${id}`} open={openDialog}>
+          <DialogContent>
+            <Typography variant="body1">{confirmText || ''}</Typography>
+          </DialogContent>
+          <DialogActions>
+            <UButton onClick={handleCancelPopup} variant="uDefault">
+              {cancelText || ''}
+            </UButton>
+            <UButton onClick={handleConfirm} variant="uPrimary" color="primary">
+              {confirmActionText || ''}
+            </UButton>
+          </DialogActions>
+        </Dialog>
+      ) : (
+        <Menu
+          id={`delete-confirmation-menu-${id}`}
+          anchorEl={deleteAnchorEl}
+          keepMounted
+          open={Boolean(deleteAnchorEl)}
+          onClose={handleDeleteOptionClicked}
+          className={classes.menuDelete}
+        >
+          <MenuItem disabled>{confirmText}</MenuItem>
+          <MenuItem onClick={e => handleConfirm(e)}>
+            {confirmActionText}
+          </MenuItem>
+        </Menu>
+      )}
     </React.Fragment>
   )
 }

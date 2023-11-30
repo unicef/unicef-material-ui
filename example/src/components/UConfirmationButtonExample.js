@@ -18,6 +18,7 @@ export default function UConfirmationButtonExample() {
       <Grid item xs={12} sm={4} md={3}>
         <Typography variant="subtitle1">Popup variant</Typography>
         <UConfirmationButton
+          confirmText="Are you sure you want to delete the item?"
           onConfirm={handleDelete}
           id={itemId}
           buttonText="Delete"
