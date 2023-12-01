@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const ControlVariants = {
+const CONTROL_VARIANTS = {
   popup: 'popup',
   menuItem: 'menuItem',
   icon: 'icon',
@@ -55,8 +55,8 @@ export default function UConfirmationButton(props) {
   const [openDialog, setOpenDialog] = useState(false)
 
   const handleConfirm = e => {
-    onConfirm(e, id)
-    if (variant !== ControlVariants.popup) handleDeleteOptionClicked(e)
+    onConfirm && onConfirm(e, id)
+    if (variant !== CONTROL_VARIANTS.popup) handleDeleteOptionClicked(e)
   }
 
   const handleDeleteOptionClicked = e => {
@@ -64,7 +64,7 @@ export default function UConfirmationButton(props) {
   }
 
   const onClick = e => {
-    if (variant !== ControlVariants.popup) setDeleteAnchorEl(e.currentTarget)
+    if (variant !== CONTROL_VARIANTS.popup) setDeleteAnchorEl(e.currentTarget)
     else setOpenDialog(true)
   }
 
@@ -74,7 +74,7 @@ export default function UConfirmationButton(props) {
 
   return (
     <React.Fragment>
-      {variant === ControlVariants.menuItem ? (
+      {variant === CONTROL_VARIANTS.menuItem ? (
         <MenuItem onClick={onClick} className={classes.menuLabel}>
           {icon}
           <span className={classes.span}>{buttonText}</span>
@@ -92,7 +92,7 @@ export default function UConfirmationButton(props) {
           </IconButton>
         </Tooltip>
       )}
-      {variant === ControlVariants.popup ? (
+      {variant === CONTROL_VARIANTS.popup ? (
         <Dialog id={`delete-confirmation-menu-${id}`} open={openDialog}>
           <DialogContent>
             <Typography variant="body1">{confirmText || ''}</Typography>
@@ -134,9 +134,9 @@ UConfirmationButton.propTypes = {
   onConfirm: PropTypes.func.isRequired,
   /** variant: menu or icon */
   variant: PropTypes.oneOf([
-    ControlVariants.popup,
-    ControlVariants.menuItem,
-    ControlVariants.icon,
+    CONTROL_VARIANTS.popup,
+    CONTROL_VARIANTS.menuItem,
+    CONTROL_VARIANTS.icon,
   ]),
   /** if the variant is menuitem, this prop make sure the item enable or not */
   enabled: PropTypes.bool,
