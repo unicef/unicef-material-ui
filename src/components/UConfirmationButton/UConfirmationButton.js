@@ -49,7 +49,6 @@ export default function UConfirmationButton(props) {
     confirmText,
     confirmActionText,
     cancelText,
-    ...others
   } = props
   const [deleteAnchorEl, setDeleteAnchorEl] = useState(null)
   const [openDialog, setOpenDialog] = useState(false)
@@ -63,7 +62,7 @@ export default function UConfirmationButton(props) {
     setDeleteAnchorEl(null)
   }
 
-  const onClick = e => {
+  const handleClick = e => {
     if (variant !== CONTROL_VARIANTS.popup) setDeleteAnchorEl(e.currentTarget)
     else setOpenDialog(true)
   }
@@ -75,7 +74,7 @@ export default function UConfirmationButton(props) {
   return (
     <React.Fragment>
       {variant === CONTROL_VARIANTS.menuItem ? (
-        <MenuItem onClick={onClick} className={classes.menuLabel}>
+        <MenuItem onClick={handleClick} className={classes.menuLabel}>
           {icon}
           <span className={classes.span}>{buttonText}</span>
         </MenuItem>
@@ -84,7 +83,7 @@ export default function UConfirmationButton(props) {
           <IconButton
             aria-controls={`delete-confirmation-menu-${id}`}
             aria-haspopup="true"
-            onClick={onClick}
+            onClick={handleClick}
             disabled={!enabled}
             className={classes.menuLabel}
           >
