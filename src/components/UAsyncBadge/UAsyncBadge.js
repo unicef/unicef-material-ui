@@ -44,20 +44,13 @@ export default function UAsyncBadge({ variant, text, visible, onReset }) {
     }
   }, [variant])
 
-  useEffect(() => {
-    // When the badge becomes visible, set focus to it.
-    if (visible && variant) {
-      chipRef.current.focus()
-    }
-  }, [visible, variant])
-
   return (
     <span className={classes.root}>
       {visible && (
         <Chip
           ref={chipRef}
-          tabIndex={0}
-          aria-live="assertive" // Announce changes to screen readers
+          role="status"
+          aria-live="polite"
           className={`${classes.chip} ${classes[variant]}`}
           avatar={
             variant === 'loading' ? (
