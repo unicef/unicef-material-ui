@@ -1,8 +1,18 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
-import { Tooltip, IconButton, Menu, MenuItem } from '@material-ui/core'
+import {
+  Tooltip,
+  IconButton,
+  Menu,
+  MenuItem,
+  Dialog,
+  DialogContent,
+  Typography,
+  DialogActions,
+} from '@material-ui/core'
 import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined'
+import UButton from '../UButton'
 
 const useStyles = makeStyles(theme => ({
   menuDelete: {
@@ -15,6 +25,12 @@ const useStyles = makeStyles(theme => ({
     marginLeft: theme.spacing(1),
   },
 }))
+
+const CONTROL_VARIANTS = {
+  popup: 'popup',
+  menuItem: 'menuItem',
+  icon: 'icon',
+}
 
 /**
  * UConfirmationButton is a component to get confirmation from the user before processing it.
@@ -32,25 +48,33 @@ export default function UConfirmationButton(props) {
     icon,
     confirmText,
     confirmActionText,
-    ...others
+    cancelText,
   } = props
   const [deleteAnchorEl, setDeleteAnchorEl] = useState(null)
+  const [openDialog, setOpenDialog] = useState(false)
 
   const handleConfirm = e => {
-    onConfirm(e, id)
-    handleDeleteOptionClicked(e)
+    onConfirm && onConfirm(e, id)
+    if (variant !== CONTROL_VARIANTS.popup) handleDeleteOptionClicked(e)
   }
 
   const handleDeleteOptionClicked = e => {
     setDeleteAnchorEl(null)
   }
+
+  const handleClick = e => {
+    if (variant !== CONTROL_VARIANTS.popup) setDeleteAnchorEl(e.currentTarget)
+    else setOpenDialog(true)
+  }
+
+  const handleCancelPopup = e => {
+    setOpenDialog(false)
+  }
+
   return (
     <React.Fragment>
-      {variant === 'menuItem' ? (
-        <MenuItem
-          onClick={e => setDeleteAnchorEl(e.currentTarget)}
-          className={classes.menuLabel}
-        >
+      {variant === CONTROL_VARIANTS.menuItem ? (
+        <MenuItem onClick={handleClick} className={classes.menuLabel}>
           {icon}
           <span className={classes.span}>{buttonText}</span>
         </MenuItem>
@@ -59,7 +83,7 @@ export default function UConfirmationButton(props) {
           <IconButton
             aria-controls={`delete-confirmation-menu-${id}`}
             aria-haspopup="true"
-            onClick={e => setDeleteAnchorEl(e.currentTarget)}
+            onClick={handleClick}
             disabled={!enabled}
             className={classes.menuLabel}
           >
@@ -67,17 +91,35 @@ export default function UConfirmationButton(props) {
           </IconButton>
         </Tooltip>
       )}
-      <Menu
-        id={`delete-confirmation-menu-${id}`}
-        anchorEl={deleteAnchorEl}
-        keepMounted
-        open={Boolean(deleteAnchorEl)}
-        onClose={handleDeleteOptionClicked}
-        className={classes.menuDelete}
-      >
-        <MenuItem disabled>{confirmText}</MenuItem>
-        <MenuItem onClick={e => handleConfirm(e)}>{confirmActionText}</MenuItem>
-      </Menu>
+      {variant === CONTROL_VARIANTS.popup ? (
+        <Dialog id={`delete-confirmation-menu-${id}`} open={openDialog}>
+          <DialogContent>
+            <Typography variant="body1">{confirmText || ''}</Typography>
+          </DialogContent>
+          <DialogActions>
+            <UButton onClick={handleCancelPopup} variant="uDefault">
+              {cancelText || ''}
+            </UButton>
+            <UButton onClick={handleConfirm} variant="uPrimary" color="primary">
+              {confirmActionText || ''}
+            </UButton>
+          </DialogActions>
+        </Dialog>
+      ) : (
+        <Menu
+          id={`delete-confirmation-menu-${id}`}
+          anchorEl={deleteAnchorEl}
+          keepMounted
+          open={Boolean(deleteAnchorEl)}
+          onClose={handleDeleteOptionClicked}
+          className={classes.menuDelete}
+        >
+          <MenuItem disabled>{confirmText}</MenuItem>
+          <MenuItem onClick={e => handleConfirm(e)}>
+            {confirmActionText}
+          </MenuItem>
+        </Menu>
+      )}
     </React.Fragment>
   )
 }
@@ -90,9 +132,15 @@ UConfirmationButton.propTypes = {
   /** trigger confirmation function */
   onConfirm: PropTypes.func.isRequired,
   /** variant: menu or icon */
-  variant: PropTypes.oneOf(['menuItem', 'icon']),
+  variant: PropTypes.oneOf([
+    CONTROL_VARIANTS.popup,
+    CONTROL_VARIANTS.menuItem,
+    CONTROL_VARIANTS.icon,
+  ]),
   /** if the variant is menuitem, this prop make sure the item enable or not */
   enabled: PropTypes.bool,
+  /** button cancel text for popup variant */
+  cancelText: PropTypes.string,
   /** button confirm text */
   confirmText: PropTypes.string,
   /** confirm action text */
@@ -107,5 +155,6 @@ UConfirmationButton.defaultProps = {
   enabled: true,
   confirmText: 'Confirm deletion?',
   confirmActionText: 'Yes, delete',
+  cancelText: 'No',
   icon: <DeleteOutlinedIcon />,
 }

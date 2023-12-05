@@ -16,6 +16,16 @@ export default function UConfirmationButtonExample() {
         </Typography>
       </Grid>
       <Grid item xs={12} sm={4} md={3}>
+        <Typography variant="subtitle1">Popup variant</Typography>
+        <UConfirmationButton
+          confirmText="Are you sure you want to delete the item?"
+          onConfirm={handleDelete}
+          id={itemId}
+          buttonText="Delete"
+          variant="popup"
+        />
+      </Grid>
+      <Grid item xs={12} sm={4} md={3}>
         <Typography variant="subtitle1">Icon variant</Typography>
         <UConfirmationButton
           onConfirm={handleDelete}
@@ -33,14 +43,16 @@ export default function UConfirmationButtonExample() {
         />
       </Grid>
       <Grid item xs={12} sm={4} md={3}>
-        <Typography variant="subtitle1">Custom icon and confirm text</Typography>
+        <Typography variant="subtitle1">
+          Custom icon and confirm text
+        </Typography>
         <UConfirmationButton
           onConfirm={handleDelete}
           id={itemId}
           buttonText="Unlink"
           variant="menuItem"
-          confirmText='Confirm unlink?'
-          confirmActionText='Yes, unlink'
+          confirmText="Confirm unlink?"
+          confirmActionText="Yes, unlink"
           icon={<LinkOffIcon />}
         />
       </Grid>
