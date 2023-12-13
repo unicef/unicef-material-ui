@@ -47,7 +47,7 @@ export default function UAsyncBadge({ variant, text, visible, onReset }) {
 
   return (
     <span className={classes.root}>
-      {
+      {visible && (
         <Chip
           ref={chipRef}
           role="status"
@@ -66,7 +66,7 @@ export default function UAsyncBadge({ variant, text, visible, onReset }) {
           size="medium"
           label={text}
         />
-      }
+      )}
     </span>
   )
 }
