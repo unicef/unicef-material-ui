@@ -9,7 +9,8 @@ const useStyles = makeStyles(theme => ({
   root: {
     position: 'fixed',
     top: 16,
-    left: '40%',
+    left: '50%',
+    transform: 'translate(-50%, 0)',
     zIndex: 5000,
   },
   chip: {
