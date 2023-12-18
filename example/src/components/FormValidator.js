@@ -143,6 +143,7 @@ export default function FormValidator() {
             }}
             onError={errors => console.log(errors)}
             instantValidate={true}
+            noValidate
           >
             <UPositiveInteger
               name="PositiveNumber"
@@ -170,6 +171,7 @@ export default function FormValidator() {
             }}
             onError={errors => console.log(errors)}
             instantValidate={true}
+            noValidate
           >
             <UCurrencyField
               name="CurrencyInput"
@@ -190,6 +192,7 @@ export default function FormValidator() {
         ref={form}
         onError={errors => console.log(errors)}
         instantValidate={true}
+        noValidate
       >
         <Grid container>
           <Grid item xs={12}>
@@ -239,6 +242,7 @@ export default function FormValidator() {
         onSubmit={handleSubmit}
         onError={errors => console.log(errors)}
         instantValidate={true}
+        noValidate
       >
         <Grid container>
           <Grid item xs={12}>
@@ -348,8 +352,8 @@ export default function FormValidator() {
       <UValidatorForm
         onSubmit={handleItemValueSubmit}
         onError={errors => console.log(errors)}
-        // debounceTime={1000}
         instantValidate={true}
+        noValidate
       >
         <Typography variant="h5" style={{ margin: '16px 0px' }}>
           TextField with counter
@@ -372,8 +376,8 @@ export default function FormValidator() {
       <UValidatorForm
         onSubmit={handleItemValueSubmit}
         onError={errors => console.log(errors)}
-        // debounceTime={1000}
         instantValidate={true}
+        noValidate
       >
         <Typography variant="h5" style={{ margin: '16px 0px' }}>
           Reset form
@@ -409,8 +413,8 @@ export default function FormValidator() {
         onBlur={handleSubmit}
         onSubmit={handleSubmit}
         onError={errors => console.log(errors)}
-        // debounceTime={1000}
         instantValidate={true}
+        noValidate
       >
         <Box display="flex" mb={2} flexDirection="column" alignItems="baseline">
           <UValidatorComponent
@@ -537,8 +541,8 @@ export default function FormValidator() {
       <UValidatorForm
         onSubmit={handleItemValueSubmit}
         onError={errors => console.log(errors)}
-        // debounceTime={1000}
         instantValidate={true}
+        noValidate
       >
         <Grid container spacing={1}>
           <Grid item xs={12}>
