@@ -47,6 +47,10 @@ export default function USearchBox({
   const [searchValue, setSearch] = useState(value)
   const classes = useStyles()
 
+  useEffect(() => {
+    setSearch(value)
+  }, [value])
+
   const handleChange = event => {
     setSearch(event.target.value)
   }
