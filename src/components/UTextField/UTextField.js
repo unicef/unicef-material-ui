@@ -67,6 +67,18 @@ class UTextField extends ValidatorComponent {
     }
   }
 
+  handleSelectOpen = () => {
+    this.setState({
+      isSelectOpen: true,
+    })
+  }
+
+  handleSelectClose = () => {
+    this.setState({
+      isSelectOpen: false,
+    })
+  }
+
   render() {
     /* eslint-disable no-unused-vars */
     const {
@@ -88,9 +100,12 @@ class UTextField extends ValidatorComponent {
       InputLabelProps,
       showLabelHelp,
       InputLabelHelpProps,
+      select,
+      id,
+      SelectProps,
       ...rest
     } = this.props
-    const { isValid } = this.state
+    const { isValid, isSelectOpen } = this.state
     const length = this.props.value ? this.props.value.length : 0
     const counterError = maxLength && maxLength < length
 
@@ -117,6 +132,35 @@ class UTextField extends ValidatorComponent {
               label
             )
           }
+          select={select}
+          id={id}
+          /** Accessibility fixes for select field */
+          {...(select
+            ? {
+                inputProps: {
+                  ...(this.props.inputProps ? this.props.inputProps : {}),
+                  'aria-describedby': null,
+                },
+                SelectProps: {
+                  ...(SelectProps ? SelectProps : {}),
+                  open: isSelectOpen ? true : false,
+                  onClose: this.handleSelectClose,
+                  onOpen: this.handleSelectOpen,
+                  MenuProps: {
+                    MenuListProps: {
+                      id: `${id}-select-menu`,
+                      'aria-labelledby': null,
+                    },
+                  },
+                  SelectDisplayProps: {
+                    role: 'combobox',
+                    'aria-controls': `${id}-select-menu`,
+                    'aria-expanded': isSelectOpen ? true : false,
+                    'aria-describedby': `${id}-helper-text`,
+                  },
+                },
+              }
+            : {})}
         />
         {counter && (
           <Box display="block">
@@ -170,6 +214,10 @@ UTextField.propTypes = {
   showLabelHelp: PropTypes.bool,
   /** Props applied to the input label help element. E.g InputLabelHelpProps={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
   InputLabelHelpProps: PropTypes.object,
+  /** Id of the field */
+  id: PropTypes.string,
+  /** Props applied to the Select element. */
+  SelectProps: PropTypes.object,
 }
 
 UTextField.defaultProps = {
@@ -178,6 +226,8 @@ UTextField.defaultProps = {
   validatorListener: () => {},
   showLabelHelp: false,
   InputLabelHelpProps: {},
+  select: false,
+  SelectProps: {},
 }
 
 export default UTextField
