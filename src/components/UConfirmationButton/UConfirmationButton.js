@@ -10,6 +10,7 @@ import {
   DialogContent,
   Typography,
   DialogActions,
+  Box,
 } from '@material-ui/core'
 import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined'
 import UButton from '../UButton'
@@ -30,6 +31,7 @@ const CONTROL_VARIANTS = {
   popup: 'popup',
   menuItem: 'menuItem',
   icon: 'icon',
+  button: 'button',
 }
 
 /**
@@ -49,6 +51,7 @@ export default function UConfirmationButton(props) {
     confirmText,
     confirmActionText,
     cancelText,
+    buttonVariant,
   } = props
   const [deleteAnchorEl, setDeleteAnchorEl] = useState(null)
   const [openDialog, setOpenDialog] = useState(false)
@@ -76,8 +79,20 @@ export default function UConfirmationButton(props) {
       {variant === CONTROL_VARIANTS.menuItem ? (
         <MenuItem onClick={handleClick} className={classes.menuLabel}>
           {icon}
-          <span className={classes.span}>{buttonText}</span>
+          <Box component="span" className={icon ? classes.span : ''}>
+            {buttonText}
+          </Box>
         </MenuItem>
+      ) : variant === CONTROL_VARIANTS.button ? (
+        <UButton
+          startIcon={icon}
+          onClick={handleClick}
+          aria-controls={`delete-confirmation-menu-${id}`}
+          aria-haspopup="true"
+          variant={buttonVariant}
+        >
+          {buttonText}
+        </UButton>
       ) : (
         <Tooltip title={buttonText} placement="top">
           <IconButton
@@ -136,6 +151,7 @@ UConfirmationButton.propTypes = {
     CONTROL_VARIANTS.popup,
     CONTROL_VARIANTS.menuItem,
     CONTROL_VARIANTS.icon,
+    CONTROL_VARIANTS.button,
   ]),
   /** if the variant is menuitem, this prop make sure the item enable or not */
   enabled: PropTypes.bool,
@@ -147,6 +163,8 @@ UConfirmationButton.propTypes = {
   confirmActionText: PropTypes.string,
   /** custom icon */
   icon: PropTypes.element,
+  /** Button variant applied to menuItem button */
+  buttonVariant: PropTypes.string,
 }
 
 UConfirmationButton.defaultProps = {
@@ -157,4 +175,5 @@ UConfirmationButton.defaultProps = {
   confirmActionText: 'Yes, delete',
   cancelText: 'No',
   icon: <DeleteOutlinedIcon />,
+  buttonVariant: 'text',
 }

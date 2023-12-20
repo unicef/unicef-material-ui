@@ -1,11 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { UConfirmationButton } from 'unicef-material-ui'
-import { Typography, Grid } from '@material-ui/core'
+import {
+  Typography,
+  Grid,
+  IconButton,
+  Menu,
+  MenuItem,
+  Link,
+} from '@material-ui/core'
 import LinkOffIcon from '@material-ui/icons/LinkOff'
+import MoreVertIcon from '@material-ui/icons/MoreVert'
+
 export default function UConfirmationButtonExample() {
+  const [anchorEl, setAnchorEl] = useState(null)
+  const open = Boolean(anchorEl)
   const itemId = 1
   function handleDelete(event, id) {
     console.log(id)
+  }
+  function handleClick(event) {
+    setAnchorEl(event.currentTarget)
+  }
+  function handleClose() {
+    setAnchorEl(null)
   }
 
   return (
@@ -35,11 +52,48 @@ export default function UConfirmationButtonExample() {
       </Grid>
       <Grid item xs={12} sm={4} md={3}>
         <Typography variant="subtitle1">Menu item variant</Typography>
+        <IconButton
+          aria-label="more"
+          aria-controls="menu-item-variant"
+          aria-haspopup="true"
+          onClick={handleClick}
+        >
+          <MoreVertIcon />
+        </IconButton>
+        <Menu
+          id="menu-item-variant"
+          anchorEl={anchorEl}
+          keepMounted
+          open={open}
+          onClose={handleClose}
+          disableEnforceFocus={true}
+        >
+          <MenuItem onClick={handleClose}>
+            <Link href="#" underline="none">
+              Edit
+            </Link>
+          </MenuItem>
+          <MenuItem onClick={handleClose}>
+            <Link href="#" underline="none">
+              View
+            </Link>
+          </MenuItem>
+          <UConfirmationButton
+            onConfirm={handleDelete}
+            id={itemId}
+            buttonText="Delete"
+            variant="menuItem"
+            icon={null}
+          />
+        </Menu>
+      </Grid>
+      <Grid item xs={12} sm={4} md={3}>
+        <Typography variant="subtitle1">Button variant</Typography>
         <UConfirmationButton
           onConfirm={handleDelete}
           id={itemId}
           buttonText="Delete"
-          variant="menuItem"
+          variant="button"
         />
       </Grid>
       <Grid item xs={12} sm={4} md={3}>
