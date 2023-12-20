@@ -146,7 +146,7 @@ UConfirmationButton.propTypes = {
   buttonText: PropTypes.string,
   /** trigger confirmation function */
   onConfirm: PropTypes.func.isRequired,
-  /** variant: menu or icon */
+  /** variant: popup or menuItem or icon or button */
   variant: PropTypes.oneOf([
     CONTROL_VARIANTS.popup,
     CONTROL_VARIANTS.menuItem,

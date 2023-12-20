@@ -104,7 +104,7 @@ export default function UConfirmationButtonExample() {
           onConfirm={handleDelete}
           id={itemId}
           buttonText="Unlink"
-          variant="menuItem"
+          variant="button"
           confirmText="Confirm unlink?"
           confirmActionText="Yes, unlink"
           icon={<LinkOffIcon />}
