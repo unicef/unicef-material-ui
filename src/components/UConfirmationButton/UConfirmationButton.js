@@ -56,14 +56,14 @@ export default function UConfirmationButton(props) {
     confirmActionText,
     cancelText,
     buttonVariant,
-    confirmationVariant,
+    confirmVariant,
   } = props
   const [deleteAnchorEl, setDeleteAnchorEl] = useState(null)
   const [openDialog, setOpenDialog] = useState(false)
 
   const handleConfirm = e => {
     onConfirm && onConfirm(e, id)
-    if (confirmationVariant === CONFIRMATION_VARIANTS.popup) {
+    if (confirmVariant === CONFIRMATION_VARIANTS.popup) {
       setOpenDialog(false)
     } else {
       handleDeleteOptionClicked(e)
@@ -75,7 +75,7 @@ export default function UConfirmationButton(props) {
   }
 
   const handleClick = e => {
-    if (confirmationVariant === CONFIRMATION_VARIANTS.popup) {
+    if (confirmVariant === CONFIRMATION_VARIANTS.popup) {
       setOpenDialog(true)
     } else {
       setDeleteAnchorEl(e.currentTarget)
@@ -118,7 +118,7 @@ export default function UConfirmationButton(props) {
           </IconButton>
         </Tooltip>
       )}
-      {confirmationVariant === CONFIRMATION_VARIANTS.popup ? (
+      {confirmVariant === CONFIRMATION_VARIANTS.popup ? (
         <Dialog id={`delete-confirmation-menu-${id}`} open={openDialog}>
           <DialogContent>
             <Typography variant="body1">{confirmText || ''}</Typography>
@@ -164,8 +164,8 @@ UConfirmationButton.propTypes = {
     CONTROL_VARIANTS.icon,
     CONTROL_VARIANTS.button,
   ]),
-  /** Confirmation variant: popup or menu */
-  confirmationVariant: PropTypes.oneOf([
+  /** Confirm variant: popup or menu */
+  confirmVariant: PropTypes.oneOf([
     CONFIRMATION_VARIANTS.popup,
     CONFIRMATION_VARIANTS.menu,
   ]),
@@ -192,5 +192,5 @@ UConfirmationButton.defaultProps = {
   cancelText: 'No',
   icon: <DeleteOutlinedIcon />,
   buttonVariant: 'text',
-  confirmationVariant: 'menu',
+  confirmVariant: 'menu',
 }

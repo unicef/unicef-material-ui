@@ -27,7 +27,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert'
 
     <Grid container>
       <Grid item xs={12}>
-        <Typography variant="subtitle1">Confirmation popup variant</Typography>
+        <Typography variant="subtitle1">Confirm popup variant</Typography>
       </Grid>
       <Grid container item xs={12}>
         <Grid item xs={12} sm={6} md={3}>
@@ -37,7 +37,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert'
             onConfirm={handleDelete}
             id={1}
             buttonText="Delete"
-            confirmationVariant="popup"
+            confirmVariant="popup"
           />
         </Grid>
         <Grid item xs={12} sm={6} md={3}>
@@ -75,7 +75,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert'
               buttonText="Delete"
               variant="menuItem"
               icon={null}
-              confirmationVariant="popup"
+              confirmVariant="popup"
             />
           </Menu>
         </Grid>
@@ -87,7 +87,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert'
             confirmText="Are you sure you want to delete the item?"
             buttonText="Delete"
             variant="button"
-            confirmationVariant="popup"
+            confirmVariant="popup"
           />
         </Grid>
         <Grid item xs={12} sm={6} md={3}>
@@ -99,13 +99,13 @@ import MoreVertIcon from '@material-ui/icons/MoreVert'
             variant="button"
             confirmText="Are you sure you want to unlink the item?"
             confirmActionText="Yes, unlink"
-            confirmationVariant="popup"
+            confirmVariant="popup"
             icon={<LinkOffIcon />}
           />
         </Grid>
       </Grid>
       <Grid item xs={12}>
-        <Typography variant="subtitle1">Confirmation menu variant</Typography>
+        <Typography variant="subtitle1">Confirm menu variant</Typography>
       </Grid>
       <Grid container item xs={12}>
         <Grid item xs={12} sm={6} md={3}>
