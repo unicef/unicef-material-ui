@@ -28,10 +28,14 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const CONTROL_VARIANTS = {
-  popup: 'popup',
   menuItem: 'menuItem',
   icon: 'icon',
   button: 'button',
+}
+
+const CONFIRMATION_VARIANTS = {
+  menu: 'menu',
+  popup: 'popup',
 }
 
 /**
@@ -52,13 +56,18 @@ export default function UConfirmationButton(props) {
     confirmActionText,
     cancelText,
     buttonVariant,
+    confirmationVariant,
   } = props
   const [deleteAnchorEl, setDeleteAnchorEl] = useState(null)
   const [openDialog, setOpenDialog] = useState(false)
 
   const handleConfirm = e => {
     onConfirm && onConfirm(e, id)
-    if (variant !== CONTROL_VARIANTS.popup) handleDeleteOptionClicked(e)
+    if (confirmationVariant === CONFIRMATION_VARIANTS.popup) {
+      setOpenDialog(false)
+    } else {
+      handleDeleteOptionClicked(e)
+    }
   }
 
   const handleDeleteOptionClicked = e => {
@@ -66,8 +75,11 @@ export default function UConfirmationButton(props) {
   }
 
   const handleClick = e => {
-    if (variant !== CONTROL_VARIANTS.popup) setDeleteAnchorEl(e.currentTarget)
-    else setOpenDialog(true)
+    if (confirmationVariant === CONFIRMATION_VARIANTS.popup) {
+      setOpenDialog(true)
+    } else {
+      setDeleteAnchorEl(e.currentTarget)
+    }
   }
 
   const handleCancelPopup = e => {
@@ -106,7 +118,7 @@ export default function UConfirmationButton(props) {
           </IconButton>
         </Tooltip>
       )}
-      {variant === CONTROL_VARIANTS.popup ? (
+      {confirmationVariant === CONFIRMATION_VARIANTS.popup ? (
         <Dialog id={`delete-confirmation-menu-${id}`} open={openDialog}>
           <DialogContent>
             <Typography variant="body1">{confirmText || ''}</Typography>
@@ -146,12 +158,16 @@ UConfirmationButton.propTypes = {
   buttonText: PropTypes.string,
   /** trigger confirmation function */
   onConfirm: PropTypes.func.isRequired,
-  /** variant: popup or menuItem or icon or button */
+  /** variant: menuItem or icon or button */
   variant: PropTypes.oneOf([
-    CONTROL_VARIANTS.popup,
     CONTROL_VARIANTS.menuItem,
     CONTROL_VARIANTS.icon,
     CONTROL_VARIANTS.button,
+  ]),
+  /** Confirmation variant: popup or menu */
+  confirmationVariant: PropTypes.oneOf([
+    CONFIRMATION_VARIANTS.popup,
+    CONFIRMATION_VARIANTS.menu,
   ]),
   /** if the variant is menuitem, this prop make sure the item enable or not */
   enabled: PropTypes.bool,
@@ -176,4 +192,5 @@ UConfirmationButton.defaultProps = {
   cancelText: 'No',
   icon: <DeleteOutlinedIcon />,
   buttonVariant: 'text',
+  confirmationVariant: 'menu',
 }
