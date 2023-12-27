@@ -268,5 +268,5 @@ USelectPicker.defaultProps = {
   isDisabled: false,
   menuIsOpen: undefined,
   lineByLineOption: false,
-  iconVariant: 'light',
+  iconVariant: ICON_VARIANTS.light,
 }
