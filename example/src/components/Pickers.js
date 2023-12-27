@@ -316,7 +316,19 @@ export default function Pickers() {
           Select
         </Typography>
       </Grid>
-
+      <Grid item xs={12} md={6}>
+        <USelectPicker
+          label="Regions"
+          TextFieldProps={{
+            helperText:
+              'Please select multiple regions from the list with dark icon variant',
+          }}
+          placeholder="Select regions ..."
+          options={regionsOptions}
+          iconVariant="dark"
+          isMulti
+        />
+      </Grid>
       <Grid item xs={12} md={6}>
         <USelectPicker
           label="Regions"
