@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Select from 'react-select'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import CancelIcon from '@material-ui/icons/Cancel'
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown'
 import MultiValue from './MultiValue'
 import SingleValue from './SingleValue'
 import Menu from './Menu'
@@ -74,6 +75,11 @@ const defaultComponents = {
   MultiValueRemove: removeProps => <CancelIcon {...removeProps} />,
 }
 
+const ICON_VARIANTS = {
+  dark: 'dark',
+  light: 'light',
+}
+
 /**
  * USelectPicker is a control for selecting a option from a list. Has the features below:
  *
@@ -104,6 +110,7 @@ export default function USelectPicker(props) {
     isDisabled,
     menuIsOpen,
     placeholder,
+    iconVariant,
     ...others
   } = props
 
@@ -145,11 +152,14 @@ export default function USelectPicker(props) {
     onInputChange && onInputChange(value)
   }
 
-  const extraComponents = readOnly
-    ? {
-        DropdownIndicator: () => null,
-      }
-    : {}
+  const extraComponents = {}
+  if (iconVariant === ICON_VARIANTS.dark)
+    extraComponents.DropdownIndicator = () => (
+      <span style={{ color: theme.palette.text.secondary }}>
+        <ArrowDropDownIcon />
+      </span>
+    )
+  if (readOnly) extraComponents.DropdownIndicator = () => null
 
   const selectPlaceholder = readOnly ? '' : placeholder
 
@@ -240,6 +250,8 @@ USelectPicker.propTypes = {
   isDisabled: PropTypes.bool,
   /** Whether the menu is open */
   menuIsOpen: PropTypes.bool,
+  /** Down arrow variant */
+  iconVariant: PropTypes.oneOf([ICON_VARIANTS.dark, ICON_VARIANTS.light]),
 }
 
 USelectPicker.defaultProps = {
@@ -256,4 +268,5 @@ USelectPicker.defaultProps = {
   isDisabled: false,
   menuIsOpen: undefined,
   lineByLineOption: false,
+  iconVariant: ICON_VARIANTS.light,
 }
