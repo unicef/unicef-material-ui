@@ -119,6 +119,7 @@ export default function USelectPicker(props) {
   const selectStyles = {
     input: base => ({
       ...base,
+      height: iconVariant === ICON_VARIANTS.dark ? theme.spacing(4) : 'inherit', // if dark variant, then match height with material ui controls
       color: theme.palette.text.primary,
       '& input': {
         font: 'inherit',
