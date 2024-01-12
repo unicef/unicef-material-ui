@@ -439,9 +439,6 @@ export default function Pickers() {
           tooltipTitle: 'readonly keyboard',
         }}
         readOnly={true}
-        inputProps={{
-          readOnly: true
-        }}
         />
       </Grid>
       <Grid item xs={12}>
