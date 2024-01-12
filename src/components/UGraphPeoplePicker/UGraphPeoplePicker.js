@@ -48,10 +48,10 @@ export default function UGraphPeoplePicker({
     }
   }
   // onChange select users
-  const selectUsers = event => {
+  const selectUsers = value => {
     //for multiple users
-    if (event && event.length > 0) {
-      const users = event.map(user => {
+    if (isMultiple) {
+      const users = value.map(user => {
         const data = {
           value: user.email || user.value,
           label: user.label || user.name,
@@ -65,10 +65,10 @@ export default function UGraphPeoplePicker({
       onBlur(users, type)
     } else {
       //for single user
-      if (event) {
-        setSelectedUsers([event])
+      if (value) {
+        setSelectedUsers([value])
         // pass latest values to parent
-        onBlur([event], type)
+        onBlur([value], type)
       } else {
         // for no user
         setSelectedUsers([])

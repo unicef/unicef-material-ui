@@ -14,13 +14,12 @@ const useStyles = makeStyles(theme => ({
 
 export default function Menu({ children, selectProps, innerProps, isLoading }) {
   const classes = useStyles()
-  const { errorOptionsMessage } = selectProps
-
+  const { errorOptionsMessage, loadingText } = selectProps
   return (
     <Paper square className={selectProps.classes.paper} {...innerProps}>
       {isLoading ? (
         <Box p={2}>
-          <Typography>Loading...</Typography>
+          <Typography>{loadingText}</Typography>
         </Box>
       ) : errorOptionsMessage ? (
         <Typography color="textSecondary" className={classes.errorMessage}>

@@ -11,6 +11,7 @@ import Control from './Control'
 import NoOptionsMessage from './NoOptionsMessage'
 import ValueContainer from './ValueContainer'
 import Option from './Option'
+import Input from './Input'
 
 const useStyles = makeStyles(theme => ({
   input: {
@@ -72,6 +73,7 @@ const defaultComponents = {
   Option,
   SingleValue,
   ValueContainer,
+  Input,
   MultiValueRemove: removeProps => <CancelIcon {...removeProps} />,
 }
 
@@ -127,6 +129,11 @@ export default function USelectPicker(props) {
     }),
     menuPortal: base => ({ ...base, zIndex: 9999 }),
     menu: base => ({ ...base, zIndex: '9999 !important' }),
+    placeholder: base => ({
+      ...base,
+      position: 'absolute',
+      left: theme.spacing(2),
+    }),
   }
 
   const defaultTextFieldProps = {
@@ -253,6 +260,10 @@ USelectPicker.propTypes = {
   menuIsOpen: PropTypes.bool,
   /** Down arrow variant */
   iconVariant: PropTypes.oneOf([ICON_VARIANTS.dark, ICON_VARIANTS.light]),
+  /** No options text */
+  noOptionsText: PropTypes.string,
+  /** Loading text */
+  loadingText: PropTypes.string,
 }
 
 USelectPicker.defaultProps = {
@@ -270,4 +281,6 @@ USelectPicker.defaultProps = {
   menuIsOpen: undefined,
   lineByLineOption: false,
   iconVariant: ICON_VARIANTS.light,
+  noOptionsText: 'No options',
+  loadingText: 'Loading...',
 }
