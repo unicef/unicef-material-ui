@@ -263,6 +263,11 @@ module.exports = {
           'src/components/ActiveTimePicker',
           'ActiveTimePicker.js'
         ),
+        path.resolve(
+          __dirname,
+          'src/components/ActiveKeyboardDateTimePicker',
+          'ActiveKeyboardDateTimePicker.js'
+        ),
       ],
       // sections: [
       //   {

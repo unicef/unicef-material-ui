@@ -9,9 +9,11 @@ import {
   UKeyboardDateTimePicker,
   USelectPicker,
   UIconPicker,
+  ActiveKeyboardDateTimePicker,
 } from 'unicef-material-ui'
 import { GraphPeoplePickerExample } from '../components'
 import { Grid, Typography, Avatar } from '@material-ui/core'
+
 
 export default function Pickers() {
   // People picker options
@@ -424,6 +426,22 @@ export default function Pickers() {
           InputLabelHelpProps={{
             tooltipTitle: 'With keyboard',
           }}
+        />
+      </Grid>
+
+      <Grid item xs={12}>
+        <ActiveKeyboardDateTimePicker 
+        label="readonly keyboard"
+        value={selectedDate}
+        onChange={handleDateChange}
+        showLabelHelp={true}
+        InputLabelHelpProps={{
+          tooltipTitle: 'readonly keyboard',
+        }}
+        readOnly={true}
+        inputProps={{
+          readOnly: true
+        }}
         />
       </Grid>
       <Grid item xs={12}>
