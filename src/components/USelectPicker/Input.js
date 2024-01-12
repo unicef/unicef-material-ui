@@ -14,7 +14,15 @@ export default function Input(props) {
         : undefined
   }
 
-  return <components.Input {...props} aria-describedby={describedBy} />
+  return (
+    <components.Input
+      {...props}
+      aria-describedby={describedBy}
+      required={
+        (props && props.selectProps && props.selectProps.required) || undefined
+      }
+    />
+  )
 }
 
 Input.propTypes = {

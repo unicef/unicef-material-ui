@@ -69,6 +69,7 @@ export default function ActiveKeyboardDateTimePicker(props) {
     showLabelHelp,
     InputLabelHelpProps,
     label,
+    KeyboardButtonProps,
     ...others
   } = props
 
@@ -112,6 +113,7 @@ export default function ActiveKeyboardDateTimePicker(props) {
         }}
         readOnly={readOnly}
         KeyboardButtonProps={{
+          ...KeyboardButtonProps,
           classes: {
             root: `${!interactiveMode && !readOnly ? '' : hideIcon}`,
           },
@@ -169,6 +171,8 @@ ActiveKeyboardDateTimePicker.propTypes = {
   showLabelHelp: PropTypes.bool,
   /** Props applied to the input label help element. E.g InputLabelHelpProps={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
   InputLabelHelpProps: PropTypes.object,
+  /** Keyboard button props */
+  KeyboardButtonProps: PropTypes.object,
 }
 
 ActiveKeyboardDateTimePicker.defaultProps = {
@@ -176,4 +180,5 @@ ActiveKeyboardDateTimePicker.defaultProps = {
   autoOk: true,
   variant: 'inline',
   format: 'dd/MM/yyyy hh:mm a',
+  KeyboardButtonProps: {},
 }
