@@ -3,7 +3,6 @@ import { components } from 'react-select'
 import PropTypes from 'prop-types'
 
 export default function Input(props) {
-  console.log(props)
   let describedBy = props['aria-describedby'] //react-select generated aria-describedby
   if (!props.hasValue) {
     const customDescribedBy = props.selectProps['aria-describedby'] //custom aria-describedby passed through the props
