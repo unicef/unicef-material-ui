@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function NoOptionsMessage({ innerProps }) {
+export default function NoOptionsMessage({ innerProps, selectProps }) {
   const classes = useStyles()
   return (
     <Typography
@@ -17,7 +17,7 @@ export default function NoOptionsMessage({ innerProps }) {
       {...innerProps}
       className={classes.noOptionsMessage}
     >
-      No options
+      {selectProps && selectProps.noOptionsText}
     </Typography>
   )
 }

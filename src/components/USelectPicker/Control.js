@@ -61,6 +61,7 @@ export default function Control({
         style: { ...styles.labelRoot },
       }}
       {...otherTextFieldProps}
+      type={null} // To prevent type attribute added in the div container
       label={
         showLabelHelp ? (
           <InputLabelHelp
