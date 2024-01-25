@@ -50,8 +50,10 @@ export default function UAsyncBadge({ variant, text, visible, onReset }) {
       {visible && (
         <Chip
           ref={chipRef}
-          role="status"
+          role="log"
           aria-live="polite"
+          aria-atomic="false"
+          aria-relevant="additions text"
           className={`${classes.chip} ${classes[variant]}`}
           avatar={
             variant === 'loading' ? (
