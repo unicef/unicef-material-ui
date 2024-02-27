@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react'
-import { Tooltip, makeStyles, Link } from '@material-ui/core'
+import { Tooltip, makeStyles, Link } from'@mui/material'
 import PropTypes from 'prop-types'
 
-import HelpIcon from '@material-ui/icons/HelpOutline'
-import LaunchIcon from '@material-ui/icons/Launch'
+import HelpIcon from '@mui/icons-material/HelpOutline'
+import LaunchIcon from '@mui/icons-material/Launch'
 
 const useStyles = makeStyles(theme => ({
   root: {

@@ -12,7 +12,7 @@ import {
   ActiveKeyboardDateTimePicker,
 } from 'unicef-material-ui'
 import { GraphPeoplePickerExample } from '../components'
-import { Grid, Typography, Avatar } from '@material-ui/core'
+import { Grid, Typography, Avatar } from '@mui/material'
 
 
 export default function Pickers() {

@@ -8,10 +8,10 @@ UNavbarCenter Example :
 
 ```jsx
 import UHeader from '../UHeader'
-import { Button, Box } from '@material-ui/core'
+import { Button, Box } from'@mui/material'
 import InputBase from '@material-ui/core/InputBase'
 import { fade, makeStyles } from '@material-ui/core/styles'
-import SearchIcon from '@material-ui/icons/Search'
+import SearchIcon from '@mui/icons-material/Search'
 
 const useStyles = makeStyles(theme => ({
   search: {
