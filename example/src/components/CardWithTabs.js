@@ -7,7 +7,7 @@ import {
   Card,
   Typography,
   Grid,
-} from '@material-ui/core'
+} from '@mui/material'
 
 function TabContainer(props) {
   return (

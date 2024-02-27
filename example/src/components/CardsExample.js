@@ -1,5 +1,5 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+import makeStyles  from '@mui/styles/makeStyles'
 import {
   Table,
   TableBody,
@@ -13,7 +13,7 @@ import {
   Grid,
   Typography,
   Divider
-} from '@material-ui/core'
+} from '@mui/material'
 
 const useStyles = makeStyles(theme => ({
   root: {

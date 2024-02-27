@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+import makeStyles  from '@mui/styles/makeStyles'
 import {
   Paper,
   Grid,
@@ -11,7 +11,7 @@ import {
   MenuItem,
   Button,
   Typography,
-} from '@material-ui/core'
+} from '@mui/material'
 import {
   ActiveFormTextField,
   ActiveCurrencyField,

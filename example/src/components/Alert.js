@@ -7,7 +7,7 @@ import {
 	DialogContent,
 	DialogContentText,
 	DialogTitle
-} from '@material-ui/core';
+} from '@mui/material';
 
 export default function Alert() {
 	const [open, setOpen] = React.useState(false);

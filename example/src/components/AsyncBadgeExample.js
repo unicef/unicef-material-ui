@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { UAsyncBadge } from 'unicef-material-ui'
-import { makeStyles } from '@material-ui/core/styles'
+import makeStyles  from '@mui/styles/makeStyles'
 
 const useStyles = makeStyles(theme => ({
   search: {

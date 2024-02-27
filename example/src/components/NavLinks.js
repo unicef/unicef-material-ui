@@ -8,7 +8,7 @@ import {
   Avatar,
   Link,
   Box,
-} from '@material-ui/core'
+} from '@mui/material'
 import ArrowDropDown from '@material-ui/icons/ArrowDropDown'
 import MailIcon from '@material-ui/icons/Mail'
 import avatar from '../assets/avatar.png'

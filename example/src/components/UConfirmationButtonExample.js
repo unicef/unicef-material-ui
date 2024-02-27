@@ -7,7 +7,7 @@ import {
   Menu,
   MenuItem,
   Link,
-} from '@material-ui/core'
+} from '@mui/material'
 import LinkOffIcon from '@material-ui/icons/LinkOff'
 import MoreVertIcon from '@material-ui/icons/MoreVert'
 

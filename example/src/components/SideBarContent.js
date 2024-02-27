@@ -1,5 +1,5 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+import makeStyles  from '@mui/styles/makeStyles'
 import { Link } from 'react-router-dom'
 import {
   List,
@@ -9,7 +9,7 @@ import {
   Typography,
   Box,
   Divider,
-} from '@material-ui/core'
+} from '@mui/material'
 
 import MailIcon from '@material-ui/icons/Mail'
 import InboxIcon from '@material-ui/icons/Inbox'
