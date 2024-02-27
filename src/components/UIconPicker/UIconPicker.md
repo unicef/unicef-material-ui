@@ -1,7 +1,7 @@
 ### Examples
 
 ```jsx static
-import { Avatar } from '@material-ui/core'
+import { Avatar } from'@mui/material'
 
 // SVG icon need to be converted to a blob before passing to <Avatar>
 const svgToBlob = svg => {
@@ -71,7 +71,7 @@ const options = [
 #### Single Icon picker
 
 ```jsx
-import { Avatar } from '@material-ui/core'
+import { Avatar } from'@mui/material'
 // SVG icon need to be converted to a blob before passing to <Avatar>
 const svgToBlob = svg => {
   if (svg) {
@@ -155,7 +155,7 @@ const options = [
 #### Multi Icon picker
 
 ```jsx
-import { Avatar } from '@material-ui/core'
+import { Avatar } from'@mui/material'
 // SVG icon need to be converted to a blob before passing to <Avatar>
 const svgToBlob = svg => {
   if (svg) {

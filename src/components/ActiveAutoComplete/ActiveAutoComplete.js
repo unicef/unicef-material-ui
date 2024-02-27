@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import Autocomplete, {
-  createFilterOptions,
-} from '@material-ui/lab/Autocomplete'
-import { makeStyles } from '@material-ui/core/styles'
+import Autocomplete, {createFilterOptions} from '@mui/material/Autocomplete'
+import { makeStyles } from '@mui/styles'
 import ActiveFormTextField from '../ActiveFormTextField'
 
 const filter = createFilterOptions()

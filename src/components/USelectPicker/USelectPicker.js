@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import Select from 'react-select'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
-import CancelIcon from '@material-ui/icons/Cancel'
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown'
+import { makeStyles } from '@mui/styles'
+import { useTheme } from '@mui/material'
+import CancelIcon from '@mui/icons-material/Cancel'
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import MultiValue from './MultiValue'
 import SingleValue from './SingleValue'
 import Menu from './Menu'
@@ -54,7 +55,7 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
   },
   inputHover: {
-    '&:hover $notchedOutline': {
+    '&:hover .MuiOutlinedInput-notchedOutline': {
       borderColor: 'transparent',
     },
   },

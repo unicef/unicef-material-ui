@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from 'react'
-import { CircularProgress, Chip } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-import HighlightOffIcon from '@material-ui/icons/HighlightOff'
-import DoneIcon from '@material-ui/icons/Done'
+import { CircularProgress, Chip } from'@mui/material'
+import { makeStyles } from '@mui/styles'
+import HighlightOffIcon from '@mui/icons-material/HighlightOff'
+import DoneIcon from '@mui/icons-material/Done'
 import PropTypes from 'prop-types'
 
 const useStyles = makeStyles(theme => ({

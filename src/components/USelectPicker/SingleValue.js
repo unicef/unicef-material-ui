@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Avatar from '@material-ui/core/Avatar'
-import { makeStyles } from '@material-ui/core/styles'
-import Typography from '@material-ui/core/Typography'
+import Avatar from '@mui/material/Avatar'
+import { makeStyles } from '@mui/styles'
+import Typography from '@mui/material/Typography'
 
 const useStyles = makeStyles(theme => ({
   singleValue: {

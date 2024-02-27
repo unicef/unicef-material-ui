@@ -40,8 +40,8 @@ select={true} | select if you pass select, you must pass options options =
 
 ```jsx
 import React, { useState, useEffect, useRef } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Button, Box, MenuItem } from '@material-ui/core'
+import { makeStyles } from '@mui/styles'
+import { Button, Box, MenuItem } from'@mui/material'
 import UValidatorForm from '../UValidatorForm'
 
 const useStyles = makeStyles(theme => ({
@@ -141,8 +141,8 @@ validators={['required', 'isEmail']}
 
 ```jsx
 import React, { useState, useEffect, useRef } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Button, Box, MenuItem } from '@material-ui/core'
+import { makeStyles } from '@mui/styles'
+import { Button, Box, MenuItem } from'@mui/material'
 import UValidatorForm from '../UValidatorForm'
 
 const useStyles = makeStyles(theme => ({
@@ -209,8 +209,8 @@ validators={['isUrl']}
 
 ```jsx
 import React, { useState, useEffect, useRef } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Button, Box, MenuItem } from '@material-ui/core'
+import { makeStyles } from '@mui/styles'
+import { Button, Box, MenuItem } from'@mui/material'
 import UValidatorForm from '../UValidatorForm'
 import UButton from '../UButton'
 
@@ -277,8 +277,8 @@ validators={['isNumber', 'minNumber:0', 'maxNumber:25555']}
 
 ```jsx
 import React, { useState, useEffect, useRef } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Button, Box, MenuItem } from '@material-ui/core'
+import { makeStyles } from '@mui/styles'
+import { Button, Box, MenuItem } from'@mui/material'
 import UValidatorForm from '../UValidatorForm'
 
 const useStyles = makeStyles(theme => ({
@@ -358,8 +358,8 @@ validators={['required', 'matchRegexp:^[0-9]$']}
 
 ```jsx
 import React, { useState, useEffect, useRef } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Button, Box, MenuItem } from '@material-ui/core'
+import { makeStyles } from '@mui/styles'
+import { Button, Box, MenuItem } from'@mui/material'
 import UValidatorForm from '../UValidatorForm'
 
 const useStyles = makeStyles(theme => ({
@@ -434,8 +434,8 @@ validators={['minStringLength:6', maxStringLength:12']}
 
 ```jsx
 import React, { useState, useEffect, useRef } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Button, Box, MenuItem } from '@material-ui/core'
+import { makeStyles } from '@mui/styles'
+import { Button, Box, MenuItem } from'@mui/material'
 import UValidatorForm from '../UValidatorForm'
 
 const useStyles = makeStyles(theme => ({
@@ -514,8 +514,8 @@ validators={['isPhone']}
 
 ```jsx
 import React, { useState, useEffect, useRef } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Button, Box, MenuItem } from '@material-ui/core'
+import { makeStyles } from '@mui/styles'
+import { Button, Box, MenuItem } from'@mui/material'
 import UValidatorForm from '../UValidatorForm'
 
 const useStyles = makeStyles(theme => ({
@@ -589,8 +589,8 @@ validators={['isAlphanumeric']}
 
 ```jsx
 import React, { useState, useEffect, useRef } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Button, Box, MenuItem } from '@material-ui/core'
+import { makeStyles } from '@mui/styles'
+import { Button, Box, MenuItem } from'@mui/material'
 import UValidatorForm from '../UValidatorForm'
 
 const useStyles = makeStyles(theme => ({
@@ -664,8 +664,8 @@ validators={['isSafeText']}
 
 ```jsx
 import React, { useState, useEffect, useRef } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Button, Box, MenuItem } from '@material-ui/core'
+import { makeStyles } from '@mui/styles'
+import { Button, Box, MenuItem } from'@mui/material'
 import UValidatorForm from '../UValidatorForm'
 
 const useStyles = makeStyles(theme => ({

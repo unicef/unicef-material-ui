@@ -54,7 +54,7 @@ const options = [
 #### Single people picker
 
 ```jsx
-import { Typography } from '@material-ui/core'
+import { Typography } from'@mui/material'
 
 const options = [
   { value: 1, label: 'Juan Merlos Tevar', subLabel: 'Manager', imageUrl: null },
@@ -109,7 +109,7 @@ const options = [
 #### Multi People picker
 
 ```jsx
-import { Typography } from '@material-ui/core'
+import { Typography } from'@mui/material'
 
 const options = [
   { value: 1, label: 'Juan Merlos Tevar', subLabel: 'Manager', imageUrl: null },

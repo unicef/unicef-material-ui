@@ -1,9 +1,7 @@
 import React from 'react'
-import {
-  StylesProvider,
-  createGenerateClassName,
-  jssPreset,
-} from '@material-ui/styles'
+import { jssPreset } from '@mui/styles'
+import { StyledEngineProvider } from '@mui/material/styles'
+import { createGenerateClassName } from '@mui/styles'
 import { create } from 'jss'
 
 const generateClassName = createGenerateClassName({
@@ -19,12 +17,14 @@ const jss = create({
 
 export default function UNICEFStyleProvider(props) {
   return (
-    <StylesProvider
+    // Inject Emotion before JSS
+    <StyledEngineProvider
       injectFirst={true}
       generateClassName={generateClassName}
       // jss={jss}
     >
+      {/* Your component tree. Now you can override Material UI's styles. */}
       {props.children}
-    </StylesProvider>
+    </StyledEngineProvider>
   )
 }

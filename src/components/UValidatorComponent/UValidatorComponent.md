@@ -61,8 +61,8 @@ export default function CheckBoxValidator() {
 
 ```jsx
 import React, { useState, useEffect, useRef } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { Button, Box, Checkbox, MenuItem, Radio, FormGroup, FormControl, FormLabel, FormControlLabel, RadioGroup, FormHelperText } from '@material-ui/core';
+import { makeStyles } from '@mui/styles';
+import { Button, Box, Checkbox, MenuItem, Radio, FormGroup, FormControl, FormLabel, FormControlLabel, RadioGroup, FormHelperText } from'@mui/material';
 import UValidatorForm from '../UValidatorForm'
 
 const useStyles = makeStyles(theme => ({
@@ -179,8 +179,8 @@ const useStyles = makeStyles(theme => ({
 
 ``` jsx 
 import React, { useState, useEffect, useRef } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { Button, Box, Checkbox, MenuItem, Radio, FormGroup, FormControl, FormLabel, FormControlLabel, RadioGroup, FormHelperText } from '@material-ui/core';
+import { makeStyles } from '@mui/styles';
+import { Button, Box, Checkbox, MenuItem, Radio, FormGroup, FormControl, FormLabel, FormControlLabel, RadioGroup, FormHelperText } from'@mui/material';
 import UValidatorForm from '../UValidatorForm'
 
 const useStyles = makeStyles(theme => ({

@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from 'react'
 import PropTypes from 'prop-types'
-import { TextField, Typography, Box } from '@material-ui/core'
+import { TextField, Typography, Box } from'@mui/material'
 /* eslint-enable */
 import ValidatorComponent from '../ValidatorComponent'
 import { InputLabelHelp } from '../Shared'

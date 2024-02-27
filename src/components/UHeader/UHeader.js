@@ -1,6 +1,8 @@
 import React from 'react'
-import { fade } from '@material-ui/core/styles/colorManipulator'
-import { makeStyles, createStyles } from '@material-ui/core/styles'
+import { alpha } from '@mui/material/styles'
+import { makeStyles, createStyles } from '@mui/styles'
+import { useTheme } from '@mui/material'
+
 import { findReactChildren } from '../../utils'
 import {
   AppBar,
@@ -11,10 +13,9 @@ import {
   Drawer,
   Link,
   Divider,
-} from '@material-ui/core'
-import MenuIcon from '@material-ui/icons/Menu'
+} from'@mui/material'
+import MenuIcon from '@mui/icons-material/Menu'
 import PropTypes from 'prop-types'
-import { useTheme } from '@material-ui/core/styles'
 import UHeaderMainMenu from '../UHeaderMainMenu'
 import UHeaderRightButtons from '../UHeaderRightButtons'
 import UHeaderLeftMenu from '../UHeaderLeftMenu'
@@ -152,7 +153,7 @@ export default function UHeader(props) {
           height="64px"
           display={{ xs: 'none', md: 'block' }}
           ml="auto"
-          bgcolor={fade(theme.palette.primary.main, 0.6)}
+          bgcolor={alpha(theme.palette.primary.main, 0.6)}
           className={classes.navRight}
         >
           {findReactChildren(props, UHeaderRightButtons)}

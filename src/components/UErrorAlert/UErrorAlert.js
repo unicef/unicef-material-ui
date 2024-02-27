@@ -1,6 +1,6 @@
 import React from 'react'
-import { Box } from '@material-ui/core'
-import { Alert } from '@material-ui/lab'
+import { Box } from'@mui/material'
+import Alert from '@mui/material/Alert'
 import PropTypes from 'prop-types'
 /**
  * UErrorAlert is a component to display error message to the user
