@@ -60,7 +60,7 @@
     "@material-ui/lab": "^4.0.0-alpha.57",
     "@material-ui/pickers": "^3.2.10",
     "@mui/icons-material": "^5.15.11",
-    "@mui/lab": "^5.0.0-alpha.89",
+    "@mui/lab": "^5.0.0-alpha.166",
     "@mui/material": "^5.15.11",
     "@mui/styles": "^5.15.11",
     "babel": "^6.23.0",
