@@ -1,4 +1,4 @@
-import React from 'react'
+import { useState } from 'react';
 import PropTypes from 'prop-types'
 import {
   AppBar,
@@ -22,7 +22,7 @@ TabContainer.propTypes = {
 }
 
 export default function CardWithTabs() {
-  const [value, setValue] = React.useState(0)
+  const [value, setValue] = useState(0)
 
   function handleChange(event, newValue) {
     setValue(newValue)

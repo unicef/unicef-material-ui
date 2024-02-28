@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react';
 import { Switch, Route, Link } from 'react-router-dom'
 import MuiThemeProvider  from '@mui/styles/makeStyles'
 import { ThemeProvider } from '@mui/material/styles'

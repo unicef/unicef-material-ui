@@ -1,4 +1,4 @@
-import React from 'react'
+import { Fragment } from 'react';
 import {
   Buttons,
   Alert,
@@ -17,7 +17,7 @@ import {
 
 export default function Layout({ match }) {
   return (
-    <React.Fragment>
+    <Fragment>
       <AvatarImageExample />
       <BreadcrumbsExample />
       <PageLoadingProgressExample />
@@ -32,6 +32,6 @@ export default function Layout({ match }) {
       <CardWithTabs />
       <CardsExample />
       <SearchBoxExample />
-    </React.Fragment>
-  )
+    </Fragment>
+  );
 }

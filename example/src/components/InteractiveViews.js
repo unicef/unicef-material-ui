@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useRef, useEffect, useState } from 'react';
 import makeStyles  from '@mui/styles/makeStyles'
 import {
   Paper,
@@ -67,9 +67,9 @@ export default function InteractiveViews() {
       },
     ],
   })
-  const timer = React.useRef()
+  const timer = useRef()
 
-  React.useEffect(() => {
+  useEffect(() => {
     return () => {
       clearTimeout(timer.current)
     }

@@ -1,4 +1,3 @@
-import React from 'react'
 import makeStyles  from '@mui/styles/makeStyles'
 import { useTheme } from '@mui/material'
 import { Grid, Box, Paper, Typography } from '@mui/material'

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import { Fragment, useState, useEffect, useRef } from 'react';
 import makeStyles  from '@mui/styles/makeStyles'
 import {
   Typography,
@@ -128,7 +128,7 @@ export default function FormValidator() {
     })
   }, [])
   return (
-    <React.Fragment>
+    <Fragment>
       <Grid container spacing={1}>
         <Grid item xs={12}>
           <Typography variant="h5" style={{ margin: '16px 0px' }}>
@@ -581,6 +581,6 @@ export default function FormValidator() {
           </Grid>
         </Grid>
       </UValidatorForm>
-    </React.Fragment>
-  )
+    </Fragment>
+  );
 }

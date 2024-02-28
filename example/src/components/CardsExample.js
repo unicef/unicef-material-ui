@@ -1,4 +1,4 @@
-import React from 'react'
+import { Fragment } from 'react';
 import makeStyles  from '@mui/styles/makeStyles'
 import {
   Table,
@@ -37,7 +37,7 @@ export default function CardsExample() {
   const classes = useStyles();
 
   return (
-    <React.Fragment >
+    <Fragment >
       <Typography variant="h5" style={{ margin: '32px 0px' }}>
         Cards and tables
       </Typography>
@@ -81,6 +81,6 @@ export default function CardsExample() {
           </Paper>
         </Grid>
       </Grid>
-    </React.Fragment>
+    </Fragment>
   );
 }

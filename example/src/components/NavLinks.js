@@ -1,4 +1,4 @@
-import React from 'react'
+import { useState } from 'react';
 import {
   Button,
   MenuItem,
@@ -14,8 +14,8 @@ import MailIcon from '@mui/icons-material/Mail'
 import avatar from '../assets/avatar.png'
 
 export default function NavLinks() {
-  const [profileOpen, setProfileOpen] = React.useState(null)
-  const [profile, setProfile] = React.useState(null)
+  const [profileOpen, setProfileOpen] = useState(null)
+  const [profile, setProfile] = useState(null)
 
   const handleProfileMenuOpen = event => {
     setProfileOpen(event.currentTarget)

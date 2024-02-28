@@ -1,4 +1,3 @@
-import React from 'react'
 import InputBase from '@mui/material/InputBase'
 import makeStyles from '@mui/styles/makeStyles'
 import { alpha } from '@mui/material/styles'

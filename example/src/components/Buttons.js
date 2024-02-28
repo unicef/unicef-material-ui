@@ -1,12 +1,12 @@
-import React from "react";
+import { useState, useRef, useEffect } from "react";
 import { UButton } from "unicef-material-ui";
 import { Typography, Grid } from "@mui/material";
 
 export default function Buttons() {
-  const [loading, setLoading] = React.useState(false);
-  const timer = React.useRef();
+  const [loading, setLoading] = useState(false);
+  const timer = useRef();
 
-  React.useEffect(() => {
+  useEffect(() => {
     return () => {
       clearTimeout(timer.current);
     };
