@@ -1,4 +1,5 @@
-import React, { forwardRef } from 'react'
+import { forwardRef } from 'react';
+import * as React from 'react';
 import { ValidatorForm } from 'react-form-validator-core'
 import PropTypes from 'prop-types'
 import {

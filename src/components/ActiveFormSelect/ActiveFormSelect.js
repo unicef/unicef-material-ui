@@ -1,4 +1,4 @@
-import React from 'react'
+import { useState } from 'react';
 import PropTypes from 'prop-types'
 import { makeStyles } from '@mui/styles'
 import UTextField from '../UTextField'
@@ -56,7 +56,7 @@ export default function ActiveFormSelect(props) {
     SelectProps,
     ...others
   } = props
-  const [hideIcon, setHideIcon] = React.useState(classes.icon)
+  const [hideIcon, setHideIcon] = useState(classes.icon)
   const finalPlaceholder = readOnly ? null : placeholder
 
   function onMouseOver() {

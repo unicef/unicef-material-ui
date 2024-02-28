@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { Fragment, useState } from 'react';
 import PropTypes from 'prop-types'
 import { makeStyles } from '@mui/styles'
 import {
@@ -87,7 +87,7 @@ export default function UConfirmationButton(props) {
   }
 
   return (
-    <React.Fragment>
+    <Fragment>
       {variant === CONTROL_VARIANTS.menuItem ? (
         <MenuItem onClick={handleClick} className={classes.menuLabel}>
           {icon}
@@ -147,8 +147,8 @@ export default function UConfirmationButton(props) {
           </MenuItem>
         </Menu>
       )}
-    </React.Fragment>
-  )
+    </Fragment>
+  );
 }
 
 UConfirmationButton.propTypes = {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react';
 import PropTypes from 'prop-types'
 import Select from 'react-select'
 import { makeStyles } from '@mui/styles'

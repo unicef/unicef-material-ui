@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from 'react'
+import { Fragment } from 'react';
 import PropTypes from 'prop-types'
 import { TextField, Typography, Box } from'@mui/material'
 /* eslint-enable */
@@ -110,7 +110,7 @@ class UTextField extends ValidatorComponent {
     const counterError = maxLength && maxLength < length
 
     return (
-      <React.Fragment>
+      <Fragment>
         <TextField
           variant={variant}
           {...rest}
@@ -176,8 +176,8 @@ class UTextField extends ValidatorComponent {
             </Typography>
           </Box>
         )}
-      </React.Fragment>
-    )
+      </Fragment>
+    );
   }
 }
 

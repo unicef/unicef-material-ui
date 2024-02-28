@@ -1,6 +1,5 @@
 /* eslint-disable no-nested-ternary */
-import React from 'react'
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import { makeStyles } from '@mui/styles'
 import Link from '@mui/material/Link'
 import Typography from '@mui/material/Typography'

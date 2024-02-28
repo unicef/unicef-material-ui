@@ -1,4 +1,4 @@
-import React from 'react'
+import { Fragment } from 'react';
 import { Box } from'@mui/material'
 import Alert from '@mui/material/Alert'
 import PropTypes from 'prop-types'
@@ -7,20 +7,20 @@ import PropTypes from 'prop-types'
  */
 export default function UErrorAlert({ error, preformatted, onClose }) {
   return (
-    <React.Fragment>
+    <Fragment>
       {error && (
         <Box marginTop={2} marginBottom={2}>
           <Alert severity="error" onClose={() => onClose && onClose()}>
             {preformatted ? (
               <pre>{error.message}</pre>
             ) : (
-              <React.Fragment>{error.message}</React.Fragment>
+              <Fragment>{error.message}</Fragment>
             )}
           </Alert>
         </Box>
       )}
-    </React.Fragment>
-  )
+    </Fragment>
+  );
 }
 
 UErrorAlert.propTypes = {

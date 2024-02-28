@@ -1,4 +1,4 @@
-import React from 'react'
+import { Fragment } from 'react';
 import PropTypes from 'prop-types'
 import MenuItem from '@mui/material/MenuItem'
 import Avatar from '@mui/material/Avatar'
@@ -20,7 +20,7 @@ export default function Option(props) {
       }}
       {...props.innerProps}
     >
-      <React.Fragment>
+      <Fragment>
         {hideAvatar ? (
           ''
         ) : props.data.avatar ? (
@@ -32,9 +32,9 @@ export default function Option(props) {
           <Typography variant="subtitle2">{props.data.label}</Typography>
           <Box fontSize={12}>{props.data.subLabel}</Box>
         </Box>
-      </React.Fragment>
+      </Fragment>
     </MenuItem>
-  )
+  );
 }
 
 Option.propTypes = {

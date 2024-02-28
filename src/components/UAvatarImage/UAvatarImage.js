@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react';
 import PropTypes from 'prop-types'
 import { Avatar, Tooltip, Typography } from'@mui/material'
 import { makeStyles } from '@mui/styles'
@@ -58,7 +58,7 @@ export default function UAvatarImage({
   }, [userEmail])
 
   return (
-    <React.Fragment>
+    <Fragment>
       <Tooltip title={tooltipText} placement="bottom">
         <Avatar
           className={`${classes[mode]} ${classes[size]}`}
@@ -76,8 +76,8 @@ export default function UAvatarImage({
           )}
         </Avatar>
       </Tooltip>
-    </React.Fragment>
-  )
+    </Fragment>
+  );
 }
 
 // prop-types

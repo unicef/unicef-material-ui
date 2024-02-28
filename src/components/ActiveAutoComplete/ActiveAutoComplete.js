@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { Fragment, useState } from 'react';
 import PropTypes from 'prop-types'
 import Autocomplete, {createFilterOptions} from '@mui/material/Autocomplete'
 import { makeStyles } from '@mui/styles'
@@ -112,7 +112,7 @@ export default function ActiveAutoComplete({
       ? options.filter(opt => !usedItemIds.includes(opt.id))
       : []
   return (
-    <React.Fragment>
+    <Fragment>
       {!interactiveMode && readOnly ? (
         <ActiveFormTextField
           multiline
@@ -175,8 +175,8 @@ export default function ActiveAutoComplete({
           )}
         />
       )}
-    </React.Fragment>
-  )
+    </Fragment>
+  );
 }
 
 ActiveAutoComplete.propTypes = {

@@ -1,4 +1,3 @@
-import React from 'react'
 import { jssPreset } from '@mui/styles'
 import { StyledEngineProvider } from '@mui/material/styles'
 import { createGenerateClassName } from '@mui/styles'

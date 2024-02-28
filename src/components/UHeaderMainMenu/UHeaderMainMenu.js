@@ -1,4 +1,3 @@
-import React from 'react'
 import { Tabs, Box } from'@mui/material'
 import PropTypes from 'prop-types'
 
