@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import Chip from '@mui/material/Chip'
 import Avatar from '@mui/material/Avatar'
-import { emphasize } from '@material-ui/core/styles'
+import { emphasize } from '@mui/material/styles'
 import { makeStyles } from '@mui/styles'
 
 const useStyles = makeStyles(theme => ({

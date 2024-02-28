@@ -3,7 +3,7 @@ Graph people picker usage:
 ```jsx static
 import React from 'react'
 import { UGraphPeoplePicker } from 'unicef-material-ui'
-import { Typography, Grid } from '@material-ui/core'
+import { Typography, Grid } from'@mui/material'
 
 export default function GraphPeoplePickerExample() {
   //set the initial users
@@ -103,7 +103,7 @@ export default function GraphPeoplePickerExample() {
 ```jsx
 
 import React from 'react'
-import { Typography, Grid } from '@material-ui/core'
+import { Typography, Grid } from'@mui/material'
   //set the initial users
   const totalUsers = [
     {

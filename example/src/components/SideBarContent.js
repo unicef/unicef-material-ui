@@ -11,8 +11,8 @@ import {
   Divider,
 } from '@mui/material'
 
-import MailIcon from '@material-ui/icons/Mail'
-import InboxIcon from '@material-ui/icons/Inbox'
+import MailIcon from '@mui/icons-material/Mail'
+import InboxIcon from '@mui/icons-material/Inbox'
 
 const useStyles = makeStyles(theme => ({
   root: {

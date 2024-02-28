@@ -8,8 +8,8 @@ import {
   MenuItem,
   Link,
 } from '@mui/material'
-import LinkOffIcon from '@material-ui/icons/LinkOff'
-import MoreVertIcon from '@material-ui/icons/MoreVert'
+import LinkOffIcon from '@mui/icons-material/LinkOff'
+import MoreVertIcon from '@mui/icons-material/MoreVert'
 
 export default function UConfirmationButtonExample() {
   const [anchorEl, setAnchorEl] = useState({ menu: null, popup: null })
