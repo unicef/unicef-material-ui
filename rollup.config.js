@@ -33,7 +33,13 @@ export default {
       plugins: ['external-helpers'],
     }),
     resolve(),
-    commonjs(),
+    commonjs({
+      namedExports: {
+      // This is needed because react/jsx-runtime exports jsx on the module export.
+      // Without this mapping the transformed import import {jsx as _jsx} from 'react/jsx-runtime' will fail.
+      'react/jsx-runtime': ['jsx', 'jsxs'],
+      },
+      })
   ],
   external: [
     'react',
@@ -42,4 +48,8 @@ export default {
     'prop-types',
     'styled-components',
   ],
+  onwarn: function ( message ) {
+    if ( message.code === 'MODULE_LEVEL_DIRECTIVE' ) return;
+    console.error( message );
+  }
 }
