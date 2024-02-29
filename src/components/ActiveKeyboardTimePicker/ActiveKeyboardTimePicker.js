@@ -6,7 +6,7 @@ import {
   MuiPickersUtilsProvider,
 } from '@material-ui/pickers'
 
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
 
 import { InputLabelHelp } from '../Shared'
 
@@ -39,7 +39,7 @@ const useStyles = makeStyles(theme => ({
     ...theme.typography[props.typographyVariant],
   }),
   inputHover: {
-    '&:hover $notchedOutline': {
+    '&:hover .MuiOutlinedInput-notchedOutline': {
       borderColor: 'transparent',
     },
   },

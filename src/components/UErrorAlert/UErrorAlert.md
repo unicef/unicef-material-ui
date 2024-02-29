@@ -1,7 +1,7 @@
 Error alert usage:
 ```jsx static
 import React, { useState } from 'react'
-import { Typography, Grid } from '@material-ui/core'
+import { Typography, Grid } from'@mui/material'
 import UButton from '../UButton'
   const [error, setError] = useState(null)
   function handleClose() {
@@ -22,7 +22,7 @@ import UButton from '../UButton'
 
 ```jsx
 import React, { useState } from 'react'
-import { Typography, Grid } from '@material-ui/core'
+import { Typography, Grid } from'@mui/material'
 import UButton from '../UButton'
   const [error, setError] = useState(null)
   function handleClose() {

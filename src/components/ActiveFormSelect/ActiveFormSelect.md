@@ -1,7 +1,7 @@
 ```jsx
 import React, { useState, useEffect, useRef } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Typography, Button, Box, Checkbox, MenuItem, Radio, FormGroup, FormControl, FormLabel, FormControlLabel, RadioGroup, Grid } from '@material-ui/core'
+import { makeStyles } from '@mui/styles'
+import { Typography, Button, Box, Checkbox, MenuItem, Radio, FormGroup, FormControl, FormLabel, FormControlLabel, RadioGroup, Grid } from'@mui/material'
 import { UValidatorForm, UValidatorComponent } from '../../index.js'  // change it to '@unicef/material-ui'
 
 const useStyles = makeStyles(theme => ({

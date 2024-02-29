@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react'
+import { useRef, useState, useEffect } from 'react';
 import { UPageLoadingProgress } from 'unicef-material-ui'
 
 export default function Buttons() {

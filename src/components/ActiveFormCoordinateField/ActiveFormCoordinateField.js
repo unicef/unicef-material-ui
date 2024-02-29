@@ -1,4 +1,3 @@
-import React from 'react'
 import PropTypes from 'prop-types'
 import ActiveFormTextField from '../ActiveFormTextField'
 import { PositiveNumberFormat } from '../Shared'

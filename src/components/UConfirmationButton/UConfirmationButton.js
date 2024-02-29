@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import { Fragment, useState } from 'react';
 import PropTypes from 'prop-types'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
 import {
   Tooltip,
   IconButton,
@@ -11,8 +11,8 @@ import {
   Typography,
   DialogActions,
   Box,
-} from '@material-ui/core'
-import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined'
+} from'@mui/material'
+import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined'
 import UButton from '../UButton'
 
 const useStyles = makeStyles(theme => ({
@@ -87,7 +87,7 @@ export default function UConfirmationButton(props) {
   }
 
   return (
-    <React.Fragment>
+    <Fragment>
       {variant === CONTROL_VARIANTS.menuItem ? (
         <MenuItem onClick={handleClick} className={classes.menuLabel}>
           {icon}
@@ -147,8 +147,8 @@ export default function UConfirmationButton(props) {
           </MenuItem>
         </Menu>
       )}
-    </React.Fragment>
-  )
+    </Fragment>
+  );
 }
 
 UConfirmationButton.propTypes = {

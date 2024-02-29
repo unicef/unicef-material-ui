@@ -1,5 +1,5 @@
-import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+import { Fragment } from 'react';
+import makeStyles  from '@mui/styles/makeStyles'
 import {
   Table,
   TableBody,
@@ -13,7 +13,7 @@ import {
   Grid,
   Typography,
   Divider
-} from '@material-ui/core'
+} from '@mui/material'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -37,7 +37,7 @@ export default function CardsExample() {
   const classes = useStyles();
 
   return (
-    <React.Fragment >
+    <Fragment >
       <Typography variant="h5" style={{ margin: '32px 0px' }}>
         Cards and tables
       </Typography>
@@ -81,6 +81,6 @@ export default function CardsExample() {
           </Paper>
         </Grid>
       </Grid>
-    </React.Fragment>
+    </Fragment>
   );
 }

@@ -1,6 +1,6 @@
-import React from 'react'
+import { useState } from 'react';
 import PropTypes from 'prop-types'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
 import UTextField from '../UTextField'
 
 const useStyles = makeStyles(theme => ({
@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
     ...theme.typography[props.typographyVariant],
   }),
   inputHover: {
-    '&:hover $notchedOutline': {
+    '&:hover .MuiOutlinedInput-notchedOutline': {
       borderColor: 'transparent',
     },
   },
@@ -56,7 +56,7 @@ export default function ActiveFormSelect(props) {
     SelectProps,
     ...others
   } = props
-  const [hideIcon, setHideIcon] = React.useState(classes.icon)
+  const [hideIcon, setHideIcon] = useState(classes.icon)
   const finalPlaceholder = readOnly ? null : placeholder
 
   function onMouseOver() {

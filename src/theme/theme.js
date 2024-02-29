@@ -1,4 +1,4 @@
-import { createMuiTheme } from '@material-ui/core/styles'
+import { createTheme, adaptV4Theme } from '@mui/material/styles'
 
 const unicef = {
   blue: '#1CABE2',
@@ -14,7 +14,7 @@ const unicef = {
 
 const zIndexDrawer = 1200
 
-const theme = createMuiTheme({
+const theme = createTheme(adaptV4Theme({
   typography: {
     useNextVariants: true,
     fontFamily: ['Roboto', 'Helvetica', 'Arial', 'sans-serif'].join(','),
@@ -71,7 +71,7 @@ const theme = createMuiTheme({
       disableRipple: true, // No more ripple
     },
   },
-})
+}))
 /** This is customized version of theme for whole application. To use UNICEF theme add MuiThemeProvider at the top level of your app, it will set the custom styles of unicef down to the component tree.
  *  More info: Material-ui theming
  */

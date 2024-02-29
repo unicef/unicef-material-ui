@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from 'react'
+import { Component } from 'react';
 import PropTypes from 'prop-types'
 import Promise from 'promise-polyfill'
 /* eslint-enable */
@@ -12,7 +12,7 @@ import { debounce } from '../../utils'
  * Using component locally in order to override the error messages
  * TODO - write the code to newer version
  */
-export default class ValidatorComponent extends React.Component {
+export default class ValidatorComponent extends Component {
   static getDerivedStateFromProps(nextProps, prevState) {
     if (
       nextProps.validators &&

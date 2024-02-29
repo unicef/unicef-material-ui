@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import {
 	Typography,
 	Button,
@@ -7,10 +7,10 @@ import {
 	DialogContent,
 	DialogContentText,
 	DialogTitle
-} from '@material-ui/core';
+} from '@mui/material';
 
 export default function Alert() {
-	const [open, setOpen] = React.useState(false);
+	const [open, setOpen] = useState(false);
 
 	function handleClickOpen() {
 		setOpen(true);

@@ -1,7 +1,7 @@
 Avatar image usage:
 ```jsx static
 import React from 'react'
-import { Typography, Grid } from '@material-ui/core'
+import { Typography, Grid } from'@mui/material'
 
   const loadPhoto = email => async () => {
     try {
@@ -35,7 +35,7 @@ import { Typography, Grid } from '@material-ui/core'
 
 ```jsx
 import React from 'react'
-import { Typography, Grid } from '@material-ui/core'
+import { Typography, Grid } from'@mui/material'
 
   const loadPhoto = value => async () => {
     try {

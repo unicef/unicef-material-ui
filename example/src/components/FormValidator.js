@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+import { Fragment, useState, useEffect, useRef } from 'react';
+import makeStyles  from '@mui/styles/makeStyles'
 import {
   Typography,
   Button,
@@ -16,7 +16,7 @@ import {
   List,
   ListItem,
   ListItemText,
-} from '@material-ui/core'
+} from '@mui/material'
 import {
   UTextField,
   UPositiveInteger,
@@ -128,7 +128,7 @@ export default function FormValidator() {
     })
   }, [])
   return (
-    <React.Fragment>
+    <Fragment>
       <Grid container spacing={1}>
         <Grid item xs={12}>
           <Typography variant="h5" style={{ margin: '16px 0px' }}>
@@ -581,6 +581,6 @@ export default function FormValidator() {
           </Grid>
         </Grid>
       </UValidatorForm>
-    </React.Fragment>
-  )
+    </Fragment>
+  );
 }

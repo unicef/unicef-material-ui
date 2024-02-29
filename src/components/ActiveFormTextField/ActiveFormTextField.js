@@ -1,6 +1,5 @@
-import React from 'react'
 import PropTypes from 'prop-types'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
 import UTextField from '../UTextField'
 
 const useStyles = makeStyles(theme => ({
@@ -24,7 +23,7 @@ const useStyles = makeStyles(theme => ({
     ...theme.typography[props.typographyVariant],
   }),
   inputHover: {
-    '&:hover $notchedOutline': {
+    '&:hover .MuiOutlinedInput-notchedOutline': {
       borderColor: 'transparent',
     },
   },

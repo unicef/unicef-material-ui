@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react';
 import {
   UHeader,
   UHeaderRightButtons,
@@ -8,7 +8,7 @@ import {
 } from 'unicef-material-ui'
 import NavLinks from './NavLinks'
 import SideBarContent from './SideBarContent'
-import Tab from '@material-ui/core/Tab'
+import Tab from '@mui/material/Tab'
 import SearchBar from './SearchBar'
 import AsyncBadgeExample from './AsyncBadgeExample'
 
