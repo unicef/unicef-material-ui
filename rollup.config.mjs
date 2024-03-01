@@ -41,4 +41,8 @@ export default {
     'prop-types',
     'styled-components',
   ],
+  onwarn: function ( message ) {
+    if ( message.code === 'MODULE_LEVEL_DIRECTIVE' ) return;
+    console.error( message );
+  }
 }

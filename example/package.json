@@ -15,6 +15,7 @@
     "react": "file:../node_modules/react",
     "react-dom": "file:../node_modules/react-dom",
     "react-router-dom": "^5.1.2",
+    "react-scripts": "5.0.0",
     "unicef-material-ui": "file:.."
   },
   "scripts": {
