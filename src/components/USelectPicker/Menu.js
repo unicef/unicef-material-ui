@@ -20,7 +20,7 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
 }))
 
 export default function Menu({ isLoading, ...others }) {
-  const { errorOptionsMessage } = others.selectProps
+  const { errorOptionsMessage, loadingText } = others.selectProps
   return (
     <components.Menu {...others}>
       <StyledPaper
@@ -30,7 +30,7 @@ export default function Menu({ isLoading, ...others }) {
       >
         {isLoading ? (
           <Box p={2}>
-            <Typography>Loading...</Typography>
+            <Typography>{loadingText}</Typography>
           </Box>
         ) : errorOptionsMessage ? (
           <Typography color="textSecondary" className={classes.errorMessage}>

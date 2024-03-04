@@ -15,14 +15,15 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
   },
 }))
 
-export default function NoOptionsMessage({ innerProps }) {
+export default function NoOptionsMessage({ innerProps, selectProps }) {
+  const classes = useStyles()
   return (
     <StyledTypography
       color="textSecondary"
       {...innerProps}
       className={classes.noOptionsMessage}
     >
-      No options
+      {selectProps && selectProps.noOptionsText}
     </StyledTypography>
   )
 }

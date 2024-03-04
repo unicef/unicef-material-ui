@@ -80,14 +80,20 @@ const defaultComponents = {
   Option,
   SingleValue,
   ValueContainer,
+  Input,
   MultiValueRemove: removeProps => <CancelIcon {...removeProps} />,
 }
 
+const ICON_VARIANTS = {
+  dark: 'dark',
+  light: 'light',
+}
+
 /**
- * USelectPicker is a control for selecting people from a list. Has the features below:
+ * USelectPicker is a control for selecting a option from a list. Has the features below:
  *
- * * Select a single person from a list.
- * * Select multiple people from a list.
+ * * Select a single option from a list.
+ * * Select multiple option from a list.
  * * Autocomplete.
  * * Clear current selection.
  *
@@ -112,6 +118,7 @@ export default function USelectPicker(props) {
     isDisabled,
     menuIsOpen,
     placeholder,
+    iconVariant,
     ...others
   } = props
 
@@ -120,14 +127,19 @@ export default function USelectPicker(props) {
   const selectStyles = {
     input: base => ({
       ...base,
+      height: iconVariant === ICON_VARIANTS.dark ? theme.spacing(4) : 'inherit', // if dark variant, then match height with material ui controls
       color: theme.palette.text.primary,
       '& input': {
         font: 'inherit',
       },
     }),
     menuPortal: base => ({ ...base, zIndex: 9999 }),
-    menu: base => ({ ...base, zIndex: '999 !important', boxShadow: 'none' }),
-    placeholder: base => ({ ...base, position: 'absolute' }),
+    menu: base => ({ ...base, zIndex: '9999 !important', boxShadow: 'none' }),
+    placeholder: base => ({
+      ...base,
+      position: 'absolute',
+      left: theme.spacing(2),
+    }),
   }
 
   const defaultTextFieldProps = {
@@ -154,11 +166,14 @@ export default function USelectPicker(props) {
     onInputChange && onInputChange(value)
   }
 
-  const extraComponents = readOnly
-    ? {
-        DropdownIndicator: () => null,
-      }
-    : {}
+  const extraComponents = {}
+  if (iconVariant === ICON_VARIANTS.dark)
+    extraComponents.DropdownIndicator = () => (
+      <span style={{ color: theme.palette.text.secondary }}>
+        <ArrowDropDownIcon />
+      </span>
+    )
+  if (readOnly) extraComponents.DropdownIndicator = () => null
 
   const selectPlaceholder = readOnly ? '' : placeholder
 
@@ -255,6 +270,12 @@ USelectPicker.propTypes = {
   isDisabled: PropTypes.bool,
   /** Whether the menu is open */
   menuIsOpen: PropTypes.bool,
+  /** Down arrow variant */
+  iconVariant: PropTypes.oneOf([ICON_VARIANTS.dark, ICON_VARIANTS.light]),
+  /** No options text */
+  noOptionsText: PropTypes.string,
+  /** Loading text */
+  loadingText: PropTypes.string,
 }
 
 USelectPicker.defaultProps = {
@@ -271,4 +292,7 @@ USelectPicker.defaultProps = {
   isDisabled: false,
   menuIsOpen: undefined,
   lineByLineOption: false,
+  iconVariant: ICON_VARIANTS.light,
+  noOptionsText: 'No options',
+  loadingText: 'Loading...',
 }

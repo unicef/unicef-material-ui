@@ -1,6 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import UPositiveInteger from '../UPositiveInteger'
+
+/**
+ * The UCurrencyField is for creating currency input fields. It accepts several props for customization, including "inputPrefix," "decimalScale," "fixedDecimalScale," "textAlign," and etc
+ */
 export default function UCurrencyField({
   inputPrefix,
   decimalScale,
@@ -32,7 +36,7 @@ UCurrencyField.propTypes = {
   /**
    * Array of validators.See list of default validators above.
    *
-   * Ex: `validators={['required', 'isEmail']}`
+   * Ex: `validators={['required']}`
    */
   validators: PropTypes.array,
   /** Attributes applied to the input element. */

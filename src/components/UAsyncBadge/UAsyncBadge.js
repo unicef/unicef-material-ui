@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { styled } from '@mui/material/styles'
 import { CircularProgress, Chip } from '@mui/material'
 import HighlightOffIcon from '@mui/icons-material/HighlightOff'
@@ -19,7 +19,8 @@ const Root = styled('span')(({ theme }) => ({
   [`&.${classes.root}`]: {
     position: 'fixed',
     top: 16,
-    left: '40%',
+    left: '50%',
+    transform: 'translate(-50%, 0)',
     zIndex: 5000,
   },
 
@@ -45,6 +46,9 @@ const Root = styled('span')(({ theme }) => ({
  * UAsyncBadge is a component to display async operation status perform in the application
  */
 export default function UAsyncBadge({ variant, text, visible, onReset }) {
+  const classes = useStyles()
+  const chipRef = useRef()
+
   /**  If variant is success or error, after few seconds, it will set asyncResponse visible to false */
   useEffect(() => {
     if (variant && variant !== 'loading') {
@@ -60,6 +64,9 @@ export default function UAsyncBadge({ variant, text, visible, onReset }) {
     <Root className={classes.root}>
       {visible && (
         <Chip
+          ref={chipRef}
+          role="status"
+          aria-live="polite"
           className={`${classes.chip} ${classes[variant]}`}
           avatar={
             variant === 'loading' ? (

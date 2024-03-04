@@ -32,8 +32,13 @@ export default class UValidatorComponent extends ValidatorComponent {
 
   errorText() {
     const { isValid } = this.state
+    const formHelperId = this.props.formHelperId || ''
     return (
-      <FormHelperText style={{ marginLeft: '8px', marginTop: 0 }} error>
+      <FormHelperText
+        style={{ marginLeft: '8px', marginTop: 0 }}
+        error
+        id={formHelperId}
+      >
         {!isValid && this.getErrorMessage()}
       </FormHelperText>
     )
@@ -59,4 +64,6 @@ UValidatorComponent.propTypes = {
   withRequiredValidator: PropTypes.bool,
   /** you must provide this prop, it will be used only for validation. */
   value: PropTypes.any.isRequired,
+  /** Form helper id. It is a Id associated with the input */
+  formHelperId: PropTypes.string,
 }

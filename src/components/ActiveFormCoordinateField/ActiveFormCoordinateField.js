@@ -93,6 +93,8 @@ ActiveFormCoordinateField.propTypes = {
   decimalScale: PropTypes.number,
   /** Coordinate type */
   coordinateType: PropTypes.oneOf(['latitude', 'longitude']).isRequired,
+  /** Change to write mode by hiding textfield border and displays border on Hover */
+  interactiveMode: PropTypes.bool,
 }
 
 ActiveFormCoordinateField.defaultProps = {

@@ -128,6 +128,11 @@ module.exports = {
       components: () => [
         path.resolve(
           __dirname,
+          'src/components/USelectPicker',
+          'USelectPicker.js'
+        ),
+        path.resolve(
+          __dirname,
           'src/components/UPeoplePicker',
           'UPeoplePicker.js'
         ),
@@ -292,10 +297,14 @@ module.exports = {
           'src/components/ActiveMobileTimePicker',
           'ActiveMobileTimePicker.js'
         ),
+        path.resolve(
+            __dirname,
+          'src/components/ActiveKeyboardDateTimePicker',
+          'ActiveKeyboardDateTimePicker.js'
+        ),
       ],
       usageMode: 'expand',
     },
-
     // For future reference to use in sections
     // {
     //   name: 'UI Components',

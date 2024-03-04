@@ -3,6 +3,9 @@ import PropTypes from 'prop-types'
 import ActiveFormTextField from '../ActiveFormTextField'
 import { PositiveNumberFormat } from '../Shared'
 
+/**
+ * ActiveFormPositiveInteger form input field that accepts positive integer values. The cool feature with ActiveFormPositiveInteger is you can read and write at the same place.
+ */
 export default function ActiveFormPositiveInteger({ InputProps, ...props }) {
   return (
     <ActiveFormTextField
@@ -49,4 +52,6 @@ ActiveFormPositiveInteger.propTypes = {
   validatorListener: PropTypes.func,
   /** Allow to use required validator in any validation trigger, not only form submit. */
   withRequiredValidator: PropTypes.bool,
+  /** Change to write mode by hiding textfield border and displays border on Hover */
+  interactiveMode: PropTypes.bool,
 }

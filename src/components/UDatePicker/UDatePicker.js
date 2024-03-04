@@ -7,6 +7,7 @@ import UTextField from './../UTextField'
 
 /**
  * UDatePicker is a customized material ui Date picker.
+ *
  * This component let's you access the calender to select particular dates.
  * Please have look at [Material UI Date Picker](https://mui.com/x/react-date-pickers/date-picker/#main-content) for more details
  */
