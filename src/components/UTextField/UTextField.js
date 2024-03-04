@@ -103,7 +103,7 @@ class UTextField extends ValidatorComponent {
       select,
       id,
       SelectProps,
-      options
+      options,
       ...rest
     } = this.props
     const { isValid, isSelectOpen } = this.state

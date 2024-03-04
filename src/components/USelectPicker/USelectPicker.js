@@ -12,6 +12,7 @@ import Control from './Control'
 import NoOptionsMessage from './NoOptionsMessage'
 import ValueContainer from './ValueContainer'
 import Option from './Option'
+import Input from './Input'
 
 const PREFIX = 'USelectPicker'
 

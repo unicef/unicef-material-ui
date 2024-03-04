@@ -55,7 +55,6 @@ import ActiveMobileTimePicker from './components/ActiveMobileTimePicker'
 import ActiveMobileDatePicker from './components/ActiveMobileDatePicker'
 import ActiveMobileDateTimePicker from './components/ActiveMobileDateTimePicker'
 import ActiveAutoComplete from './components/ActiveAutoComplete'
-import ActiveKeyboardDateTimePicker from './components/ActiveKeyboardDateTimePicker'
 
 export {
   theme,
@@ -112,6 +111,5 @@ export {
   ActiveMobileTimePicker,
   ActiveMobileDatePicker,
   ActiveMobileDateTimePicker,
-  ActiveAutoComplete,
-  ActiveKeyboardDateTimePicker
+  ActiveAutoComplete
 }

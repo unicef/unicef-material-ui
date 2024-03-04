@@ -16,7 +16,6 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
 }))
 
 export default function NoOptionsMessage({ innerProps, selectProps }) {
-  const classes = useStyles()
   return (
     <StyledTypography
       color="textSecondary"

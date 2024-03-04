@@ -297,11 +297,6 @@ module.exports = {
           'src/components/ActiveMobileTimePicker',
           'ActiveMobileTimePicker.js'
         ),
-        path.resolve(
-            __dirname,
-          'src/components/ActiveKeyboardDateTimePicker',
-          'ActiveKeyboardDateTimePicker.js'
-        ),
       ],
       usageMode: 'expand',
     },

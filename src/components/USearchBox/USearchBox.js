@@ -56,7 +56,6 @@ export default function USearchBox({
   ...rest
 }) {
   const [searchValue, setSearch] = useState(value)
-  const classes = useStyles()
 
   useEffect(() => {
     setSearch(value)

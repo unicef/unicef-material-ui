@@ -48,7 +48,6 @@ export default function NavLinks() {
       </Button>
       <Menu
         elevation={0}
-        getContentAnchorEl={null}
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'center',
@@ -92,7 +91,6 @@ export default function NavLinks() {
       </IconButton>
       <Menu
         elevation={0}
-        getContentAnchorEl={null}
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'center',

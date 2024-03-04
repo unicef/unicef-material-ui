@@ -157,7 +157,7 @@ export default function UConfirmationButton(props) {
           </MenuItem>
         </Menu>
       )}
-    </React.Fragment>
+    </StyledBox>
   )
 }
 

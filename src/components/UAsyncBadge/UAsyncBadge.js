@@ -46,7 +46,6 @@ const Root = styled('span')(({ theme }) => ({
  * UAsyncBadge is a component to display async operation status perform in the application
  */
 export default function UAsyncBadge({ variant, text, visible, onReset }) {
-  const classes = useStyles()
   const chipRef = useRef()
 
   /**  If variant is success or error, after few seconds, it will set asyncResponse visible to false */
