@@ -49,7 +49,7 @@ const StyledAppBar = styled(AppBar, {
   [`& .${classes.navRight}`]: {
     borderBottomLeftRadius: theme.spacing(4),
     borderTopLeftRadius: theme.spacing(4),
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: alpha(theme.palette.primary.main, 0.6),
   },
 
   [`& .${classes.navbarLine}`]: {

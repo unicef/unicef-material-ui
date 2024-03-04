@@ -129,7 +129,7 @@ class UTextField extends ValidatorComponent {
           }}
           label={
             showLabelHelp ? (
-              <InputLabelHelp inputLabel={label} {...inputlabelhelpprops} />
+              <InputLabelHelp inputLabel={label} {...InputLabelHelpProps} />
             ) : (
               label
             )

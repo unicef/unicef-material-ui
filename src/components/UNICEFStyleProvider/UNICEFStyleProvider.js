@@ -1,5 +1,11 @@
 import React from 'react'
-import { StyledEngineProvider } from '@mui/material/styles'
+import {
+  ThemeProvider,
+  StyledEngineProvider,
+  CssBaseline,
+} from '@mui/material'
+import theme from './../../theme'
+
 // import {
 //   StylesProvider,
 //   createGenerateClassName,
@@ -20,12 +26,11 @@ import { StyledEngineProvider } from '@mui/material/styles'
 
 export default function UNICEFStyleProvider(props) {
   return (
-    <StyledEngineProvider
-      injectFirst={true}
-      // generateClassName={generateClassName}
-      // jss={jss}
-    >
-      {props.children}
+    <StyledEngineProvider injectFirst >
+      <ThemeProvider theme={theme}>
+          <CssBaseline/>
+          {props.children}
+      </ThemeProvider>
     </StyledEngineProvider>
   )
 }

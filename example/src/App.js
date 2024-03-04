@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Switch, Route, Link } from 'react-router-dom'
-import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles'
+import { ThemeProvider } from '@mui/material/styles'
 import {
   theme,
   UNICEFStyleProvider,
