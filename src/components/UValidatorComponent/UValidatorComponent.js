@@ -21,8 +21,10 @@ export default class UValidatorComponent extends ValidatorComponent {
       ...rest
     } = this.props
 
+    const { isValid } = this.state
+
     return (
-      <div>
+      <div className={`${!isValid ? 'validator-component-error' : ''}`}>
         {this.props.children}
         {this.errorText()}
       </div>
