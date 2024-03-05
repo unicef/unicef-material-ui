@@ -4,6 +4,7 @@ import {
   isSafeText,
   isAlphanumericText,
   isUrlText,
+  isRegexCaseInSensitive,
 } from './validationRules'
 
 export {
@@ -13,4 +14,5 @@ export {
   isSafeText,
   isAlphanumericText,
   isUrlText,
+  isRegexCaseInSensitive,
 }

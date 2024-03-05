@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import {
   isAlphanumericText,
   isPhoneNumberText,
+  isRegexCaseInSensitive,
   isSafeText,
   isUrlText,
 } from '../../utils'
@@ -53,6 +54,13 @@ function ForwardRefForm(props, ref) {
   ValidatorForm.addValidationRule('isAlphanumeric', value => {
     return isAlphanumericText(value)
   })
+
+  ValidatorForm.addValidationRule(
+    'matchRegexpCaseInSensitive',
+    (value, regexStr) => {
+      return isRegexCaseInSensitive(value, regexStr)
+    }
+  )
 
   return <ValidatorForm {...props} ref={ref} />
 }

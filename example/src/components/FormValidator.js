@@ -78,6 +78,7 @@ export default function FormValidator() {
   const [values, setValues] = useState({
     currency: '',
     email: 'test@test.com',
+    regex: '',
     password: 'testinghere',
     positiveInteger: 1,
     currencyField: 1000.55,
@@ -323,6 +324,19 @@ export default function FormValidator() {
               variant="outlined"
               validators={['required', 'isSafeText']}
               value={values.safeText}
+            />
+          </Grid>
+          <Grid item xs={12} lg={3} xl={2}>
+            <UTextField
+              label="Custom regex(no script)"
+              onChange={handleValue}
+              className={classes.margin}
+              name="regex"
+              variant="outlined"
+              validators={[
+                'matchRegexpCaseInSensitive:^(?!.*<script\\b[^>]*>.*<\\/script\\s*>).*$',
+              ]}
+              value={values.regex}
             />
           </Grid>
           <Grid item xs={12} lg={3} xl={2}>

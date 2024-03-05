@@ -17,6 +17,20 @@ export function isPhoneNumberText(value) {
  * @param {String} value Value text to be validated
  * @returns {Boolean} Whether the given value string contains safe text (no html tags)
  */
+export function isRegexCaseInSensitive(value, regexRule) {
+  const valueToTest = value || ''
+  const regexStr = regexRule
+  if (!regexStr) return true // if no regex, then accept any text
+
+  const regex = new RegExp(regexStr, 'i')
+  return regex.test(valueToTest)
+}
+
+/**
+ *
+ * @param {String} value Value text to be validated
+ * @returns {Boolean} Whether the given value string contains safe text (no html tags)
+ */
 export function isSafeText(value) {
   const valueToTest = value || ''
   let htmlRegexp = new RegExp(/<\/?[a-z][\s\S]*>/i)
