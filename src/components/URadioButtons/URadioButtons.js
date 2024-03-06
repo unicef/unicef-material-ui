@@ -60,7 +60,7 @@ export default function URadioButtons({
               <FormControlLabel
                 key={index}
                 value={optionValue}
-                control={<Radio color="secondary" className={classes.gutter} />}
+                control={<Radio className={classes.gutter} />}
                 label={optionLabels[index]}
               />
             ))}
