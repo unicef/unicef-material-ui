@@ -34,8 +34,8 @@
     "@mui/icons-material": "^5.10.9",
     "@mui/lab": "^5.0.0-alpha.105",
     "@mui/material": "^5.10.11",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "bugs": {
     "url": "https://github.com/unicef/unicef-material-ui/issues"
