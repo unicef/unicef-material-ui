@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { styled } from '@mui/material/styles'
 import PropTypes from 'prop-types'
 import {
   IconButton,
@@ -6,27 +7,37 @@ import {
   Box,
   Button,
   TextField,
-} from '@material-ui/core'
-import SearchIcon from '@material-ui/icons/Search'
-import CloseIcon from '@material-ui/icons/Close'
-import { makeStyles } from '@material-ui/core/styles'
+} from '@mui/material'
+import SearchIcon from '@mui/icons-material/Search'
+import CloseIcon from '@mui/icons-material/Close'
+const PREFIX = 'USearchBox'
 
-const useStyles = makeStyles(theme => ({
-  root: {
+const classes = {
+  root: `${PREFIX}-root`,
+  iconSeparator: `${PREFIX}-iconSeparator`,
+  searchIcon: `${PREFIX}-searchIcon`,
+  iconLabel: `${PREFIX}-iconLabel`,
+}
+
+const StyledInputAdornment = styled(InputAdornment)(({ theme }) => ({
+  [`& .${classes.root}`]: {
     width: '100%',
     background: 'white',
   },
-  iconSeparator: {
+
+  [`& .${classes.iconSeparator}`]: {
     width: '1px',
     display: 'block',
     height: '54px',
     background: 'rgba(0, 0, 0, 0.23)',
     marginRight: theme.spacing(1),
   },
-  searchIcon: {
+
+  [`& .${classes.searchIcon}`]: {
     color: theme.palette.primary.main,
   },
-  iconLabel: {
+
+  [`& .${classes.iconLabel}`]: {
     marginLeft: theme.spacing(0.5),
   },
 }))
@@ -45,7 +56,6 @@ export default function USearchBox({
   ...rest
 }) {
   const [searchValue, setSearch] = useState(value)
-  const classes = useStyles()
 
   useEffect(() => {
     setSearch(value)
@@ -79,6 +89,7 @@ export default function USearchBox({
       placeholder={placeholder}
       onChange={handleChange}
       onKeyPress={handleKeyPress}
+      fullWidth
       name="search"
       variant="outlined"
       value={searchValue}
@@ -87,9 +98,9 @@ export default function USearchBox({
       InputLabelProps={{ shrink: false }}
       InputProps={{
         endAdornment: (
-          <InputAdornment>
+          <StyledInputAdornment>
             {searchValue ? (
-              <IconButton aria-label="Clear" onClick={handleClear}>
+              <IconButton aria-label="Clear" onClick={handleClear} size="large">
                 <CloseIcon />
               </IconButton>
             ) : (
@@ -110,11 +121,12 @@ export default function USearchBox({
                 aria-label="Search"
                 className={classes.searchIcon}
                 onClick={handleSearch}
+                size="large"
               >
                 <SearchIcon />
               </IconButton>
             )}
-          </InputAdornment>
+          </StyledInputAdornment>
         ),
       }}
       {...rest}

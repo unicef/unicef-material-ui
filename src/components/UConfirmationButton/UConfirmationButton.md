@@ -2,9 +2,9 @@ Delete button with examples:
 
 ```jsx
 import React, { useState } from 'react'
-import { Typography, Grid, Menu, MenuItem, Link, IconButton } from '@material-ui/core'
-import LinkOffIcon from '@material-ui/icons/LinkOff'
-import MoreVertIcon from '@material-ui/icons/MoreVert'
+import { Typography, Grid, Menu, MenuItem, Link, IconButton } from '@mui/material'
+import LinkOffIcon from '@mui/icons-material/LinkOff'
+import MoreVertIcon from '@mui/icons-material/MoreVert'
 
   const [anchorEl, setAnchorEl] = useState({ menu: null, popup: null })
   const openMenuVariant = Boolean(anchorEl.menu)

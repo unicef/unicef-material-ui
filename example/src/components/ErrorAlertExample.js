@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { UErrorAlert, UButton } from 'unicef-material-ui'
-import { Typography, Grid } from '@material-ui/core'
+import { Typography, Grid } from '@mui/material'
 
 export default function DeleteButtonExample() {
   const [error, setError] = useState(null)

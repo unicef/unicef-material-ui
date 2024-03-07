@@ -1,34 +1,46 @@
 import React from 'react'
+import { styled } from '@mui/material/styles'
 import PropTypes from 'prop-types'
-import Box from '@material-ui/core/Box'
-import Paper from '@material-ui/core/Paper'
-import Typography from '@material-ui/core/Typography'
-import { makeStyles } from '@material-ui/core/styles'
+import Box from '@mui/material/Box'
+import Paper from '@mui/material/Paper'
+import Typography from '@mui/material/Typography'
+import { components } from 'react-select'
 
-const useStyles = makeStyles(theme => ({
-  errorMessage: {
+const PREFIX = 'Menu'
+
+const classes = {
+  errorMessage: `${PREFIX}-errorMessage`,
+}
+
+const StyledPaper = styled(Paper)(({ theme }) => ({
+  [`& .${classes.errorMessage}`]: {
     padding: theme.spacing(1),
     color: theme.palette.error.main,
   },
 }))
 
-export default function Menu({ children, selectProps, innerProps, isLoading }) {
-  const classes = useStyles()
-  const { errorOptionsMessage, loadingText } = selectProps
+export default function Menu({ isLoading, ...others }) {
+  const { errorOptionsMessage, loadingText } = others.selectProps
   return (
-    <Paper square className={selectProps.classes.paper} {...innerProps}>
-      {isLoading ? (
-        <Box p={2}>
-          <Typography>{loadingText}</Typography>
-        </Box>
-      ) : errorOptionsMessage ? (
-        <Typography color="textSecondary" className={classes.errorMessage}>
-          {errorOptionsMessage}
-        </Typography>
-      ) : (
-        children
-      )}
-    </Paper>
+    <components.Menu {...others}>
+      <StyledPaper
+        square
+        elevation={0}
+        className={others.selectProps.classes.paper}
+      >
+        {isLoading ? (
+          <Box p={2}>
+            <Typography>{loadingText}</Typography>
+          </Box>
+        ) : errorOptionsMessage ? (
+          <Typography color="textSecondary" className={classes.errorMessage}>
+            {errorOptionsMessage}
+          </Typography>
+        ) : (
+          others.children
+        )}
+      </StyledPaper>
+    </components.Menu>
   )
 }
 

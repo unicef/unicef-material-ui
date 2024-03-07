@@ -6,8 +6,8 @@ typographyVariant="h6"
 
 ```jsx
 import React, { useState, useEffect, useRef } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Typography, Button, Box, Checkbox, MenuItem, Radio, FormGroup, FormControl, FormLabel, FormControlLabel, RadioGroup, Grid } from '@material-ui/core'
+import { styled } from '@mui/material/styles'
+import { Typography, Button, Box, Checkbox, MenuItem, Radio, FormGroup, FormControl, FormLabel, FormControlLabel, RadioGroup, Grid } from '@mui/material'
 import { UValidatorForm, UValidatorComponent } from '../../index.js' // change it to '@unicef/material-ui'
 
 // export default function ActiveForm() {
@@ -66,8 +66,7 @@ multiline
 
 ```jsx
 import React, { useState, useEffect, useRef } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Typography, Button, Box, Checkbox, MenuItem, Radio, FormGroup, FormControl, FormLabel, FormControlLabel, RadioGroup, Grid } from '@material-ui/core'
+import { Typography, Button, Box, Checkbox, MenuItem, Radio, FormGroup, FormControl, FormLabel, FormControlLabel, RadioGroup, Grid } from '@mui/material'
 import { UValidatorForm, UValidatorComponent } from '../../index.js' // change it to '@unicef/material-ui'
 
 // export default function ActiveForm() {
@@ -107,29 +106,18 @@ import { UValidatorForm, UValidatorComponent } from '../../index.js' // change i
 Card with title and description:
 ```jsx
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import {
   Card,
   CardHeader,
   Grid,
   Divider,
   Typography,
-} from '@material-ui/core'
+} from '@mui/material'
 import { UValidatorForm, ActiveFormTextField } from '../../index.js';
 
-const useStyles = makeStyles(theme => ({
-  root: {
-  },
-  margin: {
-    margin: '16px 0px'
-  },
-  input: {
-    borderRadius: 0,
-  }
-}));
+
 
 // export default function CardsExample() {
-  const classes = useStyles();
 
   // return (
     <React.Fragment >

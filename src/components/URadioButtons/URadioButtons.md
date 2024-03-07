@@ -2,7 +2,7 @@ Radion button with example:
 
 ```jsx
 import React, { useState } from 'react'
-import { Typography, Grid } from '@material-ui/core'
+import { Typography, Grid } from '@mui/material'
 
   const [radioValue, setRadioValue] = useState('Yes')
   const isReadOnly = false

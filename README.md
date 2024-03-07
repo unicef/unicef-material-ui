@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/%40unicef%2Fmaterial-ui.svg)](https://badge.fury.io/js/%40unicef%2Fmaterial-ui)
 
-Customized version for UNICEF of [Material UI](https://material-ui.com/). Material UI is a set of [ReactJS](http://reactjs.org) user interface components based on [Google's material design](https://material.io/design/) written in Javascript.
+Customized version for UNICEF of [Material UI](https://mui.com/). Material UI is a set of [ReactJS](http://reactjs.org) user interface components based on [Google's material design](https://material.io/design/) written in Javascript.
 
 You can see a **[Demo site](https://unicef.github.io/unicef-material-ui/example/)** and the **[reference documentation](https://unicef.github.io/unicef-material-ui/)**.
 
@@ -18,26 +18,26 @@ In order to use the UNICEF's Material UI components in your React project instal
 
 ### Adding UNICEF theme to your app
 
-To use UNICEF theme add `MuiThemeProvider` at the top level of your app and warp you components inside `UNICEFStyleProvider`
+To use UNICEF theme add `ThemeProvider` at the top level of your app and warp you components inside `UNICEFStyleProvider`
 
 ```jsx
 // App.js
 import React from 'react'
-import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
+import { ThemeProvider } from '@mui/material/styles'
 import { theme, UNICEFStyleProvider } from '@unicef/material-ui'
 
 export default function App() {
   return (
-    <MuiThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
       <UNICEFStyleProvider>
         {/* Components*/}
       </UNICEFStyleProvider>
-    </MuiThemeProvider>
+    </ThemeProvider>
   )
 }
 ```
 
-More info: <a href="https://material-ui.com/styles/advanced/#theming">Material-ui theming</a>
+More info: <a href="https://mui.com/material-ui/customization/theming/">Material-ui theming</a>
 
 ### Example project
 

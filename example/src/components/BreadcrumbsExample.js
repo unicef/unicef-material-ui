@@ -1,6 +1,6 @@
 import React from 'react'
 import { UBreadcrumbs } from 'unicef-material-ui'
-import { Typography, Grid } from '@material-ui/core'
+import { Typography, Grid } from '@mui/material'
 //import { BrowserRouter as Router } from 'react-router-dom'
 
 export default function BreadCrumbsExample() {

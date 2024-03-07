@@ -1,32 +1,35 @@
 ```jsx
 import React, { useState, useEffect, useRef } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { Button, Box, MenuItem } from '@material-ui/core';
+import { Button, Box, MenuItem } from '@mui/material';
+import { styled } from '@mui/material/styles';
 import UTextField from '../UTextField';
-
-const useStyles = makeStyles(theme => ({
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-  textField: {
+const PREFIX = 'UValidatorForm'
+const classes = {
+  textField: `${PREFIX}-textField`,
+  formControl: `${PREFIX}-formControl`,
+  dense: `${PREFIX}-dense`,
+  margin: `${PREFIX}-margin`,
+  menu: `${PREFIX}-menu`,
+  font: `${PREFIX}-font`,
+}
+const StyledBox = styled(Box)(({ theme }) => ({
+  [`& .${classes.textField}`]: {
     margin: theme.spacing(1),
     minWidth: 195,
   },
-  formControl: {
+   [`& .${classes.formControl}`]: {
     margin: theme.spacing(3),
   },
-  dense: {
+   [`& .${classes.dense}`]: {
     marginTop: theme.spacing(2),
   },
-  margin: {
-    marginTop: theme.spacing(1),
+   [`& .${classes.margin}`]: {
     marginLeft: theme.spacing(1),
   },
-  menu: {
+   [`& .${classes.menu}`]: {
     minWidth: 191,
   },
-}));
+}))
 
 const currencies = [
   {
@@ -55,13 +58,11 @@ const currencies = [
 
   const form = useRef('form');
 
-  const classes = useStyles();
-
   const [values, setValues] = useState(
     {
       email: '',
       password: '',
-      currecy: '',
+      currency: '',
     }
   );
 
@@ -90,7 +91,7 @@ const currencies = [
       debounceTime={1000}
     // instantValidate={true}
     >
-      <Box display="flex" alignItems="baseline">
+      <StyledBox display="flex" alignItems="center">
         <UTextField
           label="Email"
           onChange={handleValue}
@@ -133,7 +134,7 @@ const currencies = [
             variant="outlined"
         />
         <Button className={classes.margin} color="primary" variant="contained" type="submit">Submit</Button>
-      </Box>
+      </StyledBox>
     </UValidatorForm>
 //   )
 // }

@@ -7,7 +7,7 @@ It must be wrapped inside UHeader(Parent Component).
 Usage :
 
 ```jsx static
-import { UHeader, UHeaderLeftMenu } from '@unicef/materil-ui'
+import { UHeader, UHeaderLeftMenu } from '@mui/material'
 
 <UHeader>
   <UHeaderLeftMenu>

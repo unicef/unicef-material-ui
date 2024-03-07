@@ -1,9 +1,15 @@
 import React, { useState } from 'react'
+import { styled } from '@mui/material/styles'
 import { UAsyncBadge } from 'unicef-material-ui'
-import { makeStyles } from '@material-ui/core/styles'
+const PREFIX = 'AsyncBadgeExample'
 
-const useStyles = makeStyles(theme => ({
-  search: {
+const classes = {
+  search: `${PREFIX}-search`,
+  searchIcon: `${PREFIX}-searchIcon`,
+}
+
+const Root = styled('div')(({ theme }) => ({
+  [`&.${classes.search}`]: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
     marginLeft: 0,
@@ -13,7 +19,8 @@ const useStyles = makeStyles(theme => ({
       width: 'auto',
     },
   },
-  searchIcon: {
+
+  [`& .${classes.searchIcon}`]: {
     width: theme.spacing(7),
     height: '100%',
     position: 'absolute',
@@ -26,7 +33,6 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export default function RadioButtonsExample() {
-  const classes = useStyles()
   const [badgeStatus, setBadgeStatus] = useState({
     visible: true,
     text: 'Success',
@@ -37,7 +43,7 @@ export default function RadioButtonsExample() {
   }
 
   return (
-    <div className={classes.search}>
+    <Root className={classes.search}>
       <div className={classes.searchIcon}>
         <UAsyncBadge
           visible={badgeStatus.visible}
@@ -46,6 +52,6 @@ export default function RadioButtonsExample() {
           onReset={handleResetBadge}
         />
       </div>
-    </div>
+    </Root>
   )
 }

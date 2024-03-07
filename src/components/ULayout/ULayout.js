@@ -1,22 +1,26 @@
-import React from "react"
-import { makeStyles } from "@material-ui/core/styles"
+import React from 'react'
+import { styled } from '@mui/material/styles'
+import { Box } from '@mui/material'
+const PREFIX = 'ULayout'
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    display: "flex",
+const classes = {
+  root: `${PREFIX}-root`,
+}
+
+const StyledBox = styled(Box)(({ theme }) => ({
+  [`&.${classes.root}`]: {
+    display: 'flex',
   },
 }))
 
 /**
  * ULayout is the Structured layout of the page, so that it contains side bar on the left and main content to the right.
  *
- * ULayout has two chidren components:
+ * ULayout has two children components:
  * * UContent
  * * USideBar
  */
 
 export default function ULayout(props) {
-  const classes = useStyles()
-
-  return <div className={classes.root}>{props.children}</div>
+  return <StyledBox className={classes.root}>{props.children}</StyledBox>
 }

@@ -21,7 +21,7 @@ Auto complete field usage:
 
 ```jsx
 import React, { useState } from 'react'
-import { Typography, Grid } from '@material-ui/core'
+import { Typography, Grid } from '@mui/material'
 import UValidatorForm from '../UValidatorForm'
 const [value, setValue] = useState('')
 const handleBlur = () => {
@@ -56,7 +56,7 @@ const autocompleteOptions = [
     <UValidatorForm>
       <ActiveAutoComplete
         value={value}
-        label={'labelName'}
+        label="Label name"
         options={autocompleteOptions}
         isRequired={true}
         onChange={handleChange}

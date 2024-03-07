@@ -20,7 +20,7 @@ Auto complete field usage:
 
 ```jsx
 import React, { useState } from 'react'
-import { Typography, Grid } from '@material-ui/core'
+import { Typography, Grid } from '@mui/material'
 import UValidatorForm from '../UValidatorForm'
   const [value, setValue] = useState('')
   const handleBlur = () => {
@@ -60,6 +60,7 @@ import UValidatorForm from '../UValidatorForm'
           onChange={handleChange}
           minLength={1}
           maxLength={50}
+          counter={true}
           allowContextSpecific={true}
           readOnly={false}
           onBlur={handleBlur}

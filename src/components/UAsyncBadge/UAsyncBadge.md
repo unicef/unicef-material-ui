@@ -2,7 +2,6 @@ Async badge usage:
 
 ```jsx static
 import React, { useState, useEffect } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
 
   function handleReset() {
     //call reset function

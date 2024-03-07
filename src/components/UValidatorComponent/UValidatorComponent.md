@@ -61,25 +61,30 @@ export default function CheckBoxValidator() {
 
 ```jsx
 import React, { useState, useEffect, useRef } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { Button, Box, Checkbox, MenuItem, Radio, FormGroup, FormControl, FormLabel, FormControlLabel, RadioGroup, FormHelperText } from '@material-ui/core';
-import UValidatorForm from '../UValidatorForm'
+import { styled } from '@mui/material/styles';
+import { Button, Box, Checkbox, MenuItem, Radio, FormGroup, FormControl, FormLabel, FormControlLabel, RadioGroup, FormHelperText } from '@mui/material';
+import UValidatorForm from '../UValidatorForm';
 
-const useStyles = makeStyles(theme => ({
-  formControl: {
+const PREFIX = 'UValidator';
+
+const classes = {
+  formControl: `${PREFIX}-formControl`,
+  menu: `${PREFIX}-menu`,
+}
+
+const StyledBox = styled(Box)(({ theme }) => ({
+    [`& .${classes.formControl}`]: {
     margin: theme.spacing(3),
   },
-  margin: {
+  [`& .${classes.menu}`]: {
     marginTop: theme.spacing(1),
     marginLeft: theme.spacing(1),
   },
-}));
+}))
 
 // export default function CheckBoxValidator() {
 
   const form = useRef('form');
-
-  const classes = useStyles();
 
   const [values, setValues] = useState(
     {
@@ -113,6 +118,7 @@ const useStyles = makeStyles(theme => ({
     // debounceTime={1000}
     instantValidate={true}
   >
+  <StyledBox>
     <UValidatorComponent
       validators={['isTruthy']}
       errorMessages={['check more than two fields']}
@@ -170,7 +176,8 @@ const useStyles = makeStyles(theme => ({
         </FormGroup>
       </FormControl>
     </UValidatorComponent>
-  </UValidatorForm>
+  </StyledBox>
+</UValidatorForm>
 //   )
 // }
 ```
@@ -179,25 +186,30 @@ const useStyles = makeStyles(theme => ({
 
 ``` jsx 
 import React, { useState, useEffect, useRef } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { Button, Box, Checkbox, MenuItem, Radio, FormGroup, FormControl, FormLabel, FormControlLabel, RadioGroup, FormHelperText } from '@material-ui/core';
+import { styled } from '@mui/material/styles';
+import { Button, Box, Checkbox, MenuItem, Radio, FormGroup, FormControl, FormLabel, FormControlLabel, RadioGroup, FormHelperText } from '@mui/material';
 import UValidatorForm from '../UValidatorForm'
 
-const useStyles = makeStyles(theme => ({
-  formControl: {
+const PREFIX = 'UValidator'
+
+const classes = {
+  formControl: `${PREFIX}-formControl`,
+  menu: `${PREFIX}-menu`,
+}
+
+const StyledBox = styled(Box)(({ theme }) => ({
+    [`& .${classes.formControl}`]: {
     margin: theme.spacing(3),
   },
-  margin: {
+  [`& .${classes.menu}`]: {
     marginTop: theme.spacing(1),
     marginLeft: theme.spacing(1),
   },
-}));
+}))
 
 // export default function ChoiceButtonValidator() {
 
   const form = useRef('form');
-
-  const classes = useStyles();
 
  const [value, setValue] = React.useState(null);
 
@@ -225,38 +237,40 @@ const useStyles = makeStyles(theme => ({
       // debounceTime={1000}
       instantValidate={true}
     >
-    <UValidatorComponent
-      name="radio"
-      label="Choose an option"
-      validators={['isTruthy']}
-      customErrorMessages={{isTruthy: 'choose an option from above'}}
-      value={validChoice}
-    >
-      <FormControl className={classes.margin} required component="fieldset" >
-        <FormLabel component="legend">Gender</FormLabel>
-        <RadioGroup aria-label="gender" row name="gender2" value={value} onChange={handleChange}>
-          <FormControlLabel
-            value="windows"
-            control={<Radio color="primary" />}
-            label="Windows"
-            labelPlacement="end"
-          />
-          <FormControlLabel
-            value="mac"
-            control={<Radio color="primary" />}
-            label="Mac"
-            labelPlacement="end"
-          />
-          <FormControlLabel
-            value="other"
-            control={<Radio color="primary" />}
-            label="Other"
-            labelPlacement="end"
-          />
-        </RadioGroup>
-      </FormControl>
-    </UValidatorComponent>
-    <Button className={classes.margin} color="primary" variant="contained" type="Validate">Validate</Button>
+    <StyledBox>
+      <UValidatorComponent
+        name="radio"
+        label="Choose an option"
+        validators={['isTruthy']}
+        customErrorMessages={{isTruthy: 'choose an option from above'}}
+        value={validChoice}
+      >
+        <FormControl className={classes.margin} required component="fieldset" >
+          <FormLabel component="legend">Gender</FormLabel>
+          <RadioGroup aria-label="gender" row name="gender2" value={value} onChange={handleChange}>
+            <FormControlLabel
+              value="windows"
+              control={<Radio color="primary" />}
+              label="Windows"
+              labelPlacement="end"
+            />
+            <FormControlLabel
+              value="mac"
+              control={<Radio color="primary" />}
+              label="Mac"
+              labelPlacement="end"
+            />
+            <FormControlLabel
+              value="other"
+              control={<Radio color="primary" />}
+              label="Other"
+              labelPlacement="end"
+            />
+          </RadioGroup>
+        </FormControl>
+      </UValidatorComponent>
+      <Button className={classes.margin} color="primary" variant="contained" type="Validate">Validate</Button>
+    </StyledBox>
   </UValidatorForm>
 //   )
 // }

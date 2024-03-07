@@ -1,6 +1,5 @@
 import React from 'react'
-import { fade } from '@material-ui/core/styles/colorManipulator'
-import { makeStyles, createStyles } from '@material-ui/core/styles'
+import { styled, alpha } from '@mui/material/styles'
 import { findReactChildren } from '../../utils'
 import {
   AppBar,
@@ -10,47 +9,64 @@ import {
   IconButton,
   Drawer,
   Link,
-  Divider,
-} from '@material-ui/core'
-import MenuIcon from '@material-ui/icons/Menu'
+} from '@mui/material'
+import MenuIcon from '@mui/icons-material/Menu'
 import PropTypes from 'prop-types'
-import { useTheme } from '@material-ui/core/styles'
 import UHeaderMainMenu from '../UHeaderMainMenu'
 import UHeaderRightButtons from '../UHeaderRightButtons'
 import UHeaderLeftMenu from '../UHeaderLeftMenu'
 import UNavbarCenter from '../UNavbarCenter'
 
-const useStyles = makeStyles(theme =>
-  createStyles({
-    bgColor: props => ({
-      color: props.color || null,
-      backgroundColor: props.bgColor || '#1CABE2',
-    }),
-    root: {
-      flexGrow: 1,
-      paddingLeft: theme.spacing(2),
-    },
-    title: {
-      flexGrow: 1,
-    },
-    navRight: {
-      borderBottomLeftRadius: theme.spacing(4),
-      borderTopLeftRadius: theme.spacing(4),
-    },
-    navbarLine: {
-      marginRight: theme.spacing(2),
-      paddingRight: theme.spacing(2),
-      borderRight: '1px solid #fff',
-    },
-    margin: {
-      margin: theme.spacing(2),
-    },
-    navbarCenter: {
-      marginLeft: 16,
-      marginRight: 16,
-    },
-  })
-)
+const PREFIX = 'UHeader'
+
+const classes = {
+  bgColor: `${PREFIX}-bgColor`,
+  root: `${PREFIX}-root`,
+  title: `${PREFIX}-title`,
+  navRight: `${PREFIX}-navRight`,
+  navbarLine: `${PREFIX}-navbarLine`,
+  margin: `${PREFIX}-margin`,
+  navbarCenter: `${PREFIX}-navbarCenter`,
+}
+
+const StyledAppBar = styled(AppBar, {
+  shouldForwardProp: prop => prop !== 'bgColor',
+})(({ theme, color, bgColor }) => ({
+  [`& .${classes.bgColor}`]: {
+    color: color || null,
+    backgroundColor: bgColor,
+  },
+
+  [`& .${classes.root}`]: {
+    flexGrow: 1,
+    paddingLeft: theme.spacing(2),
+  },
+
+  [`& .${classes.title}`]: {
+    flexGrow: 1,
+  },
+
+  [`& .${classes.navRight}`]: {
+    borderBottomLeftRadius: theme.spacing(4),
+    borderTopLeftRadius: theme.spacing(4),
+    backgroundColor: alpha(theme.palette.primary.main, 0.6),
+  },
+
+  [`& .${classes.navbarLine}`]: {
+    marginRight: theme.spacing(2),
+    paddingRight: theme.spacing(2),
+    borderRight: '1px solid #fff',
+  },
+
+  [`& .${classes.margin}`]: {
+    margin: theme.spacing(2),
+  },
+
+  [`& .${classes.navbarCenter}`]: {
+    marginLeft: 16,
+    marginRight: 16,
+  },
+}))
 
 /**
  *
@@ -59,8 +75,6 @@ const useStyles = makeStyles(theme =>
  */
 
 export default function UHeader(props) {
-  const classes = useStyles(props)
-  const theme = useTheme()
   const {
     position,
     applicationName,
@@ -73,6 +87,7 @@ export default function UHeader(props) {
     openDrawer,
     toggleDrawer,
     elevation,
+    bgColor,
   } = props
 
   const handleUrlClick = e => {
@@ -83,7 +98,7 @@ export default function UHeader(props) {
   }
 
   return (
-    <AppBar position={position} elevation={elevation}>
+    <StyledAppBar position={position} elevation={elevation} bgColor={bgColor}>
       <Toolbar disableGutters={true} className={classes.bgColor}>
         <Box display="flex" ml={3} alignItems="center">
           {showHamburgerMenu !== false && (
@@ -93,6 +108,7 @@ export default function UHeader(props) {
                 onClick={e => toggleDrawer && toggleDrawer(e, true)}
                 color="inherit"
                 aria-label="Open drawer"
+                size="large"
               >
                 <MenuIcon />
               </IconButton>
@@ -152,14 +168,13 @@ export default function UHeader(props) {
           height="64px"
           display={{ xs: 'none', md: 'block' }}
           ml="auto"
-          bgcolor={fade(theme.palette.primary.main, 0.6)}
           className={classes.navRight}
         >
           {findReactChildren(props, UHeaderRightButtons)}
         </Box>
       </Toolbar>
       {findReactChildren(props, UHeaderMainMenu)}
-    </AppBar>
+    </StyledAppBar>
   )
 }
 

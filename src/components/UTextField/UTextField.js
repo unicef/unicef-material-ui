@@ -1,7 +1,7 @@
 /* eslint-disable */
-import React from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { TextField, Typography, Box } from '@material-ui/core'
+import { TextField, Typography, Box, MenuItem } from '@mui/material'
 /* eslint-enable */
 import ValidatorComponent from '../ValidatorComponent'
 import { InputLabelHelp } from '../Shared'
@@ -50,7 +50,7 @@ const styles = {
  * * isAlphanumeric
  * * isSafeText
  *
- * It accepts all the props of Material-ui [TextField](https://material-ui.com/api/text-field/#textfield-api)
+ * It accepts all the props of Material-ui [TextField](https://mui.com/material-ui/api/text-field/#textfield-api)
  */
 class UTextField extends ValidatorComponent {
   constructor(props) {
@@ -79,7 +79,7 @@ class UTextField extends ValidatorComponent {
     })
   }
 
-  render() {
+  renderValidatorComponent() {
     /* eslint-disable no-unused-vars */
     const {
       variant,
@@ -103,6 +103,7 @@ class UTextField extends ValidatorComponent {
       select,
       id,
       SelectProps,
+      options,
       ...rest
     } = this.props
     const { isValid, isSelectOpen } = this.state
@@ -110,10 +111,11 @@ class UTextField extends ValidatorComponent {
     const counterError = maxLength && maxLength < length
 
     return (
-      <React.Fragment>
+      <Fragment>
         <TextField
           variant={variant}
           {...rest}
+          select={select}
           error={!isValid || error}
           onBlur={event => this.handleBlur(event)}
           helperText={(!isValid && this.getErrorMessage()) || helperText}
@@ -132,7 +134,6 @@ class UTextField extends ValidatorComponent {
               label
             )
           }
-          select={select}
           id={id}
           /** Accessibility fixes for select field */
           {...(select
@@ -161,7 +162,15 @@ class UTextField extends ValidatorComponent {
                 },
               }
             : {})}
-        />
+        >
+          {select && options && options.length
+            ? options.map(option => (
+                <MenuItem key={option.value} value={option.value}>
+                  {option.label}
+                </MenuItem>
+              ))
+            : ''}
+        </TextField>
         {counter && (
           <Box display="block">
             <Typography
@@ -176,7 +185,7 @@ class UTextField extends ValidatorComponent {
             </Typography>
           </Box>
         )}
-      </React.Fragment>
+      </Fragment>
     )
   }
 }
@@ -202,6 +211,11 @@ UTextField.propTypes = {
   withRequiredValidator: PropTypes.bool,
   /** To make textfield to be select. See below examples section for select example and sample code */
   select: PropTypes.bool,
+  /** Select options if the textfield is select */
+  options: PropTypes.shape({
+    value: PropTypes.any,
+    label: PropTypes.string,
+  }),
   /** To enable character counter */
   counter: PropTypes.bool,
   /** Maximum length of characters */

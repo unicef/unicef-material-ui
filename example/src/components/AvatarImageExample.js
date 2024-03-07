@@ -1,6 +1,6 @@
 import React from 'react'
 import { UAvatarImage } from 'unicef-material-ui'
-import { Typography, Grid } from '@material-ui/core'
+import { Typography, Grid } from '@mui/material'
 
 export default function AvatarImageExample() {
   const loadPhoto = value => async () => {
