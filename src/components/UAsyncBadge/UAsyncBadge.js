@@ -93,7 +93,7 @@ UAsyncBadge.propTypes = {
   ariaLive: PropTypes.oneOf(['polite', 'assertive', 'off']),
 }
 
-UAsyncBadge.defaultTypes = {
+UAsyncBadge.defaultProps = {
   ariaRole: 'alert',
   ariaLive: 'assertive',
 }
