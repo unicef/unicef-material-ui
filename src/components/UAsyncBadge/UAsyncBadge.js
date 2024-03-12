@@ -30,7 +30,14 @@ const useStyles = makeStyles(theme => ({
 /**
  * UAsyncBadge is a component to display async operation status perform in the application
  */
-export default function UAsyncBadge({ variant, text, visible, onReset }) {
+export default function UAsyncBadge({
+  variant,
+  text,
+  visible,
+  ariaRole,
+  ariaLive,
+  onReset,
+}) {
   const classes = useStyles()
   const chipRef = useRef()
 
@@ -50,8 +57,8 @@ export default function UAsyncBadge({ variant, text, visible, onReset }) {
       {visible && (
         <Chip
           ref={chipRef}
-          role="status"
-          aria-live="polite"
+          role={ariaRole}
+          aria-live={ariaLive}
           className={`${classes.chip} ${classes[variant]}`}
           avatar={
             variant === 'loading' ? (
@@ -80,4 +87,13 @@ UAsyncBadge.propTypes = {
   visible: PropTypes.bool,
   /** trigger reset of the badge */
   onReset: PropTypes.func,
+  /** Aria role of the badge */
+  ariaRole: PropTypes.oneOf(['log', 'status', 'alert']),
+  /** Aria live of the badge */
+  ariaLive: PropTypes.oneOf(['polite', 'assertive', 'off']),
+}
+
+UAsyncBadge.defaultTypes = {
+  ariaRole: 'alert',
+  ariaLive: 'assertive',
 }
