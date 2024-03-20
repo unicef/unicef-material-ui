@@ -13,6 +13,7 @@ import {
   ColorsExample,
   AvatarImageExample,
   SearchBoxExample,
+  Accessibility,
 } from '../components'
 
 export default function Layout({ match }) {
@@ -32,6 +33,7 @@ export default function Layout({ match }) {
       <CardWithTabs />
       <CardsExample />
       <SearchBoxExample />
+      <Accessibility />
     </React.Fragment>
   )
 }

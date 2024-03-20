@@ -17,6 +17,7 @@ import {
   Layout,
   InteractiveViews,
   FormValidator,
+  Accessibility,
 } from './components'
 
 export default function App() {
@@ -39,7 +40,7 @@ export default function App() {
               handleClick={handleClick}
             />
           </USideBar>
-          <UContent headerHeight={114}>
+          <UContent id="main" headerHeight={114}>
             <Switch>
               <Route exact path={'/'}>
                 <List style={{ width: 300 }}>
@@ -71,6 +72,7 @@ export default function App() {
                 component={InteractiveViews}
               />
               <Route exact path={`/pickers`} component={Pickers} />
+              <Route exact path={`/accessibility`} component={Accessibility} />
             </Switch>
           </UContent>
         </ULayout>
