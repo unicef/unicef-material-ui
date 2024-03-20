@@ -55,6 +55,8 @@ import ActiveMobileTimePicker from './components/ActiveMobileTimePicker'
 import ActiveMobileDatePicker from './components/ActiveMobileDatePicker'
 import ActiveMobileDateTimePicker from './components/ActiveMobileDateTimePicker'
 import ActiveAutoComplete from './components/ActiveAutoComplete'
+import UAriaLive from './components/UAriaLive'
+import UAriaHiddenText from './components/UAriaHiddenText'
 
 export {
   theme,
@@ -111,5 +113,7 @@ export {
   ActiveMobileTimePicker,
   ActiveMobileDatePicker,
   ActiveMobileDateTimePicker,
-  ActiveAutoComplete
+  ActiveAutoComplete,
+  UAriaLive,
+  UAriaHiddenText,
 }

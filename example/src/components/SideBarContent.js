@@ -56,23 +56,27 @@ export default function SideBarContent(props) {
       <Box>
         <div className={classes.toolbar} />
         <List>
-          {['Layout', 'Forms', 'Interactive views', 'Pickers'].map(
-            (text, index) => (
-              <ListItem
-                button
-                key={text}
-                selected={selectedNode === lowerCaseUrl(text)}
-                component={Link}
-                to={`${lowerCaseUrl(text)}`}
-                onClick={e => handleLinkClick(e, lowerCaseUrl(text))}
-              >
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            )
-          )}
+          {[
+            'Layout',
+            'Forms',
+            'Interactive views',
+            'Pickers',
+            'Accessibility',
+          ].map((text, index) => (
+            <ListItem
+              button
+              key={text}
+              selected={selectedNode === lowerCaseUrl(text)}
+              component={Link}
+              to={`${lowerCaseUrl(text)}`}
+              onClick={e => handleLinkClick(e, lowerCaseUrl(text))}
+            >
+              <ListItemIcon>
+                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>
+          ))}
         </List>
       </Box>
     </Root>
