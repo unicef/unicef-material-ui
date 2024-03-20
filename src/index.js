@@ -57,7 +57,6 @@ import ActiveMobileDateTimePicker from './components/ActiveMobileDateTimePicker'
 import ActiveAutoComplete from './components/ActiveAutoComplete'
 import UAriaLive from './components/UAriaLive'
 import UAriaHiddenText from './components/UAriaHiddenText'
-import USkipLink from './components/USkipLink'
 
 export {
   theme,
@@ -117,5 +116,4 @@ export {
   ActiveAutoComplete,
   UAriaLive,
   UAriaHiddenText,
-  USkipLink,
 }
