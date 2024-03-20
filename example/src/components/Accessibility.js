@@ -1,9 +1,8 @@
 import React, { useState, useRef } from 'react'
-import { Typography, Grid, Box } from '@mui/material'
+import { Typography, Grid } from '@mui/material'
 import {
   UAriaLive,
   UAriaHiddenText,
-  USkipLink,
   UTextField,
   UValidatorForm,
 } from 'unicef-material-ui'
