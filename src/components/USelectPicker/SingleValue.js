@@ -1,8 +1,7 @@
 import React from 'react'
 import { styled } from '@mui/material/styles'
 import PropTypes from 'prop-types'
-import Avatar from '@mui/material/Avatar'
-import Typography from '@mui/material/Typography'
+import { Avatar, Typography } from '@mui/material'
 
 const PREFIX = 'SingleValue'
 

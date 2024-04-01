@@ -42,7 +42,7 @@ const StyledBox = styled(Box)(({ theme }) => ({
   },
 
   [`& .${classes.none}`]: {
-    border: '2px solid #fafafa',
+    border: `2px solid ${theme.palette.grey[50]}`,
     marginLeft: '-8px',
   },
 

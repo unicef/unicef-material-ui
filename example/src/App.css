@@ -1,13 +1,14 @@
 body {
-	background-color: #f4f4f4;
-	overflow-x: hidden;
+  background-color: #f4f4f4 !important;
+  overflow-x: hidden;
 }
 
 .margin-top {
   margin-top: 124px;
 }
+
 @media only screen and (max-width: 959px) {
-	.margin-top {
-			margin-top: 72px;
-	}
+  .margin-top {
+    margin-top: 72px;
+  }
 }
