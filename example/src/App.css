@@ -1,6 +1,7 @@
 body {
   background-color: #f4f4f4 !important;
   overflow-x: hidden;
+  margin: 8px !important;
 }
 
 .margin-top {

@@ -75,6 +75,7 @@ export default function NavLinks() {
       <Button color="inherit">
         <Link
           color="inherit"
+          underline="hover"
           href="https://github.com/unicef/unicef-material-ui"
         >
           Github
