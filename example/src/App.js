@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Switch, Route, Link } from 'react-router-dom'
+import { Routes, Route, Link } from 'react-router-dom'
 import { ThemeProvider } from '@mui/material/styles'
 import {
   theme,
@@ -40,38 +40,40 @@ export default function App() {
             />
           </USideBar>
           <UContent headerHeight={114}>
-            <Switch>
-              <Route exact path={'/'}>
-                <List style={{ width: 300 }}>
-                  {['Layout', 'Forms', 'Interactive views', 'Pickers'].map(
-                    (text, index) => (
-                      <ListItem
-                        button
-                        key={text}
-                        component={Link}
-                        to={`${text.replace(/\s+/g, '-').toLowerCase()}`}
-                        onClick={e =>
-                          handleClick(
-                            e,
-                            `${text.replace(/\s+/g, '-').toLowerCase()}`
-                          )
-                        }
-                      >
-                        <ListItemText primary={text} />
-                      </ListItem>
-                    )
-                  )}
-                </List>
-              </Route>
-              <Route exact path={`/layout`} component={Layout} />
-              <Route exact path={`/forms`} component={FormValidator} />
+            <Routes>
               <Route
-                exact
+                path={'/'}
+                element={
+                  <List style={{ width: 300 }}>
+                    {['Layout', 'Forms', 'Interactive views', 'Pickers'].map(
+                      (text, index) => (
+                        <ListItem
+                          button
+                          key={text}
+                          component={Link}
+                          to={`${text.replace(/\s+/g, '-').toLowerCase()}`}
+                          onClick={e =>
+                            handleClick(
+                              e,
+                              `${text.replace(/\s+/g, '-').toLowerCase()}`
+                            )
+                          }
+                        >
+                          <ListItemText primary={text} />
+                        </ListItem>
+                      )
+                    )}
+                  </List>
+                }
+              ></Route>
+              <Route path={`/layout`} element={<Layout />} />
+              <Route path={`/forms`} element={<FormValidator />} />
+              <Route
                 path={`/interactive-views`}
-                component={InteractiveViews}
+                element={<InteractiveViews />}
               />
-              <Route exact path={`/pickers`} component={Pickers} />
-            </Switch>
+              <Route path={`/pickers`} element={<Pickers />} />
+            </Routes>
           </UContent>
         </ULayout>
       </UNICEFStyleProvider>
