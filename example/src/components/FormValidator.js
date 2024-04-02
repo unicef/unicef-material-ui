@@ -353,6 +353,7 @@ export default function FormValidator() {
                 'matchRegexpCaseInSensitive:^(?!.*<script\\b[^>]*>.*<\\/script\\s*>).*$',
               ]}
               value={values.regex}
+              customErrorMessages={{'matchRegexpCaseInSensitive:^(?!.*<script\\b[^>]*>.*<\\/script\\s*>).*$': 'Invalid data'}}
             />
           </Grid>
           <Grid item xs={12} lg={3} xl={2}>
@@ -368,7 +369,6 @@ export default function FormValidator() {
           </Grid>
           <Grid item xs={12} lg={1}>
             <Button
-              // style={{ marginTop: 24 }}
               className={classes.button}
               color="primary"
               variant="contained"

@@ -104,12 +104,13 @@ class UTextField extends ValidatorComponent {
       id,
       SelectProps,
       options,
+      children,
       ...rest
     } = this.props
     const { isValid, isSelectOpen } = this.state
     const length = this.props.value ? this.props.value.length : 0
     const counterError = maxLength && maxLength < length
-
+    
     return (
       <Fragment>
         <TextField
@@ -163,12 +164,12 @@ class UTextField extends ValidatorComponent {
               }
             : {})}
         >
-          {select && options && options.length
+          {select ? options && options.length
             ? options.map(option => (
                 <MenuItem key={option.value} value={option.value}>
                   {option.label}
                 </MenuItem>
-              ))
+              )) : children
             : ''}
         </TextField>
         {counter && (
@@ -232,12 +233,15 @@ UTextField.propTypes = {
   id: PropTypes.string,
   /** Props applied to the Select element. */
   SelectProps: PropTypes.object,
+  /** If the field is select box and no options are passed, then this children will be used. */
+  children: PropTypes.node,
 }
 
 UTextField.defaultProps = {
   variant: 'outlined',
   readOnly: false,
   validatorListener: () => {},
+  withRequiredValidator: true,
   showLabelHelp: false,
   InputLabelHelpProps: {},
   select: false,
