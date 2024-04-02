@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { FormHelperText } from '@mui/material'
 import ValidatorComponent from '../ValidatorComponent'
-//import { ValidatorComponent } from 'react-form-validator-core'
 
 //Extending the ValidatorComponent using class component, so taking an exclusion from our rule: functional components only.
 /**
@@ -13,15 +12,6 @@ import ValidatorComponent from '../ValidatorComponent'
  */
 export default class UValidatorComponent extends ValidatorComponent {
   renderValidatorComponent() {
-    const {
-      customErrorMessages,
-      validators,
-      validatorListener,
-      requiredError,
-      value,
-      ...rest
-    } = this.props
-
     return (
       <div>
         {this.props.children}

@@ -5,7 +5,8 @@ import { ValidatorComponent } from 'react-form-validator-core'
 
 class ValidatorComponentNew extends ValidatorComponent {
   getErrorMessage = () => {
-    const { validators, customErrorMessages } = this.state
+    const { validators } = this.state
+    const { customErrorMessages } = this.props
     const type = typeof validators
     if (type === 'string') {
       return customErrorMessages
