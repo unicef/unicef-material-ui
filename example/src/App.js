@@ -46,28 +46,24 @@ export default function App() {
                 path={'/'}
                 element={
                   <List style={{ width: 300 }}>
-                    {[
-                      'Layout',
-                      'Forms',
-                      'Interactive views',
-                      'Pickers',
-                      'Accessibility',
-                    ].map((text, index) => (
-                      <ListItem
-                        button
-                        key={text}
-                        component={Link}
-                        to={`${text.replace(/\s+/g, '-').toLowerCase()}`}
-                        onClick={e =>
-                          handleClick(
-                            e,
-                            `${text.replace(/\s+/g, '-').toLowerCase()}`
-                          )
-                        }
-                      >
-                        <ListItemText primary={text} />
-                      </ListItem>
-                    ))}
+                    {['Layout', 'Forms', 'Interactive views', 'Pickers'].map(
+                      (text, index) => (
+                        <ListItem
+                          button
+                          key={text}
+                          component={Link}
+                          to={`${text.replace(/\s+/g, '-').toLowerCase()}`}
+                          onClick={e =>
+                            handleClick(
+                              e,
+                              `${text.replace(/\s+/g, '-').toLowerCase()}`
+                            )
+                          }
+                        >
+                          <ListItemText primary={text} />
+                        </ListItem>
+                      )
+                    )}
                   </List>
                 }
               ></Route>
