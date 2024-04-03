@@ -1,9 +1,6 @@
+import './../../MuiClassNameSetup'
 import React from 'react'
-import {
-  ThemeProvider,
-  StyledEngineProvider,
-  CssBaseline,
-} from '@mui/material'
+import { ThemeProvider, StyledEngineProvider, CssBaseline } from '@mui/material'
 import theme from './../../theme'
 
 // import {
@@ -26,10 +23,10 @@ import theme from './../../theme'
 
 export default function UNICEFStyleProvider(props) {
   return (
-    <StyledEngineProvider injectFirst >
+    <StyledEngineProvider injectFirst>
       <ThemeProvider theme={theme}>
-          <CssBaseline/>
-          {props.children}
+        <CssBaseline />
+        {props.children}
       </ThemeProvider>
     </StyledEngineProvider>
   )

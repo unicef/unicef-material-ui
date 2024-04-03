@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Switch, Route, Link } from 'react-router-dom'
+import { Routes, Route, Link } from 'react-router-dom'
 import { ThemeProvider } from '@mui/material/styles'
 import {
   theme,
@@ -41,11 +41,18 @@ export default function App() {
             />
           </USideBar>
           <UContent id="main" headerHeight={114}>
-            <Switch>
-              <Route exact path={'/'}>
-                <List style={{ width: 300 }}>
-                  {['Layout', 'Forms', 'Interactive views', 'Pickers'].map(
-                    (text, index) => (
+            <Routes>
+              <Route
+                path={'/'}
+                element={
+                  <List style={{ width: 300 }}>
+                    {[
+                      'Layout',
+                      'Forms',
+                      'Interactive views',
+                      'Pickers',
+                      'Accessibility',
+                    ].map((text, index) => (
                       <ListItem
                         button
                         key={text}
@@ -60,20 +67,19 @@ export default function App() {
                       >
                         <ListItemText primary={text} />
                       </ListItem>
-                    )
-                  )}
-                </List>
-              </Route>
-              <Route exact path={`/layout`} component={Layout} />
-              <Route exact path={`/forms`} component={FormValidator} />
+                    ))}
+                  </List>
+                }
+              ></Route>
+              <Route path={`/layout`} element={<Layout />} />
+              <Route path={`/forms`} element={<FormValidator />} />
               <Route
-                exact
                 path={`/interactive-views`}
-                component={InteractiveViews}
+                element={<InteractiveViews />}
               />
-              <Route exact path={`/pickers`} component={Pickers} />
-              <Route exact path={`/accessibility`} component={Accessibility} />
-            </Switch>
+              <Route path={`/pickers`} element={<Pickers />} />
+              <Route path={`/accessibility`} element={<Accessibility />} />
+            </Routes>
           </UContent>
         </ULayout>
       </UNICEFStyleProvider>

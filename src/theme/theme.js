@@ -12,8 +12,6 @@ const unicef = {
   darkGreen: '#00833D',
 }
 
-const zIndexDrawer = 1200
-
 const theme = createTheme({
   typography: {
     useNextVariants: true,
@@ -40,9 +38,6 @@ const theme = createTheme({
   shape: {
     borderRadius: 4,
   },
-  zIndex: {
-    drawer: zIndexDrawer,
-  },
   components: {
     // Name of the component
     MuiButtonBase: {
@@ -56,9 +51,6 @@ const theme = createTheme({
         paper: {
           minWidth: 256,
         },
-        paperAnchorDockedLeft: {
-          borderRight: 'none',
-        },
       },
     },
     MuiInputBase: {
@@ -68,10 +60,17 @@ const theme = createTheme({
         },
       },
     },
+    MuiTab: {
+      styleOverrides: {
+        root: {
+          minWidth: 160,
+        },
+      },
+    },
     MuiAppBar: {
       styleOverrides: {
         root: {
-          zIndex: zIndexDrawer + 1,
+          zIndex: 1200,
         },
       },
     },
