@@ -300,6 +300,18 @@ module.exports = {
       ],
       usageMode: 'expand',
     },
+    {
+      name: 'Accessibility',
+      components: () => [
+        path.resolve(__dirname, 'src/components/UAriaLive', 'UAriaLive.js'),
+        path.resolve(
+          __dirname,
+          'src/components/UAriaHiddenText',
+          'UAriaHiddenText.js'
+        ),
+      ],
+      usageMode: 'expand',
+    },
     // For future reference to use in sections
     // {
     //   name: 'UI Components',

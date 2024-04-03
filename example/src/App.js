@@ -17,6 +17,7 @@ import {
   Layout,
   InteractiveViews,
   FormValidator,
+  Accessibility,
 } from './components'
 
 export default function App() {
@@ -39,30 +40,34 @@ export default function App() {
               handleClick={handleClick}
             />
           </USideBar>
-          <UContent headerHeight={114}>
+          <UContent id="main" headerHeight={114}>
             <Routes>
               <Route
                 path={'/'}
                 element={
                   <List style={{ width: 300 }}>
-                    {['Layout', 'Forms', 'Interactive views', 'Pickers'].map(
-                      (text, index) => (
-                        <ListItem
-                          button
-                          key={text}
-                          component={Link}
-                          to={`${text.replace(/\s+/g, '-').toLowerCase()}`}
-                          onClick={e =>
-                            handleClick(
-                              e,
-                              `${text.replace(/\s+/g, '-').toLowerCase()}`
-                            )
-                          }
-                        >
-                          <ListItemText primary={text} />
-                        </ListItem>
-                      )
-                    )}
+                    {[
+                      'Layout',
+                      'Forms',
+                      'Interactive views',
+                      'Pickers',
+                      'Accessibility',
+                    ].map((text, index) => (
+                      <ListItem
+                        button
+                        key={text}
+                        component={Link}
+                        to={`${text.replace(/\s+/g, '-').toLowerCase()}`}
+                        onClick={e =>
+                          handleClick(
+                            e,
+                            `${text.replace(/\s+/g, '-').toLowerCase()}`
+                          )
+                        }
+                      >
+                        <ListItemText primary={text} />
+                      </ListItem>
+                    ))}
                   </List>
                 }
               ></Route>
@@ -73,6 +78,7 @@ export default function App() {
                 element={<InteractiveViews />}
               />
               <Route path={`/pickers`} element={<Pickers />} />
+              <Route path={`/accessibility`} element={<Accessibility />} />
             </Routes>
           </UContent>
         </ULayout>
