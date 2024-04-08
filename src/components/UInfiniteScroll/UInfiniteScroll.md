@@ -5,4 +5,7 @@ offset = 100
 ```
 
 ```jsx static
- <UInfiniteScroll offset = {100} onEndOfScroll = {onEndOfScroll} />
+import React from 'react'
+import UInfiniteScroll from './UInfiniteScroll'
+
+<UInfiniteScroll offset = {100} onEndOfScroll = {onEndOfScroll} />

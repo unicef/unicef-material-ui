@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { UAutoComplete, UValidatorForm } from 'unicef-material-ui'
-import { Typography, Grid } from '@material-ui/core'
+import { Typography, Grid } from '@mui/material'
 
 export default function AutoCompleteExample() {
   const [value, setValue] = useState('')

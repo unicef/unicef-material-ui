@@ -1,30 +1,51 @@
 import React from 'react'
+import { styled } from '@mui/material/styles'
 import PropTypes from 'prop-types'
-import { makeStyles } from '@material-ui/core/styles'
+import { Box } from '@mui/material'
+import { outlinedInputClasses } from '@mui/material/OutlinedInput'
 import UTextField from '../UTextField'
 
-const useStyles = makeStyles(theme => ({
-  textField: {
+const PREFIX = 'ActiveFormTextField'
+
+const classes = {
+  textField: `${PREFIX}-textField`,
+  notchedOutline: `${PREFIX}-notchedOutline`,
+  inputPaddingWithoutLabel: `${PREFIX}-inputPaddingWithoutLabel`,
+  inputPaddingWithLabel: `${PREFIX}-inputPaddingWithLabel`,
+  input: `${PREFIX}-input`,
+  inputHover: `${PREFIX}-inputHover`,
+}
+
+const StyledBox = styled(Box, {
+  shouldForwardProp: prop =>
+    prop !== 'typographyVariant' && prop !== 'inputPadding',
+})(({ theme, typographyVariant, inputPadding }) => ({
+  [`& .${classes.textField}`]: {
     marginTop: theme.spacing(0.25),
     marginBottom: theme.spacing(0.25),
   },
-  notchedOutline: {
+
+  [`& .${classes.notchedOutline}`]: {
     borderRadius: 2,
     borderColor: 'transparent',
   },
-  inputPaddingWithoutLabel: props => ({
-    padding: props.inputPadding ? props.inputPadding : '2px 2px 2px 2px',
+
+  [`& .${classes.inputPaddingWithoutLabel}`]: {
+    padding: inputPadding ? inputPadding : '2px 2px 2px 2px',
     height: 'auto',
-  }),
-  inputPaddingWithLabel: props => ({
-    padding: props.inputPadding ? props.inputPadding : '9.5px 14px',
+  },
+
+  [`& .${classes.inputPaddingWithLabel}`]: {
+    padding: inputPadding ? inputPadding : '9.5px 14px',
     height: 'auto',
-  }),
-  input: props => ({
-    ...theme.typography[props.typographyVariant],
-  }),
-  inputHover: {
-    '&:hover $notchedOutline': {
+  },
+
+  [`& .${classes.input}`]: {
+    ...theme.typography[typographyVariant],
+  },
+
+  [`& .${classes.inputHover}`]: {
+    [`&:hover .${outlinedInputClasses.notchedOutline}`]: {
       borderColor: 'transparent',
     },
   },
@@ -36,7 +57,7 @@ const useStyles = makeStyles(theme => ({
  * * Read the content inside TextField
  * * Edit the TextField
  *
- * Which is made by overriding some input styles and props from [TextFieldAPI](https://material-ui.com/api/text-field/#textfield-api).
+ * Which is made by overriding some input styles and props from [TextFieldAPI](https://mui.com/material-ui/api/text-field/).
  *
  * It accepts all the TextField props and styles
  *
@@ -44,7 +65,6 @@ const useStyles = makeStyles(theme => ({
  *
  */
 export default function ActiveFormTextField(props) {
-  const classes = useStyles(props)
   const {
     typographyVariant,
     className,
@@ -64,35 +84,40 @@ export default function ActiveFormTextField(props) {
   const finalPlaceholder = readOnly ? null : placeholder
 
   return (
-    <UTextField
-      placeholder={finalPlaceholder}
-      InputLabelProps={{
-        shrink: true,
-        ...InputLabelProps,
-      }}
-      inputProps={{
-        readOnly: Boolean(readOnly),
-        disabled: Boolean(readOnly),
-        ...inputProps,
-      }}
-      className={`${classes.textField} ${className && className}`}
-      InputProps={{
-        classes: {
-          root: `${classes.input} ${readOnly && classes.inputHover}`,
-          multiline: inputPaddingClass,
-          notchedOutline: `${
-            !interactiveMode && !readOnly ? '' : classes.notchedOutline
-          }`,
-          input: props.multiline
-            ? classes.inputPaddingWithoutLabel
-            : inputPaddingClass,
-        },
-        ...InputProps,
-      }}
-      variant={variant || 'outlined'}
-      defaultValue={props.children}
-      {...others}
-    />
+    <StyledBox
+      typographyVariant={typographyVariant}
+      inputPadding={inputPadding}
+    >
+      <UTextField
+        placeholder={finalPlaceholder}
+        InputLabelProps={{
+          shrink: true,
+          ...InputLabelProps,
+        }}
+        inputProps={{
+          readOnly: Boolean(readOnly),
+          disabled: Boolean(readOnly),
+          ...inputProps,
+        }}
+        className={`${classes.textField} ${className && className}`}
+        InputProps={{
+          classes: {
+            root: `${classes.input} ${readOnly && classes.inputHover}`,
+            multiline: inputPaddingClass,
+            notchedOutline: `${
+              !interactiveMode && !readOnly ? '' : classes.notchedOutline
+            }`,
+            input: props.multiline
+              ? classes.inputPaddingWithoutLabel
+              : inputPaddingClass,
+          },
+          ...InputProps,
+        }}
+        variant={variant}
+        defaultValue={props.children}
+        {...others}
+      />
+    </StyledBox>
   )
 }
 
@@ -132,4 +157,5 @@ ActiveFormTextField.propTypes = {
 ActiveFormTextField.defaultProps = {
   placeholder: 'Type something',
   interactiveMode: false,
+  variant: 'outlined',
 }

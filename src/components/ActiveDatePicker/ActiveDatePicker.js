@@ -1,139 +1,108 @@
 import React from 'react'
+import { styled } from '@mui/material/styles'
+import { Box } from '@mui/material'
 import PropTypes from 'prop-types'
-import DateFnsUtils from '@date-io/date-fns'
-import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers'
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
+import { DatePicker } from '@mui/x-date-pickers/DatePicker'
+import { outlinedInputClasses } from '@mui/material/OutlinedInput'
 
-import { makeStyles } from '@material-ui/core/styles'
+import UTextField from './../UTextField'
 
-import { InputLabelHelp } from '../Shared'
+const PREFIX = 'ActiveDatePicker'
 
-const styles = {
-  labelRoot: {
-    pointerEvents: 'auto',
-    display: 'flex',
-    alignItems: 'center',
-  },
+const classes = {
+  root: `${PREFIX}-root`,
 }
 
-const useStyles = makeStyles(theme => ({
-  textField: {
-    marginTop: theme.spacing(0.25),
-    marginBottom: theme.spacing(0.25),
-  },
-  notchedOutline: {
-    borderRadius: 2,
-    borderColor: 'transparent',
-  },
-  inputPaddingWithoutLabel: props => ({
-    padding: props.inputPadding ? props.inputPadding : '2px 2px 2px 2px',
-    height: 'auto',
-  }),
-  inputPaddingWithLabel: props => ({
-    padding: props.inputPadding ? props.inputPadding : '9.5px 14px',
-    height: 'auto',
-  }),
-  input: props => ({
-    ...theme.typography[props.typographyVariant],
-  }),
-  inputHover: {
-    '&:hover $notchedOutline': {
-      borderColor: 'transparent',
-    },
+const StyledBox = styled(Box, {
+  shouldForwardProp: prop => prop !== 'readOnly' && prop !== 'interactiveMode',
+})(({ theme, readOnly, interactiveMode }) => ({
+  [`& .${classes.root}`]: {
+    ...(readOnly
+      ? {
+          [`& .${outlinedInputClasses.notchedOutline}`]: {
+            borderColor: 'transparent',
+          },
+          [`&:hover .${outlinedInputClasses.notchedOutline}`]: {
+            borderColor: 'transparent',
+          },
+          [`& .${outlinedInputClasses.focused} .${outlinedInputClasses.notchedOutline}`]:
+            {
+              borderColor: 'transparent',
+            },
+        }
+      : {}),
+    ...(!readOnly && !interactiveMode
+      ? {}
+      : {
+          [`& .${outlinedInputClasses.notchedOutline}`]: {
+            borderColor: 'transparent',
+          },
+        }),
   },
 }))
-
 /**
- * ActiveDatePicker is a customized material ui Date picker.
+ * ActiveDatePicker is a customized material UI Date Picker.
  * This component let's you access the calender to select particular dates.
- * Please have look at [Material Ui Date Picker]('https://material-ui-pickers.dev/api/DatePicker') for more details
+ * Please have look at [Material UI Date Picker](https://mui.com/x/api/date-pickers/date-picker/) for more details
  */
-export default function ActiveDatePicker(props) {
-  const classes = useStyles(props)
-  const {
-    autoOk,
-    variant,
-    inputVariant,
-    readOnly,
-    interactiveMode,
-    InputLabelProps,
-    className,
-    inputProps,
-    InputProps,
-    placeholder,
-    showLabelHelp,
-    InputLabelHelpProps,
-    label,
-    ...others
-  } = props
-
-  const inputPaddingClass = props.label
-    ? classes.inputPaddingWithLabel
-    : classes.inputPaddingWithoutLabel
-  const finalPlaceholder = readOnly ? null : placeholder
-
+export default function ActiveDatePicker({
+  inputFormat,
+  label,
+  onChange,
+  value,
+  showLabelHelp,
+  InputLabelProps,
+  InputLabelHelpProps,
+  inputVariant,
+  interactiveMode,
+  readOnly,
+  ...others
+}) {
   return (
-    <MuiPickersUtilsProvider utils={DateFnsUtils}>
-      <DatePicker
-        autoOk={autoOk}
-        variant={variant}
-        inputVariant={inputVariant}
-        placeholder={finalPlaceholder}
-        className={`${classes.textField} ${className && className}`}
-        InputLabelProps={{
-          shrink: true,
-          style: { ...styles.labelRoot },
-          ...InputLabelProps,
-        }}
-        inputProps={{
-          readOnly: Boolean(readOnly),
-          disabled: Boolean(readOnly),
-          ...inputProps,
-        }}
-        readOnly={readOnly}
-        InputProps={{
-          classes: {
-            root: `${classes.input} ${readOnly && classes.inputHover}`,
-            notchedOutline: `${
-              !interactiveMode && !readOnly ? '' : classes.notchedOutline
-            }`,
-            input: inputPaddingClass,
-          },
-          ...InputProps,
-        }}
-        label={
-          showLabelHelp ? (
-            <InputLabelHelp inputLabel={label} {...InputLabelHelpProps} />
-          ) : (
-            label
-          )
-        }
-        {...others}
-      />
-    </MuiPickersUtilsProvider>
+    <LocalizationProvider dateAdapter={AdapterDateFns}>
+      <StyledBox readOnly={readOnly} interactiveMode={interactiveMode}>
+        <DatePicker
+          className={classes.root}
+          label={label}
+          inputFormat={inputFormat}
+          onChange={onChange}
+          value={value}
+          readOnly={readOnly}
+          {...others}
+          renderInput={params => (
+            <UTextField
+              showLabelHelp={showLabelHelp}
+              InputLabelProps={InputLabelProps}
+              InputLabelHelpProps={InputLabelHelpProps}
+              variant={inputVariant}
+              readOnly={readOnly}
+              {...params}
+            />
+          )}
+        />
+      </StyledBox>
+    </LocalizationProvider>
   )
 }
 
 ActiveDatePicker.propTypes = {
-  /** AutoOk on date select */
-  autoOk: PropTypes.bool,
-  /** Picker container option variant : 'dialog' | 'inline' | 'static' */
-  variant: PropTypes.string,
-  /** Material ui text field variant */
+  /** Date picker format */
+  inputFormat: PropTypes.string,
+  /** Callback function when change the picker field */
+  onChange: PropTypes.func.isRequired,
+  /** Value of the picker field */
+  value: PropTypes.string,
+  /** Material ui textfield variant */
   inputVariant: PropTypes.string,
-  /** Date format */
-  format: PropTypes.string,
+
   /** To make the content readOnly */
   readOnly: PropTypes.bool,
   /** Change to write mode by hiding text field border and displays border on hover*/
   interactiveMode: PropTypes.bool,
   /** Props applied to the InputLabel element.*/
   InputLabelProps: PropTypes.object,
-  /** Attributes applied to the input element. */
-  inputProps: PropTypes.object,
-  /** Props applied to the Input element. */
-  InputProps: PropTypes.object,
-  /** Placeholder text*/
-  placeholder: PropTypes.string,
   /** Label text */
   label: PropTypes.string,
   /** Show label help */
@@ -144,7 +113,8 @@ ActiveDatePicker.propTypes = {
 
 ActiveDatePicker.defaultProps = {
   inputVariant: 'outlined',
-  autoOk: true,
-  variant: 'inline',
-  format: 'dd/MM/yyyy',
+  InputLabelProps: {
+    shrink: true,
+  },
+  inputFormat: 'dd/MM/yyyy',
 }

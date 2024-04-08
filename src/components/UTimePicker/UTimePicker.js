@@ -1,63 +1,56 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import DateFnsUtils from '@date-io/date-fns'
-import { TimePicker, MuiPickersUtilsProvider } from '@material-ui/pickers'
-
-import { InputLabelHelp } from '../Shared'
-
-const styles = {
-  labelRoot: {
-    pointerEvents: 'auto',
-    display: 'flex',
-    alignItems: 'center',
-  },
-}
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
+import { TimePicker } from '@mui/x-date-pickers/TimePicker'
+import UTextField from './../UTextField'
 
 /**
  * UTimePicker is a customized material ui TimePicker.
  *
  * This component let's you access the clock to select particular time.
- *
- * Please have look at [Material Ui TimePicker]('https://material-ui-pickers.dev/api/TimePicker') for more details
+ * Please have look at [Material Ui TimePicker](https://mui.com/x/api/date-pickers/time-picker/#main-content) for more details
  */
-export default function UTimePicker(props) {
-  const {
-    keyboardTimePicker,
-    inputVariant,
-    format,
-    showLabelHelp,
-    InputLabelProps,
-    InputLabelHelpProps,
-    label,
-    ...others
-  } = props
-
+export default function UTimePicker({
+  inputFormat,
+  label,
+  onChange,
+  value,
+  showLabelHelp,
+  InputLabelProps,
+  InputLabelHelpProps,
+  inputVariant,
+  ...others
+}) {
   return (
-    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+    <LocalizationProvider dateAdapter={AdapterDateFns}>
       <TimePicker
-        inputVariant={inputVariant}
-        InputLabelProps={{
-          ...InputLabelProps,
-          style: { ...styles.labelRoot },
-        }}
-        label={
-          showLabelHelp ? (
-            <InputLabelHelp inputLabel={label} {...InputLabelHelpProps} />
-          ) : (
-            label
-          )
-        }
+        label={label}
+        inputFormat={inputFormat}
+        onChange={onChange}
+        value={value}
         {...others}
+        renderInput={params => (
+          <UTextField
+            showLabelHelp={showLabelHelp}
+            InputLabelProps={InputLabelProps}
+            InputLabelHelpProps={InputLabelHelpProps}
+            variant={inputVariant}
+            {...params}
+          />
+        )}
       />
-    </MuiPickersUtilsProvider>
+    </LocalizationProvider>
   )
 }
 
 UTimePicker.propTypes = {
-  /** autoOk on time select */
-  autoOk: PropTypes.bool,
-  /** Picker container option variant : 'dialog' | 'inline' | 'static' */
-  variant: PropTypes.string,
+  /** Time picker format */
+  inputFormat: PropTypes.string,
+  /** Callback function when change the picker field */
+  onChange: PropTypes.func.isRequired,
+  /** Value of the picker field */
+  value: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string]),
   /** Material ui textfield variant */
   inputVariant: PropTypes.string,
   /** Label text */
@@ -66,10 +59,14 @@ UTimePicker.propTypes = {
   showLabelHelp: PropTypes.bool,
   /** Props applied to the input label help element. E.g InputLabelHelpProps={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
   InputLabelHelpProps: PropTypes.object,
+  /** Props applied to the InputLabel element.*/
+  InputLabelProps: PropTypes.object,
 }
 
 UTimePicker.defaultProps = {
   inputVariant: 'outlined',
-  autoOk: true,
-  variant: 'inline',
+  InputLabelProps: {
+    shrink: true,
+  },
+  inputFormat: 'hh:mm a',
 }

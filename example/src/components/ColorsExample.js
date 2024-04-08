@@ -1,21 +1,27 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { useTheme } from '@material-ui/core/styles'
-import { Grid, Box, Paper, Typography } from '@material-ui/core'
+import { styled } from '@mui/material/styles'
+import { useTheme } from '@mui/material/styles'
+import { Grid, Box, Paper, Typography } from '@mui/material'
 
-const useStyles = makeStyles(theme => ({
-  colorTitle: {
+const PREFIX = 'ColorsExample'
+
+const classes = {
+  colorTitle: `${PREFIX}-colorTitle`,
+  colorCode: `${PREFIX}-colorCode`,
+}
+
+const StyledGrid = styled(Grid)(({ theme }) => ({
+  [`& .${classes.colorTitle}`]: {
     textTransform: 'capitalize',
   },
-  colorCode: {
+  [`& .${classes.colorCode}`]: {
     padding: theme.spacing(1.25),
     borderTop: '1px solid #ccc',
   },
 }))
 
-export default function ColorsExample() {
+export default function ColorsExample(props) {
   const theme = useTheme()
-  const classes = useStyles()
 
   let requiredColors = [
     'unicef',
@@ -32,7 +38,7 @@ export default function ColorsExample() {
   ]
 
   return (
-    <Grid container spacing={2}>
+    <StyledGrid container spacing={2}>
       {requiredColors.map(
         colorKey =>
           (theme.palette[colorKey] && (
@@ -60,6 +66,6 @@ export default function ColorsExample() {
           )) ||
           ''
       )}
-    </Grid>
+    </StyledGrid>
   )
 }

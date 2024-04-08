@@ -1,24 +1,29 @@
 import React from 'react'
+import { styled } from '@mui/material/styles'
 import PropTypes from 'prop-types'
-import { makeStyles } from '@material-ui/core/styles'
-import Typography from '@material-ui/core/Typography'
+import Typography from '@mui/material/Typography'
 
-const useStyles = makeStyles(theme => ({
-  noOptionsMessage: {
+const PREFIX = 'NoOptionsMessage'
+
+const classes = {
+  noOptionsMessage: `${PREFIX}-noOptionsMessage`,
+}
+
+const StyledTypography = styled(Typography)(({ theme }) => ({
+  [`&.${classes.noOptionsMessage}`]: {
     padding: theme.spacing(1.5),
   },
 }))
 
 export default function NoOptionsMessage({ innerProps, selectProps }) {
-  const classes = useStyles()
   return (
-    <Typography
+    <StyledTypography
       color="textSecondary"
       {...innerProps}
       className={classes.noOptionsMessage}
     >
       {selectProps && selectProps.noOptionsText}
-    </Typography>
+    </StyledTypography>
   )
 }
 

@@ -1,80 +1,72 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import DateFnsUtils from '@date-io/date-fns'
-import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers'
-
-import { InputLabelHelp } from '../Shared'
-
-const styles = {
-  labelRoot: {
-    pointerEvents: 'auto',
-    display: 'flex',
-    alignItems: 'center',
-  },
-}
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
+import { DatePicker } from '@mui/x-date-pickers/DatePicker'
+import UTextField from './../UTextField'
 
 /**
  * UDatePicker is a customized material ui Date picker.
  *
  * This component let's you access the calender to select particular dates.
- *
- * Please have look at [Material Ui Date Picker]('https://material-ui-pickers.dev/api/DatePicker') for more details
+ * Please have look at [Material UI Date Picker](https://mui.com/x/react-date-pickers/date-picker/#main-content) for more details
  */
-export default function UDatePicker(props) {
-  const {
-    autoOk,
-    variant,
-    inputVariant,
-    showLabelHelp,
-    InputLabelProps,
-    InputLabelHelpProps,
-    label,
-    ...others
-  } = props
-
+export default function UDatePicker({
+  inputFormat,
+  label,
+  onChange,
+  value,
+  showLabelHelp,
+  InputLabelProps,
+  InputLabelHelpProps,
+  inputVariant,
+  ...others
+}) {
   return (
-    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+    <LocalizationProvider dateAdapter={AdapterDateFns}>
       <DatePicker
-        autoOk={autoOk}
-        variant={variant}
-        inputVariant={inputVariant}
-        InputLabelProps={{
-          ...InputLabelProps,
-          style: { ...styles.labelRoot },
-        }}
-        label={
-          showLabelHelp ? (
-            <InputLabelHelp inputLabel={label} {...InputLabelHelpProps} />
-          ) : (
-            label
-          )
-        }
+        label={label}
+        inputFormat={inputFormat}
+        onChange={onChange}
+        value={value}
         {...others}
+        renderInput={params => (
+          <UTextField
+            showLabelHelp={showLabelHelp}
+            InputLabelProps={InputLabelProps}
+            InputLabelHelpProps={InputLabelHelpProps}
+            variant={inputVariant}
+            {...params}
+          />
+        )}
       />
-    </MuiPickersUtilsProvider>
+    </LocalizationProvider>
   )
 }
 
 UDatePicker.propTypes = {
-  /** autoOk on date select */
-  autoOk: PropTypes.bool,
-  /** Picker container option variant : 'dialog' | 'inline' | 'static' */
-  variant: PropTypes.string,
+  /** Date picker format */
+  inputFormat: PropTypes.string,
+  /** Callback function when change the picker field */
+  onChange: PropTypes.func.isRequired,
+  /** Value of the picker field */
+  value: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string]),
   /** Material ui textfield variant */
   inputVariant: PropTypes.string,
-  /** date format */
-  format: PropTypes.string,
   /** Label text */
   label: PropTypes.string,
   /** Show label help */
   showLabelHelp: PropTypes.bool,
   /** Props applied to the input label help element. E.g InputLabelHelpProps={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
   InputLabelHelpProps: PropTypes.object,
+  /** Props applied to the InputLabel element.*/
+  InputLabelProps: PropTypes.object,
 }
 
 UDatePicker.defaultProps = {
   inputVariant: 'outlined',
-  autoOk: true,
-  variant: 'inline',
-  format: 'dd-MMM-yyyy',
+  InputLabelProps: {
+    shrink: true,
+  },
+  inputFormat: 'dd/MM/yyyy',
 }

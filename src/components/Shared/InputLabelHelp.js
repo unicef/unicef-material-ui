@@ -1,28 +1,44 @@
 import React, { Fragment } from 'react'
-import { Tooltip, makeStyles, Link } from '@material-ui/core'
+import { styled } from '@mui/material/styles'
+import { Tooltip, Link, Box } from '@mui/material'
 import PropTypes from 'prop-types'
 
-import HelpIcon from '@material-ui/icons/HelpOutline'
-import LaunchIcon from '@material-ui/icons/Launch'
+import HelpIcon from '@mui/icons-material/HelpOutline'
+import LaunchIcon from '@mui/icons-material/Launch'
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    marginRight: theme.spacing(-1),
-    marginTop: theme.spacing(-0.5),
-    paddingLeft: theme.spacing(1.5),
+const PREFIX = 'InputLabelHelp'
+
+const classes = {
+  root: `${PREFIX}-root`,
+  help: `${PREFIX}-help`,
+  tooltipHelpLabel: `${PREFIX}-tooltipHelpLabel`,
+  linkHelpLabel: `${PREFIX}-linkHelpLabel`,
+  tooltipPopper: `${PREFIX}-tooltipPopper`,
+}
+
+const StyledBox = styled(Box)(({ theme }) => ({
+  [`&.${classes.root}`]: {
     order: 999,
     display: 'inline-flex',
     alignItems: 'center',
-    color: theme.palette.primary.main,
   },
-  tooltipHelpLabel: {
+  [`& .${classes.help}`]: {
+    paddingLeft: theme.spacing(0.5),
+    color: theme.palette.primary.main,
+    display: 'flex',
+    alignItems: 'center',
+  },
+
+  [`& .${classes.tooltipHelpLabel}`]: {
     paddingLeft: theme.spacing(0.5),
     borderBottom: `1px dotted ${theme.palette.primary.main}`,
   },
-  linkHelpLabel: {
+
+  [`& .${classes.linkHelpLabel}`]: {
     paddingLeft: theme.spacing(0.5),
   },
-  tooltipPopper: {
+
+  [`& .${classes.tooltipPopper}`]: {
     '& a': {
       color: theme.palette.common.white,
     },
@@ -38,38 +54,43 @@ export default function InputLabelHelp({
   tooltipTitle,
   tooltipPlacement,
 }) {
-  const classes = useStyles()
   return (
     <Fragment>
       <span>{inputLabel}</span>
-      {type === 'tooltip' ? (
-        <Tooltip
-          interactive
-          title={<div dangerouslySetInnerHTML={{ __html: tooltipTitle }} />}
-          placement={tooltipPlacement}
-          classes={{ popper: classes.tooltipPopper }}
-        >
-          <span className={classes.root}>
-            {icon ? icon : <HelpIcon />}
+      <StyledBox className={classes.root}>
+        {type === 'tooltip' ? (
+          <Tooltip
+            interactive
+            title={<div dangerouslySetInnerHTML={{ __html: tooltipTitle }} />}
+            placement={tooltipPlacement}
+            classes={{ popper: classes.tooltipPopper }}
+          >
+            <span className={classes.help}>
+              {icon ? icon : <HelpIcon />}
+              {label ? (
+                <span className={classes.tooltipHelpLabel}>{label}</span>
+              ) : (
+                ''
+              )}
+            </span>
+          </Tooltip>
+        ) : (
+          <Link
+            href={link}
+            target={'_blank'}
+            underline="always"
+            className={classes.help}
+            title="Opens a new tab"
+          >
+            {icon ? icon : <LaunchIcon />}
             {label ? (
-              <span className={classes.tooltipHelpLabel}>{label}</span>
+              <span className={classes.linkHelpLabel}>{label}</span>
             ) : (
               ''
             )}
-          </span>
-        </Tooltip>
-      ) : (
-        <Link
-          href={link}
-          target={'_blank'}
-          underline="always"
-          className={classes.root}
-          title="Opens a new tab"
-        >
-          {icon ? icon : <LaunchIcon />}
-          {label ? <span className={classes.linkHelpLabel}>{label}</span> : ''}
-        </Link>
-      )}
+          </Link>
+        )}
+      </StyledBox>
     </Fragment>
   )
 }

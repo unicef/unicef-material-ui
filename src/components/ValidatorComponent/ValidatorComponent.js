@@ -1,72 +1,12 @@
 /* eslint-disable */
 import React from 'react'
 import PropTypes from 'prop-types'
-import Promise from 'promise-polyfill'
-/* eslint-enable */
-import { polyfill } from 'react-lifecycles-compat'
-import { ValidatorForm } from 'react-form-validator-core'
-import { debounce } from '../../utils'
+import { ValidatorComponent } from 'react-form-validator-core'
 
-/**
- * ValidatorComponent
- * Using component locally in order to override the error messages
- * TODO - write the code to newer version
- */
-export default class ValidatorComponent extends React.Component {
-  static getDerivedStateFromProps(nextProps, prevState) {
-    if (
-      nextProps.validators &&
-      nextProps.customErrorMessages &&
-      nextProps.withRequiredValidator &&
-      (prevState.validators !== nextProps.validators ||
-        prevState.customErrorMessages !== nextProps.customErrorMessages)
-    ) {
-      return {
-        value: nextProps.value,
-        validators: nextProps.validators,
-        customErrorMessages: nextProps.customErrorMessages,
-        withRequiredValidator: nextProps.withRequiredValidator,
-      }
-    }
-
-    return {
-      value: nextProps.value,
-    }
-  }
-
-  state = {
-    isValid: true,
-    value: this.props.value,
-    customErrorMessages: this.props.customErrorMessages,
-    validators:
-      this.props.validators !== undefined ? this.props.validators : [],
-    withRequiredValidator:
-      this.props.withRequiredValidator !== undefined
-        ? this.props.withRequiredValidator
-        : true,
-  }
-
-  componentDidMount() {
-    this.configure()
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    return this.state !== nextState || this.props !== nextProps
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (this.instantValidate && this.props.value !== prevState.value) {
-      this.validateDebounced(this.props.value, this.state.withRequiredValidator)
-    }
-  }
-
-  componentWillUnmount() {
-    this.context.form.detachFromForm(this)
-    this.validateDebounced.cancel()
-  }
-
+class ValidatorComponentNew extends ValidatorComponent {
   getErrorMessage = () => {
-    const { validators, customErrorMessages } = this.state
+    const { validators } = this.state
+    const { customErrorMessages } = this.props
     const type = typeof validators
     if (type === 'string') {
       return customErrorMessages
@@ -88,57 +28,9 @@ export default class ValidatorComponent extends React.Component {
     console.log('unknown errorMessages type', validators)
     return true
   }
-
-  instantValidate = true
-  invalid = []
-
-  configure = () => {
-    this.context.form.attachToForm(this)
-    this.instantValidate = this.context.form.instantValidate
-    this.debounceTime = this.context.form.debounceTime
-    this.validateDebounced = debounce(this.validate, this.debounceTime)
-  }
-
-  validate = (value, includeRequired = false, dryRun = false) => {
-    const validations = Promise.all(
-      this.state.validators.map(validator =>
-        ValidatorForm.getValidator(validator, value, includeRequired)
-      )
-    )
-
-    validations.then(results => {
-      this.invalid = []
-      let valid = true
-      results.forEach((result, key) => {
-        if (!result) {
-          valid = false
-          this.invalid.push(key)
-        }
-      })
-      if (!dryRun) {
-        this.setState({ isValid: valid }, () => {
-          this.props.validatorListener(this.state.isValid)
-        })
-      }
-    })
-  }
-
-  isValid = () => this.state.isValid
-
-  makeInvalid = () => {
-    this.setState({ isValid: false })
-  }
-
-  makeValid = () => {
-    this.setState({ isValid: true })
-  }
 }
 
-ValidatorComponent.contextTypes = {
-  form: PropTypes.object,
-}
-
-ValidatorComponent.propTypes = {
+ValidatorComponentNew.propTypes = {
   /** Custom error messages to override default error messages */
   customErrorMessages: PropTypes.oneOfType([
     PropTypes.object,
@@ -151,16 +43,17 @@ ValidatorComponent.propTypes = {
   validatorListener: PropTypes.func,
   /** Allow to use required validator in any validation trigger, not only form submit. */
   withRequiredValidator: PropTypes.bool,
+  containerProps: PropTypes.object,
 }
 
-ValidatorComponent.defaultProps = {
+ValidatorComponentNew.defaultProps = {
   customErrorMessages: 'error',
   validators: [],
   validatorListener: () => {},
   withRequiredValidator: true,
 }
 
-polyfill(ValidatorComponent)
+export default ValidatorComponentNew
 
 // default error messages to return
 const defaultErrorMessages = {

@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import Select from 'react-select'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
-import CancelIcon from '@material-ui/icons/Cancel'
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown'
+import { useTheme, styled } from '@mui/material/styles'
+import { Box } from '@mui/material'
+import CancelIcon from '@mui/icons-material/Cancel'
+
 import MultiValue from './MultiValue'
 import SingleValue from './SingleValue'
 import Menu from './Menu'
@@ -13,52 +14,59 @@ import ValueContainer from './ValueContainer'
 import Option from './Option'
 import Input from './Input'
 
-const useStyles = makeStyles(theme => ({
-  input: {
+const PREFIX = 'USelectPicker'
+
+const classes = {
+  input: `${PREFIX}-input`,
+  valueContainer: `${PREFIX}-valueContainer`,
+  OptionsMessage: `${PREFIX}-OptionsMessage`,
+  placeholder: `${PREFIX}-placeholder`,
+  paper: `${PREFIX}-paper`,
+  divider: `${PREFIX}-divider`,
+  labelRoot: `${PREFIX}-labelRoot`,
+  inputHover: `${PREFIX}-inputHover`,
+  notchedOutline: `${PREFIX}-notchedOutline`,
+}
+
+const StyledBox = styled(Box, {
+  shouldForwardProp: prop => prop !== 'hasHelpText',
+})(({ theme, hasHelpText }) => ({
+  [`& .${classes.input}`]: {
     display: 'flex',
     padding: '10px 14px',
     height: 'auto',
   },
-  valueContainer: {
+  [`& .${classes.valueContainer}`]: {
     display: 'flex',
     flexWrap: 'wrap',
     flex: 1,
     alignItems: 'center',
     overflow: 'hidden',
   },
-  OptionsMessage: {
+  [`& .${classes.OptionsMessage}`]: {
     padding: theme.spacing(1, 2),
   },
-  placeholder: {
-    position: 'absolute',
-    left: 2,
-    bottom: 6,
-    fontSize: 16,
-  },
-  paper: props => ({
+  [`& .${classes.paper}`]: {
     position: 'absolute',
     zIndex: 999,
     left: 0,
     right: 0,
-    marginTop:
-      props.TextFieldProps && props.TextFieldProps.helperText
-        ? theme.spacing(-2.1)
-        : theme.spacing(0.3),
-  }),
-  divider: {
+    marginTop: hasHelpText ? theme.spacing(-3) : theme.spacing(0),
+  },
+  [`& .${classes.divider}`]: {
     height: theme.spacing(2),
   },
-  labelRoot: {
+  [`& .${classes.labelRoot}`]: {
     pointerEvents: 'auto',
     display: 'flex',
     alignItems: 'center',
   },
-  inputHover: {
+  [`& .${classes.inputHover}`]: {
     '&:hover $notchedOutline': {
       borderColor: 'transparent',
     },
   },
-  notchedOutline: {
+  [`& .${classes.notchedOutline}`]: {
     borderRadius: 2,
     borderColor: 'transparent',
   },
@@ -92,7 +100,6 @@ const ICON_VARIANTS = {
  *
  */
 export default function USelectPicker(props) {
-  const classes = useStyles(props)
   const theme = useTheme()
   const {
     label,
@@ -128,7 +135,7 @@ export default function USelectPicker(props) {
       },
     }),
     menuPortal: base => ({ ...base, zIndex: 9999 }),
-    menu: base => ({ ...base, zIndex: '9999 !important' }),
+    menu: base => ({ ...base, zIndex: '9999 !important', boxShadow: 'none' }),
     placeholder: base => ({
       ...base,
       position: 'absolute',
@@ -172,20 +179,26 @@ export default function USelectPicker(props) {
   const selectPlaceholder = readOnly ? '' : placeholder
 
   return (
-    <Select
-      classes={classes}
-      styles={selectStyles}
-      components={{ ...defaultComponents, ...components, ...extraComponents }}
-      TextFieldProps={mergedTextFieldProps}
-      onInputChange={value => handleInputChange(value)}
-      noOptionsMessage={() => (showNoOptions ? NoOptionsMessage : null)}
-      isClearable={readOnly ? false : isClearable}
-      isSearchable={readOnly ? false : isSearchable}
-      isDisabled={readOnly ? true : isDisabled}
-      menuIsOpen={readOnly ? false : menuIsOpen}
-      placeholder={selectPlaceholder}
-      {...others}
-    />
+    <StyledBox
+      hasHelpText={
+        props.TextFieldProps && props.TextFieldProps.helperText ? true : false
+      }
+    >
+      <Select
+        classes={classes}
+        styles={selectStyles}
+        components={{ ...defaultComponents, ...components, ...extraComponents }}
+        TextFieldProps={mergedTextFieldProps}
+        onInputChange={value => handleInputChange(value)}
+        noOptionsMessage={() => (showNoOptions ? NoOptionsMessage : null)}
+        isClearable={readOnly ? false : isClearable}
+        isSearchable={readOnly ? false : isSearchable}
+        isDisabled={readOnly ? true : isDisabled}
+        menuIsOpen={readOnly ? false : menuIsOpen}
+        placeholder={selectPlaceholder}
+        {...others}
+      />
+    </StyledBox>
   )
 }
 

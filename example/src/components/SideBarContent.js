@@ -1,5 +1,5 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+import { styled } from '@mui/material/styles'
 import { Link } from 'react-router-dom'
 import {
   List,
@@ -9,24 +9,33 @@ import {
   Typography,
   Box,
   Divider,
-} from '@material-ui/core'
+} from '@mui/material'
 
-import MailIcon from '@material-ui/icons/Mail'
-import InboxIcon from '@material-ui/icons/Inbox'
+import MailIcon from '@mui/icons-material/Mail'
+import InboxIcon from '@mui/icons-material/Inbox'
 
-const useStyles = makeStyles(theme => ({
-  root: {
+const PREFIX = 'SideBarContent'
+
+const classes = {
+  root: `${PREFIX}-root`,
+  toolbar: `${PREFIX}-toolbar`,
+  margin: `${PREFIX}-margin`,
+}
+
+const Root = styled('div')(({ theme }) => ({
+  [`& .${classes.root}`]: {
     display: 'flex',
   },
-  toolbar: theme.mixins.toolbar,
-  margin: {
+
+  [`& .${classes.toolbar}`]: theme.mixins.toolbar,
+
+  [`& .${classes.margin}`]: {
     margin: theme.spacing(2),
   },
 }))
 
 export default function SideBarContent(props) {
   const { selectedNode, handleClick, toggleDrawer } = props
-  const classes = useStyles()
 
   // Remove spaces and make all letters lower-case
   function lowerCaseUrl(str) {
@@ -39,7 +48,7 @@ export default function SideBarContent(props) {
   }
 
   return (
-    <div className={classes.list} role="presentation">
+    <Root className={classes.list} role="presentation">
       <Typography className={classes.margin} variant="h6">
         UNICEF Material UI
       </Typography>
@@ -47,25 +56,29 @@ export default function SideBarContent(props) {
       <Box>
         <div className={classes.toolbar} />
         <List>
-          {['Layout', 'Forms', 'Interactive views', 'Pickers'].map(
-            (text, index) => (
-              <ListItem
-                button
-                key={text}
-                selected={selectedNode === lowerCaseUrl(text)}
-                component={Link}
-                to={`${lowerCaseUrl(text)}`}
-                onClick={e => handleLinkClick(e, lowerCaseUrl(text))}
-              >
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            )
-          )}
+          {[
+            'Layout',
+            'Forms',
+            'Interactive views',
+            'Pickers',
+            'Accessibility',
+          ].map((text, index) => (
+            <ListItem
+              button
+              key={text}
+              selected={selectedNode === lowerCaseUrl(text)}
+              component={Link}
+              to={`${lowerCaseUrl(text)}`}
+              onClick={e => handleLinkClick(e, lowerCaseUrl(text))}
+            >
+              <ListItemIcon>
+                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>
+          ))}
         </List>
       </Box>
-    </div>
+    </Root>
   )
 }

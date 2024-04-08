@@ -1,15 +1,18 @@
 import React, { useState } from 'react'
+import { styled } from '@mui/material/styles'
 import PropTypes from 'prop-types'
-import Autocomplete, {
-  createFilterOptions,
-} from '@material-ui/lab/Autocomplete'
-import { makeStyles } from '@material-ui/core/styles'
+import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete'
 import ActiveFormTextField from '../ActiveFormTextField'
 
-const filter = createFilterOptions()
+const PREFIX = 'ActiveAutoComplete'
 
-const useStyles = makeStyles(theme => ({
-  root: {
+const classes = {
+  root: `${PREFIX}-root`,
+  focused: `${PREFIX}-focused`,
+}
+
+const Root = styled('div')(({ theme }) => ({
+  [`& .${classes.root}`]: {
     marginTop: theme.spacing(2),
     width: '100%',
     '& .UPopupIndicator': {
@@ -21,12 +24,16 @@ const useStyles = makeStyles(theme => ({
       },
     },
   },
-  focused: {
+
+  [`& .${classes.focused}`]: {
     '& .UPopupIndicator': {
       visibility: 'visible',
     },
   },
 }))
+
+const filter = createFilterOptions()
+
 /**
  * ActiveAutoComplete is an editable dropdown component with interactive.
  * The cool feature with ActiveAutoComplete is you can read and write at the same place.
@@ -52,7 +59,6 @@ export default function ActiveAutoComplete({
   InputLabelProps,
   props,
 }) {
-  const classes = useStyles()
   //const dispatch = useDispatch()
   const [selectedValue, setSelectedValue] = useState(value || null) // for initialization: avoid the control to be a uncontrolled component with 'undefined'
 
@@ -114,7 +120,7 @@ export default function ActiveAutoComplete({
       ? options.filter(opt => !usedItemIds.includes(opt.id))
       : []
   return (
-    <React.Fragment>
+    <Root>
       {!interactiveMode && readOnly ? (
         <ActiveFormTextField
           multiline
@@ -132,17 +138,17 @@ export default function ActiveAutoComplete({
       ) : (
         <Autocomplete
           value={selectedValue}
-          getOptionSelected={option => option.id === selectedValue.id}
+          isOptionEqualToValue={option => option.id === selectedValue.id}
           onChange={(event, newValue) => handleChange(event, newValue)}
           filterOptions={(options, params) => handleFilter(options, params)}
-          id="target-input"
+          id={name}
           name={name}
           selectOnFocus
           clearOnBlur
           handleHomeEndKeys
           options={controlOptions}
           getOptionLabel={option => handleGetOption(option)}
-          renderOption={option => option.text}
+          renderOption={(props, option) => <li {...props}>{option.text}</li>}
           onBlur={handleOnBlur}
           classes={{
             root: classes.root,
@@ -177,7 +183,7 @@ export default function ActiveAutoComplete({
           )}
         />
       )}
-    </React.Fragment>
+    </Root>
   )
 }
 

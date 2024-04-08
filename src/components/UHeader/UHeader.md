@@ -8,9 +8,9 @@ import {
   Link,
   Box,
   Tab,
-} from "@material-ui/core";
-import MailIcon from "@material-ui/icons/Mail";
-import NotificationsIcon from "@material-ui/icons/Notifications";
+} from "@mui/material";
+import MailIcon from "@mui/icons-material/Mail";
+import NotificationsIcon from "@mui/icons-material/Notifications";
 
 <UHeader
   position="static"

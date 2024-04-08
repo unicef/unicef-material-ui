@@ -1,18 +1,23 @@
 import React from 'react'
+import { styled } from '@mui/material/styles'
 import PropTypes from 'prop-types'
-import { makeStyles } from '@material-ui/core/styles'
+const PREFIX = 'ValueContainer'
 
-const useStyles = makeStyles(theme => ({
-  rootReadOnly: {},
-  lineByLineOption: {
+const classes = {
+  rootReadOnly: `${PREFIX}-rootReadOnly`,
+  lineByLineOption: `${PREFIX}-lineByLineOption`,
+}
+
+const Root = styled('div')(({ theme }) => ({
+  [`&.${classes.rootReadOnly}`]: {},
+
+  [`&.${classes.lineByLineOption}`]: {
     flexDirection: 'column!important',
     alignItems: 'flex-start!important',
   },
 }))
 
 export default function ValueContainer({ isMulti, selectProps, children }) {
-  const classes = useStyles()
-
   const lineByLineOption =
     selectProps &&
     selectProps.TextFieldProps &&
@@ -24,7 +29,7 @@ export default function ValueContainer({ isMulti, selectProps, children }) {
     selectProps.TextFieldProps.readOnly
 
   return (
-    <div
+    <Root
       className={`${
         lineByLineOption && isMulti ? classes.lineByLineOption : ''
       } ${readOnly ? classes.rootReadOnly : ''} ${
@@ -32,7 +37,7 @@ export default function ValueContainer({ isMulti, selectProps, children }) {
       }`}
     >
       {children}
-    </div>
+    </Root>
   )
 }
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+import { styled } from '@mui/material/styles'
 import {
   Paper,
   Grid,
@@ -8,10 +8,9 @@ import {
   Box,
   FormControlLabel,
   Switch,
-  MenuItem,
   Button,
   Typography,
-} from '@material-ui/core'
+} from '@mui/material'
 import {
   ActiveFormTextField,
   ActiveCurrencyField,
@@ -21,26 +20,35 @@ import {
   USelectPicker,
 } from 'unicef-material-ui'
 
-const useStyles = makeStyles(theme => ({
-  textfield: {
+const PREFIX = 'InteractiveViews'
+
+const classes = {
+  textfield: `${PREFIX}-textfield`,
+  margin: `${PREFIX}-margin`,
+  input: `${PREFIX}-input`,
+  avatar: `${PREFIX}-avatar`,
+}
+
+const StyledGrid = styled(Grid)(({ theme }) => ({
+  [`& .${classes.textfield}`]: {
     minWidth: 193,
   },
-  margin: {
+
+  [`& .${classes.margin}`]: {
     margin: theme.spacing(2),
   },
-  input: {
+
+  [`& .${classes.input}`]: {
     borderRadius: 0,
   },
-  avatar: {
+
+  [`& .${classes.avatar}`]: {
     height: 160,
     width: 160,
-    marginLeft: theme.spacing(3),
   },
 }))
 
 export default function InteractiveViews() {
-  const classes = useStyles()
-
   const [readOnly, setReadOnly] = useState(true)
 
   function handleChange() {
@@ -51,7 +59,7 @@ export default function InteractiveViews() {
   const [values, setValues] = useState({
     name: 'John Doe',
     email: 'john@john.com',
-    employment: 1,
+    employment: 'student',
     mobile: 2223333433,
     address: '9452 Horace New York NY 11224',
     salary: 100.55,
@@ -94,6 +102,21 @@ export default function InteractiveViews() {
     },
   ]
 
+  const employmentOptions = [
+    {
+      label: 'Student',
+      value: 'student',
+    },
+    {
+      label: 'Employed',
+      value: 'employed',
+    },
+    {
+      label: 'Unemployed',
+      value: 'unemployed',
+    },
+  ]
+
   function handleValue(event) {
     const target = event.target
     const value = target.value
@@ -127,7 +150,7 @@ export default function InteractiveViews() {
   }
 
   return (
-    <Grid container spacing={3} display="flex">
+    <StyledGrid container spacing={3} display="flex">
       <Grid item xs={12} lg={8}>
         <Paper style={{ padding: 8 }}>
           <UValidatorForm onSubmit={() => {}}>
@@ -193,7 +216,11 @@ export default function InteractiveViews() {
           <UValidatorForm onSubmit={handleSubmit} debounceTime={1000}>
             <Grid item container spacing={2}>
               <Grid item xs={12}>
-                <Box display="flex" alignItems="center">
+                <Box
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="space-between"
+                >
                   <ActiveFormTextField
                     typographyVariant="h3"
                     fullWidth
@@ -262,17 +289,8 @@ export default function InteractiveViews() {
                       validators={['required']}
                       errorMessages={['this field is required']}
                       interactiveMode
-                    >
-                      <MenuItem key="student" value={1}>
-                        Student
-                      </MenuItem>
-                      <MenuItem key="employed" value={2}>
-                        Employed
-                      </MenuItem>
-                      <MenuItem key="unemployed" value={3}>
-                        Unemployed
-                      </MenuItem>
-                    </ActiveFormSelect>
+                      options={employmentOptions}
+                    />
                   </Grid>
                   <Grid item xs={12}>
                     <ActiveCurrencyField
@@ -324,7 +342,11 @@ export default function InteractiveViews() {
           <UValidatorForm onSubmit={handleSubmit} debounceTime={1000}>
             <Grid item container spacing={2}>
               <Grid item xs={12}>
-                <Box display="flex" alignItems="center">
+                <Box
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="space-between"
+                >
                   <ActiveFormTextField
                     typographyVariant="h3"
                     fullWidth
@@ -334,11 +356,7 @@ export default function InteractiveViews() {
                     Personnel Details
                   </ActiveFormTextField>
                   {readOnly ? (
-                    <Button
-                      variant="contained"
-                      color="default"
-                      onClick={handleEdit}
-                    >
+                    <Button variant="contained" onClick={handleEdit}>
                       Edit
                     </Button>
                   ) : (
@@ -398,17 +416,8 @@ export default function InteractiveViews() {
                       typographyVariant="subtitle1"
                       validators={['required']}
                       errorMessages={['this field is required']}
-                    >
-                      <MenuItem key="student" value={1}>
-                        Student
-                      </MenuItem>
-                      <MenuItem key="employed" value={2}>
-                        Employed
-                      </MenuItem>
-                      <MenuItem key="unemployed" value={3}>
-                        Unemployed
-                      </MenuItem>
-                    </ActiveFormSelect>
+                      options={employmentOptions}
+                    />
                   </Grid>
                   <Grid item xs={12}>
                     <ActiveFormTextField
@@ -451,7 +460,6 @@ export default function InteractiveViews() {
                       readOnly={readOnly}
                       showLabelHelp={true}
                       InputLabelHelpProps={{
-                        type: 'link',
                         tooltipTitle: 'Please select multiple people from list',
                       }}
                     />
@@ -473,6 +481,6 @@ export default function InteractiveViews() {
           </UValidatorForm>
         </Paper>
       </Grid>
-    </Grid>
+    </StyledGrid>
   )
 }

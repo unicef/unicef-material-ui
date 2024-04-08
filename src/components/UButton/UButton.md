@@ -1,7 +1,7 @@
 UButton with examples :
 
 ```jsx
-import { Typography, Grid } from "@material-ui/core";
+import { Typography, Grid } from "@mui/material";
 
 const [loading, setLoading] = React.useState(false);
 const timer = React.useRef();

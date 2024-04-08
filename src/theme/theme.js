@@ -1,4 +1,4 @@
-import { createMuiTheme } from '@material-ui/core/styles'
+import { createTheme } from '@mui/material/styles'
 
 const unicef = {
   blue: '#1CABE2',
@@ -12,9 +12,7 @@ const unicef = {
   darkGreen: '#00833D',
 }
 
-const zIndexDrawer = 1200
-
-const theme = createMuiTheme({
+const theme = createTheme({
   typography: {
     useNextVariants: true,
     fontFamily: ['Roboto', 'Helvetica', 'Arial', 'sans-serif'].join(','),
@@ -31,44 +29,50 @@ const theme = createMuiTheme({
       main: unicef.red,
     },
     unicef: unicef,
-    unicefBlue: '#1CABE2',
+    unicefBlue: unicef.blue,
   },
-  unicefBlue: '#1CABE2',
+  unicefBlue: unicef.blue,
   mixins: {
     toolbar: {},
   },
   shape: {
     borderRadius: 4,
   },
-  zIndex: {
-    drawer: zIndexDrawer,
-  },
-  // customize with mui classes
-  overrides: {
-    MuiAppBar: {
-      root: {
-        zIndex: zIndexDrawer + 1,
-      },
-    },
-    MuiInputBase: {
-      root: {
-        backgroundColor: 'white',
+  components: {
+    // Name of the component
+    MuiButtonBase: {
+      defaultProps: {
+        // The props to change the default for.
+        disableRipple: true, // No more ripple, on the whole application 💣!
       },
     },
     MuiDrawer: {
-      paper: {
-        minWidth: 256,
-      },
-      paperAnchorDockedLeft: {
-        borderRight: 'none',
+      styleOverrides: {
+        paper: {
+          minWidth: 256,
+        },
       },
     },
-  },
-  props: {
-    // Name of the component
-    MuiButtonBase: {
-      // The default props to change
-      disableRipple: true, // No more ripple
+    MuiInputBase: {
+      styleOverrides: {
+        root: {
+          backgroundColor: 'white',
+        },
+      },
+    },
+    MuiTab: {
+      styleOverrides: {
+        root: {
+          minWidth: 160,
+        },
+      },
+    },
+    MuiAppBar: {
+      styleOverrides: {
+        root: {
+          zIndex: 1200,
+        },
+      },
     },
   },
 })

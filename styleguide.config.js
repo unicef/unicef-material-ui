@@ -73,6 +73,11 @@ module.exports = {
           'UInfiniteScroll.js'
         ),
         path.resolve(__dirname, 'src/components/USearchBox', 'USearchBox.js'),
+        path.resolve(
+          __dirname,
+          'src/components/UBreadcrumbs',
+          'UBreadcrumbs.js'
+        ),
       ],
       usageMode: 'expand',
     },
@@ -82,11 +87,6 @@ module.exports = {
         path.resolve(__dirname, 'src/components/ULayout', 'ULayout.js'),
         path.resolve(__dirname, 'src/components/USideBar', 'USideBar.js'),
         path.resolve(__dirname, 'src/components/UContent', 'UContent.js'),
-        path.resolve(
-          __dirname,
-          'src/components/UBreadcrumbs',
-          'UBreadcrumbs.js'
-        ),
       ],
       usageMode: 'expand',
     },
@@ -140,14 +140,24 @@ module.exports = {
         path.resolve(__dirname, 'src/components/UDatePicker', 'UDatePicker.js'),
         path.resolve(
           __dirname,
-          'src/components/UKeyboardDatePicker',
-          'UKeyboardDatePicker.js'
+          'src/components/UDesktopDatePicker',
+          'UDesktopDatePicker.js'
+        ),
+        path.resolve(
+          __dirname,
+          'src/components/UMobileDatePicker',
+          'UMobileDatePicker.js'
         ),
         path.resolve(__dirname, 'src/components/UTimePicker', 'UTimePicker.js'),
         path.resolve(
           __dirname,
-          'src/components/UKeyboardTimePicker',
-          'UKeyboardTimePicker.js'
+          'src/components/UDesktopTimePicker',
+          'UDesktopTimePicker.js'
+        ),
+        path.resolve(
+          __dirname,
+          'src/components/UMobileTimePicker',
+          'UMobileTimePicker.js'
         ),
         path.resolve(
           __dirname,
@@ -156,8 +166,13 @@ module.exports = {
         ),
         path.resolve(
           __dirname,
-          'src/components/UKeyboardDateTimePicker',
-          'UKeyboardDateTimePicker.js'
+          'src/components/UDesktopDateTimePicker',
+          'UDesktopDateTimePicker.js'
+        ),
+        path.resolve(
+          __dirname,
+          'src/components/UMobileDateTimePicker',
+          'UMobileDateTimePicker.js'
         ),
         path.resolve(
           __dirname,
@@ -202,12 +217,6 @@ module.exports = {
           'UCoordinateField.js'
         ),
       ],
-      // sections: [
-      //   {
-      //     name: 'ValidatorForm',
-      //     content: 'src/readme.md',
-      //   }
-      // ],
       usageMode: 'expand',
     },
     {
@@ -245,18 +254,33 @@ module.exports = {
         ),
         path.resolve(
           __dirname,
-          'src/components/ActiveKeyboardDatePicker',
-          'ActiveKeyboardDatePicker.js'
-        ),
-        path.resolve(
-          __dirname,
           'src/components/ActiveDatePicker',
           'ActiveDatePicker.js'
         ),
         path.resolve(
           __dirname,
-          'src/components/ActiveKeyboardTimePicker',
-          'ActiveKeyboardTimePicker.js'
+          'src/components/ActiveDesktopDatePicker',
+          'ActiveDesktopDatePicker.js'
+        ),
+        path.resolve(
+          __dirname,
+          'src/components/ActiveMobileDatePicker',
+          'ActiveMobileDatePicker.js'
+        ),
+        path.resolve(
+          __dirname,
+          'src/components/ActiveDateTimePicker',
+          'ActiveDateTimePicker.js'
+        ),
+        path.resolve(
+          __dirname,
+          'src/components/ActiveDesktopDateTimePicker',
+          'ActiveDesktopDateTimePicker.js'
+        ),
+        path.resolve(
+          __dirname,
+          'src/components/ActiveMobileDateTimePicker',
+          'ActiveMobileDateTimePicker.js'
         ),
         path.resolve(
           __dirname,
@@ -265,19 +289,30 @@ module.exports = {
         ),
         path.resolve(
           __dirname,
-          'src/components/ActiveKeyboardDateTimePicker',
-          'ActiveKeyboardDateTimePicker.js'
+          'src/components/ActiveDesktopTimePicker',
+          'ActiveDesktopTimePicker.js'
+        ),
+        path.resolve(
+          __dirname,
+          'src/components/ActiveMobileTimePicker',
+          'ActiveMobileTimePicker.js'
         ),
       ],
-      // sections: [
-      //   {
-      //     name: 'ValidatorForm',
-      //     content: 'src/readme.md',
-      //   }
-      // ],
       usageMode: 'expand',
     },
-    // For future refence to use in sections
+    {
+      name: 'Accessibility',
+      components: () => [
+        path.resolve(__dirname, 'src/components/UAriaLive', 'UAriaLive.js'),
+        path.resolve(
+          __dirname,
+          'src/components/UAriaHiddenText',
+          'UAriaHiddenText.js'
+        ),
+      ],
+      usageMode: 'expand',
+    },
+    // For future reference to use in sections
     // {
     //   name: 'UI Components',
     //   // content: 'src/components/USelect/USelect.md',

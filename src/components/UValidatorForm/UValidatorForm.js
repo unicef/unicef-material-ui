@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react'
+import React, { forwardRef, useEffect } from 'react'
 import { ValidatorForm } from 'react-form-validator-core'
 import PropTypes from 'prop-types'
 import {
@@ -18,55 +18,70 @@ import {
  */
 
 function ForwardRefForm(props, ref) {
-  UValidatorForm.addValidationRule = (name, callback) => {
-    ValidatorForm.addValidationRule(name, callback)
-  }
 
-  UValidatorForm.removeValidationRule = name => {
-    ValidatorForm.removeValidationRule(name)
-  }
+  useEffect(() => {
+    ValidatorForm.addValidationRule('isUrl', value => {
+      return isUrlText(value)
+    })
 
-  ValidatorForm.addValidationRule('isUrl', value => {
-    return isUrlText(value)
-  })
+    ValidatorForm.addValidationRule('isLatitude', value => {
+      if (value > 90 || value < -90) {
+        return false
+      }
+      return true
+    })
 
-  ValidatorForm.addValidationRule('isLatitude', value => {
-    if (value > 90 || value < -90) {
-      return false
+    ValidatorForm.addValidationRule('isLongitude', value => {
+      if (value > 180 || value < -180) {
+        return false
+      }
+      return true
+    })
+
+    ValidatorForm.addValidationRule('isPhone', value => {
+      return isPhoneNumberText(value)
+    })
+
+    ValidatorForm.addValidationRule('isSafeText', value => {
+      return isSafeText(value)
+    })
+
+    ValidatorForm.addValidationRule('isAlphanumeric', value => {
+      return isAlphanumericText(value)
+    })
+
+    ValidatorForm.addValidationRule(
+      'matchRegexpCaseInSensitive',
+      (value, regexStr) => {
+        return isRegexCaseInSensitive(value, regexStr)
+      }
+    )
+
+    // Cleanup function to remove validation rules when unmounted
+    return () => {
+      ValidatorForm.removeValidationRule('isUrl')
+      ValidatorForm.removeValidationRule('isLatitude')
+      ValidatorForm.removeValidationRule('isLongitude')
+      ValidatorForm.removeValidationRule('isPhone')
+      ValidatorForm.removeValidationRule('isSafeText')
+      ValidatorForm.removeValidationRule('isAlphanumeric')
+      ValidatorForm.removeValidationRule('matchRegexpCaseInSensitive')
     }
-    return true
-  })
-  ValidatorForm.addValidationRule('isLongitude', value => {
-    if (value > 180 || value < -180) {
-      return false
-    }
-    return true
-  })
-
-  ValidatorForm.addValidationRule('isPhone', value => {
-    return isPhoneNumberText(value)
-  })
-
-  ValidatorForm.addValidationRule('isSafeText', value => {
-    return isSafeText(value)
-  })
-
-  ValidatorForm.addValidationRule('isAlphanumeric', value => {
-    return isAlphanumericText(value)
-  })
-
-  ValidatorForm.addValidationRule(
-    'matchRegexpCaseInSensitive',
-    (value, regexStr) => {
-      return isRegexCaseInSensitive(value, regexStr)
-    }
-  )
+  }, [])
 
   return <ValidatorForm {...props} ref={ref} />
 }
 
 /* Forward the ref */
-const UValidatorForm = React.forwardRef(ForwardRefForm)
+const UValidatorForm = forwardRef(ForwardRefForm)
+
+UValidatorForm.addValidationRule = (name, callback) => {
+  ValidatorForm.addValidationRule(name, callback)
+}
+
+UValidatorForm.removeValidationRule = name => {
+  ValidatorForm.removeValidationRule(name)
+}
 
 UValidatorForm.propTypes = {
   /** Callback for form that fires when all validations are passed */
@@ -77,10 +92,13 @@ UValidatorForm.propTypes = {
   onError: PropTypes.func,
   /** Debounce time for validation i.e.your validation will run after debounceTime ms when you stop changing your input. */
   debounceTime: PropTypes.number,
+  /** To prevent the browser's default validation or not */
+  noValidate: PropTypes.bool,
 }
 
 UValidatorForm.defaultProps = {
   instantValidate: true,
+  noValidate: true,
   debounceTime: 0,
   onSubmit: () => {},
 }

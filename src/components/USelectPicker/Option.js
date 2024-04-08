@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import MenuItem from '@material-ui/core/MenuItem'
-import Avatar from '@material-ui/core/Avatar'
-import Box from '@material-ui/core/Box'
-import Typography from '@material-ui/core/Typography'
+import MenuItem from '@mui/material/MenuItem'
+import Avatar from '@mui/material/Avatar'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
 
 export default function Option(props) {
   const hideAvatar =

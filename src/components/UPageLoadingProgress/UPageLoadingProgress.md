@@ -2,7 +2,7 @@ Page loading usage:
  
 ```jsx static
 import React,{ useRef, useState, useEffect } from 'react'
-import { Typography, Grid } from '@material-ui/core'
+import { Typography, Grid } from '@mui/material'
 
   const [loading, setLoading] = useState(true)
   const timer = useRef()
@@ -28,7 +28,7 @@ import { Typography, Grid } from '@material-ui/core'
 
 ```jsx
 import React, { useState, useEffect, useRef } from 'react'
-import { Typography, Grid } from '@material-ui/core'
+import { Typography, Grid } from '@mui/material'
 import UButton from '../UButton'
   const [loading, setLoading] = useState(false)
   const timer = useRef()
@@ -60,7 +60,7 @@ import UButton from '../UButton'
 
 ```jsx
 import React, { useState, useEffect, useRef } from 'react'
-import { Typography, Grid } from '@material-ui/core'
+import { Typography, Grid } from '@mui/material'
 import UButton from '../UButton'
   const [loading, setLoading] = useState(false)
   const timer = useRef()

@@ -1,7 +1,7 @@
 import React from 'react'
 import { UGraphPeoplePicker } from 'unicef-material-ui'
-import { Typography, Grid } from '@material-ui/core'
-import { Message } from '@material-ui/icons'
+import { Typography, Grid } from '@mui/material'
+import { Message } from '@mui/icons-material'
 
 export default function GraphPeoplePickerExample() {
   //set the initial users
