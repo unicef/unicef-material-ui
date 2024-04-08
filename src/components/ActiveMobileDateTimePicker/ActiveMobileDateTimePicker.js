@@ -54,7 +54,7 @@ export default function ActiveMobileDateTimePicker({
   value,
   showLabelHelp,
   InputLabelProps,
-  inputlabelhelpprops,
+  InputLabelHelpProps,
   inputVariant,
   interactiveMode,
   readOnly,
@@ -75,7 +75,7 @@ export default function ActiveMobileDateTimePicker({
             <UTextField
               showLabelHelp={showLabelHelp}
               InputLabelProps={InputLabelProps}
-              inputlabelhelpprops={inputlabelhelpprops}
+              InputLabelHelpProps={InputLabelHelpProps}
               variant={inputVariant}
               readOnly={readOnly}
               {...params}
@@ -106,8 +106,8 @@ ActiveMobileDateTimePicker.propTypes = {
   label: PropTypes.string,
   /** Show label help */
   showLabelHelp: PropTypes.bool,
-  /** Props applied to the input label help element. E.g inputlabelhelpprops={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
-  inputlabelhelpprops: PropTypes.object,
+  /** Props applied to the input label help element. E.g InputLabelHelpProps={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
+  InputLabelHelpProps: PropTypes.object,
 }
 
 ActiveMobileDateTimePicker.defaultProps = {

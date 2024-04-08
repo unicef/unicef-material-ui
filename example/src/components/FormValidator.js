@@ -222,7 +222,7 @@ export default function FormValidator() {
               label="Email"
               required
               showLabelHelp={true}
-              inputlabelhelpprops={{
+              InputLabelHelpProps={{
                 tooltipTitle: 'Hover text',
               }}
               onChange={handleValue}
@@ -353,7 +353,10 @@ export default function FormValidator() {
                 'matchRegexpCaseInSensitive:^(?!.*<script\\b[^>]*>.*<\\/script\\s*>).*$',
               ]}
               value={values.regex}
-              customErrorMessages={{'matchRegexpCaseInSensitive:^(?!.*<script\\b[^>]*>.*<\\/script\\s*>).*$': 'Invalid data'}}
+              customErrorMessages={{
+                'matchRegexpCaseInSensitive:^(?!.*<script\\b[^>]*>.*<\\/script\\s*>).*$':
+                  'Invalid data',
+              }}
             />
           </Grid>
           <Grid item xs={12} lg={3} xl={2}>

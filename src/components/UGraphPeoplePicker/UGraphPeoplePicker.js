@@ -122,8 +122,8 @@ UGraphPeoplePicker.propTypes = {
   components: PropTypes.object,
   /** Show label help */
   showLabelHelp: PropTypes.bool,
-  /** Props applied to the input label help element. E.g.  inputlabelhelpprops={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
-  inputlabelhelpprops: PropTypes.object,
+  /** Props applied to the input label help element. E.g.  InputLabelHelpProps={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
+  InputLabelHelpProps: PropTypes.object,
 }
 
 UGraphPeoplePicker.defaultProps = {

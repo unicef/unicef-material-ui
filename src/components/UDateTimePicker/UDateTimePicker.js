@@ -17,7 +17,7 @@ export default function UDateTimePicker({
   value,
   showLabelHelp,
   InputLabelProps,
-  inputlabelhelpprops,
+  InputLabelHelpProps,
   inputVariant,
   ...others
 }) {
@@ -33,7 +33,7 @@ export default function UDateTimePicker({
           <UTextField
             showLabelHelp={showLabelHelp}
             InputLabelProps={InputLabelProps}
-            inputlabelhelpprops={inputlabelhelpprops}
+            InputLabelHelpProps={InputLabelHelpProps}
             variant={inputVariant}
             {...params}
           />
@@ -56,8 +56,8 @@ UDateTimePicker.propTypes = {
   label: PropTypes.string,
   /** Show label help */
   showLabelHelp: PropTypes.bool,
-  /** Props applied to the input label help element. E.g inputlabelhelpprops={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
-  inputlabelhelpprops: PropTypes.object,
+  /** Props applied to the input label help element. E.g InputLabelHelpProps={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
+  InputLabelHelpProps: PropTypes.object,
   /** Props applied to the InputLabel element.*/
   InputLabelProps: PropTypes.object,
 }

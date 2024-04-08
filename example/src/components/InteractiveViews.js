@@ -459,7 +459,7 @@ export default function InteractiveViews() {
                       fullWidth
                       readOnly={readOnly}
                       showLabelHelp={true}
-                      inputlabelhelpprops={{
+                      InputLabelHelpProps={{
                         tooltipTitle: 'Please select multiple people from list',
                       }}
                     />

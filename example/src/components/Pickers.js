@@ -236,7 +236,7 @@ export default function Pickers() {
             options={iconOptions}
             isMulti={true}
             showLabelHelp={true}
-            inputlabelhelpprops={{
+            InputLabelHelpProps={{
               type: 'link',
               link: 'https://unicef.github.io/',
             }}
@@ -263,7 +263,7 @@ export default function Pickers() {
             placeholder="Select people ..."
             options={peopleOptions}
             showLabelHelp={true}
-            inputlabelhelpprops={{
+            InputLabelHelpProps={{
               type: 'link',
               link: 'https://unicef.github.io/',
             }}
@@ -279,7 +279,7 @@ export default function Pickers() {
             options={peopleOptions}
             isMulti
             showLabelHelp={true}
-            inputlabelhelpprops={{
+            InputLabelHelpProps={{
               type: 'tooltip',
               tooltipTitle: 'Please select multiple people from list',
             }}
@@ -368,7 +368,7 @@ export default function Pickers() {
             value={selectedDate}
             onChange={handleDateChange}
             showLabelHelp={true}
-            inputlabelhelpprops={{
+            InputLabelHelpProps={{
               tooltipTitle: 'Date picker',
             }}
           />
@@ -405,7 +405,7 @@ export default function Pickers() {
             onChange={handleDateChange}
             showLabelHelp={true}
             InputLabelProps={{ shrink: true, required: true }}
-            inputlabelhelpprops={{
+            InputLabelHelpProps={{
               tooltipTitle: 'Time picker help text',
             }}
           />
@@ -418,7 +418,7 @@ export default function Pickers() {
             onChange={handleDateChange}
             showLabelHelp={true}
             InputLabelProps={{ shrink: true, required: true }}
-            inputlabelhelpprops={{
+            InputLabelHelpProps={{
               tooltipTitle: 'Time picker help text',
             }}
           />
@@ -431,7 +431,7 @@ export default function Pickers() {
             onChange={handleDateChange}
             showLabelHelp={true}
             InputLabelProps={{ shrink: true, required: true }}
-            inputlabelhelpprops={{
+            InputLabelHelpProps={{
               tooltipTitle: 'Time picker help text',
             }}
           />
@@ -446,7 +446,7 @@ export default function Pickers() {
             value={selectedDate}
             onChange={handleDateChange}
             showLabelHelp={true}
-            inputlabelhelpprops={{
+            InputLabelHelpProps={{
               tooltipTitle: 'Date and time',
             }}
           />
@@ -457,7 +457,7 @@ export default function Pickers() {
             value={selectedDate}
             onChange={handleDateChange}
             showLabelHelp={true}
-            inputlabelhelpprops={{
+            InputLabelHelpProps={{
               tooltipTitle: 'Date and time',
             }}
           />
@@ -468,7 +468,7 @@ export default function Pickers() {
             value={selectedDate}
             onChange={handleDateChange}
             showLabelHelp={true}
-            inputlabelhelpprops={{
+            InputLabelHelpProps={{
               tooltipTitle: 'Date and time',
             }}
           />

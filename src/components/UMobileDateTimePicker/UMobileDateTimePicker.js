@@ -17,7 +17,7 @@ export default function UMobileDateTimePicker({
   value,
   showLabelHelp,
   InputLabelProps,
-  inputlabelhelpprops,
+  InputLabelHelpProps,
   inputVariant,
   ...others
 }) {
@@ -33,7 +33,7 @@ export default function UMobileDateTimePicker({
           <UTextField
             showLabelHelp={showLabelHelp}
             InputLabelProps={InputLabelProps}
-            inputlabelhelpprops={inputlabelhelpprops}
+            InputLabelHelpProps={InputLabelHelpProps}
             variant={inputVariant}
             {...params}
           />
@@ -49,15 +49,15 @@ UMobileDateTimePicker.propTypes = {
   /** Callback function when change the picker field */
   onChange: PropTypes.func.isRequired,
   /** Value of the picker field */
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string]),
   /** Material ui textfield variant */
   inputVariant: PropTypes.string,
   /** Label text */
   label: PropTypes.string,
   /** Show label help */
   showLabelHelp: PropTypes.bool,
-  /** Props applied to the input label help element. E.g inputlabelhelpprops={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
-  inputlabelhelpprops: PropTypes.object,
+  /** Props applied to the input label help element. E.g InputLabelHelpProps={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
+  InputLabelHelpProps: PropTypes.object,
   /** Props applied to the InputLabel element.*/
   InputLabelProps: PropTypes.object,
 }
