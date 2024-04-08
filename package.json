@@ -10,8 +10,8 @@
   "homepage": "https://unicef.github.io/unicef-material-ui",
   "scripts": {
     "build": "npm run build:dev && npm run build:prod",
-    "build:dev": "SET NODE_ENV=development && rollup -c",
-    "build:prod": "SET NODE_ENV=production && rollup -c",
+    "build:dev": "set NODE_ENV=development && rollup -c",
+    "build:prod": "set NODE_ENV=production && rollup -c",
     "build:example": "npm run build:prod && rm -rf gh-pages-build/* && cd example && npm run build && cp -R build/* ../gh-pages-build/",
     "build:site": "npm run build:docs && cp -R ./styleguide ./site && cd example && npm run build && cp -R build/ ../site/example/",
     "start": "rollup -c -w",
