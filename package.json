@@ -1,6 +1,6 @@
 {
   "name": "@unicef/material-ui",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "UNICEF theme and components of material-ui for react",
   "main": "index.js",
   "files": [
@@ -10,8 +10,8 @@
   "homepage": "https://unicef.github.io/unicef-material-ui",
   "scripts": {
     "build": "npm run build:dev && npm run build:prod",
-    "build:dev": "set NODE_ENV=development&& rollup -c",
-    "build:prod": "set NODE_ENV=production&& rollup -c",
+    "build:dev": "cross-env NODE_ENV=development rollup -c",
+    "build:prod": "cross-env NODE_ENV=production rollup -c",
     "build:example": "npm run build:prod && rm -rf gh-pages-build/* && cd example && npm run build && cp -R build/* ../gh-pages-build/",
     "build:site": "npm run build:docs && cp -R ./styleguide ./site && cd example && npm run build && cp -R build/ ../site/example/",
     "start": "rollup -c -w",
@@ -69,6 +69,7 @@
     "babel-cli": "^6.26.0",
     "babel-loader": "^9.0.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "cross-env": "^7.0.3",
     "css-loader": "^6.7.1",
     "date-fns": "^2.29.3",
     "file-loader": "^6.2.0",
