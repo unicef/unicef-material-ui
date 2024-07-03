@@ -42,6 +42,7 @@ export default function USearchBox({
   className,
   showSeparator,
   iconLabel,
+  onChange,
   ...rest
 }) {
   const [searchValue, setSearch] = useState(value)
@@ -52,7 +53,9 @@ export default function USearchBox({
   }, [value])
 
   const handleChange = event => {
-    setSearch(event.target.value)
+    const value = event.target.value
+    setSearch(value)
+    onChange && onChange(value)
   }
 
   const applySearch = val => {
@@ -136,6 +139,8 @@ USearchBox.propTypes = {
   showSeparator: PropTypes.bool,
   /** Label next to the search icon */
   iconLabel: PropTypes.string,
+  /** Callback function when change the search text */
+  onchange: PropTypes.func,
 }
 
 USearchBox.defaultProps = {
