@@ -17,12 +17,13 @@ export default function PositiveNumberFormat({
     <NumberFormat
       {...other}
       getInputRef={inputRef}
-      onValueChange={values => {
+      onValueChange={(values, sourceInfo) => {
         onChange({
           target: {
             name: name,
             value: values.value,
           },
+          sourceInfo,
         })
       }}
       thousandSeparator={thousandSeparator}
