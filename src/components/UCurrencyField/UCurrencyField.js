@@ -6,10 +6,10 @@ import UPositiveInteger from '../UPositiveInteger'
  * The UCurrencyField is for creating currency input fields. It accepts several props for customization, including "inputPrefix," "decimalScale," "fixedDecimalScale," "textAlign," and etc
  */
 export default function UCurrencyField({
-  inputPrefix,
-  decimalScale,
-  fixedDecimalScale,
-  textAlign,
+  inputPrefix = '$ ',
+  decimalScale = 2,
+  fixedDecimalScale = true,
+  textAlign = 'right',
   inputProps,
   ...props
 }) {
@@ -61,11 +61,4 @@ UCurrencyField.propTypes = {
   textAlign: PropTypes.string,
   // If true it add 0s to match given decimalScale.
   fixedDecimalScale: PropTypes.bool,
-}
-
-UCurrencyField.defaultProps = {
-  inputPrefix: '$ ',
-  decimalScale: 2,
-  fixedDecimalScale: true,
-  textAlign: 'right',
 }

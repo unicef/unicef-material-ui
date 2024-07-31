@@ -39,6 +39,7 @@ export default function UButton({
   loading = false,
   variant = 'contained',
   color = 'primary',
+  children,
   ...others
 }) {
   function getVariant(variant) {
@@ -65,7 +66,7 @@ export default function UButton({
       disableRipple
       {...others}
     >
-      {props.children}
+      {children}
     </Button>
   )
 

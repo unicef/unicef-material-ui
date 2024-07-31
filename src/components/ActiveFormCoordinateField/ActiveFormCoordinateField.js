@@ -19,7 +19,7 @@ import { PositiveNumberFormat } from '../Shared'
 
 export default function ActiveFormCoordinateField({
   InputProps,
-  decimalScale,
+  decimalScale = 9,
   inputProps,
   coordinateType,
   validators,
@@ -95,8 +95,4 @@ ActiveFormCoordinateField.propTypes = {
   coordinateType: PropTypes.oneOf(['latitude', 'longitude']).isRequired,
   /** Change to write mode by hiding textfield border and displays border on Hover */
   interactiveMode: PropTypes.bool,
-}
-
-ActiveFormCoordinateField.defaultProps = {
-  decimalScale: 9,
 }

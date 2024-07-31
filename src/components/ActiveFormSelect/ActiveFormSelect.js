@@ -72,8 +72,8 @@ export default function ActiveFormSelect(props) {
     select,
     typographyVariant,
     className,
-    interactiveMode,
-    placeholder,
+    interactiveMode = false,
+    placeholder = 'Select',
     readOnly,
     InputLabelProps,
     InputProps,
@@ -172,9 +172,4 @@ ActiveFormSelect.propTypes = {
   validatorListener: PropTypes.func,
   /** Allow to use required validator in any validation trigger, not only form submit. */
   withRequiredValidator: PropTypes.bool,
-}
-
-ActiveFormSelect.defaultProps = {
-  placeholder: 'Select',
-  interactiveMode: false,
 }

@@ -68,10 +68,10 @@ export default function ActiveFormTextField(props) {
   const {
     typographyVariant,
     className,
-    variant,
+    variant = 'outlined',
     readOnly,
-    placeholder,
-    interactiveMode,
+    placeholder = 'Type something',
+    interactiveMode = false,
     InputLabelProps,
     InputProps,
     inputProps,
@@ -152,10 +152,4 @@ ActiveFormTextField.propTypes = {
   validatorListener: PropTypes.func,
   /** Allow to use required validator in any validation trigger, not only form submit. */
   withRequiredValidator: PropTypes.bool,
-}
-
-ActiveFormTextField.defaultProps = {
-  placeholder: 'Type something',
-  interactiveMode: false,
-  variant: 'outlined',
 }

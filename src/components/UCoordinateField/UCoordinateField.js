@@ -16,7 +16,7 @@ import UTextField from '../UTextField'
 export default function UCoordinateField({
   readOnly,
   InputProps,
-  decimalScale,
+  decimalScale = 9,
   inputProps,
   coordinateType,
   validators,
@@ -81,8 +81,4 @@ UCoordinateField.propTypes = {
   decimalScale: PropTypes.number,
   /** Coordinate type */
   coordinateType: PropTypes.oneOf(['latitude', 'longitude']).isRequired,
-}
-
-UCoordinateField.defaultProps = {
-  decimalScale: 9,
 }

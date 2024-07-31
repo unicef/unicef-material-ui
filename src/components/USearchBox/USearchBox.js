@@ -48,10 +48,10 @@ const StyledInputAdornment = styled(InputAdornment)(({ theme }) => ({
 export default function USearchBox({
   value,
   onSearch,
-  placeholder,
+  placeholder = 'Search',
   inputProps,
   className,
-  showSeparator,
+  showSeparator = true,
   iconLabel,
   ...rest
 }) {
@@ -148,9 +148,4 @@ USearchBox.propTypes = {
   showSeparator: PropTypes.bool,
   /** Label next to the search icon */
   iconLabel: PropTypes.string,
-}
-
-USearchBox.defaultProps = {
-  placeholder: 'Search',
-  showSeparator: true,
 }
