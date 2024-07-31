@@ -34,9 +34,13 @@ const StyledBox = styled(Box)(({ theme }) => ({
  * Custom advanced button with unicef colors and also it has spinning effect in the button
  *
  * */
-export default function UButton(props) {
-  const { spinButton, loading, variant, color, ...others } = props
-
+export default function UButton({
+  spinButton = false,
+  loading = false,
+  variant = 'contained',
+  color = 'primary',
+  ...others
+}) {
   function getVariant(variant) {
     switch (variant) {
       case 'uDefault':
@@ -94,11 +98,4 @@ UButton.propTypes = {
   variant: PropTypes.string,
   /**  color of the button */
   color: PropTypes.string,
-}
-
-UButton.defaultProps = {
-  color: 'primary',
-  variant: 'contained',
-  spinButton: false,
-  loading: false,
 }

@@ -56,12 +56,12 @@ const StyledBox = styled(Box)(({ theme }) => ({
  * If no image url from source app first letter of the user email will be displayed
  */
 export default function UAvatarImage({
-  userEmail,
-  size,
-  mode,
-  tooltipText,
-  count,
-  zIndexValue,
+  userEmail = '',
+  size = 'default',
+  mode = '',
+  tooltipText = '',
+  count = 0,
+  zIndexValue = 0,
   loadPhoto,
 }) {
   const [photoUrl, setPhotoUrl] = useState('')
@@ -115,13 +115,4 @@ UAvatarImage.propTypes = {
   zIndexValue: PropTypes.number,
   /** get photo url from the respective application */
   loadPhoto: PropTypes.func,
-}
-
-UAvatarImage.defaultProps = {
-  userEmail: '',
-  size: 'default', // image displays default size
-  mode: '',
-  tooltipText: '',
-  count: 0,
-  zIndexValue: 0,
 }

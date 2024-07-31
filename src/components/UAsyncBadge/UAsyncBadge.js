@@ -49,8 +49,8 @@ export default function UAsyncBadge({
   variant,
   text,
   visible,
-  ariaRole,
-  ariaLive,
+  ariaRole = 'alert',
+  ariaLive = 'assertive',
   onReset,
 }) {
   const chipRef = useRef()
@@ -105,9 +105,4 @@ UAsyncBadge.propTypes = {
   ariaRole: PropTypes.oneOf(['log', 'status', 'alert']),
   /** Aria live of the badge */
   ariaLive: PropTypes.oneOf(['polite', 'assertive', 'off']),
-}
-
-UAsyncBadge.defaultProps = {
-  ariaRole: 'alert',
-  ariaLive: 'assertive',
 }

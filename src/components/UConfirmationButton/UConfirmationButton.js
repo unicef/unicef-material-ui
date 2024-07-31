@@ -53,20 +53,19 @@ const CONFIRMATION_VARIANTS = {
  * This button displays the confirmation where user has clicked the button
  * It has two varint icon/menu item
  */
-export default function UConfirmationButton(props) {
-  const {
-    onConfirm,
-    id,
-    buttonText,
-    enabled,
-    variant,
-    icon,
-    confirmText,
-    confirmActionText,
-    cancelText,
-    buttonVariant,
-    confirmVariant,
-  } = props
+export default function UConfirmationButton({
+  onConfirm,
+  id,
+  buttonText = 'Delete',
+  enabled = true,
+  variant = 'icon',
+  icon = <DeleteOutlinedIcon />,
+  confirmText = 'Confirm deletion?',
+  confirmActionText = 'Yes, delete',
+  cancelText = 'No',
+  buttonVariant = 'text',
+  confirmVariant = 'menu',
+}) {
   const [deleteAnchorEl, setDeleteAnchorEl] = useState(null)
   const [openDialog, setOpenDialog] = useState(false)
 
@@ -191,16 +190,4 @@ UConfirmationButton.propTypes = {
   icon: PropTypes.element,
   /** Button variant applied to menuItem button */
   buttonVariant: PropTypes.string,
-}
-
-UConfirmationButton.defaultProps = {
-  buttonText: 'Delete',
-  variant: 'icon',
-  enabled: true,
-  confirmText: 'Confirm deletion?',
-  confirmActionText: 'Yes, delete',
-  cancelText: 'No',
-  icon: <DeleteOutlinedIcon />,
-  buttonVariant: 'text',
-  confirmVariant: 'menu',
 }

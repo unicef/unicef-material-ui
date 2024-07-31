@@ -48,14 +48,16 @@ const StyledBox = styled(Box, {
  * Please have look at [Material UI Date Picker](https://mui.com/x/api/date-pickers/date-picker/) for more details
  */
 export default function ActiveDatePicker({
-  inputFormat,
+  inputFormat = 'dd/MM/yyyy',
   label,
   onChange,
   value,
   showLabelHelp,
-  InputLabelProps,
+  InputLabelProps = {
+    shrink: true,
+  },
   InputLabelHelpProps,
-  inputVariant,
+  inputVariant = 'outlined',
   interactiveMode,
   readOnly,
   ...others
@@ -109,12 +111,4 @@ ActiveDatePicker.propTypes = {
   showLabelHelp: PropTypes.bool,
   /** Props applied to the input label help element. E.g InputLabelHelpProps={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
   InputLabelHelpProps: PropTypes.object,
-}
-
-ActiveDatePicker.defaultProps = {
-  inputVariant: 'outlined',
-  InputLabelProps: {
-    shrink: true,
-  },
-  inputFormat: 'dd/MM/yyyy',
 }

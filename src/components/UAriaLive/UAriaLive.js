@@ -18,7 +18,12 @@ const StyledBox = styled(Box)(() => ({
  * This component is intended to generate a wrapper with the aria-live property.
  * Refer for [Aria live](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions )
  */
-export default function UAriaLive({ text, type, role, ariaAtomic }) {
+export default function UAriaLive({
+  text,
+  type = 'polite',
+  role = 'log',
+  ariaAtomic = false,
+}) {
   return (
     <StyledBox
       aria-live={type}
@@ -40,10 +45,4 @@ UAriaLive.propTypes = {
   ariaAtomic: PropTypes.bool,
   /** Aria role */
   role: PropTypes.string,
-}
-
-UAriaLive.defaultProps = {
-  type: 'polite',
-  role: 'log',
-  ariaAtomic: false,
 }

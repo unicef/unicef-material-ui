@@ -47,12 +47,12 @@ const StyledBox = styled(Box)(({ theme }) => ({
 
 export default function InputLabelHelp({
   inputLabel,
-  type,
-  label,
+  type = 'tooltip',
+  label = 'Help',
   link,
-  icon,
+  icon = null,
   tooltipTitle,
-  tooltipPlacement,
+  tooltipPlacement = 'top',
 }) {
   return (
     <Fragment>
@@ -110,11 +110,4 @@ InputLabelHelp.propTypes = {
   icon: PropTypes.node,
   // Tooltip placement
   tooltipPlacement: PropTypes.string,
-}
-
-InputLabelHelp.defaultProps = {
-  label: 'Help',
-  type: 'tooltip',
-  icon: null,
-  tooltipPlacement: 'top',
 }
