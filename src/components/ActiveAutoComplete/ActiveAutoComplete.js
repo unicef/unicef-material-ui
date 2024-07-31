@@ -51,10 +51,10 @@ export default function ActiveAutoComplete({
   readOnly,
   minLength,
   maxLength,
-  usedItemIds,
-  allowContextSpecific,
-  interactiveMode,
-  counter,
+  usedItemIds = [],
+  allowContextSpecific = false,
+  interactiveMode = false,
+  counter = false,
   placeholder,
   InputLabelProps,
   props,
@@ -220,11 +220,4 @@ ActiveAutoComplete.propTypes = {
   placeholder: PropTypes.string,
   /** Label props applied to input field*/
   InputLabelProps: PropTypes.object,
-}
-
-ActiveAutoComplete.defaultProps = {
-  allowContextSpecific: false,
-  interactiveMode: false,
-  counter: false,
-  usedItemIds: [],
 }

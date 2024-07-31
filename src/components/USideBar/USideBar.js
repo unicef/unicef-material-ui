@@ -31,8 +31,12 @@ const StyledBox = styled(Box)(props => ({
  *
  * USideBar must be wrapped inside the ULayout(Parent Component).
  */
-export default function USideBar(props) {
-  const { headerHeight, width, ...others } = props
+export default function USideBar({
+  headerHeight = 64,
+  width = 300,
+  children,
+  ...others
+}) {
   return (
     <StyledBox display={{ xs: 'none', md: 'block' }} width={width}>
       <Drawer
@@ -44,7 +48,7 @@ export default function USideBar(props) {
         {...others}
       >
         <div style={{ minHeight: headerHeight }} />
-        {props.children}
+        {children}
       </Drawer>
     </StyledBox>
   )
@@ -57,9 +61,4 @@ USideBar.propTypes = {
    * width of the Drawer in USideBar
    */
   width: PropTypes.number,
-}
-
-USideBar.defaultProps = {
-  headerHeight: 64,
-  width: 300,
 }

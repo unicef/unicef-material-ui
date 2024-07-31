@@ -22,8 +22,7 @@ const StyledBox = styled(Box)(() => ({
  * 1. Display circular progress
  * 2. Display text message
  */
-export default function UPageLoadingProgress(props) {
-  const { text } = props
+export default function UPageLoadingProgress({ text = '' }) {
   return (
     <StyledBox
       display="flex"
@@ -44,8 +43,4 @@ export default function UPageLoadingProgress(props) {
 UPageLoadingProgress.propTypes = {
   /** text to display instead of circular progress */
   text: PropTypes.string,
-}
-
-UPageLoadingProgress.defaultProps = {
-  text: '',
 }

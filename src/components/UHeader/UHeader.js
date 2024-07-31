@@ -76,17 +76,17 @@ const StyledAppBar = styled(AppBar, {
 
 export default function UHeader(props) {
   const {
-    position,
+    position = 'fixed',
     applicationName,
-    showHamburgerMenu,
-    hideLogo,
+    showHamburgerMenu = true,
+    hideLogo = false,
     logo,
-    hideLogoBorderLine,
-    logoUrl,
+    hideLogoBorderLine = true,
+    logoUrl = '/',
     onLogoClick,
     openDrawer,
     toggleDrawer,
-    elevation,
+    elevation = 4,
     bgColor,
   } = props
 
@@ -210,13 +210,4 @@ UHeader.propTypes = {
   toggleDrawer: PropTypes.func,
   /** AppBar elevation value to handle the box shadow effect */
   elevation: PropTypes.number,
-}
-
-UHeader.defaultProps = {
-  position: 'fixed',
-  showHamburgerMenu: true,
-  hideLogo: false,
-  logoUrl: '/',
-  hideLogoBorderLine: true,
-  elevation: 4,
 }

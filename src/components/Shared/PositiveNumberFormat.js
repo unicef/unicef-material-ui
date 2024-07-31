@@ -5,18 +5,30 @@ import NumberFormat from 'react-number-format'
 export default function PositiveNumberFormat({
   inputRef,
   name,
+  value,
   onChange,
-  thousandSeparator,
-  isNumericString,
-  allowNegative,
-  decimalScale,
-  fixedDecimalScale,
+  onBlur,
+  thousandSeparator = true,
+  isNumericString = false,
+  allowNegative = false,
+  decimalScale = 0,
+  fixedDecimalScale = false,
   ...other
 }) {
   return (
     <NumberFormat
       {...other}
+      value={value}
       getInputRef={inputRef}
+      onBlur={() =>
+        onBlur &&
+        onBlur({
+          target: {
+            name: name,
+            value: value,
+          },
+        })
+      }
       onValueChange={(values, sourceInfo) => {
         onChange({
           target: {
@@ -36,10 +48,14 @@ export default function PositiveNumberFormat({
 }
 
 PositiveNumberFormat.propTypes = {
+  // field value
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   // Input ref
   inputRef: PropTypes.func.isRequired,
   // On each onChange value will be formatted
   onChange: PropTypes.func.isRequired,
+  // callback function to be called on blur
+  onBlur: PropTypes.func,
   // Thousand separator
   thousandSeparator: PropTypes.bool,
   // Is numeric string
@@ -50,12 +66,4 @@ PositiveNumberFormat.propTypes = {
   decimalScale: PropTypes.number,
   //If true it add 0s to match given decimalScale.
   fixedDecimalScale: PropTypes.bool,
-}
-
-PositiveNumberFormat.defaultProps = {
-  thousandSeparator: true,
-  isNumericString: false,
-  allowNegative: false,
-  decimalScale: 0,
-  fixedDecimalScale: false,
 }

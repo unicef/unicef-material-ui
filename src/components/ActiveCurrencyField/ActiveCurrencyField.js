@@ -6,10 +6,10 @@ import ActiveFormPositiveInteger from '../ActiveFormPositiveInteger'
  * The ActiveCurrencyField is for creating currency input fields. It accepts several props for customization, including "inputPrefix," "decimalScale," "fixedDecimalScale," "textAlign," and etc. The cool feature with ActiveCurrencyField is you can read and write at the same place.
  */
 export default function ActiveCurrencyField({
-  inputPrefix,
-  decimalScale,
-  fixedDecimalScale,
-  textAlign,
+  inputPrefix = '$ ',
+  decimalScale = 2,
+  fixedDecimalScale = true,
+  textAlign = 'right',
   inputProps,
   ...props
 }) {
@@ -69,11 +69,4 @@ ActiveCurrencyField.propTypes = {
   withRequiredValidator: PropTypes.bool,
   /** Input text align */
   textAlign: PropTypes.string,
-}
-
-ActiveCurrencyField.defaultProps = {
-  inputPrefix: '$ ',
-  decimalScale: 2,
-  fixedDecimalScale: true,
-  textAlign: 'right',
 }

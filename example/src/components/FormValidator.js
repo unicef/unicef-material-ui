@@ -115,6 +115,10 @@ export default function FormValidator() {
     setValues({ ...values, [name]: value })
   }
 
+  const handleBlur = event => {
+    console.log('handleBlur', event)
+  }
+
   const [itemValue, setItemValue] = useState('')
   const [itemList, setItemList] = useState([])
 
@@ -170,6 +174,7 @@ export default function FormValidator() {
               onChange={e =>
                 setValues({ ...values, positiveInteger: e.target.value })
               }
+              onBlur={handleBlur}
             />
           </UValidatorForm>
         </Grid>
