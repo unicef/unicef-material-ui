@@ -21,6 +21,7 @@ export default function PositiveNumberFormat({
       value={value}
       getInputRef={inputRef}
       onBlur={() =>
+        onBlur &&
         onBlur({
           target: {
             name: name,
