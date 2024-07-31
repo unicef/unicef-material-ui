@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 /**
  * UErrorAlert is a component to display error message to the user
  */
-export default function UErrorAlert({ error, preformatted, onClose }) {
+export default function UErrorAlert({ error, preformatted = false, onClose }) {
   return (
     <React.Fragment>
       {error && (
@@ -29,8 +29,4 @@ UErrorAlert.propTypes = {
   preformatted: PropTypes.bool,
   /** Triggers close action of error alert */
   onClose: PropTypes.func,
-}
-
-UErrorAlert.defaultProps = {
-  preformatted: false,
 }

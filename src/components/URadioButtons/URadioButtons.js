@@ -35,7 +35,7 @@ export default function URadioButtons({
   value,
   onChange,
   isReadOnly,
-  variant,
+  variant = 'row',
   optionLabels,
   optionValues,
 }) {
@@ -84,8 +84,4 @@ URadioButtons.propTypes = {
   optionLabels: PropTypes.array,
   /**array of radio button values */
   optionValues: PropTypes.array,
-}
-
-URadioButtons.defaultProps = {
-  variant: 'row',
 }

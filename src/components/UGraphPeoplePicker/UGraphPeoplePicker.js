@@ -26,8 +26,8 @@ export default function UGraphPeoplePicker({
   label,
   options,
   onBlur,
-  helpText,
-  isMultiple,
+  helpText = '',
+  isMultiple = true,
   searchUsers,
   components,
   ...props
@@ -124,9 +124,4 @@ UGraphPeoplePicker.propTypes = {
   showLabelHelp: PropTypes.bool,
   /** Props applied to the input label help element. E.g.  InputLabelHelpProps={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
   InputLabelHelpProps: PropTypes.object,
-}
-
-UGraphPeoplePicker.defaultProps = {
-  helpText: '',
-  isMultiple: true,
 }

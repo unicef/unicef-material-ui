@@ -36,9 +36,9 @@ export default function UAutoComplete({
   readOnly,
   minLength,
   maxLength,
-  usedItemIds,
-  allowContextSpecific,
-  counter,
+  usedItemIds = [],
+  allowContextSpecific = false,
+  counter = false,
   placeholder,
   InputLabelProps,
   props,
@@ -197,10 +197,4 @@ UAutoComplete.propTypes = {
   placeholder: PropTypes.string,
   /** Label props applied to input field*/
   InputLabelProps: PropTypes.object,
-}
-
-UAutoComplete.defaultProps = {
-  allowContextSpecific: false,
-  counter: false,
-  usedItemIds: [],
 }
