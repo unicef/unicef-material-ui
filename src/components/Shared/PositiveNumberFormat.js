@@ -51,7 +51,7 @@ PositiveNumberFormat.propTypes = {
   // field value
   value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   // Input ref
-  inputRef: PropTypes.func.isRequired,
+  inputRef: PropTypes.func,
   // On each onChange value will be formatted
   onChange: PropTypes.func.isRequired,
   // callback function to be called on blur

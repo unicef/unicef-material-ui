@@ -205,7 +205,10 @@ UTextField.propTypes = {
    *
    * Ex: `customErrorMessages={{required: 'This field is required'}`
    */
-  customErrorMessages: PropTypes.object,
+  customErrorMessages: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.string,
+  ]),
   /** Name of input. */
   name: PropTypes.string,
   /** It triggers after each validation.It will return true or false. */
@@ -215,10 +218,12 @@ UTextField.propTypes = {
   /** To make textfield to be select. See below examples section for select example and sample code */
   select: PropTypes.bool,
   /** Select options if the textfield is select */
-  options: PropTypes.shape({
-    value: PropTypes.any,
-    label: PropTypes.string,
-  }),
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.any,
+      label: PropTypes.string,
+    })
+  ),
   /** To enable character counter */
   counter: PropTypes.bool,
   /** Maximum length of characters */

@@ -18,7 +18,9 @@ const classes = {
 
 const StyledBox = styled(Box, {
   shouldForwardProp: prop =>
-    prop !== 'typographyVariant' && prop !== 'inputPadding',
+    prop !== 'typographyVariant' &&
+    prop !== 'inputPadding' &&
+    prop !== 'errorMessages',
 })(({ theme, typographyVariant, inputPadding }) => ({
   [`& .${classes.textField}`]: {
     marginTop: theme.spacing(0.25),

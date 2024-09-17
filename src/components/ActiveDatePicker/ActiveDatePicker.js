@@ -95,7 +95,7 @@ ActiveDatePicker.propTypes = {
   /** Callback function when change the picker field */
   onChange: PropTypes.func.isRequired,
   /** Value of the picker field */
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   /** Material ui textfield variant */
   inputVariant: PropTypes.string,
 
