@@ -18,7 +18,13 @@ import {
  */
 
 function ForwardRefForm(props, ref) {
-
+  const {
+    instantValidate = true,
+    noValidate = true,
+    debounceTime = 0,
+    onSubmit = () => {},
+    ...rest
+  } = props
   useEffect(() => {
     ValidatorForm.addValidationRule('isUrl', value => {
       return isUrlText(value)
@@ -69,7 +75,16 @@ function ForwardRefForm(props, ref) {
     }
   }, [])
 
-  return <ValidatorForm {...props} ref={ref} />
+  return (
+    <ValidatorForm
+      instantValidate={instantValidate}
+      noValidate={noValidate}
+      debounceTime={debounceTime}
+      onSubmit={onSubmit}
+      {...rest}
+      ref={ref}
+    />
+  )
 }
 
 /* Forward the ref */
@@ -94,13 +109,6 @@ UValidatorForm.propTypes = {
   debounceTime: PropTypes.number,
   /** To prevent the browser's default validation or not */
   noValidate: PropTypes.bool,
-}
-
-UValidatorForm.defaultProps = {
-  instantValidate: true,
-  noValidate: true,
-  debounceTime: 0,
-  onSubmit: () => {},
 }
 
 export default UValidatorForm

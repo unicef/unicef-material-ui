@@ -48,15 +48,18 @@ const StyledBox = styled(Box, {
  * This component let's you access the calender and clock to select the date and time.
  * Please have look at [Material UI Date Time Picker](https://mui.com/x/api/date-pickers/date-time-picker/) for more details
  */
+
 export default function ActiveDateTimePicker({
-  inputFormat,
+  inputFormat = 'dd/MM/yyyy hh:mm a',
   label,
   onChange,
   value,
   showLabelHelp,
-  InputLabelProps,
+  InputLabelProps = {
+    shrink: true,
+  },
   InputLabelHelpProps,
-  inputVariant,
+  inputVariant = 'outlined',
   interactiveMode,
   readOnly,
   ...others
@@ -109,12 +112,4 @@ ActiveDateTimePicker.propTypes = {
   showLabelHelp: PropTypes.bool,
   /** Props applied to the input label help element. E.g InputLabelHelpProps={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
   InputLabelHelpProps: PropTypes.object,
-}
-
-ActiveDateTimePicker.defaultProps = {
-  inputVariant: 'outlined',
-  InputLabelProps: {
-    shrink: true,
-  },
-  inputFormat: 'dd/MM/yyyy hh:mm a',
 }

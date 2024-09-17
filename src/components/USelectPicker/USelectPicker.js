@@ -99,27 +99,31 @@ const ICON_VARIANTS = {
  * * Clear current selection.
  *
  */
+
 export default function USelectPicker(props) {
   const theme = useTheme()
   const {
     label,
-    variant,
+    variant = 'outlined',
     TextFieldProps,
-    showNoOptionsWithEmptyTextField,
+    showNoOptionsWithEmptyTextField = true,
     onInputChange,
     components,
-    showLabelHelp,
+    showLabelHelp = false,
     InputLabelProps,
-    InputLabelHelpProps,
-    hideAvatar,
-    readOnly,
-    lineByLineOption,
-    isClearable,
-    isSearchable,
-    isDisabled,
-    menuIsOpen,
-    placeholder,
-    iconVariant,
+    InputLabelHelpProps = {},
+    hideAvatar = true,
+    readOnly = false,
+    lineByLineOption = false,
+    isClearable = undefined,
+    isSearchable = true,
+    isDisabled = false,
+    menuIsOpen = undefined,
+    placeholder = 'Select...',
+    iconVariant = ICON_VARIANTS.light,
+    isMulti = false,
+    noOptionsText = 'No options',
+    loadingText = 'Loading...',
     ...others
   } = props
 
@@ -196,6 +200,9 @@ export default function USelectPicker(props) {
         isDisabled={readOnly ? true : isDisabled}
         menuIsOpen={readOnly ? false : menuIsOpen}
         placeholder={selectPlaceholder}
+        isMulti={isMulti}
+        noOptionsText={'No options'}
+        loadingText={'Loading...'}
         {...others}
       />
     </StyledBox>
@@ -277,23 +284,4 @@ USelectPicker.propTypes = {
   noOptionsText: PropTypes.string,
   /** Loading text */
   loadingText: PropTypes.string,
-}
-
-USelectPicker.defaultProps = {
-  isMulti: false,
-  placeholder: 'Select...',
-  variant: 'outlined',
-  showNoOptionsWithEmptyTextField: true,
-  showLabelHelp: false,
-  InputLabelHelpProps: {},
-  hideAvatar: true,
-  readOnly: false,
-  isClearable: undefined,
-  isSearchable: true,
-  isDisabled: false,
-  menuIsOpen: undefined,
-  lineByLineOption: false,
-  iconVariant: ICON_VARIANTS.light,
-  noOptionsText: 'No options',
-  loadingText: 'Loading...',
 }

@@ -48,14 +48,16 @@ const StyledBox = styled(Box, {
  * Please have look at [Material UI Desktop Date Time Picker](https://mui.com/x/api/date-pickers/desktop-date-time-picker/) for more details
  */
 export default function ActiveDesktopDateTimePicker({
-  inputFormat,
+  inputFormat = 'dd/MM/yyyy hh:mm a',
   label,
   onChange,
   value,
   showLabelHelp,
-  InputLabelProps,
+  InputLabelProps = {
+    shrink: true,
+  },
   InputLabelHelpProps,
-  inputVariant,
+  inputVariant = 'outlined',
   interactiveMode,
   readOnly,
   ...others
@@ -108,12 +110,4 @@ ActiveDesktopDateTimePicker.propTypes = {
   showLabelHelp: PropTypes.bool,
   /** Props applied to the input label help element. E.g InputLabelHelpProps={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
   InputLabelHelpProps: PropTypes.object,
-}
-
-ActiveDesktopDateTimePicker.defaultProps = {
-  inputVariant: 'outlined',
-  InputLabelProps: {
-    shrink: true,
-  },
-  inputFormat: 'dd/MM/yyyy hh:mm a',
 }

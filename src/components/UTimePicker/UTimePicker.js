@@ -12,14 +12,16 @@ import UTextField from './../UTextField'
  * Please have look at [Material Ui TimePicker](https://mui.com/x/api/date-pickers/time-picker/#main-content) for more details
  */
 export default function UTimePicker({
-  inputFormat,
+  inputFormat = 'hh:mm a',
   label,
   onChange,
   value,
   showLabelHelp,
-  InputLabelProps,
+  InputLabelProps = {
+    shrink: true,
+  },
   InputLabelHelpProps,
-  inputVariant,
+  inputVariant = 'outlined',
   ...others
 }) {
   return (
@@ -61,12 +63,4 @@ UTimePicker.propTypes = {
   InputLabelHelpProps: PropTypes.object,
   /** Props applied to the InputLabel element.*/
   InputLabelProps: PropTypes.object,
-}
-
-UTimePicker.defaultProps = {
-  inputVariant: 'outlined',
-  InputLabelProps: {
-    shrink: true,
-  },
-  inputFormat: 'hh:mm a',
 }
