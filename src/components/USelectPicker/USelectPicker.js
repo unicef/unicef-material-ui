@@ -201,8 +201,8 @@ export default function USelectPicker(props) {
         menuIsOpen={readOnly ? false : menuIsOpen}
         placeholder={selectPlaceholder}
         isMulti={isMulti}
-        noOptionsText={'No options'}
-        loadingText={'Loading...'}
+        noOptionsText={noOptionsText}
+        loadingText={loadingText}
         {...others}
       />
     </StyledBox>
