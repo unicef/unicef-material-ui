@@ -62,7 +62,7 @@ export default function CheckBoxValidator() {
 ```jsx
 import React, { useState, useEffect, useRef } from 'react';
 import { styled } from '@mui/material/styles';
-import { Button, Box, Checkbox, MenuItem, Radio, FormGroup, FormControl, FormLabel, FormControlLabel, RadioGroup, FormHelperText } from '@mui/material';
+import { Button, Checkbox, MenuItem, Radio, FormGroup, FormControl, FormLabel, FormControlLabel, RadioGroup, FormHelperText } from '@mui/material';
 import UValidatorForm from '../UValidatorForm';
 
 const PREFIX = 'UValidator';
@@ -72,7 +72,7 @@ const classes = {
   menu: `${PREFIX}-menu`,
 }
 
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledDiv = styled('div')(({ theme }) => ({
     [`& .${classes.formControl}`]: {
     margin: theme.spacing(3),
   },
@@ -118,7 +118,7 @@ const StyledBox = styled(Box)(({ theme }) => ({
     // debounceTime={1000}
     instantValidate={true}
   >
-  <StyledBox>
+  <StyledDiv>
     <UValidatorComponent
       validators={['isTruthy']}
       errorMessages={['check more than two fields']}
@@ -176,7 +176,7 @@ const StyledBox = styled(Box)(({ theme }) => ({
         </FormGroup>
       </FormControl>
     </UValidatorComponent>
-  </StyledBox>
+  </StyledDiv>
 </UValidatorForm>
 //   )
 // }
@@ -187,7 +187,7 @@ const StyledBox = styled(Box)(({ theme }) => ({
 ``` jsx 
 import React, { useState, useEffect, useRef } from 'react';
 import { styled } from '@mui/material/styles';
-import { Button, Box, Checkbox, MenuItem, Radio, FormGroup, FormControl, FormLabel, FormControlLabel, RadioGroup, FormHelperText } from '@mui/material';
+import { Button, Checkbox, MenuItem, Radio, FormGroup, FormControl, FormLabel, FormControlLabel, RadioGroup, FormHelperText } from '@mui/material';
 import UValidatorForm from '../UValidatorForm'
 
 const PREFIX = 'UValidator'
@@ -197,7 +197,7 @@ const classes = {
   menu: `${PREFIX}-menu`,
 }
 
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledDiv = styled('div')(({ theme }) => ({
     [`& .${classes.formControl}`]: {
     margin: theme.spacing(3),
   },
@@ -237,7 +237,7 @@ const StyledBox = styled(Box)(({ theme }) => ({
       // debounceTime={1000}
       instantValidate={true}
     >
-    <StyledBox>
+    <StyledDiv>
       <UValidatorComponent
         name="radio"
         label="Choose an option"
@@ -270,7 +270,7 @@ const StyledBox = styled(Box)(({ theme }) => ({
         </FormControl>
       </UValidatorComponent>
       <Button className={classes.margin} color="primary" variant="contained" type="Validate">Validate</Button>
-    </StyledBox>
+    </StyledDiv>
   </UValidatorForm>
 //   )
 // }

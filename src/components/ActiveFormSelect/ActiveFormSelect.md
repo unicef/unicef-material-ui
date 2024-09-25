@@ -10,7 +10,7 @@ const classes = {
   margin: `${PREFIX}-margin`,
 }
 
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledDiv = styled('div')(({ theme }) => ({
     [`& .${classes.textField}`]: {
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
@@ -54,7 +54,7 @@ const currencies = [
   }
 
   // return (
-    <StyledBox>
+    <StyledDiv>
       <UValidatorForm
         ref={form}
         onSubmit={handleSubmit}
@@ -83,7 +83,7 @@ const currencies = [
           </Grid>
         </Grid>
       </UValidatorForm>
-    </StyledBox>
+    </StyledDiv>
 //   )
 // }
 

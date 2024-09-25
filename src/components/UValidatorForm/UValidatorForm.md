@@ -1,6 +1,6 @@
 ```jsx
 import React, { useState, useEffect, useRef } from 'react';
-import { Button, Box, MenuItem } from '@mui/material';
+import { Button, MenuItem } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import UTextField from '../UTextField';
 const PREFIX = 'UValidatorForm'
@@ -12,7 +12,9 @@ const classes = {
   menu: `${PREFIX}-menu`,
   font: `${PREFIX}-font`,
 }
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledDiv = styled('div')(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
   [`& .${classes.textField}`]: {
     margin: theme.spacing(1),
     minWidth: 195,
@@ -91,7 +93,7 @@ const currencies = [
       debounceTime={1000}
     // instantValidate={true}
     >
-      <StyledBox display="flex" alignItems="center">
+      <StyledDiv>
         <UTextField
           label="Email"
           onChange={handleValue}
@@ -134,7 +136,7 @@ const currencies = [
             variant="outlined"
         />
         <Button className={classes.margin} color="primary" variant="contained" type="submit">Submit</Button>
-      </StyledBox>
+      </StyledDiv>
     </UValidatorForm>
 //   )
 // }

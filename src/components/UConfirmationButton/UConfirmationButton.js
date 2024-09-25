@@ -23,7 +23,7 @@ const classes = {
   span: `${PREFIX}-span`,
 }
 
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledDiv = styled('div')(({ theme }) => ({
   [`& .${classes.menuDelete}`]: {
     width: '500px',
   },
@@ -95,7 +95,7 @@ export default function UConfirmationButton({
   }
 
   return (
-    <StyledBox>
+    <StyledDiv>
       {variant === CONTROL_VARIANTS.menuItem ? (
         <MenuItem onClick={handleClick} className={classes.menuLabel}>
           {icon}
@@ -156,7 +156,7 @@ export default function UConfirmationButton({
           </MenuItem>
         </Menu>
       )}
-    </StyledBox>
+    </StyledDiv>
   )
 }
 

@@ -11,7 +11,7 @@ const classes = {
   buttonProgress: `${PREFIX}-buttonProgress`,
 }
 
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledDiv = styled('div')(({ theme }) => ({
   [`&.${classes.root}`]: {
     display: 'flex',
     alignItems: 'center',
@@ -73,14 +73,14 @@ export default function UButton({
   return !spinButton ? (
     CustomButton
   ) : (
-    <StyledBox className={classes.root}>
+    <StyledDiv className={classes.root}>
       <Box className={classes.wrapper}>
         {CustomButton}
         {loading && (
           <CircularProgress size={24} className={classes.buttonProgress} />
         )}
       </Box>
-    </StyledBox>
+    </StyledDiv>
   )
 }
 

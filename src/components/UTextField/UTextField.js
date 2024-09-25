@@ -110,7 +110,7 @@ class UTextField extends ValidatorComponent {
     const { isValid, isSelectOpen } = this.state
     const length = this.props.value ? this.props.value.length : 0
     const counterError = maxLength && maxLength < length
-    
+
     return (
       <Fragment>
         <TextField
@@ -164,12 +164,14 @@ class UTextField extends ValidatorComponent {
               }
             : {})}
         >
-          {select ? options && options.length
-            ? options.map(option => (
-                <MenuItem key={option.value} value={option.value}>
-                  {option.label}
-                </MenuItem>
-              )) : children
+          {select
+            ? options && options.length
+              ? options.map(option => (
+                  <MenuItem key={option.value} value={option.value}>
+                    {option.label}
+                  </MenuItem>
+                ))
+              : children
             : ''}
         </TextField>
         {counter && (

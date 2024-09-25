@@ -41,7 +41,7 @@ select={true} | select if you pass select, you must pass options options =
 ```jsx
 import React, { useState, useEffect, useRef } from 'react'
 import { styled } from '@mui/material/styles'
-import { Button, Box } from '@mui/material'
+import { Button } from '@mui/material'
 import UValidatorForm from '../UValidatorForm'
 
 const PREFIX = 'UTextFieldExample'
@@ -49,7 +49,9 @@ const classes = {
   textField: `${PREFIX}-textField`,
   margin: `${PREFIX}-margin`,
 }
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledDiv = styled('div')(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
   [`& .${classes.textField}`]: {
     margin: theme.spacing(1),
     width: 195,
@@ -104,7 +106,7 @@ function handleSubmit() {
   // debounceTime={1000}
   instantValidate={true}
 >
-  <Box display="flex" alignItems="center">
+  <StyledDiv>
     <UTextField
       select
       label="Currency"
@@ -126,7 +128,7 @@ function handleSubmit() {
     >
       Submit
     </Button>
-  </Box>
+  </StyledDiv>
 </UValidatorForm>
 //   )
 // }
@@ -141,14 +143,16 @@ validators={['required', 'isEmail']}
 ```jsx
 import React, { useState, useEffect, useRef } from 'react'
 import { styled } from '@mui/material/styles'
-import { Button, Box, MenuItem } from '@mui/material'
+import { Button, MenuItem } from '@mui/material'
 import UValidatorForm from '../UValidatorForm'
 
 const PREFIX = 'UTextFieldExample'
 const classes = {
   margin: `${PREFIX}-margin`,
 }
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledDiv = styled('div')(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
   [`& .${classes.margin}`]: {
     marginLeft: theme.spacing(1),
   },
@@ -176,7 +180,7 @@ function handleSubmit() {
   debounceTime={1000}
   // instantValidate={true}
 >
-  <StyledBox display="flex" alignItems="center">
+  <StyledDiv>
     <UTextField
       label="Email"
       onChange={handleValue}
@@ -195,7 +199,7 @@ function handleSubmit() {
     >
       Submit
     </Button>
-  </StyledBox>
+  </StyledDiv>
 </UValidatorForm>
 //   )
 // }
@@ -210,7 +214,7 @@ validators={['isUrl']}
 ```jsx
 import React, { useState, useEffect, useRef } from 'react'
 import { styled } from '@mui/material/styles'
-import { Button, Box, MenuItem } from '@mui/material'
+import { Button, MenuItem } from '@mui/material'
 import UValidatorForm from '../UValidatorForm'
 import UButton from '../UButton'
 
@@ -218,7 +222,9 @@ const PREFIX = 'UTextFieldExample'
 const classes = {
   margin: `${PREFIX}-margin`,
 }
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledDiv = styled('div')(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
   [`& .${classes.margin}`]: {
     marginLeft: theme.spacing(1),
   },
@@ -246,7 +252,7 @@ function handleSubmit() {
   debounceTime={1000}
   // instantValidate={true}
 >
-  <StyledBox display="flex" alignItems="center">
+  <StyledDiv>
     <UTextField
       label="Url"
       onChange={handleValue}
@@ -264,7 +270,7 @@ function handleSubmit() {
     >
       Submit
     </UButton>
-  </StyledBox>
+  </StyledDiv>
 </UValidatorForm>
 //   )
 // }
@@ -279,7 +285,7 @@ validators={['isNumber', 'minNumber:0', 'maxNumber:25555']}
 ```jsx
 import React, { useState, useEffect, useRef } from 'react'
 import { styled } from '@mui/material/styles'
-import { Button, Box, MenuItem } from '@mui/material'
+import { Button, MenuItem } from '@mui/material'
 import UValidatorForm from '../UValidatorForm'
 
 const PREFIX = 'UTextFieldExample'
@@ -288,7 +294,9 @@ const classes = {
   margin: `${PREFIX}-margin`,
   dense: `${PREFIX}-dense`,
 }
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledDiv = styled('div')(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
   [`& .${classes.textField}`]: {
     margin: theme.spacing(1),
     minWidth: 195,
@@ -323,7 +331,7 @@ function handleSubmit() {
   // debounceTime={1000}
   instantValidate={true}
 >
-  <StyledBox display="flex" alignItems="center">
+  <StyledDiv>
     <UTextField
       label="Probability"
       onChange={handleValue}
@@ -348,7 +356,7 @@ function handleSubmit() {
     >
       Submit
     </Button>
-  </StyledBox>
+  </StyledDiv>
 </UValidatorForm>
 //   )
 // }
@@ -363,7 +371,7 @@ validators={['required', 'matchRegexp:^[0-9]$']}
 ```jsx
 import React, { useState, useEffect, useRef } from 'react'
 import { styled } from '@mui/material/styles'
-import { Button, Box, MenuItem } from '@mui/material'
+import { Button, MenuItem } from '@mui/material'
 import UValidatorForm from '../UValidatorForm'
 
 const PREFIX = 'UTextFieldExample'
@@ -372,7 +380,9 @@ const classes = {
   margin: `${PREFIX}-margin`,
   dense: `${PREFIX}-dense`,
 }
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledDiv = styled('div')(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
   [`& .${classes.textField}`]: {
     margin: theme.spacing(1),
     minWidth: 195,
@@ -407,7 +417,7 @@ function handleSubmit() {
   // debounceTime={1000}
   instantValidate={true}
 >
-  <StyledBox display="flex" alignItems="center">
+  <StyledDiv>
     <UTextField
       label="Regex"
       onChange={handleValue}
@@ -427,7 +437,7 @@ function handleSubmit() {
     >
       Submit
     </Button>
-  </StyledBox>
+  </StyledDiv>
 </UValidatorForm>
 //   )
 // }
@@ -442,7 +452,7 @@ validators={['minStringLength:6', maxStringLength:12']}
 ```jsx
 import React, { useState, useEffect, useRef } from 'react'
 import { styled } from '@mui/material/styles'
-import { Button, Box, MenuItem } from '@mui/material'
+import { Button, MenuItem } from '@mui/material'
 import UValidatorForm from '../UValidatorForm'
 
 const PREFIX = 'UTextFieldExample'
@@ -451,7 +461,9 @@ const classes = {
   margin: `${PREFIX}-margin`,
   dense: `${PREFIX}-dense`,
 }
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledDiv = styled('div')(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
   [`& .${classes.textField}`]: {
     margin: theme.spacing(1),
     minWidth: 195,
@@ -486,7 +498,7 @@ function handleSubmit() {
   debounceTime={1000}
   // instantValidate={true}
 >
-  <StyledBox display="flex" alignItems="center">
+  <StyledDiv>
     <UTextField
       label="Characters Length"
       onChange={handleValue}
@@ -510,7 +522,7 @@ function handleSubmit() {
     >
       Submit
     </Button>
-  </StyledBox>
+  </StyledDiv>
 </UValidatorForm>
 //   )
 // }
@@ -525,7 +537,7 @@ validators={['isPhone']}
 ```jsx
 import React, { useState, useEffect, useRef } from 'react'
 import { styled } from '@mui/material/styles'
-import { Button, Box, MenuItem } from '@mui/material'
+import { Button, MenuItem } from '@mui/material'
 import UValidatorForm from '../UValidatorForm'
 
 const PREFIX = 'UTextFieldExample'
@@ -534,7 +546,9 @@ const classes = {
   margin: `${PREFIX}-margin`,
   dense: `${PREFIX}-dense`,
 }
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledDiv = styled('div')(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
   [`& .${classes.textField}`]: {
     margin: theme.spacing(1),
     minWidth: 195,
@@ -569,7 +583,7 @@ function handleSubmit() {
   debounceTime={1000}
   // instantValidate={true}
 >
-  <StyledBox display="flex" alignItems="center">
+  <StyledDiv>
     <UTextField
       label="Phone number"
       onChange={handleValue}
@@ -588,7 +602,7 @@ function handleSubmit() {
     >
       Submit
     </Button>
-  </StyledBox>
+  </StyledDiv>
 </UValidatorForm>
 //   )
 // }
@@ -603,7 +617,7 @@ validators={['isAlphanumeric']}
 ```jsx
 import React, { useState, useEffect, useRef } from 'react'
 import { styled } from '@mui/material/styles'
-import { Button, Box, MenuItem } from '@mui/material'
+import { Button, MenuItem } from '@mui/material'
 import UValidatorForm from '../UValidatorForm'
 
 const PREFIX = 'UTextFieldExample'
@@ -612,7 +626,9 @@ const classes = {
   margin: `${PREFIX}-margin`,
   dense: `${PREFIX}-dense`,
 }
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledDiv = styled('div')(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
   [`& .${classes.textField}`]: {
     margin: theme.spacing(1),
     minWidth: 195,
@@ -647,7 +663,7 @@ function handleSubmit() {
   debounceTime={1000}
   // instantValidate={true}
 >
-  <StyledBox display="flex" alignItems="center">
+  <StyledDiv>
     <UTextField
       label="Alphanumeric text"
       onChange={handleValue}
@@ -666,7 +682,7 @@ function handleSubmit() {
     >
       Submit
     </Button>
-  </StyledBox>
+  </StyledDiv>
 </UValidatorForm>
 //   )
 // }
@@ -681,7 +697,7 @@ validators={['isSafeText']}
 ```jsx
 import React, { useState, useEffect, useRef } from 'react'
 import { styled } from '@mui/material/styles'
-import { Button, Box, MenuItem } from '@mui/material'
+import { Button, MenuItem } from '@mui/material'
 import UValidatorForm from '../UValidatorForm'
 
 const PREFIX = 'UTextFieldExample'
@@ -690,7 +706,9 @@ const classes = {
   margin: `${PREFIX}-margin`,
   dense: `${PREFIX}-dense`,
 }
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledDiv = styled('div')(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
   [`& .${classes.textField}`]: {
     margin: theme.spacing(1),
     minWidth: 195,
@@ -725,7 +743,7 @@ function handleSubmit() {
   debounceTime={1000}
   // instantValidate={true}
 >
-  <StyledBox display="flex" alignItems="center">
+  <StyledDiv>
     <UTextField
       label="Safe text"
       onChange={handleValue}
@@ -744,7 +762,7 @@ function handleSubmit() {
     >
       Submit
     </Button>
-  </StyledBox>
+  </StyledDiv>
 </UValidatorForm>
 //   )
 // }

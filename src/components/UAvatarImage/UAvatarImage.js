@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { styled } from '@mui/material/styles'
 import PropTypes from 'prop-types'
-import { Avatar, Tooltip, Typography, Box } from '@mui/material'
+import { Avatar, Tooltip, Typography } from '@mui/material'
 const PREFIX = 'UAvatarImage'
 
 const classes = {
@@ -14,7 +14,7 @@ const classes = {
   font: `${PREFIX}-font`,
 }
 
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledDiv = styled('div')(({ theme }) => ({
   [`& .${classes.small}`]: {
     width: theme.spacing(4),
     height: theme.spacing(4),
@@ -77,7 +77,7 @@ export default function UAvatarImage({
   return (
     <React.Fragment>
       <Tooltip title={tooltipText} placement="bottom">
-        <StyledBox>
+        <StyledDiv>
           <Avatar
             className={`${classes[mode]} ${classes[size]}`}
             style={{ zIndex: zIndexValue }}
@@ -93,7 +93,7 @@ export default function UAvatarImage({
               `+${count}`
             )}
           </Avatar>
-        </StyledBox>
+        </StyledDiv>
       </Tooltip>
     </React.Fragment>
   )

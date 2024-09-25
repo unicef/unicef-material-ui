@@ -1,7 +1,6 @@
 import React from 'react'
 import { styled } from '@mui/material/styles'
 import {
-  Box,
   Radio,
   RadioGroup,
   FormControl,
@@ -17,7 +16,7 @@ const classes = {
   gutter: `${PREFIX}-gutter`,
 }
 
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledDiv = styled('div')(({ theme }) => ({
   [`& .${classes.padding}`]: {
     paddingLeft: theme.spacing(3),
   },
@@ -44,7 +43,7 @@ export default function URadioButtons({
   }
 
   return (
-    <StyledBox>
+    <StyledDiv>
       {isReadOnly ? (
         <Typography className={classes.padding}>{value || '-'}</Typography>
       ) : (
@@ -67,7 +66,7 @@ export default function URadioButtons({
           </RadioGroup>
         </FormControl>
       )}
-    </StyledBox>
+    </StyledDiv>
   )
 }
 

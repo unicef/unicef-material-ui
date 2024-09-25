@@ -1,6 +1,6 @@
 import React from 'react'
 import { styled } from '@mui/material/styles'
-import { Box, CircularProgress, Typography } from '@mui/material'
+import { CircularProgress, Typography } from '@mui/material'
 import PropTypes from 'prop-types'
 
 const PREFIX = 'UPageLoadingProgress'
@@ -9,8 +9,12 @@ const classes = {
   pageLoadingProgress: `${PREFIX}-pageLoadingProgress`,
 }
 
-const StyledBox = styled(Box)(() => ({
+const StyledDiv = styled('div')(({ theme }) => ({
   [`&.${classes.pageLoadingProgress}`]: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    spacing: theme.spacing(8),
     height: '50vh',
     flex: '1',
   },
@@ -24,19 +28,13 @@ const StyledBox = styled(Box)(() => ({
  */
 export default function UPageLoadingProgress({ text = '' }) {
   return (
-    <StyledBox
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      spacing={8}
-      className={classes.pageLoadingProgress}
-    >
+    <StyledDiv className={classes.pageLoadingProgress}>
       {text ? (
         <Typography variant="h6">{text}</Typography>
       ) : (
         <CircularProgress />
       )}
-    </StyledBox>
+    </StyledDiv>
   )
 }
 

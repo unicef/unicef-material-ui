@@ -8,7 +8,7 @@ UNavbarCenter Example :
 
 ```jsx
 import UHeader from '../UHeader'
-import { Button, Box, InputBase } from'@mui/material'
+import { Button, InputBase } from'@mui/material'
 import { styled, alpha } from '@mui/material/styles'
 import SearchIcon from '@mui/icons-material/Search'
 
@@ -22,7 +22,7 @@ const classes = {
   inputRoot: `${PREFIX}-inputRoot`,
 }
 
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledDiv = styled('div')(({ theme }) => ({
  [`&.${classes.search}`]: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -71,7 +71,7 @@ const StyledBox = styled(Box)(({ theme }) => ({
   applicationName="Application"
 >
   <UNavbarCenter>
-    <StyledBox className={classes.search}>
+    <StyledDiv className={classes.search}>
       <InputBase
         placeholder="Search…"
         classes={{
@@ -83,7 +83,7 @@ const StyledBox = styled(Box)(({ theme }) => ({
       <div className={classes.searchIcon}>
         <SearchIcon color="primary" />
       </div>
-    </StyledBox>
+    </StyledDiv>
   </UNavbarCenter>
 </UHeader>
 // )

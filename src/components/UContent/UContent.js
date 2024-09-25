@@ -10,7 +10,7 @@ const classes = {
 
 const Root = styled('main')(({ theme }) => ({
   [`&.${classes.content}`]: {
-    flexGrow: 1,
+    flex: 1,
     padding: theme.spacing(1),
   },
 }))
