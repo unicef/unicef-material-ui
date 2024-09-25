@@ -408,7 +408,6 @@ export default function FormValidator() {
         />
       </UValidatorForm>
       {/* Reset values */}
-
       <UValidatorForm
         onSubmit={handleItemValueSubmit}
         onError={errors => console.log(errors)}
@@ -452,7 +451,14 @@ export default function FormValidator() {
         instantValidate={true}
         noValidate
       >
-        <Box display="flex" mb={2} flexDirection="column" alignItems="baseline">
+        <Box
+          sx={{
+            display: 'flex',
+            mb: 2,
+            flexDirection: 'column',
+            alignItems: 'baseline',
+          }}
+        >
           <UValidatorComponent
             name="termAndCondition"
             label="Agree with the Terms and Conditions"
@@ -573,7 +579,6 @@ export default function FormValidator() {
           </Button>
         </Box>
       </UValidatorForm>
-
       <UValidatorForm
         onSubmit={handleItemValueSubmit}
         onError={errors => console.log(errors)}
@@ -582,7 +587,7 @@ export default function FormValidator() {
       >
         <Grid container spacing={1}>
           <Grid item size={12}>
-            <Typography variant="h5" style={{ margin: '16px 0px' }}>
+            <Typography variant="h5" sx={{ margin: '16px 0px' }}>
               Coordinates Form
             </Typography>
           </Grid>

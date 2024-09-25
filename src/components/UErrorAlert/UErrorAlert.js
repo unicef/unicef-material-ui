@@ -8,7 +8,12 @@ export default function UErrorAlert({ error, preformatted = false, onClose }) {
   return (
     <React.Fragment>
       {error && (
-        <Box marginTop={2} marginBottom={2}>
+        <Box
+          sx={{
+            marginTop: 2,
+            marginBottom: 2,
+          }}
+        >
           <Alert severity="error" onClose={() => onClose && onClose()}>
             {preformatted ? (
               <pre>{error.message}</pre>

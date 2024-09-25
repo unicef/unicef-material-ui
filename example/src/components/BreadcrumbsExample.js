@@ -13,7 +13,7 @@ export default function BreadCrumbsExample() {
   return (
     <Grid container>
       <Grid item size={12}>
-        <Typography variant="h5" style={{ margin: '32px 0px' }}>
+        <Typography variant="h5" sx={{ margin: '32px 0px' }}>
           Breadcrumbs
         </Typography>
       </Grid>

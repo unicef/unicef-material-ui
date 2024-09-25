@@ -218,7 +218,7 @@ export default function Pickers() {
     <UValidatorForm>
       <Grid container spacing={3}>
         <Grid item size={12}>
-          <Typography variant="h5" style={{ margin: '16px 0px' }}>
+          <Typography variant="h5" sx={{ margin: '16px 0px' }}>
             Icon picker
           </Typography>
         </Grid>
@@ -253,7 +253,7 @@ export default function Pickers() {
         </Grid>
 
         <Grid item size={12}>
-          <Typography variant="h5" style={{ margin: '16px 0px' }}>
+          <Typography variant="h5" sx={{ margin: '16px 0px' }}>
             People picker
           </Typography>
         </Grid>
@@ -332,7 +332,7 @@ export default function Pickers() {
         </Grid>
 
         <Grid item size={12}>
-          <Typography variant="h5" style={{ margin: '16px 0px' }}>
+          <Typography variant="h5" sx={{ margin: '16px 0px' }}>
             Select
           </Typography>
         </Grid>

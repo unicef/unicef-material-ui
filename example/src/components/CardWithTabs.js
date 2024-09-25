@@ -31,7 +31,7 @@ export default function CardWithTabs() {
   return (
     <Grid container>
       <Grid item size={12}>
-        <Typography variant="h5" style={{ margin: '32px 0px' }}>
+        <Typography variant="h5" sx={{ margin: '32px 0px' }}>
           Card with tabs
         </Typography>
       </Grid>

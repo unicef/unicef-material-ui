@@ -44,7 +44,7 @@ const rows = [
 export default function CardsExample() {
   return (
     <Root>
-      <Typography variant="h5" style={{ margin: '32px 0px' }}>
+      <Typography variant="h5" sx={{ margin: '32px 0px' }}>
         Cards and tables
       </Typography>
       <Grid container spacing={3}>

@@ -33,7 +33,13 @@ export default function NavLinks() {
   }
 
   return (
-    <Box display="flex" pl={4} pr={2}>
+    <Box
+      sx={{
+        display: 'flex',
+        pl: 4,
+        pr: 2,
+      }}
+    >
       <Button color="inherit">
         <MailIcon />
         Login
@@ -74,9 +80,11 @@ export default function NavLinks() {
       </Menu>
       <Button color="inherit">
         <Link
-          color="inherit"
           underline="hover"
           href="https://github.com/unicef/unicef-material-ui"
+          sx={{
+            color: 'inherit',
+          }}
         >
           Github
         </Link>

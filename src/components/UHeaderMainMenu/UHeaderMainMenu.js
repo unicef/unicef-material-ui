@@ -16,7 +16,11 @@ export default function UHeaderMainMenu(props) {
   }
 
   return (
-    <Box bgcolor={bgcolor}>
+    <Box
+      sx={{
+        bgcolor,
+      }}
+    >
       <Tabs {...others}>{props.children}</Tabs>
     </Box>
   )

@@ -175,7 +175,11 @@ class UTextField extends ValidatorComponent {
             : ''}
         </TextField>
         {counter && (
-          <Box display="block">
+          <Box
+            sx={{
+              display: 'block',
+            }}
+          >
             <Typography
               style={{
                 ...styles.counter,

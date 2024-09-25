@@ -100,9 +100,19 @@ export default function UHeader(props) {
   return (
     <StyledAppBar position={position} elevation={elevation} bgColor={bgColor}>
       <Toolbar disableGutters={true} className={classes.bgColor}>
-        <Box display="flex" ml={3} alignItems="center">
+        <Box
+          sx={{
+            display: 'flex',
+            ml: 3,
+            alignItems: 'center',
+          }}
+        >
           {showHamburgerMenu !== false && (
-            <Box mr={2}>
+            <Box
+              sx={{
+                mr: 2,
+              }}
+            >
               <IconButton
                 edge="start"
                 onClick={e => toggleDrawer && toggleDrawer(e, true)}
@@ -151,11 +161,13 @@ export default function UHeader(props) {
             ''}
           <Typography variant="h6" className={classes.title}>
             <Link
-              color="inherit"
               underline="none"
               onClick={e => handleUrlClick(e)}
               href={logoUrl && logoUrl}
               title={applicationName}
+              sx={{
+                color: 'inherit',
+              }}
             >
               {applicationName}
             </Link>
@@ -165,10 +177,12 @@ export default function UHeader(props) {
           </div>
         </Box>
         <Box
-          height="64px"
-          display={{ xs: 'none', md: 'block' }}
-          ml="auto"
           className={classes.navRight}
+          sx={{
+            height: '64px',
+            display: { xs: 'none', md: 'block' },
+            ml: 'auto',
+          }}
         >
           {findReactChildren(props, UHeaderRightButtons)}
         </Box>

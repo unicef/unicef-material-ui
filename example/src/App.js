@@ -45,7 +45,7 @@ export default function App() {
               <Route
                 path={'/'}
                 element={
-                  <List style={{ width: 300 }}>
+                  <List sx={{ width: 300 }}>
                     {['Layout', 'Forms', 'Interactive views', 'Pickers'].map(
                       text => (
                         <ListItemButton

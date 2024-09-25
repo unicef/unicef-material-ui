@@ -52,7 +52,12 @@ export default function ColorsExample(props) {
                 return (
                   <Grid key={color} item size={{ xs: 6, md: 4, lg: 2 }}>
                     <Paper p={3}>
-                      <Box bgcolor={theme.palette[colorKey][color]} p={4}>
+                      <Box
+                        sx={{
+                          bgcolor: theme.palette[colorKey][color],
+                          p: 4,
+                        }}
+                      >
                         <Typography variant="body1">{color}</Typography>
                       </Box>
                       <Typography className={classes.colorCode} variant="body1">
