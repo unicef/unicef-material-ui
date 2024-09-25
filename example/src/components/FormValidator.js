@@ -12,7 +12,7 @@ import {
   FormLabel,
   FormControlLabel,
   RadioGroup,
-  Grid,
+  Grid2 as Grid,
   List,
   ListItem,
   ListItemText,
@@ -151,12 +151,12 @@ export default function FormValidator() {
   return (
     <Root>
       <Grid container spacing={1}>
-        <Grid item xs={12}>
+        <Grid item size={12}>
           <Typography variant="h5" style={{ margin: '16px 0px' }}>
             Positive Integer
           </Typography>
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid item size={{ xs: 12, md: 6 }}>
           <UValidatorForm
             onSubmit={event => {
               event.preventDefault()
@@ -180,12 +180,12 @@ export default function FormValidator() {
         </Grid>
       </Grid>
       <Grid container spacing={1}>
-        <Grid item xs={12}>
+        <Grid item size={12}>
           <Typography variant="h5" style={{ margin: '16px 0px' }}>
             Currency field
           </Typography>
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid item size={{ xs: 12, md: 6 }}>
           <UValidatorForm
             onSubmit={event => {
               event.preventDefault()
@@ -217,12 +217,12 @@ export default function FormValidator() {
         noValidate
       >
         <Grid container>
-          <Grid item xs={12}>
+          <Grid item size={12}>
             <Typography style={{ marginBottom: 12 }} variant="h5">
               Reset Form validator
             </Typography>
           </Grid>
-          <Grid item xs={12} lg={3} xl={2}>
+          <Grid item size={{ xs: 12, lg: 3, xl: 2 }}>
             <UTextField
               label="Email"
               required
@@ -237,9 +237,8 @@ export default function FormValidator() {
               value={values.cus_email}
             />
           </Grid>
-          <Grid item xs={12} lg={6}>
+          <Grid item size={{ xs: 12, lg: 6 }}>
             <Button
-              // style={{ marginTop: 24 }}
               className={classes.button}
               color="primary"
               variant="contained"
@@ -249,7 +248,6 @@ export default function FormValidator() {
             </Button>
             <Button
               onClick={resetValidation}
-              // style={{ marginTop: 24 }}
               className={classes.button}
               color="primary"
               variant="contained"
@@ -267,12 +265,12 @@ export default function FormValidator() {
         noValidate
       >
         <Grid container>
-          <Grid item xs={12}>
+          <Grid item size={12}>
             <Typography style={{ marginBottom: 12 }} variant="h5">
               Form validator
             </Typography>
           </Grid>
-          <Grid item xs={12} lg={3} xl={2}>
+          <Grid item size={{ xs: 12, lg: 3, xl: 2 }}>
             <UTextField
               label="Email"
               onChange={handleValue}
@@ -283,7 +281,7 @@ export default function FormValidator() {
               value={values.email}
             />
           </Grid>
-          <Grid item xs={12} lg={3} xl={2}>
+          <Grid item size={{ xs: 12, lg: 3, xl: 2 }}>
             <UTextField
               label="Password"
               onChange={handleValue}
@@ -295,7 +293,7 @@ export default function FormValidator() {
               value={values.password}
             />
           </Grid>
-          <Grid item xs={12} lg={3} xl={2}>
+          <Grid item size={{ xs: 12, lg: 3, xl: 2 }}>
             <UTextField
               id="outlined-select-currency"
               select
@@ -314,7 +312,7 @@ export default function FormValidator() {
               ))}
             </UTextField>
           </Grid>
-          <Grid item xs={12} lg={3} xl={2}>
+          <Grid item size={{ xs: 12, lg: 3, xl: 2 }}>
             <UTextField
               label="URL"
               onChange={handleValue}
@@ -325,7 +323,7 @@ export default function FormValidator() {
               value={values.url}
             />
           </Grid>
-          <Grid item xs={12} lg={3} xl={2}>
+          <Grid item size={{ xs: 12, lg: 3, xl: 2 }}>
             <UTextField
               label="Phone"
               onChange={handleValue}
@@ -336,7 +334,7 @@ export default function FormValidator() {
               value={values.phone}
             />
           </Grid>
-          <Grid item xs={12} lg={3} xl={2}>
+          <Grid item size={{ xs: 12, lg: 3, xl: 2 }}>
             <UTextField
               label="Safe text"
               onChange={handleValue}
@@ -347,7 +345,7 @@ export default function FormValidator() {
               value={values.safeText}
             />
           </Grid>
-          <Grid item xs={12} lg={3} xl={2}>
+          <Grid item size={{ xs: 12, lg: 3, xl: 2 }}>
             <UTextField
               label="Custom regex(no script)"
               onChange={handleValue}
@@ -364,7 +362,7 @@ export default function FormValidator() {
               }}
             />
           </Grid>
-          <Grid item xs={12} lg={3} xl={2}>
+          <Grid item size={{ xs: 12, lg: 3, xl: 2 }}>
             <UTextField
               label="Alphanumeric"
               onChange={handleValue}
@@ -375,7 +373,7 @@ export default function FormValidator() {
               value={values.alphanumeric}
             />
           </Grid>
-          <Grid item xs={12} lg={1}>
+          <Grid item size={{ xs: 12, lg: 1 }}>
             <Button
               className={classes.button}
               color="primary"
@@ -583,12 +581,12 @@ export default function FormValidator() {
         noValidate
       >
         <Grid container spacing={1}>
-          <Grid item xs={12}>
+          <Grid item size={12}>
             <Typography variant="h5" style={{ margin: '16px 0px' }}>
               Coordinates Form
             </Typography>
           </Grid>
-          <Grid item xs={12} lg={3} xl={3}>
+          <Grid item size={{ xs: 12, lg: 3, xl: 3 }}>
             <UCoordinateField
               coordinateType="latitude"
               label="Latitude"
@@ -600,7 +598,7 @@ export default function FormValidator() {
             />
           </Grid>
 
-          <Grid item xs={12} lg={3} xl={3}>
+          <Grid item size={{ xs: 12, lg: 3, xl: 3 }}>
             <UCoordinateField
               coordinateType="longitude"
               label="Longitude"
@@ -612,7 +610,7 @@ export default function FormValidator() {
             />
           </Grid>
 
-          <Grid item xs={12}>
+          <Grid item size={12}>
             <Button color="primary" variant="contained" type="submit">
               Submit
             </Button>

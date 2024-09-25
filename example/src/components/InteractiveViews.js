@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { styled } from '@mui/material/styles'
 import {
   Paper,
-  Grid,
+  Grid2 as Grid,
   Avatar,
   Divider,
   Box,
@@ -151,7 +151,7 @@ export default function InteractiveViews() {
 
   return (
     <StyledGrid container spacing={3} display="flex">
-      <Grid item xs={12} lg={8}>
+      <Grid item size={{ xs: 12, lg: 8 }}>
         <Paper style={{ padding: 8 }}>
           <UValidatorForm onSubmit={() => {}}>
             <ActiveFormTextField
@@ -204,18 +204,18 @@ export default function InteractiveViews() {
           />
         </Paper>
       </Grid>
-      <Grid item xs={12} lg={8}>
+      <Grid item size={{ xs: 12, lg: 8 }}>
         <Typography variant="h3">Validation</Typography>
         <Typography style={{ margin: 8 }} variant="subtitle1">
           {' '}
           Data can be validated and contains labels
         </Typography>
       </Grid>
-      <Grid item xs={12} md={8}>
+      <Grid item size={{ xs: 12, md: 8 }}>
         <Paper style={{ padding: 8 }}>
           <UValidatorForm onSubmit={handleSubmit} debounceTime={1000}>
             <Grid item container spacing={2}>
-              <Grid item xs={12}>
+              <Grid item size={12}>
                 <Box
                   display="flex"
                   alignItems="center"
@@ -241,15 +241,15 @@ export default function InteractiveViews() {
                 <Divider />
               </Grid>
               <Grid item container spacing={2}>
-                <Grid item xs={12} lg={3}>
+                <Grid item size={{ xs: 12, lg: 3 }}>
                   <Avatar
                     alt="profile image"
                     className={classes.avatar}
                     src=""
                   />
                 </Grid>
-                <Grid item container spacing={2} xs={12} lg={9}>
-                  <Grid item xs={12}>
+                <Grid item container spacing={2} size={{ xs: 12, lg: 9 }}>
+                  <Grid item size={12}>
                     <ActiveFormTextField
                       label="Name"
                       name="name"
@@ -262,7 +262,7 @@ export default function InteractiveViews() {
                       interactiveMode
                     />
                   </Grid>
-                  <Grid item xs={12} md={6}>
+                  <Grid item size={{ xs: 12, md: 6 }}>
                     <ActiveFormTextField
                       label="Email"
                       name="email"
@@ -278,7 +278,7 @@ export default function InteractiveViews() {
                       interactiveMode
                     />
                   </Grid>
-                  <Grid item xs={12} md={6}>
+                  <Grid item size={{ xs: 12, md: 6 }}>
                     <ActiveFormSelect
                       label="Employment"
                       name="employment"
@@ -292,7 +292,7 @@ export default function InteractiveViews() {
                       options={employmentOptions}
                     />
                   </Grid>
-                  <Grid item xs={12}>
+                  <Grid item size={12}>
                     <ActiveCurrencyField
                       label="Salary"
                       name="salary"
@@ -306,7 +306,7 @@ export default function InteractiveViews() {
                       interactiveMode
                     />
                   </Grid>
-                  <Grid item xs={12}>
+                  <Grid item size={12}>
                     <ActiveFormTextField
                       label="Address"
                       name="address"
@@ -320,7 +320,7 @@ export default function InteractiveViews() {
                       interactiveMode
                     />
                   </Grid>
-                  <Grid item xs={12}>
+                  <Grid item size={12}>
                     <ActiveDatePicker
                       label="Date of birth"
                       typographyVariant="subtitle1"
@@ -337,11 +337,11 @@ export default function InteractiveViews() {
           </UValidatorForm>
         </Paper>
       </Grid>
-      <Grid item xs={12} md={8}>
+      <Grid item size={{ xs: 12, md: 8 }}>
         <Paper style={{ padding: 8 }}>
           <UValidatorForm onSubmit={handleSubmit} debounceTime={1000}>
             <Grid item container spacing={2}>
-              <Grid item xs={12}>
+              <Grid item size={12}>
                 <Box
                   display="flex"
                   alignItems="center"
@@ -368,15 +368,15 @@ export default function InteractiveViews() {
                 <Divider />
               </Grid>
               <Grid item container spacing={2}>
-                <Grid item xs={12} lg={3}>
+                <Grid item size={{ xs: 12, lg: 3 }}>
                   <Avatar
                     alt="profile image"
                     className={classes.avatar}
                     src=""
                   />
                 </Grid>
-                <Grid item container spacing={2} xs={12} lg={9}>
-                  <Grid item xs={12}>
+                <Grid item container spacing={2} size={{ xs: 12, lg: 9 }}>
+                  <Grid item size={12}>
                     <ActiveFormTextField
                       label="Name"
                       name="name"
@@ -389,7 +389,7 @@ export default function InteractiveViews() {
                       errorMessages={['this field is required']}
                     />
                   </Grid>
-                  <Grid item xs={12} md={6}>
+                  <Grid item size={{ xs: 12, md: 6 }}>
                     <ActiveFormTextField
                       label="Email"
                       name="email"
@@ -405,7 +405,7 @@ export default function InteractiveViews() {
                       ]}
                     />
                   </Grid>
-                  <Grid item xs={12} md={6}>
+                  <Grid item size={{ xs: 12, md: 6 }}>
                     <ActiveFormSelect
                       label="Employment"
                       name="employment"
@@ -419,7 +419,7 @@ export default function InteractiveViews() {
                       options={employmentOptions}
                     />
                   </Grid>
-                  <Grid item xs={12}>
+                  <Grid item size={12}>
                     <ActiveFormTextField
                       label="Address"
                       name="address"
@@ -433,7 +433,7 @@ export default function InteractiveViews() {
                       multiline
                     />
                   </Grid>
-                  <Grid item xs={12}>
+                  <Grid item size={12}>
                     <ActiveCurrencyField
                       label="Salary"
                       name="salary"
@@ -447,7 +447,7 @@ export default function InteractiveViews() {
                       multiline
                     />
                   </Grid>
-                  <Grid item xs={12}>
+                  <Grid item size={12}>
                     <USelectPicker
                       label="Skills"
                       name="skills"
@@ -464,7 +464,7 @@ export default function InteractiveViews() {
                       }}
                     />
                   </Grid>
-                  <Grid item xs={12}>
+                  <Grid item size={12}>
                     <ActiveDatePicker
                       label="Date of birth"
                       typographyVariant="subtitle1"

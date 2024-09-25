@@ -20,7 +20,7 @@ Auto complete field usage:
 
 ```jsx
 import React, { useState } from 'react'
-import { Typography, Grid } from '@mui/material'
+import { Typography, Grid2 as Grid } from '@mui/material'
 import UValidatorForm from '../UValidatorForm'
   const [value, setValue] = useState('')
   const handleBlur = () => {
@@ -47,7 +47,7 @@ import UValidatorForm from '../UValidatorForm'
   ];
   
   <Grid container>
-    <Grid item xs={12} sm={4} md={3}>
+    <Grid item size={{ xs:12, sm:4, md:3 }}>
       <Typography variant="h5" style={{ margin: '32px 0px' }}>
         Auto complete
       </Typography>

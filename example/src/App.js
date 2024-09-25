@@ -9,7 +9,7 @@ import {
   UContent,
 } from 'unicef-material-ui'
 import './App.css'
-import { List, ListItem, ListItemText } from '@mui/material'
+import { List, ListItemButton, ListItemText } from '@mui/material'
 import {
   Header,
   Pickers,
@@ -47,9 +47,8 @@ export default function App() {
                 element={
                   <List style={{ width: 300 }}>
                     {['Layout', 'Forms', 'Interactive views', 'Pickers'].map(
-                      (text, index) => (
-                        <ListItem
-                          button
+                      text => (
+                        <ListItemButton
                           key={text}
                           component={Link}
                           to={`${text.replace(/\s+/g, '-').toLowerCase()}`}
@@ -61,7 +60,7 @@ export default function App() {
                           }
                         >
                           <ListItemText primary={text} />
-                        </ListItem>
+                        </ListItemButton>
                       )
                     )}
                   </List>

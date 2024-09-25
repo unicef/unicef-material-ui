@@ -1,6 +1,6 @@
 import React from 'react'
 import { UButton } from 'unicef-material-ui'
-import { Typography, Grid } from '@mui/material'
+import { Typography, Grid2 as Grid } from '@mui/material'
 
 export default function Buttons() {
   const [loading, setLoading] = React.useState(false)
@@ -21,20 +21,20 @@ export default function Buttons() {
 
   return (
     <Grid container>
-      <Grid item xs={12}>
+      <Grid item size={12}>
         <Typography variant="h5" style={{ margin: '32px 0px' }}>
           UButton
         </Typography>
       </Grid>
-      <Grid item xs={12} sm={4} md={3}>
+      <Grid item size={{ xs: 12, sm: 4, md: 3 }}>
         <Typography variant="subtitle1">Primary button</Typography>
         <UButton variant="uPrimary">Primary</UButton>
       </Grid>
-      <Grid item xs={12} sm={4} md={3}>
+      <Grid item size={{ xs: 12, sm: 4, md: 3 }}>
         <Typography variant="subtitle1">Default button</Typography>
         <UButton variant="uDefault">Default</UButton>
       </Grid>
-      <Grid item xs={12} sm={4} md={3}>
+      <Grid item size={{ xs: 12, sm: 4, md: 3 }}>
         <Typography variant="subtitle1">Spinning button</Typography>
         <UButton
           variant="uPrimary"

@@ -1,6 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { AppBar, Tabs, Tab, Card, Typography, Grid } from '@mui/material'
+import {
+  AppBar,
+  Tabs,
+  Tab,
+  Card,
+  Typography,
+  Grid2 as Grid,
+} from '@mui/material'
 
 function TabContainer(props) {
   return (
@@ -23,12 +30,12 @@ export default function CardWithTabs() {
 
   return (
     <Grid container>
-      <Grid item xs={12}>
+      <Grid item size={12}>
         <Typography variant="h5" style={{ margin: '32px 0px' }}>
           Card with tabs
         </Typography>
       </Grid>
-      <Grid item xs={12} md={8}>
+      <Grid item size={{ xs: 12, md: 8 }}>
         <Card>
           <AppBar position="static" color="default">
             <Tabs

@@ -1,6 +1,6 @@
 import React from 'react'
 import { UAvatarImage } from 'unicef-material-ui'
-import { Typography, Grid } from '@mui/material'
+import { Typography, Grid2 as Grid } from '@mui/material'
 
 export default function AvatarImageExample() {
   const loadPhoto = value => async () => {
@@ -20,12 +20,12 @@ export default function AvatarImageExample() {
 
   return (
     <Grid container>
-      <Grid item xs={12}>
+      <Grid item size={12}>
         <Typography variant="h5" style={{ margin: '32px 0px' }}>
           Avatar image
         </Typography>
       </Grid>
-      <Grid item xs={12} sm={4} md={3}>
+      <Grid item size={{ xs: 12, sm: 4, md: 3 }}>
         <Typography variant="subtitle1">Photo default size</Typography>
         <UAvatarImage
           userEmail={`rnarayanan@unicef.org`}
@@ -34,7 +34,7 @@ export default function AvatarImageExample() {
           )}
         />
       </Grid>
-      <Grid item xs={12} sm={4} md={3}>
+      <Grid item size={{ xs: 12, sm: 4, md: 3 }}>
         <Typography variant="subtitle1">Photo small size</Typography>
         <UAvatarImage
           userEmail={`rnarayanan@unicef.org`}
@@ -44,7 +44,7 @@ export default function AvatarImageExample() {
           )}
         />
       </Grid>
-      <Grid item xs={12} sm={4} md={3}>
+      <Grid item size={{ xs: 12, sm: 4, md: 3 }}>
         <Typography variant="subtitle1">Photo mini size</Typography>
         <UAvatarImage
           userEmail={`rnarayanan@unicef.org`}
@@ -54,7 +54,7 @@ export default function AvatarImageExample() {
           )}
         />
       </Grid>
-      <Grid item xs={12} sm={4} md={3}>
+      <Grid item size={{ xs: 12, sm: 4, md: 3 }}>
         <Typography variant="subtitle1">Photo large size</Typography>
         <UAvatarImage
           userEmail={`rnarayanan@unicef.org`}
@@ -64,7 +64,7 @@ export default function AvatarImageExample() {
           )}
         />
       </Grid>
-      <Grid item xs={12} sm={4} md={3}>
+      <Grid item size={{ xs: 12, sm: 4, md: 3 }}>
         <Typography variant="subtitle1">Photo view mode</Typography>
         <UAvatarImage
           userEmail={`rnarayanan@unicef.org`}
@@ -72,7 +72,7 @@ export default function AvatarImageExample() {
           loadPhoto={loadPhoto(`rnarayanan@unicef.org`)}
         />
       </Grid>
-      <Grid item xs={12} sm={4} md={3}>
+      <Grid item size={{ xs: 12, sm: 4, md: 3 }}>
         <Typography variant="subtitle1">Photo edit mode</Typography>
         <UAvatarImage
           userEmail={`rnarayanan@unicef.org`}
@@ -82,7 +82,7 @@ export default function AvatarImageExample() {
           )}
         />
       </Grid>
-      <Grid item xs={12} sm={4} md={3}>
+      <Grid item size={{ xs: 12, sm: 4, md: 3 }}>
         <Typography variant="subtitle1">Mode none</Typography>
         <UAvatarImage
           userEmail={`rnarayanan@unicef.org`}

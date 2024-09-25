@@ -1,6 +1,6 @@
 import React from 'react'
 import { UGraphPeoplePicker } from 'unicef-material-ui'
-import { Typography, Grid } from '@mui/material'
+import { Typography, Grid2 as Grid } from '@mui/material'
 import { Message } from '@mui/icons-material'
 
 export default function GraphPeoplePickerExample() {
@@ -76,12 +76,12 @@ export default function GraphPeoplePickerExample() {
 
   return (
     <Grid container>
-      <Grid item xs={12}>
+      <Grid item size={12}>
         <Typography variant="h5" style={{ margin: '32px 0px' }}>
           Graph people picker
         </Typography>
       </Grid>
-      <Grid item xs={12} md={6}>
+      <Grid item size={{ xs: 12, md: 6 }}>
         <UGraphPeoplePicker
           type="users"
           label="Users"

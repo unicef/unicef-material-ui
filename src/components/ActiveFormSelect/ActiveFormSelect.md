@@ -1,7 +1,7 @@
 ```jsx
 import React, { useState, useEffect, useRef } from 'react'
 import { styled } from '@mui/material/styles'
-import { Typography, Button, Box, Checkbox, MenuItem, Radio, FormGroup, FormControl, FormLabel, FormControlLabel, RadioGroup, Grid } from '@mui/material'
+import { Typography, Button, Box, Checkbox, MenuItem, Radio, FormGroup, FormControl, FormLabel, FormControlLabel, RadioGroup, Grid2 as Grid } from '@mui/material'
 import { UValidatorForm, UValidatorComponent } from '../../index.js'  // change it to '@unicef/material-ui'
 
 const PREFIX = 'ActiveForm';
@@ -62,8 +62,8 @@ const currencies = [
         debounceTime={1000}
       // instantValidate={true}
       >
-        <Grid container >
-          <Grid item xs={12} lg={4}>
+        <Grid container>
+          <Grid item size={{ xs:12, lg:4 }}>
             <ActiveFormSelect
               id="outlined-select-currency"
               select
@@ -78,7 +78,7 @@ const currencies = [
               options={currencies}
             />
           </Grid>
-          <Grid item xs={12} lg={1}>
+          <Grid item size={{ xs:12, lg:1 }}>
             <Button className={classes.margin} color="primary" variant="contained" type="submit">Submit</Button>
           </Grid>
         </Grid>

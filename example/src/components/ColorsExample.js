@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { styled } from '@mui/material/styles'
 import { useTheme } from '@mui/material/styles'
-import { Grid, Box, Paper, Typography } from '@mui/material'
+import { Grid2 as Grid, Box, Paper, Typography } from '@mui/material'
 
 const PREFIX = 'ColorsExample'
 
@@ -42,15 +42,15 @@ export default function ColorsExample(props) {
       {requiredColors.map(
         colorKey =>
           (theme.palette[colorKey] && (
-            <>
-              <Grid item xs={12}>
+            <Fragment key={colorKey}>
+              <Grid item size={12}>
                 <Typography className={classes.colorTitle} variant="h5">
                   {colorKey} colors
                 </Typography>
               </Grid>
               {Object.keys(theme.palette[colorKey]).map(color => {
                 return (
-                  <Grid key={color} item xs={6} md={4} lg={2}>
+                  <Grid key={color} item size={{ xs: 6, md: 4, lg: 2 }}>
                     <Paper p={3}>
                       <Box bgcolor={theme.palette[colorKey][color]} p={4}>
                         <Typography variant="body1">{color}</Typography>
@@ -62,7 +62,7 @@ export default function ColorsExample(props) {
                   </Grid>
                 )
               })}
-            </>
+            </Fragment>
           )) ||
           ''
       )}

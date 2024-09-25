@@ -1,6 +1,6 @@
 ```jsx
 import React, { useState, useRef } from 'react'
-import { Grid } from '@mui/material'
+import { Grid2 as Grid } from '@mui/material'
 import { UValidatorForm, UButton, ActiveFormPositiveInteger } from '../../index.js'
 
 // export default function ActiveFormPositiveInteger() {
@@ -25,7 +25,7 @@ function handleSubmit() {
   // instantValidate={true}
 >
   <Grid container spacing={1}>
-    <Grid item xs={12} lg={4}>
+    <Grid item size={{ xs:12, lg:4 }}>
       <ActiveFormPositiveInteger
         label="Number"
         value={value}
@@ -33,7 +33,7 @@ function handleSubmit() {
         name="number"
       />
     </Grid>
-    <Grid item xs={12}>
+    <Grid item size={12}>
       <UButton type="submit">Submit</UButton>
     </Grid>
   </Grid>

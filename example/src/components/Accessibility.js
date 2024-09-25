@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react'
-import { Typography, Grid } from '@mui/material'
+import { Typography, Grid2 as Grid } from '@mui/material'
 import {
   UAriaLive,
   UAriaHiddenText,
@@ -31,7 +31,7 @@ export default function Accessibility() {
         noValidate
       >
         <Grid container>
-          <Grid item xs={12} lg={3} xl={2}>
+          <Grid item size={{ xs: 12, lg: 3, xl: 2 }}>
             <UTextField
               label="Email"
               required

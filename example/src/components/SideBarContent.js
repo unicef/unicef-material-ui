@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import {
   List,
   ListItemText,
-  ListItem,
+  ListItemButton,
   ListItemIcon,
   Typography,
   Box,
@@ -63,8 +63,7 @@ export default function SideBarContent(props) {
             'Pickers',
             'Accessibility',
           ].map((text, index) => (
-            <ListItem
-              button
+            <ListItemButton
               key={text}
               selected={selectedNode === lowerCaseUrl(text)}
               component={Link}
@@ -75,7 +74,7 @@ export default function SideBarContent(props) {
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
               </ListItemIcon>
               <ListItemText primary={text} />
-            </ListItem>
+            </ListItemButton>
           ))}
         </List>
       </Box>

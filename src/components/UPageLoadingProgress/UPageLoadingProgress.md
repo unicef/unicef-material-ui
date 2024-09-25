@@ -2,7 +2,7 @@ Page loading usage:
  
 ```jsx static
 import React,{ useRef, useState, useEffect } from 'react'
-import { Typography, Grid } from '@mui/material'
+import { Typography, Grid2 as Grid } from '@mui/material'
 
   const [loading, setLoading] = useState(true)
   const timer = useRef()
@@ -19,7 +19,7 @@ import { Typography, Grid } from '@mui/material'
 
   loading ? <UPageLoadingProgress /> : (
    <Grid container>
-      <Grid item xs={12} sm={4} md={3}>
+      <Grid item size={{ xs:12, sm:4, md:3 }}>
       </Grid>
     </Grid>
     )
@@ -28,7 +28,7 @@ import { Typography, Grid } from '@mui/material'
 
 ```jsx
 import React, { useState, useEffect, useRef } from 'react'
-import { Typography, Grid } from '@mui/material'
+import { Typography, Grid2 as Grid } from '@mui/material'
 import UButton from '../UButton'
   const [loading, setLoading] = useState(false)
   const timer = useRef()
@@ -49,7 +49,7 @@ import UButton from '../UButton'
 
   loading ? <UPageLoadingProgress /> :(
    <Grid container>
-     <Grid item xs={12} sm={4} md={3}>
+     <Grid item size={{ xs:12, sm:4, md:3 }}>
         <UButton variant="uPrimary" onClick={handleLoad}>
           Click load Progress
         </UButton>
@@ -60,7 +60,7 @@ import UButton from '../UButton'
 
 ```jsx
 import React, { useState, useEffect, useRef } from 'react'
-import { Typography, Grid } from '@mui/material'
+import { Typography, Grid2 as Grid } from '@mui/material'
 import UButton from '../UButton'
   const [loading, setLoading] = useState(false)
   const timer = useRef()
@@ -81,7 +81,7 @@ import UButton from '../UButton'
 
   loading ? <UPageLoadingProgress text= "Loading..." /> :(
    <Grid container>
-     <Grid item xs={12} sm={4} md={3}>
+     <Grid item size={{ xs:12, sm:4, md:3 }}>
         <UButton variant="uPrimary" onClick={handleLoad}>
           Click load text
         </UButton>

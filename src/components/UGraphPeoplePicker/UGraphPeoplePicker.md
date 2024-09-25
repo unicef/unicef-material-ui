@@ -3,7 +3,7 @@ Graph people picker usage:
 ```jsx static
 import React from 'react'
 import { UGraphPeoplePicker } from 'unicef-material-ui'
-import { Typography, Grid } from '@mui/material'
+import { Typography, Grid2 as Grid } from '@mui/material'
 
 export default function GraphPeoplePickerExample() {
   //set the initial users
@@ -78,12 +78,12 @@ export default function GraphPeoplePickerExample() {
 
   return (
     <Grid container>
-      <Grid item xs={12}>
+      <Grid item size={12}>
         <Typography variant="h5" style={{ margin: '32px 0px' }}>
           Graph people picker
         </Typography>
       </Grid>
-      <Grid item xs={12} sm={4} md={3}>
+      <Grid item size={{ xs:12, sm:4, md:3 }}>
         <UGraphPeoplePicker
           type="users"
           label="Users"
@@ -103,7 +103,7 @@ export default function GraphPeoplePickerExample() {
 ```jsx
 
 import React from 'react'
-import { Typography, Grid } from '@mui/material'
+import { Typography, Grid2 as Grid } from '@mui/material'
   //set the initial users
   const totalUsers = [
     {
@@ -175,12 +175,12 @@ import { Typography, Grid } from '@mui/material'
     }));
 
   <Grid container>
-      <Grid item xs={12}>
+      <Grid item size={12}>
         <Typography variant="h5" style={{ margin: '32px 0px' }}>
           Graph people picker
         </Typography>
       </Grid>
-      <Grid item xs={12} sm={4} md={3}>
+      <Grid item size={{ xs:12, sm:4, md:3 }}>
         <UGraphPeoplePicker
           type="users"
           label="Users"

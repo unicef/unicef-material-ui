@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { UConfirmationButton } from 'unicef-material-ui'
 import {
   Typography,
-  Grid,
+  Grid2 as Grid,
   IconButton,
   Menu,
   MenuItem,
@@ -34,16 +34,16 @@ export default function UConfirmationButtonExample() {
 
   return (
     <Grid container>
-      <Grid item xs={12}>
+      <Grid item size={12}>
         <Typography variant="h5" style={{ margin: '32px 0px' }}>
           Confirmation button
         </Typography>
       </Grid>
-      <Grid item xs={12}>
+      <Grid item size={12}>
         <Typography variant="subtitle1">Confirm popup variant</Typography>
       </Grid>
-      <Grid container item xs={12}>
-        <Grid item xs={12} sm={6} md={3}>
+      <Grid container item size={12}>
+        <Grid item size={{ xs: 12, sm: 6, md: 3 }}>
           <Typography variant="subtitle1">Icon</Typography>
           <UConfirmationButton
             confirmText="Are you sure you want to delete the item?"
@@ -53,7 +53,7 @@ export default function UConfirmationButtonExample() {
             confirmVariant="popup"
           />
         </Grid>
-        <Grid item xs={12} sm={6} md={3}>
+        <Grid item size={{ xs: 12, sm: 6, md: 3 }}>
           <Typography variant="subtitle1">Menu item</Typography>
           <IconButton
             aria-label="more"
@@ -92,7 +92,7 @@ export default function UConfirmationButtonExample() {
             />
           </Menu>
         </Grid>
-        <Grid item xs={12} sm={6} md={3}>
+        <Grid item size={{ xs: 12, sm: 6, md: 3 }}>
           <Typography variant="subtitle1">Button</Typography>
           <UConfirmationButton
             onConfirm={handleDelete}
@@ -103,7 +103,7 @@ export default function UConfirmationButtonExample() {
             confirmVariant="popup"
           />
         </Grid>
-        <Grid item xs={12} sm={6} md={3}>
+        <Grid item size={{ xs: 12, sm: 6, md: 3 }}>
           <Typography variant="subtitle1">Custom icon</Typography>
           <UConfirmationButton
             onConfirm={handleDelete}
@@ -117,11 +117,11 @@ export default function UConfirmationButtonExample() {
           />
         </Grid>
       </Grid>
-      <Grid item xs={12}>
+      <Grid item size={12}>
         <Typography variant="subtitle1">Confirm menu variant</Typography>
       </Grid>
-      <Grid container item xs={12}>
-        <Grid item xs={12} sm={6} md={3}>
+      <Grid container item size={12}>
+        <Grid item size={{ xs: 12, sm: 6, md: 3 }}>
           <Typography variant="subtitle1">Icon</Typography>
           <UConfirmationButton
             onConfirm={handleDelete}
@@ -129,7 +129,7 @@ export default function UConfirmationButtonExample() {
             buttonText="Delete"
           />
         </Grid>
-        <Grid item xs={12} sm={6} md={3}>
+        <Grid item size={{ xs: 12, sm: 6, md: 3 }}>
           <Typography variant="subtitle1">Menu item</Typography>
           <IconButton
             aria-label="more"
@@ -166,7 +166,7 @@ export default function UConfirmationButtonExample() {
             />
           </Menu>
         </Grid>
-        <Grid item xs={12} sm={6} md={3}>
+        <Grid item size={{ xs: 12, sm: 6, md: 3 }}>
           <Typography variant="subtitle1">Button</Typography>
           <UConfirmationButton
             onConfirm={handleDelete}
@@ -175,7 +175,7 @@ export default function UConfirmationButtonExample() {
             variant="button"
           />
         </Grid>
-        <Grid item xs={12} sm={6} md={3}>
+        <Grid item size={{ xs: 12, sm: 6, md: 3 }}>
           <Typography variant="subtitle1">Custom icon</Typography>
           <UConfirmationButton
             onConfirm={handleDelete}

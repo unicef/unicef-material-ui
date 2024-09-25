@@ -7,7 +7,7 @@ typographyVariant="h6"
 ```jsx
 import React, { useState, useEffect, useRef } from 'react'
 import { styled } from '@mui/material/styles'
-import { Typography, Button, Box, Checkbox, MenuItem, Radio, FormGroup, FormControl, FormLabel, FormControlLabel, RadioGroup, Grid } from '@mui/material'
+import { Typography, Button, Box, Checkbox, MenuItem, Radio, FormGroup, FormControl, FormLabel, FormControlLabel, RadioGroup, Grid2 as Grid } from '@mui/material'
 import { UValidatorForm, UValidatorComponent } from '../../index.js' // change it to '@unicef/material-ui'
 
 // export default function ActiveForm() {
@@ -28,7 +28,7 @@ import { UValidatorForm, UValidatorComponent } from '../../index.js' // change i
     // instantValidate={true}
     >
     <Grid container spacing={3}>
-      <Grid item xs={12}>
+      <Grid item size={12}>
         <ActiveFormTextField
             label="Default"
             onChange={handleValue}
@@ -39,7 +39,7 @@ import { UValidatorForm, UValidatorComponent } from '../../index.js' // change i
             customErrorMessages={{required: 'required field'}}
           />
           </Grid>
-          <Grid item xs={12}>
+          <Grid item size={12}>
           <ActiveFormTextField
             label="Typography Variant"
             onChange={handleValue}
@@ -66,7 +66,7 @@ multiline
 
 ```jsx
 import React, { useState, useEffect, useRef } from 'react'
-import { Typography, Button, Box, Checkbox, MenuItem, Radio, FormGroup, FormControl, FormLabel, FormControlLabel, RadioGroup, Grid } from '@mui/material'
+import { Typography, Button, Box, Checkbox, MenuItem, Radio, FormGroup, FormControl, FormLabel, FormControlLabel, RadioGroup } from '@mui/material'
 import { UValidatorForm, UValidatorComponent } from '../../index.js' // change it to '@unicef/material-ui'
 
 // export default function ActiveForm() {
@@ -109,7 +109,7 @@ import React from 'react';
 import {
   Card,
   CardHeader,
-  Grid,
+  Grid2 as Grid,
   Divider,
   Typography,
 } from '@mui/material'
@@ -122,7 +122,7 @@ import { UValidatorForm, ActiveFormTextField } from '../../index.js';
   // return (
     <React.Fragment >
       <Grid container spacing={3}>
-        <Grid item xs={12} md={6}>
+        <Grid item size={{ xs:12, md:6 }}>
           <Card>
             <UValidatorForm>
               <ActiveFormTextField placeholder="Title" typographyVariant="h6" variant="outlined" fullWidth multiline />
