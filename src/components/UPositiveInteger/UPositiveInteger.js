@@ -5,14 +5,21 @@ import UTextField from '../UTextField'
 /**
  * UPositiveInteger form input field that accepts positive integer values. It is a extended version of UTextField.
  */
-export default function UPositiveInteger({ readOnly, InputProps, ...props }) {
+export default function UPositiveInteger({
+  readOnly,
+  slotProps = {},
+  ...props
+}) {
   return (
     <UTextField
       variant="outlined"
-      InputProps={{
+      slotProps={{
+        ...slotProps,
         inputComponent: PositiveNumberFormat,
-        readOnly: readOnly,
-        ...InputProps,
+        input: {
+          readOnly,
+          ...(slotProps.input ? slotProps.input : {}),
+        },
       }}
       {...props}
       fullWidth
@@ -42,4 +49,6 @@ UPositiveInteger.propTypes = {
   validatorListener: PropTypes.func,
   /** Allow to use required validator in any validation trigger, not only form submit. */
   withRequiredValidator: PropTypes.bool,
+  /** The props used for each slot inside. */
+  slotProps: PropTypes.object,
 }

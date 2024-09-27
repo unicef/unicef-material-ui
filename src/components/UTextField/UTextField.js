@@ -96,15 +96,13 @@ class UTextField extends ValidatorComponent {
       counterClassName,
       readOnly,
       label,
-      InputProps,
-      InputLabelProps,
       showLabelHelp,
       InputLabelHelpProps,
       select,
       id,
-      SelectProps,
       options,
       children,
+      slotProps = { input: {}, inputLabel: {}, select: {}, htmlInput: {} },
       ...rest
     } = this.props
     const { isValid, isSelectOpen } = this.state
@@ -120,14 +118,6 @@ class UTextField extends ValidatorComponent {
           error={!isValid || error}
           onBlur={event => this.handleBlur(event)}
           helperText={(!isValid && this.getErrorMessage()) || helperText}
-          InputProps={{
-            readOnly: readOnly,
-            ...InputProps,
-          }}
-          InputLabelProps={{
-            ...InputLabelProps,
-            style: { ...styles.labelRoot },
-          }}
           label={
             showLabelHelp ? (
               <InputLabelHelp inputLabel={label} {...InputLabelHelpProps} />
@@ -136,33 +126,43 @@ class UTextField extends ValidatorComponent {
             )
           }
           id={id}
-          /** Accessibility fixes for select field */
-          {...(select
-            ? {
-                inputProps: {
-                  ...(this.props.inputProps ? this.props.inputProps : {}),
-                  'aria-describedby': null,
-                },
-                SelectProps: {
-                  ...(SelectProps ? SelectProps : {}),
-                  open: isSelectOpen ? true : false,
-                  onClose: this.handleSelectClose,
-                  onOpen: this.handleSelectOpen,
-                  MenuProps: {
-                    MenuListProps: {
-                      id: `${id}-select-menu`,
-                      'aria-labelledby': null,
+          slotProps={{
+            input: {
+              readOnly: readOnly,
+              ...(slotProps.input ? slotProps.input : {}),
+            },
+            inputLabel: {
+              ...(slotProps.inputLabel ? slotProps.inputLabel : {}),
+              style: { ...styles.labelRoot },
+            },
+            ...(select
+              ? {
+                  htmlInput: {
+                    ...(slotProps.htmlInput ? slotProps.htmlInput : {}),
+                    'aria-describedby': null,
+                  },
+                  /** Accessibility fixes for select field */
+                  select: {
+                    ...(slotProps.select ? slotProps.select : {}),
+                    open: isSelectOpen ? true : false,
+                    onClose: this.handleSelectClose,
+                    onOpen: this.handleSelectOpen,
+                    MenuProps: {
+                      MenuListProps: {
+                        id: `${id}-select-menu`,
+                        'aria-labelledby': null,
+                      },
+                    },
+                    SelectDisplayProps: {
+                      role: 'combobox',
+                      'aria-controls': `${id}-select-menu`,
+                      'aria-expanded': isSelectOpen ? true : false,
+                      'aria-describedby': `${id}-helper-text`,
                     },
                   },
-                  SelectDisplayProps: {
-                    role: 'combobox',
-                    'aria-controls': `${id}-select-menu`,
-                    'aria-expanded': isSelectOpen ? true : false,
-                    'aria-describedby': `${id}-helper-text`,
-                  },
-                },
-              }
-            : {})}
+                }
+              : {}),
+          }}
         >
           {select
             ? options && options.length
@@ -229,16 +229,14 @@ UTextField.propTypes = {
   maxLength: PropTypes.number,
   /** To make textfield read only */
   readOnly: PropTypes.bool,
-  /** Props applied to the Input element. */
-  InputProps: PropTypes.object,
+  /** The props used for each slot inside. */
+  slotProps: PropTypes.object,
   /** Show label help */
   showLabelHelp: PropTypes.bool,
   /** Props applied to the input label help element. E.g InputLabelHelpProps={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
   InputLabelHelpProps: PropTypes.object,
   /** Id of the field */
   id: PropTypes.string,
-  /** Props applied to the Select element. */
-  SelectProps: PropTypes.object,
   /** If the field is select box and no options are passed, then this children will be used. */
   children: PropTypes.node,
 }

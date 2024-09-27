@@ -80,7 +80,7 @@ export default function UAvatarImage({
         <StyledDiv>
           <Avatar
             className={`${classes[mode]} ${classes[size]}`}
-            style={{ zIndex: zIndexValue }}
+            sx={{ zIndex: zIndexValue }}
             src={photoUrl}
           >
             {size === 'large' ? (

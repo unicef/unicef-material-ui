@@ -26,7 +26,6 @@ export default function Control({
   innerProps,
   innerRef,
   selectProps: { classes, TextFieldProps },
-  InputLabelProps,
 }) {
   const readOnly = TextFieldProps && TextFieldProps.readOnly
   //In order to prevent the addition of these custom attributes to the DOM, we are separating them from TextFieldProps
@@ -35,33 +34,15 @@ export default function Control({
     InputLabelHelpProps = {},
     lineByLineOption = '',
     hideAvatar = false,
+    slotProps = {},
     ...otherTextFieldProps
   } = TextFieldProps || {}
   return (
     <TextField
       fullWidth
       variant="outlined"
-      InputProps={{
-        inputComponent: InputComponent,
-        inputProps: {
-          className: classes.input,
-          ref: innerRef,
-          children,
-          readOnly: Boolean(readOnly),
-          disabled: Boolean(readOnly),
-          ...innerProps,
-        },
-        classes: {
-          root: `${readOnly && classes.inputHover}`,
-          notchedOutline: `${!readOnly ? '' : classes.notchedOutline}`,
-        },
-      }}
-      InputLabelProps={{
-        ...InputLabelProps,
-        style: { ...styles.labelRoot },
-      }}
-      {...otherTextFieldProps}
-      type={null} // To prevent type attribute added in the div container
+      // To prevent type attribute added in the div container
+      type={null}
       label={
         showLabelHelp ? (
           <InputLabelHelp
@@ -72,6 +53,29 @@ export default function Control({
           TextFieldProps.label
         )
       }
+      slotProps={{
+        ...slotProps,
+        input: {
+          inputComponent: InputComponent,
+          inputProps: {
+            className: classes.input,
+            ref: innerRef,
+            children,
+            readOnly: Boolean(readOnly),
+            disabled: Boolean(readOnly),
+            ...innerProps,
+          },
+          classes: {
+            root: `${readOnly && classes.inputHover}`,
+            notchedOutline: `${!readOnly ? '' : classes.notchedOutline}`,
+          },
+        },
+        inputLabel: {
+          ...(slotProps.inputLabel ? slotProps.inputLabel : {}),
+          style: { ...styles.labelRoot },
+        },
+      }}
+      {...otherTextFieldProps}
     />
   )
 }
@@ -94,4 +98,6 @@ Control.propTypes = {
       current: PropTypes.any,
     }),
   ]),
+  /** The props used for each slot inside. */
+  slotProps: PropTypes.object,
 }

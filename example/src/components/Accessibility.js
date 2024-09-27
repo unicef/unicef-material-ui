@@ -39,7 +39,7 @@ export default function Accessibility() {
               name="email"
               validators={['required', 'isEmail']}
               value={formValues.email}
-              inputProps={{ 'aria-describedby': 'email-help' }}
+              slotProps={{ htmlInput: { 'aria-describedby': 'email-help' } }}
             />
             <UAriaHiddenText
               id="email-help"

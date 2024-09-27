@@ -28,7 +28,7 @@ const classes = {
   notchedOutline: `${PREFIX}-notchedOutline`,
 }
 
-const StyledBox = styled(Box, {
+const StyledDiv = styled('div', {
   shouldForwardProp: prop => prop !== 'hasHelpText',
 })(({ theme, hasHelpText }) => ({
   [`& .${classes.input}`]: {
@@ -109,7 +109,6 @@ export default function USelectPicker(props) {
     onInputChange,
     components,
     showLabelHelp,
-    InputLabelProps,
     InputLabelHelpProps,
     hideAvatar,
     readOnly,
@@ -146,10 +145,15 @@ export default function USelectPicker(props) {
   const defaultTextFieldProps = {
     label: label,
     variant: variant,
-    InputLabelProps: {
-      shrink: true,
-      classes: { root: classes.labelRoot },
-      ...InputLabelProps,
+    slotProps: {
+      ...(TextFieldProps?.slotProps ? TextFieldProps.slotProps : {}),
+      inputLabel: {
+        shrink: true,
+        classes: { root: classes.labelRoot },
+        ...(TextFieldProps?.slotProps?.inputLabel
+          ? TextFieldProps.slotProps.inputLabel
+          : {}),
+      },
     },
     readOnly,
     lineByLineOption,
@@ -179,7 +183,7 @@ export default function USelectPicker(props) {
   const selectPlaceholder = readOnly ? '' : placeholder
 
   return (
-    <StyledBox
+    <StyledDiv
       hasHelpText={
         props.TextFieldProps && props.TextFieldProps.helperText ? true : false
       }
@@ -198,7 +202,7 @@ export default function USelectPicker(props) {
         placeholder={selectPlaceholder}
         {...others}
       />
-    </StyledBox>
+    </StyledDiv>
   )
 }
 
@@ -239,7 +243,7 @@ USelectPicker.propTypes = {
   options: PropTypes.array,
   /** Props passed to the TextField used in the picker. Use any value of Material UI TextField API.
    *
-   * `TextFieldProps={{helperText:"text", onChange: {textFieldTargetValue}, inputProps:{className: classes.textField}}}`
+   * `TextFieldProps={{helperText:"text", onChange: {textFieldTargetValue}, slotProps:{input:{className: classes.textField}}}}`
    *
    */
   TextFieldProps: PropTypes.object,

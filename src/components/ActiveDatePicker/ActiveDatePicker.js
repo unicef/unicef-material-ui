@@ -15,7 +15,7 @@ const classes = {
   root: `${PREFIX}-root`,
 }
 
-const StyledBox = styled(Box, {
+const StyledDiv = styled('div', {
   shouldForwardProp: prop => prop !== 'readOnly' && prop !== 'interactiveMode',
 })(({ theme, readOnly, interactiveMode }) => ({
   [`& .${classes.root}`]: {
@@ -53,8 +53,10 @@ export default function ActiveDatePicker({
   onChange,
   value,
   showLabelHelp,
-  InputLabelProps = {
-    shrink: true,
+  slotProps = {
+    inputLabel: {
+      shrink: true,
+    },
   },
   InputLabelHelpProps,
   inputVariant = 'outlined',
@@ -64,7 +66,7 @@ export default function ActiveDatePicker({
 }) {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <StyledBox readOnly={readOnly} interactiveMode={interactiveMode}>
+      <StyledDiv readOnly={readOnly} interactiveMode={interactiveMode}>
         <DatePicker
           className={classes.root}
           label={label}
@@ -76,7 +78,7 @@ export default function ActiveDatePicker({
           renderInput={params => (
             <UTextField
               showLabelHelp={showLabelHelp}
-              InputLabelProps={InputLabelProps}
+              slotProps={slotProps}
               InputLabelHelpProps={InputLabelHelpProps}
               variant={inputVariant}
               readOnly={readOnly}
@@ -84,7 +86,7 @@ export default function ActiveDatePicker({
             />
           )}
         />
-      </StyledBox>
+      </StyledDiv>
     </LocalizationProvider>
   )
 }
@@ -103,8 +105,8 @@ ActiveDatePicker.propTypes = {
   readOnly: PropTypes.bool,
   /** Change to write mode by hiding text field border and displays border on hover*/
   interactiveMode: PropTypes.bool,
-  /** Props applied to the InputLabel element.*/
-  InputLabelProps: PropTypes.object,
+  /** The props used for each slot inside. */
+  slotProps: PropTypes.object,
   /** Label text */
   label: PropTypes.string,
   /** Show label help */

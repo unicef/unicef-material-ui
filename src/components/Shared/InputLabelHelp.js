@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { styled } from '@mui/material/styles'
-import { Tooltip, Link, Box } from '@mui/material'
+import { Tooltip, Link } from '@mui/material'
 import PropTypes from 'prop-types'
 
 import HelpIcon from '@mui/icons-material/HelpOutline'
@@ -16,7 +16,7 @@ const classes = {
   tooltipPopper: `${PREFIX}-tooltipPopper`,
 }
 
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledDiv = styled('div')(({ theme }) => ({
   [`&.${classes.root}`]: {
     order: 999,
     display: 'inline-flex',
@@ -57,7 +57,7 @@ export default function InputLabelHelp({
   return (
     <Fragment>
       <span>{inputLabel}</span>
-      <StyledBox className={classes.root}>
+      <StyledDiv className={classes.root}>
         {type === 'tooltip' ? (
           <Tooltip
             interactive
@@ -90,7 +90,7 @@ export default function InputLabelHelp({
             )}
           </Link>
         )}
-      </StyledBox>
+      </StyledDiv>
     </Fragment>
   )
 }

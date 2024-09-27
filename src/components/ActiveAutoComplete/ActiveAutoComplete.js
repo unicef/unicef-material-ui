@@ -56,7 +56,7 @@ export default function ActiveAutoComplete({
   interactiveMode = false,
   counter = false,
   placeholder,
-  InputLabelProps,
+  slotProps = { inputLabel: {} },
   props,
 }) {
   //const dispatch = useDispatch()
@@ -125,9 +125,12 @@ export default function ActiveAutoComplete({
         <ActiveFormTextField
           multiline
           label={label}
-          InputLabelProps={{
-            ...InputLabelProps,
-            required: isRequired,
+          slotProps={{
+            ...slotProps,
+            inputLabel: {
+              ...(slotProps.inputLabel ? slotProps.inputLabel : {}),
+              required: isRequired,
+            },
           }}
           variant="outlined"
           fullWidth
@@ -165,14 +168,17 @@ export default function ActiveAutoComplete({
               value={(selectedValue && selectedValue.text) || ''}
               validators={isRequired ? ['required', 'trim'] : ['trim']}
               fullWidth
-              inputProps={{
-                ...params.inputProps,
-                minLength: minLength,
-                maxLength: maxLength,
-              }}
-              InputLabelProps={{
-                ...InputLabelProps,
-                required: isRequired,
+              slotProps={{
+                ...params.slotProps,
+                htmlInput: {
+                  ...params.slotProps.htmlInput,
+                  minLength,
+                  maxLength,
+                },
+                inputLabel: {
+                  ...params.slotProps.inputLabel,
+                  required: isRequired,
+                },
               }}
               maxLength={maxLength}
               counter={counter}
@@ -218,6 +224,6 @@ ActiveAutoComplete.propTypes = {
   counter: PropTypes.bool,
   /** placeholder text*/
   placeholder: PropTypes.string,
-  /** Label props applied to input field*/
-  InputLabelProps: PropTypes.object,
+  /** The props used for each slot inside. */
+  slotProps: PropTypes.object,
 }

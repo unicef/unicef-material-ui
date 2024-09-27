@@ -1,9 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Box } from '@mui/material'
 import { styled } from '@mui/material/styles'
 
-const StyledBox = styled(Box)(() => ({
+const StyledDiv = styled('div')(() => ({
   position: 'absolute',
   width: 1,
   height: 1,
@@ -25,14 +24,14 @@ export default function UAriaLive({
   ariaAtomic = false,
 }) {
   return (
-    <StyledBox
+    <StyledDiv
       aria-live={type}
       aria-atomic={ariaAtomic}
       aria-relevant="additions text"
       role={role}
     >
       {text}
-    </StyledBox>
+    </StyledDiv>
   )
 }
 

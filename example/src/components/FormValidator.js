@@ -198,7 +198,7 @@ export default function FormValidator() {
             <UCurrencyField
               name="CurrencyInput"
               value={values['currencyField']}
-              label="currency input"
+              label="Currency input"
               className={classes.mb3}
               validators={['required']}
               onChange={e =>

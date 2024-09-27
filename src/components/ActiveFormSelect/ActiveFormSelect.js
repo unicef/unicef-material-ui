@@ -1,7 +1,6 @@
 import React from 'react'
 import { styled } from '@mui/material/styles'
 import PropTypes from 'prop-types'
-import { Box } from '@mui/material'
 import { outlinedInputClasses } from '@mui/material/OutlinedInput'
 import UTextField from '../UTextField'
 
@@ -17,7 +16,7 @@ const classes = {
   inputHover: `${PREFIX}-inputHover`,
 }
 
-const StyledBox = styled(Box, {
+const StyledDiv = styled('div', {
   shouldForwardProp: prop => prop !== 'typographyVariant',
 })(({ theme, typographyVariant }) => ({
   [`& .${classes.textField}`]: {
@@ -54,6 +53,9 @@ const StyledBox = styled(Box, {
     [`&:hover .${outlinedInputClasses.notchedOutline}`]: {
       borderColor: 'transparent',
     },
+    [` .${outlinedInputClasses.notchedOutline}`]: {
+      borderColor: 'transparent!important',
+    },
   },
 }))
 
@@ -73,12 +75,9 @@ export default function ActiveFormSelect(props) {
     typographyVariant,
     className,
     interactiveMode = false,
+    slotProps = {},
     placeholder = 'Select',
     readOnly,
-    InputLabelProps,
-    InputProps,
-    inputProps,
-    SelectProps,
     ...others
   } = props
   const [hideIcon, setHideIcon] = React.useState(classes.icon)
@@ -99,33 +98,37 @@ export default function ActiveFormSelect(props) {
   }
 
   return (
-    <StyledBox typographyVariant={typographyVariant}>
+    <StyledDiv typographyVariant={typographyVariant}>
       <UTextField
         placeholder={finalPlaceholder}
-        InputLabelProps={{
-          shrink: true,
-          ...InputLabelProps,
-        }}
-        inputProps={{
-          readOnly: Boolean(readOnly),
-          disabled: Boolean(readOnly),
-          ...inputProps,
-        }}
         className={`${classes.textField} ${className && className}`}
-        InputProps={{
-          classes: {
-            root: `${classes.input} ${readOnly && classes.inputHover}`,
-            notchedOutline: `${
-              !interactiveMode && !readOnly ? '' : classes.notchedOutline
-            }`,
-            input: classes.inputPadding,
-          },
-          ...InputProps,
-        }}
         select
-        SelectProps={{
-          classes: { icon: (interactiveMode || readOnly) && hideIcon },
-          ...SelectProps,
+        slotProps={{
+          ...slotProps,
+          select: {
+            classes: { icon: (interactiveMode || readOnly) && hideIcon },
+            ...(slotProps.select ? slotProps.select : {}),
+          },
+          input: {
+            classes: {
+              root: `${classes.input} ${readOnly && classes.inputHover}`,
+              notchedOutline: `${
+                !interactiveMode && !readOnly ? '' : classes.notchedOutline
+              }`,
+              input: classes.inputPadding,
+            },
+            readOnly: Boolean(readOnly),
+            ...(slotProps.input ? slotProps.input : {}),
+          },
+          htmlInput: {
+            ...(slotProps.htmlInput ? slotProps.htmlInput : {}),
+            readOnly: Boolean(readOnly),
+            disabled: Boolean(readOnly),
+          },
+          inputLabel: {
+            shrink: true,
+            ...(slotProps.inputLabel ? slotProps.inputLabel : {}),
+          },
         }}
         onMouseOver={onMouseOver}
         onMouseLeave={handleBlur}
@@ -135,7 +138,7 @@ export default function ActiveFormSelect(props) {
       >
         {props.children}
       </UTextField>
-    </StyledBox>
+    </StyledDiv>
   )
 }
 
@@ -172,4 +175,6 @@ ActiveFormSelect.propTypes = {
   validatorListener: PropTypes.func,
   /** Allow to use required validator in any validation trigger, not only form submit. */
   withRequiredValidator: PropTypes.bool,
+  /** The props used for each slot inside. */
+  slotProps: PropTypes.object,
 }

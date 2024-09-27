@@ -127,11 +127,13 @@ const currencies = [
             validators={['required']}
             errorMessages={['this field is required']}
             options={currencies}
-            SelectProps={{
-              MenuProps: {
-                className: classes.menu,
-              },
-            }}
+            slotProps={
+              select: {
+                MenuProps: {
+                  className: classes.menu,
+                },
+              }
+            }
             margin="normal"
             variant="outlined"
         />

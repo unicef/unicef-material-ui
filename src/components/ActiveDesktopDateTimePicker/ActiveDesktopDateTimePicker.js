@@ -1,6 +1,5 @@
 import React from 'react'
 import { styled } from '@mui/material/styles'
-import { Box } from '@mui/material'
 import PropTypes from 'prop-types'
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
@@ -15,7 +14,7 @@ const classes = {
   root: `${PREFIX}-root`,
 }
 
-const StyledBox = styled(Box, {
+const StyledDiv = styled('div', {
   shouldForwardProp: prop => prop !== 'readOnly' && prop !== 'interactiveMode',
 })(({ theme, readOnly, interactiveMode }) => ({
   [`& .${classes.root}`]: {
@@ -62,7 +61,7 @@ export default function ActiveDesktopDateTimePicker({
 }) {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <StyledBox readOnly={readOnly} interactiveMode={interactiveMode}>
+      <StyledDiv readOnly={readOnly} interactiveMode={interactiveMode}>
         <DesktopDateTimePicker
           className={classes.root}
           label={label}
@@ -82,7 +81,7 @@ export default function ActiveDesktopDateTimePicker({
             />
           )}
         />
-      </StyledBox>
+      </StyledDiv>
     </LocalizationProvider>
   )
 }
@@ -100,8 +99,8 @@ ActiveDesktopDateTimePicker.propTypes = {
   readOnly: PropTypes.bool,
   /** Change to write mode by hiding text field border and displays border on hover*/
   interactiveMode: PropTypes.bool,
-  /** Props applied to the InputLabel element.*/
-  InputLabelProps: PropTypes.object,
+  /** The props used for each slot inside. */
+  slotProps: PropTypes.object,
   /** Label text */
   label: PropTypes.string,
   /** Show label help */

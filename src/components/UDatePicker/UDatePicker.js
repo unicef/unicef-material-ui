@@ -17,8 +17,10 @@ export default function UDatePicker({
   onChange,
   value,
   showLabelHelp,
-  InputLabelProps = {
-    shrink: true,
+  slotProps = {
+    inputLabel: {
+      shrink: true,
+    },
   },
   InputLabelHelpProps,
   inputVariant = 'outlined',
@@ -35,7 +37,7 @@ export default function UDatePicker({
         renderInput={params => (
           <UTextField
             showLabelHelp={showLabelHelp}
-            InputLabelProps={InputLabelProps}
+            slotProps={slotProps}
             InputLabelHelpProps={InputLabelHelpProps}
             variant={inputVariant}
             {...params}
@@ -61,6 +63,6 @@ UDatePicker.propTypes = {
   showLabelHelp: PropTypes.bool,
   /** Props applied to the input label help element. E.g InputLabelHelpProps={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
   InputLabelHelpProps: PropTypes.object,
-  /** Props applied to the InputLabel element.*/
-  InputLabelProps: PropTypes.object,
+  /** The props used for each slot inside. */
+  slotProps: PropTypes.object,
 }

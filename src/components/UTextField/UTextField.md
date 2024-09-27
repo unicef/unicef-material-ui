@@ -343,7 +343,7 @@ function handleSubmit() {
       errorMessages={[
         'this field is required',
         'Value must be number only',
-        'value must be possitive',
+        'value must be positive',
         'value must be less than 255',
       ]}
     />

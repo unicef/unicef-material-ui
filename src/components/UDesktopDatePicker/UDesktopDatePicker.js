@@ -16,7 +16,11 @@ export default function UDesktopDatePicker({
   onChange,
   value,
   showLabelHelp,
-  InputLabelProps,
+  slotProps = {
+    inputLabel: {
+      shrink: true,
+    },
+  },
   InputLabelHelpProps,
   inputVariant,
   ...others
@@ -32,7 +36,7 @@ export default function UDesktopDatePicker({
         renderInput={params => (
           <UTextField
             showLabelHelp={showLabelHelp}
-            InputLabelProps={InputLabelProps}
+            slotProps={{ ...slotProps }}
             InputLabelHelpProps={InputLabelHelpProps}
             variant={inputVariant}
             {...params}
@@ -58,8 +62,8 @@ UDesktopDatePicker.propTypes = {
   showLabelHelp: PropTypes.bool,
   /** Props applied to the input label help element. E.g InputLabelHelpProps={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
   InputLabelHelpProps: PropTypes.object,
-  /** Props applied to the InputLabel element.*/
-  InputLabelProps: PropTypes.object,
+  /** The props used for each slot inside. */
+  slotProps: PropTypes.object,
 }
 
 UDesktopDatePicker.defaultProps = {

@@ -49,10 +49,10 @@ export default function USearchBox({
   value,
   onSearch,
   placeholder = 'Search',
-  inputProps,
   className,
   showSeparator = true,
   iconLabel,
+  slotProps = { inputLabel: {}, input: {} },
   ...rest
 }) {
   const [searchValue, setSearch] = useState(value)
@@ -73,7 +73,7 @@ export default function USearchBox({
     applySearch(searchValue)
   }
 
-  const handleKeyPress = e => {
+  const handleKeyDown = e => {
     if (e.key === 'Enter') {
       applySearch()
     }
@@ -88,46 +88,61 @@ export default function USearchBox({
     <TextField
       placeholder={placeholder}
       onChange={handleChange}
-      onKeyPress={handleKeyPress}
+      onKeyDown={handleKeyDown}
       fullWidth
       name="search"
       variant="outlined"
       value={searchValue}
       className={`${classes.root} ${className}`}
       autoComplete="off"
-      InputLabelProps={{ shrink: false }}
-      InputProps={{
-        endAdornment: (
-          <StyledInputAdornment>
-            {searchValue ? (
-              <IconButton aria-label="Clear" onClick={handleClear} size="large">
-                <CloseIcon />
-              </IconButton>
-            ) : (
-              ''
-            )}
-            {showSeparator ? <Box className={classes.iconSeparator}></Box> : ''}
-            {iconLabel ? (
-              <Button
-                aria-label="Search"
-                className={classes.searchIcon}
-                onClick={handleSearch}
-              >
-                <SearchIcon />
-                <span className={classes.iconLabel}>{iconLabel}</span>
-              </Button>
-            ) : (
-              <IconButton
-                aria-label="Search"
-                className={classes.searchIcon}
-                onClick={handleSearch}
-                size="large"
-              >
-                <SearchIcon />
-              </IconButton>
-            )}
-          </StyledInputAdornment>
-        ),
+      slotProps={{
+        ...slotProps,
+        input: {
+          ...(slotProps.input ? slotProps.input : {}),
+          endAdornment: (
+            <StyledInputAdornment>
+              {searchValue ? (
+                <IconButton
+                  aria-label="Clear"
+                  onClick={handleClear}
+                  size="large"
+                >
+                  <CloseIcon />
+                </IconButton>
+              ) : (
+                ''
+              )}
+              {showSeparator ? (
+                <Box className={classes.iconSeparator}></Box>
+              ) : (
+                ''
+              )}
+              {iconLabel ? (
+                <Button
+                  aria-label="Search"
+                  className={classes.searchIcon}
+                  onClick={handleSearch}
+                >
+                  <SearchIcon />
+                  <span className={classes.iconLabel}>{iconLabel}</span>
+                </Button>
+              ) : (
+                <IconButton
+                  aria-label="Search"
+                  className={classes.searchIcon}
+                  onClick={handleSearch}
+                  size="large"
+                >
+                  <SearchIcon />
+                </IconButton>
+              )}
+            </StyledInputAdornment>
+          ),
+        },
+        inputLabel: {
+          ...(slotProps.inputLabel ? slotProps.inputLabel : {}),
+          shrink: false,
+        },
       }}
       {...rest}
     />
@@ -148,4 +163,6 @@ USearchBox.propTypes = {
   showSeparator: PropTypes.bool,
   /** Label next to the search icon */
   iconLabel: PropTypes.string,
+  /** The props used for each slot inside. */
+  slotProps: PropTypes.object,
 }

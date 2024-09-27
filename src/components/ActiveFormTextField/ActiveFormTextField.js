@@ -1,7 +1,6 @@
 import React from 'react'
 import { styled } from '@mui/material/styles'
 import PropTypes from 'prop-types'
-import { Box } from '@mui/material'
 import { outlinedInputClasses } from '@mui/material/OutlinedInput'
 import UTextField from '../UTextField'
 
@@ -16,7 +15,7 @@ const classes = {
   inputHover: `${PREFIX}-inputHover`,
 }
 
-const StyledBox = styled(Box, {
+const StyledDiv = styled('div', {
   shouldForwardProp: prop =>
     prop !== 'typographyVariant' && prop !== 'inputPadding',
 })(({ theme, typographyVariant, inputPadding }) => ({
@@ -48,6 +47,9 @@ const StyledBox = styled(Box, {
     [`&:hover .${outlinedInputClasses.notchedOutline}`]: {
       borderColor: 'transparent',
     },
+    [`& .${outlinedInputClasses.notchedOutline}`]: {
+      borderColor: 'transparent!important',
+    },
   },
 }))
 
@@ -72,9 +74,7 @@ export default function ActiveFormTextField(props) {
     readOnly,
     placeholder = 'Type something',
     interactiveMode = false,
-    InputLabelProps,
-    InputProps,
-    inputProps,
+    slotProps = { inputLabel: {}, htmlInput: {}, input: {} },
     inputPadding,
     ...others
   } = props
@@ -84,40 +84,43 @@ export default function ActiveFormTextField(props) {
   const finalPlaceholder = readOnly ? null : placeholder
 
   return (
-    <StyledBox
+    <StyledDiv
       typographyVariant={typographyVariant}
       inputPadding={inputPadding}
     >
       <UTextField
         placeholder={finalPlaceholder}
-        InputLabelProps={{
-          shrink: true,
-          ...InputLabelProps,
-        }}
-        inputProps={{
-          readOnly: Boolean(readOnly),
-          disabled: Boolean(readOnly),
-          ...inputProps,
+        slotProps={{
+          inputLabel: {
+            shrink: true,
+            ...(slotProps.inputLabel ? slotProps.inputLabel : {}),
+          },
+          htmlInput: {
+            ...(slotProps.htmlInput ? slotProps.htmlInput : {}),
+            readOnly: Boolean(readOnly),
+            disabled: Boolean(readOnly),
+          },
+          input: {
+            classes: {
+              root: `${classes.input} ${readOnly && classes.inputHover}`,
+              multiline: inputPaddingClass,
+              notchedOutline: `${
+                !interactiveMode && !readOnly ? '' : classes.notchedOutline
+              }`,
+              input: props.multiline
+                ? classes.inputPaddingWithoutLabel
+                : inputPaddingClass,
+            },
+            readOnly: Boolean(readOnly),
+            ...(slotProps.input ? slotProps.input : {}),
+          },
         }}
         className={`${classes.textField} ${className && className}`}
-        InputProps={{
-          classes: {
-            root: `${classes.input} ${readOnly && classes.inputHover}`,
-            multiline: inputPaddingClass,
-            notchedOutline: `${
-              !interactiveMode && !readOnly ? '' : classes.notchedOutline
-            }`,
-            input: props.multiline
-              ? classes.inputPaddingWithoutLabel
-              : inputPaddingClass,
-          },
-          ...InputProps,
-        }}
         variant={variant}
         defaultValue={props.children}
         {...others}
       />
-    </StyledBox>
+    </StyledDiv>
   )
 }
 
@@ -152,4 +155,6 @@ ActiveFormTextField.propTypes = {
   validatorListener: PropTypes.func,
   /** Allow to use required validator in any validation trigger, not only form submit. */
   withRequiredValidator: PropTypes.bool,
+  /** The props used for each slot inside. */
+  slotProps: PropTypes.object,
 }
