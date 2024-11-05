@@ -1,13 +1,11 @@
 import React from 'react'
 import { styled } from '@mui/material/styles'
-import { Box } from '@mui/material'
 import PropTypes from 'prop-types'
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 import { outlinedInputClasses } from '@mui/material/OutlinedInput'
-
-import UTextField from './../UTextField'
+import { InputLabelHelp } from '../Shared'
 
 const PREFIX = 'ActiveDatePicker'
 
@@ -48,18 +46,20 @@ const StyledDiv = styled('div', {
  * Please have look at [Material UI Date Picker](https://mui.com/x/api/date-pickers/date-picker/) for more details
  */
 export default function ActiveDatePicker({
-  inputFormat = 'dd/MM/yyyy',
+  format = 'dd/MM/yyyy',
   label,
   onChange,
   value,
   showLabelHelp,
+  InputLabelHelpProps,
   slotProps = {
-    inputLabel: {
-      shrink: true,
+    textField: {
+      InputLabelProps: {
+        shrink: true,
+      },
     },
   },
-  InputLabelHelpProps,
-  inputVariant = 'outlined',
+  variant = 'outlined',
   interactiveMode,
   readOnly,
   ...others
@@ -69,22 +69,20 @@ export default function ActiveDatePicker({
       <StyledDiv readOnly={readOnly} interactiveMode={interactiveMode}>
         <DatePicker
           className={classes.root}
-          label={label}
-          inputFormat={inputFormat}
+          label={
+            showLabelHelp ? (
+              <InputLabelHelp inputLabel={label} {...InputLabelHelpProps} />
+            ) : (
+              label
+            )
+          }
+          format={format}
           onChange={onChange}
           value={value}
           readOnly={readOnly}
+          slotProps={slotProps}
+          variant={variant}
           {...others}
-          renderInput={params => (
-            <UTextField
-              showLabelHelp={showLabelHelp}
-              slotProps={slotProps}
-              InputLabelHelpProps={InputLabelHelpProps}
-              variant={inputVariant}
-              readOnly={readOnly}
-              {...params}
-            />
-          )}
         />
       </StyledDiv>
     </LocalizationProvider>
@@ -93,13 +91,13 @@ export default function ActiveDatePicker({
 
 ActiveDatePicker.propTypes = {
   /** Date picker format */
-  inputFormat: PropTypes.string,
+  format: PropTypes.string,
   /** Callback function when change the picker field */
   onChange: PropTypes.func.isRequired,
   /** Value of the picker field */
   value: PropTypes.string,
   /** Material ui textfield variant */
-  inputVariant: PropTypes.string,
+  variant: PropTypes.string,
 
   /** To make the content readOnly */
   readOnly: PropTypes.bool,

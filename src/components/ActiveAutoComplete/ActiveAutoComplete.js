@@ -171,12 +171,16 @@ export default function ActiveAutoComplete({
               slotProps={{
                 ...params.slotProps,
                 htmlInput: {
-                  ...params.slotProps.htmlInput,
+                  ...(params?.slotProps?.htmlInput
+                    ? params.slotProps.htmlInput
+                    : {}),
                   minLength,
                   maxLength,
                 },
                 inputLabel: {
-                  ...params.slotProps.inputLabel,
+                  ...(params?.slotProps?.inputLabel
+                    ? params.slotProps.inputLabel
+                    : {}),
                   required: isRequired,
                 },
               }}

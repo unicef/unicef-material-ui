@@ -40,7 +40,7 @@ export default function UAutoComplete({
   allowContextSpecific = false,
   counter = false,
   placeholder,
-  InputLabelProps,
+  slotProps = {},
   props,
 }) {
   //const dispatch = useDispatch()
@@ -145,14 +145,17 @@ export default function UAutoComplete({
               value={(selectedValue && selectedValue.text) || ''}
               validators={isRequired ? ['required', 'trim'] : ['trim']}
               fullWidth
-              inputProps={{
-                ...params.inputProps,
-                minLength: minLength,
-                maxLength: maxLength,
-              }}
-              InputLabelProps={{
-                ...InputLabelProps,
-                required: isRequired,
+              slotProps={{
+                ...slotProps,
+                htmlInput: {
+                  ...(slotProps?.htmlInput ? slotProps.htmlInput : {}),
+                  minLength,
+                  maxLength,
+                },
+                inputLabel: {
+                  ...(slotProps?.inputLabel ? slotProps.inputLabel : {}),
+                  required: isRequired,
+                },
               }}
               maxLength={maxLength}
               counter={counter}

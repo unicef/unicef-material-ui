@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker'
-import UTextField from '../UTextField'
+
+import { InputLabelHelp } from '../Shared'
 
 /**
  * UDateTimePicker is a customized material UI Date Time Picker.
@@ -11,37 +12,38 @@ import UTextField from '../UTextField'
  * Please have look at [Material UI Date Time Picker](https://mui.com/x/api/date-pickers/date-time-picker/) for more details
  */
 export default function UDateTimePicker({
-  inputFormat,
+  format = 'dd/MM/yyyy hh:mm a',
   label,
   onChange,
   value,
   showLabelHelp,
+  InputLabelHelpProps,
   slotProps = {
-    inputLabel: {
-      shrink: true,
+    textField: {
+      InputLabelProps: {
+        shrink: true,
+      },
     },
   },
-  InputLabelHelpProps,
-  inputVariant,
+  variant = 'outlined',
   ...others
 }) {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <DateTimePicker
-        label={label}
-        inputFormat={inputFormat}
+        label={
+          showLabelHelp ? (
+            <InputLabelHelp inputLabel={label} {...InputLabelHelpProps} />
+          ) : (
+            label
+          )
+        }
+        format={format}
         onChange={onChange}
         value={value}
+        slotProps={slotProps}
+        variant={variant}
         {...others}
-        renderInput={params => (
-          <UTextField
-            showLabelHelp={showLabelHelp}
-            slotProps={{ ...slotProps }}
-            InputLabelHelpProps={InputLabelHelpProps}
-            variant={inputVariant}
-            {...params}
-          />
-        )}
       />
     </LocalizationProvider>
   )
@@ -49,13 +51,13 @@ export default function UDateTimePicker({
 
 UDateTimePicker.propTypes = {
   /** Date time picker format */
-  inputFormat: PropTypes.string,
+  format: PropTypes.string,
   /** Callback function when change the picker field */
   onChange: PropTypes.func.isRequired,
   /** Value of the picker field */
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string]),
   /** Material ui textfield variant */
-  inputVariant: PropTypes.string,
+  variant: PropTypes.string,
   /** Label text */
   label: PropTypes.string,
   /** Show label help */
@@ -64,12 +66,4 @@ UDateTimePicker.propTypes = {
   InputLabelHelpProps: PropTypes.object,
   /** The props used for each slot inside. */
   slotProps: PropTypes.object,
-}
-
-UDateTimePicker.defaultProps = {
-  inputVariant: 'outlined',
-  InputLabelProps: {
-    shrink: true,
-  },
-  inputFormat: 'dd/MM/yyyy hh:mm a',
 }

@@ -6,7 +6,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { DesktopDateTimePicker } from '@mui/x-date-pickers/DesktopDateTimePicker'
 import { outlinedInputClasses } from '@mui/material/OutlinedInput'
 
-import UTextField from './../UTextField'
+import { InputLabelHelp } from '../Shared'
 
 const PREFIX = 'ActiveDesktopDateTimePicker'
 
@@ -47,14 +47,20 @@ const StyledDiv = styled('div', {
  * Please have look at [Material UI Desktop Date Time Picker](https://mui.com/x/api/date-pickers/desktop-date-time-picker/) for more details
  */
 export default function ActiveDesktopDateTimePicker({
-  inputFormat,
+  format = 'dd/MM/yyyy hh:mm a',
   label,
   onChange,
   value,
   showLabelHelp,
-  InputLabelProps,
   InputLabelHelpProps,
-  inputVariant,
+  slotProps = {
+    textField: {
+      InputLabelProps: {
+        shrink: true,
+      },
+    },
+  },
+  variant = 'outlined',
   interactiveMode,
   readOnly,
   ...others
@@ -64,22 +70,20 @@ export default function ActiveDesktopDateTimePicker({
       <StyledDiv readOnly={readOnly} interactiveMode={interactiveMode}>
         <DesktopDateTimePicker
           className={classes.root}
-          label={label}
-          inputFormat={inputFormat}
+          label={
+            showLabelHelp ? (
+              <InputLabelHelp inputLabel={label} {...InputLabelHelpProps} />
+            ) : (
+              label
+            )
+          }
+          format={format}
           onChange={onChange}
           value={value}
           readOnly={readOnly}
+          slotProps={slotProps}
+          variant={variant}
           {...others}
-          renderInput={params => (
-            <UTextField
-              showLabelHelp={showLabelHelp}
-              InputLabelProps={InputLabelProps}
-              InputLabelHelpProps={InputLabelHelpProps}
-              variant={inputVariant}
-              readOnly={readOnly}
-              {...params}
-            />
-          )}
         />
       </StyledDiv>
     </LocalizationProvider>
@@ -88,13 +92,13 @@ export default function ActiveDesktopDateTimePicker({
 
 ActiveDesktopDateTimePicker.propTypes = {
   /** Date time picker format */
-  inputFormat: PropTypes.string,
+  format: PropTypes.string,
   /** Callback function when change the picker field */
   onChange: PropTypes.func.isRequired,
   /** Value of the picker field */
   value: PropTypes.string,
   /** Material ui textfield variant */
-  inputVariant: PropTypes.string,
+  variant: PropTypes.string,
   /** To make the content readOnly */
   readOnly: PropTypes.bool,
   /** Change to write mode by hiding text field border and displays border on hover*/
@@ -107,12 +111,4 @@ ActiveDesktopDateTimePicker.propTypes = {
   showLabelHelp: PropTypes.bool,
   /** Props applied to the input label help element. E.g InputLabelHelpProps={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
   InputLabelHelpProps: PropTypes.object,
-}
-
-ActiveDesktopDateTimePicker.defaultProps = {
-  inputVariant: 'outlined',
-  InputLabelProps: {
-    shrink: true,
-  },
-  inputFormat: 'dd/MM/yyyy hh:mm a',
 }

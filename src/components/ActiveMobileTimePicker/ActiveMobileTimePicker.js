@@ -6,7 +6,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { MobileTimePicker } from '@mui/x-date-pickers/MobileTimePicker'
 import { outlinedInputClasses } from '@mui/material/OutlinedInput'
 
-import UTextField from '../UTextField'
+import { InputLabelHelp } from '../Shared'
 
 const PREFIX = 'ActiveMobileTimePicker'
 
@@ -47,18 +47,20 @@ const StyledDiv = styled('div', {
  * Please have look at [Material UI Mobile Time Picker](https://mui.com/x/api/date-pickers/mobile-time-picker/) for more details
  */
 export default function ActiveMobileTimePicker({
-  inputFormat,
+  format = 'hh:mm a',
   label,
   onChange,
   value,
   showLabelHelp,
+  InputLabelHelpProps,
   slotProps = {
-    inputLabel: {
-      shrink: true,
+    textField: {
+      InputLabelProps: {
+        shrink: true,
+      },
     },
   },
-  InputLabelHelpProps,
-  inputVariant,
+  variant = 'outlined',
   interactiveMode,
   readOnly,
   ...others
@@ -68,22 +70,20 @@ export default function ActiveMobileTimePicker({
       <StyledDiv readOnly={readOnly} interactiveMode={interactiveMode}>
         <MobileTimePicker
           className={classes.root}
-          label={label}
-          inputFormat={inputFormat}
+          label={
+            showLabelHelp ? (
+              <InputLabelHelp inputLabel={label} {...InputLabelHelpProps} />
+            ) : (
+              label
+            )
+          }
+          format={format}
           onChange={onChange}
           value={value}
           readOnly={readOnly}
+          slotProps={slotProps}
+          variant={variant}
           {...others}
-          renderInput={params => (
-            <UTextField
-              showLabelHelp={showLabelHelp}
-              slotProps={slotProps}
-              InputLabelHelpProps={InputLabelHelpProps}
-              variant={inputVariant}
-              readOnly={readOnly}
-              {...params}
-            />
-          )}
         />
       </StyledDiv>
     </LocalizationProvider>
@@ -94,11 +94,11 @@ ActiveMobileTimePicker.propTypes = {
   /** Callback function when change the picker field */
   onChange: PropTypes.func.isRequired,
   /** Time picker format */
-  inputFormat: PropTypes.string,
+  format: PropTypes.string,
   /** Value of the picker field */
   value: PropTypes.string,
   /** Material ui textfield variant */
-  inputVariant: PropTypes.string,
+  variant: PropTypes.string,
   /** To make the content readOnly */
   readOnly: PropTypes.bool,
   /** Change to write mode by hiding text field border and displays border on hover*/
@@ -111,12 +111,4 @@ ActiveMobileTimePicker.propTypes = {
   showLabelHelp: PropTypes.bool,
   /** Props applied to the input label help element. E.g InputLabelHelpProps={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
   InputLabelHelpProps: PropTypes.object,
-}
-
-ActiveMobileTimePicker.defaultProps = {
-  inputVariant: 'outlined',
-  InputLabelProps: {
-    shrink: true,
-  },
-  inputFormat: 'hh:mm a',
 }

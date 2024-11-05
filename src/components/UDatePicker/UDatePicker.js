@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { DatePicker } from '@mui/x-date-pickers/DatePicker'
-import UTextField from './../UTextField'
+
+import { InputLabelHelp } from '../Shared'
 
 /**
  * UDatePicker is a customized material ui Date picker.
@@ -12,37 +13,38 @@ import UTextField from './../UTextField'
  * Please have look at [Material UI Date Picker](https://mui.com/x/react-date-pickers/date-picker/#main-content) for more details
  */
 export default function UDatePicker({
-  inputFormat = 'dd/MM/yyyy',
+  format = 'dd/MM/yyyy',
   label,
   onChange,
   value,
   showLabelHelp,
+  InputLabelHelpProps,
   slotProps = {
-    inputLabel: {
-      shrink: true,
+    textField: {
+      InputLabelProps: {
+        shrink: true,
+      },
     },
   },
-  InputLabelHelpProps,
-  inputVariant = 'outlined',
+  variant = 'outlined',
   ...others
 }) {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <DatePicker
-        label={label}
-        inputFormat={inputFormat}
+        label={
+          showLabelHelp ? (
+            <InputLabelHelp inputLabel={label} {...InputLabelHelpProps} />
+          ) : (
+            label
+          )
+        }
+        format={format}
         onChange={onChange}
         value={value}
+        slotProps={slotProps}
+        variant={variant}
         {...others}
-        renderInput={params => (
-          <UTextField
-            showLabelHelp={showLabelHelp}
-            slotProps={slotProps}
-            InputLabelHelpProps={InputLabelHelpProps}
-            variant={inputVariant}
-            {...params}
-          />
-        )}
       />
     </LocalizationProvider>
   )
@@ -50,13 +52,13 @@ export default function UDatePicker({
 
 UDatePicker.propTypes = {
   /** Date picker format */
-  inputFormat: PropTypes.string,
+  format: PropTypes.string,
   /** Callback function when change the picker field */
   onChange: PropTypes.func.isRequired,
   /** Value of the picker field */
   value: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string]),
   /** Material ui textfield variant */
-  inputVariant: PropTypes.string,
+  variant: PropTypes.string,
   /** Label text */
   label: PropTypes.string,
   /** Show label help */

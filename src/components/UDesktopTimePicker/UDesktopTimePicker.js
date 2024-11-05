@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { DesktopTimePicker } from '@mui/x-date-pickers/DesktopTimePicker'
-import UTextField from '../UTextField'
+
+import { InputLabelHelp } from '../Shared'
 
 /**
  * UDesktopTimePicker is a customized material UI Desktop Time Picker.
@@ -11,37 +12,38 @@ import UTextField from '../UTextField'
  * Please have look at [Material UI Desktop Time Picker](https://mui.com/x/api/date-pickers/desktop-time-picker/) for more details
  */
 export default function UDesktopTimePicker({
-  inputFormat,
+  format = 'hh:mm a',
   label,
   onChange,
   value,
   showLabelHelp,
+  InputLabelHelpProps,
   slotProps = {
-    inputLabel: {
-      shrink: true,
+    textField: {
+      InputLabelProps: {
+        shrink: true,
+      },
     },
   },
-  InputLabelHelpProps,
-  inputVariant,
+  variant = 'outlined',
   ...others
 }) {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <DesktopTimePicker
-        label={label}
-        inputFormat={inputFormat}
+        label={
+          showLabelHelp ? (
+            <InputLabelHelp inputLabel={label} {...InputLabelHelpProps} />
+          ) : (
+            label
+          )
+        }
+        format={format}
         onChange={onChange}
         value={value}
+        slotProps={slotProps}
+        variant={variant}
         {...others}
-        renderInput={params => (
-          <UTextField
-            showLabelHelp={showLabelHelp}
-            slotProps={slotProps}
-            InputLabelHelpProps={InputLabelHelpProps}
-            variant={inputVariant}
-            {...params}
-          />
-        )}
       />
     </LocalizationProvider>
   )
@@ -49,13 +51,13 @@ export default function UDesktopTimePicker({
 
 UDesktopTimePicker.propTypes = {
   /** Date picker format */
-  inputFormat: PropTypes.string,
+  format: PropTypes.string,
   /** Callback function when change the picker field */
   onChange: PropTypes.func.isRequired,
   /** Value of the picker field */
   value: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string]),
   /** Material ui textfield variant */
-  inputVariant: PropTypes.string,
+  variant: PropTypes.string,
   /** Label text */
   label: PropTypes.string,
   /** Show label help */
@@ -64,12 +66,4 @@ UDesktopTimePicker.propTypes = {
   InputLabelHelpProps: PropTypes.object,
   /** The props used for each slot inside. */
   slotProps: PropTypes.object,
-}
-
-UDesktopTimePicker.defaultProps = {
-  inputVariant: 'outlined',
-  InputLabelProps: {
-    shrink: true,
-  },
-  inputFormat: 'hh:mm a',
 }

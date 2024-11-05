@@ -74,6 +74,15 @@ const theme = createTheme({
         },
       },
     },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          pointerEvents: 'auto',
+          display: 'flex',
+          alignItems: 'center',
+        },
+      },
+    },
   },
 })
 /** This is customized version of theme for whole application. To use UNICEF theme add MuiThemeProvider at the top level of your app, it will set the custom styles of unicef down to the component tree.

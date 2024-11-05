@@ -74,7 +74,7 @@ export default function ActiveFormTextField(props) {
     readOnly,
     placeholder = 'Type something',
     interactiveMode = false,
-    slotProps = { inputLabel: {}, htmlInput: {}, input: {} },
+    slotProps = {},
     inputPadding,
     ...others
   } = props
@@ -91,12 +91,13 @@ export default function ActiveFormTextField(props) {
       <UTextField
         placeholder={finalPlaceholder}
         slotProps={{
+          ...slotProps,
           inputLabel: {
             shrink: true,
-            ...(slotProps.inputLabel ? slotProps.inputLabel : {}),
+            ...(slotProps?.inputLabel ? slotProps.inputLabel : {}),
           },
           htmlInput: {
-            ...(slotProps.htmlInput ? slotProps.htmlInput : {}),
+            ...(slotProps?.htmlInput ? slotProps.htmlInput : {}),
             readOnly: Boolean(readOnly),
             disabled: Boolean(readOnly),
           },
@@ -112,7 +113,7 @@ export default function ActiveFormTextField(props) {
                 : inputPaddingClass,
             },
             readOnly: Boolean(readOnly),
-            ...(slotProps.input ? slotProps.input : {}),
+            ...(slotProps?.input ? slotProps.input : {}),
           },
         }}
         className={`${classes.textField} ${className && className}`}

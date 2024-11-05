@@ -40,9 +40,10 @@ export default {
     'react-dom',
     'prop-types',
     'styled-components',
+    '@emotion/react',
   ],
-  onwarn: function ( message ) {
-    if ( message.code === 'MODULE_LEVEL_DIRECTIVE' ) return;
-    console.error( message );
-  }
+  onwarn: function (message) {
+    if (message.code === 'MODULE_LEVEL_DIRECTIVE') return
+    console.error(message)
+  },
 }

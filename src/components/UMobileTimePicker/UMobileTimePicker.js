@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { MobileTimePicker } from '@mui/x-date-pickers/MobileTimePicker'
-import UTextField from '../UTextField'
+
+import { InputLabelHelp } from '../Shared'
 
 /**
  * UMobileTimePicker is a customized material UI Mobile Time Picker.
@@ -11,37 +12,38 @@ import UTextField from '../UTextField'
  * Please have look at [Material UI Mobile Time Picker](https://mui.com/x/api/date-pickers/mobile-time-picker/) for more details
  */
 export default function UMobileTimePicker({
-  inputFormat,
+  format = 'hh:mm a',
   label,
   onChange,
   value,
   showLabelHelp,
+  InputLabelHelpProps,
   slotProps = {
-    inputLabel: {
-      shrink: true,
+    textField: {
+      InputLabelProps: {
+        shrink: true,
+      },
     },
   },
-  InputLabelHelpProps,
-  inputVariant,
+  variant = 'outlined',
   ...others
 }) {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <MobileTimePicker
-        label={label}
-        inputFormat={inputFormat}
+        label={
+          showLabelHelp ? (
+            <InputLabelHelp inputLabel={label} {...InputLabelHelpProps} />
+          ) : (
+            label
+          )
+        }
+        format={format}
         onChange={onChange}
         value={value}
+        slotProps={slotProps}
+        variant={variant}
         {...others}
-        renderInput={params => (
-          <UTextField
-            showLabelHelp={showLabelHelp}
-            slotProps={slotProps}
-            InputLabelHelpProps={InputLabelHelpProps}
-            variant={inputVariant}
-            {...params}
-          />
-        )}
       />
     </LocalizationProvider>
   )
@@ -49,13 +51,13 @@ export default function UMobileTimePicker({
 
 UMobileTimePicker.propTypes = {
   /** Date picker format */
-  inputFormat: PropTypes.string,
+  format: PropTypes.string,
   /** Callback function when change the picker field */
   onChange: PropTypes.func.isRequired,
   /** Value of the picker field */
   value: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string]),
   /** Material ui textfield variant */
-  inputVariant: PropTypes.string,
+  variant: PropTypes.string,
   /** Label text */
   label: PropTypes.string,
   /** Show label help */
@@ -64,12 +66,4 @@ UMobileTimePicker.propTypes = {
   InputLabelHelpProps: PropTypes.object,
   /** The props used for each slot inside. */
   slotProps: PropTypes.object,
-}
-
-UMobileTimePicker.defaultProps = {
-  inputVariant: 'outlined',
-  InputLabelProps: {
-    shrink: true,
-  },
-  inputFormat: 'hh:mm a',
 }

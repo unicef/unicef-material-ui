@@ -60,7 +60,7 @@
     "@mui/icons-material": "^6.1.1",
     "@mui/lab": "^6.0.0-beta.10",
     "@mui/material": "^6.1.1",
-    "@mui/x-date-pickers": "^5.0.6",
+    "@mui/x-date-pickers": "^7.18.0",
     "@rollup/plugin-babel": "^6.0.2",
     "@rollup/plugin-commonjs": "^23.0.2",
     "@rollup/plugin-node-resolve": "^15.0.1",

@@ -14,11 +14,6 @@ const styles = {
   counterError: {
     color: '#f44336',
   },
-  labelRoot: {
-    pointerEvents: 'auto',
-    display: 'flex',
-    alignItems: 'center',
-  },
 }
 
 //Extending the ValidatorComponent using class component, so taking an exclusion from our rule: functional components only.
@@ -96,13 +91,13 @@ class UTextField extends ValidatorComponent {
       counterClassName,
       readOnly,
       label,
-      showLabelHelp,
+      showLabelHelp = true,
       InputLabelHelpProps,
       select,
       id,
       options,
       children,
-      slotProps = { input: {}, inputLabel: {}, select: {}, htmlInput: {} },
+      slotProps = {},
       ...rest
     } = this.props
     const { isValid, isSelectOpen } = this.state
@@ -129,21 +124,21 @@ class UTextField extends ValidatorComponent {
           slotProps={{
             input: {
               readOnly: readOnly,
-              ...(slotProps.input ? slotProps.input : {}),
+              ...(slotProps?.input ? slotProps.input : {}),
             },
             inputLabel: {
-              ...(slotProps.inputLabel ? slotProps.inputLabel : {}),
+              ...(slotProps?.inputLabel ? slotProps.inputLabel : {}),
               style: { ...styles.labelRoot },
             },
             ...(select
               ? {
                   htmlInput: {
-                    ...(slotProps.htmlInput ? slotProps.htmlInput : {}),
+                    ...(slotProps?.htmlInput ? slotProps.htmlInput : {}),
                     'aria-describedby': null,
                   },
                   /** Accessibility fixes for select field */
                   select: {
-                    ...(slotProps.select ? slotProps.select : {}),
+                    ...(slotProps?.select ? slotProps.select : {}),
                     open: isSelectOpen ? true : false,
                     onClose: this.handleSelectClose,
                     onOpen: this.handleSelectOpen,
