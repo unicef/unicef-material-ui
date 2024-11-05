@@ -11,7 +11,27 @@ import USelectPicker from '../USelectPicker'
  *
  */
 export default function UPeoplePicker(props) {
-  return <USelectPicker {...props} hideAvatar={false} />
+  const {
+    isMulti = false,
+    placeholder = 'Select...',
+    variant = 'outlined',
+    showNoOptionsWithEmptyTextField = true,
+    showLabelHelp = false,
+    InputLabelHelpProps = {},
+    ...rest
+  } = props
+  return (
+    <USelectPicker
+      isMulti={isMulti}
+      placeholder={placeholder}
+      variant={variant}
+      showNoOptionsWithEmptyTextField={showNoOptionsWithEmptyTextField}
+      showLabelHelp={showLabelHelp}
+      InputLabelHelpProps={InputLabelHelpProps}
+      {...rest}
+      hideAvatar={false}
+    />
+  )
 }
 
 UPeoplePicker.propTypes = {
@@ -69,13 +89,4 @@ UPeoplePicker.propTypes = {
   showLabelHelp: PropTypes.bool,
   /** Props applied to the input label help element. E.g.  InputLabelHelpProps={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
   InputLabelHelpProps: PropTypes.object,
-}
-
-UPeoplePicker.defaultProps = {
-  isMulti: false,
-  placeholder: 'Select...',
-  variant: 'outlined',
-  showNoOptionsWithEmptyTextField: true,
-  showLabelHelp: false,
-  InputLabelHelpProps: {},
 }

@@ -60,7 +60,6 @@ export default function InputLabelHelp({
       <StyledBox className={classes.root}>
         {type === 'tooltip' ? (
           <Tooltip
-            interactive
             title={<div dangerouslySetInnerHTML={{ __html: tooltipTitle }} />}
             placement={tooltipPlacement}
             classes={{ popper: classes.tooltipPopper }}

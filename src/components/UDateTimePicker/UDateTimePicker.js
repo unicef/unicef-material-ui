@@ -10,15 +10,18 @@ import UTextField from '../UTextField'
  * This component let's you access the calender and clock to select the date and time.
  * Please have look at [Material UI Date Time Picker](https://mui.com/x/api/date-pickers/date-time-picker/) for more details
  */
+
 export default function UDateTimePicker({
-  inputFormat,
+  inputFormat = 'dd/MM/yyyy hh:mm a',
   label,
   onChange,
   value,
   showLabelHelp,
-  InputLabelProps,
+  InputLabelProps = {
+    shrink: true,
+  },
   InputLabelHelpProps,
-  inputVariant,
+  inputVariant = 'outlined',
   ...others
 }) {
   return (
@@ -49,7 +52,7 @@ UDateTimePicker.propTypes = {
   /** Callback function when change the picker field */
   onChange: PropTypes.func.isRequired,
   /** Value of the picker field */
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   /** Material ui textfield variant */
   inputVariant: PropTypes.string,
   /** Label text */
@@ -60,12 +63,4 @@ UDateTimePicker.propTypes = {
   InputLabelHelpProps: PropTypes.object,
   /** Props applied to the InputLabel element.*/
   InputLabelProps: PropTypes.object,
-}
-
-UDateTimePicker.defaultProps = {
-  inputVariant: 'outlined',
-  InputLabelProps: {
-    shrink: true,
-  },
-  inputFormat: 'dd/MM/yyyy hh:mm a',
 }

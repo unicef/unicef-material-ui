@@ -40,7 +40,7 @@ UAriaLive.propTypes = {
   /** Text to be announced by the screen reader */
   text: PropTypes.string,
   /** Used to set the priority with which screen reader should treat updates to live regions */
-  type: PropTypes.oneOf(['off', 'polite', 'assertive']),
+  type: PropTypes.oneOf(['alert', 'off', 'polite', 'assertive']),
   /** Aria atomic */
   ariaAtomic: PropTypes.bool,
   /** Aria role */

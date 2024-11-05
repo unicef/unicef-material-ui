@@ -82,27 +82,27 @@ class UTextField extends ValidatorComponent {
   renderValidatorComponent() {
     /* eslint-disable no-unused-vars */
     const {
-      variant,
+      variant = 'outlined',
       error,
       customErrorMessages,
       validators,
       requiredError,
       helperText,
-      validatorListener,
-      withRequiredValidator,
+      validatorListener = () => {},
+      withRequiredValidator = true,
       onBlur,
       maxLength,
       counter,
       counterClassName,
-      readOnly,
+      readOnly = false,
       label,
       InputProps,
       InputLabelProps,
-      showLabelHelp,
-      InputLabelHelpProps,
-      select,
+      showLabelHelp = false,
+      InputLabelHelpProps = {},
+      select = false,
       id,
-      SelectProps,
+      SelectProps = {},
       options,
       children,
       ...rest
@@ -110,7 +110,7 @@ class UTextField extends ValidatorComponent {
     const { isValid, isSelectOpen } = this.state
     const length = this.props.value ? this.props.value.length : 0
     const counterError = maxLength && maxLength < length
-    
+
     return (
       <Fragment>
         <TextField
@@ -164,12 +164,14 @@ class UTextField extends ValidatorComponent {
               }
             : {})}
         >
-          {select ? options && options.length
-            ? options.map(option => (
-                <MenuItem key={option.value} value={option.value}>
-                  {option.label}
-                </MenuItem>
-              )) : children
+          {select
+            ? options && options.length
+              ? options.map(option => (
+                  <MenuItem key={option.value} value={option.value}>
+                    {option.label}
+                  </MenuItem>
+                ))
+              : children
             : ''}
         </TextField>
         {counter && (
@@ -203,7 +205,10 @@ UTextField.propTypes = {
    *
    * Ex: `customErrorMessages={{required: 'This field is required'}`
    */
-  customErrorMessages: PropTypes.object,
+  customErrorMessages: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.string,
+  ]),
   /** Name of input. */
   name: PropTypes.string,
   /** It triggers after each validation.It will return true or false. */
@@ -213,10 +218,12 @@ UTextField.propTypes = {
   /** To make textfield to be select. See below examples section for select example and sample code */
   select: PropTypes.bool,
   /** Select options if the textfield is select */
-  options: PropTypes.shape({
-    value: PropTypes.any,
-    label: PropTypes.string,
-  }),
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.any,
+      label: PropTypes.string,
+    })
+  ),
   /** To enable character counter */
   counter: PropTypes.bool,
   /** Maximum length of characters */
@@ -235,17 +242,6 @@ UTextField.propTypes = {
   SelectProps: PropTypes.object,
   /** If the field is select box and no options are passed, then this children will be used. */
   children: PropTypes.node,
-}
-
-UTextField.defaultProps = {
-  variant: 'outlined',
-  readOnly: false,
-  validatorListener: () => {},
-  withRequiredValidator: true,
-  showLabelHelp: false,
-  InputLabelHelpProps: {},
-  select: false,
-  SelectProps: {},
 }
 
 export default UTextField

@@ -168,7 +168,7 @@ export default function UAutoComplete({
 
 UAutoComplete.propTypes = {
   /** selected value of the dropdown */
-  value: PropTypes.object,
+  value: PropTypes.any,
   /** label */
   label: PropTypes.string,
   /** options to display */

@@ -47,15 +47,18 @@ const StyledBox = styled(Box, {
  * This component let's you access the clock to select the time.
  * Please have look at [Material UI Mobile Time Picker](https://mui.com/x/api/date-pickers/mobile-time-picker/) for more details
  */
+
 export default function ActiveMobileTimePicker({
-  inputFormat,
+  inputFormat = 'hh:mm a',
   label,
   onChange,
   value,
   showLabelHelp,
-  InputLabelProps,
+  InputLabelProps = {
+    shrink: true,
+  },
   InputLabelHelpProps,
-  inputVariant,
+  inputVariant = 'outlined',
   interactiveMode,
   readOnly,
   ...others
@@ -108,12 +111,4 @@ ActiveMobileTimePicker.propTypes = {
   showLabelHelp: PropTypes.bool,
   /** Props applied to the input label help element. E.g InputLabelHelpProps={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
   InputLabelHelpProps: PropTypes.object,
-}
-
-ActiveMobileTimePicker.defaultProps = {
-  inputVariant: 'outlined',
-  InputLabelProps: {
-    shrink: true,
-  },
-  inputFormat: 'hh:mm a',
 }

@@ -98,7 +98,7 @@ export default function USearchBox({
       InputLabelProps={{ shrink: false }}
       InputProps={{
         endAdornment: (
-          <StyledInputAdornment>
+          <StyledInputAdornment position="end">
             {searchValue ? (
               <IconButton aria-label="Clear" onClick={handleClear} size="large">
                 <CloseIcon />

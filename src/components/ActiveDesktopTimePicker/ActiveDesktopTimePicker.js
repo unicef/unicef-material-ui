@@ -47,15 +47,18 @@ const StyledBox = styled(Box, {
  * This component let's you access the clock to select the time.
  * Please have look at [Material UI Desktop Time Picker](https://mui.com/x/api/date-pickers/desktop-time-picker/) for more details
  */
+
 export default function ActiveDesktopTimePicker({
-  inputFormat,
+  inputFormat = 'hh:mm a',
   label,
   onChange,
   value,
   showLabelHelp,
-  InputLabelProps,
+  InputLabelProps = {
+    shrink: true,
+  },
   InputLabelHelpProps,
-  inputVariant,
+  inputVariant = 'outlined',
   interactiveMode,
   readOnly,
   ...others
@@ -108,12 +111,4 @@ ActiveDesktopTimePicker.propTypes = {
   showLabelHelp: PropTypes.bool,
   /** Props applied to the input label help element. E.g InputLabelHelpProps={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
   InputLabelHelpProps: PropTypes.object,
-}
-
-ActiveDesktopTimePicker.defaultProps = {
-  inputVariant: 'outlined',
-  InputLabelProps: {
-    shrink: true,
-  },
-  inputFormat: 'hh:mm a',
 }

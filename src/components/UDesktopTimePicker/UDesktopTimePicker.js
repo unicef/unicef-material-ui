@@ -10,15 +10,18 @@ import UTextField from '../UTextField'
  * This component let's you access the calender to select particular dates.
  * Please have look at [Material UI Desktop Time Picker](https://mui.com/x/api/date-pickers/desktop-time-picker/) for more details
  */
+
 export default function UDesktopTimePicker({
-  inputFormat,
+  inputFormat = 'hh:mm a',
   label,
   onChange,
   value,
   showLabelHelp,
-  InputLabelProps,
+  InputLabelProps = {
+    shrink: true,
+  },
   InputLabelHelpProps,
-  inputVariant,
+  inputVariant = 'outlined',
   ...others
 }) {
   return (
@@ -60,12 +63,4 @@ UDesktopTimePicker.propTypes = {
   InputLabelHelpProps: PropTypes.object,
   /** Props applied to the InputLabel element.*/
   InputLabelProps: PropTypes.object,
-}
-
-UDesktopTimePicker.defaultProps = {
-  inputVariant: 'outlined',
-  InputLabelProps: {
-    shrink: true,
-  },
-  inputFormat: 'hh:mm a',
 }

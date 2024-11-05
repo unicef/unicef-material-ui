@@ -47,15 +47,18 @@ const StyledBox = styled(Box, {
  * This component let's you access the calender to select particular dates.
  * Please have look at [Material UI Mobile Date Picker](https://mui.com/x/api/date-pickers/mobile-date-picker/) for more details
  */
+
 export default function ActiveMobileDatePicker({
-  inputFormat,
+  inputFormat = 'dd/MM/yyyy',
   label,
   onChange,
   value,
   showLabelHelp,
-  InputLabelProps,
+  InputLabelProps = {
+    shrink: true,
+  },
   InputLabelHelpProps,
-  inputVariant,
+  inputVariant = 'outlined',
   interactiveMode,
   readOnly,
   ...others
@@ -108,12 +111,4 @@ ActiveMobileDatePicker.propTypes = {
   showLabelHelp: PropTypes.bool,
   /** Props applied to the input label help element. E.g InputLabelHelpProps={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
   InputLabelHelpProps: PropTypes.object,
-}
-
-ActiveMobileDatePicker.defaultProps = {
-  inputVariant: 'outlined',
-  InputLabelProps: {
-    shrink: true,
-  },
-  inputFormat: 'dd/MM/yyyy',
 }
