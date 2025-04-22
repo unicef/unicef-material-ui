@@ -5,7 +5,7 @@ import UTextField from '../UTextField'
 /**
  * UPositiveInteger form input field that accepts positive integer values. It is a extended version of UTextField.
  */
-export default function UPositiveInteger({ readOnly, InputProps, ...props }) {
+function ForwardRefUPositiveInteger({ readOnly, InputProps, ...props }, ref) {
   return (
     <UTextField
       variant="outlined"
@@ -16,10 +16,13 @@ export default function UPositiveInteger({ readOnly, InputProps, ...props }) {
       }}
       {...props}
       fullWidth
+      ref={ref}
     />
   )
 }
+const UPositiveInteger = React.forwardRef(ForwardRefUPositiveInteger)
 
+export default UPositiveInteger
 // It accepts all the Material Ui TextField props
 UPositiveInteger.propTypes = {
   // To make Textfield read only
