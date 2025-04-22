@@ -91,12 +91,14 @@ const currencies = [
 
 export default function FormValidator() {
   let form = useRef('form')
+  let inputRef = useRef()
+
   const [values, setValues] = useState({
     currency: '',
     email: 'test@test.com',
     regex: '',
     password: 'testinghere',
-    positiveInteger: 1,
+    positiveInteger: 156,
     currencyField: 1000.55,
     counter: 'This is counter',
     react: false,
@@ -128,6 +130,10 @@ export default function FormValidator() {
 
   function handleSubmit() {
     // Submit the changes from here
+    console.log(
+      'positive number inputRef value',
+      inputRef?.current?.props?.value
+    )
   }
 
   function handleItemValueChange(event) {
@@ -175,6 +181,7 @@ export default function FormValidator() {
                 setValues({ ...values, positiveInteger: e.target.value })
               }
               onBlur={handleBlur}
+              ref={inputRef}
             />
           </UValidatorForm>
         </Grid>
