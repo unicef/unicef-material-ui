@@ -34,15 +34,9 @@ export default {
     resolve(),
     commonjs(),
   ],
-  external: [
-    'react',
-    'react-is',
-    'react-dom',
-    'prop-types',
-    'styled-components',
-  ],
-  onwarn: function ( message ) {
-    if ( message.code === 'MODULE_LEVEL_DIRECTIVE' ) return;
-    console.error( message );
-  }
+  external: ['react', 'react-is', 'react-dom', 'prop-types'],
+  onwarn: function (message) {
+    if (message.code === 'MODULE_LEVEL_DIRECTIVE') return
+    console.error(message)
+  },
 }

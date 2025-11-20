@@ -1,4 +1,3 @@
-import React from 'react'
 import { styled } from '@mui/material/styles'
 import PropTypes from 'prop-types'
 import { Box, Button, CircularProgress } from '@mui/material'

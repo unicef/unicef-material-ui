@@ -1,6 +1,5 @@
-import React from 'react'
 import PropTypes from 'prop-types'
-import NumberFormat from 'react-number-format'
+import { NumericFormat } from 'react-number-format'
 
 export default function PositiveNumberFormat({
   inputRef,
@@ -16,7 +15,7 @@ export default function PositiveNumberFormat({
   ...other
 }) {
   return (
-    <NumberFormat
+    <NumericFormat
       {...other}
       value={value}
       getInputRef={inputRef}
