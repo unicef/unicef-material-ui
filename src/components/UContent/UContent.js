@@ -1,5 +1,6 @@
 import React from 'react'
 import { styled } from '@mui/material/styles'
+import { Box } from '@mui/material'
 import PropTypes from 'prop-types'
 
 const PREFIX = 'UContent'
@@ -23,7 +24,7 @@ const Root = styled('main')(({ theme }) => ({
 export default function UContent({ headerHeight = 64, children }) {
   return (
     <Root className={classes.content}>
-      <div style={{ minHeight: headerHeight }} />
+      <Box sx={{ minHeight: headerHeight }} />
       {children}
     </Root>
   )

@@ -14,12 +14,12 @@ export default function DeleteButtonExample() {
 
   return (
     <Grid container>
-      <Grid item xs={12}>
-        <Typography variant="h5" style={{ margin: '32px 0px' }}>
+      <Grid size={12}>
+        <Typography variant="h5" sx={{ margin: '32px 0px' }}>
           Error alert
         </Typography>
       </Grid>
-      <Grid item xs={12} sm={4} md={3}>
+      <Grid size={{ xs: 12, sm: 4, md: 3 }}>
         <UButton variant="uPrimary" onClick={handleOpenErrorAlert}>
           Open Error alert
         </UButton>

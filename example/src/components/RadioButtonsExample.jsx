@@ -12,12 +12,12 @@ export default function RadioButtonsExample() {
 
   return (
     <Grid container>
-      <Grid item xs={12}>
-        <Typography variant="h5" style={{ margin: '32px 0px' }}>
+      <Grid size={12}>
+        <Typography variant="h5" sx={{ margin: '32px 0px' }}>
           Radio buttons
         </Typography>
       </Grid>
-      <Grid item xs={12} sm={4} md={3}>
+      <Grid size={{ xs: 12, sm: 4, md: 3 }}>
         <Typography variant="subtitle1">Row variant</Typography>
         <URadioButtons
           value={radioValue}
@@ -27,7 +27,7 @@ export default function RadioButtonsExample() {
           optionValues={['Yes', 'No']}
         ></URadioButtons>
       </Grid>
-      <Grid item xs={12} sm={4} md={3}>
+      <Grid size={{ xs: 12, sm: 4, md: 3 }}>
         <Typography variant="subtitle1">Column variant</Typography>
         <URadioButtons
           value={radioValue}

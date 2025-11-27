@@ -31,7 +31,7 @@ export default function Accessibility() {
         noValidate
       >
         <Grid container>
-          <Grid item xs={12} lg={3} xl={2}>
+          <Grid size={{ xs: 12, lg: 3, xl: 2 }}>
             <UTextField
               label="Email"
               required
@@ -39,7 +39,7 @@ export default function Accessibility() {
               name="email"
               validators={['required', 'isEmail']}
               value={formValues.email}
-              inputProps={{ 'aria-describedby': 'email-help' }}
+              slotProps={{ htmlInput: { 'aria-describedby': 'email-help' } }}
             />
             <UAriaHiddenText
               id="email-help"

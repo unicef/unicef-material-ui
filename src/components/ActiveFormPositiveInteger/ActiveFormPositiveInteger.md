@@ -25,7 +25,7 @@ function handleSubmit() {
   // instantValidate={true}
 >
   <Grid container spacing={1}>
-    <Grid item xs={12} lg={4}>
+    <Grid size={{xs:12,lg:4}}>
       <ActiveFormPositiveInteger
         label="Number"
         value={value}
@@ -33,7 +33,7 @@ function handleSubmit() {
         name="number"
       />
     </Grid>
-    <Grid item xs={12}>
+    <Grid size={12}>
       <UButton type="submit">Submit</UButton>
     </Grid>
   </Grid>

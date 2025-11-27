@@ -54,8 +54,8 @@ export default function ActiveMobileDatePicker({
   onChange,
   value,
   showLabelHelp,
-  InputLabelProps = {
-    shrink: true,
+  slotProps = {
+    inputLabel: { shrink: true },
   },
   InputLabelHelpProps,
   inputVariant = 'outlined',
@@ -77,7 +77,7 @@ export default function ActiveMobileDatePicker({
           renderInput={params => (
             <UTextField
               showLabelHelp={showLabelHelp}
-              InputLabelProps={InputLabelProps}
+              slotProps={slotProps}
               InputLabelHelpProps={InputLabelHelpProps}
               variant={inputVariant}
               readOnly={readOnly}
@@ -103,8 +103,8 @@ ActiveMobileDatePicker.propTypes = {
   readOnly: PropTypes.bool,
   /** Change to write mode by hiding text field border and displays border on hover*/
   interactiveMode: PropTypes.bool,
-  /** Props applied to the InputLabel element.*/
-  InputLabelProps: PropTypes.object,
+  /** Props applied to slots.*/
+  slotProps: PropTypes.object,
   /** Label text */
   label: PropTypes.string,
   /** Show label help */

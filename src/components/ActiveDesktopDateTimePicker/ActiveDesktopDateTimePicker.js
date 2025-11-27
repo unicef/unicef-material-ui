@@ -1,4 +1,3 @@
-import React from 'react'
 import { styled } from '@mui/material/styles'
 import { Box } from '@mui/material'
 import PropTypes from 'prop-types'
@@ -53,8 +52,8 @@ export default function ActiveDesktopDateTimePicker({
   onChange,
   value,
   showLabelHelp,
-  InputLabelProps = {
-    shrink: true,
+  slotProps = {
+    inputLabel: { shrink: true },
   },
   InputLabelHelpProps,
   inputVariant = 'outlined',
@@ -76,7 +75,7 @@ export default function ActiveDesktopDateTimePicker({
           renderInput={params => (
             <UTextField
               showLabelHelp={showLabelHelp}
-              InputLabelProps={InputLabelProps}
+              slotProps={slotProps}
               InputLabelHelpProps={InputLabelHelpProps}
               variant={inputVariant}
               readOnly={readOnly}
@@ -102,8 +101,8 @@ ActiveDesktopDateTimePicker.propTypes = {
   readOnly: PropTypes.bool,
   /** Change to write mode by hiding text field border and displays border on hover*/
   interactiveMode: PropTypes.bool,
-  /** Props applied to the InputLabel element.*/
-  InputLabelProps: PropTypes.object,
+  /** Props applied to slots.*/
+  slotProps: PropTypes.object,
   /** Label text */
   label: PropTypes.string,
   /** Show label help */

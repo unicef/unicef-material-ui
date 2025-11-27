@@ -18,9 +18,8 @@ import { PositiveNumberFormat } from '../Shared'
  */
 
 export default function ActiveFormCoordinateField({
-  InputProps,
+  slotProps,
   decimalScale = 9,
-  inputProps,
   coordinateType,
   validators,
   ...props
@@ -40,15 +39,18 @@ export default function ActiveFormCoordinateField({
   return (
     <ActiveFormTextField
       variant="outlined"
-      InputProps={{
-        inputComponent: PositiveNumberFormat,
-        ...InputProps,
-      }}
-      inputProps={{
-        ...inputProps,
-        thousandSeparator: false,
-        allowNegative: true,
-        decimalScale: decimalScale,
+      slotProps={{
+        ...slotProps,
+        input: {
+          ...(slotProps?.input ? slotProps.input : {}),
+          inputComponent: PositiveNumberFormat,
+        },
+        htmlInput: {
+          ...(slotProps?.htmlInput ? slotProps.htmlInput : {}),
+          thousandSeparator: false,
+          allowNegative: true,
+          decimalScale: decimalScale,
+        },
       }}
       validators={validatorsArr || validators}
       fullWidth

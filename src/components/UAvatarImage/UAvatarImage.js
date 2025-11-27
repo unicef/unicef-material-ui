@@ -14,7 +14,7 @@ const classes = {
   font: `${PREFIX}-font`,
 }
 
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledBox = styled('div')(({ theme }) => ({
   [`& .${classes.small}`]: {
     width: theme.spacing(4),
     height: theme.spacing(4),
@@ -80,7 +80,7 @@ export default function UAvatarImage({
         <StyledBox>
           <Avatar
             className={`${classes[mode]} ${classes[size]}`}
-            style={{ zIndex: zIndexValue }}
+            sx={{ zIndex: zIndexValue }}
             src={photoUrl}
           >
             {size === 'large' ? (

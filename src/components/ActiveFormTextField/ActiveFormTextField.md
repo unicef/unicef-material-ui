@@ -28,7 +28,7 @@ import { UValidatorForm, UValidatorComponent } from '../../index.js' // change i
     // instantValidate={true}
     >
     <Grid container spacing={3}>
-      <Grid item xs={12}>
+      <Grid size={12}>
         <ActiveFormTextField
             label="Default"
             onChange={handleValue}
@@ -39,7 +39,7 @@ import { UValidatorForm, UValidatorComponent } from '../../index.js' // change i
             customErrorMessages={{required: 'required field'}}
           />
           </Grid>
-          <Grid item xs={12}>
+          <Grid size={12}>
           <ActiveFormTextField
             label="Typography Variant"
             onChange={handleValue}
@@ -122,7 +122,7 @@ import { UValidatorForm, ActiveFormTextField } from '../../index.js';
   // return (
     <React.Fragment >
       <Grid container spacing={3}>
-        <Grid item xs={12} md={6}>
+        <Grid size={{xs:12,md:6}}>
           <Card>
             <UValidatorForm>
               <ActiveFormTextField placeholder="Title" typographyVariant="h6" variant="outlined" fullWidth multiline />

@@ -105,12 +105,11 @@ export default function USelectPicker(props) {
   const {
     label,
     variant = 'outlined',
-    TextFieldProps,
+    TextFieldProps = {},
     showNoOptionsWithEmptyTextField = true,
     onInputChange,
     components,
     showLabelHelp = false,
-    InputLabelProps,
     InputLabelHelpProps = {},
     hideAvatar = true,
     readOnly = false,
@@ -150,10 +149,15 @@ export default function USelectPicker(props) {
   const defaultTextFieldProps = {
     label: label,
     variant: variant,
-    InputLabelProps: {
-      shrink: true,
-      classes: { root: classes.labelRoot },
-      ...InputLabelProps,
+    slotProps: {
+      ...(TextFieldProps?.slotProps ? TextFieldProps.slotProps : {}),
+      inputLabel: {
+        shrink: true,
+        classes: { root: classes.labelRoot },
+        ...(TextFieldProps.slotProps?.inputLabel
+          ? TextFieldProps.slotProps.inputLabel
+          : {}),
+      },
     },
     readOnly,
     lineByLineOption,
@@ -174,7 +178,7 @@ export default function USelectPicker(props) {
   const extraComponents = {}
   if (iconVariant === ICON_VARIANTS.dark)
     extraComponents.DropdownIndicator = () => (
-      <span style={{ color: theme.palette.text.secondary }}>
+      <span sx={{ color: theme.palette.text.secondary }}>
         <ArrowDropDownIcon />
       </span>
     )
@@ -246,7 +250,7 @@ USelectPicker.propTypes = {
   options: PropTypes.array,
   /** Props passed to the TextField used in the picker. Use any value of Material UI TextField API.
    *
-   * `TextFieldProps={{helperText:"text", onChange: {textFieldTargetValue}, inputProps:{className: classes.textField}}}`
+   * `TextFieldProps={{helperText:"text", onChange: {textFieldTargetValue}}`
    *
    */
   TextFieldProps: PropTypes.object,

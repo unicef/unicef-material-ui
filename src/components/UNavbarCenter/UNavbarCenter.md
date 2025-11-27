@@ -22,7 +22,7 @@ const classes = {
   inputRoot: `${PREFIX}-inputRoot`,
 }
 
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledBox = styled('div')(({ theme }) => ({
  [`&.${classes.search}`]: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -78,11 +78,11 @@ const StyledBox = styled(Box)(({ theme }) => ({
           root: classes.inputRoot,
           input: classes.inputInput,
         }}
-        inputProps={{ 'aria-label': 'search' }}
+        slotProps={{inputLabel:{ 'aria-label': 'search' }}}
       />
-      <div className={classes.searchIcon}>
+      <Box className={classes.searchIcon}>
         <SearchIcon color="primary" />
-      </div>
+      </Box>
     </StyledBox>
   </UNavbarCenter>
 </UHeader>

@@ -76,12 +76,12 @@ export default function GraphPeoplePickerExample() {
 
   return (
     <Grid container>
-      <Grid item xs={12}>
-        <Typography variant="h5" style={{ margin: '32px 0px' }}>
+      <Grid size={12}>
+        <Typography variant="h5" sx={{ margin: '32px 0px' }}>
           Graph people picker
         </Typography>
       </Grid>
-      <Grid item xs={12} md={6}>
+      <Grid size={{ xs: 12, md: 6 }}>
         <UGraphPeoplePicker
           type="users"
           label="Users"

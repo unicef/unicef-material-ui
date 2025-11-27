@@ -26,11 +26,11 @@ import MoreVertIcon from '@mui/icons-material/MoreVert'
   }
 
     <Grid container>
-      <Grid item xs={12}>
+      <Grid size={12}>
         <Typography variant="subtitle1">Confirm popup variant</Typography>
       </Grid>
-      <Grid container item xs={12}>
-        <Grid item xs={12} sm={6} md={3}>
+      <Grid container item size={12}>
+        <Grid size={{xs:12,sm:6,md:3}}>
           <Typography variant="subtitle1">Icon</Typography>
           <UConfirmationButton
             confirmText="Are you sure you want to delete the item?"
@@ -40,7 +40,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert'
             confirmVariant="popup"
           />
         </Grid>
-        <Grid item xs={12} sm={6} md={3}>
+        <Grid size={{xs:12,sm:6,md:3}}>
           <Typography variant="subtitle1">Menu item</Typography>
           <IconButton
             aria-label="more"
@@ -79,7 +79,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert'
             />
           </Menu>
         </Grid>
-        <Grid item xs={12} sm={6} md={3}>
+        <Grid size={{xs:12,sm:6,md:3}}>
           <Typography variant="subtitle1">Button</Typography>
           <UConfirmationButton
             onConfirm={handleDelete}
@@ -90,7 +90,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert'
             confirmVariant="popup"
           />
         </Grid>
-        <Grid item xs={12} sm={6} md={3}>
+        <Grid size={{xs:12,sm:6,md:3}}>
           <Typography variant="subtitle1">Custom icon</Typography>
           <UConfirmationButton
             onConfirm={handleDelete}
@@ -104,11 +104,11 @@ import MoreVertIcon from '@mui/icons-material/MoreVert'
           />
         </Grid>
       </Grid>
-      <Grid item xs={12}>
+      <Grid size={12}>
         <Typography variant="subtitle1">Confirm menu variant</Typography>
       </Grid>
-      <Grid container item xs={12}>
-        <Grid item xs={12} sm={6} md={3}>
+      <Grid container item size={12}>
+        <Grid size={{xs:12,sm:6,md:3}}>
           <Typography variant="subtitle1">Icon</Typography>
           <UConfirmationButton
             onConfirm={handleDelete}
@@ -116,7 +116,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert'
             buttonText="Delete"
           />
         </Grid>
-        <Grid item xs={12} sm={6} md={3}>
+        <Grid size={{xs:12,sm:6,md:3}}>
           <Typography variant="subtitle1">Menu item</Typography>
           <IconButton
             aria-label="more"
@@ -153,7 +153,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert'
             />
           </Menu>
         </Grid>
-        <Grid item xs={12} sm={6} md={3}>
+        <Grid size={{xs:12,sm:6,md:3}}>
           <Typography variant="subtitle1">Button</Typography>
           <UConfirmationButton
             onConfirm={handleDelete}
@@ -162,7 +162,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert'
             variant="button"
           />
         </Grid>
-        <Grid item xs={12} sm={6} md={3}>
+        <Grid size={{xs:12,sm:6,md:3}}>
           <Typography variant="subtitle1">Custom icon</Typography>
           <UConfirmationButton
             onConfirm={handleDelete}

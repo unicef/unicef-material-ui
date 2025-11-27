@@ -16,7 +16,7 @@ const classes = {
   tooltipPopper: `${PREFIX}-tooltipPopper`,
 }
 
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledBox = styled('div')(({ theme }) => ({
   [`&.${classes.root}`]: {
     order: 999,
     display: 'inline-flex',

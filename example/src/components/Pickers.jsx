@@ -14,7 +14,7 @@ import {
   UIconPicker,
   UValidatorForm,
 } from 'unicef-material-ui'
-import { GraphPeoplePickerExample } from '../components'
+import { GraphPeoplePickerExample } from '.'
 import { Grid, Typography, Avatar } from '@mui/material'
 
 export default function Pickers() {
@@ -217,19 +217,19 @@ export default function Pickers() {
   return (
     <UValidatorForm>
       <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <Typography variant="h5" style={{ margin: '16px 0px' }}>
+        <Grid size={12}>
+          <Typography variant="h5" sx={{ margin: '16px 0px' }}>
             Icon picker
           </Typography>
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <UIconPicker
             label="Icon Select"
             placeholder="Select Icon ..."
             options={iconOptions}
           />
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <UIconPicker
             label="Multi Icon Select"
             placeholder="Select Icon ..."
@@ -242,7 +242,7 @@ export default function Pickers() {
             }}
           />
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <UIconPicker
             label="Icon Select"
             placeholder="Select Icon ..."
@@ -252,12 +252,12 @@ export default function Pickers() {
           />
         </Grid>
 
-        <Grid item xs={12}>
-          <Typography variant="h5" style={{ margin: '16px 0px' }}>
+        <Grid size={12}>
+          <Typography variant="h5" sx={{ margin: '16px 0px' }}>
             People picker
           </Typography>
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <UPeoplePicker
             label="Select"
             placeholder="Select people ..."
@@ -269,7 +269,7 @@ export default function Pickers() {
             }}
           />
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <UPeoplePicker
             label="Multi Select"
             TextFieldProps={{
@@ -285,7 +285,7 @@ export default function Pickers() {
             }}
           />
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <UPeoplePicker
             label="Loading state example"
             isLoading={true}
@@ -293,7 +293,7 @@ export default function Pickers() {
             options={peopleOptions}
           />
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <UPeoplePicker
             label="Async example"
             isLoading={loading}
@@ -307,7 +307,7 @@ export default function Pickers() {
             isMulti
           />
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <UPeoplePicker
             label="Display error on load"
             isLoading={false}
@@ -317,7 +317,7 @@ export default function Pickers() {
             isMulti
           />
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <UPeoplePicker
             label="Display validation error"
             isLoading={false}
@@ -331,13 +331,13 @@ export default function Pickers() {
           />
         </Grid>
 
-        <Grid item xs={12}>
-          <Typography variant="h5" style={{ margin: '16px 0px' }}>
+        <Grid size={12}>
+          <Typography variant="h5" sx={{ margin: '16px 0px' }}>
             Select
           </Typography>
         </Grid>
 
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <USelectPicker
             label="Regions"
             TextFieldProps={{
@@ -348,7 +348,7 @@ export default function Pickers() {
             isMulti
           />
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <USelectPicker
             label="Region"
             TextFieldProps={{
@@ -359,10 +359,10 @@ export default function Pickers() {
           />
         </Grid>
 
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Typography variant="h5">Date picker</Typography>
         </Grid>
-        <Grid item xs={12} md={4} lg={4}>
+        <Grid size={{ xs: 12, md: 4, lg: 4 }}>
           <UDatePicker
             label="Responsive"
             value={selectedDate}
@@ -373,7 +373,7 @@ export default function Pickers() {
             }}
           />
         </Grid>
-        <Grid item xs={12} md={4} lg={4}>
+        <Grid size={{ xs: 12, md: 4, lg: 4 }}>
           <UDesktopDatePicker
             label="Desktop"
             value={selectedDate}
@@ -384,7 +384,7 @@ export default function Pickers() {
             }}
           />
         </Grid>
-        <Grid item xs={12} md={4} lg={4}>
+        <Grid size={{ xs: 12, md: 4, lg: 4 }}>
           <UMobileDatePicker
             label="Mobile"
             value={selectedDate}
@@ -395,52 +395,52 @@ export default function Pickers() {
             }}
           />
         </Grid>
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Typography variant="h5">Time picker</Typography>
         </Grid>
-        <Grid item xs={12} md={4} lg={4}>
+        <Grid size={{ xs: 12, md: 4, lg: 4 }}>
           <UTimePicker
             label="Responsive"
             value={selectedDate}
             onChange={handleDateChange}
             showLabelHelp={true}
-            InputLabelProps={{ shrink: true, required: true }}
+            slotProps={{ inputLabel: { shrink: true, required: true } }}
             InputLabelHelpProps={{
               tooltipTitle: 'Time picker help text',
             }}
           />
         </Grid>
 
-        <Grid item xs={12} md={4} lg={4}>
+        <Grid size={{ xs: 12, md: 4, lg: 4 }}>
           <UDesktopTimePicker
             label="Desktop"
             value={selectedDate}
             onChange={handleDateChange}
             showLabelHelp={true}
-            InputLabelProps={{ shrink: true, required: true }}
+            slotProps={{ inputLabel: { shrink: true, required: true } }}
             InputLabelHelpProps={{
               tooltipTitle: 'Time picker help text',
             }}
           />
         </Grid>
 
-        <Grid item xs={12} md={4} lg={4}>
+        <Grid size={{ xs: 12, md: 4, lg: 4 }}>
           <UMobileTimePicker
             label="Mobile"
             value={selectedDate}
             onChange={handleDateChange}
             showLabelHelp={true}
-            InputLabelProps={{ shrink: true, required: true }}
+            slotProps={{ inputLabel: { shrink: true, required: true } }}
             InputLabelHelpProps={{
               tooltipTitle: 'Time picker help text',
             }}
           />
         </Grid>
 
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Typography variant="h5">Date Time picker</Typography>
         </Grid>
-        <Grid item xs={12} md={4} lg={4}>
+        <Grid size={{ xs: 12, md: 4, lg: 4 }}>
           <UDateTimePicker
             label="Responsive"
             value={selectedDate}
@@ -451,7 +451,7 @@ export default function Pickers() {
             }}
           />
         </Grid>
-        <Grid item xs={12} md={4} lg={4}>
+        <Grid size={{ xs: 12, md: 4, lg: 4 }}>
           <UDesktopDateTimePicker
             label="Desktop"
             value={selectedDate}
@@ -462,7 +462,7 @@ export default function Pickers() {
             }}
           />
         </Grid>
-        <Grid item xs={12} md={4} lg={4}>
+        <Grid size={{ xs: 12, md: 4, lg: 4 }}>
           <UMobileDateTimePicker
             label="Mobile"
             value={selectedDate}
@@ -473,7 +473,7 @@ export default function Pickers() {
             }}
           />
         </Grid>
-        <Grid item xs={12}>
+        <Grid size={12}>
           <GraphPeoplePickerExample />
         </Grid>
       </Grid>

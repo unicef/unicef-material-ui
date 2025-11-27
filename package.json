@@ -2,7 +2,13 @@
   "name": "@unicef/material-ui",
   "version": "2.0.0",
   "description": "UNICEF theme and components of material-ui for react",
-  "main": "index.js",
+  "type": "module",
+  "main": "./lib/prod.cjs",
+  "module": "./lib/prod.js",
+  "exports": {
+    "import": "./lib/prod.js",
+    "require": "./lib/prod.cjs"
+  },
   "files": [
     "lib",
     "dist"
@@ -48,12 +54,10 @@
     ]
   },
   "devDependencies": {
-    "@babel/core": "^7.19.6",
+    "@babel/core": "^7.28.5",
     "@babel/plugin-external-helpers": "^7.18.6",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/plugin-transform-react-jsx": "^7.19.0",
-    "@babel/preset-env": "^7.19.4",
-    "@babel/preset-react": "^7.18.6",
     "@emotion/styled": "^11.14.1",
     "@mui/icons-material": "^7.3.5",
     "@mui/material": "^7.3.5",
@@ -72,6 +76,7 @@
     "rollup": "^3.2.3"
   },
   "dependencies": {
+    "date-fns": "^4.1.0",
     "react-form-validator-core": "^2.0.2",
     "react-number-format": "^5.4.4",
     "react-select": "^5.10.2"

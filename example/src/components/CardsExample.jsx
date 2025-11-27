@@ -44,16 +44,16 @@ const rows = [
 export default function CardsExample() {
   return (
     <Root>
-      <Typography variant="h5" style={{ margin: '32px 0px' }}>
+      <Typography variant="h5" sx={{ margin: '32px 0px' }}>
         Cards and tables
       </Typography>
       <Grid container spacing={3}>
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Card>
             <CardHeader component="div" title="Card title"></CardHeader>
             <Divider />
             <CardContent>
-              <Typography paragraph={true} gutterBottom>
+              <Typography component="p" gutterBottom>
                 This is a longer card with supporting text below as a natural
                 lead-in to additional content. This content is a little bit
                 longer.
@@ -62,7 +62,7 @@ export default function CardsExample() {
             </CardContent>
           </Card>
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Paper className={classes.root}>
             <Table className={classes.table}>
               <TableHead>

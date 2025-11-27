@@ -43,14 +43,14 @@ export default function ColorsExample(props) {
         colorKey =>
           (theme.palette[colorKey] && (
             <>
-              <Grid item xs={12}>
+              <Grid size={12}>
                 <Typography className={classes.colorTitle} variant="h5">
                   {colorKey} colors
                 </Typography>
               </Grid>
               {Object.keys(theme.palette[colorKey]).map(color => {
                 return (
-                  <Grid key={color} item xs={6} md={4} lg={2}>
+                  <Grid key={color} item size={{ xs: 6, md: 4, lg: 2 }}>
                     <Paper p={3}>
                       <Box bgcolor={theme.palette[colorKey][color]} p={4}>
                         <Typography variant="body1">{color}</Typography>

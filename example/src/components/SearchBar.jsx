@@ -3,6 +3,7 @@ import { styled } from '@mui/material/styles'
 import InputBase from '@mui/material/InputBase'
 import { alpha } from '@mui/material/styles'
 import SearchIcon from '@mui/icons-material/Search'
+import { Box } from '@mui/material'
 
 const PREFIX = 'SearchBar'
 
@@ -66,11 +67,11 @@ export default function SearchBar() {
           root: classes.inputRoot,
           input: classes.inputInput,
         }}
-        inputProps={{ 'aria-label': 'search' }}
+        slotProps={{ htmlInput: { 'aria-label': 'search' } }}
       />
-      <div className={classes.searchIcon}>
+      <Box className={classes.searchIcon}>
         <SearchIcon color="primary" />
-      </div>
+      </Box>
     </Root>
   )
 }

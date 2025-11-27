@@ -69,12 +69,6 @@ UPeoplePicker.propTypes = {
    *
    */
   options: PropTypes.array,
-  /** Props passed to the TextField used in the picker. Use any value of Material UI TextField API.
-   *
-   * `TextFieldProps={{helperText:"text", onChange: {textFieldTargetValue}, inputProps:{className: classes.textField}}}`
-   *
-   */
-  TextFieldProps: PropTypes.object,
   /**
    * To show or hide the no options message on empty texfield value
    */

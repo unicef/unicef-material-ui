@@ -56,8 +56,7 @@ export default function ActiveAutoComplete({
   interactiveMode = false,
   counter = false,
   placeholder,
-  InputLabelProps,
-  props,
+  slotProps,
 }) {
   //const dispatch = useDispatch()
   const [selectedValue, setSelectedValue] = useState(value || null) // for initialization: avoid the control to be a uncontrolled component with 'undefined'
@@ -125,9 +124,12 @@ export default function ActiveAutoComplete({
         <ActiveFormTextField
           multiline
           label={label}
-          InputLabelProps={{
-            ...InputLabelProps,
-            required: isRequired,
+          slotProps={{
+            ...slotProps,
+            inputLabel: {
+              ...(slotProps?.inputLabel ? slotProps.inputLabel : {}),
+              required: isRequired,
+            },
           }}
           variant="outlined"
           fullWidth
@@ -165,14 +167,19 @@ export default function ActiveAutoComplete({
               value={(selectedValue && selectedValue.text) || ''}
               validators={isRequired ? ['required', 'trim'] : ['trim']}
               fullWidth
-              inputProps={{
-                ...params.inputProps,
-                minLength: minLength,
-                maxLength: maxLength,
-              }}
-              InputLabelProps={{
-                ...InputLabelProps,
-                required: isRequired,
+              slotProps={{
+                ...slotProps,
+                htmlInput: {
+                  ...(params?.slotProps?.htmlInput
+                    ? params?.slotProps?.htmlInput
+                    : {}),
+                  minLength,
+                  maxLength,
+                },
+                inputLabel: {
+                  ...(slotProps?.inputLabel ? slotProps.inputLabel : {}),
+                  required: isRequired,
+                },
               }}
               maxLength={maxLength}
               counter={counter}
@@ -218,6 +225,6 @@ ActiveAutoComplete.propTypes = {
   counter: PropTypes.bool,
   /** placeholder text*/
   placeholder: PropTypes.string,
-  /** Label props applied to input field*/
-  InputLabelProps: PropTypes.object,
+  /** Props applied to slots*/
+  slotProps: PropTypes.object,
 }

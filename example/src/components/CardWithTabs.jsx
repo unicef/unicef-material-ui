@@ -4,7 +4,7 @@ import { AppBar, Tabs, Tab, Card, Typography, Grid } from '@mui/material'
 
 function TabContainer(props) {
   return (
-    <Typography component="div" style={{ padding: 8 * 3 }}>
+    <Typography component="div" sx={{ padding: 3 }}>
       {props.children}
     </Typography>
   )
@@ -23,12 +23,12 @@ export default function CardWithTabs() {
 
   return (
     <Grid container>
-      <Grid item xs={12}>
-        <Typography variant="h5" style={{ margin: '32px 0px' }}>
+      <Grid size={12}>
+        <Typography variant="h5" sx={{ margin: '32px 0px' }}>
           Card with tabs
         </Typography>
       </Grid>
-      <Grid item xs={12} md={8}>
+      <Grid size={{ xs: 12, md: 8 }}>
         <Card>
           <AppBar position="static" color="default">
             <Tabs

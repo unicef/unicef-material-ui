@@ -20,15 +20,15 @@ function handleButton() {
 }
 
 <Grid container spacing={2}>
-  <Grid item xs={12} md={4}>
+  <Grid size={{xs:12,md:4}}>
     <Typography variant="subtitle1">Primary button</Typography>
     <UButton variant="uPrimary">Primary</UButton>
   </Grid>
-  <Grid item xs={12} md={4}>
+  <Grid size={{xs:12,md:4}}>
     <Typography variant="subtitle1">Default button</Typography>
     <UButton variant="uDefault">Default</UButton>
   </Grid>
-  <Grid item xs={12} md={4}>
+  <Grid size={{xs:12,md:4}}>
     <Typography variant="subtitle1">Spinning button</Typography>
     <UButton
       variant="uPrimary"

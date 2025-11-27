@@ -5,16 +5,23 @@ import UTextField from '../UTextField'
 /**
  * UPositiveInteger form input field that accepts positive integer values. It is a extended version of UTextField.
  */
-function ForwardRefUPositiveInteger({ readOnly, InputProps, ...props }, ref) {
+function ForwardRefUPositiveInteger(
+  { readOnly, slotProps = {}, ...rest },
+  ref
+) {
+  console.log('ForwardRefUPositiveInteger', rest)
   return (
     <UTextField
       variant="outlined"
-      InputProps={{
-        inputComponent: PositiveNumberFormat,
-        readOnly: readOnly,
-        ...InputProps,
+      {...rest}
+      slotProps={{
+        ...slotProps,
+        input: {
+          ...(slotProps?.input ? slotProps.input : {}),
+          inputComponent: PositiveNumberFormat,
+          readOnly,
+        },
       }}
-      {...props}
       fullWidth
       ref={ref}
     />

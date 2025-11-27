@@ -26,12 +26,12 @@ export default function Control({
   innerProps,
   innerRef,
   selectProps: { classes, TextFieldProps },
-  InputLabelProps,
 }) {
   const readOnly = TextFieldProps && TextFieldProps.readOnly
   //In order to prevent the addition of these custom attributes to the DOM, we are separating them from TextFieldProps
   const {
     showLabelHelp = false,
+    slotProps = {},
     InputLabelHelpProps = {},
     lineByLineOption = '',
     hideAvatar = false,
@@ -41,9 +41,15 @@ export default function Control({
     <TextField
       fullWidth
       variant="outlined"
-      InputProps={{
-        inputComponent: InputComponent,
-        inputProps: {
+      slotProps={{
+        input: {
+          inputComponent: InputComponent,
+          classes: {
+            root: `${readOnly && classes.inputHover}`,
+            notchedOutline: `${!readOnly ? '' : classes.notchedOutline}`,
+          },
+        },
+        htmlInput: {
           className: classes.input,
           ref: innerRef,
           children,
@@ -51,14 +57,10 @@ export default function Control({
           disabled: Boolean(readOnly),
           ...innerProps,
         },
-        classes: {
-          root: `${readOnly && classes.inputHover}`,
-          notchedOutline: `${!readOnly ? '' : classes.notchedOutline}`,
+        inputLabel: {
+          ...(slotProps?.inputLabel ? slotProps?.inputLabel : {}),
+          style: { ...styles.labelRoot },
         },
-      }}
-      InputLabelProps={{
-        ...InputLabelProps,
-        style: { ...styles.labelRoot },
       }}
       {...otherTextFieldProps}
       type={null} // To prevent type attribute added in the div container

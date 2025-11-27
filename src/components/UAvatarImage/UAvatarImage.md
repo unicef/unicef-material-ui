@@ -17,12 +17,12 @@ import { Typography, Grid } from '@mui/material'
   }
 
   <Grid container>
-    <Grid item xs={12}>
-      <Typography variant="h5" style={{ margin: '32px 0px' }}>
+    <Grid size={12}>
+      <Typography variant="h5" sx={{ margin: '32px 0px' }}>
           Avatar image
       </Typography>
     </Grid>
-    <Grid item xs={12} sm={4} md={3}>
+    <Grid size={{xs:12,sm:4,md:3}}>
       <Typography variant="subtitle1">Photo default size</Typography>
         <UAvatarImage
           userEmail={`rnarayanan@unicef.org`}
@@ -52,12 +52,12 @@ import { Typography, Grid } from '@mui/material'
   }
   
     <Grid container>
-      <Grid item xs={12}>
-        <Typography variant="h5" style={{ margin: '32px 0px' }}>
+      <Grid size={12}>
+        <Typography variant="h5" sx={{ margin: '32px 0px' }}>
           Avatar image
         </Typography>
       </Grid>
-      <Grid item xs={12} sm={4} md={3}>
+      <Grid size={{xs:12,sm:4,md:3}}>
         <Typography variant="subtitle1">Photo default size</Typography>
         <UAvatarImage
           userEmail={`rnarayanan@unicef.org`}
@@ -66,7 +66,7 @@ import { Typography, Grid } from '@mui/material'
           )}
         />
       </Grid>
-      <Grid item xs={12} sm={4} md={3}>
+      <Grid size={{xs:12,sm:4,md:3}}>
         <Typography variant="subtitle1">Photo small size</Typography>
         <UAvatarImage
           userEmail={`rnarayanan@unicef.org`}
@@ -76,7 +76,7 @@ import { Typography, Grid } from '@mui/material'
           )}
         />
       </Grid>
-      <Grid item xs={12} sm={4} md={3}>
+      <Grid size={{xs:12,sm:4,md:3}}>
         <Typography variant="subtitle1">Photo mini size</Typography>
         <UAvatarImage
           userEmail={`rnarayanan@unicef.org`}
@@ -86,7 +86,7 @@ import { Typography, Grid } from '@mui/material'
           )}
         />
       </Grid>
-      <Grid item xs={12} sm={4} md={3}>
+      <Grid size={{xs:12,sm:4,md:3}}>
         <Typography variant="subtitle1">Photo large size</Typography>
         <UAvatarImage
           userEmail={`rnarayanan@unicef.org`}
@@ -96,7 +96,7 @@ import { Typography, Grid } from '@mui/material'
           )}
         />
       </Grid>
-      <Grid item xs={12} sm={4} md={3}>
+      <Grid size={{xs:12,sm:4,md:3}}>
         <Typography variant="subtitle1">Photo view mode</Typography>
         <UAvatarImage
           userEmail={`rnarayanan@unicef.org`}
@@ -104,7 +104,7 @@ import { Typography, Grid } from '@mui/material'
           loadPhoto={loadPhoto(`rnarayanan@unicef.org`)}
         />
       </Grid>
-      <Grid item xs={12} sm={4} md={3}>
+      <Grid size={{xs:12,sm:4,md:3}}>
         <Typography variant="subtitle1">Photo edit mode</Typography>
         <UAvatarImage
           userEmail={`rnarayanan@unicef.org`}
@@ -114,7 +114,7 @@ import { Typography, Grid } from '@mui/material'
           )}
         />
       </Grid>
-      <Grid item xs={12} sm={4} md={3}>
+      <Grid size={{xs:12,sm:4,md:3}}>
         <Typography variant="subtitle1">Mode none</Typography>
         <UAvatarImage
           userEmail={`rnarayanan@unicef.org`}

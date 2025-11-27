@@ -13,7 +13,7 @@ import {
   ColorsExample,
   AvatarImageExample,
   SearchBoxExample,
-} from '../components'
+} from '.'
 
 export default function Layout({ match }) {
   return (

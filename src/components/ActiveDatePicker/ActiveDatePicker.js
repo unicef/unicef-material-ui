@@ -53,8 +53,8 @@ export default function ActiveDatePicker({
   onChange,
   value,
   showLabelHelp,
-  InputLabelProps = {
-    shrink: true,
+  slotProps = {
+    inputLabel: { shrink: true },
   },
   InputLabelHelpProps,
   inputVariant = 'outlined',
@@ -66,23 +66,11 @@ export default function ActiveDatePicker({
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <StyledBox readOnly={readOnly} interactiveMode={interactiveMode}>
         <DatePicker
-          className={classes.root}
           label={label}
-          inputFormat={inputFormat}
-          onChange={onChange}
           value={value}
+          onChange={onChange}
           readOnly={readOnly}
           {...others}
-          renderInput={params => (
-            <UTextField
-              showLabelHelp={showLabelHelp}
-              InputLabelProps={InputLabelProps}
-              InputLabelHelpProps={InputLabelHelpProps}
-              variant={inputVariant}
-              readOnly={readOnly}
-              {...params}
-            />
-          )}
         />
       </StyledBox>
     </LocalizationProvider>
@@ -103,8 +91,8 @@ ActiveDatePicker.propTypes = {
   readOnly: PropTypes.bool,
   /** Change to write mode by hiding text field border and displays border on hover*/
   interactiveMode: PropTypes.bool,
-  /** Props applied to the InputLabel element.*/
-  InputLabelProps: PropTypes.object,
+  /** Slot props.*/
+  slotProps: PropTypes.object,
   /** Label text */
   label: PropTypes.string,
   /** Show label help */

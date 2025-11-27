@@ -12,7 +12,7 @@ const classes = {
   menu: `${PREFIX}-menu`,
   font: `${PREFIX}-font`,
 }
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledBox = styled('div')(({ theme }) => ({
   [`& .${classes.textField}`]: {
     margin: theme.spacing(1),
     minWidth: 195,

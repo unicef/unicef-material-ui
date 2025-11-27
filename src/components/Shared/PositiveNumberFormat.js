@@ -1,3 +1,4 @@
+import React from 'react'
 import PropTypes from 'prop-types'
 import { NumericFormat } from 'react-number-format'
 
@@ -8,7 +9,7 @@ export default function PositiveNumberFormat({
   onChange,
   onBlur,
   thousandSeparator = true,
-  isNumericString = false,
+  valueIsNumericString = false,
   allowNegative = false,
   decimalScale = 0,
   fixedDecimalScale = false,
@@ -38,7 +39,7 @@ export default function PositiveNumberFormat({
         })
       }}
       thousandSeparator={thousandSeparator}
-      isNumericString={isNumericString}
+      valueIsNumericString={valueIsNumericString}
       allowNegative={allowNegative}
       decimalScale={decimalScale}
       fixedDecimalScale={fixedDecimalScale}
@@ -57,8 +58,8 @@ PositiveNumberFormat.propTypes = {
   onBlur: PropTypes.func,
   // Thousand separator
   thousandSeparator: PropTypes.bool,
-  // Is numeric string
-  isNumericString: PropTypes.bool,
+  // Value is numeric string
+  valueIsNumericString: PropTypes.bool,
   // Is allow negative numbers
   allowNegative: PropTypes.bool,
   // No of decimal digits

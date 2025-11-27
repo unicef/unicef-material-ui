@@ -49,8 +49,8 @@ const autocompleteOptions = [
 ]
 
 ;<Grid container>
-  <Grid item xs={12} sm={4} md={3}>
-    <Typography variant="h5" style={{ margin: '32px 0px' }}>
+  <Grid size={{xs:12,sm:4,md:3}}>
+    <Typography variant="h5" sx={{ margin: '32px 0px' }}>
       Auto complete
     </Typography>
     <UValidatorForm>

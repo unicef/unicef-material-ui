@@ -10,7 +10,7 @@ const classes = {
   drawerPaper: `${PREFIX}-drawerPaper`,
 }
 
-const StyledBox = styled(Box)(props => ({
+const StyledBox = styled('div')(props => ({
   [`& .${classes.drawer}`]: {
     width: props.width,
     flexShrink: 0,
@@ -47,7 +47,7 @@ export default function USideBar({
         }}
         {...others}
       >
-        <div style={{ minHeight: headerHeight }} />
+        <Box sx={{ minHeight: headerHeight }} />
         {children}
       </Drawer>
     </StyledBox>

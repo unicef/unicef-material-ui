@@ -40,8 +40,8 @@ export default function UAutoComplete({
   allowContextSpecific = false,
   counter = false,
   placeholder,
-  InputLabelProps,
-  props,
+  slotProps,
+  ...props
 }) {
   //const dispatch = useDispatch()
   const [selectedValue, setSelectedValue] = useState(value || null) // for initialization: avoid the control to be a uncontrolled component with 'undefined'
@@ -109,15 +109,19 @@ export default function UAutoComplete({
         <ActiveFormTextField
           multiline
           label={label}
-          InputLabelProps={{
-            ...InputLabelProps,
-            required: isRequired,
+          slotProps={{
+            ...slotProps,
+            inputLabel: {
+              ...(slotProps?.inputLabel ? slotProps.inputLabel : {}),
+              required: isRequired,
+            },
           }}
           variant="outlined"
           fullWidth
           readOnly={readOnly}
           placeholder={placeholder}
           value={selectedValue && selectedValue.text}
+          {...props}
         />
       ) : (
         <Autocomplete
@@ -145,14 +149,25 @@ export default function UAutoComplete({
               value={(selectedValue && selectedValue.text) || ''}
               validators={isRequired ? ['required', 'trim'] : ['trim']}
               fullWidth
-              inputProps={{
-                ...params.inputProps,
-                minLength: minLength,
-                maxLength: maxLength,
-              }}
-              InputLabelProps={{
-                ...InputLabelProps,
-                required: isRequired,
+              slotProps={{
+                ...slotProps,
+                htmlInput: {
+                  ...(params?.slotProps?.htmlInput
+                    ? params.slotProps.htmlInput
+                    : {}),
+                  ...(params?.inputProps ? params.inputProps : {}),
+                  minLength,
+                  maxLength,
+                },
+                input: {
+                  ...(params?.slotProps?.input ? params.slotProps.input : {}),
+                  ...(params?.InputProps ? params.InputProps : {}),
+                },
+                inputLabel: {
+                  ...(slotProps?.inputLabel ? slotProps?.inputLabel : {}),
+                  ...(params?.InputLabelProps ? params.InputLabelProps : {}),
+                  required: isRequired,
+                },
               }}
               maxLength={maxLength}
               counter={counter}
@@ -160,6 +175,7 @@ export default function UAutoComplete({
               readOnly={readOnly}
             />
           )}
+          {...props}
         />
       )}
     </Root>
@@ -195,6 +211,6 @@ UAutoComplete.propTypes = {
   counter: PropTypes.bool,
   /** placeholder text*/
   placeholder: PropTypes.string,
-  /** Label props applied to input field*/
-  InputLabelProps: PropTypes.object,
+  /** Props applied to slots.*/
+  slotProps: PropTypes.object,
 }

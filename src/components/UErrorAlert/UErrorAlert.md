@@ -13,7 +13,7 @@ import UButton from '../UButton'
   }
 
   <Grid container>
-      <Grid item xs={12} sm={4} md={3}>
+      <Grid size={{xs:12,sm:4,md:3}}>
         <UErrorAlert error={error} onClose={handleClose} />
       </Grid>
     </Grid>
@@ -34,7 +34,7 @@ import UButton from '../UButton'
   }
 
   <Grid container>
-     <Grid item xs={12} sm={4} md={3}>
+     <Grid size={{xs:12,sm:4,md:3}}>
         <UButton variant="uPrimary" onClick={handleOpenErrorAlert}>
           Open Error alert
         </UButton>

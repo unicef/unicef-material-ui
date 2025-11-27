@@ -25,7 +25,7 @@ export default class UValidatorComponent extends ValidatorComponent {
     const formHelperId = this.props.formHelperId || ''
     return (
       <FormHelperText
-        style={{ marginLeft: '8px', marginTop: 0 }}
+        sx={{ marginLeft: '8px', marginTop: 0 }}
         error
         id={formHelperId}
       >

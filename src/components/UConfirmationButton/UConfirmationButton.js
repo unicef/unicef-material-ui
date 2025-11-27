@@ -23,7 +23,7 @@ const classes = {
   span: `${PREFIX}-span`,
 }
 
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledBox = styled('div')(({ theme }) => ({
   [`& .${classes.menuDelete}`]: {
     width: '500px',
   },
