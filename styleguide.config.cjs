@@ -1,5 +1,5 @@
 const path = require('path')
-const { styles, theme } = require('./styleguide.styles')
+const { styles, theme } = require('./styleguide.styles.cjs')
 module.exports = {
   title: 'UNICEF Material UI',
   styles,
@@ -12,6 +12,10 @@ module.exports = {
     return `import { ${name} } from '@unicef/material-ui'`
   },
   webpackConfig: {
+    resolve: {
+      extensions: ['.js', '.jsx'],
+      fullySpecified: false,
+    },
     module: {
       rules: [
         // Babel loader, will use your project’s babel.config.js
@@ -19,6 +23,9 @@ module.exports = {
           test: /\.jsx?$/,
           exclude: /node_modules/,
           loader: 'babel-loader',
+          resolve: {
+            fullySpecified: false,
+          },
         },
         // Other loaders that are needed for your components
         {
