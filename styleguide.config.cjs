@@ -1,10 +1,14 @@
 const path = require('path')
 const { styles, theme } = require('./styleguide.styles.cjs')
+const styleguideWrapperPath = path.resolve(__dirname, 'styleguide.wrapper.jsx')
 module.exports = {
   title: 'UNICEF Material UI',
   styles,
   theme,
-  showUsage: true,
+  usageMode: 'expand',
+  styleguideComponents: {
+    Wrapper: styleguideWrapperPath,
+  },
   getComponentPathLine: componentPath => {
     const dirname = path.dirname(componentPath, '.js')
     const name = dirname.split('/').slice(-1)[0]

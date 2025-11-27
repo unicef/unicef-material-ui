@@ -1,5 +1,5 @@
 import React from 'react'
-import { styled, alpha } from '@mui/material/styles'
+import { styled, alpha, useTheme } from '@mui/material/styles'
 import { findReactChildren } from '../../utils'
 import {
   AppBar,
@@ -75,6 +75,7 @@ const StyledAppBar = styled(AppBar, {
  */
 
 export default function UHeader(props) {
+  const theme = useTheme()
   const {
     position = 'fixed',
     applicationName,
@@ -87,7 +88,7 @@ export default function UHeader(props) {
     openDrawer,
     toggleDrawer,
     elevation = 4,
-    bgColor,
+    bgColor = theme?.palette?.unicef?.blue,
   } = props
 
   const handleUrlClick = e => {
