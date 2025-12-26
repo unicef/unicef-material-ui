@@ -1,46 +1,12 @@
-import { styled } from '@mui/material/styles'
-import { Box } from '@mui/material'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { DesktopDateTimePicker } from '@mui/x-date-pickers/DesktopDateTimePicker'
 import { outlinedInputClasses } from '@mui/material/OutlinedInput'
+import { pickersOutlinedInputClasses } from '@mui/x-date-pickers/PickersTextField'
+import { inputAdornmentClasses } from '@mui/material/InputAdornment'
 
-import UTextField from './../UTextField'
-
-const PREFIX = 'ActiveDesktopDateTimePicker'
-
-const classes = {
-  root: `${PREFIX}-root`,
-}
-
-const StyledBox = styled(Box, {
-  shouldForwardProp: prop => prop !== 'readOnly' && prop !== 'interactiveMode',
-})(({ theme, readOnly, interactiveMode }) => ({
-  [`& .${classes.root}`]: {
-    ...(readOnly
-      ? {
-          [`& .${outlinedInputClasses.notchedOutline}`]: {
-            borderColor: 'transparent',
-          },
-          [`&:hover .${outlinedInputClasses.notchedOutline}`]: {
-            borderColor: 'transparent',
-          },
-          [`& .${outlinedInputClasses.focused} .${outlinedInputClasses.notchedOutline}`]:
-            {
-              borderColor: 'transparent',
-            },
-        }
-      : {}),
-    ...(!readOnly && !interactiveMode
-      ? {}
-      : {
-          [`& .${outlinedInputClasses.notchedOutline}`]: {
-            borderColor: 'transparent',
-          },
-        }),
-  },
-}))
 /**
  * ActiveDesktopDateTimePicker is a customized material UI desktop date time picker.
  * This component let's you access the calender and clock to select the date and time.
@@ -59,31 +25,49 @@ export default function ActiveDesktopDateTimePicker({
   inputVariant = 'outlined',
   interactiveMode,
   readOnly,
+  sx,
   ...others
 }) {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <StyledBox readOnly={readOnly} interactiveMode={interactiveMode}>
-        <DesktopDateTimePicker
-          className={classes.root}
-          label={label}
-          inputFormat={inputFormat}
-          onChange={onChange}
-          value={value}
-          readOnly={readOnly}
-          {...others}
-          renderInput={params => (
-            <UTextField
-              showLabelHelp={showLabelHelp}
-              slotProps={slotProps}
-              InputLabelHelpProps={InputLabelHelpProps}
-              variant={inputVariant}
-              readOnly={readOnly}
-              {...params}
-            />
-          )}
-        />
-      </StyledBox>
+      <DesktopDateTimePicker
+        className={classes.root}
+        label={label}
+        inputFormat={inputFormat}
+        onChange={onChange}
+        value={value}
+        readOnly={readOnly}
+        sx={theme => ({
+          ...(sx ? sx : {}),
+          ...(readOnly && {
+            [`& .${pickersOutlinedInputClasses.notchedOutline},&:hover .${pickersOutlinedInputClasses.notchedOutline},&.Mui-focused .${pickersOutlinedInputClasses.notchedOutline}`]:
+              {
+                borderColor: 'transparent !important',
+              },
+            [`& .${inputAdornmentClasses.root}`]: {
+              display: 'none !important',
+            },
+          }),
+          ...(interactiveMode &&
+            !readOnly && {
+              [`& .${pickersOutlinedInputClasses.notchedOutline}`]: {
+                borderColor: 'transparent',
+              },
+              [`& .${pickersOutlinedInputClasses.root} .${inputAdornmentClasses.root}`]:
+                {
+                  display: 'none',
+                },
+              [`&:hover .${pickersOutlinedInputClasses.notchedOutline}`]: {
+                borderColor: theme.palette.divider,
+              },
+              [`&:hover .${inputAdornmentClasses.root},&.Mui-focused .${inputAdornmentClasses.root}`]:
+                {
+                  display: 'flex',
+                },
+            }),
+        })}
+        {...others}
+      />
     </LocalizationProvider>
   )
 }
@@ -101,6 +85,14 @@ ActiveDesktopDateTimePicker.propTypes = {
   readOnly: PropTypes.bool,
   /** Change to write mode by hiding text field border and displays border on hover*/
   interactiveMode: PropTypes.bool,
+  /** The system prop that allows defining system overrides as well as additional CSS styles. */
+  sx: PropTypes.oneOfType([
+    PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.func, PropTypes.object, PropTypes.bool])
+    ),
+    PropTypes.func,
+    PropTypes.object,
+  ]),
   /** Props applied to slots.*/
   slotProps: PropTypes.object,
   /** Label text */

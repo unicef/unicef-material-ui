@@ -6,6 +6,8 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { MobileDateTimePicker } from '@mui/x-date-pickers/MobileDateTimePicker'
 import { outlinedInputClasses } from '@mui/material/OutlinedInput'
+import { pickersOutlinedInputClasses } from '@mui/x-date-pickers/PickersTextField'
+import { inputAdornmentClasses } from '@mui/material/InputAdornment'
 
 import UTextField from '../UTextField'
 
@@ -61,6 +63,7 @@ export default function ActiveMobileDateTimePicker({
   inputVariant = 'outlined',
   interactiveMode,
   readOnly,
+  sx,
   ...others
 }) {
   return (
@@ -73,6 +76,35 @@ export default function ActiveMobileDateTimePicker({
           onChange={onChange}
           value={value}
           readOnly={readOnly}
+          sx={theme => ({
+            ...(sx ? sx : {}),
+            ...(readOnly && {
+              [`& .${pickersOutlinedInputClasses.notchedOutline},&:hover .${pickersOutlinedInputClasses.notchedOutline},&.Mui-focused .${pickersOutlinedInputClasses.notchedOutline}`]:
+                {
+                  borderColor: 'transparent !important',
+                },
+              [`& .${inputAdornmentClasses.root}`]: {
+                display: 'none !important',
+              },
+            }),
+            ...(interactiveMode &&
+              !readOnly && {
+                [`& .${pickersOutlinedInputClasses.notchedOutline}`]: {
+                  borderColor: 'transparent',
+                },
+                [`& .${pickersOutlinedInputClasses.root} .${inputAdornmentClasses.root}`]:
+                  {
+                    display: 'none',
+                  },
+                [`&:hover .${pickersOutlinedInputClasses.notchedOutline}`]: {
+                  borderColor: theme.palette.divider,
+                },
+                [`&:hover .${inputAdornmentClasses.root},&.Mui-focused .${inputAdornmentClasses.root}`]:
+                  {
+                    display: 'flex',
+                  },
+              }),
+          })}
           {...others}
           renderInput={params => (
             <UTextField
@@ -103,6 +135,14 @@ ActiveMobileDateTimePicker.propTypes = {
   readOnly: PropTypes.bool,
   /** Change to write mode by hiding text field border and displays border on hover*/
   interactiveMode: PropTypes.bool,
+  /** The system prop that allows defining system overrides as well as additional CSS styles. */
+  sx: PropTypes.oneOfType([
+    PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.func, PropTypes.object, PropTypes.bool])
+    ),
+    PropTypes.func,
+    PropTypes.object,
+  ]),
   /** Props applied to slots.*/
   slotProps: PropTypes.object,
   /** Label text */
