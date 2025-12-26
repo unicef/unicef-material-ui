@@ -19,7 +19,7 @@
     "build:dev": "cross-env NODE_ENV=development rollup -c",
     "build:prod": "cross-env NODE_ENV=production rollup -c",
     "build:example": "npm run build:prod && rm -rf gh-pages-build/* && cd example && npm run build && cp -R build/* ../gh-pages-build/",
-    "build:site": "npm run build:docs && cp -R ./styleguide ./site && cd example && npm run build && cp -R build/ ../site/example/",
+    "build:site": "npm run build:docs && rm -rf site && mkdir -p site && cp -R ./styleguide/* ./site/ && cd example && npm run build && cp -R build/ ../site/example/",
     "start": "rollup -c -w",
     "docs": "styleguidist server --config styleguide.config.cjs",
     "build:docs": "styleguidist build --config styleguide.config.cjs",

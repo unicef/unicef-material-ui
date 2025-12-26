@@ -4,7 +4,7 @@
     [
       "@babel/preset-react",
       {
-        "runtime": "automatic"
+    "runtime": "automatic"
       }
     ]
   ],
@@ -13,7 +13,7 @@
     [
       "@babel/plugin-transform-react-jsx",
       {
-        "runtime": "automatic"
+      "runtime": "automatic"
       }
     ],
     [
