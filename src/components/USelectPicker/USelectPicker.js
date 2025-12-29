@@ -4,6 +4,7 @@ import Select from 'react-select'
 import { useTheme, styled } from '@mui/material/styles'
 import { Box } from '@mui/material'
 import CancelIcon from '@mui/icons-material/Cancel'
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 
 import MultiValue from './MultiValue'
 import SingleValue from './SingleValue'
@@ -47,11 +48,7 @@ const StyledBox = styled(Box, {
     padding: theme.spacing(1, 2),
   },
   [`& .${classes.paper}`]: {
-    position: 'absolute',
-    zIndex: 999,
-    left: 0,
-    right: 0,
-    marginTop: hasHelpText ? theme.spacing(-3) : theme.spacing(0),
+    minWidth: '100%',
   },
   [`& .${classes.divider}`]: {
     height: theme.spacing(2),
@@ -72,7 +69,7 @@ const StyledBox = styled(Box, {
   },
 }))
 
-const defaultComponents = {
+const defaultComponents = theme => ({
   Control,
   Menu,
   MultiValue,
@@ -82,8 +79,17 @@ const defaultComponents = {
   SingleValue,
   ValueContainer,
   Input,
+  DropdownIndicator: props => (
+    <ArrowDropDownIcon
+      sx={{
+        color: props.isDisabled
+          ? theme.palette.action.disabled
+          : theme.palette.text.secondary,
+      }}
+    />
+  ),
   MultiValueRemove: removeProps => <CancelIcon {...removeProps} />,
-}
+})
 
 const ICON_VARIANTS = {
   dark: 'dark',
@@ -138,7 +144,16 @@ export default function USelectPicker(props) {
       },
     }),
     menuPortal: base => ({ ...base, zIndex: 9999 }),
-    menu: base => ({ ...base, zIndex: '9999 !important', boxShadow: 'none' }),
+    menu: base => ({
+      ...base,
+      zIndex: 9999,
+    }),
+    menuList: base => ({
+      ...base,
+      padding: theme.spacing(0.5, 0),
+      maxHeight: '300px',
+      overflowY: 'auto',
+    }),
     placeholder: base => ({
       ...base,
       position: 'absolute',
@@ -177,10 +192,14 @@ export default function USelectPicker(props) {
 
   const extraComponents = {}
   if (iconVariant === ICON_VARIANTS.dark)
-    extraComponents.DropdownIndicator = () => (
-      <span sx={{ color: theme.palette.text.secondary }}>
-        <ArrowDropDownIcon />
-      </span>
+    extraComponents.DropdownIndicator = props => (
+      <ArrowDropDownIcon
+        sx={{
+          color: props.isDisabled
+            ? theme.palette.action.disabled
+            : theme.palette.text.secondary,
+        }}
+      />
     )
   if (readOnly) extraComponents.DropdownIndicator = () => null
 
@@ -195,7 +214,12 @@ export default function USelectPicker(props) {
       <Select
         classes={classes}
         styles={selectStyles}
-        components={{ ...defaultComponents, ...components, ...extraComponents }}
+        components={{
+          ...defaultComponents(theme),
+          ...components,
+          ...extraComponents,
+        }}
+        menuPosition="fixed"
         TextFieldProps={mergedTextFieldProps}
         onInputChange={value => handleInputChange(value)}
         noOptionsMessage={() => (showNoOptions ? NoOptionsMessage : null)}

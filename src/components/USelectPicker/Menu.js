@@ -23,11 +23,7 @@ export default function Menu({ isLoading, ...others }) {
   const { errorOptionsMessage, loadingText } = others.selectProps
   return (
     <components.Menu {...others}>
-      <StyledPaper
-        square
-        elevation={0}
-        className={others.selectProps.classes.paper}
-      >
+      <StyledPaper square className={others.selectProps.classes.paper}>
         {isLoading ? (
           <Box p={2}>
             <Typography>{loadingText}</Typography>
