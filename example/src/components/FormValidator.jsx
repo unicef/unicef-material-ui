@@ -16,6 +16,7 @@ import {
   List,
   ListItem,
   ListItemText,
+  Stack,
 } from '@mui/material'
 import {
   UTextField,
@@ -47,7 +48,6 @@ const Root = styled('div')(({ theme }) => ({
 
   [`& .${classes.textField}`]: {
     minWidth: 195,
-    marginTop: theme.spacing(4),
   },
 
   [`& .${classes.margin}`]: {
@@ -157,12 +157,12 @@ export default function FormValidator() {
   return (
     <Root>
       <Grid container spacing={1}>
-        <Grid item xs={12}>
-          <Typography variant="h5" style={{ margin: '16px 0px' }}>
+        <Grid size={12}>
+          <Typography variant="h5" sx={{ margin: '16px 0px' }}>
             Positive Integer
           </Typography>
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <UValidatorForm
             onSubmit={event => {
               event.preventDefault()
@@ -182,17 +182,18 @@ export default function FormValidator() {
               }
               onBlur={handleBlur}
               ref={inputRef}
+              slotProps={{ inputLabel: { shrink: true } }}
             />
           </UValidatorForm>
         </Grid>
       </Grid>
       <Grid container spacing={1}>
-        <Grid item xs={12}>
-          <Typography variant="h5" style={{ margin: '16px 0px' }}>
+        <Grid size={12}>
+          <Typography variant="h5" sx={{ margin: '16px 0px' }}>
             Currency field
           </Typography>
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <UValidatorForm
             onSubmit={event => {
               event.preventDefault()
@@ -205,13 +206,14 @@ export default function FormValidator() {
             <UCurrencyField
               name="CurrencyInput"
               value={values['currencyField']}
-              label="currency input"
+              label="Currency input"
               className={classes.mb3}
               validators={['required']}
               onChange={e =>
                 setValues({ ...values, currencyField: e.target.value })
               }
-              prefix="$"
+              inputPrefix="$"
+              slotProps={{ inputLabel: { shrink: true } }}
             />
           </UValidatorForm>
         </Grid>
@@ -223,13 +225,11 @@ export default function FormValidator() {
         instantValidate={true}
         noValidate
       >
-        <Grid container>
-          <Grid item xs={12}>
-            <Typography style={{ marginBottom: 12 }} variant="h5">
-              Reset Form validator
-            </Typography>
+        <Grid container spacing={3}>
+          <Grid size={12}>
+            <Typography variant="h5">Reset Form validator</Typography>
           </Grid>
-          <Grid item xs={12} lg={3} xl={2}>
+          <Grid size={{ xs: 12, lg: 3, xl: 2 }}>
             <UTextField
               label="Email"
               required
@@ -238,32 +238,25 @@ export default function FormValidator() {
                 tooltipTitle: 'Hover text',
               }}
               onChange={handleValue}
-              className={classes.margin}
               name="cus_email"
               validators={['required', 'isEmail']}
               value={values.cus_email}
             />
           </Grid>
-          <Grid item xs={12} lg={6}>
-            <Button
-              // style={{ marginTop: 24 }}
-              className={classes.button}
-              color="primary"
-              variant="contained"
-              type="submit"
-            >
-              Submit
-            </Button>
-            <Button
-              onClick={resetValidation}
-              // style={{ marginTop: 24 }}
-              className={classes.button}
-              color="primary"
-              variant="contained"
-              type="button"
-            >
-              Reset Validation
-            </Button>
+          <Grid size={{ xs: 12, lg: 6 }}>
+            <Stack gap={1} flexDirection={'row'} alignItems={'center'}>
+              <Button color="primary" variant="contained" type="submit">
+                Submit
+              </Button>
+              <Button
+                onClick={resetValidation}
+                color="primary"
+                variant="contained"
+                type="button"
+              >
+                Reset Validation
+              </Button>
+            </Stack>
           </Grid>
         </Grid>
       </UValidatorForm>
@@ -273,28 +266,24 @@ export default function FormValidator() {
         instantValidate={true}
         noValidate
       >
-        <Grid container>
-          <Grid item xs={12}>
-            <Typography style={{ marginBottom: 12 }} variant="h5">
-              Form validator
-            </Typography>
+        <Grid container spacing={2}>
+          <Grid size={12}>
+            <Typography variant="h5">Form validator</Typography>
           </Grid>
-          <Grid item xs={12} lg={3} xl={2}>
+          <Grid size={{ xs: 12, lg: 3, xl: 2 }}>
             <UTextField
               label="Email"
               onChange={handleValue}
-              className={classes.margin}
               name="email"
               variant="outlined"
               validators={['required', 'isEmail']}
               value={values.email}
             />
           </Grid>
-          <Grid item xs={12} lg={3} xl={2}>
+          <Grid size={{ xs: 12, lg: 3, xl: 2 }}>
             <UTextField
               label="Password"
               onChange={handleValue}
-              className={classes.margin}
               name="password"
               type="password"
               variant="outlined"
@@ -302,7 +291,7 @@ export default function FormValidator() {
               value={values.password}
             />
           </Grid>
-          <Grid item xs={12} lg={3} xl={2}>
+          <Grid size={{ xs: 12, lg: 3, xl: 2 }}>
             <UTextField
               id="outlined-select-currency"
               select
@@ -321,44 +310,40 @@ export default function FormValidator() {
               ))}
             </UTextField>
           </Grid>
-          <Grid item xs={12} lg={3} xl={2}>
+          <Grid size={{ xs: 12, lg: 3, xl: 2 }}>
             <UTextField
               label="URL"
               onChange={handleValue}
-              className={classes.margin}
               name="url"
               variant="outlined"
               validators={['required', 'isUrl']}
               value={values.url}
             />
           </Grid>
-          <Grid item xs={12} lg={3} xl={2}>
+          <Grid size={{ xs: 12, lg: 3, xl: 2 }}>
             <UTextField
               label="Phone"
               onChange={handleValue}
-              className={classes.margin}
               name="phone"
               variant="outlined"
               validators={['required', 'isPhone']}
               value={values.phone}
             />
           </Grid>
-          <Grid item xs={12} lg={3} xl={2}>
+          <Grid size={{ xs: 12, lg: 3, xl: 2 }}>
             <UTextField
               label="Safe text"
               onChange={handleValue}
-              className={classes.margin}
               name="safeText"
               variant="outlined"
               validators={['required', 'isSafeText']}
               value={values.safeText}
             />
           </Grid>
-          <Grid item xs={12} lg={3} xl={2}>
+          <Grid size={{ xs: 12, lg: 3, xl: 2 }}>
             <UTextField
               label="Custom regex(no script)"
               onChange={handleValue}
-              className={classes.margin}
               name="regex"
               variant="outlined"
               validators={[
@@ -371,24 +356,18 @@ export default function FormValidator() {
               }}
             />
           </Grid>
-          <Grid item xs={12} lg={3} xl={2}>
+          <Grid size={{ xs: 12, lg: 3, xl: 2 }}>
             <UTextField
               label="Alphanumeric"
               onChange={handleValue}
-              className={classes.margin}
               name="alphanumeric"
               variant="outlined"
               validators={['required', 'isAlphanumeric']}
               value={values.alphanumeric}
             />
           </Grid>
-          <Grid item xs={12} lg={1}>
-            <Button
-              className={classes.button}
-              color="primary"
-              variant="contained"
-              type="submit"
-            >
+          <Grid size={{ xs: 12, lg: 1 }}>
+            <Button color="primary" variant="contained" type="submit">
               Submit
             </Button>
           </Grid>
@@ -400,7 +379,7 @@ export default function FormValidator() {
         instantValidate={true}
         noValidate
       >
-        <Typography variant="h5" style={{ margin: '16px 0px' }}>
+        <Typography variant="h5" sx={{ margin: '12px 0px' }}>
           TextField with counter
         </Typography>
         <UTextField
@@ -408,7 +387,6 @@ export default function FormValidator() {
           name="counter"
           value={values.counter}
           onChange={handleValue}
-          className={classes.margin}
           variant="outlined"
           validators={['required']}
           counter
@@ -424,7 +402,7 @@ export default function FormValidator() {
         instantValidate={true}
         noValidate
       >
-        <Typography variant="h5" style={{ margin: '16px 0px' }}>
+        <Typography variant="h5" sx={{ margin: '12px 0px' }}>
           Reset form
         </Typography>
         <List>
@@ -434,24 +412,20 @@ export default function FormValidator() {
             </ListItem>
           ))}
         </List>
-        <UTextField
-          label="Item to add*"
-          onChange={handleItemValueChange}
-          className={classes.margin}
-          name="item"
-          variant="outlined"
-          validators={['required']}
-          value={itemValue}
-          withRequiredValidator={false}
-        />
-        <Button
-          className={classes.button}
-          color="primary"
-          variant="contained"
-          type="submit"
-        >
-          Add
-        </Button>
+        <Stack gap={2} flexDirection={'row'} alignItems={'center'}>
+          <UTextField
+            label="Item to add*"
+            onChange={handleItemValueChange}
+            name="item"
+            variant="outlined"
+            validators={['required']}
+            value={itemValue}
+            withRequiredValidator={false}
+          />
+          <Button color="primary" variant="contained" type="submit">
+            Add
+          </Button>
+        </Stack>
       </UValidatorForm>
       {/* Custom controls validation*/}
       <UValidatorForm
@@ -461,7 +435,14 @@ export default function FormValidator() {
         instantValidate={true}
         noValidate
       >
-        <Box display="flex" mb={2} flexDirection="column" alignItems="baseline">
+        <Box
+          sx={{
+            display: 'flex',
+            mb: 2,
+            flexDirection: 'column',
+            alignItems: 'baseline',
+          }}
+        >
           <UValidatorComponent
             name="termAndCondition"
             label="Agree with the Terms and Conditions"
@@ -590,12 +571,12 @@ export default function FormValidator() {
         noValidate
       >
         <Grid container spacing={1}>
-          <Grid item xs={12}>
-            <Typography variant="h5" style={{ margin: '16px 0px' }}>
+          <Grid size={12}>
+            <Typography variant="h5" sx={{ margin: '16px 0px' }}>
               Coordinates Form
             </Typography>
           </Grid>
-          <Grid item xs={12} lg={3} xl={3}>
+          <Grid size={{ xs: 12, lg: 3, xl: 3 }}>
             <UCoordinateField
               coordinateType="latitude"
               label="Latitude"
@@ -607,7 +588,7 @@ export default function FormValidator() {
             />
           </Grid>
 
-          <Grid item xs={12} lg={3} xl={3}>
+          <Grid size={{ xs: 12, lg: 3, xl: 3 }}>
             <UCoordinateField
               coordinateType="longitude"
               label="Longitude"
@@ -619,7 +600,7 @@ export default function FormValidator() {
             />
           </Grid>
 
-          <Grid item xs={12}>
+          <Grid size={12}>
             <Button color="primary" variant="contained" type="submit">
               Submit
             </Button>

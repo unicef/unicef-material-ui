@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom'
 import {
   List,
   ListItemText,
-  ListItem,
   ListItemIcon,
   Typography,
   Box,
   Divider,
+  ListItemButton,
 } from '@mui/material'
 
 import MailIcon from '@mui/icons-material/Mail'
@@ -54,7 +54,7 @@ export default function SideBarContent(props) {
       </Typography>
       <Divider />
       <Box>
-        <div className={classes.toolbar} />
+        <Box className={classes.toolbar} />
         <List>
           {[
             'Layout',
@@ -63,8 +63,7 @@ export default function SideBarContent(props) {
             'Pickers',
             'Accessibility',
           ].map((text, index) => (
-            <ListItem
-              button
+            <ListItemButton
               key={text}
               selected={selectedNode === lowerCaseUrl(text)}
               component={Link}
@@ -75,7 +74,7 @@ export default function SideBarContent(props) {
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
               </ListItemIcon>
               <ListItemText primary={text} />
-            </ListItem>
+            </ListItemButton>
           ))}
         </List>
       </Box>

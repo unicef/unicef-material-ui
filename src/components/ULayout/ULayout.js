@@ -7,7 +7,7 @@ const classes = {
   root: `${PREFIX}-root`,
 }
 
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledBox = styled('div')(({ theme }) => ({
   [`&.${classes.root}`]: {
     display: 'flex',
   },

@@ -15,11 +15,10 @@ import UTextField from '../UTextField'
  */
 export default function UCoordinateField({
   readOnly,
-  InputProps,
   decimalScale = 9,
-  inputProps,
   coordinateType,
   validators,
+  slotProps,
   ...props
 }) {
   let validatorsArr = null
@@ -37,16 +36,19 @@ export default function UCoordinateField({
   return (
     <UTextField
       variant="outlined"
-      InputProps={{
-        inputComponent: PositiveNumberFormat,
-        readOnly: readOnly,
-        ...InputProps,
-      }}
-      inputProps={{
-        ...inputProps,
-        thousandSeparator: false,
-        allowNegative: true,
-        decimalScale: decimalScale,
+      slotProps={{
+        ...slotProps,
+        input: {
+          inputComponent: PositiveNumberFormat,
+          readOnly,
+          ...(slotProps?.input ? slotProps.input : {}),
+        },
+        htmlInput: {
+          ...(slotProps?.htmlInput ? slotProps.htmlInput : {}),
+          thousandSeparator: false,
+          allowNegative: true,
+          decimalScale,
+        },
       }}
       validators={validatorsArr || validators}
       {...props}

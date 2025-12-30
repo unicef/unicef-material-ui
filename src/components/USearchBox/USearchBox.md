@@ -11,7 +11,7 @@ const handleSearch = value => {
 }
 
 ;<Grid container>
-  <Grid item xs={12} sm={4} md={3}>
+  <Grid size={{xs:12,sm:4,md:3}}>
     <USearchbox onSearch={handleSearch} />
   </Grid>
 </Grid>
@@ -28,7 +28,7 @@ const handleSearch = value => {
   //Service call or other actions
 }
 ;<Grid container>
-  <Grid item xs={12} sm={6}>
+  <Grid size={{xs:12,sm:6}}>
     <USearchbox onSearch={handleSearch} />
   </Grid>
 </Grid>

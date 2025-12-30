@@ -19,7 +19,7 @@ const classes = {
 
 const StyledChip = styled(Chip)(({ theme }) => ({
   [`&.${classes.chip}`]: {
-    marginLeft: theme.spacing(0.5),
+    marginRight: theme.spacing(0.5),
     marginTop: theme.spacing(0.25),
     maxWidth: '90%',
     '& .Uni-MuiChip-deleteIcon': {

@@ -1,10 +1,14 @@
 const path = require('path')
-const { styles, theme } = require('./styleguide.styles')
+const { styles, theme } = require('./styleguide.styles.cjs')
+const styleguideWrapperPath = path.resolve(__dirname, 'styleguide.wrapper.jsx')
 module.exports = {
   title: 'UNICEF Material UI',
   styles,
   theme,
-  showUsage: true,
+  usageMode: 'expand',
+  styleguideComponents: {
+    Wrapper: styleguideWrapperPath,
+  },
   getComponentPathLine: componentPath => {
     const dirname = path.dirname(componentPath, '.js')
     const name = dirname.split('/').slice(-1)[0]
@@ -12,6 +16,10 @@ module.exports = {
     return `import { ${name} } from '@unicef/material-ui'`
   },
   webpackConfig: {
+    resolve: {
+      extensions: ['.js', '.jsx'],
+      fullySpecified: false,
+    },
     module: {
       rules: [
         // Babel loader, will use your project’s babel.config.js
@@ -19,6 +27,9 @@ module.exports = {
           test: /\.jsx?$/,
           exclude: /node_modules/,
           loader: 'babel-loader',
+          resolve: {
+            fullySpecified: false,
+          },
         },
         // Other loaders that are needed for your components
         {

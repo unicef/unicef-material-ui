@@ -19,7 +19,7 @@ import { Typography, Grid } from '@mui/material'
 
   loading ? <UPageLoadingProgress /> : (
    <Grid container>
-      <Grid item xs={12} sm={4} md={3}>
+      <Grid size={{xs:12,sm:4,md:3}}>
       </Grid>
     </Grid>
     )
@@ -49,7 +49,7 @@ import UButton from '../UButton'
 
   loading ? <UPageLoadingProgress /> :(
    <Grid container>
-     <Grid item xs={12} sm={4} md={3}>
+     <Grid size={{xs:12,sm:4,md:3}}>
         <UButton variant="uPrimary" onClick={handleLoad}>
           Click load Progress
         </UButton>
@@ -81,7 +81,7 @@ import UButton from '../UButton'
 
   loading ? <UPageLoadingProgress text= "Loading..." /> :(
    <Grid container>
-     <Grid item xs={12} sm={4} md={3}>
+     <Grid size={{xs:12,sm:4,md:3}}>
         <UButton variant="uPrimary" onClick={handleLoad}>
           Click load text
         </UButton>

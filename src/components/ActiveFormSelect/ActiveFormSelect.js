@@ -75,10 +75,7 @@ export default function ActiveFormSelect(props) {
     interactiveMode = false,
     placeholder = 'Select',
     readOnly,
-    InputLabelProps,
-    InputProps,
-    inputProps,
-    SelectProps,
+    slotProps,
     ...others
   } = props
   const [hideIcon, setHideIcon] = React.useState(classes.icon)
@@ -102,31 +99,34 @@ export default function ActiveFormSelect(props) {
     <StyledBox typographyVariant={typographyVariant}>
       <UTextField
         placeholder={finalPlaceholder}
-        InputLabelProps={{
-          shrink: true,
-          ...InputLabelProps,
-        }}
-        inputProps={{
-          readOnly: Boolean(readOnly),
-          disabled: Boolean(readOnly),
-          ...inputProps,
-        }}
         className={`${classes.textField} ${className && className}`}
-        InputProps={{
-          classes: {
-            root: `${classes.input} ${readOnly && classes.inputHover}`,
-            notchedOutline: `${
-              !interactiveMode && !readOnly ? '' : classes.notchedOutline
-            }`,
-            input: classes.inputPadding,
+        slotProps={{
+          ...slotProps,
+          inputLabel: {
+            shrink: true,
+            ...(slotProps?.inputLabel ? slotProps.inputLabel : {}),
           },
-          ...InputProps,
+          input: {
+            ...(slotProps?.input ? slotProps.input : {}),
+            classes: {
+              root: `${classes.input} ${readOnly && classes.inputHover}`,
+              notchedOutline: `${
+                !interactiveMode && !readOnly ? '' : classes.notchedOutline
+              }`,
+              input: classes.inputPadding,
+            },
+          },
+          htmlInput: {
+            ...(slotProps?.htmlInput ? slotProps.htmlInput : {}),
+            readOnly: Boolean(readOnly),
+            disabled: Boolean(readOnly),
+          },
+          select: {
+            ...(slotProps?.select ? slotProps.select : {}),
+            classes: { icon: (interactiveMode || readOnly) && hideIcon },
+          },
         }}
         select
-        SelectProps={{
-          classes: { icon: (interactiveMode || readOnly) && hideIcon },
-          ...SelectProps,
-        }}
         onMouseOver={onMouseOver}
         onMouseLeave={handleBlur}
         onBlur={handleBlur}

@@ -17,7 +17,7 @@ const classes = {
   gutter: `${PREFIX}-gutter`,
 }
 
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledBox = styled('div')(({ theme }) => ({
   [`& .${classes.padding}`]: {
     paddingLeft: theme.spacing(3),
   },

@@ -1,5 +1,5 @@
 import React from 'react'
-import { styled, alpha } from '@mui/material/styles'
+import { styled, alpha, useTheme } from '@mui/material/styles'
 import { findReactChildren } from '../../utils'
 import {
   AppBar,
@@ -75,6 +75,7 @@ const StyledAppBar = styled(AppBar, {
  */
 
 export default function UHeader(props) {
+  const theme = useTheme()
   const {
     position = 'fixed',
     applicationName,
@@ -87,7 +88,7 @@ export default function UHeader(props) {
     openDrawer,
     toggleDrawer,
     elevation = 4,
-    bgColor,
+    bgColor = theme?.palette?.unicef?.blue,
   } = props
 
   const handleUrlClick = e => {
@@ -100,9 +101,15 @@ export default function UHeader(props) {
   return (
     <StyledAppBar position={position} elevation={elevation} bgColor={bgColor}>
       <Toolbar disableGutters={true} className={classes.bgColor}>
-        <Box display="flex" ml={3} alignItems="center">
+        <Box
+          sx={{
+            display: 'flex',
+            ml: 3,
+            alignItems: 'center',
+          }}
+        >
           {showHamburgerMenu !== false && (
-            <Box mr={2}>
+            <Box sx={{ mr: 2 }}>
               <IconButton
                 edge="start"
                 onClick={e => toggleDrawer && toggleDrawer(e, true)}
@@ -160,14 +167,16 @@ export default function UHeader(props) {
               {applicationName}
             </Link>
           </Typography>
-          <div className={classes.navbarCenter}>
+          <Box className={classes.navbarCenter}>
             {findReactChildren(props, UNavbarCenter)}
-          </div>
+          </Box>
         </Box>
         <Box
-          height="64px"
-          display={{ xs: 'none', md: 'block' }}
-          ml="auto"
+          sx={{
+            height: '64px',
+            ml: 'auto',
+            display: { xs: 'none', md: 'block' },
+          }}
           className={classes.navRight}
         >
           {findReactChildren(props, UHeaderRightButtons)}

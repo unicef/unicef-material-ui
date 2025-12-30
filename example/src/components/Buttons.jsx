@@ -21,20 +21,20 @@ export default function Buttons() {
 
   return (
     <Grid container>
-      <Grid item xs={12}>
-        <Typography variant="h5" style={{ margin: '32px 0px' }}>
+      <Grid size={12}>
+        <Typography variant="h5" sx={{ margin: '32px 0px' }}>
           UButton
         </Typography>
       </Grid>
-      <Grid item xs={12} sm={4} md={3}>
+      <Grid size={{ xs: 12, sm: 4, md: 3 }}>
         <Typography variant="subtitle1">Primary button</Typography>
         <UButton variant="uPrimary">Primary</UButton>
       </Grid>
-      <Grid item xs={12} sm={4} md={3}>
+      <Grid size={{ xs: 12, sm: 4, md: 3 }}>
         <Typography variant="subtitle1">Default button</Typography>
         <UButton variant="uDefault">Default</UButton>
       </Grid>
-      <Grid item xs={12} sm={4} md={3}>
+      <Grid size={{ xs: 12, sm: 4, md: 3 }}>
         <Typography variant="subtitle1">Spinning button</Typography>
         <UButton
           variant="uPrimary"

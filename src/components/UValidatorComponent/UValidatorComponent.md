@@ -72,7 +72,7 @@ const classes = {
   menu: `${PREFIX}-menu`,
 }
 
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledBox = styled('div')(({ theme }) => ({
     [`& .${classes.formControl}`]: {
     margin: theme.spacing(3),
   },
@@ -197,7 +197,7 @@ const classes = {
   menu: `${PREFIX}-menu`,
 }
 
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledBox = styled('div')(({ theme }) => ({
     [`& .${classes.formControl}`]: {
     margin: theme.spacing(3),
   },

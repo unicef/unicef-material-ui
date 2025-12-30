@@ -10,18 +10,21 @@ export default function ActiveCurrencyField({
   decimalScale = 2,
   fixedDecimalScale = true,
   textAlign = 'right',
-  inputProps,
+  slotProps,
   ...props
 }) {
   return (
     <ActiveFormPositiveInteger
       variant="outlined"
-      inputProps={{
-        decimalScale,
-        fixedDecimalScale,
-        prefix: inputPrefix,
-        style: { textAlign },
-        ...inputProps,
+      slotProps={{
+        ...slotProps,
+        htmlInput: {
+          ...(slotProps?.htmlInput ? slotProps.htmlInput : {}),
+          decimalScale,
+          fixedDecimalScale,
+          prefix: inputPrefix,
+          style: { textAlign },
+        },
       }}
       {...props}
     />
@@ -45,10 +48,6 @@ ActiveCurrencyField.propTypes = {
    * Ex: `validators={['required']}`
    */
   validators: PropTypes.array,
-  /** Attributes applied to the input element. */
-  inputProps: PropTypes.object,
-  /** Props applied to the Input element. */
-  InputProps: PropTypes.object,
   /** Prefix string for the input. */
   inputPrefix: PropTypes.string,
   /** Decimal digit number to be used as default. */

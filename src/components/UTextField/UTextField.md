@@ -49,7 +49,7 @@ const classes = {
   textField: `${PREFIX}-textField`,
   margin: `${PREFIX}-margin`,
 }
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledBox = styled('div')(({ theme }) => ({
   [`& .${classes.textField}`]: {
     margin: theme.spacing(1),
     width: 195,
@@ -148,7 +148,7 @@ const PREFIX = 'UTextFieldExample'
 const classes = {
   margin: `${PREFIX}-margin`,
 }
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledBox = styled('div')(({ theme }) => ({
   [`& .${classes.margin}`]: {
     marginLeft: theme.spacing(1),
   },
@@ -218,7 +218,7 @@ const PREFIX = 'UTextFieldExample'
 const classes = {
   margin: `${PREFIX}-margin`,
 }
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledBox = styled('div')(({ theme }) => ({
   [`& .${classes.margin}`]: {
     marginLeft: theme.spacing(1),
   },
@@ -288,7 +288,7 @@ const classes = {
   margin: `${PREFIX}-margin`,
   dense: `${PREFIX}-dense`,
 }
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledBox = styled('div')(({ theme }) => ({
   [`& .${classes.textField}`]: {
     margin: theme.spacing(1),
     minWidth: 195,
@@ -372,7 +372,7 @@ const classes = {
   margin: `${PREFIX}-margin`,
   dense: `${PREFIX}-dense`,
 }
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledBox = styled('div')(({ theme }) => ({
   [`& .${classes.textField}`]: {
     margin: theme.spacing(1),
     minWidth: 195,
@@ -451,7 +451,7 @@ const classes = {
   margin: `${PREFIX}-margin`,
   dense: `${PREFIX}-dense`,
 }
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledBox = styled('div')(({ theme }) => ({
   [`& .${classes.textField}`]: {
     margin: theme.spacing(1),
     minWidth: 195,
@@ -534,7 +534,7 @@ const classes = {
   margin: `${PREFIX}-margin`,
   dense: `${PREFIX}-dense`,
 }
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledBox = styled('div')(({ theme }) => ({
   [`& .${classes.textField}`]: {
     margin: theme.spacing(1),
     minWidth: 195,
@@ -612,7 +612,7 @@ const classes = {
   margin: `${PREFIX}-margin`,
   dense: `${PREFIX}-dense`,
 }
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledBox = styled('div')(({ theme }) => ({
   [`& .${classes.textField}`]: {
     margin: theme.spacing(1),
     minWidth: 195,
@@ -690,7 +690,7 @@ const classes = {
   margin: `${PREFIX}-margin`,
   dense: `${PREFIX}-dense`,
 }
-const StyledBox = styled(Box)(({ theme }) => ({
+const StyledBox = styled('div')(({ theme }) => ({
   [`& .${classes.textField}`]: {
     margin: theme.spacing(1),
     minWidth: 195,

@@ -96,13 +96,11 @@ class UTextField extends ValidatorComponent {
       counterClassName,
       readOnly = false,
       label,
-      InputProps,
-      InputLabelProps,
+      slotProps = {},
       showLabelHelp = false,
       InputLabelHelpProps = {},
       select = false,
       id,
-      SelectProps = {},
       options,
       children,
       ...rest
@@ -120,13 +118,43 @@ class UTextField extends ValidatorComponent {
           error={!isValid || error}
           onBlur={event => this.handleBlur(event)}
           helperText={(!isValid && this.getErrorMessage()) || helperText}
-          InputProps={{
-            readOnly: readOnly,
-            ...InputProps,
-          }}
-          InputLabelProps={{
-            ...InputLabelProps,
-            style: { ...styles.labelRoot },
+          slotProps={{
+            ...slotProps,
+            input: {
+              ...(slotProps?.input ? slotProps.input : {}),
+              readOnly,
+            },
+            inputLabel: {
+              ...(slotProps?.inputLabel ? slotProps?.inputLabel : {}),
+              style: { ...styles.labelRoot },
+            },
+            htmlInput: {
+              ...(slotProps?.htmlInput ? slotProps.htmlInput : {}),
+              ...(select ? { 'aria-describedby': null } : {}),
+            },
+            /** Accessibility fixes for select field */
+            ...(select
+              ? {
+                  ...(slotProps?.select ? slotProps?.select : {}),
+                  open: isSelectOpen ? true : false,
+                  onClose: this.handleSelectClose,
+                  onOpen: this.handleSelectOpen,
+                  MenuProps: {
+                    slotProps: {
+                      list: {
+                        id: `${id}-select-menu`,
+                        'aria-labelledby': null,
+                      },
+                    },
+                  },
+                  SelectDisplayProps: {
+                    role: 'combobox',
+                    'aria-controls': `${id}-select-menu`,
+                    'aria-expanded': isSelectOpen ? true : false,
+                    'aria-describedby': `${id}-helper-text`,
+                  },
+                }
+              : {}),
           }}
           label={
             showLabelHelp ? (
@@ -136,33 +164,6 @@ class UTextField extends ValidatorComponent {
             )
           }
           id={id}
-          /** Accessibility fixes for select field */
-          {...(select
-            ? {
-                inputProps: {
-                  ...(this.props.inputProps ? this.props.inputProps : {}),
-                  'aria-describedby': null,
-                },
-                SelectProps: {
-                  ...(SelectProps ? SelectProps : {}),
-                  open: isSelectOpen ? true : false,
-                  onClose: this.handleSelectClose,
-                  onOpen: this.handleSelectOpen,
-                  MenuProps: {
-                    MenuListProps: {
-                      id: `${id}-select-menu`,
-                      'aria-labelledby': null,
-                    },
-                  },
-                  SelectDisplayProps: {
-                    role: 'combobox',
-                    'aria-controls': `${id}-select-menu`,
-                    'aria-expanded': isSelectOpen ? true : false,
-                    'aria-describedby': `${id}-helper-text`,
-                  },
-                },
-              }
-            : {})}
         >
           {select
             ? options && options.length
@@ -177,7 +178,7 @@ class UTextField extends ValidatorComponent {
         {counter && (
           <Box display="block">
             <Typography
-              style={{
+              sx={{
                 ...styles.counter,
                 ...(counterError && styles.counterError),
               }}
@@ -230,16 +231,12 @@ UTextField.propTypes = {
   maxLength: PropTypes.number,
   /** To make textfield read only */
   readOnly: PropTypes.bool,
-  /** Props applied to the Input element. */
-  InputProps: PropTypes.object,
   /** Show label help */
   showLabelHelp: PropTypes.bool,
   /** Props applied to the input label help element. E.g InputLabelHelpProps={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
   InputLabelHelpProps: PropTypes.object,
   /** Id of the field */
   id: PropTypes.string,
-  /** Props applied to the Select element. */
-  SelectProps: PropTypes.object,
   /** If the field is select box and no options are passed, then this children will be used. */
   children: PropTypes.node,
 }

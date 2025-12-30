@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { styled } from '@mui/material/styles'
 import { UAsyncBadge } from 'unicef-material-ui'
+import { Box } from '@mui/material'
 const PREFIX = 'AsyncBadgeExample'
 
 const classes = {
@@ -44,14 +45,14 @@ export default function RadioButtonsExample() {
 
   return (
     <Root className={classes.search}>
-      <div className={classes.searchIcon}>
+      <Box className={classes.searchIcon}>
         <UAsyncBadge
           visible={badgeStatus.visible}
           text={badgeStatus.text}
           variant={badgeStatus.variant}
           onReset={handleResetBadge}
         />
-      </div>
+      </Box>
     </Root>
   )
 }

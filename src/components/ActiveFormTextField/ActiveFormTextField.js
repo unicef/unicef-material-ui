@@ -74,9 +74,7 @@ export default function ActiveFormTextField(props) {
     readOnly,
     placeholder = 'Type something',
     interactiveMode = false,
-    InputLabelProps,
-    InputProps,
-    inputProps,
+    slotProps = {},
     inputPadding,
     ...others
   } = props
@@ -92,28 +90,31 @@ export default function ActiveFormTextField(props) {
     >
       <UTextField
         placeholder={finalPlaceholder}
-        InputLabelProps={{
-          shrink: true,
-          ...InputLabelProps,
-        }}
-        inputProps={{
-          readOnly: Boolean(readOnly),
-          disabled: Boolean(readOnly),
-          ...inputProps,
-        }}
         className={`${classes.textField} ${className && className}`}
-        InputProps={{
-          classes: {
-            root: `${classes.input} ${readOnly && classes.inputHover}`,
-            multiline: inputPaddingClass,
-            notchedOutline: `${
-              !interactiveMode && !readOnly ? '' : classes.notchedOutline
-            }`,
-            input: props.multiline
-              ? classes.inputPaddingWithoutLabel
-              : inputPaddingClass,
+        slotProps={{
+          ...slotProps,
+          input: {
+            classes: {
+              root: `${classes.input} ${readOnly && classes.inputHover}`,
+              multiline: inputPaddingClass,
+              notchedOutline: `${
+                !interactiveMode && !readOnly ? '' : classes.notchedOutline
+              }`,
+              input: props.multiline
+                ? classes.inputPaddingWithoutLabel
+                : inputPaddingClass,
+            },
+            ...(slotProps?.input ? slotProps.input : {}),
           },
-          ...InputProps,
+          htmlInput: {
+            readOnly: Boolean(readOnly),
+            disabled: Boolean(readOnly),
+            ...(slotProps?.htmlInput ? slotProps.htmlInput : {}),
+          },
+          inputLabel: {
+            shrink: true,
+            ...(slotProps?.inputLabel ? slotProps.inputLabel : {}),
+          },
         }}
         variant={variant}
         defaultValue={props.children}

@@ -9,7 +9,7 @@ const classes = {
   pageLoadingProgress: `${PREFIX}-pageLoadingProgress`,
 }
 
-const StyledBox = styled(Box)(() => ({
+const StyledBox = styled('div')(() => ({
   [`&.${classes.pageLoadingProgress}`]: {
     height: '50vh',
     flex: '1',

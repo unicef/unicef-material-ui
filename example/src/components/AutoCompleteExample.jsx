@@ -33,12 +33,12 @@ export default function AutoCompleteExample() {
   return (
     <UValidatorForm>
       <Grid container>
-        <Grid item xs={12}>
-          <Typography variant="h5" style={{ margin: '32px 0px' }}>
+        <Grid size={12}>
+          <Typography variant="h5" sx={{ margin: '32px 0px' }}>
             Auto complete
           </Typography>
         </Grid>
-        <Grid item xs={12} sm={4} md={3}>
+        <Grid size={{ xs: 12, sm: 4, md: 3 }}>
           <UAutoComplete
             value={value}
             label={'labelName'}

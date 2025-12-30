@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Box } from '@mui/material'
 import { styled } from '@mui/material/styles'
 
-const StyledBox = styled(Box)(() => ({
+const StyledBox = styled('div')(() => ({
   position: 'absolute',
   width: 1,
   height: 1,

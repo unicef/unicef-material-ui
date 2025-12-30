@@ -8,11 +8,23 @@ const outputFile = NODE_ENV === 'production' ? './lib/prod.js' : './lib/dev.js'
 
 export default {
   input: './src/index.js',
-  output: {
-    file: outputFile,
-    format: 'cjs',
-    sourcemap: true,
-  },
+  // output: {
+  //   file: outputFile,
+  //   format: 'esm',
+  //   sourcemap: true,
+  // },
+  output: [
+    {
+      file: './lib/prod.js',
+      format: 'esm',
+      sourcemap: true,
+    },
+    {
+      file: './lib/prod.cjs',
+      format: 'cjs',
+      sourcemap: true,
+    },
+  ],
   plugins: [
     replace({
       preventAssignment: true,
@@ -34,15 +46,9 @@ export default {
     resolve(),
     commonjs(),
   ],
-  external: [
-    'react',
-    'react-is',
-    'react-dom',
-    'prop-types',
-    'styled-components',
-  ],
-  onwarn: function ( message ) {
-    if ( message.code === 'MODULE_LEVEL_DIRECTIVE' ) return;
-    console.error( message );
-  }
+  external: ['react', 'react-is', 'react-dom', 'prop-types'],
+  onwarn: function (message) {
+    if (message.code === 'MODULE_LEVEL_DIRECTIVE') return
+    console.error(message)
+  },
 }

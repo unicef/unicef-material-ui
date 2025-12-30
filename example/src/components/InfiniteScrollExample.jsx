@@ -10,12 +10,12 @@ export default function InfiniteScrollExample() {
 
   return (
     <Grid container>
-      <Grid item xs={12}>
-        <Typography variant="h5" style={{ margin: '32px 0px' }}>
+      <Grid size={12}>
+        <Typography variant="h5" sx={{ margin: '32px 0px' }}>
           Infinte scroll
         </Typography>
       </Grid>
-      <Grid item xs={12}>
+      <Grid size={12}>
         <UInfiniteScroll offset={150} onEndOfScroll={handleEndScroll} />
       </Grid>
     </Grid>

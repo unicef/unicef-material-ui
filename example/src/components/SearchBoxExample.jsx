@@ -1,5 +1,5 @@
 import React from 'react'
-import { Typography, Grid } from '@mui/material'
+import { Typography, Grid, Box } from '@mui/material'
 
 import { USearchBox } from 'unicef-material-ui'
 
@@ -8,15 +8,15 @@ export default function SearchBoxExample() {
     console.log(value)
   }
   return (
-    <div>
-      <Typography variant="h5" style={{ margin: '32px 0px' }}>
+    <Box>
+      <Typography variant="h5" sx={{ margin: '32px 0px' }}>
         Search box
       </Typography>
       <Grid container spacing={2}>
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <USearchBox onSearch={handleSearch} />
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <USearchBox
             onSearch={handleSearch}
             placeholder="Type here..."
@@ -24,6 +24,6 @@ export default function SearchBoxExample() {
           />
         </Grid>
       </Grid>
-    </div>
+    </Box>
   )
 }

@@ -6,13 +6,16 @@ import { PositiveNumberFormat } from '../Shared'
 /**
  * ActiveFormPositiveInteger form input field that accepts positive integer values. The cool feature with ActiveFormPositiveInteger is you can read and write at the same place.
  */
-export default function ActiveFormPositiveInteger({ InputProps, ...props }) {
+export default function ActiveFormPositiveInteger({ slotProps, ...props }) {
   return (
     <ActiveFormTextField
       variant="outlined"
-      InputProps={{
-        inputComponent: PositiveNumberFormat,
-        ...InputProps,
+      slotProps={{
+        ...slotProps,
+        input: {
+          ...(slotProps?.input ? slotProps.input : {}),
+          inputComponent: PositiveNumberFormat,
+        },
       }}
       {...props}
       fullWidth

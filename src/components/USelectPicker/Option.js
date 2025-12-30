@@ -15,7 +15,7 @@ export default function Option(props) {
       ref={props.innerRef}
       selected={props.isFocused}
       component="div"
-      style={{
+      sx={{
         fontWeight: props.isSelected ? 500 : 400,
       }}
       {...props.innerProps}

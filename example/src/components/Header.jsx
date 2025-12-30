@@ -36,7 +36,7 @@ export default function Header() {
       color="white"
       bgColor="#1CABE2"
       applicationName="Material UI"
-      logoUrl={process.env.PUBLIC_URL}
+      //logoUrl={process.env.PUBLIC_URL}
       openDrawer={openDrawer}
       toggleDrawer={toggleDrawer}
     >

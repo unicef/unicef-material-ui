@@ -1,11 +1,9 @@
-/* eslint-disable no-nested-ternary */
 import React from 'react'
 import { styled } from '@mui/material/styles'
 import PropTypes from 'prop-types'
 import Link from '@mui/material/Link'
 import Typography from '@mui/material/Typography'
 import Breadcrumbs from '@mui/material/Breadcrumbs'
-import { Link as RouterLink } from 'react-router-dom'
 
 const PREFIX = 'UBreadcrumbs'
 
