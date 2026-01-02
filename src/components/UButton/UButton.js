@@ -1,34 +1,6 @@
 import React from 'react'
-import { styled } from '@mui/material/styles'
 import PropTypes from 'prop-types'
 import { Box, Button, CircularProgress } from '@mui/material'
-
-const PREFIX = 'UButton'
-
-const classes = {
-  root: `${PREFIX}-root`,
-  wrapper: `${PREFIX}-wrapper`,
-  buttonProgress: `${PREFIX}-buttonProgress`,
-}
-
-const StyledBox = styled(Box)(({ theme }) => ({
-  [`&.${classes.root}`]: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-
-  [`& .${classes.wrapper}`]: {
-    position: 'relative',
-  },
-
-  [`& .${classes.buttonProgress}`]: {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    marginTop: -12,
-    marginLeft: -12,
-  },
-}))
 
 /**
  * Custom advanced button with unicef colors and also it has spinning effect in the button
@@ -73,14 +45,23 @@ export default function UButton({
   return !spinButton ? (
     CustomButton
   ) : (
-    <StyledBox className={classes.root}>
-      <Box className={classes.wrapper}>
+    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+      <Box sx={{ position: 'relative' }}>
         {CustomButton}
         {loading && (
-          <CircularProgress size={24} className={classes.buttonProgress} />
+          <CircularProgress
+            size={24}
+            sx={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              marginTop: -12,
+              marginLeft: -12,
+            }}
+          />
         )}
       </Box>
-    </StyledBox>
+    </Box>
   )
 }
 

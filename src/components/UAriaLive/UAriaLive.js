@@ -1,18 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Box } from '@mui/material'
-import { styled } from '@mui/material/styles'
-
-const StyledBox = styled('div')(() => ({
-  position: 'absolute',
-  width: 1,
-  height: 1,
-  margin: -1,
-  padding: 0,
-  overflow: 'hidden',
-  clip: 'rect(0, 0, 0, 0)',
-  border: 0,
-}))
 
 /**
  * This component is intended to generate a wrapper with the aria-live property.
@@ -25,14 +13,24 @@ export default function UAriaLive({
   ariaAtomic = false,
 }) {
   return (
-    <StyledBox
+    <Box
       aria-live={type}
       aria-atomic={ariaAtomic}
       aria-relevant="additions text"
       role={role}
+      sx={{
+        position: 'absolute',
+        width: 1,
+        height: 1,
+        margin: -1,
+        padding: 0,
+        overflow: 'hidden',
+        clip: 'rect(0, 0, 0, 0)',
+        border: 0,
+      }}
     >
       {text}
-    </StyledBox>
+    </Box>
   )
 }
 
