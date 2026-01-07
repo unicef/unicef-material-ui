@@ -1,26 +1,6 @@
 import React from 'react'
-import { styled } from '@mui/material/styles'
 import { Box, Drawer } from '@mui/material'
 import PropTypes from 'prop-types'
-
-const PREFIX = 'USideBar'
-
-const classes = {
-  drawer: `${PREFIX}-drawer`,
-  drawerPaper: `${PREFIX}-drawerPaper`,
-}
-
-const StyledBox = styled('div')(props => ({
-  [`& .${classes.drawer}`]: {
-    width: props.width,
-    flexShrink: 0,
-  },
-
-  [`& .${classes.drawerPaper}`]: {
-    zIndex: 999,
-    width: props.width,
-  },
-}))
 
 /**
  * USideBar is the custom material ui component to display the content in the side bar.
@@ -38,19 +18,19 @@ export default function USideBar({
   ...others
 }) {
   return (
-    <StyledBox display={{ xs: 'none', md: 'block' }} width={width}>
-      <Drawer
-        className={classes.drawer}
-        variant="permanent"
-        classes={{
-          paper: classes.drawerPaper,
-        }}
-        {...others}
-      >
-        <Box sx={{ minHeight: headerHeight }} />
-        {children}
-      </Drawer>
-    </StyledBox>
+    <Drawer
+      variant="permanent"
+      sx={{ display: { xs: 'none', md: 'block' }, width, flexShrink: 0 }}
+      slotProps={{
+        paper: {
+          sx: { zIndex: 999, width },
+        },
+      }}
+      {...others}
+    >
+      <Box sx={{ minHeight: headerHeight }} />
+      {children}
+    </Drawer>
   )
 }
 

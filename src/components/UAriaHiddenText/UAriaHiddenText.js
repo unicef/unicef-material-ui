@@ -1,17 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Box } from '@mui/material'
-import { styled } from '@mui/material/styles'
-
-const StyledBox = styled('div')(() => ({
-  display: 'none',
-}))
 
 /**
  * This component is designed to inform the screen reader about hidden text, often linked with aria-describedby.
  **/
 export default function UAriaHiddenText({ id, text }) {
-  return <StyledBox id={id}>{text}</StyledBox>
+  return (
+    <Box id={id} sx={{ display: 'none' }}>
+      {text}
+    </Box>
+  )
 }
 
 UAriaHiddenText.propTypes = {

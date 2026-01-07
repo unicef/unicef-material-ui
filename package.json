@@ -1,6 +1,6 @@
 {
   "name": "@unicef/material-ui",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "UNICEF theme and components of material-ui for react",
   "type": "module",
   "main": "./lib/prod.cjs",
@@ -36,10 +36,10 @@
   "license": "GPL-3.0-or-later",
   "peerDependencies": {
     "@emotion/styled": "^11.14.1",
-    "@mui/icons-material": "^7.3.5",
-    "@mui/material": "^7.3.5",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "@mui/icons-material": "^7.3.6",
+    "@mui/material": "^7.3.6",
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
   },
   "bugs": {
     "url": "https://github.com/unicef/unicef-material-ui/issues"
