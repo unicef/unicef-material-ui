@@ -33,8 +33,8 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     permissions:
-      id-token: write # Required for npm trusted publishing (OIDC)
       contents: read
+      packages: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
