@@ -50,9 +50,6 @@ jobs:
   publish-gpr:
     needs: build
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write # Required for npm trusted publishing (OIDC)
-      contents: read
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -60,8 +57,6 @@ jobs:
           node-version: '24.x'
           registry-url: https://npm.pkg.github.com/
           cache: 'npm'
-       # GitHub-hosted runners ship an old npm; trusted publishing needs npm 11.5.1+
-      - run: npm install -g npm@latest
       - run: npm ci
       - run: npm publish
         env:
