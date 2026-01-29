@@ -5,7 +5,7 @@ import {
   UHeaderMainMenu,
   UHeaderLeftMenu,
   UNavbarCenter,
-} from 'unicef-material-ui'
+} from '@unicef/material-ui'
 import NavLinks from './NavLinks'
 import SideBarContent from './SideBarContent'
 import Tab from '@mui/material/Tab'

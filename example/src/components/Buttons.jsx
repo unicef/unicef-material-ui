@@ -1,5 +1,5 @@
 import React from 'react'
-import { UButton } from 'unicef-material-ui'
+import { UButton } from '@unicef/material-ui'
 import { Typography, Grid } from '@mui/material'
 
 export default function Buttons() {

@@ -25,7 +25,7 @@ import {
   UValidatorForm,
   UValidatorComponent,
   UCoordinateField,
-} from 'unicef-material-ui'
+} from '@unicef/material-ui'
 
 const PREFIX = 'FormValidator'
 

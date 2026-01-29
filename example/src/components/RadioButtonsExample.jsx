@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { URadioButtons } from 'unicef-material-ui'
+import { URadioButtons } from '@unicef/material-ui'
 import { Typography, Grid } from '@mui/material'
 
 export default function RadioButtonsExample() {

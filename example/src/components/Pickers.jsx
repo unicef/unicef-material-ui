@@ -13,7 +13,7 @@ import {
   USelectPicker,
   UIconPicker,
   UValidatorForm,
-} from 'unicef-material-ui'
+} from '@unicef/material-ui'
 import { GraphPeoplePickerExample } from '.'
 import { Grid, Typography, Avatar } from '@mui/material'
 

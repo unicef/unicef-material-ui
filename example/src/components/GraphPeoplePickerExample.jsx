@@ -1,5 +1,5 @@
 import React from 'react'
-import { UGraphPeoplePicker } from 'unicef-material-ui'
+import { UGraphPeoplePicker } from '@unicef/material-ui'
 import { Typography, Grid } from '@mui/material'
 import { Message } from '@mui/icons-material'
 

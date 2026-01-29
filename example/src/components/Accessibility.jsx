@@ -5,7 +5,7 @@ import {
   UAriaHiddenText,
   UTextField,
   UValidatorForm,
-} from 'unicef-material-ui'
+} from '@unicef/material-ui'
 
 export default function Accessibility() {
   const form = useRef()

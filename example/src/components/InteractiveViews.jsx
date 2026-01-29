@@ -18,7 +18,7 @@ import {
   UValidatorForm,
   ActiveDatePicker,
   USelectPicker,
-} from 'unicef-material-ui'
+} from '@unicef/material-ui'
 
 const PREFIX = 'InteractiveViews'
 

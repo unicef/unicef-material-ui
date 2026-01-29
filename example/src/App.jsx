@@ -7,7 +7,7 @@ import {
   ULayout,
   USideBar,
   UContent,
-} from 'unicef-material-ui'
+} from '@unicef/material-ui'
 import './App.css'
 import { List, ListItemButton, ListItemText } from '@mui/material'
 import {
