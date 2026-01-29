@@ -1,5 +1,8 @@
 # This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
-# For more information see: https://help.github.com/actions/language-and-framework-guides/publishing-nodejs-packages
+# npmjs publishing is configured for npm "Trusted Publishers" (OIDC) to avoid long-lived tokens.
+# Docs:
+# - https://docs.npmjs.com/trusted-publishers
+# - https://github.blog/changelog/2025-12-09-npm-classic-tokens-revoked-session-based-auth-and-cli-token-management-now-available/
 
 name: Publish in npmjs
 
@@ -12,15 +15,13 @@ on:
   release:
     types: [created]
 
-permissions:
-  id-token: write # Required for OIDC
-  contents: read
-
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: actions/setup-node@v4
         with:
           node-version: '24.x'
@@ -34,24 +35,25 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      packages: write
+      id-token: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: actions/setup-node@v4
         with:
           node-version: '24.x'
-          registry-url: https://registry.npmjs.org/
+          registry-url: https://registry.npmjs.org
           cache: 'npm'
-      # GitHub-hosted runners ship an old npm; trusted publishing needs npm 11.5.1+
-      - run: npm install -g npm@latest
       - run: npm ci
       - run: npm publish --access=public
 
   publish-gpr:
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: actions/setup-node@v4
         with:
           node-version: '24.x'
