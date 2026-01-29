@@ -1,7 +1,7 @@
 import React from 'react'
 import { Typography, Grid, Box } from '@mui/material'
 
-import { USearchBox } from 'unicef-material-ui'
+import { USearchBox } from '@unicef/material-ui'
 
 export default function SearchBoxExample() {
   const handleSearch = value => {

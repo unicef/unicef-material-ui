@@ -1,5 +1,5 @@
 import React from 'react'
-import { UBreadcrumbs } from 'unicef-material-ui'
+import { UBreadcrumbs } from '@unicef/material-ui'
 import { Typography, Grid } from '@mui/material'
 //import { BrowserRouter as Router } from 'react-router-dom'
 

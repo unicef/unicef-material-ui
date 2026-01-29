@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { UConfirmationButton } from 'unicef-material-ui'
+import { UConfirmationButton } from '@unicef/material-ui'
 import {
   Typography,
   Grid,

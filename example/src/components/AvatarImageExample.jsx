@@ -1,5 +1,5 @@
 import React from 'react'
-import { UAvatarImage } from 'unicef-material-ui'
+import { UAvatarImage } from '@unicef/material-ui'
 import { Typography, Grid } from '@mui/material'
 
 export default function AvatarImageExample() {
