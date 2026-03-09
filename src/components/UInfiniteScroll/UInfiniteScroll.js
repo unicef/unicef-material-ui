@@ -7,7 +7,10 @@ import { Box } from '@mui/material'
 export default function UInfiniteScroll({ offset = 100, onEndOfScroll }) {
   const divElement = useRef()
   useEffect(() => {
-    window.onscroll = () => {
+    // Guard against SSR environments where window is not available
+    if (typeof window === 'undefined') return
+
+    const handleScroll = () => {
       //window.innerHeight: is the height of the window
       //window.pageYOffset is the current scroll offset position
       // counting from the the top of the screen
@@ -22,7 +25,12 @@ export default function UInfiniteScroll({ offset = 100, onEndOfScroll }) {
         onEndOfScroll()
       }
     }
-  })
+
+    window.addEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [offset, onEndOfScroll])
 
   return <Box ref={divElement}></Box>
 }
