@@ -5,6 +5,7 @@ import clsx from 'clsx'
 import Chip from '@mui/material/Chip'
 import Avatar from '@mui/material/Avatar'
 import { emphasize } from '@mui/material/styles'
+import { chipClasses } from '@mui/material/Chip'
 
 const PREFIX = 'MultiValue'
 
@@ -22,7 +23,7 @@ const StyledChip = styled(Chip)(({ theme }) => ({
     marginRight: theme.spacing(0.5),
     marginTop: theme.spacing(0.25),
     maxWidth: '90%',
-    '& .Uni-MuiChip-deleteIcon': {
+    [`& .${chipClasses.deleteIcon}`]: {
       display: 'flex',
     },
   },
