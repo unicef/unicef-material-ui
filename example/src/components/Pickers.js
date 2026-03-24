@@ -227,6 +227,7 @@ export default function Pickers() {
             label="Icon Select"
             placeholder="Select Icon ..."
             options={iconOptions}
+            iconVariant="dark"
           />
         </Grid>
         <Grid item xs={12} md={6}>

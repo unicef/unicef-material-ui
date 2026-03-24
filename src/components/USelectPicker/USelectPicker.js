@@ -4,7 +4,7 @@ import Select from 'react-select'
 import { useTheme, styled } from '@mui/material/styles'
 import { Box } from '@mui/material'
 import CancelIcon from '@mui/icons-material/Cancel'
-
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import MultiValue from './MultiValue'
 import SingleValue from './SingleValue'
 import Menu from './Menu'
