@@ -45,6 +45,8 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm publish --access=public
+        env:
+            NODE_AUTH_TOKEN: ${{secrets.npm_token}}
 
   publish-gpr:
     needs: build
