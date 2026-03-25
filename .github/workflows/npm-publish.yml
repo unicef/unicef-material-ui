@@ -35,7 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      id-token: write
+      # id-token: write // OIDC token
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -45,6 +45,8 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm publish --access=public --tag 1x
+        env:
+            NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
   publish-gpr:
     needs: build
