@@ -17,7 +17,7 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v4
         with:
           ref: v.1x   # Ensure we always build from the legacy branch
       - uses: actions/setup-node@v4
@@ -35,7 +35,7 @@ jobs:
       contents: read
       id-token: write
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v4
         with:
           ref: v.1x   # Ensure we always publish from the legacy branch
       - uses: actions/setup-node@v4
@@ -53,7 +53,7 @@ jobs:
       contents: read
       packages: write
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v4
         with:
           ref: v.1x
       - uses: actions/setup-node@v4
