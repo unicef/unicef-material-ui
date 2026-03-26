@@ -1,10 +1,6 @@
-# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
-# npmjs publishing is configured for npm "Trusted Publishers" (OIDC) to avoid long-lived tokens.
-# Docs:
-# - https://docs.npmjs.com/trusted-publishers
-# - https://github.blog/changelog/2025-12-09-npm-classic-tokens-revoked-session-based-auth-and-cli-token-management-now-available/
-
-name: Publish in npmjs
+# Workflow for publishing legacy v1.x fixes to npm
+# Publishes under the "legacy" dist-tag to avoid overwriting "latest" (v2.x)
+name: Publish Legacy v1.x in npmjs
 
 on:
   workflow_dispatch:
@@ -21,7 +17,9 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
+        with:
+          ref: v.1x   # Ensure we always build from the legacy branch
       - uses: actions/setup-node@v4
         with:
           node-version: '22.x'
@@ -35,23 +33,18 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      # id-token: write // OIDC token
+      id-token: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
-          ref: ${{ github.event.release.tag_name }}
-
+          ref: v.1x   # Ensure we always publish from the legacy branch
       - uses: actions/setup-node@v4
         with:
           node-version: '22.x'
           registry-url: https://registry.npmjs.org
           cache: 'npm'
       - run: npm ci
-      - run: npm run build
-      
-      - run: npm publish --access=public --tag 1x
-        env:
-            NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      - run: npm publish --access=public --tag legacy
 
   publish-gpr:
     needs: build
@@ -60,13 +53,15 @@ jobs:
       contents: read
       packages: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
+        with:
+          ref: v.1x
       - uses: actions/setup-node@v4
         with:
           node-version: '22.x'
           registry-url: https://npm.pkg.github.com/
           cache: 'npm'
       - run: npm ci
-      - run: npm publish
+      - run: npm publish --tag legacy
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
