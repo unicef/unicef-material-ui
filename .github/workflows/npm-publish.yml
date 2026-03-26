@@ -44,7 +44,7 @@ jobs:
           registry-url: https://registry.npmjs.org
           cache: 'npm'
       - run: npm ci
-      - run: npm publish --access=public --tag legacy
+      - run: npm publish --provenance --access=public --tag legacy
 
   publish-gpr:
     needs: build
