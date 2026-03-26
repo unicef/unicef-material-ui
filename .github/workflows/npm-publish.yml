@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: v.1x   # Ensure we always build from the legacy branch
+          ref: v1.x   # Ensure we always build from the legacy branch
       - uses: actions/setup-node@v4
         with:
           node-version: '22.x'
@@ -37,7 +37,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: v.1x   # Ensure we always publish from the legacy branch
+          ref: v1.x   # Ensure we always publish from the legacy branch
       - uses: actions/setup-node@v4
         with:
           node-version: '22.x'
@@ -55,7 +55,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: v.1x
+          ref: v1.x
       - uses: actions/setup-node@v4
         with:
           node-version: '22.x'
