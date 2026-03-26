@@ -1,6 +1,10 @@
-# Workflow for publishing legacy v1.x fixes to npm
-# Publishes under the "legacy" dist-tag to avoid overwriting "latest" (v2.x)
-name: Publish Legacy v1.x in npmjs
+# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
+# npmjs publishing is configured for npm "Trusted Publishers" (OIDC) to avoid long-lived tokens.
+# Docs:
+# - https://docs.npmjs.com/trusted-publishers
+# - https://github.blog/changelog/2025-12-09-npm-classic-tokens-revoked-session-based-auth-and-cli-token-management-now-available/
+
+name: Publish in npmjs
 
 on:
   workflow_dispatch:
@@ -8,21 +12,24 @@ on:
       logLevel:
         description: 'Message'
         required: false
-  release:
-    types: [created]
+  push:
+    branches:
+      - v1.x
+      - v0.x
+  # release:
+  #  types: [created]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+
     steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: v1.x   # Ensure we always build from the legacy branch
+      - uses: actions/checkout@v5
       - uses: actions/setup-node@v4
         with:
-          node-version: '22.x'
+          node-version: '24.x'
           cache: 'npm'
       - run: npm ci
       - run: npm test
@@ -31,20 +38,21 @@ jobs:
   publish-npm:
     needs: build
     runs-on: ubuntu-latest
+
     permissions:
       contents: read
-      id-token: write
+      id-token: write # required for trusted publishing
+
     steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: v1.x   # Ensure we always publish from the legacy branch
+      - uses: actions/checkout@v5
+
       - uses: actions/setup-node@v4
         with:
-          node-version: '22.x'
+          node-version: '24.x'
           registry-url: https://registry.npmjs.org
           cache: 'npm'
       - run: npm ci
-      - run: npm publish --provenance --access=public --tag legacy
+      - run: npm publish --provenance --access public --tag v1
 
   publish-gpr:
     needs: build
@@ -53,15 +61,13 @@ jobs:
       contents: read
       packages: write
     steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: v1.x
+      - uses: actions/checkout@v5
       - uses: actions/setup-node@v4
         with:
-          node-version: '22.x'
+          node-version: '24.x'
           registry-url: https://npm.pkg.github.com/
           cache: 'npm'
       - run: npm ci
-      - run: npm publish --tag legacy
+      - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
