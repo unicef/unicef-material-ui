@@ -5,6 +5,8 @@
 # - https://github.blog/changelog/2025-12-09-npm-classic-tokens-revoked-session-based-auth-and-cli-token-management-now-available/
 
 name: Publish in npmjs
+run: echo "Running NPM Publish 1.x"
+run: echo "TAG NAME: ${GITHUB_REF#refs/tags/}"
 
 on:
   workflow_dispatch:
@@ -12,12 +14,9 @@ on:
       logLevel:
         description: 'Message'
         required: false
-  push:
-    branches:
-      - v1.x
-      - v0.x
-  # release:
-  #  types: [created]
+
+  release:
+    types: [created]
 
 jobs:
   build:
@@ -27,6 +26,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v5
+        with:
+            ref: v1.x
       - uses: actions/setup-node@v4
         with:
           node-version: '24.x'
@@ -45,6 +46,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v5
+        with:
+          ref: v1.x
 
       - uses: actions/setup-node@v4
         with:
@@ -62,6 +65,8 @@ jobs:
       packages: write
     steps:
       - uses: actions/checkout@v5
+        with:
+          ref: v1.x
       - uses: actions/setup-node@v4
         with:
           node-version: '24.x'
