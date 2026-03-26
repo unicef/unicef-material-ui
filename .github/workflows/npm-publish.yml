@@ -5,8 +5,6 @@
 # - https://github.blog/changelog/2025-12-09-npm-classic-tokens-revoked-session-based-auth-and-cli-token-management-now-available/
 
 name: Publish in npmjs
-run: echo "Running NPM Publish 1.x"
-run: echo "TAG NAME: ${GITHUB_REF#refs/tags/}"
 
 on:
   workflow_dispatch:
@@ -32,6 +30,8 @@ jobs:
         with:
           node-version: '24.x'
           cache: 'npm'
+      - run: |
+          echo "TAG NAME: ${GITHUB_REF#refs/tags/}"
       - run: npm ci
       - run: npm test
       - run: npm run build
