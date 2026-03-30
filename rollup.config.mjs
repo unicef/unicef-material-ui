@@ -18,11 +18,13 @@ export default {
       file: './lib/prod.js',
       format: 'esm',
       sourcemap: true,
+      interop: 'auto',
     },
     {
       file: './lib/prod.cjs',
       format: 'cjs',
       sourcemap: true,
+      interop: 'auto',
     },
   ],
   plugins: [
