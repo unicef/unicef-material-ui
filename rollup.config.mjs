@@ -46,7 +46,17 @@ export default {
     resolve(),
     commonjs(),
   ],
-  external: ['react', 'react-is', 'react-dom', 'prop-types'],
+  external: [
+    'react',
+    'react-is',
+    'react-dom',
+    'prop-types',
+    '@emotion/react',
+    '@emotion/styled',
+    '@mui/icons-material',
+    '@mui/material',
+    '@mui/x-date-pickers',
+  ],
   onwarn: function (message) {
     if (message.code === 'MODULE_LEVEL_DIRECTIVE') return
     console.error(message)
