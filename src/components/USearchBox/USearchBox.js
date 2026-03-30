@@ -53,6 +53,8 @@ export default function USearchBox({
   className,
   showSeparator = true,
   iconLabel,
+  ariaLabelClear = 'Clear',
+  ariaLabelSearch = 'Search',
   ...rest
 }) {
   const [searchValue, setSearch] = useState(value)
@@ -107,7 +109,7 @@ export default function USearchBox({
             <StyledInputAdornment position="end">
               {searchValue ? (
                 <IconButton
-                  aria-label="Clear"
+                  aria-label={ariaLabelClear}
                   onClick={handleClear}
                   size="large"
                 >
@@ -123,7 +125,7 @@ export default function USearchBox({
               )}
               {iconLabel ? (
                 <Button
-                  aria-label="Search"
+                  aria-label={ariaLabelSearch}
                   className={classes.searchIcon}
                   onClick={handleSearch}
                 >
@@ -132,7 +134,7 @@ export default function USearchBox({
                 </Button>
               ) : (
                 <IconButton
-                  aria-label="Search"
+                  aria-label={ariaLabelSearch}
                   className={classes.searchIcon}
                   onClick={handleSearch}
                   size="large"
@@ -163,4 +165,8 @@ USearchBox.propTypes = {
   showSeparator: PropTypes.bool,
   /** Label next to the search icon */
   iconLabel: PropTypes.string,
+  /** Aria label for search icon */
+  ariaLabelSearch: PropTypes.string,
+  /** Aria label for clear icon */
+  ariaLabelClear: PropTypes.string,
 }

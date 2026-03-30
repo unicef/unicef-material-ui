@@ -65,6 +65,8 @@ export default function UConfirmationButton({
   cancelText = 'No',
   buttonVariant = 'text',
   confirmVariant = 'menu',
+  ariaLabelButton = '',
+  ariaLabelIconButton = '',
 }) {
   const [deleteAnchorEl, setDeleteAnchorEl] = useState(null)
   const [openDialog, setOpenDialog] = useState(false)
@@ -110,6 +112,7 @@ export default function UConfirmationButton({
           aria-controls={`delete-confirmation-menu-${id}`}
           aria-haspopup="true"
           variant={buttonVariant}
+          aria-label="ariaLabelButton"
         >
           {buttonText}
         </UButton>
@@ -122,6 +125,7 @@ export default function UConfirmationButton({
             disabled={!enabled}
             className={classes.menuLabel}
             size="large"
+            aria-label={ariaLabelIconButton}
           >
             {icon}
           </IconButton>
@@ -190,4 +194,8 @@ UConfirmationButton.propTypes = {
   icon: PropTypes.element,
   /** Button variant applied to menuItem button */
   buttonVariant: PropTypes.string,
+  /** Aria label for button */
+  ariaLabelButton: PropTypes.string,
+  /** Aria label for icon button */
+  ariaLabelIconButton: PropTypes.string,
 }
