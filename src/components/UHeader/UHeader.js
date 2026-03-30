@@ -30,7 +30,20 @@ const classes = {
 }
 
 const StyledAppBar = styled(AppBar, {
-  shouldForwardProp: prop => prop !== 'bgColor',
+  shouldForwardProp: prop =>
+    ![
+      'bgColor',
+      'showHamburgerMenu',
+      'hideLogo',
+      'hideLogoBorderLine',
+      'openDrawer',
+      'toggleDrawer',
+      'logo',
+      'applicationName',
+      'logoUrl',
+      'onLogoClick',
+      'ariaHamburgerMenuLabel',
+    ].includes(prop),
 })(({ theme, color, bgColor }) => ({
   [`& .${classes.bgColor}`]: {
     color: color || null,
@@ -55,7 +68,7 @@ const StyledAppBar = styled(AppBar, {
   [`& .${classes.navbarLine}`]: {
     marginRight: theme.spacing(2),
     paddingRight: theme.spacing(2),
-    borderRight: '1px solid #fff',
+    borderRight: `1px solid ${theme.palette.common.white}`,
   },
 
   [`& .${classes.margin}`]: {
@@ -89,6 +102,7 @@ export default function UHeader(props) {
     toggleDrawer,
     elevation = 4,
     bgColor = theme?.palette?.unicef?.blue,
+    ariaHamburgerMenuLabel = 'Open drawer',
   } = props
 
   const handleUrlClick = e => {
@@ -114,7 +128,7 @@ export default function UHeader(props) {
                 edge="start"
                 onClick={e => toggleDrawer && toggleDrawer(e, true)}
                 color="inherit"
-                aria-label="Open drawer"
+                aria-label={ariaHamburgerMenuLabel}
                 size="large"
               >
                 <MenuIcon />

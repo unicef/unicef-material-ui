@@ -9,7 +9,6 @@ function ForwardRefUPositiveInteger(
   { readOnly, slotProps = {}, ...rest },
   ref
 ) {
-  console.log('ForwardRefUPositiveInteger', rest)
   return (
     <UTextField
       variant="outlined"
