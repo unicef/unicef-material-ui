@@ -109,17 +109,17 @@ export default function UConfirmationButton({
         <UButton
           startIcon={icon}
           onClick={handleClick}
-          aria-controls={`delete-confirmation-menu-${id}`}
+          aria-controls={`u-confirmation-menu-${id}`}
           aria-haspopup="true"
           variant={buttonVariant}
-          aria-label="ariaLabelButton"
+          aria-label={ariaLabelButton}
         >
           {buttonText}
         </UButton>
       ) : (
         <Tooltip title={buttonText} placement="top">
           <IconButton
-            aria-controls={`delete-confirmation-menu-${id}`}
+            aria-controls={`u-confirmation-menu-${id}`}
             aria-haspopup="true"
             onClick={handleClick}
             disabled={!enabled}
@@ -132,7 +132,7 @@ export default function UConfirmationButton({
         </Tooltip>
       )}
       {confirmVariant === CONFIRMATION_VARIANTS.popup ? (
-        <Dialog id={`delete-confirmation-menu-${id}`} open={openDialog}>
+        <Dialog id={`u-confirmation-menu-${id}`} open={openDialog}>
           <DialogContent>
             <Typography variant="body1">{confirmText || ''}</Typography>
           </DialogContent>
@@ -147,7 +147,7 @@ export default function UConfirmationButton({
         </Dialog>
       ) : (
         <Menu
-          id={`delete-confirmation-menu-${id}`}
+          id={`u-confirmation-menu-${id}`}
           anchorEl={deleteAnchorEl}
           keepMounted
           open={Boolean(deleteAnchorEl)}
