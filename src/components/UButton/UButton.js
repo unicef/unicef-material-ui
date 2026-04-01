@@ -55,8 +55,8 @@ export default function UButton({
               position: 'absolute',
               top: '50%',
               left: '50%',
-              marginTop: -12,
-              marginLeft: -12,
+              marginTop: -1.5,
+              marginLeft: -1.5,
             }}
           />
         )}
