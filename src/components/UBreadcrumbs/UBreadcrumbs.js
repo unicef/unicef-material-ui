@@ -17,7 +17,7 @@ const Root = styled('div')(({ theme }) => ({
   [`&.${classes.root}`]: {
     display: 'flex',
     flexDirection: 'column',
-    marginLeft: 8,
+    marginLeft: theme.spacing(1),
   },
 
   [`& .${classes.link}`]: {

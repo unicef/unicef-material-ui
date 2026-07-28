@@ -28,7 +28,7 @@ const StyledBox = styled('div')(({ theme }) => ({
   [`& .${classes.mini}`]: {
     width: theme.spacing(3),
     height: theme.spacing(3),
-    marginRight: 5,
+    marginRight: theme.spacing(0.5),
   },
 
   [`& .${classes.view}`]: {

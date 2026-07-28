@@ -10,7 +10,7 @@ import PropTypes from 'prop-types'
  */
 export default function UContent({ headerHeight = 64, children }) {
   return (
-    <Box sx={{ flexGrow: 1, padding: 1 }}>
+    <Box sx={{ flexGrow: 1, padding: 1, minWidth: 0 }}>
       <Box sx={{ minHeight: headerHeight }} />
       {children}
     </Box>
