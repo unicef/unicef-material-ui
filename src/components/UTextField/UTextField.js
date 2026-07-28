@@ -9,7 +9,7 @@ import { InputLabelHelp } from '../Shared'
 // TODO - research how to use theme
 const styles = {
   counter: {
-    marginLeft: 16,
+    marginLeft: 2,
   },
   counterError: {
     color: '#f44336',
@@ -94,6 +94,7 @@ class UTextField extends ValidatorComponent {
       maxLength,
       counter,
       counterClassName,
+      counterCharsLocaleText = 'characters',
       readOnly = false,
       label,
       slotProps = {},
@@ -185,7 +186,8 @@ class UTextField extends ValidatorComponent {
               variant="caption"
               color="textSecondary"
             >
-              {maxLength ? `${length}/${maxLength}` : length} characters
+              {maxLength ? `${length}/${maxLength}` : length}{' '}
+              {counterCharsLocaleText}
             </Typography>
           </Box>
         )}
@@ -239,6 +241,8 @@ UTextField.propTypes = {
   id: PropTypes.string,
   /** If the field is select box and no options are passed, then this children will be used. */
   children: PropTypes.node,
+  /** Locale text for counter characters */
+  counterCharsLocaleText: PropTypes.string,
 }
 
 export default UTextField

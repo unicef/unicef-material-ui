@@ -76,8 +76,8 @@ const StyledAppBar = styled(AppBar, {
   },
 
   [`& .${classes.navbarCenter}`]: {
-    marginLeft: 16,
-    marginRight: 16,
+    marginLeft: theme.spacing(2),
+    marginRight: theme.spacing(2),
   },
 }))
 
