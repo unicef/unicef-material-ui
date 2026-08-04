@@ -33,7 +33,13 @@ export default function NavLinks() {
   }
 
   return (
-    <Box display="flex" pl={4} pr={2}>
+    <Box
+      sx={{
+        display: 'flex',
+        pl: 4,
+        pr: 2,
+      }}
+    >
       <Button color="inherit">
         <MailIcon />
         Login

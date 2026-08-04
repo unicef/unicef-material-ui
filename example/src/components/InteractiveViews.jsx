@@ -217,9 +217,11 @@ export default function InteractiveViews() {
             <Grid container spacing={2}>
               <Grid size={12}>
                 <Box
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="space-between"
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                  }}
                 >
                   <ActiveFormTextField
                     typographyVariant="h3"
@@ -343,9 +345,11 @@ export default function InteractiveViews() {
             <Grid container spacing={2}>
               <Grid size={12}>
                 <Box
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="space-between"
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                  }}
                 >
                   <ActiveFormTextField
                     typographyVariant="h3"

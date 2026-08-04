@@ -244,7 +244,13 @@ export default function FormValidator() {
             />
           </Grid>
           <Grid size={{ xs: 12, lg: 6 }}>
-            <Stack gap={1} flexDirection={'row'} alignItems={'center'}>
+            <Stack
+              sx={{
+                gap: 1,
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}
+            >
               <Button color="primary" variant="contained" type="submit">
                 Submit
               </Button>
@@ -395,7 +401,6 @@ export default function FormValidator() {
         />
       </UValidatorForm>
       {/* Reset values */}
-
       <UValidatorForm
         onSubmit={handleItemValueSubmit}
         onError={errors => console.log(errors)}
@@ -412,7 +417,13 @@ export default function FormValidator() {
             </ListItem>
           ))}
         </List>
-        <Stack gap={2} flexDirection={'row'} alignItems={'center'}>
+        <Stack
+          sx={{
+            gap: 2,
+            flexDirection: 'row',
+            alignItems: 'center',
+          }}
+        >
           <UTextField
             label="Item to add*"
             onChange={handleItemValueChange}
@@ -563,7 +574,6 @@ export default function FormValidator() {
           </Button>
         </Box>
       </UValidatorForm>
-
       <UValidatorForm
         onSubmit={handleItemValueSubmit}
         onError={errors => console.log(errors)}

@@ -25,7 +25,11 @@ export default function Menu({ isLoading, ...others }) {
     <components.Menu {...others}>
       <StyledPaper square className={others.selectProps.classes.paper}>
         {isLoading ? (
-          <Box p={2}>
+          <Box
+            sx={{
+              p: 2,
+            }}
+          >
             <Typography>{loadingText}</Typography>
           </Box>
         ) : errorOptionsMessage ? (

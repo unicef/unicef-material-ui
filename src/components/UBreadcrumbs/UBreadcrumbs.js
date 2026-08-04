@@ -55,9 +55,11 @@ export default function UBreadcrumbs(props) {
 
           return last ? (
             <Typography
-              color="inherit"
               key={value.text}
               className={classes.text}
+              sx={{
+                color: 'inherit',
+              }}
             >
               {value.text}
             </Typography>
