@@ -3,7 +3,7 @@ import { styled } from '@mui/material/styles'
 import { Tooltip, Link, Box } from '@mui/material'
 import PropTypes from 'prop-types'
 
-import HelpIcon from '@mui/icons-material/HelpOutline'
+import HelpIcon from '@mui/icons-material/HelpOutlineOutlined'
 import LaunchIcon from '@mui/icons-material/Launch'
 
 const PREFIX = 'InputLabelHelp'

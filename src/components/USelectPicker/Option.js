@@ -1,9 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import MenuItem from '@mui/material/MenuItem'
-import Avatar from '@mui/material/Avatar'
-import Box from '@mui/material/Box'
-import Typography from '@mui/material/Typography'
+import { Avatar, Box, Typography } from '@mui/material'
 
 export default function Option(props) {
   const hideAvatar =
@@ -11,12 +8,18 @@ export default function Option(props) {
     props.selectProps.TextFieldProps &&
     props.selectProps.TextFieldProps.hideAvatar
   return (
-    <MenuItem
+    <Box
       ref={props.innerRef}
       selected={props.isFocused}
       component="div"
       sx={{
         fontWeight: props.isSelected ? 500 : 400,
+        display: 'flex',
+        alignItems: 'center',
+        px: 2,
+        py: 1,
+        cursor: 'pointer',
+        bgcolor: props.isFocused ? 'action.hover' : 'transparent',
       }}
       {...props.innerProps}
     >
@@ -33,7 +36,7 @@ export default function Option(props) {
           <Box fontSize={12}>{props.data.subLabel}</Box>
         </Box>
       </React.Fragment>
-    </MenuItem>
+    </Box>
   )
 }
 

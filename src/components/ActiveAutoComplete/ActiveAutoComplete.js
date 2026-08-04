@@ -161,7 +161,6 @@ export default function ActiveAutoComplete({
           renderInput={params => (
             <ActiveFormTextField
               {...params}
-              multiline
               label={label}
               variant="outlined"
               value={(selectedValue && selectedValue.text) || ''}

@@ -42,7 +42,7 @@ export default function ColorsExample(props) {
       {requiredColors.map(
         colorKey =>
           (theme.palette[colorKey] && (
-            <>
+            <React.Fragment key={colorKey}>
               <Grid size={12}>
                 <Typography className={classes.colorTitle} variant="h5">
                   {colorKey} colors
@@ -50,7 +50,7 @@ export default function ColorsExample(props) {
               </Grid>
               {Object.keys(theme.palette[colorKey]).map(color => {
                 return (
-                  <Grid key={color} item size={{ xs: 6, md: 4, lg: 2 }}>
+                  <Grid key={color} size={{ xs: 6, md: 4, lg: 2 }}>
                     <Paper p={3}>
                       <Box bgcolor={theme.palette[colorKey][color]} p={4}>
                         <Typography variant="body1">{color}</Typography>
@@ -62,7 +62,7 @@ export default function ColorsExample(props) {
                   </Grid>
                 )
               })}
-            </>
+            </React.Fragment>
           )) ||
           ''
       )}

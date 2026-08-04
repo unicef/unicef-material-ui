@@ -42,7 +42,7 @@ const StyledBox = styled(Box, {
     padding: '9.5px 14px',
     [`&.${outlinedInputClasses.disabled}`]: {
       color: theme.palette.text.primary,
-      '-webkit-text-fill-color': theme.palette.text.primary,
+      WebkitTextFillColor: theme.palette.text.primary,
     },
   },
 
