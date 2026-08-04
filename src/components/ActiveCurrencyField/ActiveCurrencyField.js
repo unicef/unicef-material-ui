@@ -52,6 +52,8 @@ ActiveCurrencyField.propTypes = {
   inputPrefix: PropTypes.string,
   /** Decimal digit number to be used as default. */
   decimalScale: PropTypes.number,
+  /** Fixed decimal scale to lock the number of decimal places. */
+  fixedDecimalScale: PropTypes.bool,
   /**
    * customErrorMessages is an object with key as validator and value as customised error message.
    *
@@ -68,4 +70,6 @@ ActiveCurrencyField.propTypes = {
   withRequiredValidator: PropTypes.bool,
   /** Input text align */
   textAlign: PropTypes.string,
+  /** Props applied to slots */
+  slotProps: PropTypes.object,
 }

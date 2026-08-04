@@ -9,7 +9,7 @@ import { inputLabelClasses } from '@mui/material/InputLabel'
 import { InputLabelHelp } from '../Shared'
 
 export default function ActiveDatePicker({
-  format = 'dd/MM/yyyy',
+  format = 'DD/MM/YYYY',
   label,
   onChange,
   value,

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { styled } from '@mui/material/styles'
 import PropTypes from 'prop-types'
 import {
@@ -58,10 +58,13 @@ export default function USearchBox({
   ...rest
 }) {
   const [searchValue, setSearch] = useState(value)
+  const [prevValue, setPrevValue] = useState(value)
 
-  useEffect(() => {
+  // Adjust state during render instead of in an effect
+  if (value !== prevValue) {
+    setPrevValue(value)
     setSearch(value)
-  }, [value])
+  }
 
   const handleChange = event => {
     setSearch(event.target.value)

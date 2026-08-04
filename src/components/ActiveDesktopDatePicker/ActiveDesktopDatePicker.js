@@ -15,7 +15,7 @@ import { InputLabelHelp } from '../Shared'
  */
 
 export default function ActiveDesktopDatePicker({
-  format = 'dd/MM/yyyy',
+  format = 'DD/MM/YYYY',
   label,
   onChange,
   value,

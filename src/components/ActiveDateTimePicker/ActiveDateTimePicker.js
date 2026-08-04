@@ -15,7 +15,7 @@ import { InputLabelHelp } from '../Shared'
  */
 
 export default function ActiveDateTimePicker({
-  format = 'dd/MM/yyyy hh:mm a',
+  format = 'DD/MM/YYYY hh:mm a',
   label,
   onChange,
   value,

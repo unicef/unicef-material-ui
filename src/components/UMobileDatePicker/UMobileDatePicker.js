@@ -12,7 +12,7 @@ import { InputLabelHelp } from '../Shared'
  * Please have look at [Material UI Mobile Date Picker](https://mui.com/x/api/date-pickers/mobile-date-picker/) for more details
  */
 export default function UMobileDatePicker({
-  format = 'dd/MM/yyyy',
+  format = 'DD/MM/YYYY',
   label,
   onChange,
   value,

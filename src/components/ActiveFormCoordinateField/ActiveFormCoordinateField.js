@@ -97,4 +97,6 @@ ActiveFormCoordinateField.propTypes = {
   coordinateType: PropTypes.oneOf(['latitude', 'longitude']).isRequired,
   /** Change to write mode by hiding textfield border and displays border on Hover */
   interactiveMode: PropTypes.bool,
+  /** Props forwarded to inner slot components. */
+  slotProps: PropTypes.object,
 }

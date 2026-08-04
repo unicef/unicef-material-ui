@@ -13,7 +13,7 @@ import { inputLabelClasses } from '@mui/material/InputLabel'
  * Please have look at [Material UI Date Picker](https://mui.com/x/react-date-pickers/date-picker/#main-content) for more details
  */
 export default function UDatePicker({
-  format = 'dd/MM/yyyy',
+  format = 'DD/MM/YYYY',
   label,
   onChange,
   value,

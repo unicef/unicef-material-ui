@@ -13,7 +13,7 @@ import { InputLabelHelp } from '../Shared'
  */
 
 export default function UDesktopDatePicker({
-  format = 'dd/MM/yyyy',
+  format = 'DD/MM/YYYY',
   label,
   onChange,
   value,

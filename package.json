@@ -48,6 +48,9 @@
     "url": "https://github.com/unicef/unicef-material-ui/issues"
   },
   "jest": {
+    "setupFilesAfterEnv": [
+      "<rootDir>/jest.setup.js"
+    ],
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,ts,tsx}",
       "!<rootDir>/node_modules/"

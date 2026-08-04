@@ -60,4 +60,6 @@ UCurrencyField.propTypes = {
   textAlign: PropTypes.string,
   // If true it add 0s to match given decimalScale.
   fixedDecimalScale: PropTypes.bool,
+  /** Props applied to slots */
+  slotProps: PropTypes.object,
 }

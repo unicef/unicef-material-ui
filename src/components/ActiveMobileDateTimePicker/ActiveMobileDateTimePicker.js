@@ -52,7 +52,7 @@ const StyledBox = styled(Box, {
  */
 
 export default function ActiveMobileDateTimePicker({
-  format = 'dd/MM/yyyy hh:mm a',
+  format = 'DD/MM/YYYY hh:mm a',
   label,
   onChange,
   value,

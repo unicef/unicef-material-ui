@@ -7,6 +7,7 @@ export default [
   {
     // Ignore build artifacts and dependencies
     ignores: [
+      'lib/**',
       'dist/**',
       'build/**',
       'node_modules/**',
@@ -41,9 +42,21 @@ export default [
       // React core rules
       ...reactPlugin.configs.recommended.rules,
       'react/react-in-jsx-scope': 'off', // Disable for React 17+ (New JSX transform)
-
       // React Hooks rules
       ...reactHooksPlugin.configs.recommended.rules,
+    },
+  },
+  // Jest globals
+  {
+    files: [
+      '**/*.test.{js,jsx,ts,tsx}',
+      '**/*.spec.{js,jsx,ts,tsx}',
+      '**/__tests__/**/*.{js,jsx,ts,tsx}',
+    ],
+    languageOptions: {
+      globals: {
+        ...globals.jest,
+      },
     },
   },
 ]

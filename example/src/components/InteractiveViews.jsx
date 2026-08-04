@@ -160,38 +160,33 @@ export default function InteractiveViews() {
               typographyVariant="h2"
               variant="outlined"
               fullWidth
+              defaultValue="Interactive Views"
               // multiline
-            >
-              Interactive Views
-            </ActiveFormTextField>
+            />
             <ActiveFormTextField
               readOnly={readOnly}
               typographyVariant="subtitle1"
               variant="outlined"
               fullWidth
               multiline
-            >
-              Active views allow user to see and edit current page at the same
-              time
-            </ActiveFormTextField>
+              defaultValue="Active views allow user to see and edit current page at the same time."
+            />
             <ActiveFormTextField
               readOnly={readOnly}
               typographyVariant="h3"
               variant="outlined"
               fullWidth
               multiline
-            >
-              Read Only
-            </ActiveFormTextField>
+              defaultValue="Read Only"
+            />
             <ActiveFormTextField
               readOnly={readOnly}
               typographyVariant="subtitle1"
               variant="outlined"
               fullWidth
               multiline
-            >
-              If an active view is read only mode, user can no longer edit
-            </ActiveFormTextField>
+              defaultValue="If an active view is read only mode, user can no longer edit"
+            />
           </UValidatorForm>
           <FormControlLabel
             control={
@@ -229,9 +224,8 @@ export default function InteractiveViews() {
                     fullWidth
                     multiline
                     readOnly
-                  >
-                    Personnel Details
-                  </ActiveFormTextField>
+                    defaultValue="Personnel Details"
+                  />
                   <Button
                     variant="contained"
                     color="primary"
@@ -365,9 +359,8 @@ export default function InteractiveViews() {
                     fullWidth
                     multiline
                     readOnly
-                  >
-                    Personnel Details
-                  </ActiveFormTextField>
+                    defaultValue="Personnel Details"
+                  />
                   {readOnly ? (
                     <Button variant="contained" onClick={handleEdit}>
                       Edit

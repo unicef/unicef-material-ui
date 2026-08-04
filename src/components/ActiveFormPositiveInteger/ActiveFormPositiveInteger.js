@@ -25,6 +25,8 @@ export default function ActiveFormPositiveInteger({ slotProps, ...props }) {
 
 // It accepts all the Material Ui TextField props
 ActiveFormPositiveInteger.propTypes = {
+  /** Slot props for customizing input slots */
+  slotProps: PropTypes.object,
   /** label */
   label: PropTypes.string,
   /** placeholder text*/

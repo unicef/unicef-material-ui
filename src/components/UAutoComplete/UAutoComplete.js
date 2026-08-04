@@ -154,7 +154,9 @@ export default function UAutoComplete({
                   ...(params?.slotProps?.htmlInput
                     ? params.slotProps.htmlInput
                     : {}),
-                  ...(params.slotProps.htmlInput ? params.slotProps.htmlInput : {}),
+                  ...(params.slotProps.htmlInput
+                    ? params.slotProps.htmlInput
+                    : {}),
                   minLength,
                   maxLength,
                 },
@@ -164,7 +166,9 @@ export default function UAutoComplete({
                 },
                 inputLabel: {
                   ...(slotProps?.inputLabel ? slotProps?.inputLabel : {}),
-                  ...(params.slotProps.inputLabel ? params.slotProps.inputLabel : {}),
+                  ...(params.slotProps.inputLabel
+                    ? params.slotProps.inputLabel
+                    : {}),
                   required: isRequired,
                 },
               }}
@@ -178,7 +182,7 @@ export default function UAutoComplete({
         />
       )}
     </Root>
-  );
+  )
 }
 
 UAutoComplete.propTypes = {
@@ -210,6 +214,8 @@ UAutoComplete.propTypes = {
   counter: PropTypes.bool,
   /** placeholder text*/
   placeholder: PropTypes.string,
+  /** read-only mode for the autocomplete */
+  readOnly: PropTypes.bool,
   /** Props applied to slots.*/
   slotProps: PropTypes.object,
 }
