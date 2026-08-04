@@ -99,6 +99,8 @@ UValidatorForm.removeValidationRule = name => {
 }
 
 UValidatorForm.propTypes = {
+  /** The content of the component. */
+  children: PropTypes.node,
   /** Callback for form that fires when all validations are passed */
   onSubmit: PropTypes.func,
   /** If true, form will be validated after each field change.If false, form will be validated only after clicking submit button. */
@@ -110,5 +112,7 @@ UValidatorForm.propTypes = {
   /** To prevent the browser's default validation or not */
   noValidate: PropTypes.bool,
 }
+
+ForwardRefForm.propTypes = UValidatorForm.propTypes
 
 export default UValidatorForm

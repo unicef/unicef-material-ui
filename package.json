@@ -26,7 +26,9 @@
     "transpile": "npm run build",
     "prepublishOnly": "npm run transpile",
     "deploy": "npm run build:site && gh-pages -d site",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "repository": {
     "type": "git",
@@ -74,7 +76,11 @@
     "babel-loader": "^9.2.1",
     "cross-env": "^7.0.3",
     "css-loader": "^7.1.4",
+    "eslint": "^9.39.5",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.1.1",
     "gh-pages": "^6.3.0",
+    "globals": "^17.9.0",
     "jest": "^30.4.2",
     "prettier": "^3.9.6",
     "prop-types": "^15.8.1",

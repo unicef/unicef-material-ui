@@ -35,6 +35,8 @@ export default function USideBar({
 }
 
 USideBar.propTypes = {
+  /** The content of the component. */
+  children: PropTypes.node,
   /** Height of the header including MainMenu */
   headerHeight: PropTypes.number,
   /**

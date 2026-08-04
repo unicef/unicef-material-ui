@@ -8,8 +8,9 @@ import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker'
 import { outlinedInputClasses } from '@mui/material/OutlinedInput'
 import { pickersOutlinedInputClasses } from '@mui/x-date-pickers/PickersTextField'
 import { inputAdornmentClasses } from '@mui/material/InputAdornment'
+import { inputLabelClasses } from '@mui/material/InputLabel'
 
-import UTextField from '../UTextField'
+import { InputLabelHelp } from '../Shared'
 
 const PREFIX = 'ActiveMobileDatePicker'
 
@@ -19,7 +20,7 @@ const classes = {
 
 const StyledBox = styled(Box, {
   shouldForwardProp: prop => prop !== 'readOnly' && prop !== 'interactiveMode',
-})(({ theme, readOnly, interactiveMode }) => ({
+})(({ readOnly, interactiveMode }) => ({
   [`& .${classes.root}`]: {
     ...(readOnly
       ? {
@@ -51,16 +52,12 @@ const StyledBox = styled(Box, {
  */
 
 export default function ActiveMobileDatePicker({
-  inputFormat = 'dd/MM/yyyy',
+  format = 'dd/MM/yyyy',
   label,
   onChange,
   value,
   showLabelHelp,
-  slotProps = {
-    inputLabel: { shrink: true },
-  },
   InputLabelHelpProps,
-  inputVariant = 'outlined',
   interactiveMode,
   readOnly,
   sx,
@@ -71,8 +68,14 @@ export default function ActiveMobileDatePicker({
       <StyledBox readOnly={readOnly} interactiveMode={interactiveMode}>
         <MobileDatePicker
           className={classes.root}
-          label={label}
-          inputFormat={inputFormat}
+          label={
+            showLabelHelp ? (
+              <InputLabelHelp inputLabel={label} {...InputLabelHelpProps} />
+            ) : (
+              label
+            )
+          }
+          format={format}
           onChange={onChange}
           value={value}
           readOnly={readOnly}
@@ -104,18 +107,17 @@ export default function ActiveMobileDatePicker({
                     display: 'flex',
                   },
               }),
+            ...(showLabelHelp
+              ? {
+                  [`& .${inputLabelClasses.root}`]: {
+                    pointerEvents: 'auto',
+                    display: 'flex',
+                    alignItems: 'center',
+                  },
+                }
+              : {}),
           })}
           {...others}
-          renderInput={params => (
-            <UTextField
-              showLabelHelp={showLabelHelp}
-              slotProps={slotProps}
-              InputLabelHelpProps={InputLabelHelpProps}
-              variant={inputVariant}
-              readOnly={readOnly}
-              {...params}
-            />
-          )}
         />
       </StyledBox>
     </LocalizationProvider>
@@ -124,13 +126,11 @@ export default function ActiveMobileDatePicker({
 
 ActiveMobileDatePicker.propTypes = {
   /** Date picker format */
-  inputFormat: PropTypes.string,
+  format: PropTypes.string,
   /** Callback function when change the picker field */
   onChange: PropTypes.func.isRequired,
   /** Value of the picker field */
   value: PropTypes.string,
-  /** Material ui textfield variant */
-  inputVariant: PropTypes.string,
   /** To make the content readOnly */
   readOnly: PropTypes.bool,
   /** Change to write mode by hiding text field border and displays border on hover*/
@@ -143,8 +143,6 @@ ActiveMobileDatePicker.propTypes = {
     PropTypes.func,
     PropTypes.object,
   ]),
-  /** Props applied to slots.*/
-  slotProps: PropTypes.object,
   /** Label text */
   label: PropTypes.string,
   /** Show label help */

@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Box } from '@mui/material'
 
 /**
@@ -11,4 +12,9 @@ import { Box } from '@mui/material'
 
 export default function ULayout({ children }) {
   return <Box sx={{ display: 'flex' }}>{children}</Box>
+}
+
+ULayout.propTypes = {
+  /** The content of the component. */
+  children: PropTypes.node,
 }

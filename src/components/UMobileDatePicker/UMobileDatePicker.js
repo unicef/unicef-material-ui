@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker'
-import UTextField from '../UTextField'
+import { inputLabelClasses } from '@mui/material/InputLabel'
+import { InputLabelHelp } from '../Shared'
 
 /**
  * UMobileDatePicker is a customized material UI Mobile Date Picker.
@@ -11,35 +12,41 @@ import UTextField from '../UTextField'
  * Please have look at [Material UI Mobile Date Picker](https://mui.com/x/api/date-pickers/mobile-date-picker/) for more details
  */
 export default function UMobileDatePicker({
-  inputFormat = 'dd/MM/yyyy',
+  format = 'dd/MM/yyyy',
   label,
   onChange,
   value,
   showLabelHelp,
-  slotProps = {
-    inputLabel: { shrink: true },
-  },
   InputLabelHelpProps,
-  inputVariant = 'outlined',
+  sx,
   ...others
 }) {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <MobileDatePicker
-        label={label}
-        inputFormat={inputFormat}
+        label={
+          showLabelHelp ? (
+            <InputLabelHelp inputLabel={label} {...InputLabelHelpProps} />
+          ) : (
+            label
+          )
+        }
+        format={format}
         onChange={onChange}
         value={value}
+        sx={{
+          ...(sx ? sx : {}),
+          ...(showLabelHelp
+            ? {
+                [`& .${inputLabelClasses.root}`]: {
+                  pointerEvents: 'auto',
+                  display: 'flex',
+                  alignItems: 'center',
+                },
+              }
+            : {}),
+        }}
         {...others}
-        renderInput={params => (
-          <UTextField
-            showLabelHelp={showLabelHelp}
-            slotProps={slotProps}
-            InputLabelHelpProps={InputLabelHelpProps}
-            variant={inputVariant}
-            {...params}
-          />
-        )}
       />
     </LocalizationProvider>
   )
@@ -52,14 +59,12 @@ UMobileDatePicker.propTypes = {
   onChange: PropTypes.func.isRequired,
   /** Value of the picker field */
   value: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string]),
-  /** Material ui textfield variant */
-  inputVariant: PropTypes.string,
   /** Label text */
   label: PropTypes.string,
   /** Show label help */
   showLabelHelp: PropTypes.bool,
   /** Props applied to the input label help element. E.g InputLabelHelpProps={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
   InputLabelHelpProps: PropTypes.object,
-  /** Props applied to slots.*/
-  slotProps: PropTypes.object,
+  /**The system prop that allows defining system overrides as well as additional CSS styles. */
+  sx: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.array]),
 }

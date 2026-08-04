@@ -111,7 +111,15 @@ UGraphPeoplePicker.propTypes = {
   /** onBlur event */
   onBlur: PropTypes.func,
   /** options of the people picker */
-  option: PropTypes.string,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      email: PropTypes.string,
+      name: PropTypes.string,
+      type: PropTypes.string,
+      locationId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    })
+  ),
   /** description under the control */
   helpText: PropTypes.string,
   /** single or multiple user picker */

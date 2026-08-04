@@ -76,6 +76,7 @@ export default function ActiveFormTextField(props) {
     interactiveMode = false,
     slotProps = {},
     inputPadding,
+    multiline,
     ...others
   } = props
   const inputPaddingClass = props.label
@@ -100,7 +101,7 @@ export default function ActiveFormTextField(props) {
               notchedOutline: `${
                 !interactiveMode && !readOnly ? '' : classes.notchedOutline
               }`,
-              input: props.multiline
+              input: multiline
                 ? classes.inputPaddingWithoutLabel
                 : inputPaddingClass,
             },
@@ -117,7 +118,7 @@ export default function ActiveFormTextField(props) {
           },
         }}
         variant={variant}
-        defaultValue={props.children}
+        multiline={multiline}
         {...others}
       />
     </StyledBox>
@@ -135,6 +136,14 @@ ActiveFormTextField.propTypes = {
   inputPadding: PropTypes.string,
   /** Change to write mode by hiding textfield border and displays border on Hover*/
   interactiveMode: PropTypes.bool,
+  /** Class name to apply to the root text field component. */
+  className: PropTypes.string,
+  /** TextField variant. */
+  variant: PropTypes.string,
+  /** Allow multiline input. */
+  multiline: PropTypes.bool,
+  /** Props forwarded to inner slot components. */
+  slotProps: PropTypes.object,
   /**
    * Array of validators.See list of default validators above.
    *

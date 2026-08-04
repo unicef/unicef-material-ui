@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { styled } from '@mui/material/styles'
 import PropTypes from 'prop-types'
-import { Avatar, Tooltip, Typography, Box } from '@mui/material'
+import { Avatar, Tooltip, Typography } from '@mui/material'
 const PREFIX = 'UAvatarImage'
 
 const classes = {

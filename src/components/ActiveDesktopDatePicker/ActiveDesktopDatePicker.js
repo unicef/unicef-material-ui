@@ -4,7 +4,9 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker'
 import { pickersOutlinedInputClasses } from '@mui/x-date-pickers/PickersTextField'
+import { inputLabelClasses } from '@mui/material/InputLabel'
 import { inputAdornmentClasses } from '@mui/material/InputAdornment'
+import { InputLabelHelp } from '../Shared'
 
 /**
  * ActiveDesktopDatePicker is a customized material UI Desktop Date Picker.
@@ -13,16 +15,12 @@ import { inputAdornmentClasses } from '@mui/material/InputAdornment'
  */
 
 export default function ActiveDesktopDatePicker({
-  inputFormat = 'dd/MM/yyyy',
+  format = 'dd/MM/yyyy',
   label,
   onChange,
   value,
   showLabelHelp,
-  slotProps = {
-    inputLabel: { shrink: true },
-  },
   InputLabelHelpProps,
-  inputVariant = 'outlined',
   interactiveMode,
   readOnly,
   sx,
@@ -31,9 +29,14 @@ export default function ActiveDesktopDatePicker({
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DesktopDatePicker
-        className={classes.root}
-        label={label}
-        inputFormat={inputFormat}
+        label={
+          showLabelHelp ? (
+            <InputLabelHelp inputLabel={label} {...InputLabelHelpProps} />
+          ) : (
+            label
+          )
+        }
+        format={format}
         onChange={onChange}
         value={value}
         readOnly={readOnly}
@@ -65,6 +68,15 @@ export default function ActiveDesktopDatePicker({
                   display: 'flex',
                 },
             }),
+          ...(showLabelHelp
+            ? {
+                [`& .${inputLabelClasses.root}`]: {
+                  pointerEvents: 'auto',
+                  display: 'flex',
+                  alignItems: 'center',
+                },
+              }
+            : {}),
         })}
         {...others}
       />
@@ -74,13 +86,11 @@ export default function ActiveDesktopDatePicker({
 
 ActiveDesktopDatePicker.propTypes = {
   /** Date picker format */
-  inputFormat: PropTypes.string,
+  format: PropTypes.string,
   /** Callback function when change the picker field */
   onChange: PropTypes.func.isRequired,
   /** Value of the picker field */
   value: PropTypes.string,
-  /** Material ui textfield variant */
-  inputVariant: PropTypes.string,
   /** To make the content readOnly */
   readOnly: PropTypes.bool,
   /** Change to write mode by hiding text field border and displays border on hover*/
@@ -93,8 +103,6 @@ ActiveDesktopDatePicker.propTypes = {
     PropTypes.func,
     PropTypes.object,
   ]),
-  /** Props applied to slots.*/
-  slotProps: PropTypes.object,
   /** Label text */
   label: PropTypes.string,
   /** Show label help */

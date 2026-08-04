@@ -80,4 +80,6 @@ UButton.propTypes = {
   variant: PropTypes.string,
   /**  color of the button */
   color: PropTypes.string,
+  /** The content of the component. */
+  children: PropTypes.node,
 }

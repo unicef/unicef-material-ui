@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { styled } from '@mui/material/styles'
-import { Tooltip, Link, Box } from '@mui/material'
+import { Tooltip, Link } from '@mui/material'
 import PropTypes from 'prop-types'
 
 import HelpIcon from '@mui/icons-material/HelpOutlineOutlined'

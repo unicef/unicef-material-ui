@@ -68,6 +68,10 @@ UCoordinateField.propTypes = {
    */
   validators: PropTypes.array,
   /**
+   * Props passed to underlying slot components.
+   */
+  slotProps: PropTypes.object,
+  /**
    * customErrorMessages is an object with key as validator and value as customised error message.
    *
    * Ex: `customErrorMessages={{required: 'This field is required'}`

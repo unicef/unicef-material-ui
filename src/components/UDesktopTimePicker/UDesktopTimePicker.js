@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { DesktopTimePicker } from '@mui/x-date-pickers/DesktopTimePicker'
-import UTextField from '../UTextField'
+import { inputLabelClasses } from '@mui/material/InputLabel'
+import { InputLabelHelp } from '../Shared'
 
 /**
  * UDesktopTimePicker is a customized material UI Desktop Time Picker.
@@ -12,35 +13,41 @@ import UTextField from '../UTextField'
  */
 
 export default function UDesktopTimePicker({
-  inputFormat = 'hh:mm a',
+  format = 'hh:mm a',
   label,
   onChange,
   value,
   showLabelHelp,
-  slotProps = {
-    inputLabel: { shrink: true },
-  },
   InputLabelHelpProps,
-  inputVariant = 'outlined',
+  sx,
   ...others
 }) {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DesktopTimePicker
-        label={label}
-        inputFormat={inputFormat}
+        label={
+          showLabelHelp ? (
+            <InputLabelHelp inputLabel={label} {...InputLabelHelpProps} />
+          ) : (
+            label
+          )
+        }
+        format={format}
         onChange={onChange}
         value={value}
+        sx={{
+          ...(sx ? sx : {}),
+          ...(showLabelHelp
+            ? {
+                [`& .${inputLabelClasses.root}`]: {
+                  pointerEvents: 'auto',
+                  display: 'flex',
+                  alignItems: 'center',
+                },
+              }
+            : {}),
+        }}
         {...others}
-        renderInput={params => (
-          <UTextField
-            showLabelHelp={showLabelHelp}
-            slotProps={slotProps}
-            InputLabelHelpProps={InputLabelHelpProps}
-            variant={inputVariant}
-            {...params}
-          />
-        )}
       />
     </LocalizationProvider>
   )
@@ -48,7 +55,7 @@ export default function UDesktopTimePicker({
 
 UDesktopTimePicker.propTypes = {
   /** Date picker format */
-  inputFormat: PropTypes.string,
+  format: PropTypes.string,
   /** Callback function when change the picker field */
   onChange: PropTypes.func.isRequired,
   /** Value of the picker field */
@@ -61,6 +68,6 @@ UDesktopTimePicker.propTypes = {
   showLabelHelp: PropTypes.bool,
   /** Props applied to the input label help element. E.g InputLabelHelpProps={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
   InputLabelHelpProps: PropTypes.object,
-  /** Props applied to slots.*/
-  slotProps: PropTypes.object,
+  /**The system prop that allows defining system overrides as well as additional CSS styles. */
+  sx: PropTypes.oneOfType([PropTypes.object, PropTypes.func, PropTypes.array]),
 }

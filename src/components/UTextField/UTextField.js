@@ -1,8 +1,6 @@
-/* eslint-disable */
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { TextField, Typography, Box, MenuItem } from '@mui/material'
-/* eslint-enable */
 import ValidatorComponent from '../ValidatorComponent'
 import { InputLabelHelp } from '../Shared'
 

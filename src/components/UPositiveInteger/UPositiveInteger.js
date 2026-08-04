@@ -26,11 +26,7 @@ function ForwardRefUPositiveInteger(
     />
   )
 }
-const UPositiveInteger = React.forwardRef(ForwardRefUPositiveInteger)
-
-export default UPositiveInteger
-// It accepts all the Material Ui TextField props
-UPositiveInteger.propTypes = {
+const propTypes = {
   // To make Textfield read only
   readOnly: PropTypes.bool,
   /**
@@ -51,4 +47,15 @@ UPositiveInteger.propTypes = {
   validatorListener: PropTypes.func,
   /** Allow to use required validator in any validation trigger, not only form submit. */
   withRequiredValidator: PropTypes.bool,
+  /** The props used for each component slot. */
+  slotProps: PropTypes.object,
 }
+
+ForwardRefUPositiveInteger.propTypes = propTypes
+
+const UPositiveInteger = React.forwardRef(ForwardRefUPositiveInteger)
+
+UPositiveInteger.propTypes = propTypes
+
+export default UPositiveInteger
+// It accepts all the Material Ui TextField props

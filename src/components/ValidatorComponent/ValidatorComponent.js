@@ -24,7 +24,6 @@ class ValidatorComponentNew extends ValidatorComponent {
       }
       return updatedErrorMessages[this.invalid[0]]
     }
-    // eslint-disable-next-line
     console.log('unknown errorMessages type', validators)
     return true
   }

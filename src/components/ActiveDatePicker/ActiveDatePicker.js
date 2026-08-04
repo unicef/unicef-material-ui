@@ -5,13 +5,17 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 import { pickersOutlinedInputClasses } from '@mui/x-date-pickers/PickersTextField'
 import { inputAdornmentClasses } from '@mui/material/InputAdornment'
+import { inputLabelClasses } from '@mui/material/InputLabel'
+import { InputLabelHelp } from '../Shared'
 
 export default function ActiveDatePicker({
-  inputFormat = 'dd/MM/yyyy',
+  format = 'dd/MM/yyyy',
   label,
   onChange,
   value,
   interactiveMode,
+  showLabelHelp,
+  InputLabelHelpProps,
   readOnly,
   sx,
   ...others
@@ -19,7 +23,14 @@ export default function ActiveDatePicker({
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DatePicker
-        label={label}
+        label={
+          showLabelHelp ? (
+            <InputLabelHelp inputLabel={label} {...InputLabelHelpProps} />
+          ) : (
+            label
+          )
+        }
+        format={format}
         value={value}
         onChange={onChange}
         readOnly={readOnly}
@@ -51,6 +62,15 @@ export default function ActiveDatePicker({
                   display: 'flex',
                 },
             }),
+          ...(showLabelHelp
+            ? {
+                [`& .${inputLabelClasses.root}`]: {
+                  pointerEvents: 'auto',
+                  display: 'flex',
+                  alignItems: 'center',
+                },
+              }
+            : {}),
         })}
         {...others}
       />
@@ -60,13 +80,11 @@ export default function ActiveDatePicker({
 
 ActiveDatePicker.propTypes = {
   /** Date picker format */
-  inputFormat: PropTypes.string,
+  format: PropTypes.string,
   /** Callback function when change the picker field */
   onChange: PropTypes.func.isRequired,
   /** Value of the picker field */
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-  /** Material ui textfield variant */
-  inputVariant: PropTypes.string,
   /** The system prop that allows defining system overrides as well as additional CSS styles. */
   sx: PropTypes.oneOfType([
     PropTypes.arrayOf(
@@ -79,8 +97,6 @@ ActiveDatePicker.propTypes = {
   readOnly: PropTypes.bool,
   /** Change to write mode by hiding text field border and displays border on hover*/
   interactiveMode: PropTypes.bool,
-  /** Slot props.*/
-  slotProps: PropTypes.object,
   /** Label text */
   label: PropTypes.string,
   /** Show label help */

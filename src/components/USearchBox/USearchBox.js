@@ -169,4 +169,6 @@ USearchBox.propTypes = {
   ariaLabelSearch: PropTypes.string,
   /** Aria label for clear icon */
   ariaLabelClear: PropTypes.string,
+  /** The props used for each component slot. */
+  slotProps: PropTypes.object,
 }
