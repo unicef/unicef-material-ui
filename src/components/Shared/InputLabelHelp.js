@@ -53,6 +53,7 @@ export default function InputLabelHelp({
   icon = null,
   tooltipTitle,
   tooltipPlacement = 'top',
+  linkTitle = 'Opens a new tab',
 }) {
   return (
     <Fragment>
@@ -79,7 +80,7 @@ export default function InputLabelHelp({
             target={'_blank'}
             underline="always"
             className={classes.help}
-            title="Opens a new tab"
+            title={linkTitle}
           >
             {icon ? icon : <LaunchIcon />}
             {label ? (
@@ -109,4 +110,6 @@ InputLabelHelp.propTypes = {
   icon: PropTypes.node,
   // Tooltip placement
   tooltipPlacement: PropTypes.string,
+  /** Title for the link */
+  linkTitle: PropTypes.string,
 }
