@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { MobileTimePicker } from '@mui/x-date-pickers/MobileTimePicker'
 import UTextField from '../UTextField'
@@ -24,7 +24,7 @@ export default function UMobileTimePicker({
   ...others
 }) {
   return (
-    <LocalizationProvider dateAdapter={AdapterDateFns}>
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
       <MobileTimePicker
         label={label}
         inputFormat={inputFormat}

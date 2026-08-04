@@ -87,7 +87,7 @@
     "webpack-cli": "^6.0.1"
   },
   "dependencies": {
-    "date-fns": "^4.1.0",
+    "dayjs": "^1.11.21",
     "react-form-validator-core": "^2.0.2",
     "react-number-format": "^5.4.5",
     "react-select": "^5.10.2"

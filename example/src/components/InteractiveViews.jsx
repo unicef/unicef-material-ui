@@ -19,6 +19,7 @@ import {
   ActiveDatePicker,
   USelectPicker,
 } from '@unicef/material-ui'
+import dayjs from 'dayjs'
 
 const PREFIX = 'InteractiveViews'
 
@@ -63,7 +64,7 @@ export default function InteractiveViews() {
     mobile: 2223333433,
     address: '9452 Horace New York NY 11224',
     salary: 100.55,
-    dateOfBirth: new Date(),
+    dateOfBirth: dayjs(),
     skills: [
       {
         label: 'HTML',
@@ -260,7 +261,9 @@ export default function InteractiveViews() {
                       typographyVariant="h4"
                       value={values.name}
                       validators={['required']}
-                      errorMessages={['this field is required']}
+                      customErrorMessages={{
+                        required: 'this field is required',
+                      }}
                       interactiveMode
                     />
                   </Grid>
@@ -273,10 +276,10 @@ export default function InteractiveViews() {
                       typographyVariant="subtitle1"
                       value={values.email}
                       validators={['required', 'isEmail']}
-                      errorMessages={[
-                        'this field is required',
-                        'email is not valid',
-                      ]}
+                      customErrorMessages={{
+                        required: 'this field is required',
+                        isEmail: 'email is not valid',
+                      }}
                       interactiveMode
                     />
                   </Grid>
@@ -289,7 +292,9 @@ export default function InteractiveViews() {
                       className={classes.textfield}
                       typographyVariant="subtitle1"
                       validators={['required']}
-                      errorMessages={['this field is required']}
+                      customErrorMessages={{
+                        required: 'this field is required',
+                      }}
                       interactiveMode
                       options={employmentOptions}
                     />
@@ -302,7 +307,9 @@ export default function InteractiveViews() {
                       typographyVariant="subtitle1"
                       value={values.salary}
                       validators={['required']}
-                      errorMessages={['this field is required']}
+                      customErrorMessages={{
+                        required: 'this field is required',
+                      }}
                       fullWidth
                       multiline
                       interactiveMode
@@ -316,7 +323,9 @@ export default function InteractiveViews() {
                       typographyVariant="subtitle1"
                       value={values.address}
                       validators={['required']}
-                      errorMessages={['this field is required']}
+                      customErrorMessages={{
+                        required: 'this field is required',
+                      }}
                       fullWidth
                       multiline
                       interactiveMode
@@ -390,7 +399,9 @@ export default function InteractiveViews() {
                       value={values.name}
                       readOnly={readOnly}
                       validators={['required']}
-                      errorMessages={['this field is required']}
+                      customErrorMessages={{
+                        required: 'this field is required',
+                      }}
                     />
                   </Grid>
                   <Grid size={{ xs: 12, md: 6 }}>
@@ -403,10 +414,10 @@ export default function InteractiveViews() {
                       value={values.email}
                       readOnly={readOnly}
                       validators={['required', 'isEmail']}
-                      errorMessages={[
-                        'this field is required',
-                        'email is not valid',
-                      ]}
+                      customErrorMessages={{
+                        required: 'this field is required',
+                        isEmail: 'email is not valid',
+                      }}
                     />
                   </Grid>
                   <Grid size={{ xs: 12, md: 6 }}>
@@ -419,7 +430,9 @@ export default function InteractiveViews() {
                       readOnly={readOnly}
                       typographyVariant="subtitle1"
                       validators={['required']}
-                      errorMessages={['this field is required']}
+                      customErrorMessages={{
+                        required: 'this field is required',
+                      }}
                       options={employmentOptions}
                     />
                   </Grid>
@@ -432,7 +445,9 @@ export default function InteractiveViews() {
                       value={values.address}
                       readOnly={readOnly}
                       validators={['required']}
-                      errorMessages={['this field is required']}
+                      customErrorMessages={{
+                        required: 'this field is required',
+                      }}
                       fullWidth
                       multiline
                     />
@@ -446,7 +461,9 @@ export default function InteractiveViews() {
                       value={values.salary}
                       readOnly={readOnly}
                       validators={['required']}
-                      errorMessages={['this field is required']}
+                      customErrorMessages={{
+                        required: 'this field is required',
+                      }}
                       fullWidth
                       multiline
                     />

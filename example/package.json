@@ -1,12 +1,13 @@
 {
   "name": "@unicef/material-ui-example",
-  "version": "2.0.3",
+  "version": "3.0.0",
   "private": true,
   "homepage": "https://unicef.github.io/unicef-material-ui/example",
   "dependencies": {
     "@emotion/styled": "^11.14.1",
-    "@mui/icons-material": "^7.3.5",
-    "@mui/material": "^7.3.5",
+    "@mui/icons-material": "^9.2.0",
+    "@mui/material": "^9.2.0",
+    "dayjs": "^1.11.21",
     "gh-pages": "^6.3.0",
     "prop-types": "^15.8.1",
     "react": "file:../node_modules/react",
@@ -35,7 +36,6 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^5.1.1",
-    "typescript": "^3.7.4",
     "vite": "^7.2.4"
   }
 }

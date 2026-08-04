@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker'
 import UTextField from '../UTextField'
@@ -25,7 +25,7 @@ export default function UDateTimePicker({
   ...others
 }) {
   return (
-    <LocalizationProvider dateAdapter={AdapterDateFns}>
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DateTimePicker
         label={label}
         inputFormat={inputFormat}

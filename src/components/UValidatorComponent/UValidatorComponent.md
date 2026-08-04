@@ -24,7 +24,7 @@ export default function CheckBoxValidator() {
         // validators array
         validators={['isTruthy']}
         // error messages to be displayed
-        errorMessages={['check more than two fields']}
+        customErrorMessages={{'isTruthy':'check more than two fields'}}
         value={value}  // <---- you must provide this prop, it will be used only for validation
       > 
         <Checkbox
@@ -121,7 +121,7 @@ const StyledBox = styled('div')(({ theme }) => ({
   <StyledBox>
     <UValidatorComponent
       validators={['isTruthy']}
-      errorMessages={['check more than two fields']}
+      customErrorMessages={{'isTruthy':'check more than two fields'}}
       value={valid}
     >
       <FormControl className={classes.margin} required component="fieldset" >

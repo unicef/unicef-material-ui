@@ -2,7 +2,7 @@ import React from 'react'
 import { styled } from '@mui/material/styles'
 import { Box } from '@mui/material'
 import PropTypes from 'prop-types'
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker'
 import { outlinedInputClasses } from '@mui/material/OutlinedInput'
@@ -67,7 +67,7 @@ export default function ActiveMobileDatePicker({
   ...others
 }) {
   return (
-    <LocalizationProvider dateAdapter={AdapterDateFns}>
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
       <StyledBox readOnly={readOnly} interactiveMode={interactiveMode}>
         <MobileDatePicker
           className={classes.root}

@@ -16,6 +16,7 @@ import {
 } from '@unicef/material-ui'
 import { GraphPeoplePickerExample } from '.'
 import { Grid, Typography, Avatar } from '@mui/material'
+import dayjs from 'dayjs'
 
 export default function Pickers() {
   // People picker options
@@ -197,7 +198,7 @@ export default function Pickers() {
     },
   ]
 
-  const [selectedDate, handleDateChange] = useState(new Date())
+  const [selectedDate, handleDateChange] = useState(dayjs())
   const [options, setOptions] = useState(undefined)
   const [loading, setLoading] = useState(false)
   const [errorMessage] = useState(null)
