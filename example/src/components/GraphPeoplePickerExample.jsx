@@ -89,7 +89,7 @@ export default function GraphPeoplePickerExample() {
           options={getOptions(totalUsers)}
           onBlur={value => handleChange(value)}
           searchUsers={searchUsers()}
-          isMultiple={true}
+          multiple={true}
         />
       </Grid>
     </Grid>

@@ -27,12 +27,11 @@ export default function UGraphPeoplePicker({
   options,
   onBlur,
   helpText = '',
-  isMultiple = true,
+  multiple = true,
   searchUsers,
-  components,
   ...props
 }) {
-  const [graphData, setGraphData] = useState([])
+  const [graphData, setGraphData] = useState(getOptions(options) || [])
   const [selectedUsers, setSelectedUsers] = useState(getOptions(options))
   const [loading, setLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState(null)
@@ -47,10 +46,12 @@ export default function UGraphPeoplePicker({
       })
     }
   }
+
   // onChange select users
-  const selectUsers = value => {
-    //for multiple users
-    if (isMultiple) {
+  const selectUsers = (event, value) => {
+    setLoading(false)
+    // for multiple users
+    if (multiple) {
       const users = value.map(user => {
         const data = {
           value: user.email || user.value,
@@ -86,16 +87,11 @@ export default function UGraphPeoplePicker({
       onChange={selectUsers}
       value={selectedUsers}
       fullWidth
-      TextFieldProps={{
-        helperText: helpText,
-        onChange: event => handleLoadUsers(event),
-      }}
-      isLoading={loading}
-      errorOptionsMessage={errorMessage}
-      showNoOptionsWithEmptyTextField={false}
-      variant="outlined"
-      isMulti={isMultiple}
-      components={components}
+      helpText={helpText}
+      onInputChange={event => handleLoadUsers(event)}
+      loading={loading}
+      errorLoadingOptions={errorMessage}
+      multiple={multiple}
       {...props}
     />
   )
@@ -123,7 +119,7 @@ UGraphPeoplePicker.propTypes = {
   /** description under the control */
   helpText: PropTypes.string,
   /** single or multiple user picker */
-  isMultiple: PropTypes.bool,
+  multiple: PropTypes.bool,
   /** trigger when user enters value */
   searchUsers: PropTypes.func,
   /** To customize the components of select */
