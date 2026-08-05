@@ -469,7 +469,7 @@ export default function InteractiveViews() {
                       onChange={handleSkillsChange}
                       options={skillsOptions}
                       variant="outlined"
-                      isMulti
+                      multiline
                       fullWidth
                       readOnly={readOnly}
                       showLabelHelp={true}

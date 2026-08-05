@@ -12,8 +12,6 @@ export default [
       'build/**',
       'node_modules/**',
       'styleguide.config.cjs',
-      'utils/**', //Todo: Fix
-      'example/**',
     ],
   },
   js.configs.recommended, // Use baseline JavaScript rules

@@ -228,7 +228,7 @@ USelectPicker.propTypes = {
   variant: PropTypes.oneOf(['outlined', 'standard', 'filled']),
   /** Callback fired when the value is changed: (event, value, reason, details) => void */
   onChange: PropTypes.func,
-  /** Currently selected value (single option object, or array of option objects when isMulti) */
+  /** Currently selected value (single option object, or array of option objects when multiple) */
   value: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   /** Array of options to display in the dropdown.
    * Each option is an object with the following attributes:
@@ -271,8 +271,6 @@ USelectPicker.propTypes = {
   hideAvatar: PropTypes.bool,
   /** Is the read only field or not */
   readOnly: PropTypes.bool,
-  /** Whether the selected options display on a new line each, or wrap inline, for multiple selected options */
-  lineByLineOption: PropTypes.bool,
   /** No options text */
   noOptionsText: PropTypes.string,
   /** Loading text */

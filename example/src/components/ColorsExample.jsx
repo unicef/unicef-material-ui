@@ -20,7 +20,7 @@ const StyledGrid = styled(Grid)(({ theme }) => ({
   },
 }))
 
-export default function ColorsExample(props) {
+export default function ColorsExample() {
   const theme = useTheme()
 
   let requiredColors = [

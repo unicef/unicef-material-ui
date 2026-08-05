@@ -209,7 +209,7 @@ export default function Pickers() {
   const [errorMessage] = useState(null)
 
   // Handle loading the people
-  const handleLoadPeople = event => {
+  const handleLoadPeople = _event => {
     setLoading(true)
     setOptions(undefined)
     // In case of API, fetch the API
