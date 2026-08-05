@@ -158,5 +158,5 @@ const options = [
   },
 ]
 
-;<UPeoplePicker label="People" options={options} variant="outlined" isMulti />
+;<UPeoplePicker label="People" options={options} variant="outlined" multiple />
 ```

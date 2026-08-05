@@ -2,6 +2,7 @@ import React, { Fragment } from 'react'
 import { styled } from '@mui/material/styles'
 import { Tooltip, Link } from '@mui/material'
 import PropTypes from 'prop-types'
+import { inputLabelClasses } from '@mui/material/InputLabel'
 
 import HelpIcon from '@mui/icons-material/HelpOutlineOutlined'
 import LaunchIcon from '@mui/icons-material/Launch'
@@ -17,6 +18,10 @@ const classes = {
 }
 
 const StyledBox = styled('div')(({ theme }) => ({
+  visibility: 'hidden',
+  [`.${inputLabelClasses.shrink} &`]: {
+    visibility: 'visible',
+  },
   [`&.${classes.root}`]: {
     order: 999,
     display: 'inline-flex',
