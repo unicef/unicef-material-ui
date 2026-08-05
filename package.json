@@ -68,8 +68,8 @@
     "@babel/preset-react": "^7.26.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
-    "@mui/icons-material": "^9.2.0",
-    "@mui/material": "^9.2.0",
+    "@mui/icons-material": "^9.3.0",
+    "@mui/material": "^9.3.0",
     "@mui/x-date-pickers": "^9.10.1",
     "@rollup/plugin-babel": "^6.0.7",
     "@rollup/plugin-commonjs": "^28.0.0",
@@ -97,6 +97,6 @@
   "dependencies": {
     "dayjs": "^1.11.21",
     "react-form-validator-core": "^2.0.2",
-    "react-number-format": "^5.5.0"
+    "react-number-format": "^5.4.5"
   }
 }
