@@ -1,4 +1,9 @@
-import theme, { unicefColors, createUnicefMuiTheme } from './theme'
+import './MuiClassNameSetup'
+import theme, {
+  unicefColors,
+  themeOverrides,
+  createUnicefMuiTheme,
+} from './theme'
 import UNICEFStyleProvider from './components/UNICEFStyleProvider'
 import UHeader from './components/UHeader'
 import UHeaderRightButtons from './components/UHeaderRightButtons'
@@ -61,6 +66,7 @@ import UAriaHiddenText from './components/UAriaHiddenText'
 export {
   theme,
   unicefColors,
+  themeOverrides,
   createUnicefMuiTheme,
   ActiveFormSelect,
   UNICEFStyleProvider,

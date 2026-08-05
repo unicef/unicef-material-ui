@@ -16,8 +16,6 @@ import { inputLabelClasses } from '@mui/material/InputLabel'
  * * Select multiple options from a list.
  * * Autocomplete.
  * * Clear current selection.
- *
- * Built on MUI's Autocomplete (migrated from react-select).
  */
 export default function USelectPicker({
   label,

@@ -1,4 +1,3 @@
-import './../../MuiClassNameSetup'
 import React from 'react'
 import { ThemeProvider, StyledEngineProvider, CssBaseline } from '@mui/material'
 import theme from './../../theme'

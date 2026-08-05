@@ -1,1 +1,6 @@
-export { default, unicefColors, createUnicefMuiTheme } from './theme'
+export {
+  default,
+  unicefColors,
+  themeOverrides,
+  createUnicefMuiTheme,
+} from './theme'
