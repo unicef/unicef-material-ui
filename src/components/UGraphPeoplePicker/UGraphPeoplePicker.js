@@ -26,7 +26,7 @@ export default function UGraphPeoplePicker({
   label,
   options,
   onBlur,
-  helpText = '',
+  helperText = '',
   multiple = true,
   searchUsers,
   ...props
@@ -87,7 +87,7 @@ export default function UGraphPeoplePicker({
       onChange={selectUsers}
       value={selectedUsers}
       fullWidth
-      helpText={helpText}
+      helperText={helperText}
       onInputChange={event => handleLoadUsers(event)}
       loading={loading}
       errorLoadingOptions={errorMessage}
@@ -117,7 +117,7 @@ UGraphPeoplePicker.propTypes = {
     })
   ),
   /** description under the control */
-  helpText: PropTypes.string,
+  helperText: PropTypes.string,
   /** single or multiple user picker */
   multiple: PropTypes.bool,
   /** trigger when user enters value */

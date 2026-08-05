@@ -306,7 +306,7 @@ export default function Pickers() {
             onInputChange={(event, newInputValue) => {
               handleLoadPeople(event)
             }}
-            errorOptionsMessage={errorMessage}
+            errorLoadingOptions={errorMessage}
             multiple
           />
         </Grid>
@@ -316,7 +316,7 @@ export default function Pickers() {
             loading={false}
             placeholder="Select people ..."
             options={[]}
-            errorOptionsMessage={'Could not load options'}
+            errorLoadingOptions={'Could not load options'}
             multiple
           />
         </Grid>

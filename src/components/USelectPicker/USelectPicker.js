@@ -8,6 +8,8 @@ import Typography from '@mui/material/Typography'
 import { Avatar, Chip } from '@mui/material'
 import { InputLabelHelp } from '../Shared'
 import { inputLabelClasses } from '@mui/material/InputLabel'
+import { outlinedInputClasses } from '@mui/material/OutlinedInput'
+import { autocompleteClasses } from '@mui/material/Autocomplete'
 
 /**
  * USelectPicker is a control for selecting an option from a list. Has the features below:
@@ -26,7 +28,7 @@ export default function USelectPicker({
   multiple,
   loading,
   error,
-  errorOptionsMessage,
+  errorLoadingOptions,
   noOptionsText,
   helperText,
   placeholder,
@@ -87,6 +89,9 @@ export default function USelectPicker({
   return (
     <Autocomplete
       multiple={multiple}
+      readOnly={readOnly}
+      disableCloseOnSelect={multiple}
+      disableClearable={readOnly}
       loading={loading}
       options={options || []}
       getOptionLabel={getOptionLabel || (option => option?.label ?? '')}
@@ -94,8 +99,8 @@ export default function USelectPicker({
         isOptionEqualToValue || ((option, val) => option?.value === val?.value)
       }
       noOptionsText={
-        errorOptionsMessage ? (
-          <Box sx={{ color: 'error.main' }}>{errorOptionsMessage}</Box>
+        errorLoadingOptions ? (
+          <Box sx={{ color: 'error.main' }}>{errorLoadingOptions}</Box>
         ) : (
           noOptionsText
         )
@@ -188,6 +193,24 @@ export default function USelectPicker({
               },
             }
           : {}),
+        ...(readOnly
+          ? {
+              [`& .${outlinedInputClasses.root}`]: {
+                '& fieldset': {
+                  borderColor: 'transparent',
+                },
+                '&:hover fieldset': {
+                  borderColor: 'transparent',
+                },
+                '&.Mui-focused fieldset': {
+                  borderColor: 'transparent',
+                },
+              },
+              [`& .${autocompleteClasses.endAdornment}`]: {
+                display: 'none',
+              },
+            }
+          : {}),
       }}
       {...rest}
     />
@@ -229,7 +252,7 @@ USelectPicker.propTypes = {
   /** Display error state */
   error: PropTypes.bool,
   /** Error message to display in the no options text */
-  errorOptionsMessage: PropTypes.string,
+  errorLoadingOptions: PropTypes.string,
   /** Helper text to display below the input */
   helperText: PropTypes.string,
   /** Custom renderOption override, passed through to MUI Autocomplete */
