@@ -9,15 +9,11 @@
     ]
   ],
   "plugins": [
-    "@babel/plugin-transform-object-rest-spread",
     [
       "@babel/plugin-transform-react-jsx",
       {
       "runtime": "automatic"
       }
-    ],
-    [
-      "@babel/plugin-proposal-class-properties"
     ]
   ]
 }

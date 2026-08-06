@@ -20,7 +20,7 @@ const StyledGrid = styled(Grid)(({ theme }) => ({
   },
 }))
 
-export default function ColorsExample(props) {
+export default function ColorsExample() {
   const theme = useTheme()
 
   let requiredColors = [
@@ -42,7 +42,7 @@ export default function ColorsExample(props) {
       {requiredColors.map(
         colorKey =>
           (theme.palette[colorKey] && (
-            <>
+            <React.Fragment key={colorKey}>
               <Grid size={12}>
                 <Typography className={classes.colorTitle} variant="h5">
                   {colorKey} colors
@@ -50,9 +50,14 @@ export default function ColorsExample(props) {
               </Grid>
               {Object.keys(theme.palette[colorKey]).map(color => {
                 return (
-                  <Grid key={color} item size={{ xs: 6, md: 4, lg: 2 }}>
-                    <Paper p={3}>
-                      <Box bgcolor={theme.palette[colorKey][color]} p={4}>
+                  <Grid key={color} size={{ xs: 6, md: 4, lg: 2 }}>
+                    <Paper sx={{ p: 3 }}>
+                      <Box
+                        sx={{
+                          bgcolor: theme.palette[colorKey][color],
+                          p: 4,
+                        }}
+                      >
                         <Typography variant="body1">{color}</Typography>
                       </Box>
                       <Typography className={classes.colorCode} variant="body1">
@@ -62,7 +67,7 @@ export default function ColorsExample(props) {
                   </Grid>
                 )
               })}
-            </>
+            </React.Fragment>
           )) ||
           ''
       )}

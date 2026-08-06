@@ -42,7 +42,7 @@ export default function UConfirmationButtonExample() {
       <Grid size={12}>
         <Typography variant="subtitle1">Confirm popup variant</Typography>
       </Grid>
-      <Grid container item size={12}>
+      <Grid container size={12}>
         <Grid size={{ xs: 12, sm: 6, md: 3 }}>
           <Typography variant="subtitle1">Icon</Typography>
           <UConfirmationButton
@@ -120,7 +120,7 @@ export default function UConfirmationButtonExample() {
       <Grid size={12}>
         <Typography variant="subtitle1">Confirm menu variant</Typography>
       </Grid>
-      <Grid container item size={12}>
+      <Grid container size={12}>
         <Grid size={{ xs: 12, sm: 6, md: 3 }}>
           <Typography variant="subtitle1">Icon</Typography>
           <UConfirmationButton

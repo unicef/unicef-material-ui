@@ -1,11 +1,10 @@
 import React from 'react'
-import { styled } from '@mui/material/styles'
 import { Box } from '@mui/material'
 import PropTypes from 'prop-types'
 
 /**
  * * UContent is to display the  main content of page.
- * * Children under Ucontent will be display in the main content.
+ * * Children under UContent will be display in the main content.
  * * UContent must be wrapped inside the ULayout.
  */
 export default function UContent({ headerHeight = 64, children }) {
@@ -20,4 +19,6 @@ export default function UContent({ headerHeight = 64, children }) {
 UContent.propTypes = {
   /** Height of the header including MainMenu */
   headerHeight: PropTypes.number,
+  /** Content to display inside the main content area */
+  children: PropTypes.node,
 }

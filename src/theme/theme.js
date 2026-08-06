@@ -17,6 +17,76 @@ export const unicefColors = {
 }
 
 /**
+ * UNICEF MUI theme overrides.
+ *
+ * Defines typography, spacing, palette, and component-level style overrides
+ * to align with UNICEF brand guidelines.
+ */
+export const themeOverrides = {
+  typography: {
+    fontFamily: ['Roboto', 'Helvetica', 'Arial', 'sans-serif'].join(','),
+  },
+  spacing: 8,
+  palette: {
+    primary: {
+      main: unicefColors.darkBlue,
+    },
+    secondary: {
+      main: unicefColors.blue,
+    },
+    error: {
+      main: unicefColors.red,
+    },
+    unicef: unicefColors,
+    unicefBlue: unicefColors.blue,
+  },
+  unicefBlue: unicefColors.blue,
+  mixins: {
+    toolbar: {},
+  },
+  shape: {
+    borderRadius: 4,
+  },
+  // Component-level style overrides and default prop customizations
+  components: {
+    MuiButtonBase: {
+      defaultProps: {
+        // The props to change the default for.
+        disableRipple: true, // No more ripple, on the whole application 💣!
+      },
+    },
+    MuiDrawer: {
+      styleOverrides: {
+        paper: {
+          minWidth: 256,
+        },
+      },
+    },
+    MuiInputBase: {
+      styleOverrides: {
+        root: {
+          backgroundColor: 'white',
+        },
+      },
+    },
+    MuiTab: {
+      styleOverrides: {
+        root: {
+          minWidth: 160,
+        },
+      },
+    },
+    MuiAppBar: {
+      styleOverrides: {
+        root: {
+          zIndex: 1200,
+        },
+      },
+    },
+  },
+}
+
+/**
  * Creates a customized MUI theme with UNICEF color palette.
  *
  * Applies UNICEF color palette, typography, and component overrides
@@ -33,73 +103,7 @@ export const unicefColors = {
  * const theme = createUnicefMuiTheme(frFR)
  */
 export const createUnicefMuiTheme = (locale = enUS) => {
-  const theme = createTheme(
-    {
-      typography: {
-        useNextVariants: true,
-        fontFamily: ['Roboto', 'Helvetica', 'Arial', 'sans-serif'].join(','),
-      },
-      spacing: 8,
-      palette: {
-        primary: {
-          main: unicefColors.darkBlue,
-        },
-        secondary: {
-          main: unicefColors.blue,
-        },
-        error: {
-          main: unicefColors.red,
-        },
-        unicef: unicefColors,
-        unicefBlue: unicefColors.blue,
-      },
-      unicefBlue: unicefColors.blue,
-      mixins: {
-        toolbar: {},
-      },
-      shape: {
-        borderRadius: 4,
-      },
-      // Component-level style overrides and default prop customizations
-      components: {
-        MuiButtonBase: {
-          defaultProps: {
-            // The props to change the default for.
-            disableRipple: true, // No more ripple, on the whole application 💣!
-          },
-        },
-        MuiDrawer: {
-          styleOverrides: {
-            paper: {
-              minWidth: 256,
-            },
-          },
-        },
-        MuiInputBase: {
-          styleOverrides: {
-            root: {
-              backgroundColor: 'white',
-            },
-          },
-        },
-        MuiTab: {
-          styleOverrides: {
-            root: {
-              minWidth: 160,
-            },
-          },
-        },
-        MuiAppBar: {
-          styleOverrides: {
-            root: {
-              zIndex: 1200,
-            },
-          },
-        },
-      },
-    },
-    locale
-  )
+  const theme = createTheme(themeOverrides, locale)
 
   return theme
 }

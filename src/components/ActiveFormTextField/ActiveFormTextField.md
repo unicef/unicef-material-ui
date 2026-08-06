@@ -95,7 +95,7 @@ import { UValidatorForm, UValidatorComponent } from '../../index.js' // change i
         typographyVariant='subtitle1'
         variant="outlined"
         validators={['required', 'isNumber']}
-        errorMessages={['this field is required', 'Value must be number']}
+        customErrorMessages={{'required':'this field is required', 'isNumber':'Value must be number'}}
       />
     </UValidatorForm>
 //   )

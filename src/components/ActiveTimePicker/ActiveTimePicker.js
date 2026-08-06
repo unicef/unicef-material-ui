@@ -1,37 +1,41 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { TimePicker } from '@mui/x-date-pickers/TimePicker'
 import { pickersOutlinedInputClasses } from '@mui/x-date-pickers/PickersTextField'
 import { inputAdornmentClasses } from '@mui/material/InputAdornment'
+import { InputLabelHelp } from '../Shared'
+import { inputLabelClasses } from '@mui/material/InputLabel'
+
 /**
  * ActiveTimePicker is a customized material ui time picker.
  * This component let's you access the clock to select the time.
  * Please have look at [Material UI Time Picker](https://mui.com/x/api/date-pickers/time-picker/) for more details
  */
 export default function ActiveTimePicker({
-  inputFormat = 'hh:mm a',
+  format = 'hh:mm a',
   label,
   onChange,
   value,
   showLabelHelp,
-  slotProps = {
-    inputLabel: { shrink: true },
-  },
   InputLabelHelpProps,
-  inputVariant = 'outlined',
   interactiveMode,
   readOnly,
   sx,
   ...others
 }) {
   return (
-    <LocalizationProvider dateAdapter={AdapterDateFns}>
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
       <TimePicker
-        className={classes.root}
-        label={label}
-        inputFormat={inputFormat}
+        label={
+          showLabelHelp ? (
+            <InputLabelHelp inputLabel={label} {...InputLabelHelpProps} />
+          ) : (
+            label
+          )
+        }
+        format={format}
         onChange={onChange}
         value={value}
         readOnly={readOnly}
@@ -63,6 +67,15 @@ export default function ActiveTimePicker({
                   display: 'flex',
                 },
             }),
+          ...(showLabelHelp
+            ? {
+                [`& .${inputLabelClasses.root}`]: {
+                  pointerEvents: 'auto',
+                  display: 'flex',
+                  alignItems: 'center',
+                },
+              }
+            : {}),
         })}
         {...others}
       />
@@ -74,7 +87,7 @@ ActiveTimePicker.propTypes = {
   /** Callback function when change the picker field */
   onChange: PropTypes.func.isRequired,
   /** Time picker format */
-  inputFormat: PropTypes.string,
+  format: PropTypes.string,
   /** Value of the picker field */
   value: PropTypes.string,
   /** Material ui textfield variant */
@@ -91,8 +104,6 @@ ActiveTimePicker.propTypes = {
     PropTypes.func,
     PropTypes.object,
   ]),
-  /** Props applied to slots.*/
-  slotProps: PropTypes.object,
   /** Label text */
   label: PropTypes.string,
   /** Show label help */

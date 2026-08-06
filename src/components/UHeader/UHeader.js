@@ -233,4 +233,8 @@ UHeader.propTypes = {
   toggleDrawer: PropTypes.func,
   /** AppBar elevation value to handle the box shadow effect */
   elevation: PropTypes.number,
+  /** Aria label for the hamburger menu button */
+  ariaHamburgerMenuLabel: PropTypes.string,
+  /** The content of the component. */
+  children: PropTypes.node,
 }

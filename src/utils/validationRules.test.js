@@ -1,3 +1,4 @@
+import { describe, it, expect } from '@jest/globals'
 import { isAlphanumericText, isPhoneNumberText, isSafeText, isUrlText } from '.'
 
 describe('validation rules utils', () => {

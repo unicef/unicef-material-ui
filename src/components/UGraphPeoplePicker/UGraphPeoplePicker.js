@@ -26,13 +26,12 @@ export default function UGraphPeoplePicker({
   label,
   options,
   onBlur,
-  helpText = '',
-  isMultiple = true,
+  helperText = '',
+  multiple = true,
   searchUsers,
-  components,
   ...props
 }) {
-  const [graphData, setGraphData] = useState([])
+  const [graphData, setGraphData] = useState(getOptions(options) || [])
   const [selectedUsers, setSelectedUsers] = useState(getOptions(options))
   const [loading, setLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState(null)
@@ -47,10 +46,12 @@ export default function UGraphPeoplePicker({
       })
     }
   }
+
   // onChange select users
-  const selectUsers = value => {
-    //for multiple users
-    if (isMultiple) {
+  const selectUsers = (event, value) => {
+    setLoading(false)
+    // for multiple users
+    if (multiple) {
       const users = value.map(user => {
         const data = {
           value: user.email || user.value,
@@ -86,16 +87,11 @@ export default function UGraphPeoplePicker({
       onChange={selectUsers}
       value={selectedUsers}
       fullWidth
-      TextFieldProps={{
-        helperText: helpText,
-        onChange: event => handleLoadUsers(event),
-      }}
-      isLoading={loading}
-      errorOptionsMessage={errorMessage}
-      showNoOptionsWithEmptyTextField={false}
-      variant="outlined"
-      isMulti={isMultiple}
-      components={components}
+      helperText={helperText}
+      onInputChange={event => handleLoadUsers(event)}
+      loading={loading}
+      errorLoadingOptions={errorMessage}
+      multiple={multiple}
       {...props}
     />
   )
@@ -111,11 +107,19 @@ UGraphPeoplePicker.propTypes = {
   /** onBlur event */
   onBlur: PropTypes.func,
   /** options of the people picker */
-  option: PropTypes.string,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      email: PropTypes.string,
+      name: PropTypes.string,
+      type: PropTypes.string,
+      locationId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    })
+  ),
   /** description under the control */
-  helpText: PropTypes.string,
+  helperText: PropTypes.string,
   /** single or multiple user picker */
-  isMultiple: PropTypes.bool,
+  multiple: PropTypes.bool,
   /** trigger when user enters value */
   searchUsers: PropTypes.func,
   /** To customize the components of select */

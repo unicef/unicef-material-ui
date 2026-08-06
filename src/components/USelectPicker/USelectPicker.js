@@ -1,239 +1,219 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
-import Select from 'react-select'
-import { useTheme, styled } from '@mui/material/styles'
-import { Box } from '@mui/material'
-import CancelIcon from '@mui/icons-material/Cancel'
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
-
-import MultiValue from './MultiValue'
-import SingleValue from './SingleValue'
-import Menu from './Menu'
-import Control from './Control'
-import NoOptionsMessage from './NoOptionsMessage'
-import ValueContainer from './ValueContainer'
-import Option from './Option'
-import Input from './Input'
-
-const PREFIX = 'USelectPicker'
-
-const classes = {
-  input: `${PREFIX}-input`,
-  valueContainer: `${PREFIX}-valueContainer`,
-  OptionsMessage: `${PREFIX}-OptionsMessage`,
-  placeholder: `${PREFIX}-placeholder`,
-  paper: `${PREFIX}-paper`,
-  divider: `${PREFIX}-divider`,
-  labelRoot: `${PREFIX}-labelRoot`,
-  inputHover: `${PREFIX}-inputHover`,
-  notchedOutline: `${PREFIX}-notchedOutline`,
-}
-
-const StyledBox = styled(Box, {
-  shouldForwardProp: prop => prop !== 'hasHelpText',
-})(({ theme, hasHelpText }) => ({
-  [`& .${classes.input}`]: {
-    display: 'flex',
-    padding: '10px 14px',
-    height: 'auto',
-  },
-  [`& .${classes.valueContainer}`]: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    flex: 1,
-    alignItems: 'center',
-    overflow: 'hidden',
-  },
-  [`& .${classes.OptionsMessage}`]: {
-    padding: theme.spacing(1, 2),
-  },
-  [`& .${classes.paper}`]: {
-    minWidth: '100%',
-  },
-  [`& .${classes.divider}`]: {
-    height: theme.spacing(2),
-  },
-  [`& .${classes.labelRoot}`]: {
-    pointerEvents: 'auto',
-    display: 'flex',
-    alignItems: 'center',
-  },
-  [`& .${classes.inputHover}`]: {
-    '&:hover $notchedOutline': {
-      borderColor: 'transparent',
-    },
-  },
-  [`& .${classes.notchedOutline}`]: {
-    borderRadius: 2,
-    borderColor: 'transparent',
-  },
-}))
-
-const defaultComponents = theme => ({
-  Control,
-  Menu,
-  MultiValue,
-  NoOptionsMessage,
-  IndicatorSeparator: () => null,
-  Option,
-  SingleValue,
-  ValueContainer,
-  Input,
-  DropdownIndicator: props => (
-    <ArrowDropDownIcon
-      sx={{
-        color: props.isDisabled
-          ? theme.palette.action.disabled
-          : theme.palette.text.secondary,
-      }}
-    />
-  ),
-  MultiValueRemove: removeProps => <CancelIcon {...removeProps} />,
-})
-
-const ICON_VARIANTS = {
-  dark: 'dark',
-  light: 'light',
-}
+import CircularProgress from '@mui/material/CircularProgress'
+import Autocomplete from '@mui/material/Autocomplete'
+import TextField from '@mui/material/TextField'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+import { Avatar, Chip } from '@mui/material'
+import { InputLabelHelp } from '../Shared'
+import { inputLabelClasses } from '@mui/material/InputLabel'
+import { outlinedInputClasses } from '@mui/material/OutlinedInput'
+import { autocompleteClasses } from '@mui/material/Autocomplete'
 
 /**
- * USelectPicker is a control for selecting a option from a list. Has the features below:
+ * USelectPicker is a control for selecting an option from a list. Has the features below:
  *
  * * Select a single option from a list.
- * * Select multiple option from a list.
+ * * Select multiple options from a list.
  * * Autocomplete.
  * * Clear current selection.
- *
  */
+export default function USelectPicker({
+  label,
+  options,
+  getOptionLabel,
+  isOptionEqualToValue,
+  hideAvatar = true,
+  multiple,
+  loading,
+  error,
+  errorLoadingOptions,
+  noOptionsText,
+  helperText,
+  placeholder,
+  readOnly,
+  showLabelHelp,
+  InputLabelHelpProps,
+  sx,
+  variant,
+  textFieldProps,
+  ...rest
+}) {
+  const _placeholder = readOnly ? '' : placeholder
 
-export default function USelectPicker(props) {
-  const theme = useTheme()
-  const {
-    label,
-    variant = 'outlined',
-    TextFieldProps = {},
-    showNoOptionsWithEmptyTextField = true,
-    onInputChange,
-    components,
-    showLabelHelp = false,
-    InputLabelHelpProps = {},
-    hideAvatar = true,
-    readOnly = false,
-    lineByLineOption = false,
-    isClearable = undefined,
-    isSearchable = true,
-    isDisabled = false,
-    menuIsOpen = undefined,
-    placeholder = 'Select...',
-    iconVariant = ICON_VARIANTS.light,
-    isMulti = false,
-    noOptionsText = 'No options',
-    loadingText = 'Loading...',
-    ...others
-  } = props
-
-  const [isTextFieldEmpty, setIsTextFieldEmpty] = useState(true)
-
-  const selectStyles = {
-    input: base => ({
-      ...base,
-      height: iconVariant === ICON_VARIANTS.dark ? theme.spacing(4) : 'inherit', // if dark variant, then match height with material ui controls
-      color: theme.palette.text.primary,
-      '& input': {
-        font: 'inherit',
-      },
-    }),
-    menuPortal: base => ({ ...base, zIndex: 9999 }),
-    menu: base => ({
-      ...base,
-      zIndex: 9999,
-    }),
-    menuList: base => ({
-      ...base,
-      padding: theme.spacing(0.5, 0),
-      maxHeight: '300px',
-      overflowY: 'auto',
-    }),
-    placeholder: base => ({
-      ...base,
-      position: 'absolute',
-      left: theme.spacing(2),
-    }),
-  }
-
-  const defaultTextFieldProps = {
-    label: label,
-    variant: variant,
-    slotProps: {
-      ...(TextFieldProps?.slotProps ? TextFieldProps.slotProps : {}),
-      inputLabel: {
-        shrink: true,
-        classes: { root: classes.labelRoot },
-        ...(TextFieldProps.slotProps?.inputLabel
-          ? TextFieldProps.slotProps.inputLabel
-          : {}),
-      },
-    },
-    readOnly,
-    lineByLineOption,
-    hideAvatar,
-    showLabelHelp,
-    InputLabelHelpProps,
-  }
-  // To show or hide the no options menu
-  const showNoOptions = showNoOptionsWithEmptyTextField || !isTextFieldEmpty
-
-  const mergedTextFieldProps = { ...defaultTextFieldProps, ...TextFieldProps }
-  // handle the input change
-  const handleInputChange = value => {
-    setIsTextFieldEmpty(value === '')
-    onInputChange && onInputChange(value)
-  }
-
-  const extraComponents = {}
-  if (iconVariant === ICON_VARIANTS.dark)
-    extraComponents.DropdownIndicator = props => (
-      <ArrowDropDownIcon
+  const defaultRenderOption = (optionProps, option) => {
+    return (
+      <Box
+        {...optionProps}
+        key={option.value}
+        component="div"
         sx={{
-          color: props.isDisabled
-            ? theme.palette.action.disabled
-            : theme.palette.text.secondary,
+          display: 'flex',
+          alignItems: 'center',
+          px: 2,
+          py: 1,
+          cursor: 'pointer',
         }}
-      />
+      >
+        <React.Fragment>
+          {hideAvatar ? (
+            ''
+          ) : option.avatar ? (
+            option.avatar
+          ) : (
+            <Avatar width="32" height="32" />
+          )}
+          <Box
+            sx={{
+              fontSize: 14,
+              pl: 1,
+              display: 'flex',
+              flexDirection: 'column',
+            }}
+          >
+            <Typography variant="subtitle2">{option.label}</Typography>
+            <Box
+              sx={{
+                fontSize: 12,
+              }}
+            >
+              {option.subLabel}
+            </Box>
+          </Box>
+        </React.Fragment>
+      </Box>
     )
-  if (readOnly) extraComponents.DropdownIndicator = () => null
-
-  const selectPlaceholder = readOnly ? '' : placeholder
+  }
 
   return (
-    <StyledBox
-      hasHelpText={
-        props.TextFieldProps && props.TextFieldProps.helperText ? true : false
+    <Autocomplete
+      multiple={multiple}
+      readOnly={readOnly}
+      disableCloseOnSelect={multiple}
+      disableClearable={readOnly}
+      loading={loading}
+      options={options || []}
+      getOptionLabel={getOptionLabel || (option => option?.label ?? '')}
+      isOptionEqualToValue={
+        isOptionEqualToValue || ((option, val) => option?.value === val?.value)
       }
-    >
-      <Select
-        classes={classes}
-        styles={selectStyles}
-        components={{
-          ...defaultComponents(theme),
-          ...components,
-          ...extraComponents,
-        }}
-        menuPosition="fixed"
-        TextFieldProps={mergedTextFieldProps}
-        onInputChange={value => handleInputChange(value)}
-        noOptionsMessage={() => (showNoOptions ? NoOptionsMessage : null)}
-        isClearable={readOnly ? false : isClearable}
-        isSearchable={readOnly ? false : isSearchable}
-        isDisabled={readOnly ? true : isDisabled}
-        menuIsOpen={readOnly ? false : menuIsOpen}
-        placeholder={selectPlaceholder}
-        isMulti={isMulti}
-        noOptionsText={noOptionsText}
-        loadingText={loadingText}
-        {...others}
-      />
-    </StyledBox>
+      noOptionsText={
+        errorLoadingOptions ? (
+          <Box sx={{ color: 'error.main' }}>{errorLoadingOptions}</Box>
+        ) : (
+          noOptionsText
+        )
+      }
+      renderOption={rest.renderOption || defaultRenderOption}
+      renderValue={(value, getItemProps) => {
+        if (multiple) {
+          return value.map((option, index) => {
+            const { key, ...itemProps } = getItemProps({ index })
+            return (
+              <Chip
+                variant="outlined"
+                avatar={
+                  !hideAvatar ? (
+                    option?.avatar ? (
+                      option.avatar
+                    ) : (
+                      <Avatar />
+                    )
+                  ) : undefined
+                }
+                label={option.label}
+                key={key}
+                {...itemProps}
+              />
+            )
+          })
+        } else {
+          return (
+            <Box
+              sx={{ display: 'flex', alignItems: 'center', gap: 1 }}
+              {...getItemProps()}
+            >
+              {!hideAvatar ? (
+                value?.avatar ? (
+                  value.avatar
+                ) : (
+                  <Avatar sizes="16px" />
+                )
+              ) : null}
+              {value?.label || ''}
+            </Box>
+          )
+        }
+      }}
+      renderInput={params => (
+        <TextField
+          {...params}
+          _placeholder={_placeholder}
+          error={error}
+          label={
+            showLabelHelp ? (
+              <InputLabelHelp inputLabel={label} {...InputLabelHelpProps} />
+            ) : (
+              label
+            )
+          }
+          helperText={helperText}
+          variant={variant}
+          {...textFieldProps}
+          slotProps={{
+            ...params.slotProps,
+            ...(textFieldProps?.slotProps || {}),
+            input: {
+              ...(textFieldProps?.slotProps?.input || {}),
+              ...params.slotProps.input,
+              endAdornment: (
+                <React.Fragment>
+                  {loading ? (
+                    <CircularProgress
+                      sx={{ color: 'text.secondary' }}
+                      size={20}
+                    />
+                  ) : null}
+                  {params.slotProps.input.endAdornment}
+                </React.Fragment>
+              ),
+            },
+          }}
+        />
+      )}
+      sx={{
+        ...(sx ? sx : {}),
+        ...(showLabelHelp
+          ? {
+              [`& .${inputLabelClasses.root}`]: {
+                pointerEvents: 'auto',
+                display: 'flex',
+                alignItems: 'center',
+              },
+            }
+          : {}),
+        ...(readOnly
+          ? {
+              [`& .${outlinedInputClasses.root}`]: {
+                '& fieldset': {
+                  borderColor: 'transparent',
+                },
+                '&:hover fieldset': {
+                  borderColor: 'transparent',
+                },
+                '&.Mui-focused fieldset': {
+                  borderColor: 'transparent',
+                },
+              },
+              [`& .${autocompleteClasses.endAdornment}`]: {
+                display: 'none',
+              },
+            }
+          : {}),
+      }}
+      {...rest}
+    />
   )
 }
 
@@ -241,20 +221,16 @@ USelectPicker.propTypes = {
   /** Text to display when nothing is selected. */
   placeholder: PropTypes.string,
   /** Enables the multiple select. Default is false. */
-  isMulti: PropTypes.bool,
+  multiple: PropTypes.bool,
   /** Label of the picker. */
   label: PropTypes.string,
   /** Variant of TextField to use. Default is outlined.*/
   variant: PropTypes.oneOf(['outlined', 'standard', 'filled']),
-  /** Id to assign to the input element */
-  inputId: PropTypes.string,
-  /** Callback fired when the value is changed.
-   *
-   * `event`:
-   * The event source of the callback. You can pull out the new value by accessing "event.target.value".
-   */
+  /** Callback fired when the value is changed: (event, value, reason, details) => void */
   onChange: PropTypes.func,
-  /** Array of to display select on the dropdown.
+  /** Currently selected value (single option object, or array of option objects when multiple) */
+  value: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  /** Array of options to display in the dropdown.
    * Each option is an object with the following attributes:
    *
    * ```
@@ -262,54 +238,51 @@ USelectPicker.propTypes = {
    * value: 3,
    * label: 'Kundal Singh Mehra', //First line, typically the name
    * subLabel: 'Back-end Developer', // Second line, typically position or email
-   * avatar: (  //Avatar object to display.
+   * avatar: (  //Avatar element to display.
    *   <Avatar
    *     src={'http://...'}
    *   />
    *  ),
    *   }
    *```
-   *
    */
   options: PropTypes.array,
-  /** Props passed to the TextField used in the picker. Use any value of Material UI TextField API.
-   *
-   * `TextFieldProps={{helperText:"text", onChange: {textFieldTargetValue}}`
-   *
-   */
-  TextFieldProps: PropTypes.object,
-  /**
-   * To show or hide the no options message on empty texfield value
-   */
-  showNoOptionsWithEmptyTextField: PropTypes.bool,
-  /**
-   *  To display error message on loading options
-   */
+  /** Shows a loading spinner and uses loadingText while options are loading */
+  loading: PropTypes.bool,
+  /** Display error state */
+  error: PropTypes.bool,
+  /** Error message to display in the no options text */
   errorLoadingOptions: PropTypes.string,
-  /** To customize the components of select */
-  components: PropTypes.object,
+  /** Helper text to display below the input */
+  helperText: PropTypes.string,
+  /** Custom renderOption override, passed through to MUI Autocomplete */
+  renderOption: PropTypes.func,
+  /** Custom renderTags override, passed through to MUI Autocomplete */
+  renderTags: PropTypes.func,
+  /** Custom getOptionLabel override, passed through to MUI Autocomplete */
+  getOptionLabel: PropTypes.func,
+  /** Custom isOptionEqualToValue override, passed through to MUI Autocomplete */
+  isOptionEqualToValue: PropTypes.func,
   /** Show label help */
   showLabelHelp: PropTypes.bool,
-  /** Props applied to the input label help element. E.g.  InputLabelHelpProps={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom}} */
+  /** Props applied to the input label help element. E.g. InputLabelHelpProps={{type:'link', label:'Help', link:'unicef.github.io', icon, tooltipTitle: 'Tooltip title', tooltipPlacement: 'bottom'}} */
   InputLabelHelpProps: PropTypes.object,
   /** Hide people avatar */
   hideAvatar: PropTypes.bool,
   /** Is the read only field or not */
   readOnly: PropTypes.bool,
-  /** Whether the selected options displayed in the new line or not in multiple selected options */
-  lineByLineOption: PropTypes.bool,
-  /** Is the select value clearable */
-  isClearable: PropTypes.bool,
-  /** Whether to enable search functionality */
-  isSearchable: PropTypes.bool,
-  /** Whether the input is disabled */
-  isDisabled: PropTypes.bool,
-  /** Whether the menu is open */
-  menuIsOpen: PropTypes.bool,
-  /** Down arrow variant */
-  iconVariant: PropTypes.oneOf([ICON_VARIANTS.dark, ICON_VARIANTS.light]),
   /** No options text */
   noOptionsText: PropTypes.string,
   /** Loading text */
   loadingText: PropTypes.string,
+  /** The system prop that allows defining system overrides as well as additional CSS styles. */
+  sx: PropTypes.oneOfType([
+    PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.func, PropTypes.object, PropTypes.bool])
+    ),
+    PropTypes.func,
+    PropTypes.object,
+  ]),
+  /** Props applied to the TextField component. */
+  textFieldProps: PropTypes.object,
 }

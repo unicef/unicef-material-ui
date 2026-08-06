@@ -15,7 +15,7 @@ import {
   SearchBoxExample,
 } from '.'
 
-export default function Layout({ match }) {
+export default function Layout() {
   return (
     <React.Fragment>
       <AvatarImageExample />

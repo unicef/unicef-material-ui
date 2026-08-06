@@ -1,8 +1,6 @@
-/* eslint-disable */
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { TextField, Typography, Box, MenuItem } from '@mui/material'
-/* eslint-enable */
 import ValidatorComponent from '../ValidatorComponent'
 import { InputLabelHelp } from '../Shared'
 
@@ -177,7 +175,11 @@ class UTextField extends ValidatorComponent {
             : ''}
         </TextField>
         {counter && (
-          <Box display="block">
+          <Box
+            sx={{
+              display: 'block',
+            }}
+          >
             <Typography
               sx={{
                 ...styles.counter,

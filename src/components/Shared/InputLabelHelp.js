@@ -1,9 +1,10 @@
 import React, { Fragment } from 'react'
 import { styled } from '@mui/material/styles'
-import { Tooltip, Link, Box } from '@mui/material'
+import { Tooltip, Link } from '@mui/material'
 import PropTypes from 'prop-types'
+import { inputLabelClasses } from '@mui/material/InputLabel'
 
-import HelpIcon from '@mui/icons-material/HelpOutline'
+import HelpIcon from '@mui/icons-material/HelpOutlineOutlined'
 import LaunchIcon from '@mui/icons-material/Launch'
 
 const PREFIX = 'InputLabelHelp'
@@ -17,6 +18,10 @@ const classes = {
 }
 
 const StyledBox = styled('div')(({ theme }) => ({
+  visibility: 'hidden',
+  [`.${inputLabelClasses.shrink} &`]: {
+    visibility: 'visible',
+  },
   [`&.${classes.root}`]: {
     order: 999,
     display: 'inline-flex',
@@ -53,6 +58,7 @@ export default function InputLabelHelp({
   icon = null,
   tooltipTitle,
   tooltipPlacement = 'top',
+  linkTitle = 'Opens a new tab',
 }) {
   return (
     <Fragment>
@@ -79,7 +85,7 @@ export default function InputLabelHelp({
             target={'_blank'}
             underline="always"
             className={classes.help}
-            title="Opens a new tab"
+            title={linkTitle}
           >
             {icon ? icon : <LaunchIcon />}
             {label ? (
@@ -109,4 +115,6 @@ InputLabelHelp.propTypes = {
   icon: PropTypes.node,
   // Tooltip placement
   tooltipPlacement: PropTypes.string,
+  /** Title for the link */
+  linkTitle: PropTypes.string,
 }

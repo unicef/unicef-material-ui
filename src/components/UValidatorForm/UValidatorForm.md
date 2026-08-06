@@ -100,7 +100,7 @@ const currencies = [
           className={classes.textField}
           value={values.email}
           validators={['required', 'isEmail']}
-          errorMessages={['this field is required', 'email is not valid']}
+          customErrorMessages={{'required':'this field is required', 'isEmail':'email is not valid'}}
         />
         <UTextField
           label="Password"
@@ -111,7 +111,7 @@ const currencies = [
           className={classes.textField}
           validators={['required']}
           value={values.password}
-          errorMessages={['this field is required']}
+          customErrorMessages={{'required':'this field is required'}}
         />
         <UTextField
             id="outlined-select-currency"
@@ -123,7 +123,7 @@ const currencies = [
             name="currency"
             value={values.currency}
             validators={['required']}
-            errorMessages={['this field is required']}
+            customErrorMessages={{'required':'this field is required'}}
             options={currencies}
             SelectProps={{
               MenuProps: {

@@ -161,7 +161,6 @@ export default function ActiveAutoComplete({
           renderInput={params => (
             <ActiveFormTextField
               {...params}
-              multiline
               label={label}
               variant="outlined"
               value={(selectedValue && selectedValue.text) || ''}
@@ -225,6 +224,8 @@ ActiveAutoComplete.propTypes = {
   counter: PropTypes.bool,
   /** placeholder text*/
   placeholder: PropTypes.string,
+  /** read-only mode for the dropdown */
+  readOnly: PropTypes.bool,
   /** Props applied to slots*/
   slotProps: PropTypes.object,
 }

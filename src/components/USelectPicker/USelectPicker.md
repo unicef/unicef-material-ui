@@ -41,7 +41,7 @@ const options = [
   },
 ]
 
-<USelectPicker label="People" options={options} isMulti={true} />
+<USelectPicker label="People" options={options} multiple={true} />
 ```
 
 #### Multi select picker
@@ -87,7 +87,7 @@ const options = [
   },
 ]
 
-;<USelectPicker label="Regions" options={options} isMulti={true} variant="outlined" />
+;<USelectPicker label="Regions" options={options} multiple={true} variant="outlined" />
 ```
 
 #### Single select picker

@@ -143,7 +143,6 @@ export default function UAutoComplete({
           renderInput={params => (
             <ActiveFormTextField
               {...params}
-              multiline
               label={label}
               variant="outlined"
               value={(selectedValue && selectedValue.text) || ''}
@@ -155,17 +154,21 @@ export default function UAutoComplete({
                   ...(params?.slotProps?.htmlInput
                     ? params.slotProps.htmlInput
                     : {}),
-                  ...(params?.inputProps ? params.inputProps : {}),
+                  ...(params.slotProps.htmlInput
+                    ? params.slotProps.htmlInput
+                    : {}),
                   minLength,
                   maxLength,
                 },
                 input: {
                   ...(params?.slotProps?.input ? params.slotProps.input : {}),
-                  ...(params?.InputProps ? params.InputProps : {}),
+                  ...(params.slotProps.input ? params.slotProps.input : {}),
                 },
                 inputLabel: {
                   ...(slotProps?.inputLabel ? slotProps?.inputLabel : {}),
-                  ...(params?.InputLabelProps ? params.InputLabelProps : {}),
+                  ...(params.slotProps.inputLabel
+                    ? params.slotProps.inputLabel
+                    : {}),
                   required: isRequired,
                 },
               }}
@@ -211,6 +214,8 @@ UAutoComplete.propTypes = {
   counter: PropTypes.bool,
   /** placeholder text*/
   placeholder: PropTypes.string,
+  /** read-only mode for the autocomplete */
+  readOnly: PropTypes.bool,
   /** Props applied to slots.*/
   slotProps: PropTypes.object,
 }

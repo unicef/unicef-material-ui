@@ -1,10 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker'
 import { pickersOutlinedInputClasses } from '@mui/x-date-pickers/PickersTextField'
 import { inputAdornmentClasses } from '@mui/material/InputAdornment'
+import { inputLabelClasses } from '@mui/material/InputLabel'
+import { InputLabelHelp } from '../Shared'
 
 /**
  * ActiveDateTimePicker is a customized material UI Date Time Picker.
@@ -13,27 +15,28 @@ import { inputAdornmentClasses } from '@mui/material/InputAdornment'
  */
 
 export default function ActiveDateTimePicker({
-  inputFormat = 'dd/MM/yyyy hh:mm a',
+  format = 'DD/MM/YYYY hh:mm a',
   label,
   onChange,
   value,
   showLabelHelp,
-  slotProps = {
-    inputLabel: { shrink: true },
-  },
   InputLabelHelpProps,
-  inputVariant = 'outlined',
   interactiveMode,
   readOnly,
   sx,
   ...others
 }) {
   return (
-    <LocalizationProvider dateAdapter={AdapterDateFns}>
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DateTimePicker
-        className={classes.root}
-        label={label}
-        inputFormat={inputFormat}
+        label={
+          showLabelHelp ? (
+            <InputLabelHelp inputLabel={label} {...InputLabelHelpProps} />
+          ) : (
+            label
+          )
+        }
+        format={format}
         onChange={onChange}
         value={value}
         readOnly={readOnly}
@@ -65,6 +68,15 @@ export default function ActiveDateTimePicker({
                   display: 'flex',
                 },
             }),
+          ...(showLabelHelp
+            ? {
+                [`& .${inputLabelClasses.root}`]: {
+                  pointerEvents: 'auto',
+                  display: 'flex',
+                  alignItems: 'center',
+                },
+              }
+            : {}),
         })}
         {...others}
       />
@@ -74,7 +86,7 @@ export default function ActiveDateTimePicker({
 
 ActiveDateTimePicker.propTypes = {
   /** Date time picker format */
-  inputFormat: PropTypes.string,
+  format: PropTypes.string,
   /** Callback function when change the picker field */
   onChange: PropTypes.func.isRequired,
   /** The system prop that allows defining system overrides as well as additional CSS styles. */

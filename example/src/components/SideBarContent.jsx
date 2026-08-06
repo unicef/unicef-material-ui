@@ -39,7 +39,7 @@ export default function SideBarContent(props) {
 
   // Remove spaces and make all letters lower-case
   function lowerCaseUrl(str) {
-    return `${str.replace(/\s+/g, '-').toLowerCase()}`
+    return `${str.replace(/\s+/g, '-').toLowerCase()}`;
   }
 
   function handleLinkClick(e, str) {

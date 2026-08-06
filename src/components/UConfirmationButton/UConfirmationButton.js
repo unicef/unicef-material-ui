@@ -51,7 +51,7 @@ const CONFIRMATION_VARIANTS = {
 /**
  * UConfirmationButton is a component to get confirmation from the user before processing it.
  * This button displays the confirmation where user has clicked the button
- * It has two varint icon/menu item
+ * It has two variants: icon/menu item
  */
 export default function UConfirmationButton({
   onConfirm,
@@ -80,7 +80,7 @@ export default function UConfirmationButton({
     }
   }
 
-  const handleDeleteOptionClicked = e => {
+  const handleDeleteOptionClicked = () => {
     setDeleteAnchorEl(null)
   }
 
@@ -92,7 +92,7 @@ export default function UConfirmationButton({
     }
   }
 
-  const handleCancelPopup = e => {
+  const handleCancelPopup = () => {
     setOpenDialog(false)
   }
 

@@ -233,5 +233,5 @@ const options = [
   },
 ]
 
-;<UIconPicker label="Icon" options={options} variant="outlined" isMulti />
+;<UIconPicker label="Icon" options={options} variant="outlined" multiple />
 ```

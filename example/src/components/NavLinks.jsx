@@ -21,19 +21,25 @@ export default function NavLinks() {
     setProfileOpen(event.currentTarget)
   }
 
-  const handleProfileMenuClose = event => {
+  const handleProfileMenuClose = () => {
     setProfileOpen(null)
   }
   const handleProfile = event => {
     setProfile(event.currentTarget)
   }
 
-  const handleProfileMenu = event => {
+  const handleProfileMenu = () => {
     setProfile(null)
   }
 
   return (
-    <Box display="flex" pl={4} pr={2}>
+    <Box
+      sx={{
+        display: 'flex',
+        pl: 4,
+        pr: 2,
+      }}
+    >
       <Button color="inherit">
         <MailIcon />
         Login

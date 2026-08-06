@@ -16,7 +16,7 @@
     className={classes.textField}
     value={value}
     validators={['required', 'isEmail']}
-    errorMessages={['this field is required', 'email is not valid']}
+    customErrorMessages={{'required':'this field is required', 'isEmail':'email is not valid'}}
   />
   <Button
     className={classes.margin}
@@ -114,7 +114,7 @@ function handleSubmit() {
       variant="outlined"
       value={value}
       validators={['required']}
-      errorMessages={['this field is required']}
+      customErrorMessages={{'required':'this field is required'}}
       options={currencies}
     />
     <Button
@@ -184,7 +184,7 @@ function handleSubmit() {
       variant="outlined"
       value={value}
       validators={['required', 'isEmail']}
-      errorMessages={['this field is required', 'email is not valid']}
+      customErrorMessages={{'required':'this field is required', 'isEmail':'email is not valid'}}
     />
     <Button
       className={classes.margin}
@@ -332,12 +332,12 @@ function handleSubmit() {
       className={classes.textField}
       value={value}
       validators={['required', 'isNumber', 'minNumber:0', 'maxNumber:25555']}
-      errorMessages={[
-        'this field is required',
-        'Value must be number only',
-        'value must be possitive',
-        'value must be less than 255',
-      ]}
+      customErrorMessages={{
+        'required': 'this field is required',
+        'isNumber': 'Value must be number only',
+        'minNumber:0': 'value must be positive',
+        'maxNumber:25555': 'value must be less than 255',
+      }}
     />
     <Button
       className={classes.margin}
@@ -416,7 +416,7 @@ function handleSubmit() {
       className={classes.textField}
       value={value}
       validators={['required', 'matchRegexp:^[0-9]$']}
-      errorMessages={['this field is required', 'value must be between 0 - 9']}
+      customErrorMessages={{'required':'this field is required', 'matchRegexp:^[0-9]$':'value must be between 0 - 9'}}
     />
     <Button
       className={classes.margin}
@@ -495,11 +495,11 @@ function handleSubmit() {
       className={classes.textField}
       value={value}
       validators={['required', 'minStringLength:6', 'maxStringLength:12']}
-      errorMessages={[
-        'this field is required',
-        'minimum character length is 6',
-        'maximum character length is 12',
-      ]}
+      customErrorMessages={{
+        'required': 'this field is required',
+        'minStringLength:6': 'minimum character length is 6',
+        'maxStringLength:12': 'maximum character length is 12',
+      }}
     />
     <Button
       className={classes.margin}
@@ -811,7 +811,7 @@ export default function ResetPasswordForm() {
         name="repeatPassword"
         type="password"
         validators={['isPasswordMatch', 'required']}
-        customErrorMessages={{ required: 'required field' }}
+        customErrorMessages={{'isPasswordMatch': 'Password not matched': 'required': 'required field' }}
         value={user.repeatPassword}
       />
       <UButton uPrimary type="submit">

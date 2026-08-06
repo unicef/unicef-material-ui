@@ -42,7 +42,7 @@ const StyledBox = styled(Box, {
     padding: '9.5px 14px',
     [`&.${outlinedInputClasses.disabled}`]: {
       color: theme.palette.text.primary,
-      '-webkit-text-fill-color': theme.palette.text.primary,
+      WebkitTextFillColor: theme.palette.text.primary,
     },
   },
 
@@ -69,7 +69,6 @@ const StyledBox = styled(Box, {
  */
 export default function ActiveFormSelect(props) {
   const {
-    select,
     typographyVariant,
     className,
     interactiveMode = false,
@@ -146,8 +145,8 @@ ActiveFormSelect.propTypes = {
   placeholder: PropTypes.string,
   /** Typography for text inside the input (Ex: h1, div, etc.) */
   typographyVariant: PropTypes.string,
-  /** To make textfield to be select. See below examples section for select example and sample code */
-  select: PropTypes.bool,
+  /** CSS class name */
+  className: PropTypes.string,
   /** Change to write mode by hiding textfield border and displays border on Hover*/
   interactiveMode: PropTypes.bool,
   /** Input has some default padding already, to make changes to it pass padding like `inputPadding='0px 2px'` */
@@ -172,4 +171,12 @@ ActiveFormSelect.propTypes = {
   validatorListener: PropTypes.func,
   /** Allow to use required validator in any validation trigger, not only form submit. */
   withRequiredValidator: PropTypes.bool,
+  /** Props applied to slots */
+  slotProps: PropTypes.object,
+  /** Select options as children */
+  children: PropTypes.node,
+  /** Callback fired when the blur event happens */
+  onBlur: PropTypes.func,
+  /** Callback fired when the mouse over event happens */
+  onMouseOver: PropTypes.func,
 }
