@@ -149,7 +149,9 @@ class UTextField extends ValidatorComponent {
                   onClose: this.handleSelectClose,
                   onOpen: this.handleSelectOpen,
                   MenuProps: {
+                    ...(SelectProps?.MenuProps || {}),
                     MenuListProps: {
+                      ...(SelectProps?.MenuProps?.MenuListProps || {}),
                       id: `${id}-select-menu`,
                       'aria-labelledby': null,
                     },
