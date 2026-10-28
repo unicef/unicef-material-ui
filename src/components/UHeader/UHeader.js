@@ -39,6 +39,7 @@ const StyledAppBar = styled(AppBar, {
       'openDrawer',
       'toggleDrawer',
       'logo',
+      'secondaryLogo',
       'applicationName',
       'logoUrl',
       'onLogoClick',
@@ -57,6 +58,8 @@ const StyledAppBar = styled(AppBar, {
 
   [`& .${classes.title}`]: {
     flexGrow: 1,
+    display: 'flex',
+    alignItems: 'center',
   },
 
   [`& .${classes.navRight}`]: {
@@ -95,6 +98,7 @@ export default function UHeader(props) {
     showHamburgerMenu = true,
     hideLogo = false,
     logo,
+    secondaryLogo,
     hideLogoBorderLine = true,
     logoUrl = '/',
     onLogoClick,
@@ -171,6 +175,7 @@ export default function UHeader(props) {
           )) ||
             ''}
           <Typography variant="h6" className={classes.title}>
+            {secondaryLogo ? secondaryLogo : <></>}
             <Link
               color="inherit"
               underline="none"
@@ -223,6 +228,8 @@ UHeader.propTypes = {
   logoUrl: PropTypes.string,
   /** To show new logo or image */
   logo: PropTypes.element,
+  /** To show secondary logo or image */
+  secondaryLogo: PropTypes.element,
   /** It is the separator line between application name and logo with white border. */
   hideLogoBorderLine: PropTypes.bool,
   /** Calls back when there is a click on Logo as well as app name and prevents the url to push to home*/
